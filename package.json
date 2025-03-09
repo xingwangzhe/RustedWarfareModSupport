@@ -45,7 +45,22 @@
 					"description": "Traces the communication between VS Code and the language server."
 				}
 			}
-		}
+		},
+		"languages": [
+            {
+                "id": "rustedwarfareini",
+                "aliases": ["RustedWarfare INI", "rustedwarfareini"],
+                "extensions": [".txt", ".template", ".ini"],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "rustedwarfareini",
+                "scopeName": "source.rustedwarfareini",
+                "path": "./syntaxes/rustedwarfareini.tmLanguage.json"
+            }
+        ]
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
