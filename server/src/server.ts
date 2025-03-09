@@ -267,6 +267,8 @@ connection.onCompletion(
 					return ALLSECTIONS.ATTACHMENT;
 				} else if (currentSectionName.startsWith('effect_')){
 					return ALLSECTIONS.EFFECT;
+				} else if (currentSectionName.startsWith('animation_')){
+					return ALLSECTIONS.ANIMATION;
 				} else if (currentSectionName.startsWith('action_')){
 					return ALLSECTIONS.ACTION;
 				} else if (currentSectionName.startsWith('hiddenAction_')){
