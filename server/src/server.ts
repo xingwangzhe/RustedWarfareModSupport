@@ -21,8 +21,9 @@ import {
 
 
 
-import { ALLSECTIONS } from './data/lang/zh-CN/1all';
-import { SECTIONSNAME} from './data/lang/zh-CN/sectionsname';
+import { ALLSECTIONS } from './data/lang/zh-CN/sections/1allsections';
+import { SECTIONSNAME} from './data/lang/zh-CN/sections/sectionsname';
+import { ALLVALUES } from './data/lang/zh-CN/values/1allvalues';
 
 const connection = createConnection(ProposedFeatures.all);
 
@@ -237,18 +238,48 @@ connection.onCompletion(
 		if (isInsideBrackets) {
 			return SECTIONSNAME;
 		}
-
+		// 判断光标是否在 :后
 		const colonIndex = currentLineContent.indexOf(':');
-
-		// if (colonIndex!== -1&&cursorCharacter > colonIndex){
-		// 	return [];
-		// }
+		const pointIndex = currentLineContent.indexOf('.');
 		if (!currentSectionName) {
 			return [];
-		} // 如果没有找到对应的节，返回空
+		} 
 		else if((colonIndex!==-1)&&(cursorCharacter>colonIndex)){
-			return [];
-		} else {
+            
+				if((pointIndex!==-1)&&(cursorCharacter==(pointIndex+1))){
+					return ALLVALUES.UNITPROPERTY;
+				}
+
+				const key = currentLineContent.substring(0, colonIndex).trim();
+				let sectionName=currentSectionName;
+				sectionName=sectionName.toUpperCase();
+				const sectionConfig = ALLSECTIONS[sectionName];
+					let keyConfig = null;
+					if (sectionConfig) {
+						for (const item of sectionConfig) {
+							if (item.label === key) {
+								keyConfig = item;
+								break;
+							}
+						}
+					}
+					if (keyConfig) {
+						const data = keyConfig.data;
+							if (data.includes('bool')) {
+								return ALLVALUES.BOOL;
+							} else if (data.includes('logicBoolean')) {
+								return [...ALLVALUES.LOGICBBOOLEAN, ...ALLVALUES.BOOL,...ALLVALUES.FUNCTION,...ALLVALUES.UNITREF];
+							} else if (key.includes('spawnUnits')){
+								return [...ALLVALUES.LOGICBBOOLEAN,...ALLVALUES.BOOL,...ALLVALUES.FUNCTION,...ALLVALUES.UNITREF,...ALLVALUES.SPAWNUNIT];
+							} else if (data.includes('projectileRef')){
+								return [...ALLVALUES.PROJECTILE];
+							} else if (data.includes('event')){
+								return [...ALLVALUES.EVENTS];
+							} 
+					}
+				return [];;
+		}  
+		 else {
 		// 根据节名返回相应的补全项
 			switch (currentSectionName) {
 				case 'core':
