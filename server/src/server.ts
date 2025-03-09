@@ -237,59 +237,69 @@ connection.onCompletion(
 		if (isInsideBrackets) {
 			return SECTIONSNAME;
 		}
-	
-		if (!currentSectionName) {return [];} // 如果没有找到对应的节，返回空
-	
+
+		const colonIndex = currentLineContent.indexOf(':');
+
+		// if (colonIndex!== -1&&cursorCharacter > colonIndex){
+		// 	return [];
+		// }
+		if (!currentSectionName) {
+			return [];
+		} // 如果没有找到对应的节，返回空
+		else if((colonIndex!==-1)&&(cursorCharacter>colonIndex)){
+			return [];
+		} else {
 		// 根据节名返回相应的补全项
-		switch (currentSectionName) {
-			case 'core':
-				return ALLSECTIONS.CORE;
-			case 'graphics':
-				return ALLSECTIONS.GRAPHICS;
-			case 'attack':
-				return ALLSECTIONS.ATTACK;
-			case 'movement':
-				return ALLSECTIONS.MOVEMENT;
-			case 'ai':
-				return ALLSECTIONS.AI;
-			default:
-				if (currentSectionName.startsWith('canBuild_')) {
-					return ALLSECTIONS.CANBUILD;
-				} else if (currentSectionName.startsWith('turret_')) {
-					return ALLSECTIONS.TURRET;
-				} else if (currentSectionName.startsWith('projectile_')){
-					return ALLSECTIONS.PROJECTILE;
-				} else if (currentSectionName.startsWith('arm_')){
-					return ALLSECTIONS.ARM;
-				} else if (currentSectionName.startsWith('leg_')){
-					return ALLSECTIONS.LEG;
-				} else if (currentSectionName.startsWith('attachment_')){
-					return ALLSECTIONS.ATTACHMENT;
-				} else if (currentSectionName.startsWith('effect_')){
-					return ALLSECTIONS.EFFECT;
-				} else if (currentSectionName.startsWith('animation_')){
-					return ALLSECTIONS.ANIMATION;
-				} else if (currentSectionName.startsWith('action_')){
-					return ALLSECTIONS.ACTION;
-				} else if (currentSectionName.startsWith('hiddenAction_')){
-					return ALLSECTIONS.ACTION;
-				} else if (currentSectionName.startsWith('placementRule_')){
-					return ALLSECTIONS.PLACEMENTRULE;
-				} else if (currentSectionName.startsWith('resource_')){
-					return ALLSECTIONS.RESOURCE;
-				} else if (currentSectionName.startsWith('global_resource_')){
-					return ALLSECTIONS.RESOURCE;
-				} else if (currentSectionName.startsWith('decal_')){
-					return ALLSECTIONS.DECAL;
-				} else if (currentSectionName.startsWith('commnet_')){
+			switch (currentSectionName) {
+				case 'core':
+					return ALLSECTIONS.CORE;
+				case 'graphics':
+					return ALLSECTIONS.GRAPHICS;
+				case 'attack':
+					return ALLSECTIONS.ATTACK;
+				case 'movement':
+					return ALLSECTIONS.MOVEMENT;
+				case 'ai':
+					return ALLSECTIONS.AI;
+				default:
+					if (currentSectionName.startsWith('canBuild_')) {
+						return ALLSECTIONS.CANBUILD;
+					} else if (currentSectionName.startsWith('turret_')) {
+						return ALLSECTIONS.TURRET;
+					} else if (currentSectionName.startsWith('projectile_')){
+						return ALLSECTIONS.PROJECTILE;
+					} else if (currentSectionName.startsWith('arm_')){
+						return ALLSECTIONS.ARM;
+					} else if (currentSectionName.startsWith('leg_')){
+						return ALLSECTIONS.LEG;
+					} else if (currentSectionName.startsWith('attachment_')){
+						return ALLSECTIONS.ATTACHMENT;
+					} else if (currentSectionName.startsWith('effect_')){
+						return ALLSECTIONS.EFFECT;
+					} else if (currentSectionName.startsWith('animation_')){
+						return ALLSECTIONS.ANIMATION;
+					} else if (currentSectionName.startsWith('action_')){
+						return ALLSECTIONS.ACTION;
+					} else if (currentSectionName.startsWith('hiddenAction_')){
+						return ALLSECTIONS.ACTION;
+					} else if (currentSectionName.startsWith('placementRule_')){
+						return ALLSECTIONS.PLACEMENTRULE;
+					} else if (currentSectionName.startsWith('resource_')){
+						return ALLSECTIONS.RESOURCE;
+					} else if (currentSectionName.startsWith('global_resource_')){
+						return ALLSECTIONS.RESOURCE;
+					} else if (currentSectionName.startsWith('decal_')){
+						return ALLSECTIONS.DECAL;
+					} else if (currentSectionName.startsWith('commnet_')){
+						return [];
+					} else if (currentSectionName.startsWith('template_')){
+						return ALLSECTIONS.TEMPLATE;	
+					}
 					return [];
-				} else if (currentSectionName.startsWith('template_')){
-					return ALLSECTIONS.TEMPLATE;	
-				}
-				return [];
+			}
 		}
-	}
-);
+		return [];
+	});
 connection.onCompletionResolve(
 	(item: CompletionItem): CompletionItem => {
 		// if (item.data === 1) {
