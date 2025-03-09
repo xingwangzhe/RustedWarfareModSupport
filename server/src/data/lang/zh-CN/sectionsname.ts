@@ -115,7 +115,7 @@ export const SECTIONSNAME: CompletionItem[] = [
         kind: CompletionItemKind.Text,
         data: 13,
         detail: '[隐藏的操作节]',
-        documentation: '同上。'
+        documentation: '涉及单位的资源手动添加、手动升级按钮、添加路径点等设置。'
     },
     {
         label: 'effect_',
