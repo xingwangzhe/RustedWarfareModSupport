@@ -1,0 +1,32 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "RustedWarfareini",
+	"patterns": [
+		{
+			"include": "#keywords"
+		},
+		{
+			"include": "#strings"
+		}
+	],
+	"repository": {
+		"keywords": {
+			"patterns": [{
+				"name": "keyword.control.rustedwarfareini",
+				"match": "\\b(if|and|not|or)\\b"
+			}]
+		},
+		"strings": {
+			"name": "string.quoted.double.rustedwarfareini",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.rustedwarfareini",
+					"match": "\\\\."
+				}
+			]
+		}
+	},
+	"scopeName": "source.ini"
+}
