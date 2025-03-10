@@ -62,7 +62,55 @@
                 "scopeName": "source.rustedwarfareini",
                 "path": "./syntaxes/rustedwarfareini.tmLanguage.json"
             }
-        ]
+        ],
+        "commands": [
+            {
+                "command": "extension.previewUnit",
+                "title": "预览单位",
+                "category": "铁锈战争",
+                "icon": {
+                    "light": "resources/light/preview.svg",
+                    "dark": "resources/dark/preview.svg"
+                }
+            }
+        ],
+        "menus": {
+            "editor/context": [
+                {
+                    "when": "resourceLangId == ini",
+                    "command": "extension.previewUnit",
+                    "group": "navigation"
+                }
+            ],
+            "editor/title": [
+                {
+                    "when": "resourceLangId == rustedwarfareini || resourceLangId == ini",
+                    "command": "extension.previewUnit",
+                    "group": "navigation"
+                }
+            ]
+        },
+        "viewsContainers": {
+            "activitybar": [
+                {
+                    "id": "rustedwarfare-explorer",
+                    "title": "铁锈战争预览",
+                    "icon": "resources/dark/preview.svg",
+					"location": "right"
+                }
+            ]
+        },
+        "views": {
+            "rustedwarfare-explorer": [
+                {
+                    "type": "webview",
+                    "id": "unitPreview",
+                    "name": "单位预览",
+                    "icon": "resources/dark/preview.svg",
+                    "contextualTitle": "铁锈单位预览"
+                }
+            ]
+        }
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",

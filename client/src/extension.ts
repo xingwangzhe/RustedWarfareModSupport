@@ -4,7 +4,8 @@
  * ------------------------------------------------------------------------------------------ */
 
 import * as path from 'path';
-import { workspace, ExtensionContext } from 'vscode';
+import { workspace, ExtensionContext, commands, window } from 'vscode';
+import { ImagePreview } from './imagePreview';
 
 import {
 	LanguageClient,
@@ -62,6 +63,37 @@ export function activate(context: ExtensionContext) {
 
 	// Start the client. This will also launch the server
 	client.start();
+
+	// 简化预览视图提供者的创建
+	const imagePreviewProvider = new ImagePreview(context.extensionUri);
+	context.subscriptions.push(
+		window.registerWebviewViewProvider(ImagePreview.viewType, imagePreviewProvider, {
+			webviewOptions: { retainContextWhenHidden: true }
+		})
+	);
+
+	// 注册命令
+	const previewDisposable = commands.registerCommand('extension.previewUnit', async () => {
+		try {
+			// 确保侧边栏是可见的
+			await commands.executeCommand('workbench.view.extension.rustedwarfare-explorer');
+			
+			const activeEditor = window.activeTextEditor;
+			if (!activeEditor) {
+				throw new Error('请先打开一个ini文件');
+			}
+
+			if (!activeEditor.document.fileName.endsWith('.ini')) {
+				throw new Error('当前文件不是ini格式');
+			}
+
+			await imagePreviewProvider.showPreview(activeEditor.document.uri.fsPath);
+		} catch (error) {
+			window.showErrorMessage(error instanceof Error ? error.message : '预览失败');
+		}
+	});
+
+	context.subscriptions.push(previewDisposable);
 }
 
 export function deactivate(): Thenable<void> | undefined {
