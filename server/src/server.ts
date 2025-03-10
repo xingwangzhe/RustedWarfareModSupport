@@ -233,15 +233,14 @@ connection.onCompletion(
 		// 判断光标是否在 [] 内
 		const openBracketIndex = currentLineContent.lastIndexOf('[', cursorCharacter);
 		const closeBracketIndex = currentLineContent.indexOf(']', cursorCharacter);
-		const isInsideBrackets = openBracketIndex !== -1 && (closeBracketIndex === -1 || openBracketIndex > closeBracketIndex);
-
-		if (isInsideBrackets) {
-			return SECTIONSNAME;
-		}
+		const isInsideBrackets = (openBracketIndex !== -1 && (closeBracketIndex === -1 || openBracketIndex > closeBracketIndex));
 		// 判断光标是否在 :后
 		const colonIndex = currentLineContent.indexOf(':');
 		const pointIndex = currentLineContent.indexOf('.');
-		if (!currentSectionName) {
+		if (isInsideBrackets) {
+			return SECTIONSNAME;
+		}
+		else if (!currentSectionName) {
 			return [];
 		} 
 		else if((colonIndex!==-1)&&(cursorCharacter>colonIndex)){
@@ -280,7 +279,7 @@ connection.onCompletion(
 				return [];;
 		}  
 		 else {
-		// 根据节名返回相应的补全项
+		//根据节名返回相应的补全项
 			switch (currentSectionName) {
 				case 'core':
 					return ALLSECTIONS.CORE;
