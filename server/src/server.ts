@@ -12,7 +12,9 @@ import {
 	TextDocumentSyncKind,
 	InitializeResult,
 	DocumentDiagnosticReportKind,
-	type DocumentDiagnosticReport
+	type DocumentDiagnosticReport,
+	Hover,
+	//MarkupContent
 } from 'vscode-languageserver/node';
 
 import {
@@ -51,6 +53,8 @@ connection.onInitialize((params: InitializeParams) => {
 	const result: InitializeResult = {
 		capabilities: {
 			textDocumentSync: TextDocumentSyncKind.Incremental,
+			// 添加hover支持
+			hoverProvider: true,
 			completionProvider: {
 				resolveProvider: true
 			},
@@ -201,135 +205,354 @@ connection.onDidChangeWatchedFiles(_change => {
 
 
 
-
 connection.onCompletion(
 	(_textDocumentPosition: TextDocumentPositionParams): CompletionItem[] => {
 		const document = documents.get(_textDocumentPosition.textDocument.uri);
 		if (!document) {return [];}
 	
-		// 获取当前行号
+		// 获取当前光标位置信息
 		const cursorLine = _textDocumentPosition.position.line;
-		
-		// 从当前行向上查找最近的一个节定义
-		let currentSectionName = null;
-		for (let i = cursorLine; i >= 0; i--) {
-			const lineStart = document.positionAt(document.offsetAt({ line: i, character: 0 }));
-			const lineEnd = document.positionAt(document.offsetAt({ line: i + 1, character: 0 }) - 1);
-			const lineContent = document.getText({ start: lineStart, end: lineEnd }).trim();
-	
-			const sectionMatch = lineContent.match(/^\[(.+)\]$/);
-			if (sectionMatch) {
-				currentSectionName = sectionMatch[1];
-				break;
-			}
-		}
 		const cursorCharacter = _textDocumentPosition.position.character;
-
+		
 		// 获取当前行内容
 		const lineStart = document.positionAt(document.offsetAt({ line: cursorLine, character: 0 }));
 		const lineEnd = document.positionAt(document.offsetAt({ line: cursorLine + 1, character: 0 }) - 1);
 		const currentLineContent = document.getText({ start: lineStart, end: lineEnd });
 
-		// 判断光标是否在 [] 内
+			// 处理节名补全
 		const openBracketIndex = currentLineContent.lastIndexOf('[', cursorCharacter);
 		const closeBracketIndex = currentLineContent.indexOf(']', cursorCharacter);
-		const isInsideBrackets = (openBracketIndex !== -1 && (closeBracketIndex === -1 || openBracketIndex > closeBracketIndex));
-		// 判断光标是否在 :后
-		const colonIndex = currentLineContent.indexOf(':');
-		const pointIndex = currentLineContent.indexOf('.');
-		if (isInsideBrackets) {
+		// 判断是否在 [] 内部（确保左括号在光标前，右括号在光标后或不存在）
+		if (openBracketIndex !== -1 && (closeBracketIndex === -1 || cursorCharacter < closeBracketIndex)) {
 			return SECTIONSNAME;
 		}
-		else if (!currentSectionName) {
-			return [];
-		} 
-		else if((colonIndex!==-1)&&(cursorCharacter>colonIndex)){
-            
-				if((pointIndex!==-1)&&(cursorCharacter==(pointIndex+1))){
-					return ALLVALUES.UNITPROPERTY;
-				}
 
-				const key = currentLineContent.substring(0, colonIndex).trim();
-				let sectionName=currentSectionName;
-				sectionName=sectionName.toUpperCase();
-				const sectionConfig = ALLSECTIONS[sectionName];
-					let keyConfig = null;
-					if (sectionConfig) {
-						for (const item of sectionConfig) {
-							if (item.label === key) {
-								keyConfig = item;
-								break;
-							}
-						}
-					}
-					if (keyConfig) {
-						const data = keyConfig.data;
-							if (data.includes('bool')) {
-								return ALLVALUES.BOOL;
-							} else if (data.includes('logicBoolean')) {
-								return [...ALLVALUES.LOGICBBOOLEAN, ...ALLVALUES.BOOL,...ALLVALUES.FUNCTION,...ALLVALUES.UNITREF];
-							} else if (key.includes('spawnUnits')){
-								return [...ALLVALUES.LOGICBBOOLEAN,...ALLVALUES.BOOL,...ALLVALUES.FUNCTION,...ALLVALUES.UNITREF,...ALLVALUES.SPAWNUNIT];
-							} else if (data.includes('projectileRef')){
-								return [...ALLVALUES.PROJECTILE];
-							} else if (data.includes('event')){
-								return [...ALLVALUES.EVENTS];
-							} 
-					}
-				return [];;
-		}  
-		 else {
-		//根据节名返回相应的补全项
-			switch (currentSectionName) {
-				case 'core':
-					return ALLSECTIONS.CORE;
-				case 'graphics':
-					return ALLSECTIONS.GRAPHICS;
-				case 'attack':
-					return ALLSECTIONS.ATTACK;
-				case 'movement':
-					return ALLSECTIONS.MOVEMENT;
-				case 'ai':
-					return ALLSECTIONS.AI;
-				default:
-					if (currentSectionName.startsWith('canBuild_')) {
-						return ALLSECTIONS.CANBUILD;
-					} else if (currentSectionName.startsWith('turret_')) {
-						return ALLSECTIONS.TURRET;
-					} else if (currentSectionName.startsWith('projectile_')){
-						return ALLSECTIONS.PROJECTILE;
-					} else if (currentSectionName.startsWith('arm_')){
-						return ALLSECTIONS.ARM;
-					} else if (currentSectionName.startsWith('leg_')){
-						return ALLSECTIONS.LEG;
-					} else if (currentSectionName.startsWith('attachment_')){
-						return ALLSECTIONS.ATTACHMENT;
-					} else if (currentSectionName.startsWith('effect_')){
-						return ALLSECTIONS.EFFECT;
-					} else if (currentSectionName.startsWith('animation_')){
-						return ALLSECTIONS.ANIMATION;
-					} else if (currentSectionName.startsWith('action_')){
-						return ALLSECTIONS.ACTION;
-					} else if (currentSectionName.startsWith('hiddenAction_')){
-						return ALLSECTIONS.ACTION;
-					} else if (currentSectionName.startsWith('placementRule_')){
-						return ALLSECTIONS.PLACEMENTRULE;
-					} else if (currentSectionName.startsWith('resource_')){
-						return ALLSECTIONS.RESOURCE;
-					} else if (currentSectionName.startsWith('global_resource_')){
-						return ALLSECTIONS.RESOURCE;
-					} else if (currentSectionName.startsWith('decal_')){
-						return ALLSECTIONS.DECAL;
-					} else if (currentSectionName.startsWith('commnet_')){
-						return [];
-					} else if (currentSectionName.startsWith('template_')){
-						return ALLSECTIONS.TEMPLATE;	
-					}
-					return [];
+		// 向上查找最近的section定义
+		let currentSectionName = null;
+		for (let i = cursorLine; i >= 0; i--) {
+			const lineText = document.getText({
+				start: document.positionAt(document.offsetAt({ line: i, character: 0 })),
+				end: document.positionAt(document.offsetAt({ line: i + 1, character: 0 }) - 1)
+			}).trim();
+			
+			const sectionMatch = lineText.match(/^\[(.+?)\]$/);
+			if (sectionMatch) {
+				currentSectionName = sectionMatch[1];
+				break;
 			}
 		}
-		return [];
+
+		if (!currentSectionName) {
+			return [];
+		}
+
+		// 处理冒号后的值补全
+		const colonIndex = currentLineContent.indexOf(':');
+		if (colonIndex !== -1 && cursorCharacter > colonIndex) {
+			const key = currentLineContent.substring(0, colonIndex).trim();
+			const pointIndex = currentLineContent.indexOf('.', colonIndex);
+
+			// 处理单位属性补全(例如: unit.maxHp)
+			if (pointIndex !== -1 && cursorCharacter > pointIndex) {
+				return ALLVALUES.UNITPROPERTY;
+			}
+
+			// 根据section和key查找对应的配置项
+			const sectionConfig = ALLSECTIONS[currentSectionName.toUpperCase()];
+			const keyConfig = sectionConfig?.find(item => item.label === key);
+
+			if (keyConfig) {
+				const dataType = keyConfig.data;
+				// 根据数据类型返回相应的值列表
+				if (dataType.includes('bool')) {
+					return ALLVALUES.BOOL;
+				} 
+				if (dataType.includes('logicBoolean')) {
+					// 逻辑布尔值可以使用多种类型的值
+					return [
+						...ALLVALUES.LOGICBBOOLEAN,  // 逻辑操作符
+						...ALLVALUES.BOOL,           // 布尔值
+						...ALLVALUES.FUNCTION,       // 函数
+						...ALLVALUES.UNITREF         // 单位引用
+					];
+				}
+				if (dataType.includes('projectileRef')) {
+					return ALLVALUES.SPAWNPROJECTILE;
+				}
+				if (dataType.includes('event')) {
+					return ALLVALUES.EVENTS;
+				}
+				// 特殊处理spawnUnits相关配置
+				if (key.includes('spawnUnits')) {
+					return [
+						...ALLVALUES.SPAWNUNIT,      // 生成单位配置
+						...ALLVALUES.LOGICBBOOLEAN,  // 条件判断
+						...ALLVALUES.BOOL,           
+						...ALLVALUES.FUNCTION,
+						...ALLVALUES.UNITREF
+					];
+				}
+			}
+			return [];
+		}
+
+		// 处理普通key的补全
+		return getKeyCompletionItems(currentSectionName);
 	});
+
+// 根据节名获取对应的key补全项
+function getKeyCompletionItems(sectionName: string): CompletionItem[] {
+	// 处理基础节
+	switch (sectionName) {
+		case 'core': return ALLSECTIONS.CORE;
+		case 'graphics': return ALLSECTIONS.GRAPHICS;
+		case 'attack': return ALLSECTIONS.ATTACK;
+		case 'movement': return ALLSECTIONS.MOVEMENT;
+		case 'ai': return ALLSECTIONS.AI;
+	}
+
+	// 处理特殊节(带前缀的节)
+	const sectionPrefixes: Record<string, CompletionItem[]> = {
+		'canBuild_': ALLSECTIONS.CANBUILD,
+		'turret_': ALLSECTIONS.TURRET,
+		'projectile_': ALLSECTIONS.PROJECTILE,
+		'arm_': ALLSECTIONS.ARM,
+		'leg_': ALLSECTIONS.LEG,
+		'attachment_': ALLSECTIONS.ATTACHMENT,
+		'effect_': ALLSECTIONS.EFFECT,
+		'animation_': ALLSECTIONS.ANIMATION,
+		'action_': ALLSECTIONS.ACTION,
+		'hiddenAction_': ALLSECTIONS.ACTION,
+		'placementRule_': ALLSECTIONS.PLACEMENTRULE,
+		'resource_': ALLSECTIONS.RESOURCE,
+		'global_resource_': ALLSECTIONS.RESOURCE,
+		'decal_': ALLSECTIONS.DECAL,
+		'template_': ALLSECTIONS.TEMPLATE
+	};
+
+	// 遍历前缀匹配
+	for (const [prefix, items] of Object.entries(sectionPrefixes)) {
+		if (sectionName.startsWith(prefix)) {
+			return items;
+		}
+	}
+
+	return [];
+}
+
+// 主hover处理函数
+connection.onHover(
+    (_textDocumentPosition): Hover | null => {
+        console.log('------------------------');
+        console.log('触发hover事件');
+        
+        const document = documents.get(_textDocumentPosition.textDocument.uri);
+        if (!document) { 
+            console.log('未找到文档');
+            return null; 
+        }
+
+        const cursorLine = _textDocumentPosition.position.line;
+        const cursorCharacter = _textDocumentPosition.position.character;
+        const currentLineContent = document.getText({
+            start: document.positionAt(document.offsetAt({ line: cursorLine, character: 0 })),
+            end: document.positionAt(document.offsetAt({ line: cursorLine + 1, character: 0 }) - 1)
+        });
+
+        console.log(`当前行内容: "${currentLineContent}"`);
+        console.log(`光标位置: 行${cursorLine + 1}, 列${cursorCharacter + 1}`);
+
+        // 1. 处理section hover
+        const sectionMatch = currentLineContent.match(/^\[(.+?)\]/);
+        if (sectionMatch) {
+            const fullMatch = sectionMatch[0];
+            const sectionContent = sectionMatch[1];
+            const sectionStart = currentLineContent.indexOf(fullMatch) + 1;
+            const sectionEnd = sectionStart + sectionContent.length;
+
+            if (cursorCharacter >= sectionStart && cursorCharacter <= sectionEnd) {
+                const sectionName = sectionContent;
+                const baseSectionName = sectionName.includes('_') ? 
+                    sectionName.substring(0, sectionName.indexOf('_') + 1) : 
+                    sectionName;
+                
+                const item = SECTIONSNAME.find(item => item.label === baseSectionName);
+                if (item) {
+                    return {
+                        contents: {
+                            kind: 'markdown',
+                            value: [
+                                `# ${item.labelDetails?.detail || sectionName}`,
+                                `## 说明`,
+                                item.labelDetails?.description || '无'
+                            ].filter(Boolean).join('\n\n')
+                        }
+                    };
+                }
+            }
+        }
+
+        // 2. 查找当前所在section
+        let currentSectionName = null;
+        for (let i = cursorLine; i >= 0; i--) {
+            const lineText = document.getText({
+                start: document.positionAt(document.offsetAt({ line: i, character: 0 })),
+                end: document.positionAt(document.offsetAt({ line: i + 1, character: 0 }) - 1)
+            }).trim();
+            
+            const match = lineText.match(/^\[(.+?)\]$/);
+            if (match) {
+                currentSectionName = match[1];
+                break;
+            }
+        }
+
+        if (!currentSectionName) {
+            return null;
+        }
+
+        // 3. 处理key:value hover
+        const colonIndex = currentLineContent.indexOf(':');
+        if (colonIndex !== -1) {
+            const key = currentLineContent.substring(0, colonIndex).trim();
+            const value = currentLineContent.substring(colonIndex + 1).trim();
+            const sectionConfig = ALLSECTIONS[currentSectionName.toUpperCase()];
+
+            if (!sectionConfig) {
+                return null;
+            }
+
+            const item = sectionConfig.find(item => item.label === key);
+            if (!item) {
+                return null;
+            }
+
+            // 处理key hover
+            if (cursorCharacter <= colonIndex) {
+                return {
+                    contents: {
+                        kind: 'markdown',
+                        value: [
+                            `# ${item.label}`,
+                            item.detail ? `*${item.detail}*` : '',
+                            `## 说明`,
+                            item.documentation as string,
+                            `## 类型`,
+                            `\`${item.data}\``,
+                            `## 示例`,
+                            `\`${item.label}: ${getExampleValue(item.data)}\``
+                        ].filter(Boolean).join('\n\n')
+                    }
+                };
+            }
+
+            // 处理value hover
+            const pointIndex = currentLineContent.indexOf('.', colonIndex);
+
+            // 处理单位属性引用
+            if (pointIndex !== -1 && cursorCharacter > pointIndex) {
+                const propertyName = value.substring(value.indexOf('.') + 1).trim();
+                const property = ALLVALUES.UNITPROPERTY.find(p => p.label === propertyName);
+                if (property) {
+                    return {
+                        contents: {
+                            kind: 'markdown',
+                            value: [
+                                `# 单位属性: ${property.label}`,
+                                property.detail ? `*${property.detail}*` : '',
+                                property.documentation as string
+                            ].filter(Boolean).join('\n\n')
+                        }
+                    };
+                }
+            }
+
+            // 处理常规值
+            const valueGroups = getValueGroups(item.data, key);
+            const currentValue = value.trim();
+            let foundValue: CompletionItem | undefined;
+            let valueDoc = '';
+
+            for (const group of valueGroups) {
+                foundValue = group.find(v => v.label === currentValue);
+                if (foundValue) {
+                    valueDoc = foundValue.documentation as string;
+                    break;
+                }
+            }
+
+            return {
+                contents: {
+                    kind: 'markdown',
+                    value: [
+                        `# ${key} 的值`,
+                        `## 类型`,
+                        getValueTypeName(item.data),
+                        `## 当前值`,
+                        `\`${currentValue}\`${foundValue?.detail ? ` - ${foundValue.detail}` : ''}`,
+                        valueDoc ? `## 说明\n${valueDoc}` : '',
+                        `## 可能的值`,
+                        ...valueGroups.map(group => 
+                            group.map(v => `- ${v.label}${v.detail ? `: ${v.detail}` : ''}`).join('\n')
+                        )
+                    ].filter(Boolean).join('\n\n')
+                }
+            };
+        }
+
+        return null;
+    }
+);
+
+// 获取数据类型的示例值
+function getExampleValue(dataType: string): string {
+    if (dataType.includes('bool')) {return 'true';}
+    if (dataType.includes('number')) {return '1.0';}
+    if (dataType.includes('int')) {return '1';}
+    if (dataType.includes('string')) {return 'text';}
+    if (dataType.includes('projectileRef')) {return 'projectile_1';}
+    if (dataType.includes('event')) {return 'clicked';}
+    return 'value';
+}
+
+// 获取值类型的中文名称
+function getValueTypeName(dataType: string): string {
+    if (dataType.includes('bool')) {return '布尔值';}
+    if (dataType.includes('logicBoolean')) {return '逻辑布尔值';}
+    if (dataType.includes('number')) {return '数值';}
+    if (dataType.includes('int')) {return '整数';}
+    if (dataType.includes('string')) {return '字符串';}
+    if (dataType.includes('projectileRef')) {return '弹头引用';}
+    if (dataType.includes('event')) {return '事件';}
+    return '未知类型';
+}
+
+// 根据数据类型获取可能的值组
+function getValueGroups(dataType: string, key: string): CompletionItem[][] {
+    const groups: CompletionItem[][] = [];
+    
+    if (dataType.includes('bool')) {
+        groups.push(ALLVALUES.BOOL);
+    }
+    if (dataType.includes('logicBoolean')) {
+        groups.push(ALLVALUES.LOGICBBOOLEAN);
+        groups.push(ALLVALUES.BOOL);
+        groups.push(ALLVALUES.FUNCTION);
+        groups.push(ALLVALUES.UNITREF);
+    }
+    if (key.includes('spawnUnits')) {
+        groups.push(ALLVALUES.SPAWNUNIT);
+    }
+    if (dataType.includes('projectileRef')) {
+        groups.push(ALLVALUES.SPAWNPROJECTILE);
+    }
+    if (dataType.includes('event')) {
+        groups.push(ALLVALUES.EVENTS);
+    }
+    
+    return groups;
+}
+
 connection.onCompletionResolve(
 	(item: CompletionItem): CompletionItem => {
 		// if (item.data === 1) {
