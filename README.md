@@ -21,3 +21,8 @@
 - 遵守MIT协议
 
 
+[github copilot](https://copilot.github.com/)
+- 代码提示
+- 修正补全
+
+
