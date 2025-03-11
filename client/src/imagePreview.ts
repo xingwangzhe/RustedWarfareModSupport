@@ -28,6 +28,8 @@ interface TurretInfo {
     imageUri: vscode.Uri | string;
     x: number;
     y: number;
+    originalX?: number;    // 原始X坐标
+    originalY?: number;    // 原始Y坐标
     scale: number;
     originalScale: number | undefined;  // 用于信息显示
 }
@@ -222,6 +224,7 @@ export class ImagePreview implements vscode.WebviewViewProvider {
                 // 获取炮塔图像
                 let turretImagePath = '';
                 let turretScale = 1;
+               // const scaleModifier = 0.31; // 定义统一的特殊系数
                 
                 // 先尝试专用图像 (例如 image_turret_战神)
                 const specificImageKey = `image_turret_${turretId}`;
@@ -229,13 +232,13 @@ export class ImagePreview implements vscode.WebviewViewProvider {
                     turretImagePath = path.join(baseDir, config.graphics[specificImageKey]);
                     const specificScaleKey = `turretImageScale_${turretId}`;
                     const originalScale = config.graphics[specificScaleKey];
-                    turretScale = originalScale ? originalScale * 0.31 : 1;
+                    turretScale = originalScale ? originalScale  : 1;
                     console.log(`使用专用图像: ${specificImageKey}, 缩放: ${turretScale}`);
                 } 
                 // 否则使用默认炮塔图像
                 else if (config.graphics?.image_turret) {
                     turretImagePath = path.join(baseDir, config.graphics.image_turret);
-                    turretScale = config.graphics.turretImageScale ? config.graphics.turretImageScale * 0.31 : 1;
+                    turretScale = config.graphics.turretImageScale ? config.graphics.turretImageScale : 1;
                     console.log(`使用默认炮塔图像, 缩放: ${turretScale}`);
                 }
                 
@@ -245,21 +248,26 @@ export class ImagePreview implements vscode.WebviewViewProvider {
                     
                     // 获取炮塔位置
                     // 注意：在铁锈战争中，y < 0 是视窗向下的，但在HTML中y > 0是向下的
-                    // 所以我们需要反转Y值来正确显示
-                    const turretX = this.parseNumberValue(config[sectionKey]?.x, 0);
-                    const turretY = this.parseNumberValue(config[sectionKey]?.y, 0);
+                    const originalX = this.parseNumberValue(config[sectionKey]?.x, 0);
+                    const originalY = this.parseNumberValue(config[sectionKey]?.y, 0);
+                    
+                    // 应用特殊系数到坐标
+                    const turretX = originalX ;//* scaleModifier;
+                    const turretY = originalY ;//* scaleModifier;
                     
                     // 添加炮塔信息
                     turrets.push({
                         id: turretId,
                         imageUri: turretUri,
                         x: turretX,
-                        y: turretY, // 保存原始Y值用于显示信息
+                        y: turretY,
+                        originalX: originalX, // 保存原始坐标用于显示
+                        originalY: originalY,
                         scale: turretScale,
                         originalScale: config.graphics?.turretImageScale
                     });
                     
-                    console.log(`添加炮塔 ${turretId}: x=${turretX}, y=${turretY} (显示位置y=${-turretY}), scale=${turretScale}`);
+                    console.log(`添加炮塔 ${turretId}: 原始坐标(x=${originalX}, y=${originalY}), 显示坐标(x=${turretX}, y=${-turretY}), scale=${turretScale}`);
                 } else {
                     console.warn(`炮塔 ${turretId} 的图像不存在: ${turretImagePath}`);
                 }
@@ -269,6 +277,7 @@ export class ImagePreview implements vscode.WebviewViewProvider {
         }
         
         const totalFrames = config.graphics?.total_frames || 1;
+        console.log(`总帧数: ${totalFrames}`);
         
         // 生成炮塔的HTML
         const turretsHtml = turrets.map((turret) => {
@@ -293,6 +302,8 @@ export class ImagePreview implements vscode.WebviewViewProvider {
                 id: turret.id,
                 x: turret.x,
                 y: turret.y,
+                originalX: turret.originalX,
+                originalY: turret.originalY,
                 scale: turret.scale,
                 originalScale: turret.originalScale
             };
@@ -338,6 +349,8 @@ export class ImagePreview implements vscode.WebviewViewProvider {
                         top: 50%;
                         transform-origin: center;
                         transform: translate(-50%, -50%) scale(${mainScale});
+                        overflow: hidden; /* 确保超出部分被隐藏 */
+                        clip-path: inset(0 0 0 0); /* 初始无裁剪，稍后在脚本中修改 */
                     }
                     .unit-turret {
                         position: absolute;
@@ -421,9 +434,10 @@ export class ImagePreview implements vscode.WebviewViewProvider {
                         <img 
                             class="unit-base" 
                             src="${mainImageUri}" 
-                            onload="console.log('主体图片加载完成')" 
+                            onload="handleMainImageLoad(this)"
                             onerror="console.error('主体图片加载失败'); this.style.background='red'; this.alt='加载失败'; this.style.width='100px'; this.style.height='100px';"
                             alt="主体图片"
+                            data-frames="${totalFrames}"
                         />
                         
                         ${turretsHtml}
@@ -449,35 +463,133 @@ export class ImagePreview implements vscode.WebviewViewProvider {
                     const mainImageScale = ${mainScale};
                     const turrets = ${turretsData};
                     
-                    // 处理图片帧
-                    if (totalFrames > 1) {
-                        const baseImg = document.querySelector('.unit-base');
-                        if (baseImg) {
-                            baseImg.onload = function() {
-                                const frameWidth = this.naturalWidth / totalFrames;
-                                this.style.width = frameWidth + 'px';
-                                console.log('Frame width:', frameWidth);
+                    /**
+                     * 处理主图片加载，截取第一帧
+                     */
+                    function handleMainImageLoad(img) {
+                        console.log('主体图片加载完成');
+                        
+                        // 保存原始宽高
+                        const originalWidth = img.naturalWidth;
+                        const originalHeight = img.naturalHeight;
+                        console.log(\`原始图像尺寸: \${originalWidth}x\${originalHeight}\`);
+                        
+                        if (totalFrames > 1) {
+                            console.log(\`图像包含 \${totalFrames} 帧，开始提取第一帧\`);
+                            
+                            // 计算单帧宽度
+                            const frameWidth = originalWidth / totalFrames;
+                            
+                            // 创建Canvas以获取第一帧
+                            const canvas = document.createElement('canvas');
+                            canvas.width = frameWidth;
+                            canvas.height = originalHeight;
+                            
+                            // 获取Canvas上下文并绘制第一帧
+                            const ctx = canvas.getContext('2d');
+                            
+                            // 确保上下文存在
+                            if (ctx) {
+                                // 绘制原图的第一帧到Canvas，即从原图的左上角(0,0)开始，
+                                // 裁剪宽度为frameWidth，高度为原图高度，
+                                // 绘制到canvas的(0,0)位置，宽高与裁剪区域相同
+                                ctx.drawImage(
+                                    img,                // 原图像
+                                    0, 0,               // 原图裁剪的起始坐标(左上角)
+                                    frameWidth, originalHeight, // 裁剪的宽高
+                                    0, 0,               // 绘制到canvas的坐标
+                                    frameWidth, originalHeight  // 绘制的尺寸
+                                );
                                 
-                                // 确保应用正确的缩放比例
-                                this.style.transform = \`translate(-50%, -50%) scale(\${mainImageScale})\`;
-                                console.log('应用主体图片缩放:', mainImageScale);
+                                // 获取帧图像的数据URL
+                                const frameImageUrl = canvas.toDataURL();
+                                
+                                // 创建新图像并替换原图
+                                const newImage = new Image();
+                                newImage.onload = function() {
+                                    console.log(\`第一帧图像已创建，尺寸: \${this.width}x\${this.height}\`);
+                                    
+                                    // 复制原有图像的所有类名和属性
+                                    this.className = img.className;
+                                    this.alt = img.alt;
+                                    
+                                    // 应用缩放
+                                    this.style.transform = \`translate(-50%, -50%) scale(\${mainImageScale})\`;
+                                    console.log('应用主体图片缩放:', mainImageScale);
+                                    
+                                    // 替换原图
+                                    img.parentNode.replaceChild(this, img);
+                                    
+                                    // 更新调试信息
+                                    updateDebugInfo(originalWidth, originalHeight, frameWidth);
+                                };
+                                
+                                // 设置新图像的源
+                                newImage.src = frameImageUrl;
+                            } else {
+                                console.error('无法获取Canvas上下文');
                             }
+                        } else {
+                            console.log('图像只有一帧，无需提取');
+                            // 单帧图片，直接应用缩放
+                            img.style.transform = \`translate(-50%, -50%) scale(\${mainImageScale})\`;
+                            console.log('应用主体图片缩放:', mainImageScale);
+                            
+                            // 更新调试信息
+                            updateDebugInfo(originalWidth, originalHeight, originalWidth);
                         }
                     }
                     
-                    // 确保炮塔图片加载完后应用正确的缩放比例
-                    document.querySelectorAll('.unit-turret').forEach((turretImg) => {
-                        const turretId = turretImg.getAttribute('data-id');
-                        const turret = turrets.find(t => t.id === turretId);
-                        
-                        if (turret) {
-                            turretImg.onload = function() {
-                                console.log(\`应用炮塔 \${turret.id} 图片缩放: \${turret.scale}\`);
-                                // 注意：我们在这里反转Y轴
-                                this.style.transform = \`translate(calc(-50% + \${turret.x}px), calc(-50% + \${-turret.y*0.3}px)) scale(\${turret.scale})\`;
-                            }
+                    /**
+                     * 更新调试信息面板
+                     */
+                    function updateDebugInfo(originalWidth, originalHeight, frameWidth) {
+                        // 添加帧数信息到调试面板
+                        if (document.getElementById('scale-info')) {
+                            const frameInfo = document.createElement('div');
+                            frameInfo.innerHTML = \`
+                                <div>总帧数: \${totalFrames}</div>
+                                <div>原始尺寸: \${originalWidth}x\${originalHeight}</div>
+                                <div>单帧宽度: \${frameWidth}px</div>
+                            \`;
+                            document.getElementById('scale-info').appendChild(frameInfo);
                         }
-                    });
+                    }
+                    
+                    // 显示比例信息
+                    function showScaleInfo() {
+                        const scaleInfo = document.createElement('div');
+                        scaleInfo.id = 'scale-info';
+                        scaleInfo.style.position = 'fixed';
+                        scaleInfo.style.top = '10px';
+                        scaleInfo.style.left = '10px';
+                        scaleInfo.style.backgroundColor = 'rgba(0,0,0,0.7)';
+                        scaleInfo.style.color = 'white';
+                        scaleInfo.style.padding = '5px';
+                        scaleInfo.style.borderRadius = '4px';
+                        scaleInfo.style.fontSize = '12px';
+                        scaleInfo.style.zIndex = '1000';
+                        updateScaleInfo();
+                        document.body.appendChild(scaleInfo);
+                    }
+                    
+                    function updateScaleInfo() {
+                        const scaleInfo = document.getElementById('scale-info');
+                        if (scaleInfo) {
+                            let html = \`
+                                <div>窗口缩放: \${zoomLevel}%</div>
+                                <div>主体缩放: \${mainImageScale}</div>
+                            \`;
+                            
+                            // 添加所有炮塔的信息
+                            turrets.forEach(turret => {
+                                html += \`<div>炮塔 \${turret.id} 缩放: \${turret.originalScale} (应用:\${turret.scale.toFixed(2)})</div>\`;
+                                html += \`<div>炮塔 \${turret.id} 位置: X=\${turret.x}, Y=\${turret.y}</div>\`;
+                            });
+                            
+                            scaleInfo.innerHTML = html;
+                        }
+                    }
                     
                     // 拖拽变量
                     let isDragging = false;
