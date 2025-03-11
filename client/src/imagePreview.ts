@@ -92,7 +92,7 @@ export class ImagePreview implements vscode.WebviewViewProvider {
                     <p>打开一个单位配置文件(.ini)以预览</p>
                     <div class="zoom-controls">
                         <button id="zoom-out">-</button>
-                        <span class="zoom-value" id="zoom-level">100%</span>
+                        <span class="zoom-value" id="zoom-level">400%</span>
                         <button id="zoom-in">+</button>
                         <button id="zoom-reset">重置</button>
                     </div>
@@ -128,13 +128,18 @@ export class ImagePreview implements vscode.WebviewViewProvider {
                             if (e.ctrlKey) {
                                 e.preventDefault();
                                 if (e.deltaY < 0) {
-                                    zoomLevel = Math.min(zoomLevel + 5, 300);
+                                    zoomLevel = Math.min(zoomLevel + 5, 1000);
                                 } else {
                                     zoomLevel = Math.max(zoomLevel - 5, 20);
                                 }
                                 updateZoom();
                             }
                         }, { passive: false });
+                        
+                        // 初始自动设置缩放比例
+                        window.addEventListener('load', () => {
+                            updateZoom();
+                        });
                     </script>
                 </body>
             </html>
@@ -634,10 +639,14 @@ export class ImagePreview implements vscode.WebviewViewProvider {
                     initDragAndDrop();
                     showScaleInfo(); // 添加比例信息显示
                     
-                    // 初始打开时自动适应窗口
+                    // 初始打开时自动适应窗口 - 注释掉自动适应，使用固定400%缩放
                     window.addEventListener('load', () => {
                         setTimeout(() => {
-                            fitToWindow();
+                            // fitToWindow(); // 注释掉这行，不再自动适应窗口
+                            // 而是直接使用预设的400%
+                            zoomLevel = 400;
+                            updateZoom();
+                            updateTransform(0, 0, zoomLevel / 100);
                             updateScaleInfo();
                         }, 100);
                     });
