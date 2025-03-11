@@ -2,6 +2,7 @@ import * as vscode from 'vscode';
 import * as path from 'path';
 import * as fs from 'fs';
 
+// 修改接口支持多炮塔，使用索引签名
 interface UnitConfig {
     graphics?: {
         image?: string;
@@ -9,16 +10,34 @@ interface UnitConfig {
         imageScale?:number;
         turretImageScale?: number;
         total_frames?: number;
+        // 添加对多炮塔的支持
+        image_turret_2?: string;
+        turretImageScale_2?: number;
+        image_turret_3?: string;
+        turretImageScale_3?: number;
+        // 可以支持更多炮塔...
     };
-    turret_1?: {
-        x: string;
-        y: string;
-    };
+    // 使用索引签名支持任意数量的炮塔配置
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    [key: string]: any;
+}
+
+// 修改炮塔信息接口，删除多余的 displayName
+interface TurretInfo {
+    id: string;           // 炮塔的ID，例如 "1" 或 "战神"
+    imageUri: vscode.Uri | string;
+    x: number;
+    y: number;
+    scale: number;
+    originalScale: number | undefined;  // 用于信息显示
 }
 
 export class ImagePreview implements vscode.WebviewViewProvider {
     public static readonly viewType = 'unitPreview';
     private _view?: vscode.WebviewView;
+    private _currentIniPath = '';
+    private _currentZoomLevel = 400; // 保存当前缩放级别
+    private _fileWatcher: vscode.FileSystemWatcher | undefined;
 
     constructor(private readonly _extensionUri: vscode.Uri) {}
 
@@ -34,6 +53,19 @@ export class ImagePreview implements vscode.WebviewViewProvider {
         };
 
         webviewView.webview.html = this._getDefaultHtml();
+
+        // 设置消息监听器以更新当前缩放级别
+        webviewView.webview.onDidReceiveMessage(message => {
+            if (message.command === 'zoomChanged') {
+                console.log(`窗口缩放级别更改为: ${message.zoomLevel}%`);
+                this._currentZoomLevel = message.zoomLevel;
+            }
+        });
+
+        // 清理之前的文件监听器
+        if (this._fileWatcher) {
+            this._fileWatcher.dispose();
+        }
     }
 
     private _getDefaultHtml(): string {
@@ -150,6 +182,10 @@ export class ImagePreview implements vscode.WebviewViewProvider {
         if (!this._view) { return; }
         
         console.log('正在处理ini文件:', iniPath);
+        this._currentIniPath = iniPath;
+
+        // 设置文件监听器
+        this.setupFileWatcher(iniPath);
 
         const iniContent = fs.readFileSync(iniPath, 'utf8');
         const config = this.parseIni(iniContent);
@@ -158,29 +194,110 @@ export class ImagePreview implements vscode.WebviewViewProvider {
         // 获取图片路径并打印调试信息
         const mainImagePath = config.graphics?.image ? 
             path.join(baseDir, config.graphics.image) : '';
-        const turretImagePath = config.graphics?.image_turret ? 
-            path.join(baseDir, config.graphics.image_turret) : '';
-
+        
         console.log('主体图片路径:', mainImagePath);
         console.log('图片是否存在:', fs.existsSync(mainImagePath));
         const mainImageUri = mainImagePath ? 
             this._view.webview.asWebviewUri(vscode.Uri.file(mainImagePath)) : '';
-        const turretImageUri = turretImagePath ? 
-            this._view.webview.asWebviewUri(vscode.Uri.file(turretImagePath)) : '';
 
-        console.log('Main image URI:', mainImageUri.toString());
-        console.log('Turret image URI:', turretImageUri?.toString());
-
-       // 解析并记录缩放参数;
-        const mainScale = config.graphics?.imageScale||1;//this.parseNumberValue(config.graphics?.imageScale, 1);
-        const showturretScale = config.graphics?.turretImageScale;
-        const turretScale = config.graphics?.turretImageScale*0.31||1;//this.parseNumberValue(config.graphics?.turretImageScale, 1);
+        // 解析并记录缩放参数
+        const mainScale = config.graphics?.imageScale || 1;
         console.log('主体图片缩放比例:', mainScale, '(来自配置文件:', config.graphics?.imageScale, ')');
-        console.log('炮塔图片缩放比例:', turretScale, '(来自配置文件:', config.graphics?.turretImageScale, ')');
         
-        const turretX = this.parseNumberValue(config.turret_1?.x, 0);
-        const turretY = this.parseNumberValue(config.turret_1?.y, 0);
-        const totalFrames = config.graphics?.total_frames||1; // this.parseNumberValue(config.graphics?.total_frames, 1);
+        // 收集所有炮塔信息
+        const turrets: TurretInfo[] = [];
+        
+        // 查找所有炮塔节
+        const turretSections = Object.keys(config).filter(key => key.startsWith('turret_'));
+        console.log('检测到的炮塔节:', turretSections);
+        
+        // 处理所有炮塔
+        for (const sectionKey of turretSections) {
+            try {
+                // 获取炮塔ID，移除"turret_"前缀
+                const turretId = sectionKey.substring(7); // 'turret_'.length = 7
+                
+                console.log(`处理炮塔: ${turretId}`);
+                
+                // 获取炮塔图像
+                let turretImagePath = '';
+                let turretScale = 1;
+                
+                // 先尝试专用图像 (例如 image_turret_战神)
+                const specificImageKey = `image_turret_${turretId}`;
+                if (config.graphics && config.graphics[specificImageKey]) {
+                    turretImagePath = path.join(baseDir, config.graphics[specificImageKey]);
+                    const specificScaleKey = `turretImageScale_${turretId}`;
+                    const originalScale = config.graphics[specificScaleKey];
+                    turretScale = originalScale ? originalScale * 0.31 : 1;
+                    console.log(`使用专用图像: ${specificImageKey}, 缩放: ${turretScale}`);
+                } 
+                // 否则使用默认炮塔图像
+                else if (config.graphics?.image_turret) {
+                    turretImagePath = path.join(baseDir, config.graphics.image_turret);
+                    turretScale = config.graphics.turretImageScale ? config.graphics.turretImageScale * 0.31 : 1;
+                    console.log(`使用默认炮塔图像, 缩放: ${turretScale}`);
+                }
+                
+                // 确认图像存在
+                if (fs.existsSync(turretImagePath)) {
+                    const turretUri = this._view.webview.asWebviewUri(vscode.Uri.file(turretImagePath));
+                    
+                    // 获取炮塔位置
+                    // 注意：在铁锈战争中，y < 0 是视窗向下的，但在HTML中y > 0是向下的
+                    // 所以我们需要反转Y值来正确显示
+                    const turretX = this.parseNumberValue(config[sectionKey]?.x, 0);
+                    const turretY = this.parseNumberValue(config[sectionKey]?.y, 0);
+                    
+                    // 添加炮塔信息
+                    turrets.push({
+                        id: turretId,
+                        imageUri: turretUri,
+                        x: turretX,
+                        y: turretY, // 保存原始Y值用于显示信息
+                        scale: turretScale,
+                        originalScale: config.graphics?.turretImageScale
+                    });
+                    
+                    console.log(`添加炮塔 ${turretId}: x=${turretX}, y=${turretY} (显示位置y=${-turretY}), scale=${turretScale}`);
+                } else {
+                    console.warn(`炮塔 ${turretId} 的图像不存在: ${turretImagePath}`);
+                }
+            } catch (error) {
+                console.error(`处理炮塔 ${sectionKey} 时发生错误:`, error);
+            }
+        }
+        
+        const totalFrames = config.graphics?.total_frames || 1;
+        
+        // 生成炮塔的HTML
+        const turretsHtml = turrets.map((turret) => {
+            return `
+            <img 
+                class="unit-turret turret-${turret.id}" 
+                src="${turret.imageUri}" 
+                onload="console.log('炮塔 ${turret.id} 图片加载完成')" 
+                onerror="console.error('炮塔 ${turret.id} 图片加载失败'); this.style.background='blue'; this.alt='加载失败'; this.style.width='50px'; this.style.height='50px';"
+                alt="炮塔 ${turret.id} 图片"
+                data-id="${turret.id}"
+                data-x="${turret.x}"
+                data-y="${turret.y}"
+                data-scale="${turret.scale}"
+                style="transform: translate(calc(-50% + ${turret.x}px), calc(-50% + ${-turret.y}px)) scale(${turret.scale});"
+            />`;
+        }).join('\n');
+        
+        // 准备炮塔的JavaScript数据
+        const turretsData = JSON.stringify(turrets.map(turret => {
+            return {
+                id: turret.id,
+                x: turret.x,
+                y: turret.y,
+                scale: turret.scale,
+                originalScale: turret.originalScale
+            };
+        }));
+
         this._view.webview.html = `
             <!DOCTYPE html>
             <html>
@@ -227,7 +344,6 @@ export class ImagePreview implements vscode.WebviewViewProvider {
                         left: 50%;
                         top: 50%;
                         transform-origin: center;
-                        transform: translate(calc(-50% + ${turretX}px), calc(-50% + ${turretY}px)) scale(${turretScale});
                     }
                     .test-image {
                         position: absolute;
@@ -310,14 +426,7 @@ export class ImagePreview implements vscode.WebviewViewProvider {
                             alt="主体图片"
                         />
                         
-                        ${turretImageUri ? `
-                        <img 
-                            class="unit-turret" 
-                            src="${turretImageUri}" 
-                            onload="console.log('炮塔图片加载完成')" 
-                            onerror="console.error('炮塔图片加载失败'); this.style.background='blue'; this.alt='加载失败'; this.style.width='50px'; this.style.height='50px';"
-                            alt="炮塔图片"
-                        />` : ''}
+                        ${turretsHtml}
                     </div>
                 </div>
 
@@ -335,13 +444,10 @@ export class ImagePreview implements vscode.WebviewViewProvider {
 
                 <script>
                     const vscode = acquireVsCodeApi();
-                    let zoomLevel = 400;
+                    let zoomLevel = ${this._currentZoomLevel}; // 使用保存的缩放级别
                     const totalFrames = ${totalFrames};
                     const mainImageScale = ${mainScale};
-                    const turretImageScale = ${turretScale};
-                    const turretX = ${turretX};
-                    const turretY = ${turretY};
-                    const showturretScale = ${showturretScale};
+                    const turrets = ${turretsData};
                     
                     // 处理图片帧
                     if (totalFrames > 1) {
@@ -360,13 +466,18 @@ export class ImagePreview implements vscode.WebviewViewProvider {
                     }
                     
                     // 确保炮塔图片加载完后应用正确的缩放比例
-                    const turretImg = document.querySelector('.unit-turret');
-                    if (turretImg) {
-                        turretImg.onload = function() {
-                            console.log('应用炮塔图片缩放:', turretImageScale);
-                            this.style.transform = \`translate(calc(-50% + \${${turretX}}px), calc(-50% + \${${turretY}}px)) scale(\${turretImageScale})\`;
+                    document.querySelectorAll('.unit-turret').forEach((turretImg) => {
+                        const turretId = turretImg.getAttribute('data-id');
+                        const turret = turrets.find(t => t.id === turretId);
+                        
+                        if (turret) {
+                            turretImg.onload = function() {
+                                console.log(\`应用炮塔 \${turret.id} 图片缩放: \${turret.scale}\`);
+                                // 注意：我们在这里反转Y轴
+                                this.style.transform = \`translate(calc(-50% + \${turret.x}px), calc(-50% + \${-turret.y*0.3}px)) scale(\${turret.scale})\`;
+                            }
                         }
-                    }
+                    });
                     
                     // 拖拽变量
                     let isDragging = false;
@@ -500,12 +611,18 @@ export class ImagePreview implements vscode.WebviewViewProvider {
                     function updateScaleInfo() {
                         const scaleInfo = document.getElementById('scale-info');
                         if (scaleInfo) {
-                            scaleInfo.innerHTML = \`
+                            let html = \`
                                 <div>窗口缩放: \${zoomLevel}%</div>
                                 <div>主体缩放: \${mainImageScale}</div>
-                                \${turretImageScale ? \`<div>炮塔缩放: \${showturretScale}</div>\` : ''}
-                                <div>炮塔位置: X=\${turretX}, Y=\${turretY}</div>
                             \`;
+                            
+                            // 添加所有炮塔的信息
+                            turrets.forEach(turret => {
+                                html += \`<div>炮塔 \${turret.id} 缩放: \${turret.originalScale} (应用:\${turret.scale.toFixed(2)})</div>\`;
+                                html += \`<div>炮塔 \${turret.id} 位置: X=\${turret.x}, Y=\${turret.y}</div>\`;
+                            });
+                            
+                            scaleInfo.innerHTML = html;
                         }
                     }
                     
@@ -588,6 +705,7 @@ export class ImagePreview implements vscode.WebviewViewProvider {
                     
                     function updateZoom() {
                         document.getElementById('zoom-level').innerText = zoomLevel + '%';
+                        vscode.postMessage({ command: 'zoomChanged', zoomLevel });
                     }
                     
                     function fitToWindow() {
@@ -639,12 +757,10 @@ export class ImagePreview implements vscode.WebviewViewProvider {
                     initDragAndDrop();
                     showScaleInfo(); // 添加比例信息显示
                     
-                    // 初始打开时自动适应窗口 - 注释掉自动适应，使用固定400%缩放
+                    // 初始打开时设置保存的缩放比例
                     window.addEventListener('load', () => {
                         setTimeout(() => {
-                            // fitToWindow(); // 注释掉这行，不再自动适应窗口
-                            // 而是直接使用预设的400%
-                            zoomLevel = 400;
+                            // 使用保存的缩放级别
                             updateZoom();
                             updateTransform(0, 0, zoomLevel / 100);
                             updateScaleInfo();
@@ -666,6 +782,33 @@ export class ImagePreview implements vscode.WebviewViewProvider {
             if (message.command === 'zoomChanged') {
                 console.log(`窗口缩放级别更改为: ${message.zoomLevel}%`);
             }
+        });
+    }
+
+    // 设置文件监听器以监听INI文件变化
+    private setupFileWatcher(iniPath: string) {
+        // 清理之前的监听器
+        if (this._fileWatcher) {
+            this._fileWatcher.dispose();
+        }
+        
+        // 创建新的文件监听器
+        const filePattern = new vscode.RelativePattern(path.dirname(iniPath), path.basename(iniPath));
+        this._fileWatcher = vscode.workspace.createFileSystemWatcher(filePattern);
+        
+        // 监听文件变动，刷新预览但保持缩放比例
+        this._fileWatcher.onDidChange(async () => {
+            console.log(`文件变动: ${iniPath}`);
+            await this.showPreview(iniPath);
+        });
+        
+        // 如果文件被删除，显示默认视图
+        this._fileWatcher.onDidDelete(() => {
+            console.log(`文件被删除: ${iniPath}`);
+            if (this._view) {
+                this._view.webview.html = this._getDefaultHtml();
+            }
+            this._currentIniPath = '';
         });
     }
 
