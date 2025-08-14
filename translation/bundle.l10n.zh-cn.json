@@ -2,7 +2,25 @@
   "Hello World from RustedWarfareModSupport!": "来自 RustedWarfareModSupport 的问候！",
   "Congratulations, your extension \"rustedwarfaremodsupport\" is now active!": "恭喜，您的扩展 \"rustedwarfaremodsupport\" 现在已激活！",
 
-
   "data.sections.core": "核心单位功能，例如生命值和死亡动画",
-  "data.sections.canBuild": "可以建造的单位"
+  "data.sections.canBuild": "可以建造的单位",
+  "data.sections.graphics": "主要图像配置和单位轨迹",
+  "data.sections.attack": "对其他单位的攻击权限",
+  "data.sections.turret": "跟随攻击权限并使用抛射体的炮塔",
+  "data.sections.projectile": "可由炮塔使用并能产生更多抛射体",
+  "data.sections.movement": "速度和移动类型特征",
+  "data.sections.ai": "AI如何使用此单位，主要用于建筑物",
+  "data.sections.leg": "机甲、步兵等的可移动装饰",
+  "data.sections.arm": "机甲、步兵等的可移动装饰",
+  "data.sections.attachment": "堆叠在原始单位上形成复合单位",
+  "data.sections.action": "可以执行各种广泛操作的动作",
+  "data.sections.hiddenAction": "可以执行各种广泛操作的动作",
+  "data.sections.effect": "由单位产生并最终消失的视觉效果",
+  "data.sections.animation": "腿部、手臂或主体精灵的动画",
+  "data.sections.placementRule": "允许为建筑物创建规则",
+  "data.sections.global_resource": "团队收集的全局资源，显示在顶部",
+  "data.sections.resource": "单位使用的本地资源，可用作弹药",
+  "data.sections.decal": "多功能图形，可以堆叠制作2.5D精灵",
+  "data.sections.comment": "专用于注释，不读取任何内容",
+  "data.sections.template": "用于创建可在单位中引用的部分"
 }

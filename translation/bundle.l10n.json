@@ -1,6 +1,26 @@
 {
   "Hello World from RustedWarfareModSupport!": "Hello World from RustedWarfareModSupport!",
   "Congratulations, your extension \"rustedwarfaremodsupport\" is now active!": "Congratulations, your extension \"rustedwarfaremodsupport\" is now active!",
+
   "data.sections.core": "Core unit functions such as HP and death animation",
-  "data.sections.canBuild": "Units that can be built"
+  "data.sections.canBuild": "Units that can be built",
+  "data.sections.graphics": "Main image configuration and unit trails",
+  "data.sections.attack": "Attack permissions against other units",
+  "data.sections.turret": "Turret that follows attack permissions and uses projectile",
+  "data.sections.projectile": "Can be used by turret and can spawn more projectiles",
+  "data.sections.movement": "Speed and movement type characteristics",
+  "data.sections.ai": "How AI may use this unit, mostly for buildings",
+  "data.sections.leg": "Moveable cosmetics for mechs, infantry etc.",
+  "data.sections.arm": "Moveable cosmetics for mechs, infantry etc.",
+  "data.sections.attachment": "Units stacked onto original to make compound units",
+  "data.sections.action": "Actions that can do very wide range of things",
+  "data.sections.hiddenAction": "Actions that can do very wide range of things",
+  "data.sections.effect": "Visual effects spawned by unit that eventually disappear",
+  "data.sections.animation": "Animations for leg, arm or main body sprite",
+  "data.sections.placementRule": "Allows creation of rules for buildings",
+  "data.sections.global_resource": "Global resource collected by team shows up on top",
+  "data.sections.resource": "Local resource used by units can be used for ammo",
+  "data.sections.decal": "Versatile graphics can be stack to make 2.5D sprites",
+  "data.sections.comment": "Used exclusively for notes, does not read anything",
+  "data.sections.template": "Used to create sections that can be referenced in unit"
 }
