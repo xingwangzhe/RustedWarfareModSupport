@@ -1,0 +1,100 @@
+{
+    "data": [
+        {
+            "name": "canAttack",
+            "type": "bool",
+            "description": "data.sections.attack.canattack",
+            "version": "default",
+            "isOutdated": false,
+            "example": "canAttack: true"
+        },
+        {
+            "name": "canAttackFlyingUnits",
+            "type": "LogicBoolean",
+            "description": "data.sections.attack.canattackflyingunits",
+            "version": "default",
+            "isOutdated": false,
+            "example": "canAttackFlyingUnits: true"
+        },
+        {
+            "name": "canAttackLandUnits",
+            "type": "LogicBoolean",
+            "description": "data.sections.attack.canattacklandunits",
+            "version": "default",
+            "isOutdated": false,
+            "example": "canAttackLandUnits: true"
+        },
+        {
+            "name": "canAttackUnderwaterUnits",
+            "type": "LogicBoolean",
+            "description": "data.sections.attack.canattackunderwaterunits",
+            "version": "default",
+            "isOutdated": false,
+            "example": "canAttackUnderwaterUnits: true"
+        },
+        {
+            "name": "canAttackNotTouchingWaterUnits",
+            "type": "LogicBoolean",
+            "description": "data.sections.attack.canattacknottouchingwaterunits",
+            "version": "default",
+            "isOutdated": false,
+            "example": "canAttackNotTouchingWaterUnits: false"
+        },
+        {
+            "name": "isFixedFiring",
+            "type": "bool",
+            "description": "data.sections.attack.isfixedfiring",
+            "version": "default",
+            "isOutdated": false,
+            "example": "isFixedFiring: true"
+        },
+        {
+            "name": "turretRotateWithBody",
+            "type": "bool",
+            "description": "data.sections.attack.turretrotatewithbody",
+            "version": "default",
+            "isOutdated": false,
+            "example": "turretRotateWithBody: true"
+        },
+        {
+            "name": "attackMovement",
+            "type": "string",
+            "description": "data.sections.attack.attackmovement",
+            "version": "default",
+            "isOutdated": false,
+            "example": "attackMovement: normal"
+        },
+        {
+            "name": "dieOnAttack",
+            "type": "bool",
+            "description": "data.sections.attack.dieonattack",
+            "version": "default",
+            "isOutdated": false,
+            "example": "dieOnAttack: true"
+        },
+        {
+            "name": "removeOnAttack",
+            "type": "bool",
+            "description": "data.sections.attack.removeonattack",
+            "version": "default",
+            "isOutdated": false,
+            "example": "removeOnAttack: true"
+        },
+        {
+            "name": "maxAttackRange",
+            "type": "int",
+            "description": "data.sections.attack.maxattackrange",
+            "version": "default",
+            "isOutdated": false,
+            "example": "maxAttackRange: 200"
+        },
+        {
+            "name": "shootDelay",
+            "type": "float",
+            "description": "data.sections.attack.shootdelay",
+            "version": "default",
+            "isOutdated": false,
+            "example": "shootDelay: 1.5"
+        }
+    ]
+}

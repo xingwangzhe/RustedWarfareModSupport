@@ -1,8 +1,12 @@
-
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 import { IniSectionSymbolProvider } from './Section';
+import { CoreCompletionProvider } from './core';
+import { CanBuildCompletionProvider } from './canBuild';
+import { GraphicsCompletionProvider } from './graphics';
+import { AttackCompletionProvider } from './attack';
+
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
@@ -26,7 +30,41 @@ export function activate(context: vscode.ExtensionContext) {
 		new IniSectionSymbolProvider()
 	);
 
+	// 注册core节的代码补全提供者
+	const coreCompletion = vscode.languages.registerCompletionItemProvider(
+		{ language: 'ini' },
+		new CoreCompletionProvider(),
+		':'
+	);
+
+	// 注册canBuild节的代码补全提供者
+	const canBuildCompletion = vscode.languages.registerCompletionItemProvider(
+		{ language: 'ini' },
+		new CanBuildCompletionProvider(),
+		':'
+	);
+
+	// 注册graphics节的代码补全提供者
+	const graphicsCompletion = vscode.languages.registerCompletionItemProvider(
+		{ language: 'ini' },
+		new GraphicsCompletionProvider(),
+		':'
+	);
+
+	// 注册attack节的代码补全提供者
+	const attackCompletion = vscode.languages.registerCompletionItemProvider(
+		{ language: 'ini' },
+		new AttackCompletionProvider(),
+		':'
+	);
+
 	context.subscriptions.push(disposable);
 	context.subscriptions.push(sectionParser);
+	context.subscriptions.push(coreCompletion);
+	context.subscriptions.push(canBuildCompletion);
+	context.subscriptions.push(graphicsCompletion);
+	context.subscriptions.push(attackCompletion);
 }
 
+// This method is called when your extension is deactivated
+export function deactivate() {}

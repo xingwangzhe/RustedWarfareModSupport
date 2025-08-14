@@ -83,6 +83,22 @@
         {
             "name": "template",
             "description": "data.sections.template"
+        },
+        {
+            "name": "spawnUnits",
+            "description": "data.sections.spawnUnits"
+        },
+        {
+            "name": "spawnProjectiles",
+            "description": "data.sections.spawnProjectiles"
+        },
+        {
+            "name": "logicBoolean",
+            "description": "data.sections.logicBoolean"
+        },
+        {
+            "name": "prices",
+            "description": "data.sections.prices"
         }
     ]
 }

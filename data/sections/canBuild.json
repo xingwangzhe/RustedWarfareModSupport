@@ -1,0 +1,140 @@
+{
+    "data": [
+        {
+            "name": "name",
+            "type": "string(s)",
+            "description": "data.sections.canbuild.name",
+            "version": "1.13.3",
+            "isOutdated": false,
+            "example": "name: setRally, tank, hoverTank, heavyTank"
+        },
+        {
+            "name": "pos",
+            "type": "float",
+            "description": "data.sections.canbuild.pos",
+            "version": "1.13.3",
+            "isOutdated": false,
+            "example": "pos: 0.1"
+        },
+        {
+            "name": "tech",
+            "type": "int",
+            "description": "data.sections.canbuild.tech",
+            "version": "1.13.3",
+            "isOutdated": false,
+            "example": "tech: 2"
+        },
+        {
+            "name": "forceNano",
+            "type": "bool",
+            "description": "data.sections.canbuild.forcenano",
+            "version": "1.13.3",
+            "isOutdated": false,
+            "example": "forceNano: true"
+        },
+        {
+            "name": "isVisible",
+            "type": "LogicBoolean",
+            "description": "data.sections.canbuild.isvisible",
+            "version": "1.13.3",
+            "isOutdated": false,
+            "example": "isVisible: if not self.energy(greaterThan=100)"
+        },
+        {
+            "name": "isLocked",
+            "type": "LogicBoolean",
+            "description": "data.sections.canbuild.islocked",
+            "version": "1.13.3",
+            "isOutdated": false,
+            "example": "isLocked: if self.hp(lessThan=100)"
+        },
+        {
+            "name": "isLockedMessage",
+            "type": "string",
+            "description": "data.sections.canbuild.islockedmessage",
+            "version": "1.13.3",
+            "isOutdated": false,
+            "example": "isLockedMessage: -Needs 2 Barracks"
+        },
+        {
+            "name": "isLockedMessage_{LANG}",
+            "type": "string",
+            "description": "data.sections.canbuild.islockedmessage_lang",
+            "version": "1.13.3",
+            "isOutdated": false,
+            "example": "isLockedMessage_es: -Necesita 2 Cuarteles"
+        },
+        {
+            "name": "isLockedAlt",
+            "type": "LogicBoolean",
+            "description": "data.sections.canbuild.islockedalt",
+            "version": "1.13.3",
+            "isOutdated": false,
+            "example": "isLockedAlt: if self.energy(greaterThan=90)"
+        },
+        {
+            "name": "isLockedAltMessage",
+            "type": "string",
+            "description": "data.sections.canbuild.islockedaltmessage",
+            "version": "1.13.3",
+            "isOutdated": false,
+            "example": "isLockedAltMessage: -Needs less energy"
+        },
+        {
+            "name": "isLockedAlt2",
+            "type": "LogicBoolean",
+            "description": "data.sections.canbuild.islockedalt2",
+            "version": "1.13.3",
+            "isOutdated": false,
+            "example": "isLockedAlt2: if self.isMoving()"
+        },
+        {
+            "name": "isLockedAlt2Message",
+            "type": "string",
+            "description": "data.sections.canbuild.islockedalt2message",
+            "version": "1.13.3",
+            "isOutdated": false,
+            "example": "isLockedAlt2Message: -Needs to be quiet"
+        },
+        {
+            "name": "addResources",
+            "type": "price(s)",
+            "description": "data.sections.canbuild.addresources",
+            "version": "1.13.3",
+            "isOutdated": false,
+            "example": "addResources: ammo=5, setFlag=1"
+        },
+        {
+            "name": "price",
+            "type": "price(s)",
+            "description": "data.sections.canbuild.price",
+            "version": "1.13.3",
+            "isOutdated": false,
+            "example": "price: credits=1000, ammo=5"
+        },
+        {
+            "name": "isGuiBlinking",
+            "type": "LogicBoolean",
+            "description": "data.sections.canbuild.isguiblinking",
+            "version": "1.13.3",
+            "isOutdated": false,
+            "example": "isGuiBlinking: true"
+        },
+        {
+            "name": "extraLagHidingInUI",
+            "type": "bool",
+            "description": "data.sections.canbuild.extralaghidinginui",
+            "version": "1.13.3",
+            "isOutdated": false,
+            "example": "extraLagHidingInUI: true"
+        },
+        {
+            "name": "type",
+            "type": "string",
+            "description": "data.sections.canbuild.type",
+            "version": "1.13.3",
+            "isOutdated": false,
+            "example": "type: mainBuildPanel"
+        }
+    ]
+}

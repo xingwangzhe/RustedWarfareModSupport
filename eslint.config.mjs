@@ -25,4 +25,10 @@ export default [{
         "no-throw-literal": "warn",
         semi: "warn",
     },
+}, {
+    files: ["translation/**/*.json"],
+    rules: {
+        // JSON文件不需要分号
+        semi: "off",
+    }
 }];

@@ -3,11 +3,34 @@ import * as vscode from "vscode";
 
 export class IniSectionSymbolProvider implements vscode.DocumentSymbolProvider {
   public generateSectionData(name: string): string {
-    if (name.includes("_")) 
-    {
-      name = name.substring(0, name.indexOf("_"));
+    // 处理不同类型的节
+    let baseName = name;
+    
+    // 处理带下划线的节名称，如 turret_NAME, projectile_NAME 等
+    if (name.includes("_")) {
+      baseName = name.substring(0, name.indexOf("_"));
     }
-      return vscode.l10n.t(`data.sections.${name}`);
+    
+    // 特殊处理 leg_ 和 arm_ 类型
+    if (name.startsWith("leg_")) {
+      baseName = "leg";
+    } else if (name.startsWith("arm_")) {
+      baseName = "arm";
+    }
+    
+    // 特殊处理 spawnUnits:LIST 和 spawnProjectiles:LIST 类型
+    if (name.startsWith("spawnUnits:")) {
+      baseName = "spawnUnits";
+    } else if (name.startsWith("spawnProjectiles:")) {
+      baseName = "spawnProjectiles";
+    }
+    
+    // 特殊处理 Prices/Resources 类型
+    if (name === "Prices/Resources") {
+      baseName = "prices";
+    }
+    
+    return vscode.l10n.t(`data.sections.${baseName}`);
   }
 
   public provideDocumentSymbols(

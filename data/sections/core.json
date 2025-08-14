@@ -6,1148 +6,1311 @@
             "description": "data.sections.core.name",
             "version": "default",
             "isOutdated": false,
-            "example": ""
+            "example": "name: customTank1"
         },
         {
             "name": "mass",
             "type": "int",
             "description": "data.sections.core.mass",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "mass: 3000"
         },
         {
             "name": "radius",
             "type": "int",
             "description": "data.sections.core.radius",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "radius: 20"
         },
         {
             "name": "price",
             "type": "int / price",
             "description": "data.sections.core.price",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "price: 500, gold=5, stone=10"
         },
         {
             "name": "maxHp",
             "type": "int",
             "description": "data.sections.core.maxHp",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "maxHp: 200"
         },
         {
             "name": "buildSpeed",
             "type": "float / s",
             "description": "data.sections.core.buildSpeed",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "buildSpeed: 3s"
         },
         {
             "name": "class",
             "type": "string",
             "description": "data.sections.core.class",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "class: CustomUnitMetadata"
         },
         {
             "name": "techLevel",
             "type": "int",
             "description": "data.sections.core.techLevel",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "techLevel: 1"
         },
         {
             "name": "altNames",
             "type": "string(s)",
             "description": "data.sections.core.altNames",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "altNames: custTank1, customTank1, cTank1"
         },
         {
             "name": "strictLevel",
             "type": "float",
             "description": "data.sections.core.strictLevel",
             "version": "1.13.3",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "strictLevel: 1"
         },
         {
             "name": "isBio",
             "type": "bool",
             "description": "data.sections.core.isBio",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "isBio: true"
         },
         {
             "name": "isBug",
             "type": "bool",
             "description": "data.sections.core.isBug",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "isBug: false"
         },
         {
             "name": "isBuilder",
             "type": "bool",
             "description": "data.sections.core.isBuilder",
             "version": "1.13",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "isBuilder: true"
         },
         {
             "name": "streamingCost",
             "type": "price",
             "description": "data.sections.core.streamingCost",
             "version": "1.15",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "streamingCost: gem=420"
         },
         {
             "name": "switchPriceWithStreamingCost",
             "type": "bool",
             "description": "data.sections.core.switchPriceWithStreamingCost",
             "version": "1.15",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "switchPriceWithStreamingCost: true"
         },
         {
             "name": "selfRegenRate",
             "type": "float",
             "description": "data.sections.core.selfRegenRate",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "selfRegenRate: 0.01"
         },
         {
             "name": "maxShield",
             "type": "int",
             "description": "data.sections.core.maxShield",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "maxShield: 500"
         },
         {
             "name": "startShieldAtZero",
             "type": "bool",
             "description": "data.sections.core.startShieldAtZero",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "startShieldAtZero: true"
         },
         {
             "name": "shieldRegen",
             "type": "float",
             "description": "data.sections.core.shieldRegen",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "shieldRegen: 0.15"
         },
         {
             "name": "energyMax",
             "type": "float",
             "description": "data.sections.core.energyMax",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "energyMax: 1"
         },
         {
             "name": "energyRegen",
             "type": "float",
             "description": "data.sections.core.energyRegen",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "energyRegen: 0.001"
         },
         {
             "name": "energyStartingPercentage",
             "type": "float",
             "description": "data.sections.core.energyStartingPercentage",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "energyStartingPercentage: 0.5"
         },
         {
             "name": "energyNeedsToRechargeToFull",
             "type": "float",
             "description": "data.sections.core.energyNeedsToRechargeToFull",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "energyNeedsToRechargeToFull: true"
         },
         {
             "name": "energyRegenWhenRecharging",
             "type": "float",
             "description": "data.sections.core.energyRegenWhenRecharging",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": ""
         },
         {
             "name": "armour",
             "type": "int",
             "description": "data.sections.core.armour",
             "version": "1.13",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "armour: 6"
         },
         {
             "name": "armourMinDamageToKeep",
             "type": "int",
             "description": "data.sections.core.armourMinDamageToKeep",
             "version": "1.13",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "armourMinDamageToKeep: 2"
         },
         {
             "name": "borrowResourcesWhileAlive",
             "type": "price",
             "description": "data.sections.core.borrowResourcesWhileAlive",
             "version": "1.13.3",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "borrowResourcesWhileAlive: gold=10"
         },
         {
             "name": "borrowResourcesWhileBuilt",
             "type": "price",
             "description": "data.sections.core.borrowResourcesWhileBuilt",
             "version": "1.15",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "borrowResourcesWhileBuilt: supplyCap = -10"
         },
         {
             "name": "generation_resources",
             "type": "price",
             "description": "data.sections.core.generation_resources",
             "version": "1.13.3",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "generation_resources: credits=5, gold=20"
         },
         {
             "name": "generation_active",
             "type": "logicBoolean",
             "description": "data.sections.core.generation_active",
             "version": "1.13.3",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "generation_active: if not self.hp(lessThan=100)"
         },
         {
             "name": "generation_credits",
             "type": "int",
             "description": "data.sections.core.generation_credits",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "generation_credits: 2"
         },
         {
             "name": "generation_delay",
             "type": "int",
             "description": "data.sections.core.generation_delay",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "generation_delay: 40"
         },
         {
             "name": "showInEditor",
             "type": "bool",
             "description": "data.sections.core.showInEditor",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "showInEditor: false"
         },
         {
             "name": "displayText",
             "type": "LocaleString",
             "description": "data.sections.core.displayText",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "displayText: Custom Tank"
         },
         {
             "name": "displayText_es",
             "type": "string",
             "description": "data.sections.core.displayText_es",
             "version": "1.13",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "displayText_es: Tanque Personalizado"
         },
         {
             "name": "displayDescription",
             "type": "LocaleString",
             "description": "data.sections.core.displayDescription",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "displayDescription: -Fast movement\\n-Light damage"
         },
         {
             "name": "displayDescription_es",
             "type": "string",
             "description": "data.sections.core.displayDescription_es",
             "version": "1.13",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "displayDescription_es: -Movimiento rápido\\n-Daño ligero"
         },
         {
             "name": "displayLocaleKey",
             "type": "string",
             "description": "data.sections.core.displayLocaleKey",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "displayLocaleKey: units.mechArtillery"
         },
         {
             "name": "displayRadius",
             "type": "int",
             "description": "data.sections.core.displayRadius",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "displayRadius: 20"
         },
         {
             "name": "uiTargetRadius",
             "type": "int",
             "description": "data.sections.core.uiTargetRadius",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "uiTargetRadius: 10"
         },
         {
             "name": "shieldRenderRadius",
             "type": "int",
             "description": "data.sections.core.shieldRenderRadius",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "shieldRenderRadius: 12"
         },
         {
             "name": "shieldDisplayOnlyDeflection",
             "type": "bool",
             "description": "data.sections.core.shieldDisplayOnlyDeflection",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "shieldDisplayOnlyDeflection: true"
         },
         {
             "name": "shieldDeflectionDisplayRate",
             "type": "float",
             "description": "data.sections.core.shieldDeflectionDisplayRate",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "shieldDeflectionDisplayRate: 3"
         },
         {
             "name": "showOnMinimap",
             "type": "bool",
             "description": "data.sections.core.showOnMinimap",
             "version": "1.13.3",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "showOnMinimap: false"
         },
         {
             "name": "showOnMinimapToEnemies",
             "type": "bool",
             "description": "data.sections.core.showOnMinimapToEnemies",
             "version": "1.14",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "showOnMinimapToEnemies: false"
         },
         {
             "name": "showActionsWithMixedSelectionIfOtherUnitsHaveTag",
             "type": "string(s)",
             "description": "data.sections.core.showActionsWithMixedSelectionIfOtherUnitsHaveTag",
             "version": "1.13.3",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "showActionsWithMixedSelectionIfOtherUnitsHaveTag: true"
         },
         {
             "name": "isBuilding",
             "type": "bool",
             "description": "data.sections.core.isBuilding",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "isBuilding: true"
         },
         {
             "name": "footprint",
             "type": "ints",
             "description": "data.sections.core.footprint",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "footprint: 0,0,1,1"
         },
         {
             "name": "constructionFootprint",
             "type": "ints",
             "description": "data.sections.core.constructionFootprint",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "constructionFootprint: -1,-1,1,3"
         },
         {
             "name": "displayFootprint",
             "type": "ints",
             "description": "data.sections.core.displayFootprint",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "displayFootprint: 0,0,1,1"
         },
         {
             "name": "buildingSelectionOffset",
             "type": "int",
             "description": "data.sections.core.buildingSelectionOffset",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "buildingSelectionOffset: 4"
         },
         {
             "name": "buildingToFootprintOffsetX",
             "type": "float",
             "description": "data.sections.core.buildingToFootprintOffsetX",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "buildingToFootprintOffsetX: 4"
         },
         {
             "name": "buildingToFootprintOffsetY",
             "type": "float",
             "description": "data.sections.core.buildingToFootprintOffsetY",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "buildingToFootprintOffsetY: 4"
         },
         {
             "name": "placeOnlyOnResPool",
             "type": "bool",
             "description": "data.sections.core.placeOnlyOnResPool",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "placeOnlyOnResPool: true"
         },
         {
             "name": "selfBuildRate",
             "type": "float",
             "description": "data.sections.core.selfBuildRate",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "selfBuildRate: 0.0008"
         },
         {
             "name": "ignoreInUnitCapCalculation",
             "type": "default",
             "description": "data.sections.core.ignoreInUnitCapCalculation",
             "version": "1.14",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "ignoreInUnitCapCalculation: true"
         },
         {
             "name": "copyFrom",
             "type": "file(s) (ini)",
             "description": "data.sections.core.copyFrom",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "copyFrom: ROOT:defaultTanks.template, tankT1.ini"
         },
         {
             "name": "dont_load",
             "type": "bool",
             "description": "data.sections.core.dont_load",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "dont_load: true"
         },
         {
             "name": "overrideAndReplace",
             "type": "string(s)",
             "description": "data.sections.core.overrideAndReplace",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "overrideAndReplace: builder, combatEngineer"
         },
         {
             "name": "onNewMapSpawn",
             "type": "string",
             "description": "data.sections.core.onNewMapSpawn",
             "version": "1.13.3",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "onNewMapSpawn: spawnPoint_eachActiveTeam"
         },
         {
             "name": "globalScale",
             "type": "float",
             "description": "data.sections.core.globalScale",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "globalScale: 2"
         },
         {
             "name": "isLocked",
             "type": "bool",
             "description": "data.sections.core.isLocked",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "isLocked: true"
         },
         {
             "name": "isLockedIfGameModeNoNuke",
             "type": "bool",
             "description": "data.sections.core.isLockedIfGameModeNoNuke",
             "version": "1.13",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "isLockedIfGameModeNoNuke: true"
         },
         {
             "name": "experimental",
             "type": "bool",
             "description": "data.sections.core.experimental",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "experimental: true"
         },
         {
             "name": "stayNeutral",
             "type": "bool",
             "description": "data.sections.core.stayNeutral",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "stayNeutral: false"
         },
         {
             "name": "createNeutral",
             "type": "bool",
             "description": "data.sections.core.createNeutral",
             "version": "1.13",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "createNeutral: true"
         },
         {
             "name": "createOnAggressiveTeam",
             "type": "bool",
             "description": "data.sections.core.createOnAggressiveTeam",
             "version": "1.13",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "createOnAggressiveTeam: true"
         },
         {
             "name": "tags",
             "type": "string(s)",
             "description": "data.sections.core.tags",
             "version": "1.13",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "tags: tank, smallTank, piercingDamage"
         },
         {
             "name": "defineUnitMemory",
             "type": "",
             "description": "data.sections.core.defineUnitMemory",
             "version": "1.15",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "defineUnitMemory: boolean nukeActive, boolean laserReady, float experience, unit nextTarget, unit homeBase, string customText"
         },
         {
             "name": "fogOfWarSightRange",
             "type": "int",
             "description": "data.sections.core.fogOfWarSightRange",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "fogOfWarSightRange: 35"
         },
         {
             "name": "fogOfWarSightRangeWhileNotBuilt",
             "type": "int",
             "description": "data.sections.core.fogOfWarSightRangeWhileNotBuilt",
             "version": "1.14",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "fogOfWarSightRangeWhileNotBuilt: 10"
         },
         {
             "name": "softCollisionOnAll",
             "type": "int",
             "description": "data.sections.core.softCollisionOnAll",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "softCollisionOnAll: 3"
         },
         {
             "name": "disableAllUnitCollisions",
             "type": "bool",
             "description": "data.sections.core.disableAllUnitCollisions",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "disableAllUnitCollisions: true"
         },
         {
             "name": "isUnrepairableUnit",
             "type": "bool",
             "description": "data.sections.core.isUnrepairableUnit",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "isUnrepairableUnit: true"
         },
         {
             "name": "isUnselectable",
             "type": "bool",
             "description": "data.sections.core.isUnselectable",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "isUnselectable: true"
         },
         {
             "name": "isUnselectableAsTarget",
             "type": "bool",
             "description": "data.sections.core.isUnselectableAsTarget",
             "version": "1.14",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "isUnselectableAsTarget: false"
         },
         {
             "name": "isPickableStartingUnit",
             "type": "bool",
             "description": "data.sections.core.isPickableStartingUnit",
             "version": "1.13",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "isPickableStartingUnit: true"
         },
         {
             "name": "startFallingWhenStartingUnit",
             "type": "bool",
             "description": "data.sections.core.startFallingWhenStartingUnit",
             "version": "1.13",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "startFallingWhenStartingUnit: true"
         },
         {
             "name": "soundOnAttackOrder",
             "type": "sound(s)",
             "description": "data.sections.core.soundOnAttackOrder",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "soundOnAttackOrder: tankAttackOrder1.ogg, tankAttackOrder2.ogg"
         },
         {
             "name": "soundOnMoveOrder",
             "type": "sound(s)",
             "description": "data.sections.core.soundOnMoveOrder",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "soundOnMoveOrder: tankMoveOrder1.ogg, tankMoveOrder2.ogg"
         },
         {
             "name": "soundOnNewSelection",
             "type": "sound(s)",
             "description": "data.sections.core.soundOnNewSelection",
             "version": "1.13.3",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "soundOnNewSelection: tankSelection1.ogg, tankSelection2.ogg"
         },
         {
             "name": "canNotBeDirectlyAttacked",
             "type": "bool",
             "description": "data.sections.core.canNotBeDirectlyAttacked",
             "version": "1.13.3",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "canNotBeDirectlyAttacked: true"
         },
         {
             "name": "canNotBeDamaged",
             "type": "bool",
             "description": "data.sections.core.canNotBeDamaged",
             "version": "1.13.3",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "canNotBeDamaged: true"
         },
         {
             "name": "canNotBeGivenOrdersByPlayer",
             "type": "bool",
             "description": "data.sections.core.canNotBeGivenOrdersByPlayer",
             "version": "1.13.3",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "canNotBeGivenOrdersByPlayer: true"
         },
         {
             "name": "canOnlyBeAttackedByUnitsWithTags",
             "type": "strings(s)",
             "description": "data.sections.core.canOnlyBeAttackedByUnitsWithTags",
             "version": "1.13.3",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "canOnlyBeAttackedByUnitsWithTags: piercingTank, powerfulTank"
         },
         {
             "name": "disableDeathOnZeroHp",
             "type": "bool",
             "description": "data.sections.core.disableDeathOnZeroHp",
             "version": "1.14",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "disableDeathOnZeroHp: true"
         },
         {
             "name": "allowCaptureWhenNeutralByAI",
             "type": "bool",
             "description": "data.sections.core.allowCaptureWhenNeutralByAI",
             "version": "1.15p9",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "allowCaptureWhenNeutralByAI: true"
         },
         {
             "name": "transportSlotsNeeded",
             "type": "int",
             "description": "data.sections.core.transportSlotsNeeded",
             "version": "1.13",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "transportSlotsNeeded: 2"
         },
         {
             "name": "maxTransportingUnits",
             "type": "int",
             "description": "data.sections.core.maxTransportingUnits",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "maxTransportingUnits: 5"
         },
         {
             "name": "transportUnitsRequireTag",
             "type": "string(s)",
             "description": "data.sections.core.transportUnitsRequireTag",
             "version": "1.13",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "transportUnitsRequireTag: smallTank, soldier"
         },
         {
             "name": "transportUnitsRequireMovementType",
             "type": "movementTypes",
             "description": "data.sections.core.transportUnitsRequireMovementType",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "transportUnitsRequireMovementType: AIR, WATER"
         },
         {
             "name": "transportUnitsBlockAirAndWaterUnits",
             "type": "bool",
             "description": "data.sections.core.transportUnitsBlockAirAndWaterUnits",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "transportUnitsBlockAirAndWaterUnits: false"
         },
         {
             "name": "transportUnitsEachUnitAlwaysUsesSingleSlot",
             "type": "bool",
             "description": "data.sections.core.transportUnitsEachUnitAlwaysUsesSingleSlot",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "transportUnitsEachUnitAlwaysUsesSingleSlot: true"
         },
         {
             "name": "transportUnitsKeepBuiltUnits",
             "type": "bool",
             "description": "data.sections.core.transportUnitsKeepBuiltUnits",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "transportUnitsKeepBuiltUnits: true"
         },
         {
             "name": "transportUnitsCanUnloadUnits",
             "type": "LogicBoolean",
             "description": "data.sections.core.transportUnitsCanUnloadUnits",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "transportUnitsCanUnloadUnits: false"
         },
         {
             "name": "transportUnitsAddUnloadOption",
             "type": "bool",
             "description": "data.sections.core.transportUnitsAddUnloadOption",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "transportUnitsAddUnloadOption: false"
         },
         {
             "name": "transportUnitsUnloadDelayBetweenEachUnit",
             "type": "float",
             "description": "data.sections.core.transportUnitsUnloadDelayBetweenEachUnit",
             "version": "1.13.3",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "transportUnitsUnloadDelayBetweenEachUnit: 12"
         },
         {
             "name": "transportUnitsKillOnDeath",
             "type": "LogicBoolean",
             "description": "data.sections.core.transportUnitsKillOnDeath",
             "version": "1.13",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "transportUnitsKillOnDeath: if self.isOverLiquid()"
         },
         {
             "name": "transportUnitsHealBy",
             "type": "float",
             "description": "data.sections.core.transportUnitsHealBy",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "transportUnitsHealBy: 0.1"
         },
         {
             "name": "transportUnitsBlockOtherTransports",
             "type": "bool",
             "description": "data.sections.core.transportUnitsBlockOtherTransports",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "transportUnitsBlockOtherTransports: false"
         },
         {
             "name": "whileNeutralTransportAnyTeam",
             "type": "bool",
             "description": "data.sections.core.whileNeutralTransportAnyTeam",
             "version": "1.13.3",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "whileNeutralTransportAnyTeam: true"
         },
         {
             "name": "whileNeutralConvertToTransportedTeam",
             "type": "bool",
             "description": "data.sections.core.whileNeutralConvertToTransportedTeam",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "whileNeutralConvertToTransportedTeam: true"
         },
         {
             "name": "convertToNeutralIfNotTransporting",
             "type": "bool",
             "description": "data.sections.core.convertToNeutralIfNotTransporting",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "convertToNeutralIfNotTransporting: true"
         },
         {
             "name": "transportUnitsOnTeamChangeKeepCurrentTeam",
             "type": "bool",
             "description": "data.sections.core.transportUnitsOnTeamChangeKeepCurrentTeam",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "transportUnitsOnTeamChangeKeepCurrentTeam: true"
         },
         {
             "name": "resourceRate",
             "type": "float",
             "description": "data.sections.core.resourceRate",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "resourceRate: 100"
         },
         {
             "name": "similarResourcesHaveTag",
             "type": "string(s)",
             "description": "data.sections.core.similarResourcesHaveTag",
             "version": "1.13.3",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "similarResourcesHaveTag: goldResource"
         },
         {
             "name": "resourceMaxConcurrentReclaimingThis",
             "type": "int",
             "description": "data.sections.core.resourceMaxConcurrentReclaimingThis",
             "version": "1.13.3",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "resourceMaxConcurrentReclaimingThis: 3"
         },
         {
             "name": "reclaimPrice",
             "type": "int",
             "description": "data.sections.core.reclaimPrice",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "reclaimPrice: gold=1000"
         },
         {
             "name": "canReclaimResources",
             "type": "bool",
             "description": "data.sections.core.canReclaimResources",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "canReclaimResources: true"
         },
         {
             "name": "canReclaimResourcesNextSearchRange",
             "type": "int",
             "description": "data.sections.core.canReclaimResourcesNextSearchRange",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "canReclaimResourcesNextSearchRange: 100"
         },
         {
             "name": "canReclaimResourcesOnlyWithTags",
             "type": "string(s)",
             "description": "data.sections.core.canReclaimResourcesOnlyWithTags",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "canReclaimResourcesOnlyWithTags: foodResource, goldResource"
         },
         {
             "name": "canReclaimUnitsOnlyWithTags",
             "type": "string(s)",
             "description": "data.sections.core.canReclaimUnitsOnlyWithTags",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "canReclaimUnitsOnlyWithTags: reclaimable"
         },
         {
             "name": "resourceReclaimMultiplier",
             "type": "float",
             "description": "data.sections.core.resourceReclaimMultiplier",
             "version": "1.15",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "resourceReclaimMultiplier: 1.5"
         },
         {
             "name": "canRepairUnitsOnlyWithTags",
             "type": "string(s)",
             "description": "data.sections.core.canRepairUnitsOnlyWithTags",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "canRepairUnitsOnlyWithTags: vulnerable"
         },
         {
             "name": "canRepairBuildings",
             "type": "bool",
             "description": "data.sections.core.canRepairBuildings",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "canRepairBuildings: true"
         },
         {
             "name": "canRepairUnits",
             "type": "bool",
             "description": "data.sections.core.canRepairUnits",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "canRepairUnits: true"
         },
         {
             "name": "autoRepair",
             "type": "bool",
             "description": "data.sections.core.autoRepair",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "autoRepair: true"
         },
         {
             "name": "nanoRange",
             "type": "int",
             "description": "data.sections.core.nanoRange",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "nanoRange: 110"
         },
         {
             "name": "nanoRepairSpeed",
             "type": "float",
             "description": "data.sections.core.nanoRepairSpeed",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "nanoRepairSpeed: 0.01"
         },
         {
             "name": "nanoBuildSpeed",
             "type": "float",
             "description": "data.sections.core.nanoBuildSpeed",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "nanoBuildSpeed: 0.9"
         },
         {
             "name": "nanoUnbuildSpeed",
             "type": "float",
             "description": "data.sections.core.nanoUnbuildSpeed",
             "version": "1.15",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "nanoUnbuildSpeed: 1.4"
         },
         {
             "name": "nanoReclaimSpeed",
             "type": "float",
             "description": "data.sections.core.nanoReclaimSpeed",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "nanoReclaimSpeed: 0.23"
         },
         {
             "name": "nanoRangeForRepairIsMelee",
             "type": "bool",
             "description": "data.sections.core.nanoRangeForRepairIsMelee",
             "version": "1.13.3",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "nanoRangeForRepairIsMelee: true"
         },
         {
             "name": "nanoRangeForReclaimIsMelee",
             "type": "bool",
             "description": "data.sections.core.nanoRangeForReclaimIsMelee",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "nanoRangeForReclaimIsMelee: true"
         },
         {
             "name": "nanoRangeForRepair",
             "type": "int",
             "description": "data.sections.core.nanoRangeForRepair",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "nanoRangeForRepair: 60"
         },
         {
             "name": "nanoRangeForReclaim",
             "type": "int",
             "description": "data.sections.core.nanoRangeForReclaim",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "nanoRangeForReclaim: 60"
         },
         {
             "name": "nanoFactorySpeed",
             "type": "float",
             "description": "data.sections.core.nanoFactorySpeed",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "nanoFactorySpeed: 1.2"
         },
         {
             "name": "extraBuildRangeWhenBuildingThis",
             "type": "int",
             "description": "data.sections.core.extraBuildRangeWhenBuildingThis",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "extraBuildRangeWhenBuildingThis: 90"
         },
         {
             "name": "builtFrom_{NUM}_name",
             "type": "string(s)",
             "description": "data.sections.core.builtFrom_{NUM}_name",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "builtFrom_1_name: landFactory, airFactory"
         },
         {
             "name": "builtFrom_{NUM}_pos",
             "type": "float",
             "description": "data.sections.core.builtFrom_{NUM}_pos",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "builtFrom_1_pos: 0.1"
         },
         {
             "name": "builtFrom_{NUM}_forceNano",
             "type": "bool",
             "description": "data.sections.core.builtFrom_{NUM}_forceNano",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "builtFrom_1_forceNano: true"
         },
         {
             "name": "builtFrom_{NUM}_isLocked",
             "type": "LogicBoolean",
             "description": "data.sections.core.builtFrom_{NUM}_isLocked",
             "version": "1.13.3",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "builtFrom_1_isLocked: if self.hp(lessThan=100)"
         },
         {
             "name": "builtFrom_{NUM}_isLockedMessage",
             "type": "LocaleString",
             "description": "data.sections.core.builtFrom_{NUM}_isLockedMessage",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "builtFrom_1_isLockedMessage: -Needs more population"
         },
         {
             "name": "exit_x",
             "type": "float",
             "description": "data.sections.core.exit_x",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "exit_x: 0"
         },
         {
             "name": "exit_y",
             "type": "float",
             "description": "data.sections.core.exit_y",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "exit_x: 5"
         },
         {
             "name": "exit_dirOffset",
             "type": "float",
             "description": "data.sections.core.exit_dirOffset",
             "version": "1.13",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "exit_dirOffset: 140"
         },
         {
             "name": "exit_heightOffset",
             "type": "float",
             "description": "data.sections.core.exit_heightOffset",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "exit_heightOffset: 16"
         },
         {
             "name": "exit_moveAwayAmount",
             "type": "float",
             "description": "data.sections.core.exit_moveAwayAmount",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "exit_moveAwayAmount: 10"
         },
         {
             "name": "exitHeightIgnoreParent",
             "type": "bool",
             "description": "data.sections.core.exitHeightIgnoreParent",
             "version": "1.14",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "exitHeightIgnoreParent: true"
         },
         {
             "name": "dieOnConstruct",
             "type": "bool",
             "description": "data.sections.core.dieOnConstruct",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "dieOnConstruct: true"
         },
         {
             "name": "dieOnZeroEnergy",
             "type": "bool",
             "description": "data.sections.core.dieOnZeroEnergy",
             "version": "1.13",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "dieOnZeroEnergy: true"
         },
         {
             "name": "numBitsOnDeath",
             "type": "int",
             "description": "data.sections.core.numBitsOnDeath",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "numBitsOnDeath: 20"
         },
         {
             "name": "nukeOnDeath",
             "type": "bool",
             "description": "data.sections.core.nukeOnDeath",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "nukeOnDeath: true"
         },
         {
             "name": "nukeOnDeathRange",
             "type": "float",
             "description": "data.sections.core.nukeOnDeathRange",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "nukeOnDeathRange: 140"
         },
         {
             "name": "nukeOnDeathDamage",
             "type": "float",
             "description": "data.sections.core.nukeOnDeathDamage",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "nukeOnDeathDamage: 2000"
         },
         {
             "name": "nukeOnDeathDisableWhenNoNuke",
             "type": "bool",
             "description": "data.sections.core.nukeOnDeathDisableWhenNoNuke",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "nukeOnDeathDisableWhenNoNuke: true"
         },
         {
             "name": "fireTurretXAtSelfOnDeath",
             "type": "turret ref",
             "description": "data.sections.core.fireTurretXAtSelfOnDeath",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "fireTurretXAtSelfOnDeath: turret_1"
         },
         {
             "name": "explodeOnDeath",
             "type": "bool",
             "description": "data.sections.core.explodeOnDeath",
             "version": "1.13",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "explodeOnDeath: false"
         },
         {
             "name": "explodeOnDeathGroundCollision",
             "type": "boolean",
             "description": "data.sections.core.explodeOnDeathGroundCollision",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "explodeOnDeathGroundCollision: false"
         },
         {
             "name": "explodeTypeOnDeath",
             "type": "preset effects",
             "description": "data.sections.core.explodeTypeOnDeath",
             "version": "1.14",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": ""
         },
         {
             "name": "effectOnDeath",
             "type": "effect(s) ref",
             "description": "data.sections.core.effectOnDeath",
             "version": "1.13",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "effectOnDeath: shockwave, CUSTOM:pieces*3, CUSTOM:deathSound"
         },
         {
             "name": "effectOnDeathGroundCollision",
             "type": "effect(s) ref",
             "description": "data.sections.core.effectOnDeathGroundCollision",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "effectOnDeathGroundCollision: CUSTOM:bigExplosion"
         },
         {
             "name": "unitsSpawnedOnDeath",
             "type": "string(s)",
             "description": "data.sections.core.unitsSpawnedOnDeath",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "unitsSpawnedOnDeath: tank*5, hoverTank"
         },
         {
             "name": "unitsSpawnedOnDeath_setToTeamOfLastAttacker",
             "type": "bool",
             "description": "data.sections.core.unitsSpawnedOnDeath_setToTeamOfLastAttacker",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "unitsSpawnedOnDeath_setToTeamOfLastAttacker: true"
         },
         {
             "name": "hideScorchMark",
             "type": "bool",
             "description": "data.sections.core.hideScorchMark",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "hideScorchMark: true"
         },
         {
             "name": "soundOnDeath",
             "type": "string(s)",
             "description": "data.sections.core.soundOnDeath",
             "version": "default",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "soundOnDeath: tankExplosion1.ogg, tankExplosion2.ogg"
         },
         {
             "name": "effectOnDeathIfUnbuilt",
             "type": "effect(s) ref",
             "description": "data.sections.core.effectOnDeathIfUnbuilt",
             "version": "1.14",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "effectOnDeathIfUnbuilt: CUSTOM:implode"
         },
         {
             "name": "autoTriggerCooldownTime",
             "type": "time (seconds)",
             "description": "data.sections.core.autoTriggerCooldownTime",
             "version": "1.13.3",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "autoTriggerCooldownTime: 0.05s"
         },
         {
             "name": "autoTriggerCooldownTime_allowDangerousHighCPU",
             "type": "bool",
             "description": "data.sections.core.autoTriggerCooldownTime_allowDangerousHighCPU",
             "version": "1.13.3",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "autoTriggerCooldownTime_allowDangerousHighCPU: true"
         },
         {
             "name": "autoTriggerCheckRate",
             "type": "enum",
             "description": "data.sections.core.autoTriggerCheckRate",
             "version": "1.15",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "autoTriggerCheckRate:every8Frames"
         },
         {
             "name": "autoTriggerCheckWhileNotBuilt",
             "type": "bool",
             "description": "data.sections.core.autoTriggerCheckWhileNotBuilt",
             "version": "1.15",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "autoTriggerCheckWhileNotBuilt: true"
         },
         {
             "name": "updateUnitMemory",
             "type": "memory",
             "description": "data.sections.core.updateUnitMemory",
             "version": "1.15",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "updateUnitMemory: timeCount = (1 + memory.timeCount)"
         },
         {
             "name": "updateUnitMemoryRate",
             "type": "int",
             "description": "data.sections.core.updateUnitMemoryRate",
             "version": "1.15",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "updateUnitMemoryRate: 0"
         },
         {
             "name": "@memory",
             "type": "",
             "description": "data.sections.core.@memory",
             "version": "1.15",
-            "isOutdated": false
+            "isOutdated": false,
+            "example": "@memory fish:unit"
         }
     ]
 }

@@ -1,0 +1,540 @@
+{
+    "data": [
+        {
+            "name": "image",
+            "type": "file (image)",
+            "description": "data.sections.graphics.image",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "image: body.png"
+        },
+        {
+            "name": "teamColoringMode",
+            "type": "string",
+            "description": "data.sections.graphics.teamcoloringmode",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "teamColoringMode: disabled"
+        },
+        {
+            "name": "image_back",
+            "type": "file (image)",
+            "description": "data.sections.graphics.image_back",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "image_back: floor.png"
+        },
+        {
+            "name": "image_shield",
+            "type": "file (image)",
+            "description": "data.sections.graphics.image_shield",
+            "version": "1.14",
+            "isOutdated": false,
+            "example": "image_shield: forcefield.png"
+        },
+        {
+            "name": "image_wreak",
+            "type": "file (image)",
+            "description": "data.sections.graphics.image_wreak",
+            "version": "1.14",
+            "isOutdated": false,
+            "example": "image_wreak: ded.png"
+        },
+        {
+            "name": "image_offsetX",
+            "type": "int",
+            "description": "data.sections.graphics.image_offsetx",
+            "version": "1.14",
+            "isOutdated": false,
+            "example": "image_offsetX: 21"
+        },
+        {
+            "name": "image_offsetY",
+            "type": "int",
+            "description": "data.sections.graphics.image_offsety",
+            "version": "1.14",
+            "isOutdated": false,
+            "example": "image_offsetY: 41"
+        },
+        {
+            "name": "image_offsetH",
+            "type": "int",
+            "description": "data.sections.graphics.image_offseth",
+            "version": "1.15p9",
+            "isOutdated": false,
+            "example": "image_offsetH: 25"
+        },
+        {
+            "name": "image_floatingPointSize",
+            "type": "int",
+            "description": "data.sections.graphics.image_floatingpointsize",
+            "version": "1.15p9",
+            "isOutdated": false,
+            "example": "image_floatingPointSize: 10"
+        },
+        {
+            "name": "isVisible",
+            "type": "logic",
+            "description": "data.sections.graphics.isvisible",
+            "version": "1.13.3",
+            "isOutdated": false,
+            "example": "isVisible: false"
+        },
+        {
+            "name": "isVisibleToEnemies",
+            "type": "bool",
+            "description": "data.sections.graphics.isvisibletoenemies",
+            "version": "1.14",
+            "isOutdated": false,
+            "example": "isVisibleToEnemies: false"
+        },
+        {
+            "name": "scaleImagesTo",
+            "type": "float",
+            "description": "data.sections.graphics.scaleimagesto",
+            "version": "1.14",
+            "isOutdated": false,
+            "example": "scaleImagesTo: 1"
+        },
+        {
+            "name": "imageScale",
+            "type": "float",
+            "description": "data.sections.graphics.imagescale",
+            "version": "1.14",
+            "isOutdated": false,
+            "example": "imageScale: 1"
+        },
+        {
+            "name": "drawLayer",
+            "type": "string",
+            "description": "data.sections.graphics.drawlayer",
+            "version": "1.14",
+            "isOutdated": false,
+            "example": "drawLayer: bottom"
+        },
+        {
+            "name": "whenBeingBuiltMakeTransparentTill",
+            "type": "float",
+            "description": "data.sections.graphics.whenbeingbuiltmaketransparenttill",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "whenBeingBuiltMakeTransparentTill: 0.4"
+        },
+        {
+            "name": "icon_zoomed_out",
+            "type": "file (image)",
+            "description": "data.sections.graphics.icon_zoomed_out",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "icon_zoomed_out: unitIcon.png"
+        },
+        {
+            "name": "icon_zoomed_out_neverShow",
+            "type": "bool",
+            "description": "data.sections.graphics.icon_zoomed_out_nevershow",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "icon_zoomed_out_neverShow: false"
+        },
+        {
+            "name": "icon_build",
+            "type": "file (image)",
+            "description": "data.sections.graphics.icon_build",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "icon_build: iconFish.png"
+        },
+        {
+            "name": "image_turret",
+            "type": "file (image)",
+            "description": "data.sections.graphics.image_turret",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "image_turret: gun.png"
+        },
+        {
+            "name": "teamColorsOnTurret",
+            "type": "bool",
+            "description": "data.sections.graphics.teamcolorsonturret",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "teamColorsOnTurret: true"
+        },
+        {
+            "name": "scaleTurretImagesTo",
+            "type": "float",
+            "description": "data.sections.graphics.scaleturretimagesto",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "scaleTurretImagesTo: 1.2"
+        },
+        {
+            "name": "lock_body_rotation_with_main_turret",
+            "type": "bool",
+            "description": "data.sections.graphics.lock_body_rotation_with_main_turret",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "lock_body_rotation_with_main_turret: true"
+        },
+        {
+            "name": "lock_leg_rotation_with_main_turret",
+            "type": "bool",
+            "description": "data.sections.graphics.lock_leg_rotation_with_main_turret",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "lock_leg_rotation_with_main_turret: true"
+        },
+        {
+            "name": "image_shadow",
+            "type": "file (image)",
+            "description": "data.sections.graphics.image_shadow",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "image_shadow: shadow.png"
+        },
+        {
+            "name": "shadowOffsetX",
+            "type": "float",
+            "description": "data.sections.graphics.shadowoffsetx",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "shadowOffsetX: 10"
+        },
+        {
+            "name": "shadowOffsetY",
+            "type": "float",
+            "description": "data.sections.graphics.shadowoffsety",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "shadowOffsetY: 10"
+        },
+        {
+            "name": "image_shadow_frames",
+            "type": "bool",
+            "description": "data.sections.graphics.image_shadow_frames",
+            "version": "1.13.3",
+            "isOutdated": false,
+            "example": "image_shadow_frames: true"
+        },
+        {
+            "name": "lock_shadow_rotation_with_main_turret",
+            "type": "bool",
+            "description": "data.sections.graphics.lock_shadow_rotation_with_main_turret",
+            "version": "1.13.3",
+            "isOutdated": false,
+            "example": "lock_shadow_rotation_with_main_turret: true"
+        },
+        {
+            "name": "total_frames",
+            "type": "int",
+            "description": "data.sections.graphics.total_frames",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "total_frames: 3"
+        },
+        {
+            "name": "frame_width",
+            "type": "int",
+            "description": "data.sections.graphics.frame_width",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "frame_width: 40"
+        },
+        {
+            "name": "frame_height",
+            "type": "int",
+            "description": "data.sections.graphics.frame_height",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "frame_height: 60"
+        },
+        {
+            "name": "default_frame",
+            "type": "int",
+            "description": "data.sections.graphics.default_frame",
+            "version": "1.14",
+            "isOutdated": false,
+            "example": "default_frame: 0"
+        },
+        {
+            "name": "splastEffect",
+            "type": "bool",
+            "description": "data.sections.graphics.splasteffect",
+            "version": "1.14",
+            "isOutdated": false,
+            "example": "splastEffect: true"
+        },
+        {
+            "name": "dustEffect",
+            "type": "bool",
+            "description": "data.sections.graphics.dusteffect",
+            "version": "1.14",
+            "isOutdated": false,
+            "example": "dustEffect: true"
+        },
+        {
+            "name": "splastEffectReverse",
+            "type": "bool",
+            "description": "data.sections.graphics.splasteffectreverse",
+            "version": "1.14",
+            "isOutdated": false,
+            "example": "splastEffectReverse: true"
+        },
+        {
+            "name": "dustEffectReverse",
+            "type": "bool",
+            "description": "data.sections.graphics.dusteffectreverse",
+            "version": "1.14",
+            "isOutdated": false,
+            "example": "dustEffectReverse: true"
+        },
+        {
+            "name": "movementEffect",
+            "type": "effect",
+            "description": "data.sections.graphics.movementeffect",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "movementEffect: smoke, CUSTOM:fastDust*2, CUSTOM:pop*5"
+        },
+        {
+            "name": "movementEffectReverse",
+            "type": "effect",
+            "description": "data.sections.graphics.movementeffectreverse",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "movementEffectReverse: smoke, CUSTOM:fastDust*2, CUSTOM:pop*5"
+        },
+        {
+            "name": "movementEffectRate",
+            "type": "float",
+            "description": "data.sections.graphics.movementeffectrate",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "movementEffectRate: 10"
+        },
+        {
+            "name": "movementEffectReverseFlipEffects",
+            "type": "bool",
+            "description": "data.sections.graphics.movementeffectreverseflipeffects",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "movementEffectReverseFlipEffects: true"
+        },
+        {
+            "name": "repairEffect",
+            "type": "effect ref",
+            "description": "data.sections.graphics.repaireffect",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "repairEffect: CUSTOM:mist*5"
+        },
+        {
+            "name": "repairEffectAtTarget",
+            "type": "effect",
+            "description": "data.sections.graphics.repaireffectattarget",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "repairEffectAtTarget: CUSTOM:greensparks*2"
+        },
+        {
+            "name": "repairEffectRate",
+            "type": "int",
+            "description": "data.sections.graphics.repaireffectrate",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "repairEffectRate: 20"
+        },
+        {
+            "name": "reclaimEffect",
+            "type": "effect",
+            "description": "data.sections.graphics.reclaimeffect",
+            "version": "1.13.3",
+            "isOutdated": false,
+            "example": "reclaimEffect: CUSTOM:sap*5"
+        },
+        {
+            "name": "reclaimEffectAtTarget",
+            "type": "effect",
+            "description": "data.sections.graphics.reclaimeffectattarget",
+            "version": "1.13.3",
+            "isOutdated": false,
+            "example": "reclaimEffectAtTarget: CUSTOM:redsparks*2"
+        },
+        {
+            "name": "reclaimEffectRate",
+            "type": "int",
+            "description": "data.sections.graphics.reclaimeffectrate",
+            "version": "1.13.3",
+            "isOutdated": false,
+            "example": "reclaimEffectRate: 20"
+        },
+        {
+            "name": "rotate_with_direction",
+            "type": "bool",
+            "description": "data.sections.graphics.rotate_with_direction",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "rotate_with_direction: false"
+        },
+        {
+            "name": "animation_direction_units",
+            "type": "float",
+            "description": "data.sections.graphics.animation_direction_units",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "animation_direction_units: 45"
+        },
+        {
+            "name": "animation_direction_strideX",
+            "type": "int",
+            "description": "data.sections.graphics.animation_direction_stridex",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "animation_direction_strideX: 40"
+        },
+        {
+            "name": "animation_direction_strideY",
+            "type": "int",
+            "description": "data.sections.graphics.animation_direction_stridey",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "animation_direction_strideY: 60"
+        },
+        {
+            "name": "animation_direction_starting",
+            "type": "float",
+            "description": "data.sections.graphics.animation_direction_starting",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "animation_direction_starting: 90"
+        },
+        {
+            "name": "disableLowHpFire",
+            "type": "bool",
+            "description": "data.sections.graphics.disablelowhpfire",
+            "version": "1.13.3",
+            "isOutdated": false,
+            "example": "disableLowHpFire: false"
+        },
+        {
+            "name": "disableLowHpSmoke",
+            "type": "bool",
+            "description": "data.sections.graphics.disablelowhpsmoke",
+            "version": "1.13.3",
+            "isOutdated": false,
+            "example": "disableLowHpSmoke: false"
+        },
+        {
+            "name": "showTransportBar",
+            "type": "bool",
+            "description": "data.sections.graphics.showtransportbar",
+            "version": "1.13.3",
+            "isOutdated": false,
+            "example": "showTransportBar: false"
+        },
+        {
+            "name": "showHealthBar",
+            "type": "bool",
+            "description": "data.sections.graphics.showhealthbar",
+            "version": "1.13.3",
+            "isOutdated": false,
+            "example": "showHealthBar: false"
+        },
+        {
+            "name": "showEnergyBar",
+            "type": "bool",
+            "description": "data.sections.graphics.showenergybar",
+            "version": "1.13.3",
+            "isOutdated": false,
+            "example": "showEnergyBar: false"
+        },
+        {
+            "name": "showShieldBar",
+            "type": "bool",
+            "description": "data.sections.graphics.showshieldbar",
+            "version": "1.14",
+            "isOutdated": false,
+            "example": "showShieldBar: false"
+        },
+        {
+            "name": "showQueueBar",
+            "type": "bool",
+            "description": "data.sections.graphics.showqueuebar",
+            "version": "1.14",
+            "isOutdated": false,
+            "example": "showQueueBar: false"
+        },
+        {
+            "name": "showShotDelayBar",
+            "type": "bool",
+            "description": "data.sections.graphics.showshotdelaybar",
+            "version": "1.15",
+            "isOutdated": false,
+            "example": "showShotDelayBar: false"
+        },
+        {
+            "name": "showSelectionIndicator",
+            "type": "bool",
+            "description": "data.sections.graphics.showselectionindicator",
+            "version": "1.15p9",
+            "isOutdated": false,
+            "example": "showSelectionIndicator: false"
+        },
+        {
+            "name": "teamColorsUseHue",
+            "type": "bool",
+            "description": "data.sections.graphics.teamcolorsusehue",
+            "version": "depr. 1.13",
+            "isOutdated": true,
+            "example": "teamColorsUseHue: false"
+        },
+        {
+            "name": "animation_TYPE_start",
+            "type": "int",
+            "description": "data.sections.graphics.animation_type_start",
+            "version": "depr. 1.13",
+            "isOutdated": true,
+            "example": "animation_moving_start: 0"
+        },
+        {
+            "name": "animation_TYPE_end",
+            "type": "int",
+            "description": "data.sections.graphics.animation_type_end",
+            "version": "depr. 1.13",
+            "isOutdated": true,
+            "example": "animation_moving_end: 3"
+        },
+        {
+            "name": "animation_TYPE_scale_start",
+            "type": "float",
+            "description": "data.sections.graphics.animation_type_scale_start",
+            "version": "depr. 1.13",
+            "isOutdated": true,
+            "example": "animation_moving_scale_start: 1"
+        },
+        {
+            "name": "animation_TYPE_scale_end",
+            "type": "float",
+            "description": "data.sections.graphics.animation_type_scale_end",
+            "version": "depr. 1.13",
+            "isOutdated": true,
+            "example": "animation_moving_scale_end: 1"
+        },
+        {
+            "name": "animation_TYPE_speed",
+            "type": "float",
+            "description": "data.sections.graphics.animation_type_speed",
+            "version": "depr. 1.13",
+            "isOutdated": true,
+            "example": "animation_moving_speed: 1"
+        },
+        {
+            "name": "animation_TYPE_pingPong",
+            "type": "bool",
+            "description": "data.sections.graphics.animation_type_pingpong",
+            "version": "depr. 1.13",
+            "isOutdated": true,
+            "example": "animation_moving_pingPong: true"
+        }
+    ]
+}
