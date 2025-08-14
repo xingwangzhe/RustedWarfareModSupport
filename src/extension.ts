@@ -1,7 +1,8 @@
+
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
-
+import { IniSectionSymbolProvider } from './Section';
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
@@ -19,8 +20,13 @@ export function activate(context: vscode.ExtensionContext) {
 		vscode.window.showInformationMessage(vscode.l10n.t('Hello World from RustedWarfareModSupport!'));
 	});
 
+	// 注册文档解析器，用于识别节
+	const sectionParser = vscode.languages.registerDocumentSymbolProvider(
+		{ language: 'ini' }, 
+		new IniSectionSymbolProvider()
+	);
+
 	context.subscriptions.push(disposable);
+	context.subscriptions.push(sectionParser);
 }
 
-// This method is called when your extension is deactivated
-export function deactivate() {}
