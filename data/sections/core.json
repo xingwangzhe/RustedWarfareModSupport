@@ -1,0 +1,1153 @@
+{
+    "data":[
+        {
+            "name": "name",
+            "type": "string",
+            "description": "data.sections.core.name",
+            "version": "default",
+            "isOutdated": false,
+            "example": ""
+        },
+        {
+            "name": "mass",
+            "type": "int",
+            "description": "data.sections.core.mass",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "radius",
+            "type": "int",
+            "description": "data.sections.core.radius",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "price",
+            "type": "int / price",
+            "description": "data.sections.core.price",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "maxHp",
+            "type": "int",
+            "description": "data.sections.core.maxHp",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "buildSpeed",
+            "type": "float / s",
+            "description": "data.sections.core.buildSpeed",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "class",
+            "type": "string",
+            "description": "data.sections.core.class",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "techLevel",
+            "type": "int",
+            "description": "data.sections.core.techLevel",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "altNames",
+            "type": "string(s)",
+            "description": "data.sections.core.altNames",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "strictLevel",
+            "type": "float",
+            "description": "data.sections.core.strictLevel",
+            "version": "1.13.3",
+            "isOutdated": false
+        },
+        {
+            "name": "isBio",
+            "type": "bool",
+            "description": "data.sections.core.isBio",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "isBug",
+            "type": "bool",
+            "description": "data.sections.core.isBug",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "isBuilder",
+            "type": "bool",
+            "description": "data.sections.core.isBuilder",
+            "version": "1.13",
+            "isOutdated": false
+        },
+        {
+            "name": "streamingCost",
+            "type": "price",
+            "description": "data.sections.core.streamingCost",
+            "version": "1.15",
+            "isOutdated": false
+        },
+        {
+            "name": "switchPriceWithStreamingCost",
+            "type": "bool",
+            "description": "data.sections.core.switchPriceWithStreamingCost",
+            "version": "1.15",
+            "isOutdated": false
+        },
+        {
+            "name": "selfRegenRate",
+            "type": "float",
+            "description": "data.sections.core.selfRegenRate",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "maxShield",
+            "type": "int",
+            "description": "data.sections.core.maxShield",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "startShieldAtZero",
+            "type": "bool",
+            "description": "data.sections.core.startShieldAtZero",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "shieldRegen",
+            "type": "float",
+            "description": "data.sections.core.shieldRegen",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "energyMax",
+            "type": "float",
+            "description": "data.sections.core.energyMax",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "energyRegen",
+            "type": "float",
+            "description": "data.sections.core.energyRegen",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "energyStartingPercentage",
+            "type": "float",
+            "description": "data.sections.core.energyStartingPercentage",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "energyNeedsToRechargeToFull",
+            "type": "float",
+            "description": "data.sections.core.energyNeedsToRechargeToFull",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "energyRegenWhenRecharging",
+            "type": "float",
+            "description": "data.sections.core.energyRegenWhenRecharging",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "armour",
+            "type": "int",
+            "description": "data.sections.core.armour",
+            "version": "1.13",
+            "isOutdated": false
+        },
+        {
+            "name": "armourMinDamageToKeep",
+            "type": "int",
+            "description": "data.sections.core.armourMinDamageToKeep",
+            "version": "1.13",
+            "isOutdated": false
+        },
+        {
+            "name": "borrowResourcesWhileAlive",
+            "type": "price",
+            "description": "data.sections.core.borrowResourcesWhileAlive",
+            "version": "1.13.3",
+            "isOutdated": false
+        },
+        {
+            "name": "borrowResourcesWhileBuilt",
+            "type": "price",
+            "description": "data.sections.core.borrowResourcesWhileBuilt",
+            "version": "1.15",
+            "isOutdated": false
+        },
+        {
+            "name": "generation_resources",
+            "type": "price",
+            "description": "data.sections.core.generation_resources",
+            "version": "1.13.3",
+            "isOutdated": false
+        },
+        {
+            "name": "generation_active",
+            "type": "logicBoolean",
+            "description": "data.sections.core.generation_active",
+            "version": "1.13.3",
+            "isOutdated": false
+        },
+        {
+            "name": "generation_credits",
+            "type": "int",
+            "description": "data.sections.core.generation_credits",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "generation_delay",
+            "type": "int",
+            "description": "data.sections.core.generation_delay",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "showInEditor",
+            "type": "bool",
+            "description": "data.sections.core.showInEditor",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "displayText",
+            "type": "LocaleString",
+            "description": "data.sections.core.displayText",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "displayText_es",
+            "type": "string",
+            "description": "data.sections.core.displayText_es",
+            "version": "1.13",
+            "isOutdated": false
+        },
+        {
+            "name": "displayDescription",
+            "type": "LocaleString",
+            "description": "data.sections.core.displayDescription",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "displayDescription_es",
+            "type": "string",
+            "description": "data.sections.core.displayDescription_es",
+            "version": "1.13",
+            "isOutdated": false
+        },
+        {
+            "name": "displayLocaleKey",
+            "type": "string",
+            "description": "data.sections.core.displayLocaleKey",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "displayRadius",
+            "type": "int",
+            "description": "data.sections.core.displayRadius",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "uiTargetRadius",
+            "type": "int",
+            "description": "data.sections.core.uiTargetRadius",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "shieldRenderRadius",
+            "type": "int",
+            "description": "data.sections.core.shieldRenderRadius",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "shieldDisplayOnlyDeflection",
+            "type": "bool",
+            "description": "data.sections.core.shieldDisplayOnlyDeflection",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "shieldDeflectionDisplayRate",
+            "type": "float",
+            "description": "data.sections.core.shieldDeflectionDisplayRate",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "showOnMinimap",
+            "type": "bool",
+            "description": "data.sections.core.showOnMinimap",
+            "version": "1.13.3",
+            "isOutdated": false
+        },
+        {
+            "name": "showOnMinimapToEnemies",
+            "type": "bool",
+            "description": "data.sections.core.showOnMinimapToEnemies",
+            "version": "1.14",
+            "isOutdated": false
+        },
+        {
+            "name": "showActionsWithMixedSelectionIfOtherUnitsHaveTag",
+            "type": "string(s)",
+            "description": "data.sections.core.showActionsWithMixedSelectionIfOtherUnitsHaveTag",
+            "version": "1.13.3",
+            "isOutdated": false
+        },
+        {
+            "name": "isBuilding",
+            "type": "bool",
+            "description": "data.sections.core.isBuilding",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "footprint",
+            "type": "ints",
+            "description": "data.sections.core.footprint",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "constructionFootprint",
+            "type": "ints",
+            "description": "data.sections.core.constructionFootprint",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "displayFootprint",
+            "type": "ints",
+            "description": "data.sections.core.displayFootprint",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "buildingSelectionOffset",
+            "type": "int",
+            "description": "data.sections.core.buildingSelectionOffset",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "buildingToFootprintOffsetX",
+            "type": "float",
+            "description": "data.sections.core.buildingToFootprintOffsetX",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "buildingToFootprintOffsetY",
+            "type": "float",
+            "description": "data.sections.core.buildingToFootprintOffsetY",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "placeOnlyOnResPool",
+            "type": "bool",
+            "description": "data.sections.core.placeOnlyOnResPool",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "selfBuildRate",
+            "type": "float",
+            "description": "data.sections.core.selfBuildRate",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "ignoreInUnitCapCalculation",
+            "type": "default",
+            "description": "data.sections.core.ignoreInUnitCapCalculation",
+            "version": "1.14",
+            "isOutdated": false
+        },
+        {
+            "name": "copyFrom",
+            "type": "file(s) (ini)",
+            "description": "data.sections.core.copyFrom",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "dont_load",
+            "type": "bool",
+            "description": "data.sections.core.dont_load",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "overrideAndReplace",
+            "type": "string(s)",
+            "description": "data.sections.core.overrideAndReplace",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "onNewMapSpawn",
+            "type": "string",
+            "description": "data.sections.core.onNewMapSpawn",
+            "version": "1.13.3",
+            "isOutdated": false
+        },
+        {
+            "name": "globalScale",
+            "type": "float",
+            "description": "data.sections.core.globalScale",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "isLocked",
+            "type": "bool",
+            "description": "data.sections.core.isLocked",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "isLockedIfGameModeNoNuke",
+            "type": "bool",
+            "description": "data.sections.core.isLockedIfGameModeNoNuke",
+            "version": "1.13",
+            "isOutdated": false
+        },
+        {
+            "name": "experimental",
+            "type": "bool",
+            "description": "data.sections.core.experimental",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "stayNeutral",
+            "type": "bool",
+            "description": "data.sections.core.stayNeutral",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "createNeutral",
+            "type": "bool",
+            "description": "data.sections.core.createNeutral",
+            "version": "1.13",
+            "isOutdated": false
+        },
+        {
+            "name": "createOnAggressiveTeam",
+            "type": "bool",
+            "description": "data.sections.core.createOnAggressiveTeam",
+            "version": "1.13",
+            "isOutdated": false
+        },
+        {
+            "name": "tags",
+            "type": "string(s)",
+            "description": "data.sections.core.tags",
+            "version": "1.13",
+            "isOutdated": false
+        },
+        {
+            "name": "defineUnitMemory",
+            "type": "",
+            "description": "data.sections.core.defineUnitMemory",
+            "version": "1.15",
+            "isOutdated": false
+        },
+        {
+            "name": "fogOfWarSightRange",
+            "type": "int",
+            "description": "data.sections.core.fogOfWarSightRange",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "fogOfWarSightRangeWhileNotBuilt",
+            "type": "int",
+            "description": "data.sections.core.fogOfWarSightRangeWhileNotBuilt",
+            "version": "1.14",
+            "isOutdated": false
+        },
+        {
+            "name": "softCollisionOnAll",
+            "type": "int",
+            "description": "data.sections.core.softCollisionOnAll",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "disableAllUnitCollisions",
+            "type": "bool",
+            "description": "data.sections.core.disableAllUnitCollisions",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "isUnrepairableUnit",
+            "type": "bool",
+            "description": "data.sections.core.isUnrepairableUnit",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "isUnselectable",
+            "type": "bool",
+            "description": "data.sections.core.isUnselectable",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "isUnselectableAsTarget",
+            "type": "bool",
+            "description": "data.sections.core.isUnselectableAsTarget",
+            "version": "1.14",
+            "isOutdated": false
+        },
+        {
+            "name": "isPickableStartingUnit",
+            "type": "bool",
+            "description": "data.sections.core.isPickableStartingUnit",
+            "version": "1.13",
+            "isOutdated": false
+        },
+        {
+            "name": "startFallingWhenStartingUnit",
+            "type": "bool",
+            "description": "data.sections.core.startFallingWhenStartingUnit",
+            "version": "1.13",
+            "isOutdated": false
+        },
+        {
+            "name": "soundOnAttackOrder",
+            "type": "sound(s)",
+            "description": "data.sections.core.soundOnAttackOrder",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "soundOnMoveOrder",
+            "type": "sound(s)",
+            "description": "data.sections.core.soundOnMoveOrder",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "soundOnNewSelection",
+            "type": "sound(s)",
+            "description": "data.sections.core.soundOnNewSelection",
+            "version": "1.13.3",
+            "isOutdated": false
+        },
+        {
+            "name": "canNotBeDirectlyAttacked",
+            "type": "bool",
+            "description": "data.sections.core.canNotBeDirectlyAttacked",
+            "version": "1.13.3",
+            "isOutdated": false
+        },
+        {
+            "name": "canNotBeDamaged",
+            "type": "bool",
+            "description": "data.sections.core.canNotBeDamaged",
+            "version": "1.13.3",
+            "isOutdated": false
+        },
+        {
+            "name": "canNotBeGivenOrdersByPlayer",
+            "type": "bool",
+            "description": "data.sections.core.canNotBeGivenOrdersByPlayer",
+            "version": "1.13.3",
+            "isOutdated": false
+        },
+        {
+            "name": "canOnlyBeAttackedByUnitsWithTags",
+            "type": "strings(s)",
+            "description": "data.sections.core.canOnlyBeAttackedByUnitsWithTags",
+            "version": "1.13.3",
+            "isOutdated": false
+        },
+        {
+            "name": "disableDeathOnZeroHp",
+            "type": "bool",
+            "description": "data.sections.core.disableDeathOnZeroHp",
+            "version": "1.14",
+            "isOutdated": false
+        },
+        {
+            "name": "allowCaptureWhenNeutralByAI",
+            "type": "bool",
+            "description": "data.sections.core.allowCaptureWhenNeutralByAI",
+            "version": "1.15p9",
+            "isOutdated": false
+        },
+        {
+            "name": "transportSlotsNeeded",
+            "type": "int",
+            "description": "data.sections.core.transportSlotsNeeded",
+            "version": "1.13",
+            "isOutdated": false
+        },
+        {
+            "name": "maxTransportingUnits",
+            "type": "int",
+            "description": "data.sections.core.maxTransportingUnits",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "transportUnitsRequireTag",
+            "type": "string(s)",
+            "description": "data.sections.core.transportUnitsRequireTag",
+            "version": "1.13",
+            "isOutdated": false
+        },
+        {
+            "name": "transportUnitsRequireMovementType",
+            "type": "movementTypes",
+            "description": "data.sections.core.transportUnitsRequireMovementType",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "transportUnitsBlockAirAndWaterUnits",
+            "type": "bool",
+            "description": "data.sections.core.transportUnitsBlockAirAndWaterUnits",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "transportUnitsEachUnitAlwaysUsesSingleSlot",
+            "type": "bool",
+            "description": "data.sections.core.transportUnitsEachUnitAlwaysUsesSingleSlot",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "transportUnitsKeepBuiltUnits",
+            "type": "bool",
+            "description": "data.sections.core.transportUnitsKeepBuiltUnits",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "transportUnitsCanUnloadUnits",
+            "type": "LogicBoolean",
+            "description": "data.sections.core.transportUnitsCanUnloadUnits",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "transportUnitsAddUnloadOption",
+            "type": "bool",
+            "description": "data.sections.core.transportUnitsAddUnloadOption",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "transportUnitsUnloadDelayBetweenEachUnit",
+            "type": "float",
+            "description": "data.sections.core.transportUnitsUnloadDelayBetweenEachUnit",
+            "version": "1.13.3",
+            "isOutdated": false
+        },
+        {
+            "name": "transportUnitsKillOnDeath",
+            "type": "LogicBoolean",
+            "description": "data.sections.core.transportUnitsKillOnDeath",
+            "version": "1.13",
+            "isOutdated": false
+        },
+        {
+            "name": "transportUnitsHealBy",
+            "type": "float",
+            "description": "data.sections.core.transportUnitsHealBy",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "transportUnitsBlockOtherTransports",
+            "type": "bool",
+            "description": "data.sections.core.transportUnitsBlockOtherTransports",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "whileNeutralTransportAnyTeam",
+            "type": "bool",
+            "description": "data.sections.core.whileNeutralTransportAnyTeam",
+            "version": "1.13.3",
+            "isOutdated": false
+        },
+        {
+            "name": "whileNeutralConvertToTransportedTeam",
+            "type": "bool",
+            "description": "data.sections.core.whileNeutralConvertToTransportedTeam",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "convertToNeutralIfNotTransporting",
+            "type": "bool",
+            "description": "data.sections.core.convertToNeutralIfNotTransporting",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "transportUnitsOnTeamChangeKeepCurrentTeam",
+            "type": "bool",
+            "description": "data.sections.core.transportUnitsOnTeamChangeKeepCurrentTeam",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "resourceRate",
+            "type": "float",
+            "description": "data.sections.core.resourceRate",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "similarResourcesHaveTag",
+            "type": "string(s)",
+            "description": "data.sections.core.similarResourcesHaveTag",
+            "version": "1.13.3",
+            "isOutdated": false
+        },
+        {
+            "name": "resourceMaxConcurrentReclaimingThis",
+            "type": "int",
+            "description": "data.sections.core.resourceMaxConcurrentReclaimingThis",
+            "version": "1.13.3",
+            "isOutdated": false
+        },
+        {
+            "name": "reclaimPrice",
+            "type": "int",
+            "description": "data.sections.core.reclaimPrice",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "canReclaimResources",
+            "type": "bool",
+            "description": "data.sections.core.canReclaimResources",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "canReclaimResourcesNextSearchRange",
+            "type": "int",
+            "description": "data.sections.core.canReclaimResourcesNextSearchRange",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "canReclaimResourcesOnlyWithTags",
+            "type": "string(s)",
+            "description": "data.sections.core.canReclaimResourcesOnlyWithTags",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "canReclaimUnitsOnlyWithTags",
+            "type": "string(s)",
+            "description": "data.sections.core.canReclaimUnitsOnlyWithTags",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "resourceReclaimMultiplier",
+            "type": "float",
+            "description": "data.sections.core.resourceReclaimMultiplier",
+            "version": "1.15",
+            "isOutdated": false
+        },
+        {
+            "name": "canRepairUnitsOnlyWithTags",
+            "type": "string(s)",
+            "description": "data.sections.core.canRepairUnitsOnlyWithTags",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "canRepairBuildings",
+            "type": "bool",
+            "description": "data.sections.core.canRepairBuildings",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "canRepairUnits",
+            "type": "bool",
+            "description": "data.sections.core.canRepairUnits",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "autoRepair",
+            "type": "bool",
+            "description": "data.sections.core.autoRepair",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "nanoRange",
+            "type": "int",
+            "description": "data.sections.core.nanoRange",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "nanoRepairSpeed",
+            "type": "float",
+            "description": "data.sections.core.nanoRepairSpeed",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "nanoBuildSpeed",
+            "type": "float",
+            "description": "data.sections.core.nanoBuildSpeed",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "nanoUnbuildSpeed",
+            "type": "float",
+            "description": "data.sections.core.nanoUnbuildSpeed",
+            "version": "1.15",
+            "isOutdated": false
+        },
+        {
+            "name": "nanoReclaimSpeed",
+            "type": "float",
+            "description": "data.sections.core.nanoReclaimSpeed",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "nanoRangeForRepairIsMelee",
+            "type": "bool",
+            "description": "data.sections.core.nanoRangeForRepairIsMelee",
+            "version": "1.13.3",
+            "isOutdated": false
+        },
+        {
+            "name": "nanoRangeForReclaimIsMelee",
+            "type": "bool",
+            "description": "data.sections.core.nanoRangeForReclaimIsMelee",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "nanoRangeForRepair",
+            "type": "int",
+            "description": "data.sections.core.nanoRangeForRepair",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "nanoRangeForReclaim",
+            "type": "int",
+            "description": "data.sections.core.nanoRangeForReclaim",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "nanoFactorySpeed",
+            "type": "float",
+            "description": "data.sections.core.nanoFactorySpeed",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "extraBuildRangeWhenBuildingThis",
+            "type": "int",
+            "description": "data.sections.core.extraBuildRangeWhenBuildingThis",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "builtFrom_{NUM}_name",
+            "type": "string(s)",
+            "description": "data.sections.core.builtFrom_{NUM}_name",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "builtFrom_{NUM}_pos",
+            "type": "float",
+            "description": "data.sections.core.builtFrom_{NUM}_pos",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "builtFrom_{NUM}_forceNano",
+            "type": "bool",
+            "description": "data.sections.core.builtFrom_{NUM}_forceNano",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "builtFrom_{NUM}_isLocked",
+            "type": "LogicBoolean",
+            "description": "data.sections.core.builtFrom_{NUM}_isLocked",
+            "version": "1.13.3",
+            "isOutdated": false
+        },
+        {
+            "name": "builtFrom_{NUM}_isLockedMessage",
+            "type": "LocaleString",
+            "description": "data.sections.core.builtFrom_{NUM}_isLockedMessage",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "exit_x",
+            "type": "float",
+            "description": "data.sections.core.exit_x",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "exit_y",
+            "type": "float",
+            "description": "data.sections.core.exit_y",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "exit_dirOffset",
+            "type": "float",
+            "description": "data.sections.core.exit_dirOffset",
+            "version": "1.13",
+            "isOutdated": false
+        },
+        {
+            "name": "exit_heightOffset",
+            "type": "float",
+            "description": "data.sections.core.exit_heightOffset",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "exit_moveAwayAmount",
+            "type": "float",
+            "description": "data.sections.core.exit_moveAwayAmount",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "exitHeightIgnoreParent",
+            "type": "bool",
+            "description": "data.sections.core.exitHeightIgnoreParent",
+            "version": "1.14",
+            "isOutdated": false
+        },
+        {
+            "name": "dieOnConstruct",
+            "type": "bool",
+            "description": "data.sections.core.dieOnConstruct",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "dieOnZeroEnergy",
+            "type": "bool",
+            "description": "data.sections.core.dieOnZeroEnergy",
+            "version": "1.13",
+            "isOutdated": false
+        },
+        {
+            "name": "numBitsOnDeath",
+            "type": "int",
+            "description": "data.sections.core.numBitsOnDeath",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "nukeOnDeath",
+            "type": "bool",
+            "description": "data.sections.core.nukeOnDeath",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "nukeOnDeathRange",
+            "type": "float",
+            "description": "data.sections.core.nukeOnDeathRange",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "nukeOnDeathDamage",
+            "type": "float",
+            "description": "data.sections.core.nukeOnDeathDamage",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "nukeOnDeathDisableWhenNoNuke",
+            "type": "bool",
+            "description": "data.sections.core.nukeOnDeathDisableWhenNoNuke",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "fireTurretXAtSelfOnDeath",
+            "type": "turret ref",
+            "description": "data.sections.core.fireTurretXAtSelfOnDeath",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "explodeOnDeath",
+            "type": "bool",
+            "description": "data.sections.core.explodeOnDeath",
+            "version": "1.13",
+            "isOutdated": false
+        },
+        {
+            "name": "explodeOnDeathGroundCollision",
+            "type": "boolean",
+            "description": "data.sections.core.explodeOnDeathGroundCollision",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "explodeTypeOnDeath",
+            "type": "preset effects",
+            "description": "data.sections.core.explodeTypeOnDeath",
+            "version": "1.14",
+            "isOutdated": false
+        },
+        {
+            "name": "effectOnDeath",
+            "type": "effect(s) ref",
+            "description": "data.sections.core.effectOnDeath",
+            "version": "1.13",
+            "isOutdated": false
+        },
+        {
+            "name": "effectOnDeathGroundCollision",
+            "type": "effect(s) ref",
+            "description": "data.sections.core.effectOnDeathGroundCollision",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "unitsSpawnedOnDeath",
+            "type": "string(s)",
+            "description": "data.sections.core.unitsSpawnedOnDeath",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "unitsSpawnedOnDeath_setToTeamOfLastAttacker",
+            "type": "bool",
+            "description": "data.sections.core.unitsSpawnedOnDeath_setToTeamOfLastAttacker",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "hideScorchMark",
+            "type": "bool",
+            "description": "data.sections.core.hideScorchMark",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "soundOnDeath",
+            "type": "string(s)",
+            "description": "data.sections.core.soundOnDeath",
+            "version": "default",
+            "isOutdated": false
+        },
+        {
+            "name": "effectOnDeathIfUnbuilt",
+            "type": "effect(s) ref",
+            "description": "data.sections.core.effectOnDeathIfUnbuilt",
+            "version": "1.14",
+            "isOutdated": false
+        },
+        {
+            "name": "autoTriggerCooldownTime",
+            "type": "time (seconds)",
+            "description": "data.sections.core.autoTriggerCooldownTime",
+            "version": "1.13.3",
+            "isOutdated": false
+        },
+        {
+            "name": "autoTriggerCooldownTime_allowDangerousHighCPU",
+            "type": "bool",
+            "description": "data.sections.core.autoTriggerCooldownTime_allowDangerousHighCPU",
+            "version": "1.13.3",
+            "isOutdated": false
+        },
+        {
+            "name": "autoTriggerCheckRate",
+            "type": "enum",
+            "description": "data.sections.core.autoTriggerCheckRate",
+            "version": "1.15",
+            "isOutdated": false
+        },
+        {
+            "name": "autoTriggerCheckWhileNotBuilt",
+            "type": "bool",
+            "description": "data.sections.core.autoTriggerCheckWhileNotBuilt",
+            "version": "1.15",
+            "isOutdated": false
+        },
+        {
+            "name": "updateUnitMemory",
+            "type": "memory",
+            "description": "data.sections.core.updateUnitMemory",
+            "version": "1.15",
+            "isOutdated": false
+        },
+        {
+            "name": "updateUnitMemoryRate",
+            "type": "int",
+            "description": "data.sections.core.updateUnitMemoryRate",
+            "version": "1.15",
+            "isOutdated": false
+        },
+        {
+            "name": "@memory",
+            "type": "",
+            "description": "data.sections.core.@memory",
+            "version": "1.15",
+            "isOutdated": false
+        }
+    ]
+}
