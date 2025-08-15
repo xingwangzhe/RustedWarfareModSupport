@@ -6,6 +6,7 @@ import { CoreCompletionProvider } from './core';
 import { CanBuildCompletionProvider } from './canBuild';
 import { GraphicsCompletionProvider } from './graphics';
 import { AttackCompletionProvider } from './attack';
+import { TurretCompletionProvider } from './turret';
 
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
@@ -58,12 +59,20 @@ export function activate(context: vscode.ExtensionContext) {
 		':'
 	);
 
+	// 注册turret节的代码补全提供者
+	const turretCompletion = vscode.languages.registerCompletionItemProvider(
+		{ language: 'ini' },
+		new TurretCompletionProvider(),
+		':'
+	);
+
 	context.subscriptions.push(disposable);
 	context.subscriptions.push(sectionParser);
 	context.subscriptions.push(coreCompletion);
 	context.subscriptions.push(canBuildCompletion);
 	context.subscriptions.push(graphicsCompletion);
 	context.subscriptions.push(attackCompletion);
+	context.subscriptions.push(turretCompletion);
 }
 
 // This method is called when your extension is deactivated

@@ -1,0 +1,596 @@
+{
+    "data": [
+        {
+            "name": "x",
+            "type": "float",
+            "description": "data.sections.turret.x",
+            "version": "default",
+            "isOutdated": false,
+            "example": "x: 0"
+        },
+        {
+            "name": "y",
+            "type": "float",
+            "description": "data.sections.turret.y",
+            "version": "default",
+            "isOutdated": false,
+            "example": "y: 40"
+        },
+        {
+            "name": "copyFrom",
+            "type": "turret ref",
+            "description": "data.sections.turret.copyfrom",
+            "version": "default",
+            "isOutdated": false,
+            "example": "copyFrom: 1"
+        },
+        {
+            "name": "projectile",
+            "type": "projectile ref",
+            "description": "data.sections.turret.projectile",
+            "version": "default",
+            "isOutdated": false,
+            "example": "projectile: torpedo"
+        },
+        {
+            "name": "altProjectile",
+            "type": "projectile ref",
+            "description": "data.sections.turret.altprojectile",
+            "version": "default",
+            "isOutdated": false,
+            "example": "altProjectile: spear"
+        },
+        {
+            "name": "altProjectileCondition",
+            "type": "LogicBoolean",
+            "description": "data.sections.turret.altprojectilecondition",
+            "version": "1.14",
+            "isOutdated": false,
+            "example": "altProjectileCondition: if self.hp() < 100"
+        },
+        {
+            "name": "barrelX",
+            "type": "float",
+            "description": "data.sections.turret.barrelx",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "barrelX: 0"
+        },
+        {
+            "name": "barrelY",
+            "type": "float",
+            "description": "data.sections.turret.barrely",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "barrelY: 5"
+        },
+        {
+            "name": "barrelHeight",
+            "type": "float",
+            "description": "data.sections.turret.barrelheight",
+            "version": "1.13.3",
+            "isOutdated": false,
+            "example": "barrelHeight: 10"
+        },
+        {
+            "name": "height",
+            "type": "float",
+            "description": "data.sections.turret.height",
+            "version": "1.15p9",
+            "isOutdated": false,
+            "example": "height: 30"
+        },
+        {
+            "name": "size",
+            "type": "float",
+            "description": "data.sections.turret.size",
+            "version": "default",
+            "isOutdated": false,
+            "example": "size: 5"
+        },
+        {
+            "name": "turnSpeed",
+            "type": "float",
+            "description": "data.sections.turret.turnspeed",
+            "version": "default",
+            "isOutdated": false,
+            "example": "turnSpeed: 2"
+        },
+        {
+            "name": "turnSpeedAcceleration",
+            "type": "float",
+            "description": "data.sections.turret.turnspeedacceleration",
+            "version": "default",
+            "isOutdated": false,
+            "example": "turnSpeedAcceleration: 0.4"
+        },
+        {
+            "name": "turnSpeedDeceleration",
+            "type": "float",
+            "description": "data.sections.turret.turnspeeddeceleration",
+            "version": "default",
+            "isOutdated": false,
+            "example": "turnSpeedDeceleration: 0.2"
+        },
+        {
+            "name": "idleDir",
+            "type": "float",
+            "description": "data.sections.turret.idledir",
+            "version": "default",
+            "isOutdated": false,
+            "example": "idleDir: 180"
+        },
+        {
+            "name": "idleDirReversing",
+            "type": "float",
+            "description": "data.sections.turret.idledirreversing",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "idleDirReversing: 30"
+        },
+        {
+            "name": "shouldResetTurret",
+            "type": "bool",
+            "description": "data.sections.turret.shouldresetturret",
+            "version": "default",
+            "isOutdated": false,
+            "example": "shouldResetTurret: false"
+        },
+        {
+            "name": "idleSpin",
+            "type": "float",
+            "description": "data.sections.turret.idlespin",
+            "version": "default",
+            "isOutdated": false,
+            "example": "idleSpin: 2"
+        },
+        {
+            "name": "idleSweepAngle",
+            "type": "int",
+            "description": "data.sections.turret.idlesweepangle",
+            "version": "1.14",
+            "isOutdated": false,
+            "example": "idleSweepAngle: 35"
+        },
+        {
+            "name": "idleSweepDelay",
+            "type": "float",
+            "description": "data.sections.turret.idlesweepdelay",
+            "version": "1.14",
+            "isOutdated": false,
+            "example": "idleSweepDelay: 20"
+        },
+        {
+            "name": "idleSweepSpeed",
+            "type": "float",
+            "description": "data.sections.turret.idlesweepspeed",
+            "version": "1.14",
+            "isOutdated": false,
+            "example": "idleSweepSpeed: 0.3"
+        },
+        {
+            "name": "idleSweepCondition",
+            "type": "LogicBoolean",
+            "description": "data.sections.turret.idlesweepcondition",
+            "version": "1.14",
+            "isOutdated": false,
+            "example": "idleSweepCondition: if self.hp() > 400"
+        },
+        {
+            "name": "idleSweepAddRandomDelay",
+            "type": "float",
+            "description": "data.sections.turret.idlesweepaddrandomdelay",
+            "version": "1.14",
+            "isOutdated": false,
+            "example": "idleSweepAddRandomDelay: 30"
+        },
+        {
+            "name": "idleSweepAddRandomAngle",
+            "type": "int",
+            "description": "data.sections.turret.idlesweepaddrandomangle",
+            "version": "1.14",
+            "isOutdated": false,
+            "example": "idleSweepAddRandomAngle: 15"
+        },
+        {
+            "name": "attachedTo",
+            "type": "turret ref",
+            "description": "data.sections.turret.attachedto",
+            "version": "default",
+            "isOutdated": false,
+            "example": "attachedTo: base"
+        },
+        {
+            "name": "slave",
+            "type": "bool",
+            "description": "data.sections.turret.slave",
+            "version": "default",
+            "isOutdated": false,
+            "example": "slave: true"
+        },
+        {
+            "name": "isMainNanoTurret",
+            "type": "bool",
+            "description": "data.sections.turret.ismainnanoturret",
+            "version": "default",
+            "isOutdated": false,
+            "example": "isMainNanoTurret: true"
+        },
+        {
+            "name": "energyUsage",
+            "type": "float",
+            "description": "data.sections.turret.energyusage",
+            "version": "default",
+            "isOutdated": false,
+            "example": "energyUsage: 1"
+        },
+        {
+            "name": "resourceUsage",
+            "type": "price",
+            "description": "data.sections.turret.resourceusage",
+            "version": "default",
+            "isOutdated": false,
+            "example": "resourceUsage: credits=5, energy=5, hp=100, shield=5, ammo=1"
+        },
+        {
+            "name": "delay",
+            "type": "float",
+            "description": "data.sections.turret.delay",
+            "version": "default",
+            "isOutdated": false,
+            "example": "delay: 2s"
+        },
+        {
+            "name": "linkDelayWithTurret",
+            "type": "turret ref",
+            "description": "data.sections.turret.linkdelaywithturret",
+            "version": "default",
+            "isOutdated": false,
+            "example": "linkDelayWithTurret: 1"
+        },
+        {
+            "name": "warmup",
+            "type": "float",
+            "description": "data.sections.turret.warmup",
+            "version": "default",
+            "isOutdated": false,
+            "example": "warmup: 5s"
+        },
+        {
+            "name": "warmupCallDownRate",
+            "type": "float",
+            "description": "data.sections.turret.warmupcalldownrate",
+            "version": "default",
+            "isOutdated": false,
+            "example": "warmupCallDownRate: 10"
+        },
+        {
+            "name": "warmupNoReset",
+            "type": "bool",
+            "description": "data.sections.turret.warmupnoreset",
+            "version": "default",
+            "isOutdated": false,
+            "example": "warmupNoReset: true"
+        },
+        {
+            "name": "warmupShootDelayTransfer",
+            "type": "float",
+            "description": "data.sections.turret.warmupshootdelaytransfer",
+            "version": "default",
+            "isOutdated": false,
+            "example": "warmupShootDelayTransfer: 20"
+        },
+        {
+            "name": "onShoot_freezeBodyMovementFor",
+            "type": "float",
+            "description": "data.sections.turret.onshoot_freezebodymovementfor",
+            "version": "1.13.3",
+            "isOutdated": false,
+            "example": "onShoot_freezeBodyMovementFor: 2s"
+        },
+        {
+            "name": "barrelOffsetX_onOddShots",
+            "type": "float",
+            "description": "data.sections.turret.barreloffsetx_onoddshots",
+            "version": "1.14",
+            "isOutdated": false,
+            "example": "barrelOffsetX_onOddShots: -10"
+        },
+        {
+            "name": "aimOffsetSpread",
+            "type": "",
+            "description": "data.sections.turret.aimoffsetspread",
+            "version": "1.14",
+            "isOutdated": false,
+            "example": "aimOffsetSpread: 14"
+        },
+        {
+            "name": "canShoot",
+            "type": "bool",
+            "description": "data.sections.turret.canshoot",
+            "version": "default",
+            "isOutdated": false,
+            "example": "canShoot: true"
+        },
+        {
+            "name": "canAttackFlyingUnits",
+            "type": "LogicBoolean",
+            "description": "data.sections.turret.canattackflyingunits",
+            "version": "default",
+            "isOutdated": false,
+            "example": "canAttackFlyingUnits: false"
+        },
+        {
+            "name": "canAttackLandUnits",
+            "type": "LogicBoolean",
+            "description": "data.sections.turret.canattacklandunits",
+            "version": "default",
+            "isOutdated": false,
+            "example": "canAttackLandUnits: true"
+        },
+        {
+            "name": "canAttackUnderwaterUnits",
+            "type": "LogicBoolean",
+            "description": "data.sections.turret.canattackunderwaterunits",
+            "version": "default",
+            "isOutdated": false,
+            "example": "canAttackUnderwaterUnits: true"
+        },
+        {
+            "name": "canAttackNotTouchingWaterUnits",
+            "type": "LogicBoolean",
+            "description": "data.sections.turret.canattacknottouchingwaterunits",
+            "version": "default",
+            "isOutdated": false,
+            "example": "canAttackNotTouchingWaterUnits: false"
+        },
+        {
+            "name": "canOnlyAttackUnitsWithTags",
+            "type": "tags",
+            "description": "data.sections.turret.canonlyattackunitswithtags",
+            "version": "1.13.3",
+            "isOutdated": false,
+            "example": "canOnlyAttackUnitsWithTags: shelled, armoured"
+        },
+        {
+            "name": "canOnlyAttackUnitsWithoutTags",
+            "type": "tags",
+            "description": "data.sections.turret.canonlyattackunitswithouttags",
+            "version": "1.13.3",
+            "isOutdated": false,
+            "example": "canOnlyAttackUnitsWithoutTags: corrosive, fleshy"
+        },
+        {
+            "name": "canAttackCondition",
+            "type": "LogicBoolean",
+            "description": "data.sections.turret.canattackcondition",
+            "version": "default",
+            "isOutdated": false,
+            "example": "canAttackCondition: if not self.flying"
+        },
+        {
+            "name": "canAttackMaxAngle",
+            "type": "float",
+            "description": "data.sections.turret.canattackmaxangle",
+            "version": "1.14",
+            "isOutdated": false,
+            "example": "canAttackMaxAngle: 181"
+        },
+        {
+            "name": "clearTurretTargetAfterFiring",
+            "type": "bool",
+            "description": "data.sections.turret.clearturrettargetafterfiring",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "clearTurretTargetAfterFiring:"
+        },
+        {
+            "name": "limitingRange",
+            "type": "float",
+            "description": "data.sections.turret.limitingrange",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "limitingRange: 100"
+        },
+        {
+            "name": "limitingAngle",
+            "type": "int",
+            "description": "data.sections.turret.limitingangle",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "limitingAngle: 60"
+        },
+        {
+            "name": "limitingMinRange",
+            "type": "int",
+            "description": "data.sections.turret.limitingminrange",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "limitingMinRange: 200"
+        },
+        {
+            "name": "interceptProjectiles_withTags",
+            "type": "tags",
+            "description": "data.sections.turret.interceptprojectiles_withtags",
+            "version": "default",
+            "isOutdated": false,
+            "example": "interceptProjectiles_withTags: nuke"
+        },
+        {
+            "name": "interceptProjectiles_andTargetingGroundUnderDistance",
+            "type": "int",
+            "description": "data.sections.turret.interceptprojectiles_andtargetinggroundunderdistance",
+            "version": "default",
+            "isOutdated": false,
+            "example": "interceptProjectiles_andTargetingGroundUnderDistance: 100"
+        },
+        {
+            "name": "interceptProjectiles_andUnderDistance",
+            "type": "int",
+            "description": "data.sections.turret.interceptprojectiles_andunderdistance",
+            "version": "default",
+            "isOutdated": false,
+            "example": "interceptProjectiles_andUnderDistance: 300"
+        },
+        {
+            "name": "interceptProjectiles_andOverHeight",
+            "type": "int",
+            "description": "data.sections.turret.interceptprojectiles_andoverheight",
+            "version": "default",
+            "isOutdated": false,
+            "example": "interceptProjectiles_andOverHeight: 10"
+        },
+        {
+            "name": "laserDefenceEnergyUse",
+            "type": "float",
+            "description": "data.sections.turret.laserdefenceenergyuse",
+            "version": "default",
+            "isOutdated": false,
+            "example": "laserDefenceEnergyUse: 0.25"
+        },
+        {
+            "name": "invisible",
+            "type": "LogicBoolean",
+            "description": "data.sections.turret.invisible",
+            "version": "default",
+            "isOutdated": false,
+            "example": "invisible: true"
+        },
+        {
+            "name": "image",
+            "type": "file (image)",
+            "description": "data.sections.turret.image",
+            "version": "default",
+            "isOutdated": false,
+            "example": "image: gun.png"
+        },
+        {
+            "name": "image_applyTeamColors",
+            "type": "bool",
+            "description": "data.sections.turret.image_applyteamcolors",
+            "version": "default",
+            "isOutdated": false,
+            "example": "image_applyTeamColors: true"
+        },
+        {
+            "name": "image_drawOffsetX",
+            "type": "float",
+            "description": "data.sections.turret.image_drawoffsetx",
+            "version": "default",
+            "isOutdated": false,
+            "example": "image_drawOffsetX: 0"
+        },
+        {
+            "name": "image_drawOffsetY",
+            "type": "float",
+            "description": "data.sections.turret.image_drawoffsety",
+            "version": "default",
+            "isOutdated": false,
+            "example": "image_drawOffsetY: 30"
+        },
+        {
+            "name": "chargeEffectImage",
+            "type": "file (image)",
+            "description": "data.sections.turret.chargeeffectimage",
+            "version": "default",
+            "isOutdated": false,
+            "example": "chargeEffectImage: glow.png"
+        },
+        {
+            "name": "warmupStartEffect",
+            "type": "effect ref",
+            "description": "data.sections.turret.warmupstarteffect",
+            "version": "default",
+            "isOutdated": false,
+            "example": "warmupStartEffect: CUSTOM:abosrb"
+        },
+        {
+            "name": "shoot_sound",
+            "type": "string",
+            "description": "data.sections.turret.shoot_sound",
+            "version": "default",
+            "isOutdated": false,
+            "example": "shoot_sound: tank_firing | shoot_sound: missile.wav | shoot_sound: ROOT:audio/shoot.ogg"
+        },
+        {
+            "name": "shoot_sound_vol",
+            "type": "float",
+            "description": "data.sections.turret.shoot_sound_vol",
+            "version": "default",
+            "isOutdated": false,
+            "example": "shoot_sound_vol: 0.4"
+        },
+        {
+            "name": "shoot_flame",
+            "type": "effects",
+            "description": "data.sections.turret.shoot_flame",
+            "version": "default",
+            "isOutdated": false,
+            "example": "shoot_flame: smoke, CUSTOM:lightFade, CUSTOM:pop*5"
+        },
+        {
+            "name": "shoot_light",
+            "type": "color",
+            "description": "data.sections.turret.shoot_light",
+            "version": "default",
+            "isOutdated": false,
+            "example": "shoot_light: #fafafa"
+        },
+        {
+            "name": "onShoot_playAnimation",
+            "type": "animation ref",
+            "description": "data.sections.turret.onshoot_playanimation",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "onShoot_playAnimation: heatUp"
+        },
+        {
+            "name": "onShoot_triggerActions",
+            "type": "action refs",
+            "description": "data.sections.turret.onshoot_triggeractions",
+            "version": "1.14",
+            "isOutdated": false,
+            "example": "onShoot_triggerActions: spawnShells"
+        },
+        {
+            "name": "unloadUpToXUnitsAndGiveAttackOrder",
+            "type": "int",
+            "description": "data.sections.turret.unloaduptoxunitsandgiveattackorder",
+            "version": "1.15",
+            "isOutdated": false,
+            "example": "unloadUpToXUnitsAndGiveAttackOrder: 1"
+        },
+        {
+            "name": "recoilOffset",
+            "type": "float",
+            "description": "data.sections.turret.recoilooffset",
+            "version": "default",
+            "isOutdated": false,
+            "example": "recoilOffset: 10"
+        },
+        {
+            "name": "recoilOutTime",
+            "type": "float",
+            "description": "data.sections.turret.recoilouttime",
+            "version": "default",
+            "isOutdated": false,
+            "example": "recoilOutTime: 1s"
+        },
+        {
+            "name": "recoilReturnTime",
+            "type": "float",
+            "description": "data.sections.turret.recoilreturntime",
+            "version": "default",
+            "isOutdated": false,
+            "example": "recoilReturnTime: 0.5s"
+        },
+        {
+            "name": "showRangeUIGuide",
+            "type": "bool",
+            "description": "data.sections.turret.showrangeuiguide",
+            "version": "1.13.3",
+            "isOutdated": false,
+            "example": "showRangeUIGuide: true"
+        }
+    ]
+}
