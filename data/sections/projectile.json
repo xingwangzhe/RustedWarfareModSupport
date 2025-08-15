@@ -1,0 +1,828 @@
+{
+    "data": [
+        {
+            "name": "life",
+            "type": "int",
+            "description": "data.sections.projectile.life",
+            "version": "default",
+            "isOutdated": false,
+            "example": "life: 300"
+        },
+        {
+            "name": "deflectionPower",
+            "type": "float",
+            "description": "data.sections.projectile.deflectionpower",
+            "version": "default",
+            "isOutdated": false,
+            "example": "deflectionPower: -1"
+        },
+        {
+            "name": "explodeOnEndOfLife",
+            "type": "bool",
+            "description": "data.sections.projectile.explodeonendoflife",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "explodeOnEndOfLife: true"
+        },
+        {
+            "name": "autoTargetingOnDeadTarget",
+            "type": "bool",
+            "description": "data.sections.projectile.autotargetingondeadtarget",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "autoTargetingOnDeadTarget: true"
+        },
+        {
+            "name": "autoTargetingOnDeadTargetRange",
+            "type": "int",
+            "description": "data.sections.projectile.autotargetingondeadtargetrange",
+            "version": "1.14",
+            "isOutdated": false,
+            "example": "autoTargetingOnDeadTargetRange: 100"
+        },
+        {
+            "name": "autoTargetingOnDeadTargetLead",
+            "type": "float",
+            "description": "data.sections.projectile.autotargetingondeadtargetlead",
+            "version": "1.14",
+            "isOutdated": false,
+            "example": "autoTargetingOnDeadTargetLead: 300"
+        },
+        {
+            "name": "unloadUpToXUnitsFromSource",
+            "type": "int",
+            "description": "data.sections.projectile.unloaduptoxunitsfromsource",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "unloadUpToXUnitsFromSource: 2"
+        },
+        {
+            "name": "teleportSource",
+            "type": "bool",
+            "description": "data.sections.projectile.teleportsource",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "teleportSource: true"
+        },
+        {
+            "name": "spawnUnit",
+            "type": "projectile ref",
+            "description": "data.sections.projectile.spawnunit",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "spawnUnit: heavyTank, tank*5, hoverTank(offsetX=10)"
+        },
+        {
+            "name": "spawnProjectilesOnEndOfLife",
+            "type": "projectile ref",
+            "description": "data.sections.projectile.spawnprojectilesonendoflife",
+            "version": "1.14",
+            "isOutdated": false,
+            "example": "spawnProjectilesOnEndOfLife: torpedo_split(offsetDir=90), torpedo_split(offsetDir=-90)"
+        },
+        {
+            "name": "spawnProjectilesOnExplode",
+            "type": "projectile ref",
+            "description": "data.sections.projectile.spawnprojectilesonexplode",
+            "version": "1.14",
+            "isOutdated": false,
+            "example": "spawnProjectilesOnExplode: flachette*4"
+        },
+        {
+            "name": "spawnProjectilesOnCreate",
+            "type": "",
+            "description": "data.sections.projectile.spawnprojectilesoncreate",
+            "version": "1.14",
+            "isOutdated": false,
+            "example": "spawnProjectilesOnCreate: shotgun"
+        },
+        {
+            "name": "convertHitToSourceTeam",
+            "type": "bool",
+            "description": "data.sections.projectile.converthittosourceteam",
+            "version": "1.13.3",
+            "isOutdated": false,
+            "example": "convertHitToSourceTeam: true"
+        },
+        {
+            "name": "tags",
+            "type": "tags",
+            "description": "data.sections.projectile.tags",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "tags: nuke, missile"
+        },
+        {
+            "name": "flameWeapon",
+            "type": "bool",
+            "description": "data.sections.projectile.flameweapon",
+            "version": "default",
+            "isOutdated": false,
+            "example": "flameWeapon: true"
+        },
+        {
+            "name": "delayedStartTimer",
+            "type": "float",
+            "description": "data.sections.projectile.delayedstarttimer",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "delayedStartTimer: 2s"
+        },
+        {
+            "name": "directDamage",
+            "type": "int",
+            "description": "data.sections.projectile.directdamage",
+            "version": "default",
+            "isOutdated": false,
+            "example": "directDamage: 30"
+        },
+        {
+            "name": "areaDamage",
+            "type": "int",
+            "description": "data.sections.projectile.areadamage",
+            "version": "default",
+            "isOutdated": false,
+            "example": "areaDamage: 10"
+        },
+        {
+            "name": "areaRadius",
+            "type": "float",
+            "description": "data.sections.projectile.arearadius",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "areaRadius: 100"
+        },
+        {
+            "name": "areaDamageNoFalloff",
+            "type": "bool",
+            "description": "data.sections.projectile.areadamagenofalloff",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "areaDamageNoFalloff: true"
+        },
+        {
+            "name": "areaRadiusFromEdge",
+            "type": "bool",
+            "description": "data.sections.projectile.arearadiusfromedge",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "areaRadiusFromEdge: true"
+        },
+        {
+            "name": "areaExpandTime",
+            "type": "float",
+            "description": "data.sections.projectile.areaexpandtime",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "areaExpandTime: 1s"
+        },
+        {
+            "name": "areaHitAirAndLandAtSameTime",
+            "type": "bool",
+            "description": "data.sections.projectile.areahitairandlandatsametime",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "areaHitAirAndLandAtSameTime: true"
+        },
+        {
+            "name": "areaHitUnderwaterAlways",
+            "type": "bool",
+            "description": "data.sections.projectile.areahitunderwateralways",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "areaHitUnderwaterAlways: true"
+        },
+        {
+            "name": "areaIgnoreUnitsCloserThan",
+            "type": "int",
+            "description": "data.sections.projectile.areaignoreunitscloserthan",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "areaIgnoreUnitsCloserThan: 10"
+        },
+        {
+            "name": "buildingDamageMultiplier",
+            "type": "float",
+            "description": "data.sections.projectile.buildingdamagemultiplier",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "buildingDamageMultiplier: 3"
+        },
+        {
+            "name": "shieldDamageMultiplier",
+            "type": "float",
+            "description": "data.sections.projectile.shielddamagemultiplier",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "shieldDamageMultiplier: 1.4"
+        },
+        {
+            "name": "shieldDefectionMultiplier",
+            "type": "float",
+            "description": "data.sections.projectile.shielddefectionmultiplier",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "shieldDefectionMultiplier: 1.55"
+        },
+        {
+            "name": "hullDamageMultiplier",
+            "type": "float",
+            "description": "data.sections.projectile.hulldamagemultiplier",
+            "version": "1.14",
+            "isOutdated": false,
+            "example": "hullDamageMultiplier: 2"
+        },
+        {
+            "name": "ignoreParentShootDamageMultiplier",
+            "type": "bool",
+            "description": "data.sections.projectile.ignoreparentshootdamagemultiplier",
+            "version": "1.15",
+            "isOutdated": false,
+            "example": "ignoreParentShootDamageMultiplier: true"
+        },
+        {
+            "name": "armourIgnoreAmount",
+            "type": "int",
+            "description": "data.sections.projectile.armourignoreamount",
+            "version": "default",
+            "isOutdated": false,
+            "example": "armourIgnoreAmount"
+        },
+        {
+            "name": "friendlyFire",
+            "type": "bool/string",
+            "description": "data.sections.projectile.friendlyfire",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "friendlyFire: false / friendlyFire: true / friendlyFire: only-ignoreEnemy"
+        },
+        {
+            "name": "mutatorX_ifUnitWithTags",
+            "type": "tags",
+            "description": "data.sections.projectile.mutatorx_ifunitwithtags",
+            "version": "1.13.3",
+            "isOutdated": false,
+            "example": "mutator1_ifUnitWithTags: infantry"
+        },
+        {
+            "name": "mutatorX_ifUnitWithoutTags",
+            "type": "tags",
+            "description": "data.sections.projectile.mutatorx_ifunitwithouttags",
+            "version": "1.13.3",
+            "isOutdated": false,
+            "example": "mutator1_ifUnitWithoutTags: strongArmour"
+        },
+        {
+            "name": "mutatorX_directDamageMultiplier",
+            "type": "float",
+            "description": "data.sections.projectile.mutatorx_directdamagemultiplier",
+            "version": "1.13.3",
+            "isOutdated": false,
+            "example": "mutatorX_directDamageMultiplier: 5"
+        },
+        {
+            "name": "mutatorX_areaDamageMultiplier",
+            "type": "float",
+            "description": "data.sections.projectile.mutatorx_areadamagemultiplier",
+            "version": "1.13.3",
+            "isOutdated": false,
+            "example": "mutatorX_areaDamageMultiplier: 1.2"
+        },
+        {
+            "name": "mutatorX_changedExplodeEffect",
+            "type": "effect",
+            "description": "data.sections.projectile.mutatorx_changedexplodeeffect",
+            "version": "1.13.3",
+            "isOutdated": false,
+            "example": "mutatorX_changedExplodeEffect: CUSTOM:specialBlast"
+        },
+        {
+            "name": "mutatorX_addResourcesDirectHit",
+            "type": "resource",
+            "description": "data.sections.projectile.mutatorx_addresourcesdirecthit",
+            "version": "1.14",
+            "isOutdated": false,
+            "example": "mutatorX_addResourcesDirectHit: oil=1"
+        },
+        {
+            "name": "mutatorX_addResourcesAreaHit",
+            "type": "resource",
+            "description": "data.sections.projectile.mutatorx_addresourcesareahit",
+            "version": "1.14",
+            "isOutdated": false,
+            "example": "mutatorX_addResourcesAreaHit: rust=4"
+        },
+        {
+            "name": "targetGround",
+            "type": "bool",
+            "description": "data.sections.projectile.targetground",
+            "version": "default",
+            "isOutdated": false,
+            "example": "targetGround: true"
+        },
+        {
+            "name": "targetGround_includeTargetHeight",
+            "type": "bool",
+            "description": "data.sections.projectile.targetground_includetargetheight",
+            "version": "1.14",
+            "isOutdated": false,
+            "example": "targetGround_includeTargetHeight: 40"
+        },
+        {
+            "name": "targetGroundHeightOffset",
+            "type": "float",
+            "description": "data.sections.projectile.targetgroundheightoffset",
+            "version": "1.14",
+            "isOutdated": false,
+            "example": "targetGroundHeightOffset: 10"
+        },
+        {
+            "name": "speed",
+            "type": "float",
+            "description": "data.sections.projectile.speed",
+            "version": "default",
+            "isOutdated": false,
+            "example": "speed: 3"
+        },
+        {
+            "name": "targetSpeed",
+            "type": "float",
+            "description": "data.sections.projectile.targetspeed",
+            "version": "default",
+            "isOutdated": false,
+            "example": "targetSpeed: 5"
+        },
+        {
+            "name": "targetSpeedAcceleration",
+            "type": "float",
+            "description": "data.sections.projectile.targetspeedacceleration",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "targetSpeedAcceleration: 0.3"
+        },
+        {
+            "name": "ballistic",
+            "type": "bool",
+            "description": "data.sections.projectile.ballistic",
+            "version": "default",
+            "isOutdated": false,
+            "example": "ballistic: true"
+        },
+        {
+            "name": "ballistic_delaymove_height",
+            "type": "float",
+            "description": "data.sections.projectile.ballistic_delaymove_height",
+            "version": "default",
+            "isOutdated": false,
+            "example": "ballistic_delaymove_height: 20"
+        },
+        {
+            "name": "ballistic_height",
+            "type": "float",
+            "description": "data.sections.projectile.ballistic_height",
+            "version": "default",
+            "isOutdated": false,
+            "example": "ballistic_height: 10"
+        },
+        {
+            "name": "targetGroundSpread",
+            "type": "float",
+            "description": "data.sections.projectile.targetgroundspread",
+            "version": "default",
+            "isOutdated": false,
+            "example": "targetGroundSpread: 20"
+        },
+        {
+            "name": "speedSpread",
+            "type": "float",
+            "description": "data.sections.projectile.speedspread",
+            "version": "default",
+            "isOutdated": false,
+            "example": "speedSpread: 3"
+        },
+        {
+            "name": "instant",
+            "type": "bool",
+            "description": "data.sections.projectile.instant",
+            "version": "default",
+            "isOutdated": false,
+            "example": "instant: true"
+        },
+        {
+            "name": "instantReuseLast",
+            "type": "bool",
+            "description": "data.sections.projectile.instantreuselast",
+            "version": "1.14",
+            "isOutdated": false,
+            "example": "instantReuseLast: true"
+        },
+        {
+            "name": "instantReuseLast_alsoChangeTurretAim",
+            "type": "bool",
+            "description": "data.sections.projectile.instantreuselast_alsochangeturretaim",
+            "version": "1.14",
+            "isOutdated": false,
+            "example": "instantReuseLast_alsoChangeTurretAim: true"
+        },
+        {
+            "name": "instantReuseLast_keepAreaDamageList",
+            "type": "bool",
+            "description": "data.sections.projectile.instantreuselast_keepareadamagelist",
+            "version": "1.14",
+            "isOutdated": false,
+            "example": "instantReuseLast_keepAreaDamageList: true"
+        },
+        {
+            "name": "interceptProjectile_removeTargetLifeOnly",
+            "type": "bool",
+            "description": "data.sections.projectile.interceptprojectile_removetargetlifeonly",
+            "version": "1.14",
+            "isOutdated": false,
+            "example": "interceptProjectile_removeTargetLifeOnly: true"
+        },
+        {
+            "name": "disableLeadTargeting",
+            "type": "bool",
+            "description": "data.sections.projectile.disableleadtargeting",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "disableLeadTargeting: true"
+        },
+        {
+            "name": "leadTargetingSpeedCalculation",
+            "type": "float",
+            "description": "data.sections.projectile.leadtargetingspeedcalculation",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "leadTargetingSpeedCalculation: 2"
+        },
+        {
+            "name": "initialUnguidedSpeedHeight",
+            "type": "",
+            "description": "data.sections.projectile.initialunguidedspeedheight",
+            "version": "1.13.3",
+            "isOutdated": false,
+            "example": "initialUnguidedSpeedHeight: 30"
+        },
+        {
+            "name": "gravity",
+            "type": "",
+            "description": "data.sections.projectile.gravity",
+            "version": "1.13.3",
+            "isOutdated": false,
+            "example": "gravity: 29"
+        },
+        {
+            "name": "turnSpeed",
+            "type": "float",
+            "description": "data.sections.projectile.turnspeed",
+            "version": "1.14",
+            "isOutdated": false,
+            "example": "turnSpeed: 0"
+        },
+        {
+            "name": "wobbleAmplitude",
+            "type": "float",
+            "description": "data.sections.projectile.wobbleamplitude",
+            "version": "1.14",
+            "isOutdated": false,
+            "example": "wobbleAmplitude: 10"
+        },
+        {
+            "name": "wobbleFrequency",
+            "type": "float",
+            "description": "data.sections.projectile.wobblefrequency",
+            "version": "1.14",
+            "isOutdated": false,
+            "example": "wobbleFrequency: 4"
+        },
+        {
+            "name": "pushForce",
+            "type": "float",
+            "description": "data.sections.projectile.pushforce",
+            "version": "1.14",
+            "isOutdated": false,
+            "example": "pushForce: 2"
+        },
+        {
+            "name": "pushVelocity",
+            "type": "float",
+            "description": "data.sections.projectile.pushvelocity",
+            "version": "1.14",
+            "isOutdated": false,
+            "example": "pushVelocity: 5"
+        },
+        {
+            "name": "moveWithParent",
+            "type": "bool",
+            "description": "data.sections.projectile.movewithparent",
+            "version": "1.14",
+            "isOutdated": false,
+            "example": "moveWithParent: true"
+        },
+        {
+            "name": "sweepOffset",
+            "type": "float",
+            "description": "data.sections.projectile.sweepoffset",
+            "version": "1.14",
+            "isOutdated": false,
+            "example": "sweepOffset: 0.5"
+        },
+        {
+            "name": "sweepOffsetFromTargetRadius",
+            "type": "float",
+            "description": "data.sections.projectile.sweepoffsetfromtargetradius",
+            "version": "1.14",
+            "isOutdated": false,
+            "example": "sweepOffsetFromTargetRadius: 0.4"
+        },
+        {
+            "name": "sweepSpeed",
+            "type": "float",
+            "description": "data.sections.projectile.sweepspeed",
+            "version": "1.14",
+            "isOutdated": false,
+            "example": "sweepSpeed: 1.5"
+        },
+        {
+            "name": "retargetingInFlight",
+            "type": "bool",
+            "description": "data.sections.projectile.retargetinginflight",
+            "version": "1.14",
+            "isOutdated": false,
+            "example": "retargetingInFlight: true"
+        },
+        {
+            "name": "retargetingInFlightSearchDelay",
+            "type": "float/time",
+            "description": "data.sections.projectile.retargetinginflightsearchdelay",
+            "version": "1.14",
+            "isOutdated": false,
+            "example": "retargetingInFlightSearchDelay: 1s"
+        },
+        {
+            "name": "retargetingInFlightSearchRange",
+            "type": "int",
+            "description": "data.sections.projectile.retargetinginflightsearchrange",
+            "version": "1.14",
+            "isOutdated": false,
+            "example": "retargetingInFlightSearchRange: 300"
+        },
+        {
+            "name": "retargetingInFlightSearchLead",
+            "type": "float",
+            "description": "data.sections.projectile.retargetinginflightsearchlead",
+            "version": "1.14",
+            "isOutdated": false,
+            "example": "retargetingInFlightSearchLead: 30"
+        },
+        {
+            "name": "retargetingInFlightSearchOnlyTags",
+            "type": "tag ref",
+            "description": "data.sections.projectile.retargetinginflightsearchonlytags",
+            "version": "1.14",
+            "isOutdated": false,
+            "example": "retargetingInFlightSearchOnlyTags: lightArmor"
+        },
+        {
+            "name": "color",
+            "type": "color",
+            "description": "data.sections.projectile.color",
+            "version": "default",
+            "isOutdated": false,
+            "example": "color: #bebe50"
+        },
+        {
+            "name": "invisible",
+            "type": "bool",
+            "description": "data.sections.projectile.invisible",
+            "version": "1.13.3",
+            "isOutdated": false,
+            "example": "invisible: true"
+        },
+        {
+            "name": "image",
+            "type": "file (image)",
+            "description": "data.sections.projectile.image",
+            "version": "default",
+            "isOutdated": false,
+            "example": "image: bullet"
+        },
+        {
+            "name": "drawType",
+            "type": "int",
+            "description": "data.sections.projectile.drawtype",
+            "version": "default",
+            "isOutdated": false,
+            "example": "drawType:1"
+        },
+        {
+            "name": "drawSize",
+            "type": "float",
+            "description": "data.sections.projectile.drawsize",
+            "version": "default",
+            "isOutdated": false,
+            "example": "drawSize: 1.5"
+        },
+        {
+            "name": "frame",
+            "type": "int",
+            "description": "data.sections.projectile.frame",
+            "version": "default",
+            "isOutdated": false,
+            "example": "frame: 0"
+        },
+        {
+            "name": "hitSound",
+            "type": "bool",
+            "description": "data.sections.projectile.hitsound",
+            "version": "default",
+            "isOutdated": false,
+            "example": "hitSound: true"
+        },
+        {
+            "name": "explodeEffect",
+            "type": "effect ref list",
+            "description": "data.sections.projectile.explodeeffect",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "explodeEffect: smallExplosion, CUSTOM:myExplodeEffect"
+        },
+        {
+            "name": "explodeEffectOnShield",
+            "type": "effect ref list",
+            "description": "data.sections.projectile.explodeeffectonshield",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "explodeEffectOnShield: CUSTOM:EMPwave"
+        },
+        {
+            "name": "teamColorRatio",
+            "type": "float",
+            "description": "data.sections.projectile.teamcolorratio",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "teamColorRatio: 1"
+        },
+        {
+            "name": "teamColorRatio_sourceRatio",
+            "type": "float",
+            "description": "data.sections.projectile.teamcolorratio_sourceratio",
+            "version": "1.14",
+            "isOutdated": false,
+            "example": "teamColorRatio_sourceRatio: 1"
+        },
+        {
+            "name": "drawUnderUnits",
+            "type": "bool",
+            "description": "data.sections.projectile.drawunderunits",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "drawUnderUnits: true"
+        },
+        {
+            "name": "effectOnCreate",
+            "type": "effect ref list",
+            "description": "data.sections.projectile.effectoncreate",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "effectOnCreate: CUSTOM:puff"
+        },
+        {
+            "name": "shouldRevealFog",
+            "type": "bool",
+            "description": "data.sections.projectile.shouldrevealfog",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "shouldRevealFog: true"
+        },
+        {
+            "name": "alwaysVisibleInFog",
+            "type": "bool",
+            "description": "data.sections.projectile.alwaysvisibleinfog",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "alwaysVisibleInFog: false"
+        },
+        {
+            "name": "nukeWeapon",
+            "type": "bool",
+            "description": "data.sections.projectile.nukeweapon",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "nukeWeapon: true"
+        },
+        {
+            "name": "trailEffect",
+            "type": "bool/effect",
+            "description": "data.sections.projectile.traileffect",
+            "version": "default",
+            "isOutdated": false,
+            "example": "trailEffect: true, trailEffect: CUSTOM:rocketThrust"
+        },
+        {
+            "name": "trailEffectRate",
+            "type": "float",
+            "description": "data.sections.projectile.traileffectrate",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "trailEffectRate: 4"
+        },
+        {
+            "name": "lightCastOnGround",
+            "type": "bool",
+            "description": "data.sections.projectile.lightcastonground",
+            "version": "default",
+            "isOutdated": false,
+            "example": "lightCastOnGround: true"
+        },
+        {
+            "name": "lightSize",
+            "type": "float",
+            "description": "data.sections.projectile.lightsize",
+            "version": "default",
+            "isOutdated": false,
+            "example": "lightSize: 1.5"
+        },
+        {
+            "name": "lightColor",
+            "type": "color",
+            "description": "data.sections.projectile.lightcolor",
+            "version": "default",
+            "isOutdated": false,
+            "example": "lightColor: #ffe92b"
+        },
+        {
+            "name": "largeHitEffect",
+            "type": "bool",
+            "description": "data.sections.projectile.largehiteffect",
+            "version": "default",
+            "isOutdated": false,
+            "example": "largeHitEffect: true"
+        },
+        {
+            "name": "lightingEffect",
+            "type": "bool",
+            "description": "data.sections.projectile.lightingeffect",
+            "version": "default",
+            "isOutdated": false,
+            "example": "lightingEffect: true"
+        },
+        {
+            "name": "laserEffect",
+            "type": "bool",
+            "description": "data.sections.projectile.lasereffect",
+            "version": "default",
+            "isOutdated": false,
+            "example": "laserEffect: true"
+        },
+        {
+            "name": "beamImage",
+            "type": "file (image)",
+            "description": "data.sections.projectile.beamimage",
+            "version": "1.14",
+            "isOutdated": false,
+            "example": "beamImage: beam.png"
+        },
+        {
+            "name": "beamImageOffsetRate",
+            "type": "float",
+            "description": "data.sections.projectile.beamimageoffsetrate",
+            "version": "1.14",
+            "isOutdated": false,
+            "example": "beamImageOffsetRate: 1"
+        },
+        {
+            "name": "beamImageStart",
+            "type": "file (image)",
+            "description": "data.sections.projectile.beamimagestart",
+            "version": "1.14",
+            "isOutdated": false,
+            "example": "beamImageStart: beamStart.png"
+        },
+        {
+            "name": "beamImageStartRotated",
+            "type": "bool",
+            "description": "data.sections.projectile.beamimagestartrotated",
+            "version": "1.14",
+            "isOutdated": false,
+            "example": "beamImageStartRotated: true"
+        },
+        {
+            "name": "beamImageEnd",
+            "type": "file (image)",
+            "description": "data.sections.projectile.beamimageend",
+            "version": "1.14",
+            "isOutdated": false,
+            "example": "beamImageEnd: beamEnd.png"
+        },
+        {
+            "name": "beamImageEndRotated",
+            "type": "bool",
+            "description": "data.sections.projectile.beamimageendrotated",
+            "version": "1.14",
+            "isOutdated": false,
+            "example": "beamImageEndRotated: true"
+        }
+    ]
+}
