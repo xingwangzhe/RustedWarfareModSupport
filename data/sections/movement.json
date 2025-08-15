@@ -1,0 +1,156 @@
+{
+    "data": [
+        {
+            "name": "movementType",
+            "type": "string",
+            "description": "data.sections.movement.movementtype",
+            "version": "default",
+            "isOutdated": false,
+            "example": "movementType: LAND"
+        },
+        {
+            "name": "slowDeathFall",
+            "type": "bool",
+            "description": "data.sections.movement.slowdeathfall",
+            "version": "default",
+            "isOutdated": false,
+            "example": "slowDeathFall: true"
+        },
+        {
+            "name": "moveSpeed",
+            "type": "float",
+            "description": "data.sections.movement.movespeed",
+            "version": "default",
+            "isOutdated": false,
+            "example": "moveSpeed: 1.2"
+        },
+        {
+            "name": "moveAccelerationSpeed",
+            "type": "float",
+            "description": "data.sections.movement.moveaccelerationspeed",
+            "version": "default",
+            "isOutdated": false,
+            "example": "moveAccelerationSpeed: 0.07"
+        },
+        {
+            "name": "moveDecelerationSpeed",
+            "type": "float",
+            "description": "data.sections.movement.movedecelerationspeed",
+            "version": "default",
+            "isOutdated": false,
+            "example": "moveDecelerationSpeed: 0.17"
+        },
+        {
+            "name": "reverseSpeedPercentage",
+            "type": "float",
+            "description": "data.sections.movement.reversespeedpercentage",
+            "version": "default",
+            "isOutdated": false,
+            "example": "reverseSpeedPercentage: 0"
+        },
+        {
+            "name": "landOnGround",
+            "type": "bool",
+            "description": "data.sections.movement.landonground",
+            "version": "default",
+            "isOutdated": false,
+            "example": "landOnGround: false"
+        },
+        {
+            "name": "targetHeight",
+            "type": "float",
+            "description": "data.sections.movement.targetheight",
+            "version": "default",
+            "isOutdated": false,
+            "example": "targetHeight: 25"
+        },
+        {
+            "name": "targetHeightDrift",
+            "type": "float",
+            "description": "data.sections.movement.targetheightdrift",
+            "version": "default",
+            "isOutdated": false,
+            "example": "targetHeightDrift: 1"
+        },
+        {
+            "name": "startingHeightOffset",
+            "type": "float",
+            "description": "data.sections.movement.startingheightoffset",
+            "version": "default",
+            "isOutdated": false,
+            "example": "startingHeightOffset: 40"
+        },
+        {
+            "name": "heightChangeRate",
+            "type": "float",
+            "description": "data.sections.movement.heightchangerate",
+            "version": "1.14",
+            "isOutdated": false,
+            "example": "heightChangeRate: 3"
+        },
+        {
+            "name": "fallingAcceleration",
+            "type": "float",
+            "description": "data.sections.movement.fallingacceleration",
+            "version": "1.14",
+            "isOutdated": false,
+            "example": "fallingAcceleration:"
+        },
+        {
+            "name": "fallingAccelerationDead",
+            "type": "float",
+            "description": "data.sections.movement.fallingaccelerationdead",
+            "version": "1.14",
+            "isOutdated": false,
+            "example": "fallingAccelerationDead:"
+        },
+        {
+            "name": "maxTurnSpeed",
+            "type": "float",
+            "description": "data.sections.movement.maxturnspeed",
+            "version": "default",
+            "isOutdated": false,
+            "example": "maxTurnSpeed: 4"
+        },
+        {
+            "name": "turnAcceleration",
+            "type": "float",
+            "description": "data.sections.movement.turnacceleration",
+            "version": "default",
+            "isOutdated": false,
+            "example": "turnAcceleration: 1"
+        },
+        {
+            "name": "moveSlidingMode",
+            "type": "bool",
+            "description": "data.sections.movement.moveslidingmode",
+            "version": "default",
+            "isOutdated": false,
+            "example": "moveSlidingMode: true"
+        },
+        {
+            "name": "moveIgnoringBody",
+            "type": "bool",
+            "description": "data.sections.movement.moveignoringbody",
+            "version": "default",
+            "isOutdated": false,
+            "example": "moveIgnoringBody: true"
+        },
+        {
+            "name": "moveSlidingDir",
+            "type": "int",
+            "description": "data.sections.movement.moveslidingdir",
+            "version": "default",
+            "isOutdated": false,
+            "example": "moveSlidingDir: 180"
+        },
+        {
+            "name": "joinsGroupFormations",
+            "type": "bool",
+            "description": "data.sections.movement.joinsgroupformations",
+            "version": "default",
+            "isOutdated": false,
+            "example": "joinsGroupFormations: false"
+        }
+    ]
+}

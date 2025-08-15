@@ -8,6 +8,7 @@ import { GraphicsCompletionProvider } from './graphics';
 import { AttackCompletionProvider } from './attack';
 import { TurretCompletionProvider } from './turret';
 import { ProjectileCompletionProvider } from './projectile';
+import { MovementCompletionProvider } from './movement';
 
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
@@ -74,6 +75,13 @@ export function activate(context: vscode.ExtensionContext) {
 		':'
 	);
 
+	// 注册movement节的代码补全提供者
+	const movementCompletion = vscode.languages.registerCompletionItemProvider(
+		{ language: 'ini' },
+		new MovementCompletionProvider(),
+		':'
+	);
+
 	context.subscriptions.push(disposable);
 	context.subscriptions.push(sectionParser);
 	context.subscriptions.push(coreCompletion);
@@ -82,6 +90,7 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(attackCompletion);
 	context.subscriptions.push(turretCompletion);
 	context.subscriptions.push(projectileCompletion);
+	context.subscriptions.push(movementCompletion);
 }
 
 // This method is called when your extension is deactivated
