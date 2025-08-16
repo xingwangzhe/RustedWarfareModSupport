@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import { extractExampleValue, getSectionProperties, isInsideSection, isAtLineStart } from './dataProcessor';
+import { extractExampleValue, getSectionProperties, isInsideSection, isAtValidLineStart, hasColonInLine } from './dataProcessor';
 
 /**
  * 为补全项生成格式化的文档信息
@@ -86,8 +86,13 @@ export class GenericCompletionProvider implements vscode.CompletionItemProvider 
             return [];
         }
 
-        // 只有在行首时才提供补全项（允许只有空格或制表符）
-        if (!isAtLineStart(document, position)) {
+        // 检查是否在有效的行首位置（允许输入属性名）
+        if (!isAtValidLineStart(document, position)) {
+            return [];
+        }
+        
+        // 如果行中已经包含冒号，则不提供属性补全（为值补全保留空间）
+        if (hasColonInLine(document, position)) {
             return [];
         }
 

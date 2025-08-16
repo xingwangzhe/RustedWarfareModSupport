@@ -86,13 +86,30 @@ export function isInsideSection(document: vscode.TextDocument, position: vscode.
 }
 
 /**
- * 检查光标是否在行首（没有任何字符）
+ * 检查光标是否在行首（行首允许有空格或制表符，以及属性名字符）
+ * 修复：在输入过程中，光标前可能有已输入的字符，需要检查这些字符是否构成属性名的一部分
  * @param document 文档对象
  * @param position 位置对象
- * @returns 是否在行首
+ * @returns 是否在有效行首位置
  */
-export function isAtLineStart(document: vscode.TextDocument, position: vscode.Position): boolean {
+export function isAtValidLineStart(document: vscode.TextDocument, position: vscode.Position): boolean {
     const line = document.lineAt(position.line).text;
     const beforeCursor = line.substring(0, position.character);
-    return beforeCursor === '';
+    
+    // 允许行首有空格或制表符
+    // 允许有属性名字符（字母、数字、下划线）
+    // 不允许有冒号等其他字符
+    return /^[ \t]*[a-zA-Z0-9_]*$/.test(beforeCursor);
+}
+
+/**
+ * 检查行中是否已经包含冒号
+ * @param document 文档对象
+ * @param position 位置对象
+ * @returns 行中是否已包含冒号
+ */
+export function hasColonInLine(document: vscode.TextDocument, position: vscode.Position): boolean {
+    const line = document.lineAt(position.line).text;
+    const beforeCursor = line.substring(0, position.character);
+    return beforeCursor.includes(':');
 }

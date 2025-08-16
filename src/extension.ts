@@ -58,12 +58,11 @@ export function activate(context: vscode.ExtensionContext) {
 		new AnimationCompletionProvider()
 	];
 
-	// 注册所有补全提供者
+	// 注册所有补全提供者（不设置触发字符，使用默认触发机制）
 	const completionSubscriptions = completionProviders.map(provider => 
 		vscode.languages.registerCompletionItemProvider(
 			{ language: 'ini' },
-			provider,
-			':'
+			provider
 		)
 	);
 
