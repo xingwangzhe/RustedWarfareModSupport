@@ -1,0 +1,156 @@
+{
+    "data": [
+        {
+            "name": "useAsBuilder",
+            "type": "bool",
+            "description": "data.sections.ai.useasbuilder",
+            "version": "default",
+            "isOutdated": false,
+            "example": "useAsBuilder:"
+        },
+        {
+            "name": "useAsTransport",
+            "type": "bool",
+            "description": "data.sections.ai.useastransport",
+            "version": "default",
+            "isOutdated": false,
+            "example": "useAsTransport"
+        },
+        {
+            "name": "useAsHarvester",
+            "type": "bool",
+            "description": "data.sections.ai.useasharvester",
+            "version": "default",
+            "isOutdated": false,
+            "example": "useAsHarvester"
+        },
+        {
+            "name": "disableUse",
+            "type": "bool",
+            "description": "data.sections.ai.disableuse",
+            "version": "default",
+            "isOutdated": false,
+            "example": "disableUse:"
+        },
+        {
+            "name": "ai_upgradePriority",
+            "type": "float",
+            "description": "data.sections.ai.ai_upgradepriority",
+            "version": "default",
+            "isOutdated": false,
+            "example": "ai_upgradePriority"
+        },
+        {
+            "name": "maxGlobal",
+            "type": "int",
+            "description": "data.sections.ai.maxglobal",
+            "version": "default",
+            "isOutdated": false,
+            "example": "maxGlobal: 50"
+        },
+        {
+            "name": "maxEachBase",
+            "type": "int",
+            "description": "data.sections.ai.maxeachbase",
+            "version": "default",
+            "isOutdated": false,
+            "example": "maxEachBase: 10"
+        },
+        {
+            "name": "buildPriority",
+            "type": "float",
+            "description": "data.sections.ai.buildpriority",
+            "version": "default",
+            "isOutdated": false,
+            "example": "buildPriority: 1"
+        },
+        {
+            "name": "noneInBaseExtraPriority",
+            "type": "float",
+            "description": "data.sections.ai.noneinbaseextrapriority",
+            "version": "default",
+            "isOutdated": false,
+            "example": "noneInBaseExtraPriority: 2"
+        },
+        {
+            "name": "noneGlobalExtraPriority",
+            "type": "float",
+            "description": "data.sections.ai.noneglobalextrapriority",
+            "version": "default",
+            "isOutdated": false,
+            "example": "noneGlobalExtraPriority: 4"
+        },
+        {
+            "name": "recommendedInEachBaseNum",
+            "type": "float",
+            "description": "data.sections.ai.recommendedineachbasenum",
+            "version": "default",
+            "isOutdated": false,
+            "example": "recommendedInEachBaseNum: 2"
+        },
+        {
+            "name": "recommendedInEachBasePriorityIfUnmet",
+            "type": "float",
+            "description": "data.sections.ai.recommendedineachbasepriorityifunmet",
+            "version": "default",
+            "isOutdated": false,
+            "example": "recommendedInEachBasePriorityIfUnmet: 4"
+        },
+        {
+            "name": "upgradedFrom",
+            "type": "string",
+            "description": "data.sections.ai.upgradedfrom",
+            "version": "default",
+            "isOutdated": false,
+            "example": "upgradedFrom: builderLevel1"
+        },
+        {
+            "name": "notPassivelyTargetedByOtherUnits",
+            "type": "bool",
+            "description": "data.sections.ai.notpassivelytargetedbyotherunits",
+            "version": "1.14",
+            "isOutdated": false,
+            "example": "notPassivelyTargetedByOtherUnits: true"
+        },
+        {
+            "name": "lowPriorityTargetForOtherUnits",
+            "type": "bool",
+            "description": "data.sections.ai.lowprioritytargetforotherunits",
+            "version": "1.14",
+            "isOutdated": false,
+            "example": "lowPriorityTargetForOtherUnits: true"
+        },
+        {
+            "name": "whenUsingAsHarvester_recommendedInEachBase",
+            "type": "int",
+            "description": "data.sections.ai.whenusingasharvester_recommendedineachbase",
+            "version": "1.13.3",
+            "isOutdated": false,
+            "example": "whenUsingAsHarvester_recommendedInEachBase: 3"
+        },
+        {
+            "name": "whenUsingAsHarvester_recommendedGlobal",
+            "type": "int",
+            "description": "data.sections.ai.whenusingasharvester_recommendedglobal",
+            "version": "1.13.3",
+            "isOutdated": false,
+            "example": "whenUsingAsHarvester_recommendedGlobal: 20"
+        },
+        {
+            "name": "whenUsingAsHarvester_includeOtherHarvesterCounts",
+            "type": "bool",
+            "description": "data.sections.ai.whenusingasharvester_includeotherharvestercounts",
+            "version": "1.13.3",
+            "isOutdated": false,
+            "example": "whenUsingAsHarvester_includeOtherHarvesterCounts: true"
+        },
+        {
+            "name": "onlyUseAsHarvester_ifBaseHasUnitTagged",
+            "type": "string",
+            "description": "data.sections.ai.onlyuseasharvester_ifbasehasunittagged",
+            "version": "1.13.3",
+            "isOutdated": false,
+            "example": "onlyUseAsHarvester_ifBaseHasUnitTagged: mineral, wood, stones"
+        }
+    ]
+}

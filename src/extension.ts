@@ -9,6 +9,8 @@ import { AttackCompletionProvider } from './attack';
 import { TurretCompletionProvider } from './turret';
 import { ProjectileCompletionProvider } from './projectile';
 import { MovementCompletionProvider } from './movement';
+import { AiCompletionProvider } from './ai';
+import { LegArmCompletionProvider } from './leg_arm';
 
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
@@ -82,6 +84,20 @@ export function activate(context: vscode.ExtensionContext) {
 		':'
 	);
 
+	// 注册ai节的代码补全提供者
+	const aiCompletion = vscode.languages.registerCompletionItemProvider(
+		{ language: 'ini' },
+		new AiCompletionProvider(),
+		':'
+	);
+
+	// 注册leg_arm节的代码补全提供者
+	const legArmCompletion = vscode.languages.registerCompletionItemProvider(
+		{ language: 'ini' },
+		new LegArmCompletionProvider(),
+		':'
+	);
+
 	context.subscriptions.push(disposable);
 	context.subscriptions.push(sectionParser);
 	context.subscriptions.push(coreCompletion);
@@ -91,6 +107,8 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(turretCompletion);
 	context.subscriptions.push(projectileCompletion);
 	context.subscriptions.push(movementCompletion);
+	context.subscriptions.push(aiCompletion);
+	context.subscriptions.push(legArmCompletion);
 }
 
 // This method is called when your extension is deactivated
