@@ -11,6 +11,7 @@ import { ProjectileCompletionProvider } from './projectile';
 import { MovementCompletionProvider } from './movement';
 import { AiCompletionProvider } from './ai';
 import { LegArmCompletionProvider } from './leg_arm';
+import { AttachmentCompletionProvider } from './attachment';
 
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
@@ -98,6 +99,13 @@ export function activate(context: vscode.ExtensionContext) {
 		':'
 	);
 
+	// 注册attachment节的代码补全提供者
+	const attachmentCompletion = vscode.languages.registerCompletionItemProvider(
+		{ language: 'ini' },
+		new AttachmentCompletionProvider(),
+		':'
+	);
+
 	context.subscriptions.push(disposable);
 	context.subscriptions.push(sectionParser);
 	context.subscriptions.push(coreCompletion);
@@ -109,6 +117,7 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(movementCompletion);
 	context.subscriptions.push(aiCompletion);
 	context.subscriptions.push(legArmCompletion);
+	context.subscriptions.push(attachmentCompletion);
 }
 
 // This method is called when your extension is deactivated
