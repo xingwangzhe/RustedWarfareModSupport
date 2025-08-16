@@ -13,6 +13,7 @@ import { AiCompletionProvider } from './ai';
 import { LegArmCompletionProvider } from './leg_arm';
 import { AttachmentCompletionProvider } from './attachment';
 import { ActionCompletionProvider } from './action';
+import { EffectCompletionProvider } from './effect';
 
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
@@ -114,6 +115,13 @@ export function activate(context: vscode.ExtensionContext) {
 		':'
 	);
 
+	// 注册effect节的代码补全提供者
+	const effectCompletion = vscode.languages.registerCompletionItemProvider(
+		{ language: 'ini' },
+		new EffectCompletionProvider(),
+		':'
+	);
+
 	context.subscriptions.push(disposable);
 	context.subscriptions.push(sectionParser);
 	context.subscriptions.push(coreCompletion);
@@ -127,6 +135,7 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(legArmCompletion);
 	context.subscriptions.push(attachmentCompletion);
 	context.subscriptions.push(actionCompletion);
+	context.subscriptions.push(effectCompletion);
 }
 
 // This method is called when your extension is deactivated
