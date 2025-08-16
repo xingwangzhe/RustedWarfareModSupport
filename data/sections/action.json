@@ -1,0 +1,1476 @@
+{
+  "data": [
+    {
+      "name": "text",
+      "type": "string",
+      "description": "data.sections.action.text",
+      "version": "default",
+      "isOutdated": false,
+      "example": "text: Catch Fish, text: Fire: %{self.resource.ammo}"
+    },
+    {
+      "name": "textPostFix",
+      "type": "string",
+      "description": "data.sections.action.textpostfix",
+      "version": "default",
+      "isOutdated": false,
+      "example": "text: [  textPostFix: ]  textAddUnitName: unitRef self.attachment(slot=\"${slotId}\")"
+    },
+    {
+      "name": "text_{LANG}",
+      "type": "string",
+      "description": "data.sections.action.text_lang",
+      "version": "default",
+      "isOutdated": false,
+      "example": "text_es: Fuego %{self.resource.ammo}"
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "description": "data.sections.action.description",
+      "version": "default",
+      "isOutdated": false,
+      "example": "description: Fires shot on target area"
+    },
+    {
+      "name": "description_{LANG}",
+      "type": "string",
+      "description": "data.sections.action.description_lang",
+      "version": "default",
+      "isOutdated": false,
+      "example": "description_es: Disparos en el área objetivo"
+    },
+    {
+      "name": "displayType",
+      "type": "list",
+      "description": "data.sections.action.displaytype",
+      "version": "default",
+      "isOutdated": false,
+      "example": "displayType: upgrade"
+    },
+    {
+      "name": "displayRemainingStockpile",
+      "type": "bool",
+      "description": "data.sections.action.displayremainingstockpile",
+      "version": "default",
+      "isOutdated": false,
+      "example": "displayRemainingStockpile: true"
+    },
+    {
+      "name": "pos",
+      "type": "float",
+      "description": "data.sections.action.pos",
+      "version": "default",
+      "isOutdated": false,
+      "example": "pos: 1"
+    },
+    {
+      "name": "iconImage",
+      "type": "file (image)",
+      "description": "data.sections.action.iconimage",
+      "version": "default",
+      "isOutdated": false,
+      "example": "iconImage: fireShot.png"
+    },
+    {
+      "name": "iconExtraImage",
+      "type": "file (image)",
+      "description": "data.sections.action.iconextraimage",
+      "version": "1.14",
+      "isOutdated": false,
+      "example": "iconExtraImage: fireShotNo.png"
+    },
+    {
+      "name": "iconExtraColor",
+      "type": "colour",
+      "description": "data.sections.action.iconextracolor",
+      "version": "1.14",
+      "isOutdated": false,
+      "example": "iconExtraColor: #ff0000"
+    },
+    {
+      "name": "iconExtraIsVisible",
+      "type": "LogicBoolean",
+      "description": "data.sections.action.iconextraisvisible",
+      "version": "1.14",
+      "isOutdated": false,
+      "example": "iconExtraIsVisible: if self.resource.ammo < 1"
+    },
+    {
+      "name": "unitShownInUI",
+      "type": "unitRef/unitType",
+      "description": "data.sections.action.unitshowninui",
+      "version": "default",
+      "isOutdated": false,
+      "example": "eg: unitShownInUI: unitRef self.transporting(slot=0)  or  unitShownInUI: heavyTank"
+    },
+    {
+      "name": "guiBuildUnit",
+      "type": "unitRef/unitType",
+      "description": "data.sections.action.guibuildunit",
+      "version": "default",
+      "isOutdated": false,
+      "example": "guiBuildUnit: placeholderUnit"
+    },
+    {
+      "name": "setBuilt",
+      "type": "float",
+      "description": "data.sections.action.setbuilt",
+      "version": "1.14",
+      "isOutdated": false,
+      "example": "setBuilt: 0.5"
+    },
+    {
+      "name": "tags",
+      "type": "tags",
+      "description": "data.sections.action.tags",
+      "version": "1.15p9",
+      "isOutdated": false,
+      "example": "tags: actionFire"
+    },
+    {
+      "name": "id",
+      "type": "string",
+      "description": "data.sections.action.id",
+      "version": "1.15p11",
+      "isOutdated": false,
+      "example": "id: fireShot"
+    },
+    {
+      "name": "textAddUnitName",
+      "type": "unitRef/unitType",
+      "description": "data.sections.action.textaddunitname",
+      "version": "1.14",
+      "isOutdated": false,
+      "example": "textAddUnitName: unitRef self.attachment(slot=\"1\")"
+    },
+    {
+      "name": "descriptionAddFromUnit",
+      "type": "unitRef/unitType",
+      "description": "data.sections.action.descriptionaddfromunit",
+      "version": "1.14",
+      "isOutdated": false,
+      "example": "descriptionAddFromUnit: builder"
+    },
+    {
+      "name": "descriptionAddUnitStats",
+      "type": "unitRef/unitType",
+      "description": "data.sections.action.descriptionaddunitstats",
+      "version": "1.14",
+      "isOutdated": false,
+      "example": "descriptionAddUnitStats: unitRef self.parent()"
+    },
+    {
+      "name": "unitShownInUIWithHpBar",
+      "type": "bool",
+      "description": "data.sections.action.unitshowninuiwithhpbar",
+      "version": "1.14",
+      "isOutdated": false,
+      "example": "unitShownInUIWithHpBar: true"
+    },
+    {
+      "name": "unitShownInUIWithProgressBar",
+      "type": "bool",
+      "description": "data.sections.action.unitshowninuiwithprogressbar",
+      "version": "1.14",
+      "isOutdated": false,
+      "example": "unitShownInUIWithProgressBar: false"
+    },
+    {
+      "name": "alwaysSinglePress",
+      "type": "bool",
+      "description": "data.sections.action.alwayssinglepress",
+      "version": "1.14",
+      "isOutdated": false,
+      "example": "alwaysSinglePress: true"
+    },
+    {
+      "name": "price",
+      "type": "resources",
+      "description": "data.sections.action.price",
+      "version": "default",
+      "isOutdated": false,
+      "example": "price: credits=5, energy=5, hp=100, shield=5, ammo=1"
+    },
+    {
+      "name": "isActive",
+      "type": "LogicBoolean",
+      "description": "data.sections.action.isactive",
+      "version": "default",
+      "isOutdated": false,
+      "example": "isActive: true"
+    },
+    {
+      "name": "isVisible",
+      "type": "LogicBoolean",
+      "description": "data.sections.action.isvisible",
+      "version": "default",
+      "isOutdated": false,
+      "example": "isVisible: true"
+    },
+    {
+      "name": "isLocked",
+      "type": "LogicBoolean",
+      "description": "data.sections.action.islocked",
+      "version": "default",
+      "isOutdated": false,
+      "example": "isLocked: if self.resource.ammo < 1"
+    },
+    {
+      "name": "isLockedMessage",
+      "type": "LocaleString",
+      "description": "data.sections.action.islockedmessage",
+      "version": "default",
+      "isOutdated": false,
+      "example": "isLockedMessage: Not enough ammunition"
+    },
+    {
+      "name": "isLockedAlt",
+      "type": "LogicBoolean",
+      "description": "data.sections.action.islockedalt",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "isLockedAlt: if numberOfUnitsInGame(withTag=\"factory\") < 2"
+    },
+    {
+      "name": "isLockedAltMessage",
+      "type": "LocaleString",
+      "description": "data.sections.action.islockedaltmessage",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "isLockedAltMessage: Not enough factories!"
+    },
+    {
+      "name": "isLockedAlt2",
+      "type": "LogicBoolean",
+      "description": "data.sections.action.islockedalt2",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "isLockedAlt2: if nearestUnit(withTag=\"explosive\", withinRange=\"500\", relation=\"own\").hp() < 10"
+    },
+    {
+      "name": "isLockedAlt2Message",
+      "type": "LocaleString",
+      "description": "data.sections.action.islockedalt2message",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "isLockedAlt2Message: Explosive stockpile is heavily damaged."
+    },
+    {
+      "name": "allowMultipleInQueue",
+      "type": "bool",
+      "description": "data.sections.action.allowmultipleinqueue",
+      "version": "default",
+      "isOutdated": false,
+      "example": "allowMultipleInQueue: true"
+    },
+    {
+      "name": "onlyOneUnitAtATime",
+      "type": "bool",
+      "description": "data.sections.action.onlyoneunitatatime",
+      "version": "default",
+      "isOutdated": false,
+      "example": "onlyOneUnitAtATime: true"
+    },
+    {
+      "name": "isGuiBlinking",
+      "type": "LogicBoolean",
+      "description": "data.sections.action.isguiblinking",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "isGuiBlinking: true"
+    },
+    {
+      "name": "isAlsoViewableByAllies",
+      "type": "bool",
+      "description": "data.sections.action.isalsoviewablebyallies",
+      "version": "1.14",
+      "isOutdated": false,
+      "example": "isAlsoViewableByAllies: true"
+    },
+    {
+      "name": "isAlsoViewableByEnemies",
+      "type": "bool",
+      "description": "data.sections.action.isalsoviewablebyenemies",
+      "version": "1.14",
+      "isOutdated": false,
+      "example": "isAlsoViewableByEnemies: true"
+    },
+    {
+      "name": "ai_isHighPriority",
+      "type": "LogicBoolean",
+      "description": "data.sections.action.ai_ishighpriority",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "ai_isHighPriority: true"
+    },
+    {
+      "name": "ai_isDisabled",
+      "type": "LogicBoolean",
+      "description": "data.sections.action.ai_isdisabled",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "ai_isDisabled: false"
+    },
+    {
+      "name": "ai_considerSameAsBuilding",
+      "type": "bool",
+      "description": "data.sections.action.ai_considersameasbuilding",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "ai_considerSameAsBuilding: true"
+    },
+    {
+      "name": "autoTriggerOnEvent",
+      "type": "event",
+      "description": "data.sections.action.autotriggeronevent",
+      "version": "1.13.3 - 1.15p9",
+      "isOutdated": false,
+      "example": "autoTriggerOnEvent: queueItemCancelled(withActionTag=\"actionFire\")"
+    },
+    {
+      "name": "autoTriggerOnEventRecursionLimit",
+      "type": "int",
+      "description": "data.sections.action.autotriggeroneventrecursionlimit",
+      "version": "1.15",
+      "isOutdated": false,
+      "example": "autoTriggerOnEventRecursionLimit: 4"
+    },
+    {
+      "name": "autoTrigger",
+      "type": "LogicBoolean",
+      "description": "data.sections.action.autotrigger",
+      "version": "default",
+      "isOutdated": false,
+      "example": "autoTrigger: if self.overWater(), autoTrigger: if self.customTimer(laterThanSeconds=5)"
+    },
+    {
+      "name": "autoTriggerCheckRate",
+      "type": "enum",
+      "description": "data.sections.action.autotriggercheckrate",
+      "version": "default",
+      "isOutdated": false,
+      "example": "autoTriggerCheckRate:every8Frames"
+    },
+    {
+      "name": "buildSpeed",
+      "type": "time",
+      "description": "data.sections.action.buildspeed",
+      "version": "default",
+      "isOutdated": false,
+      "example": "buildSpeed: 5s"
+    },
+    {
+      "name": "highPriorityQueue",
+      "type": "bool",
+      "description": "data.sections.action.highpriorityqueue",
+      "version": "default",
+      "isOutdated": false,
+      "example": "highPriorityQueue: true"
+    },
+    {
+      "name": "canPlayerCancel",
+      "type": "bool",
+      "description": "data.sections.action.canplayercancel",
+      "version": "default",
+      "isOutdated": false,
+      "example": "canPlayerCancel: false"
+    },
+    {
+      "name": "whenBuilding_cannotMove",
+      "type": "bool",
+      "description": "data.sections.action.whenbuilding_cannotmove",
+      "version": "default",
+      "isOutdated": false,
+      "example": "whenBuilding_cannotMove: true"
+    },
+    {
+      "name": "whenBuilding_playAnimation",
+      "type": "animation ref",
+      "description": "data.sections.action.whenbuilding_playanimation",
+      "version": "default",
+      "isOutdated": false,
+      "example": "whenBuilding_playAnimation: firePrepare"
+    },
+    {
+      "name": "whenBuilding_rotateTo",
+      "type": "float",
+      "description": "data.sections.action.whenbuilding_rotateto",
+      "version": "default",
+      "isOutdated": false,
+      "example": "whenBuilding_rotateTo: 45"
+    },
+    {
+      "name": "whenBuilding_rotateTo_orBackwards",
+      "type": "bool",
+      "description": "data.sections.action.whenbuilding_rotateto_orbackwards",
+      "version": "default",
+      "isOutdated": false,
+      "example": "whenBuilding_rotateTo_orBackwards: true"
+    },
+    {
+      "name": "whenBuilding_rotateTo_waitTillRotated",
+      "type": "bool",
+      "description": "data.sections.action.whenbuilding_rotateto_waittillrotated",
+      "version": "default",
+      "isOutdated": false,
+      "example": "whenBuilding_rotateTo_waitTillRotated: true"
+    },
+    {
+      "name": "whenBuilding_temporarilyConvertTo",
+      "type": "unit ref",
+      "description": "data.sections.action.whenbuilding_temporarilyconvertto",
+      "version": "default",
+      "isOutdated": false,
+      "example": "whenBuilding_temporarilyConvertTo: cannon_uberState"
+    },
+    {
+      "name": "whenBuilding_temporarilyConvertTo_keepFields",
+      "type": "fields",
+      "description": "data.sections.action.whenbuilding_temporarilyconvertto_keepfields",
+      "version": "1.15",
+      "isOutdated": false,
+      "example": "whenBuilding_temporarilyConvertTo_keepFields: maxHp, maxEnergy, moveSpeed"
+    },
+    {
+      "name": "whenBuilding_triggerAction",
+      "type": "action ref",
+      "description": "data.sections.action.whenbuilding_triggeraction",
+      "version": "default",
+      "isOutdated": false,
+      "example": "whenBuilding_triggerAction: spawnMinions"
+    },
+    {
+      "name": "whenBuilding_rotateTo_aimAtActionTarget",
+      "type": "bool",
+      "description": "data.sections.action.whenbuilding_rotateto_aimatactiontarget",
+      "version": "1.14",
+      "isOutdated": false,
+      "example": "whenBuilding_rotateTo_aimAtActionTarget: true"
+    },
+    {
+      "name": "whenBuilding_rotateTo_rotateTurretX",
+      "type": "turret ref",
+      "description": "data.sections.action.whenbuilding_rotateto_rotateturretx",
+      "version": "1.14",
+      "isOutdated": false,
+      "example": "whenBuilding_rotateTo_rotateTurretX: cannon"
+    },
+    {
+      "name": "spawnEffectsOnQueue",
+      "type": "effect ref",
+      "description": "data.sections.action.spawneffectsonqueue",
+      "version": "default",
+      "isOutdated": false,
+      "example": "spawnEffectsOnQueue: CUSTOM:steam"
+    },
+    {
+      "name": "playSoundToPlayerOnQueue",
+      "type": "sound ref",
+      "description": "data.sections.action.playsoundtoplayeronqueue",
+      "version": "default",
+      "isOutdated": false,
+      "example": "playSoundToPlayerOnQueue: eva_building.ogg"
+    },
+    {
+      "name": "requireConditional",
+      "type": "LogicBoolean",
+      "description": "data.sections.action.requireconditional",
+      "version": "default",
+      "isOutdated": false,
+      "example": "requireConditional: if self.resource.mass < 300"
+    },
+    {
+      "name": "convertTo",
+      "type": "unit ref",
+      "description": "data.sections.action.convertto",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "convertTo: fishLevel2"
+    },
+    {
+      "name": "convertTo_keepCurrentTags",
+      "type": "bool",
+      "description": "data.sections.action.convertto_keepcurrenttags",
+      "version": "1.14",
+      "isOutdated": false,
+      "example": "convertTo_keepCurrentTags: true"
+    },
+    {
+      "name": "convertTo_keepCurrentFields",
+      "type": "fields",
+      "description": "data.sections.action.convertto_keepcurrentfields",
+      "version": "1.15",
+      "isOutdated": false,
+      "example": "convertTo_keepCurrentFields: armour, maxEnergy, maxHp"
+    },
+    {
+      "name": "addEnergy",
+      "type": "addEnergy",
+      "description": "data.sections.action.addenergy",
+      "version": "default",
+      "isOutdated": false,
+      "example": "addEnergy: 10"
+    },
+    {
+      "name": "addResources",
+      "type": "resources",
+      "description": "data.sections.action.addresources",
+      "version": "default",
+      "isOutdated": false,
+      "example": "addResources: credits=5, energy=-5, hp=-100, shield=5, ammo=1"
+    },
+    {
+      "name": "addResourcesScaledByAIHandicaps",
+      "type": "resources",
+      "description": "data.sections.action.addresourcesscaledbyaihandicaps",
+      "version": "default",
+      "isOutdated": false,
+      "example": "addResourcesScaledByAIHandicaps: credits=5, hp=-100"
+    },
+    {
+      "name": "addResourcesWithLogic",
+      "type": "dynamic resources",
+      "description": "data.sections.action.addresourceswithlogic",
+      "version": "1.15",
+      "isOutdated": false,
+      "example": "addResourcesWithLogic: hp = select( self.parent.energy>5, 10, 20 )"
+    },
+    {
+      "name": "setResourcesWithLogic",
+      "type": "dynamic resources",
+      "description": "data.sections.action.setresourceswithlogic",
+      "version": "1.15",
+      "isOutdated": false,
+      "example": "setResourcesWithLogic: hp=self.parent.hp - 10, energy = self.energy / 2"
+    },
+    {
+      "name": "deleteSelf",
+      "type": "bool",
+      "description": "data.sections.action.deleteself",
+      "version": "default",
+      "isOutdated": false,
+      "example": "deleteSelf: true"
+    },
+    {
+      "name": "resetCustomTimer",
+      "type": "LogicBoolean",
+      "description": "data.sections.action.resetcustomtimer",
+      "version": "default",
+      "isOutdated": false,
+      "example": "resetCustomTimer: true"
+    },
+    {
+      "name": "setBodyRotation",
+      "type": "dynamic",
+      "description": "data.sections.action.setbodyrotation",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "setBodyRotation: 270, setBodyRotation: directionBetween(self, customTarget1)"
+    },
+    {
+      "name": "setUnitStats",
+      "type": "fields values",
+      "description": "data.sections.action.setunitstats",
+      "version": "1.15",
+      "isOutdated": false,
+      "example": "setUnitStats: maxShield += 20, moveSpeed += 0.1"
+    },
+    {
+      "name": "resetUnitStats",
+      "type": "boolean",
+      "description": "data.sections.action.resetunitstats",
+      "version": "1.15",
+      "isOutdated": false,
+      "example": "resetUnitStats: true"
+    },
+    {
+      "name": "setUnitMemory",
+      "type": "key value pairs",
+      "description": "data.sections.action.setunitmemory",
+      "version": "1.15",
+      "isOutdated": false,
+      "example": "setUnitMemory: customText=memory.customText+'hello', nukeActive=true, nextTarget=self.attacking.nearestUnit(withinRange=300, withTag='x', relation='enemy')"
+    },
+    {
+      "name": "setHeight",
+      "type": "logicNumber",
+      "description": "data.sections.action.setheight",
+      "version": "1.15",
+      "isOutdated": false,
+      "example": "setHeight: parent.height+5"
+    },
+    {
+      "name": "setCustomTarget1",
+      "type": "unit ref",
+      "description": "data.sections.action.setcustomtarget1",
+      "version": "1.15",
+      "isOutdated": false,
+      "example": "setCustomTarget1: self.parent"
+    },
+    {
+      "name": "setCustomTarget2",
+      "type": "unit ref",
+      "description": "data.sections.action.setcustomtarget2",
+      "version": "1.15",
+      "isOutdated": false,
+      "example": "setCustomTarget2: lastDamagedBy"
+    },
+    {
+      "name": "sendMessageTo",
+      "type": "unit ref",
+      "description": "data.sections.action.sendmessageto",
+      "version": "1.15",
+      "isOutdated": false,
+      "example": "sendMessageTo: unitref nearestUnit(withinRange=100, withTag=\"fish\")."
+    },
+    {
+      "name": "sendMessageWithTags",
+      "type": "Message Tag",
+      "description": "data.sections.action.sendmessagewithtags",
+      "version": "1.15",
+      "isOutdated": false,
+      "example": "sendMessageWithTags: hitZone"
+    },
+    {
+      "name": "sendMessageWithData",
+      "type": "key-value",
+      "description": "data.sections.action.sendmessagewithdata",
+      "version": "1.15",
+      "isOutdated": false,
+      "example": "sendMessageWithData: fish=\"nice!\", cat=self.activeWaypointTarget, amount=4, xyz=memory.something"
+    },
+    {
+      "name": "refundAllQueuedItems",
+      "type": "boolean",
+      "description": "data.sections.action.refundallqueueditems",
+      "version": "1.15",
+      "isOutdated": false,
+      "example": "refundAllQueuedItems: true"
+    },
+    {
+      "name": "removeAllQueuedItemsWithoutRefund",
+      "type": "boolean",
+      "description": "data.sections.action.removeallqueueditemswithoutrefund",
+      "version": "1.15",
+      "isOutdated": false,
+      "example": "removeAllQueuedItemsWithoutRefund: true"
+    },
+    {
+      "name": "alsoTriggerAction",
+      "type": "action refs",
+      "description": "data.sections.action.alsotriggeraction",
+      "version": "default",
+      "isOutdated": false,
+      "example": "alsoTriggerAction: addCredits, playSound"
+    },
+    {
+      "name": "alsoQueueAction",
+      "type": "action refs",
+      "description": "data.sections.action.alsoqueueaction",
+      "version": "default",
+      "isOutdated": false,
+      "example": "alsoQueueAction: spawnMinions"
+    },
+    {
+      "name": "alsoTriggerOrQueueActionConditional",
+      "type": "LogicBoolean",
+      "description": "data.sections.action.alsotriggerorqueueactionconditional",
+      "version": "default",
+      "isOutdated": false,
+      "example": "alsoTriggerOrQueueActionConditional: false"
+    },
+    {
+      "name": "alsoTriggerOrQueueActionWithTarget",
+      "type": "unitref",
+      "description": "data.sections.action.alsotriggerorqueueactionwithtarget",
+      "version": "1.15p9",
+      "isOutdated": false,
+      "example": "alsoTriggerOrQueueActionWithTarget: lastDamagedBy"
+    },
+    {
+      "name": "alsoTriggerActionRepeat",
+      "type": "logicNumber",
+      "description": "data.sections.action.alsotriggeractionrepeat",
+      "version": "1.15p11",
+      "isOutdated": false,
+      "example": "alsoTriggerActionRepeat: 5"
+    },
+    {
+      "name": "playSoundAtUnit",
+      "type": "sound ref",
+      "description": "data.sections.action.playsoundatunit",
+      "version": "default",
+      "isOutdated": false,
+      "example": "playSoundAtUnit: engineStart.ogg"
+    },
+    {
+      "name": "playSoundGlobally",
+      "type": "sound ref",
+      "description": "data.sections.action.playsoundglobally",
+      "version": "default",
+      "isOutdated": false,
+      "example": "playSoundGlobally: hornWarn.ogg"
+    },
+    {
+      "name": "playSoundToPlayer",
+      "type": "sound ref",
+      "description": "data.sections.action.playsoundtoplayer",
+      "version": "default",
+      "isOutdated": false,
+      "example": "playSoundToPlayer: confirm.wav"
+    },
+    {
+      "name": "fireTurretXAtGround",
+      "type": "turret ref",
+      "description": "data.sections.action.fireturretxatground",
+      "version": "default",
+      "isOutdated": false,
+      "example": "fireTurretXAtGround: nukeSilo"
+    },
+    {
+      "name": "fireTurretXAtGround_withOffset",
+      "type": "point",
+      "description": "data.sections.action.fireturretxatground_withoffset",
+      "version": "default",
+      "isOutdated": false,
+      "example": "fireTurretXAtGround_withOffset: 0,0"
+    },
+    {
+      "name": "fireTurretXAtGround_withProjectile",
+      "type": "projectile ref",
+      "description": "data.sections.action.fireturretxatground_withprojectile",
+      "version": "default",
+      "isOutdated": false,
+      "example": "fireTurretXAtGround_withProjectile: nuke"
+    },
+    {
+      "name": "fireTurretXAtGround_withTarget",
+      "type": "unitref",
+      "description": "data.sections.action.fireturretxatground_withtarget",
+      "version": "1.15",
+      "isOutdated": false,
+      "example": "fireTurretXAtGround_withTarget: lastDamagedBy"
+    },
+    {
+      "name": "fireTurretXAtGround_count",
+      "type": "",
+      "description": "data.sections.action.fireturretxatground_count",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "fireTurretXAtGround_count: 3"
+    },
+    {
+      "name": "fireTurretXAtGround_onlyOverPassableTileOf",
+      "type": "",
+      "description": "data.sections.action.fireturretxatground_onlyoverpassabletileof",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "fireTurretXAtGround_onlyOverPassableTileOf: HOVER"
+    },
+    {
+      "name": "fireTurretXAtGround_showGuideDecals",
+      "type": "decal refs",
+      "description": "data.sections.action.fireturretxatground_showguidedecals",
+      "version": "1.15p11",
+      "isOutdated": false,
+      "example": "fireTurretXAtGround_showGuideDecals: strikeZone300"
+    },
+    {
+      "name": "spawnUnits",
+      "type": "unitref",
+      "description": "data.sections.action.spawnunits",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "spawnUnits: heavyTank, tank*5, hoverTank(offsetX=10)"
+    },
+    {
+      "name": "produceUnits",
+      "type": "unitref",
+      "description": "data.sections.action.produceunits",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "produceUnits: builder*4, plasmaTank*8"
+    },
+    {
+      "name": "spawnEffects",
+      "type": "effect ref",
+      "description": "data.sections.action.spawneffects",
+      "version": "default",
+      "isOutdated": false,
+      "example": "spawnEffects: CUSTOM:puff"
+    },
+    {
+      "name": "offsetSelfAbsolute",
+      "type": "point3d",
+      "description": "data.sections.action.offsetselfabsolute",
+      "version": "1.14",
+      "isOutdated": false,
+      "example": "offsetSelfAbsolute: 0, 0, 40"
+    },
+    {
+      "name": "teleportTo",
+      "type": "unit ref/marker",
+      "description": "data.sections.action.teleportto",
+      "version": "1.15p11",
+      "isOutdated": false,
+      "example": "teleportTo: memory.lastLocation"
+    },
+    {
+      "name": "addUnitsIntoTransport",
+      "type": "unitTypes",
+      "description": "data.sections.action.addunitsintotransport",
+      "version": "1.14",
+      "isOutdated": false,
+      "example": "addUnitsIntoTransport: tank*3, heavyTank(neutralTeam=true)"
+    },
+    {
+      "name": "transportTargetNow",
+      "type": "unit ref",
+      "description": "data.sections.action.transporttargetnow",
+      "version": "1.15",
+      "isOutdated": true,
+      "example": "transportTargetNow: lastDamagedBy"
+    },
+    {
+      "name": "deleteNumUnitsFromTransport",
+      "type": "int",
+      "description": "data.sections.action.deletenumunitsfromtransport",
+      "version": "default",
+      "isOutdated": false,
+      "example": "deleteNumUnitsFromTransport: 2"
+    },
+    {
+      "name": "deleteNumUnitsFromTransport_onlyWithTags",
+      "type": "string(s)",
+      "description": "data.sections.action.deletenumunitsfromtransport_onlywithtags",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "deleteNumUnitsFromTransport_onlyWithTags: cheapStuff"
+    },
+    {
+      "name": "startUnloadingTransport",
+      "type": "bool",
+      "description": "data.sections.action.startunloadingtransport",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "startUnloadingTransport: true"
+    },
+    {
+      "name": "forceUnloadTransportNow",
+      "type": "bool",
+      "description": "data.sections.action.forceunloadtransportnow",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "forceUnloadTransportNow: true"
+    },
+    {
+      "name": "forceUnloadTransportNow_onlyOnSlot",
+      "type": "int",
+      "description": "data.sections.action.forceunloadtransportnow_onlyonslot",
+      "version": "1.14",
+      "isOutdated": false,
+      "example": "forceUnloadTransportNow_onlyOnSlot: drop1"
+    },
+    {
+      "name": "clearAllWaypoints",
+      "type": "bool",
+      "description": "data.sections.action.clearallwaypoints",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "clearAllWaypoints: true"
+    },
+    {
+      "name": "clearActiveWaypoint",
+      "type": "bool",
+      "description": "data.sections.action.clearactivewaypoint",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "clearActiveWaypoint: true"
+    },
+    {
+      "name": "addWaypoint_type",
+      "type": "enum",
+      "description": "data.sections.action.addwaypoint_type",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "addWaypoint_type: move"
+    },
+    {
+      "name": "addWaypoint_unitType",
+      "type": "unitTypes",
+      "description": "data.sections.action.addwaypoint_unittype",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "addWaypoint_unitType: turret"
+    },
+    {
+      "name": "addWaypoint_prepend",
+      "type": "bool",
+      "description": "data.sections.action.addwaypoint_prepend",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "addWaypoint_prepend: false"
+    },
+    {
+      "name": "addWaypoint_triggerActionIfFailed",
+      "type": "actions",
+      "description": "data.sections.action.addwaypoint_triggeractioniffailed",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "addWaypoint_triggerActionIfFailed: retreat"
+    },
+    {
+      "name": "addWaypoint_triggerActionIfMatched",
+      "type": "actions",
+      "description": "data.sections.action.addwaypoint_triggeractionifmatched",
+      "version": "1.14",
+      "isOutdated": false,
+      "example": "addWaypoint_triggerActionIfMatched: VIP_target"
+    },
+    {
+      "name": "addWaypoint_maxTime",
+      "type": "time",
+      "description": "data.sections.action.addwaypoint_maxtime",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "addWaypoint_maxTime: 20s"
+    },
+    {
+      "name": "addWaypoint_target_nearestUnit_tagged",
+      "type": "tags",
+      "description": "data.sections.action.addwaypoint_target_nearestunit_tagged",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "addWaypoint_target_nearestUnit_tagged: assault, mechanized"
+    },
+    {
+      "name": "addWaypoint_target_nearestUnit_team",
+      "type": "relation",
+      "description": "data.sections.action.addwaypoint_target_nearestunit_team",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "addWaypoint_target_nearestUnit_team: ally"
+    },
+    {
+      "name": "addWaypoint_target_nearestUnit_maxRange",
+      "type": "float",
+      "description": "data.sections.action.addwaypoint_target_nearestunit_maxrange",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "addWaypoint_target_nearestUnit_maxRange: 2000"
+    },
+    {
+      "name": "addWaypoint_target_mapMustBeReachable",
+      "type": "bool",
+      "description": "data.sections.action.addwaypoint_target_mapmustbereachable",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "addWaypoint_target_mapMustBeReachable: true"
+    },
+    {
+      "name": "addWaypoint_target_fromReference",
+      "type": "unit ref",
+      "description": "data.sections.action.addwaypoint_target_fromreference",
+      "version": "1.15",
+      "isOutdated": false,
+      "example": "addWaypoint_target_fromReference: self.memory.lastDock"
+    },
+    {
+      "name": "addWaypoint_position_offsetFromSelf",
+      "type": "point",
+      "description": "data.sections.action.addwaypoint_position_offsetfromself",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "addWaypoint_position_offsetFromSelf:"
+    },
+    {
+      "name": "addWaypoint_position_fromAction",
+      "type": "bool",
+      "description": "data.sections.action.addwaypoint_position_fromaction",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "addWaypoint_position_fromAction: fireShot"
+    },
+    {
+      "name": "addWaypoint_position_randomOffsetFromSelf",
+      "type": "point",
+      "description": "data.sections.action.addwaypoint_position_randomoffsetfromself",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "addWaypoint_position_randomOffsetFromSelf:"
+    },
+    {
+      "name": "addWaypoint_position_relativeOffsetFromSelf",
+      "type": "point",
+      "description": "data.sections.action.addwaypoint_position_relativeoffsetfromself",
+      "version": "1.14",
+      "isOutdated": false,
+      "example": "addWaypoint_position_relativeOffsetFromSelf: 10, 20"
+    },
+    {
+      "name": "addWaypoint_target_randomUnit_tagged",
+      "type": "tags",
+      "description": "data.sections.action.addwaypoint_target_randomunit_tagged",
+      "version": "1.14p6",
+      "isOutdated": false,
+      "example": "addWaypoint_target_randomUnit_tagged: chargers, strikers"
+    },
+    {
+      "name": "addWaypoint_target_randomUnit_team",
+      "type": "relation",
+      "description": "data.sections.action.addwaypoint_target_randomunit_team",
+      "version": "1.14p6",
+      "isOutdated": false,
+      "example": "addWaypoint_target_randomUnit_team: any"
+    },
+    {
+      "name": "addWaypoint_target_randomUnit_maxRange",
+      "type": "int",
+      "description": "data.sections.action.addwaypoint_target_randomunit_maxrange",
+      "version": "1.14p6",
+      "isOutdated": false,
+      "example": "addWaypoint_target_randomUnit_maxRange: 1000"
+    },
+    {
+      "name": "addAllActionCooldownsTime",
+      "type": "time",
+      "description": "data.sections.action.addallactioncooldownstime",
+      "version": "1.14",
+      "isOutdated": false,
+      "example": "addAllActionCooldownsTime: 4s"
+    },
+    {
+      "name": "addActionCooldownTime",
+      "type": "time",
+      "description": "data.sections.action.addactioncooldowntime",
+      "version": "1.14",
+      "isOutdated": false,
+      "example": "addActionCooldownTime: 20s"
+    },
+    {
+      "name": "addActionCooldownApplyToActions",
+      "type": "action ids",
+      "description": "data.sections.action.addactioncooldownapplytoactions",
+      "version": "1.14",
+      "isOutdated": false,
+      "example": "addActionCooldownApplyToActions: retreat, transformFins"
+    },
+    {
+      "name": "clearAllActionCooldowns",
+      "type": "bool",
+      "description": "data.sections.action.clearallactioncooldowns",
+      "version": "1.14",
+      "isOutdated": false,
+      "example": "clearAllActionCooldowns: true"
+    },
+    {
+      "name": "playAnimation",
+      "type": "animation id",
+      "description": "data.sections.action.playanimation",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "playAnimation: engageThrusters"
+    },
+    {
+      "name": "playAnimationIfNotPlaying",
+      "type": "bool",
+      "description": "data.sections.action.playanimationifnotplaying",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "playAnimationIfNotPlaying: true"
+    },
+    {
+      "name": "finishPlayingLastAnimation",
+      "type": "bool",
+      "description": "data.sections.action.finishplayinglastanimation",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "finishPlayingLastAnimation: true"
+    },
+    {
+      "name": "stopLastAnimation",
+      "type": "bool",
+      "description": "data.sections.action.stoplastanimation",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "stopLastAnimation: true"
+    },
+    {
+      "name": "switchToNeutralTeam",
+      "type": "boolean",
+      "description": "data.sections.action.switchtoneutralteam",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "switchToNeutralTeam: false"
+    },
+    {
+      "name": "switchToAggressiveTeam",
+      "type": "boolean",
+      "description": "data.sections.action.switchtoaggressiveteam",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "switchToAggressiveTeam: true"
+    },
+    {
+      "name": "switchToTeam",
+      "type": "logicNumber",
+      "description": "data.sections.action.switchtoteam",
+      "version": "1.15",
+      "isOutdated": false,
+      "example": "switchToTeam: 2, switchToTeam: lastDamagedBy.teamId"
+    },
+    {
+      "name": "takeResources",
+      "type": "customPrice",
+      "description": "data.sections.action.takeresources",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "takeResources: hp=5, gold=10"
+    },
+    {
+      "name": "takeResources_includeUnitsInTransport",
+      "type": "bool",
+      "description": "data.sections.action.takeresources_includeunitsintransport",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "takeResources_includeUnitsInTransport: true"
+    },
+    {
+      "name": "takeResources_includeParent",
+      "type": "bool",
+      "description": "data.sections.action.takeresources_includeparent",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "takeResources_includeParent: true"
+    },
+    {
+      "name": "takeResources_includeReference",
+      "type": "unit ref",
+      "description": "data.sections.action.takeresources_includereference",
+      "version": "1.15",
+      "isOutdated": false,
+      "example": "takeResources_includeReference: self.lastDamagedBy"
+    },
+    {
+      "name": "takeResources_includeUnitsWithinRange",
+      "type": "float",
+      "description": "data.sections.action.takeresources_includeunitswithinrange",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "takeResources_includeUnitsWithinRange: 300"
+    },
+    {
+      "name": "takeResources_includeUnitsWithinRange_team",
+      "type": "TeamRelation",
+      "description": "data.sections.action.takeresources_includeunitswithinrange_team",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "takeResources_includeUnitsWithinRange_team: own"
+    },
+    {
+      "name": "takeResources_excludeUnitsWithoutTags",
+      "type": "tags",
+      "description": "data.sections.action.takeresources_excludeunitswithouttags",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "takeResources_excludeUnitsWithoutTags: truck, tanker"
+    },
+    {
+      "name": "takeResources_excludeUnitsWithTheseResources",
+      "type": "customPrice",
+      "description": "data.sections.action.takeresources_excludeunitswiththeseresources",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "takeResources_excludeUnitsWithTheseResources: oil, juice, sauce"
+    },
+    {
+      "name": "takeResources_excludeUnitsWithoutAllResources",
+      "type": "bool",
+      "description": "data.sections.action.takeresources_excludeunitswithoutallresources",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "takeResources_excludeUnitsWithoutAllResources: true"
+    },
+    {
+      "name": "takeResources_triggerActionIfAnyCollected",
+      "type": "action refs",
+      "description": "data.sections.action.takeresources_triggeractionifanycollected",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "takeResources_triggerActionIfAnyCollected: purify"
+    },
+    {
+      "name": "takeResources_triggerActionIfNoneCollected",
+      "type": "action refs",
+      "description": "data.sections.action.takeresources_triggeractionifnonecollected",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "takeResources_triggerActionIfNoneCollected: callOtherTanker"
+    },
+    {
+      "name": "takeResources_triggerActionForEach",
+      "type": "action refs",
+      "description": "data.sections.action.takeresources_triggeractionforeach",
+      "version": "1.15p11",
+      "isOutdated": false,
+      "example": "takeResources_triggerActionForEach: manufacture"
+    },
+    {
+      "name": "takeResources_discardCollected",
+      "type": "bool",
+      "description": "data.sections.action.takeresources_discardcollected",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "takeResources_discardCollected: false"
+    },
+    {
+      "name": "takeResources_keepResourcesOnTarget",
+      "type": "bool",
+      "description": "data.sections.action.takeresources_keepresourcesontarget",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "takeResources_keepResourcesOnTarget: true"
+    },
+    {
+      "name": "takeResources_maxUnits",
+      "type": "int",
+      "description": "data.sections.action.takeresources_maxunits",
+      "version": "default",
+      "isOutdated": false,
+      "example": "takeResources_maxUnits: 10"
+    },
+    {
+      "name": "takeResources_searchOnly",
+      "type": "bool",
+      "description": "data.sections.action.takeresources_searchonly",
+      "version": "1.15",
+      "isOutdated": false,
+      "example": "takeResources_searchOnly: true"
+    },
+    {
+      "name": "takeResources_directTransferStoppingAtZero",
+      "type": "bool",
+      "description": "data.sections.action.takeresources_directtransferstoppingatzero",
+      "version": "1.14",
+      "isOutdated": false,
+      "example": "takeResources_directTransferStoppingAtZero: true"
+    },
+    {
+      "name": "convertResource_from",
+      "type": "customResource",
+      "description": "data.sections.action.convertresource_from",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "convertResource_from: juice"
+    },
+    {
+      "name": "convertResource_to",
+      "type": "customResource",
+      "description": "data.sections.action.convertresource_to",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "convertResource_to: sauce"
+    },
+    {
+      "name": "convertResource_minAmount",
+      "type": "float",
+      "description": "data.sections.action.convertresource_minamount",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "convertResource_minAmount: 10"
+    },
+    {
+      "name": "convertResource_maxAmount",
+      "type": "float",
+      "description": "data.sections.action.convertresource_maxamount",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "convertResource_maxAmount: 100"
+    },
+    {
+      "name": "convertResource_multiplyAmountBy",
+      "type": "float",
+      "description": "data.sections.action.convertresource_multiplyamountby",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "convertResource_multiplyAmountBy: 1.5"
+    },
+    {
+      "name": "resourceAmount",
+      "type": "customResource",
+      "description": "data.sections.action.resourceamount",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "resourceAmount: oil"
+    },
+    {
+      "name": "resourceAmount_setValue",
+      "type": "float",
+      "description": "data.sections.action.resourceamount_setvalue",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "resourceAmount_setValue: 20"
+    },
+    {
+      "name": "resourceAmount_addOtherResource",
+      "type": "customResource",
+      "description": "data.sections.action.resourceamount_addotherresource",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "resourceAmount_addOtherResource: juice"
+    },
+    {
+      "name": "resourceAmount_multiplyBy",
+      "type": "float",
+      "description": "data.sections.action.resourceamount_multiplyby",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "resourceAmount_multiplyBy: 2"
+    },
+    {
+      "name": "attachments_addNewUnits",
+      "type": "unit types",
+      "description": "data.sections.action.attachments_addnewunits",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "attachments_addNewUnits: coreDefense*3"
+    },
+    {
+      "name": "attachments_deleteNumUnits",
+      "type": "int",
+      "description": "data.sections.action.attachments_deletenumunits",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "attachments_deleteNumUnits: 3"
+    },
+    {
+      "name": "attachments_onlyOnSlots",
+      "type": "attachment ids",
+      "description": "data.sections.action.attachments_onlyonslots",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "attachments_onlyOnSlots: drop1, drop2, drop3"
+    },
+    {
+      "name": "attachments_unload",
+      "type": "bool",
+      "description": "data.sections.action.attachments_unload",
+      "version": "1.14",
+      "isOutdated": false,
+      "example": "attachments_unload: true"
+    },
+    {
+      "name": "attachments_disconnect",
+      "type": "bool",
+      "description": "data.sections.action.attachments_disconnect",
+      "version": "1.14",
+      "isOutdated": false,
+      "example": "attachments_disconnect: true"
+    },
+    {
+      "name": "disconnectFromParent",
+      "type": "bool",
+      "description": "data.sections.action.disconnectfromparent",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "disconnectFromParent: true"
+    },
+    {
+      "name": "temporarilyAddTags",
+      "type": "tags",
+      "description": "data.sections.action.temporarilyaddtags",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "temporarilyAddTags: emptyJuice, fullSauce"
+    },
+    {
+      "name": "temporarilyRemoveTags",
+      "type": "tags",
+      "description": "data.sections.action.temporarilyremovetags",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "temporarilyRemoveTags: fullJuice, emptySauce"
+    },
+    {
+      "name": "resetToDefaultTags",
+      "type": "bool",
+      "description": "data.sections.action.resettodefaulttags",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "resetToDefaultTags: true"
+    },
+    {
+      "name": "addGlobalTeamTags",
+      "type": "tags",
+      "description": "data.sections.action.addglobalteamtags",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "addGlobalTeamTags: upgrade_energized, upgrade_research2"
+    },
+    {
+      "name": "removeGlobalTeamTags",
+      "type": "tags",
+      "description": "data.sections.action.removeglobalteamtags",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "removeGlobalTeamTags: buff_immune"
+    },
+    {
+      "name": "showMessageToPlayer",
+      "type": "string",
+      "description": "data.sections.action.showmessagetoplayer",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "showMessageToPlayer: There is a hidden enemy near your defenses"
+    },
+    {
+      "name": "showMessageToPlayer_{LANG}",
+      "type": "string",
+      "description": "data.sections.action.showmessagetoplayer_lang",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "showMessageToPlayer_fil: May nakatagong kalaban na malapit sa mga depensa mo"
+    },
+    {
+      "name": "showMessageToAllPlayers",
+      "type": "string",
+      "description": "data.sections.action.showmessagetoallplayers",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "showMessageToAllPlayers: %{self.playerName} has captured a point"
+    },
+    {
+      "name": "showMessageToAllEnemyPlayers",
+      "type": "string",
+      "description": "data.sections.action.showmessagetoallenemyplayers",
+      "version": "1.14",
+      "isOutdated": false,
+      "example": "showMessageToAllEnemyPlayers: Team %{self.playerName} has %{self.resource.gold}"
+    },
+    {
+      "name": "showQuickWarLogToPlayer",
+      "type": "string",
+      "description": "data.sections.action.showquickwarlogtoplayer",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "showQuickWarLogToPlayer: Unit decloaked"
+    },
+    {
+      "name": "showQuickWarLogToAllPlayers",
+      "type": "",
+      "description": "data.sections.action.showquickwarlogtoallplayers",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "showQuickWarLogToAllPlayers: 500 oil sold to allied market"
+    },
+    {
+      "name": "debugMessage",
+      "type": "",
+      "description": "data.sections.action.debugmessage",
+      "version": "default",
+      "isOutdated": false,
+      "example": "debugMessage: [action log] unit launch on %{thisActionTarget.x}, %{thisActionTarget.y}"
+    }
+  ]
+}
