@@ -1,0 +1,156 @@
+{
+  "data": [
+    {
+      "name": "onActions",
+      "type": "enum",
+      "description": "data.sections.animation.onactions",
+      "version": "1.13",
+      "isOutdated": false,
+      "example": "onActions: move"
+    },
+    {
+      "name": "onActionsQueuedUnitPlayAt",
+      "type": "float",
+      "description": "data.sections.animation.onactionsqueuedunitplayat",
+      "version": "1.13",
+      "isOutdated": false,
+      "example": "onActionsQueuedUnitPlayAt: 0"
+    },
+    {
+      "name": "blendIn",
+      "type": "time",
+      "description": "data.sections.animation.blendin",
+      "version": "1.13",
+      "isOutdated": false,
+      "example": "blendIn: 2s"
+    },
+    {
+      "name": "blendOut",
+      "type": "time",
+      "description": "data.sections.animation.blendout",
+      "version": "1.13",
+      "isOutdated": false,
+      "example": "blendOut: 3s"
+    },
+    {
+      "name": "pingPong",
+      "type": "bool",
+      "description": "data.sections.animation.pingpong",
+      "version": "1.13",
+      "isOutdated": false,
+      "example": "pingPong: true"
+    },
+    {
+      "name": "KeyframeTimeScale",
+      "type": "float",
+      "description": "data.sections.animation.keyframetimescale",
+      "version": "1.13",
+      "isOutdated": false,
+      "example": "KeyframeTimeScale: 1"
+    },
+    {
+      "name": "arm#_[time]",
+      "type": "",
+      "description": "data.sections.animation.armtime",
+      "version": "1.13",
+      "isOutdated": false,
+      "example": "arm1_5s: {x: 5, dir: 90 }"
+    },
+    {
+      "name": "leg#_[time]",
+      "type": "",
+      "description": "data.sections.animation.legtime",
+      "version": "1.13",
+      "isOutdated": false,
+      "example": "leg1_3s: {dir: 300}"
+    },
+    {
+      "name": "body_[time]",
+      "type": "",
+      "description": "data.sections.animation.bodytime",
+      "version": "1.13",
+      "isOutdated": false,
+      "example": "body_4s: {frame: 4, scale: 0.5}"
+    },
+    {
+      "name": "effect_[time]",
+      "type": "",
+      "description": "data.sections.animation.effecttime",
+      "version": "1.14",
+      "isOutdated": false,
+      "example": "effect_2s: {name:CUSTOM|myExplode,  x: 0,y: 5}"
+    },
+    {
+      "name": "direction_units",
+      "type": "float",
+      "description": "data.sections.animation.direction_units",
+      "version": "1.13",
+      "isOutdated": false,
+      "example": "direction_units: 45"
+    },
+    {
+      "name": "direction_strideX",
+      "type": "int",
+      "description": "data.sections.animation.direction_stridex",
+      "version": "1.13",
+      "isOutdated": false,
+      "example": "direction_strideX: 20"
+    },
+    {
+      "name": "direction_strideY",
+      "type": "int",
+      "description": "data.sections.animation.direction_stridey",
+      "version": "1.13",
+      "isOutdated": false,
+      "example": "direction_strideY: 50"
+    },
+    {
+      "name": "direction_starting",
+      "type": "float",
+      "description": "data.sections.animation.direction_starting",
+      "version": "1.13",
+      "isOutdated": false,
+      "example": "direction_starting: 0"
+    },
+    {
+      "name": "start",
+      "type": "int",
+      "description": "data.sections.animation.start",
+      "version": "1.13",
+      "isOutdated": true,
+      "example": "start: 0"
+    },
+    {
+      "name": "end",
+      "type": "int",
+      "description": "data.sections.animation.end",
+      "version": "1.13",
+      "isOutdated": true,
+      "example": "end: 10"
+    },
+    {
+      "name": "scale_start",
+      "type": "float",
+      "description": "data.sections.animation.scale_start",
+      "version": "1.13",
+      "isOutdated": true,
+      "example": "scale_start: 1.0"
+    },
+    {
+      "name": "scale_end",
+      "type": "float",
+      "description": "data.sections.animation.scale_end",
+      "version": "1.13",
+      "isOutdated": true,
+      "example": "scale_end: 2.0"
+    },
+    {
+      "name": "speed",
+      "type": "float",
+      "description": "data.sections.animation.speed",
+      "version": "1.13",
+      "isOutdated": false,
+      "example": "speed: 0.5"
+    }
+  ]
+}
