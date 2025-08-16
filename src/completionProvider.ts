@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import { extractExampleValue, getSectionProperties, isInsideSection } from './dataProcessor';
+import { extractExampleValue, getSectionProperties, isInsideSection, isAtLineStart } from './dataProcessor';
 
 /**
  * 为补全项生成格式化的文档信息
@@ -83,6 +83,11 @@ export class GenericCompletionProvider implements vscode.CompletionItemProvider 
     ): vscode.ProviderResult<vscode.CompletionItem[] | vscode.CompletionList> {
         // 如果不在目标节内，返回空数组
         if (!isInsideSection(document, position, this.sectionMatcher)) {
+            return [];
+        }
+
+        // 只有在行首时才提供补全项（允许只有空格或制表符）
+        if (!isAtLineStart(document, position)) {
             return [];
         }
 

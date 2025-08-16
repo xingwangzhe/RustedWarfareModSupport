@@ -84,3 +84,15 @@ export function isInsideSection(document: vscode.TextDocument, position: vscode.
     }
     return insideSection;
 }
+
+/**
+ * 检查光标是否在行首（没有任何字符）
+ * @param document 文档对象
+ * @param position 位置对象
+ * @returns 是否在行首
+ */
+export function isAtLineStart(document: vscode.TextDocument, position: vscode.Position): boolean {
+    const line = document.lineAt(position.line).text;
+    const beforeCursor = line.substring(0, position.character);
+    return beforeCursor === '';
+}
