@@ -12,38 +12,6 @@ export function extractExampleValue(example: string): string {
 }
 
 /**
- * 为补全项生成格式化的文档信息
- * @param property 属性对象
- * @returns 格式化的Markdown文档字符串
- */
-export function generateCompletionDocumentation(property: any): vscode.MarkdownString {
-    const doc = new vscode.MarkdownString();
-    addDocumentField(doc, 'name', property.name, true);
-    addDocumentField(doc, 'type', `\`${property.type}\``, true);
-    addDocumentField(doc, 'version', property.version, true);
-    addDocumentField(doc, 'description', property.description, true);
-    
-    if (property.isOutdated) {
-        doc.appendMarkdown(`⚠️ **${vscode.l10n.t('completionprovider.isOutdated')}:** true\n\n`);
-    }
-    
-    doc.appendMarkdown(`**${vscode.l10n.t('completionprovider.example')}:**\n\`\`\`ini\n${vscode.l10n.t(property.example)}\n\`\`\``);
-    return doc;
-}
-
-/**
- * 向文档中添加字段
- * @param doc 文档对象
- * @param fieldKey 字段键（用于国际化）
- * @param value 字段值
- * @param isTranslatedValue 值是否需要翻译
- */
-function addDocumentField(doc: vscode.MarkdownString, fieldKey: string, value: string, isTranslatedValue: boolean = false): void {
-    const translatedValue = isTranslatedValue ? vscode.l10n.t(value) : value;
-    doc.appendMarkdown(`**${vscode.l10n.t(vscode.l10n.t(`completionprovider.${fieldKey}`))}:** ${translatedValue}\n\n`);
-}
-
-/**
  * 获取节的属性数据
  * @param sectionName 节名称
  * @returns 属性数组

@@ -456,5 +456,5 @@
   "data.sections.movement.moveignoringbody": "允许单位在不完全转向移动方向的情况下移动，对舰船和飞行单位很有用",
   "data.sections.movement.moveslidingdir": "设置滑行时的方向",
   "data.sections.movement.joinsgroupformations": "默认为true。不建议更改。当为false时，单位将直接移动到指定路径点，而不考虑相邻单位的空间。",
-  "data.sections.animation.start": "起始图像帧。已弃用",
+  "data.sections.animation.start": "起始图像帧。已弃用"
 }
