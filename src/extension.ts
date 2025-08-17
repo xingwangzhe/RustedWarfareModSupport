@@ -18,7 +18,7 @@ import {
     AnimationCompletionProvider
 } from './completionProvider';
 import { SectionPropertyDecorator } from './decorator';
-import { ValueCompletionProvider } from './valueCompletionProvider';
+import { ValueCompletionProvider } from './valueComple/valueCompletionProvider';
 
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
