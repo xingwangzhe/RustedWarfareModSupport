@@ -1,71 +1,109 @@
-# rustedwarfaremodsupport README
+# Rusted Warfare 模组开发支持插件
 
-This is the README for your extension "rustedwarfaremodsupport". After writing up a brief description, we recommend including the following sections.
+这个 VS Code 插件为 Rusted Warfare 游戏模组开发提供支持，包括代码补全、语法提示等功能。
 
-## Features
+## 功能特性
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+- 为 Rusted Warfare 模组文件提供智能代码补全
+- 支持多种模组配置节（sections）的语法高亮和提示
+- 提供参数补全和值补全功能
+- 支持中英文界面显示
 
-For example if there is an image subfolder under your extension project workspace:
+## 构建和打包
 
-\!\[feature X\]\(images/feature-x.png\)
+### 环境要求
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+- Node.js >= 22.x
+- npm 或 bun（推荐使用 bun 以获得更好的性能）
 
-## Requirements
+### 安装依赖
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+使用 npm:
+```bash
+npm install
+```
 
-## Extension Settings
+或者使用 bun (推荐):
+```bash
+bun install
+```
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+### 开发模式
 
-For example:
+在开发过程中，可以使用以下命令:
 
-This extension contributes the following settings:
+```bash
+# 编译项目
+npm run compile
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+# 监听模式编译
+npm run watch
+```
 
-## Known Issues
+### 打包发布
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+要打包插件用于发布，运行:
 
-## Release Notes
+```bash
+npm run package
+```
 
-Users appreciate release notes as you update your extension.
+这将生成优化后的代码并输出到 [dist](file:///home/xingwangzhe/%E6%A1%8C%E9%9D%A2/rustedwarfaremodsupport/dist) 目录，其中包含可用于发布的 [extension.js](file:///home/xingwangzhe/%E6%A1%8C%E9%9D%A2/rustedwarfaremodsupport/dist/extension.js) 文件。
 
-### 1.0.0
+### 运行测试
 
-Initial release of ...
+```bash
+npm run test
+```
 
-### 1.0.1
+## 许证证说明
 
-Fixed issue #.
+本插件采用 GNU Affero General Public License v3.0（AGPLv3）许可证发布。
+
+### 关键点说明
+
+**插件与生成代码的独立性**：
+
+1. **插件本身**：本插件以 AGPLv3 协议开源，这意味着任何使用或分发本插件的人都有权获取其源代码。
+
+2. **衍生作品**：如果您修改了本插件并重新分发，修改后的版本也必须以 AGPLv3 协议开源。
+
+3. **生成的代码独立性**：用户通过本插件生成的代码是用户自己的创作，与插件本身的开源协议无关。只要插件不是以一种"集成"或"衍生"于用户代码的方式运行，用户生成的代码就不受 AGPLv3 协议的约束。
+
+### 重要声明
+
+- **插件作为独立工具**：本插件仅作为一个代码辅助工具，帮助用户编写 Rusted Warfare 模组代码，用户生成的代码不包含插件的任何源代码。
+- **避免"集成"关系**：本插件不会将自身的任何代码片段嵌入到用户代码中，确保用户代码的独立性。
+- **用户代码所有权**：用户通过本插件创建的所有代码均属于用户自己的原创作品，其许可证选择与本插件无关。
+
+简而言之，使用本插件辅助编写的代码完全属于用户，其许可证选择不受本插件 AGPLv3 协议的影响。
+
+## 使用要求
+
+- VS Code 版本 >= 1.103.0
+- 打开的文件需要是 `.ini` 格式以激活插件功能
+
+## 扩展设置
+
+本插件目前不提供额外的设置选项。
+
+## 已知问题
+
+目前暂无已知问题。如有发现任何问题，请提交 issue。
+
+## 发布说明
+
+### 1.2.1
+
+- 添加了对更多模组属性的支持
+- 改进了代码补全功能
+- 优化了性能
 
 ### 1.1.0
 
-Added features X, Y, and Z.
+- 初始版本发布
+- 支持基本的代码补全功能
 
 ---
 
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+**使用愉快！**
