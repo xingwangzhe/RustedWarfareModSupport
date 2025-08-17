@@ -178,7 +178,7 @@
         },
         {
             "name": "energyNeedsToRechargeToFull",
-            "type": "float",
+            "type": "bool",
             "description": "data.sections.core.energyNeedsToRechargeToFull",
             "version": "default",
             "isOutdated": false,
@@ -190,7 +190,7 @@
             "description": "data.sections.core.energyRegenWhenRecharging",
             "version": "default",
             "isOutdated": false,
-            "example": ""
+            "example": "energyRegenWhenRecharging: 0.1"
         },
         {
             "name": "armour",
@@ -223,6 +223,62 @@
             "version": "1.15",
             "isOutdated": false,
             "example": "borrowResourcesWhileBuilt: supplyCap = -10"
+        },
+        {
+            "name": "weaponSlots",
+            "type": "int",
+            "description": "data.sections.core.weaponSlots",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "weaponSlots: 4"
+        },
+        {
+            "name": "weaponSlot_{NUM}_name",
+            "type": "string",
+            "description": "data.sections.core.weaponSlot_{NUM}_name",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "weaponSlot_1_name: mainGun"
+        },
+        {
+            "name": "weaponSlot_{NUM}_pos",
+            "type": "float",
+            "description": "data.sections.core.weaponSlot_{NUM}_pos",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "weaponSlot_1_pos: 0.5"
+        },
+        {
+            "name": "weaponSlotsForAI",
+            "type": "int",
+            "description": "data.sections.core.weaponSlotsForAI",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "weaponSlotsForAI: 2"
+        },
+        {
+            "name": "weaponSlotsForAI_{NUM}_name",
+            "type": "string",
+            "description": "data.sections.core.weaponSlotsForAI_{NUM}_name",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "weaponSlotsForAI_1_name: antiTank"
+        },
+        {
+            "name": "weaponSlotsForBuild",
+            "type": "int",
+            "description": "data.sections.core.weaponSlotsForBuild",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "weaponSlotsForBuild: 3"
+        },
+        {
+            "name": "weaponSlotsForBuild_{NUM}_name",
+            "type": "string",
+            "description": "data.sections.core.weaponSlotsForBuild_{NUM}_name",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "weaponSlotsForBuild_1_name: buildTool"
         },
         {
             "name": "generation_resources",
@@ -305,12 +361,52 @@
             "example": "displayLocaleKey: units.mechArtillery"
         },
         {
+            "name": "displayText_de",
+            "type": "string",
+            "description": "data.sections.core.displayText_de",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "displayText_de: Benutzerdefinierter Panzer"
+        },
+        {
+            "name": "displayText_fr",
+            "type": "string",
+            "description": "data.sections.core.displayText_fr",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "displayText_fr: Char personnalisé"
+        },
+        {
+            "name": "displayDescription_de",
+            "type": "string",
+            "description": "data.sections.core.displayDescription_de",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "displayDescription_de: -Schnelle Bewegung\\n-Geringer Schaden"
+        },
+        {
+            "name": "displayDescription_fr",
+            "type": "string",
+            "description": "data.sections.core.displayDescription_fr",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "displayDescription_fr: -Mouvement rapide\\n-Dégâts légers"
+        },
+        {
             "name": "displayRadius",
             "type": "int",
             "description": "data.sections.core.displayRadius",
             "version": "default",
             "isOutdated": false,
             "example": "displayRadius: 20"
+        },
+        {
+            "name": "uiTargetRadius",
+            "type": "int",
+            "description": "data.sections.core.uiTargetRadius",
+            "version": "default",
+            "isOutdated": false,
+            "example": "uiTargetRadius: 10"
         },
         {
             "name": "uiTargetRadius",
@@ -361,6 +457,14 @@
             "example": "showOnMinimapToEnemies: false"
         },
         {
+            "name": "showOnMinimapToEnemies",
+            "type": "bool",
+            "description": "data.sections.core.showOnMinimapToEnemies",
+            "version": "1.14",
+            "isOutdated": false,
+            "example": "showOnMinimapToEnemies: false"
+        },
+        {
             "name": "showActionsWithMixedSelectionIfOtherUnitsHaveTag",
             "type": "string(s)",
             "description": "data.sections.core.showActionsWithMixedSelectionIfOtherUnitsHaveTag",
@@ -383,6 +487,14 @@
             "version": "default",
             "isOutdated": false,
             "example": "footprint: 0,0,1,1"
+        },
+        {
+            "name": "constructionFootprint",
+            "type": "ints",
+            "description": "data.sections.core.constructionFootprint",
+            "version": "default",
+            "isOutdated": false,
+            "example": "constructionFootprint: -1,-1,1,3"
         },
         {
             "name": "constructionFootprint",
@@ -442,7 +554,7 @@
         },
         {
             "name": "ignoreInUnitCapCalculation",
-            "type": "default",
+            "type": "bool",
             "description": "data.sections.core.ignoreInUnitCapCalculation",
             "version": "1.14",
             "isOutdated": false,
@@ -495,6 +607,14 @@
             "version": "default",
             "isOutdated": false,
             "example": "isLocked: true"
+        },
+        {
+            "name": "isLockedIfGameModeNoNuke",
+            "type": "bool",
+            "description": "data.sections.core.isLockedIfGameModeNoNuke",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "isLockedIfGameModeNoNuke: true"
         },
         {
             "name": "isLockedIfGameModeNoNuke",
@@ -745,6 +865,14 @@
             "example": "transportUnitsEachUnitAlwaysUsesSingleSlot: true"
         },
         {
+            "name": "transportUnitsEachUnitAlwaysUsesSingleSlot",
+            "type": "bool",
+            "description": "data.sections.core.transportUnitsEachUnitAlwaysUsesSingleSlot",
+            "version": "default",
+            "isOutdated": false,
+            "example": "transportUnitsEachUnitAlwaysUsesSingleSlot: true"
+        },
+        {
             "name": "transportUnitsKeepBuiltUnits",
             "type": "bool",
             "description": "data.sections.core.transportUnitsKeepBuiltUnits",
@@ -793,12 +921,28 @@
             "example": "transportUnitsHealBy: 0.1"
         },
         {
+            "name": "transportUnitsHealBy",
+            "type": "float",
+            "description": "data.sections.core.transportUnitsHealBy",
+            "version": "default",
+            "isOutdated": false,
+            "example": "transportUnitsHealBy: 0.1"
+        },
+        {
             "name": "transportUnitsBlockOtherTransports",
             "type": "bool",
             "description": "data.sections.core.transportUnitsBlockOtherTransports",
             "version": "default",
             "isOutdated": false,
             "example": "transportUnitsBlockOtherTransports: false"
+        },
+        {
+            "name": "whileNeutralTransportAnyTeam",
+            "type": "bool",
+            "description": "data.sections.core.whileNeutralTransportAnyTeam",
+            "version": "1.13.3",
+            "isOutdated": false,
+            "example": "whileNeutralTransportAnyTeam: true"
         },
         {
             "name": "whileNeutralTransportAnyTeam",
@@ -841,6 +985,30 @@
             "example": "resourceRate: 100"
         },
         {
+            "name": "canReclaimResources",
+            "type": "bool",
+            "description": "data.sections.core.canReclaimResources",
+            "version": "default",
+            "isOutdated": false,
+            "example": "canReclaimResources: true"
+        },
+        {
+            "name": "similarResourcesHaveTag",
+            "type": "string(s)",
+            "description": "data.sections.core.similarResourcesHaveTag",
+            "version": "1.13.3",
+            "isOutdated": false,
+            "example": "similarResourcesHaveTag: goldResource"
+        },
+        {
+            "name": "canReclaimResourcesNextSearchRange",
+            "type": "int",
+            "description": "data.sections.core.canReclaimResourcesNextSearchRange",
+            "version": "default",
+            "isOutdated": false,
+            "example": "canReclaimResourcesNextSearchRange: 100"
+        },
+        {
             "name": "similarResourcesHaveTag",
             "type": "string(s)",
             "description": "data.sections.core.similarResourcesHaveTag",
@@ -871,6 +1039,14 @@
             "version": "default",
             "isOutdated": false,
             "example": "canReclaimResources: true"
+        },
+        {
+            "name": "reclaimPrice",
+            "type": "int",
+            "description": "data.sections.core.reclaimPrice",
+            "version": "default",
+            "isOutdated": false,
+            "example": "reclaimPrice: gold=1000"
         },
         {
             "name": "canReclaimResourcesNextSearchRange",
@@ -1065,6 +1241,142 @@
             "example": "builtFrom_1_isLockedMessage: -Needs more population"
         },
         {
+            "name": "builtFrom_{NUM}_isLockedMessage_es",
+            "type": "string",
+            "description": "data.sections.core.builtFrom_{NUM}_isLockedMessage_es",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "builtFrom_1_isLockedMessage_es: -Necesita más población"
+        },
+        {
+            "name": "builtFrom_{NUM}_tooltip",
+            "type": "LocaleString",
+            "description": "data.sections.core.builtFrom_{NUM}_tooltip",
+            "version": "1.13.3",
+            "isOutdated": false,
+            "example": "builtFrom_1_tooltip: Builds advanced tanks"
+        },
+        {
+            "name": "builtFrom_{NUM}_tooltip_es",
+            "type": "string",
+            "description": "data.sections.core.builtFrom_{NUM}_tooltip_es",
+            "version": "1.13.3",
+            "isOutdated": false,
+            "example": "builtFrom_1_tooltip_es: Construye tanques avanzados"
+        },
+        {
+            "name": "builtFrom_{NUM}_icon",
+            "type": "string",
+            "description": "data.sections.core.builtFrom_{NUM}_icon",
+            "version": "1.14",
+            "isOutdated": false,
+            "example": "builtFrom_1_icon: custom_factory_icon.png"
+        },
+        {
+            "name": "builtFrom_{NUM}_category",
+            "type": "string",
+            "description": "data.sections.core.builtFrom_{NUM}_category",
+            "version": "1.15",
+            "isOutdated": false,
+            "example": "builtFrom_1_category: vehicle"
+        },
+        {
+            "name": "builtFrom_{NUM}_sortOrder",
+            "type": "int",
+            "description": "data.sections.core.builtFrom_{NUM}_sortOrder",
+            "version": "1.15",
+            "isOutdated": false,
+            "example": "builtFrom_1_sortOrder: 10"
+        },
+        {
+            "name": "action_#_convertTo",
+            "type": "string",
+            "description": "data.sections.core.action_#_convertTo",
+            "version": "default",
+            "isOutdated": true,
+            "example": "action_1_convertTo: customTank_2"
+        },
+        {
+            "name": "action_#_pos",
+            "type": "float",
+            "description": "data.sections.core.action_#_pos",
+            "version": "default",
+            "isOutdated": true,
+            "example": "action_1_pos: 0.1"
+        },
+        {
+            "name": "action_#_price",
+            "type": "int",
+            "description": "data.sections.core.action_#_price",
+            "version": "default",
+            "isOutdated": true,
+            "example": "action_1_price: 1000"
+        },
+        {
+            "name": "action_#_text",
+            "type": "string",
+            "description": "data.sections.core.action_#_text",
+            "version": "default",
+            "isOutdated": true,
+            "example": "action_1_text: Upgrade to Custom Tank 2"
+        },
+        {
+            "name": "action_#_description",
+            "type": "string",
+            "description": "data.sections.core.action_#_description",
+            "version": "default",
+            "isOutdated": true,
+            "example": "action_1_description: -Converts the tank"
+        },
+        {
+            "name": "action_#_addEnergy",
+            "type": "float",
+            "description": "data.sections.core.action_#_addEnergy",
+            "version": "default",
+            "isOutdated": true,
+            "example": "action_1_addEnergy: 10"
+        },
+        {
+            "name": "action_#_whenBuilding_cannotMove",
+            "type": "bool",
+            "description": "data.sections.core.action_#_whenBuilding_cannotMove",
+            "version": "default",
+            "isOutdated": true,
+            "example": "action_1_whenBuilding_cannotMove: true"
+        },
+        {
+            "name": "canBuild_#_name/pos/isLocked",
+            "type": "string",
+            "description": "data.sections.core.canBuild_#_name/pos/isLocked",
+            "version": "default",
+            "isOutdated": true,
+            "example": "canBuild_1_name: tank"
+        },
+        {
+            "name": "canBuild_#_name",
+            "type": "string",
+            "description": "data.sections.core.canBuild_#_name",
+            "version": "default",
+            "isOutdated": true,
+            "example": "canBuild_1_name: tank"
+        },
+        {
+            "name": "canBuild_#_pos",
+            "type": "float",
+            "description": "data.sections.core.canBuild_#_pos",
+            "version": "default",
+            "isOutdated": true,
+            "example": "canBuild_1_pos: 0.1"
+        },
+        {
+            "name": "canBuild_#_isLocked",
+            "type": "bool",
+            "description": "data.sections.core.canBuild_#_isLocked",
+            "version": "default",
+            "isOutdated": true,
+            "example": "canBuild_1_isLocked: true"
+        },
+        {
             "name": "exit_x",
             "type": "float",
             "description": "data.sections.core.exit_x",
@@ -1078,7 +1390,7 @@
             "description": "data.sections.core.exit_y",
             "version": "default",
             "isOutdated": false,
-            "example": "exit_x: 5"
+            "example": "exit_y: 5"
         },
         {
             "name": "exit_dirOffset",
@@ -1311,6 +1623,38 @@
             "version": "1.15",
             "isOutdated": false,
             "example": "@memory fish:unit"
+        },
+        {
+            "name": "defineUnitMemory: boolean nukeActive, boolean laserReady, float experience, unit nextTarget, unit homeBase, string customText",
+            "type": "defineUnitMemory",
+            "description": "data.sections.core.defineUnitMemory",
+            "version": "1.15",
+            "isOutdated": false,
+            "example": "defineUnitMemory: boolean nukeActive, boolean laserReady, float experience, unit nextTarget, unit homeBase, string customText"
+        },
+        {
+            "name": "defineUnitMemory: unit[] squad, float[] mango",
+            "type": "defineUnitMemory",
+            "description": "data.sections.core.defineUnitMemory",
+            "version": "1.15p11",
+            "isOutdated": false,
+            "example": "defineUnitMemory: unit[] squad, float[] mango"
+        },
+        {
+            "name": "stayNeutral",
+            "type": "bool",
+            "description": "data.sections.core.stayNeutral",
+            "version": "default",
+            "isOutdated": false,
+            "example": "stayNeutral: false"
+        },
+        {
+            "name": "transportUnitsOnTeamChangeKeepCurrentTeam",
+            "type": "bool",
+            "description": "data.sections.core.transportUnitsOnTeamChangeKeepCurrentTeam",
+            "version": "default",
+            "isOutdated": false,
+            "example": "transportUnitsOnTeamChangeKeepCurrentTeam: true"
         }
     ]
 }
