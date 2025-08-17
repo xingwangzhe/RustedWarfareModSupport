@@ -18,6 +18,7 @@ import {
     AnimationCompletionProvider
 } from './completionProvider';
 import { SectionPropertyDecorator } from './decorator';
+import { ValueCompletionProvider } from './valueCompletionProvider';
 
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
@@ -67,12 +68,21 @@ export function activate(context: vscode.ExtensionContext) {
 		)
 	);
 
+	// 注册值补全提供者
+	const valueCompletionProvider = new ValueCompletionProvider();
+	const valueCompletionSubscription = vscode.languages.registerCompletionItemProvider(
+		{ language: 'ini' },
+		valueCompletionProvider,
+		':', ' ', ',' // 在冒号、空格和逗号后触发值补全
+	);
+
 	// 注册装饰器
 	const decorator = new SectionPropertyDecorator();
 	context.subscriptions.push(decorator);
 
 	context.subscriptions.push(disposable);
 	context.subscriptions.push(sectionParser);
+	context.subscriptions.push(valueCompletionSubscription);
 	completionSubscriptions.forEach(subscription => context.subscriptions.push(subscription));
 }
 

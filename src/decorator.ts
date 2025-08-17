@@ -168,8 +168,8 @@ export class SectionPropertyDecorator {
                     const propertyType = propertyTypeMap.get(propertyName);
                     
                     if (propertyType) {
-                        // 创建装饰范围（仅装饰属性名称）
-                        const range = new vscode.Range(
+                        // 创建装饰范围（装饰属性名称）
+                        const nameRange = new vscode.Range(
                             new vscode.Position(i, colonIndex - propertyName.length),
                             new vscode.Position(i, colonIndex)
                         );
@@ -178,7 +178,23 @@ export class SectionPropertyDecorator {
                         if (!decorations.has(propertyType)) {
                             decorations.set(propertyType, []);
                         }
-                        decorations.get(propertyType)?.push(range);
+                        decorations.get(propertyType)?.push(nameRange);
+                        
+                        // 创建装饰范围（装饰属性值）
+                        const valueStart = colonIndex + 1;
+                        const lineEnd = line.text.length;
+                        if (valueStart < lineEnd) { // 确保有值
+                            const valueRange = new vscode.Range(
+                                new vscode.Position(i, valueStart),
+                                new vscode.Position(i, lineEnd)
+                            );
+                            
+                            // 添加到对应的装饰类型中
+                            if (!decorations.has(propertyType)) {
+                                decorations.set(propertyType, []);
+                            }
+                            decorations.get(propertyType)?.push(valueRange);
+                        }
                     }
                 }
             }
