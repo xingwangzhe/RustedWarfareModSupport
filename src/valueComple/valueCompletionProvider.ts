@@ -1,6 +1,7 @@
 import * as vscode from 'vscode';
 import { BoolValueCompletionProvider } from './BoolValueCompletionProvider';
 import { UnitSpawnCompletionProvider } from './UnitSpawnCompletionProvider';
+import { LogicBooleanValueCompletionProvider } from './LogicBooleanValueCompletionProvider';
 
 /**
  * 值补全提供者类
@@ -14,7 +15,8 @@ export class ValueCompletionProvider implements vscode.CompletionItemProvider {
         // 初始化各种特定类型的补全提供者
         this.providers = [
             new BoolValueCompletionProvider(),
-            new UnitSpawnCompletionProvider()
+            new UnitSpawnCompletionProvider(),
+            new LogicBooleanValueCompletionProvider()
         ];
     }
 
