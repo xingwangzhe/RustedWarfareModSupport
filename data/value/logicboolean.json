@@ -1,0 +1,980 @@
+{
+  "name": "logicboolean",
+  "description": "data.sections.logicBoolean",
+  "example": "autoTrigger: if self.isInWater and self.energy>=1",
+  "data": [
+    {
+      "name": "true",
+      "type": "bool",
+      "description": "valuecompletionprovider.logicboolean.true.description",
+      "version": "default",
+      "example": "autoTrigger: true"
+    },
+    {
+      "name": "false",
+      "type": "bool",
+      "description": "valuecompletionprovider.logicboolean.false.description",
+      "version": "default",
+      "example": "autoTrigger: false"
+    },
+    {
+      "name": "if",
+      "type": "LogicBoolean",
+      "description": "valuecompletionprovider.logicboolean.if.description",
+      "version": "default",
+      "example": "isActive: if self.hasFlag(id=1)"
+    },
+    {
+      "name": "and",
+      "type": "bool",
+      "description": "valuecompletionprovider.logicboolean.and.description",
+      "version": "default",
+      "example": "autoTrigger: if self.isInWater and self.energy>=1"
+    },
+    {
+      "name": "or",
+      "type": "bool",
+      "description": "valuecompletionprovider.logicboolean.or.description",
+      "version": "default",
+      "example": "autoTrigger: if (self.energy>=2 or self.ammo>=1) and self.isFlying"
+    },
+    {
+      "name": "not",
+      "type": "bool",
+      "description": "valuecompletionprovider.logicboolean.not.description",
+      "version": "default",
+      "example": "if not self.isOverLiquid"
+    },
+    {
+      "name": "<",
+      "type": "bool",
+      "description": "valuecompletionprovider.logicboolean.less.description",
+      "version": "1.15",
+      "example": "isLocked: if self.ammo < 1"
+    },
+    {
+      "name": ">",
+      "type": "bool",
+      "description": "valuecompletionprovider.logicboolean.greater.description",
+      "version": "1.15",
+      "example": "autoTrigger: if self.isInWater and self.energy>=1"
+    },
+    {
+      "name": "<=",
+      "type": "bool",
+      "description": "valuecompletionprovider.logicboolean.lessequal.description",
+      "version": "1.15",
+      "example": "requireConditional: if numberOfUnitsInTeam(withTag=\"fish\") >= 10"
+    },
+    {
+      "name": ">=",
+      "type": "bool",
+      "description": "valuecompletionprovider.logicboolean.greaterequal.description",
+      "version": "1.15",
+      "example": "requireConditional: if numberOfUnitsInTeam(withTag=\"fish\") <= 11"
+    },
+    {
+      "name": "==",
+      "type": "bool",
+      "description": "valuecompletionprovider.logicboolean.equal.description",
+      "version": "1.15",
+      "example": "hidden: if memory.tail == 0"
+    },
+    {
+      "name": "!=",
+      "type": "bool",
+      "description": "valuecompletionprovider.logicboolean.notequal.description",
+      "version": "1.15",
+      "example": "isVisible: if memory.message != parent.readUnitMemory(name=\"stateMessage\", type=\"string\")"
+    },
+    {
+      "name": "+",
+      "type": "same type",
+      "description": "valuecompletionprovider.logicboolean.add.description",
+      "version": "1.15",
+      "example": "setUnitMemory: stockpile = self.ammo + customTarget1.resource.reserve"
+    },
+    {
+      "name": "-",
+      "type": "same type",
+      "description": "valuecompletionprovider.logicboolean.subtract.description",
+      "version": "1.15",
+      "example": "setUnitMemory: stockpile = self.ammo - customTarget2.resource.reserve"
+    },
+    {
+      "name": "/",
+      "type": "same type",
+      "description": "valuecompletionprovider.logicboolean.divide.description",
+      "version": "1.15",
+      "example": "setUnitMemory: damageMultiplierBuffer = memory.population / memory.death"
+    },
+    {
+      "name": "*",
+      "type": "same type",
+      "description": "valuecompletionprovider.logicboolean.multiply.description",
+      "version": "1.15",
+      "example": "setUnitMemory: reserveCash = memory.population * self.resource.credits"
+    },
+    {
+      "name": "%",
+      "type": "same type",
+      "description": "valuecompletionprovider.logicboolean.modulo.description",
+      "version": "1.15",
+      "example": "setUnitMemory: isEvenX = select(self.x % 2, true, false)"
+    },
+    {
+      "name": "self.isUnderwater()",
+      "type": "bool",
+      "description": "valuecompletionprovider.logicboolean.self.isUnderwater.description",
+      "version": "default",
+      "example": "autoTrigger: if self.isUnderwater()"
+    },
+    {
+      "name": "self.isAtGroundHeight()",
+      "type": "bool",
+      "description": "valuecompletionprovider.logicboolean.self.isAtGroundHeight.description",
+      "version": "default",
+      "example": "autoTrigger: if thisActionTarget.isAtGroundHeight()"
+    },
+    {
+      "name": "self.isFlying()",
+      "type": "bool",
+      "description": "valuecompletionprovider.logicboolean.self.isFlying.description",
+      "version": "default",
+      "example": "isActive: if self.isFlying()"
+    },
+    {
+      "name": "self.isMoving()",
+      "type": "bool",
+      "description": "valuecompletionprovider.logicboolean.self.isMoving.description",
+      "version": "default",
+      "example": "isLocked: if self.isMoving()"
+    },
+    {
+      "name": "self.isReversing()",
+      "type": "bool",
+      "description": "valuecompletionprovider.logicboolean.self.isReversing.description",
+      "version": "1.15",
+      "example": "isLockedAlt2: if self.isReversing()"
+    },
+    {
+      "name": "self.isAtTopSpeed()",
+      "type": "bool",
+      "description": "valuecompletionprovider.logicboolean.self.isAtTopSpeed.description",
+      "version": "default",
+      "example": "autoTrigger: if self.isAtTopSpeed()"
+    },
+    {
+      "name": "self.isInWater()",
+      "type": "bool",
+      "description": "valuecompletionprovider.logicboolean.self.isInWater.description",
+      "version": "default",
+      "example": "isLocked: if not self.isInWater()"
+    },
+    {
+      "name": "self.isOverwater()",
+      "type": "bool",
+      "description": "valuecompletionprovider.logicboolean.self.isOverwater.description",
+      "version": "default",
+      "example": "isLocked: if not self.isOverwater()"
+    },
+    {
+      "name": "self.isOverLiquid()",
+      "type": "bool",
+      "description": "valuecompletionprovider.logicboolean.self.isOverLiquid.description",
+      "version": "default",
+      "example": "isLocked: if not self.isOverLiquid()"
+    },
+    {
+      "name": "self.isOverClift()",
+      "type": "bool",
+      "description": "valuecompletionprovider.logicboolean.self.isOverClift.description",
+      "version": "default",
+      "example": "isLocked: if not self.isOverClift()"
+    },
+    {
+      "name": "self.isOverPassableTile()",
+      "type": "bool",
+      "description": "valuecompletionprovider.logicboolean.self.isOverPassableTile.description",
+      "version": "default",
+      "example": "isLockedAlt: if self.isOverPassableTile(type=OVER_CLIFF_WATER)"
+    },
+    {
+      "name": "self.isOverOpenLand()",
+      "type": "bool",
+      "description": "valuecompletionprovider.logicboolean.self.isOverOpenLand.description",
+      "version": "default",
+      "example": "hidden: if not self.isOverOpenLand()"
+    },
+    {
+      "name": "self.hasResources()",
+      "type": "bool",
+      "description": "valuecompletionprovider.logicboolean.self.hasResources.description",
+      "version": "1.13.3",
+      "example": "isActive self.hasResources(credits=1, energy=2)"
+    },
+    {
+      "name": "self.resource()",
+      "type": "float / bool",
+      "description": "valuecompletionprovider.logicboolean.self.resource.description",
+      "version": "1.15",
+      "example": "isActive: self.resource(type=gold) >= 10"
+    },
+    {
+      "name": "self.resource.RESOURCE_TYPE",
+      "type": "float",
+      "description": "valuecompletionprovider.logicboolean.self.resource.RESOURCE_TYPE.description",
+      "version": "1.15",
+      "example": "addResourcesWithLogic: hp += self.resource.gold"
+    },
+    {
+      "name": "self.isResourceLargerThan",
+      "type": "bool",
+      "description": "valuecompletionprovider.logicboolean.self.isResourceLargerThan.description",
+      "version": "1.14?",
+      "example": "autoTrigger: self.isResourceLargerThan(source=oil, compareTarget=sauce, byMoreThan=100, multiplyTargetBy=0.2)"
+    },
+    {
+      "name": "self.hp()",
+      "type": "float / bool",
+      "description": "valuecompletionprovider.logicboolean.self.hp.description",
+      "version": "1.15",
+      "example": "addResourcesWithLogic: energy += select(self.hp > self.energy, 10, 3)"
+    },
+    {
+      "name": "self.maxHp()",
+      "type": "float / bool",
+      "description": "valuecompletionprovider.logicboolean.self.maxHp.description",
+      "version": "1.15",
+      "example": "setResourcesWithLogic: sauce = self.maxHp * self.energy"
+    },
+    {
+      "name": "self.height()",
+      "type": "float / bool",
+      "description": "valuecompletionprovider.logicboolean.self.height.description",
+      "version": "1.15",
+      "example": "imageScale: 1 + (self.height * 0.1)"
+    },
+    {
+      "name": "self.ammo()",
+      "type": "int / bool",
+      "description": "valuecompletionprovider.logicboolean.self.ammo.description",
+      "version": "1.15",
+      "example": "isLocked: if self.ammo < 1"
+    },
+    {
+      "name": "self.isAmmoEmpty()",
+      "type": "bool",
+      "description": "valuecompletionprovider.logicboolean.self.isAmmoEmpty.description",
+      "version": "1.15",
+      "example": "isLockedAlt: self.isAmmoEmpty()"
+    },
+    {
+      "name": "self.ammoIncludingQueued()",
+      "type": "int / bool",
+      "description": "valuecompletionprovider.logicboolean.self.ammoIncludingQueued.description",
+      "version": "1.15",
+      "example": "isLocked: if self.ammoIncludingQueued(lessThan=12)"
+    },
+    {
+      "name": "self.energy()",
+      "type": "float / bool",
+      "description": "valuecompletionprovider.logicboolean.self.energy.description",
+      "version": "1.15",
+      "example": "isVisible: if self.energy() > 50"
+    },
+    {
+      "name": "self.energyIncludingQueued()",
+      "type": "float / bool",
+      "description": "valuecompletionprovider.logicboolean.self.energyIncludingQueued.description",
+      "version": "1.15",
+      "example": "isVisible: if self.energyIncludingQueued()"
+    },
+    {
+      "name": "self.isEnergyFull()",
+      "type": "bool",
+      "description": "valuecompletionprovider.logicboolean.self.isEnergyFull.description",
+      "version": "1.15",
+      "example": "isLocked: if self.isEnergyFull()"
+    },
+    {
+      "name": "self.isEnergyEmpty()",
+      "type": "bool",
+      "description": "valuecompletionprovider.logicboolean.self.isEnergyEmpty.description",
+      "version": "1.15",
+      "example": "isActive: if self.isEnergyEmpty()"
+    },
+    {
+      "name": "self.maxEnergy()",
+      "type": "float / bool",
+      "description": "valuecompletionprovider.logicboolean.self.maxEnergy.description",
+      "version": "1.15p10",
+      "example": "isLocked: if memory.kills < self.maxEnergy()"
+    },
+    {
+      "name": "self.isEnergyRecharging()",
+      "type": "bool",
+      "description": "valuecompletionprovider.logicboolean.self.isEnergyRecharging.description",
+      "version": "1.15",
+      "example": "text: Reload %{select(self.isEnergyRecharging(), \"\", \"[ready\"}"
+    },
+    {
+      "name": "self.shield()",
+      "type": "float / bool",
+      "description": "valuecompletionprovider.logicboolean.self.shield.description",
+      "version": "1.15",
+      "example": "isActive: if self.shield() == 0"
+    },
+    {
+      "name": "self.maxShield()",
+      "type": "float / bool",
+      "description": "valuecompletionprovider.logicboolean.self.maxShield.description",
+      "version": "1.15p10",
+      "example": "isLockedAlt2: if self.energy <= self.maxShield()/2"
+    },
+    {
+      "name": "self.kills()",
+      "type": "int / bool",
+      "description": "valuecompletionprovider.logicboolean.self.kills.description",
+      "version": "1.15",
+      "example": "setUnitMemory: score = self.kills()*3"
+    },
+    {
+      "name": "self.queueSize()",
+      "type": "int / bool",
+      "description": "valuecompletionprovider.logicboolean.self.queueSize.description",
+      "version": "1.13.3",
+      "example": "isLocked: if self.queueSize() >= 4"
+    },
+    {
+      "name": "self.id()",
+      "type": "int",
+      "description": "valuecompletionprovider.logicboolean.self.id.description",
+      "version": "1.15",
+      "example": "setUnitMemory: UID = self.id()"
+    },
+    {
+      "name": "self.teamId()",
+      "type": "int",
+      "description": "valuecompletionprovider.logicboolean.self.teamId.description",
+      "version": "1.15",
+      "example": "switchToteam: lastDamagedBy.teamId()"
+    },
+    {
+      "name": "self.teamName()",
+      "type": "string",
+      "description": "valuecompletionprovider.logicboolean.self.teamName.description",
+      "version": "1.15",
+      "example": "showMessageToAllPlayers: %{attacking.teamName()} dominated %{thisActionTarget.teamName()}"
+    },
+    {
+      "name": "self.playerName()",
+      "type": "string",
+      "description": "valuecompletionprovider.logicboolean.self.playerName.description",
+      "version": "1.15",
+      "example": "showQuickWarLogToAllPlayers: %{self.playerName()} destroyed %{thisActionTarget.playerName()}'s %{thisActionTarget}"
+    },
+    {
+      "name": "self.x()",
+      "type": "float",
+      "description": "valuecompletionprovider.logicboolean.self.x.description",
+      "version": "1.15",
+      "example": "description: [Position]\\n[X]: %{self.x}\\n[Y]: %{self.y}\\n[Z]: %{self.z}\\n[D]: %{self.dir}"
+    },
+    {
+      "name": "self.y()",
+      "type": "float",
+      "description": "valuecompletionprovider.logicboolean.self.y.description",
+      "version": "1.15",
+      "example": "description: [Position]\\n[X]: %{self.x}\\n[Y]: %{self.y}\\n[Z]: %{self.z}\\n[D]: %{self.dir}"
+    },
+    {
+      "name": "self.z()",
+      "type": "float",
+      "description": "valuecompletionprovider.logicboolean.self.z.description",
+      "version": "1.15",
+      "example": "description: [Position]\\n[X]: %{self.x}\\n[Y]: %{self.y}\\n[Z]: %{self.z}\\n[D]: %{self.dir}"
+    },
+    {
+      "name": "self.dir()",
+      "type": "float",
+      "description": "valuecompletionprovider.logicboolean.self.dir.description",
+      "version": "1.15",
+      "example": "description: [Position]\\n[X]: %{self.x}\\n[Y]: %{self.y}\\n[Z]: %{self.z}\\n[D]: %{self.dir}"
+    },
+    {
+      "name": "self.priceCredits()",
+      "type": "float",
+      "description": "valuecompletionprovider.logicboolean.self.priceCredits.description",
+      "version": "1.15",
+      "example": "addResourcesWithLogic: credits = attacking.priceCredits"
+    },
+    {
+      "name": "self.builtAmount()",
+      "type": "float",
+      "description": "valuecompletionprovider.logicboolean.self.builtAmount.description",
+      "version": "1.15p9",
+      "example": "stack_indexCount: int(12 * (self.builtAmount * 0.1))"
+    },
+    {
+      "name": "self.completed()",
+      "type": "bool",
+      "description": "valuecompletionprovider.logicboolean.self.completed.description",
+      "version": "1.15p9",
+      "example": "autoTrigger: if self.completed()"
+    },
+    {
+      "name": "self.speed()",
+      "type": "float",
+      "description": "valuecompletionprovider.logicboolean.self.speed.description",
+      "version": "1.15p9",
+      "example": "isLockedAlt: if self.speed < 2"
+    },
+    {
+      "name": "self.maxMoveSpeed()",
+      "type": "float",
+      "description": "valuecompletionprovider.logicboolean.self.maxMoveSpeed.description",
+      "version": "1.15p9",
+      "example": "autoTrigger: if memory.defaultSpeed < self.maxMoveSpeed"
+    },
+    {
+      "name": "self.hasFlag()",
+      "type": "bool",
+      "description": "valuecompletionprovider.logicboolean.self.hasFlag.description",
+      "version": "1.13",
+      "example": "autoTrigger: if self.hasFlag(id=1)"
+    },
+    {
+      "name": "self.tags()",
+      "type": "bool",
+      "description": "valuecompletionprovider.logicboolean.self.tags.description",
+      "version": "1.13",
+      "example": "autoTrigger: if self.tags(includes='fish')"
+    },
+    {
+      "name": "self.globalTeamTags()",
+      "type": "bool",
+      "description": "valuecompletionprovider.logicboolean.self.globalTeamTags.description",
+      "version": "1.13.3",
+      "example": "autoTrigger: if self.globalTeamTags(includes='animal')"
+    },
+    {
+      "name": "self.transportingCount()",
+      "type": "int",
+      "description": "valuecompletionprovider.logicboolean.self.transportingCount.description",
+      "version": "1.13",
+      "example": "text: Load - %{self.transportingCount()}"
+    },
+    {
+      "name": "self.numberOfAttachedUnits()",
+      "type": "int / bool",
+      "description": "valuecompletionprovider.logicboolean.self.numberOfAttachedUnits.description",
+      "version": "1.13",
+      "example": "text: Cores - %{self.numberOfAttachedUnits()}"
+    },
+    {
+      "name": "self.isAttacking()",
+      "type": "bool",
+      "description": "valuecompletionprovider.logicboolean.self.isAttacking.description",
+      "version": "1.13",
+      "example": "setUnitStats: moveSpeed=select(self.isAttacking, 4, 2)"
+    },
+    {
+      "name": "self.hasActiveWaypoint()",
+      "type": "bool",
+      "description": "valuecompletionprovider.logicboolean.self.hasActiveWaypoint.description",
+      "version": "1.13",
+      "example": "text: Waypoint - %{self.hasActiveWaypoint(type='move')}"
+    },
+    {
+      "name": "self.numberOfQueuedWaypoints()",
+      "type": "int / bool",
+      "description": "valuecompletionprovider.logicboolean.self.numberOfQueuedWaypoints.description",
+      "version": "1.15",
+      "example": "text: Waypoint Queue - %{self.numberOfQueuedWaypoints(type='attackMove') >= 2}"
+    },
+    {
+      "name": "self.transportingUnitWithTags()",
+      "type": "bool",
+      "description": "valuecompletionprovider.logicboolean.self.transportingUnitWithTags.description",
+      "version": "1.13",
+      "example": "requireConditional: if self.transportingUnitWithTags(includes='human')"
+    },
+    {
+      "name": "self.hasParent()",
+      "type": "bool",
+      "description": "valuecompletionprovider.logicboolean.self.hasParent.description",
+      "version": "1.13",
+      "example": "isVisible: if self.hasParent"
+    },
+    {
+      "name": "self.hasTakenDamage()",
+      "type": "float / bool",
+      "description": "valuecompletionprovider.logicboolean.self.hasTakenDamage.description",
+      "version": "1.13",
+      "example": "isActive: if self.hasTakenDamage(withinSeconds=1)"
+    },
+    {
+      "name": "self.timeAlive()",
+      "type": "float / bool",
+      "description": "valuecompletionprovider.logicboolean.self.timeAlive.description",
+      "version": "1.13",
+      "example": "isLocked: if self.timeAlive() > 100"
+    },
+    {
+      "name": "self.lastConverted()",
+      "type": "float / bool",
+      "description": "valuecompletionprovider.logicboolean.self.lastConverted.description",
+      "version": "1.13",
+      "example": "isLockedAlt2: if self.lastConverted()"
+    },
+    {
+      "name": "self.customTimer()",
+      "type": "float / bool",
+      "description": "valuecompletionprovider.logicboolean.self.customTimer.description",
+      "version": "1.13",
+      "example": "autoTrigger: if self.customTimer() > 120"
+    },
+    {
+      "name": "self.isOnNeutralTeam()",
+      "type": "bool",
+      "description": "valuecompletionprovider.logicboolean.self.isOnNeutralTeam.description",
+      "version": "1.13",
+      "example": ""
+    },
+    {
+      "name": "self.numberOfUnitsInTeam()",
+      "type": "int / bool",
+      "description": "valuecompletionprovider.logicboolean.self.numberOfUnitsInTeam.description",
+      "version": "1.13",
+      "example": "isLocked: if numberOfUnitsInTeam(withTag='techUnlockBuilding', lessThan=5)"
+    },
+    {
+      "name": "self.numberOfUnitsInAllyTeam()",
+      "type": "int / bool",
+      "description": "valuecompletionprovider.logicboolean.self.numberOfUnitsInAllyTeam.description",
+      "version": "1.13",
+      "example": "description: TEAM %{self.teamName}\\n\\nTank Population: %{self.numberOfUnitsInAllyTeam()}"
+    },
+    {
+      "name": "self.numberOfUnitsInAllyNotOwnTeam()",
+      "type": "int / bool",
+      "description": "valuecompletionprovider.logicboolean.self.numberOfUnitsInAllyNotOwnTeam.description",
+      "version": "1.14",
+      "example": "isActive: if self.numberOfUnitsInAllyNotOwnTeam() > 100"
+    },
+    {
+      "name": "self.numberOfUnitsInEnemyTeam()",
+      "type": "int / bool",
+      "description": "valuecompletionprovider.logicboolean.self.numberOfUnitsInEnemyTeam.description",
+      "version": "1.13.3",
+      "example": "autoTrigger: if self.numberOfUnitsInEnemyTeam(withinRange=500) > 0"
+    },
+    {
+      "name": "numberOfUnitsInNeutralTeam()",
+      "type": "int / bool",
+      "description": "valuecompletionprovider.logicboolean.numberOfUnitsInNeutralTeam.description",
+      "version": "1.14",
+      "example": "isVisible: if memory.deadzone.numberOfUnitsInNeutralTeam() >= 10"
+    },
+    {
+      "name": "numberOfUnitsInAggressiveTeam()",
+      "type": "int / bool",
+      "description": "valuecompletionprovider.logicboolean.numberOfUnitsInAggressiveTeam.description",
+      "version": "1.14",
+      "example": "isVisible: if memory.deadzone.numberOfUnitsInAggressiveTeam() >= 30"
+    },
+    {
+      "name": "numberOfUnitsInAllTeams()",
+      "type": "int / bool",
+      "description": "valuecompletionprovider.logicboolean.numberOfUnitsInAllTeams.description",
+      "version": "1.15p9",
+      "example": "text: Birds: %{numberOfUnitsInAllTeams(withTag=\"bird\")}"
+    },
+    {
+      "name": "self.hasUnitInTeam()",
+      "type": "bool",
+      "description": "valuecompletionprovider.logicboolean.self.hasUnitInTeam.description",
+      "version": "1.13.3",
+      "example": "isLocked: if self.hasUnitInTeam(withTag=\"fish\")"
+    },
+    {
+      "name": "self.noUnitInTeam()",
+      "type": "bool",
+      "description": "valuecompletionprovider.logicboolean.self.noUnitInTeam.description",
+      "version": "1.13.3",
+      "example": "isLocked: if self.noUnitInTeam(withTag=\"infected\")"
+    },
+    {
+      "name": "self.isControlledByAI()",
+      "type": "bool",
+      "description": "valuecompletionprovider.logicboolean.self.isControlledByAI.description",
+      "version": "1.15",
+      "example": "text: Robot? %{select(self.isControlledByAI(), \"Yes\", \"No\")}"
+    },
+    {
+      "name": "self.readUnitMemory()",
+      "type": "any type",
+      "description": "valuecompletionprovider.logicboolean.self.readUnitMemory.description",
+      "version": "1.15",
+      "example": "isActive: if parent.readUnitMemory('boostTarget', type='unit') == self"
+    },
+    {
+      "name": "thisActionTarget",
+      "type": "unit / marker",
+      "description": "valuecompletionprovider.logicboolean.thisActionTarget.description",
+      "version": "1.15",
+      "example": ""
+    },
+    {
+      "name": "thisActionIndex",
+      "type": "int",
+      "description": "valuecompletionprovider.logicboolean.thisActionIndex.description",
+      "version": "1.15",
+      "example": "alsoTriggerActionRepeat: thisActionIndex"
+    },
+    {
+      "name": "eventSource",
+      "type": "unit / marker",
+      "description": "valuecompletionprovider.logicboolean.eventSource.description",
+      "version": "1.15",
+      "example": ""
+    },
+    {
+      "name": "attachment",
+      "type": "unit",
+      "description": "valuecompletionprovider.logicboolean.attachment.description",
+      "version": "1.15",
+      "example": "setCustomTarget2: self.attachment(withTag='x').lastDamagedBy.getAsMarker()"
+    },
+    {
+      "name": "transporting",
+      "type": "unit",
+      "description": "valuecompletionprovider.logicboolean.transporting.description",
+      "version": "1.15",
+      "example": "autoTrigger: if self.transporting(slot=0).hasResources(gold=100)"
+    },
+    {
+      "name": "attacking",
+      "type": "unit",
+      "description": "valuecompletionprovider.logicboolean.attacking.description",
+      "version": "1.15",
+      "example": "isLocked: if attacking.tags(includes='bug') and attacking.hp < 20"
+    },
+    {
+      "name": "lastDamagedBy",
+      "type": "unit",
+      "description": "valuecompletionprovider.logicboolean.lastDamagedBy.description",
+      "version": "1.15",
+      "example": "teleportTo: lastDamagedBy"
+    },
+    {
+      "name": "parent",
+      "type": "unit",
+      "description": "valuecompletionprovider.logicboolean.parent.description",
+      "version": "1.15",
+      "example": "autoTrigger: if parent.energy > 100"
+    },
+    {
+      "name": "activeWaypointTarget",
+      "type": "unit",
+      "description": "valuecompletionprovider.logicboolean.activeWaypointTarget.description",
+      "version": "1.15",
+      "example": "isActive: if distanceBetween(self, activeWaypointTarget) < 100"
+    },
+    {
+      "name": "customTarget1",
+      "type": "unit",
+      "description": "valuecompletionprovider.logicboolean.customTarget1.description",
+      "version": "1.15",
+      "example": "isLocked: if parent.customTarget1 == self"
+    },
+    {
+      "name": "customTarget2",
+      "type": "unit",
+      "description": "valuecompletionprovider.logicboolean.customTarget2.description",
+      "version": "1.15",
+      "example": "fireTurretXAtGround_withPosition: customTarget2"
+    },
+    {
+      "name": "nearestUnit",
+      "type": "unit",
+      "description": "valuecompletionprovider.logicboolean.nearestUnit.description",
+      "version": "1.15",
+      "example": "setCustomTarget1: nearestUnit(withTag=\"derrick\")"
+    },
+    {
+      "name": "globalSearchForFirstUnit",
+      "type": "unit",
+      "description": "valuecompletionprovider.logicboolean.globalSearchForFirstUnit.description",
+      "version": "1.15",
+      "example": "self.globalSearchForFirstUnit(withTag='gameController', relation='neutral')"
+    },
+    {
+      "name": "nullUnit",
+      "type": "unit",
+      "description": "valuecompletionprovider.logicboolean.nullUnit.description",
+      "version": "1.15",
+      "example": "isLockedAlt2: if self.parent == nullUnit"
+    },
+    {
+      "name": "getAsMarker",
+      "type": "marker",
+      "description": "valuecompletionprovider.logicboolean.getAsMarker.description",
+      "version": "1.15",
+      "example": "lastDamagedBy.getAsMarker()"
+    },
+    {
+      "name": "getOffsetAbsolute",
+      "type": "marker",
+      "description": "valuecompletionprovider.logicboolean.getOffsetAbsolute.description",
+      "version": "1.15",
+      "example": "addWaypoint_target_fromReference: unitref getOffsetAbsolute(self.x, self.y+1000, self.z)"
+    },
+    {
+      "name": "getOffsetRelative",
+      "type": "marker",
+      "description": "valuecompletionprovider.logicboolean.getOffsetRelative.description",
+      "version": "1.15",
+      "example": "self.getOffsetRelative(y=100).nearestUnit(withinRange=70, withTag='mouse') != null"
+    },
+    {
+      "name": "eventSource",
+      "type": "event",
+      "description": "valuecompletionprovider.logicboolean.eventSource.event.description",
+      "version": "1.15",
+      "example": "text: Event: %{eventSource}"
+    },
+    {
+      "name": "readUnitMemory",
+      "type": "all arguments",
+      "description": "valuecompletionprovider.logicboolean.readUnitMemory.global.description",
+      "version": "1.15",
+      "example": "self.readUnitMemory('ammoType', type='string'), parent.readUnitMemory(''attachmentArray\", type=\"unit[ ]\", index=5), attacking.readUnitMemory(\"wishlist\", type=\"string[ ]\")[12]"
+    },
+    {
+      "name": "memory.NAME",
+      "type": "self only",
+      "description": "valuecompletionprovider.logicboolean.memory.NAME.description",
+      "version": "1.15",
+      "example": "autoTrigger: if memory.experience > 100"
+    },
+    {
+      "name": "memory.NAME.size",
+      "type": "int",
+      "description": "valuecompletionprovider.logicboolean.memory.NAME.size.description",
+      "version": "1.15",
+      "example": "setUnitMemory: squadSize = memory.squad.size"
+    },
+    {
+      "name": "memory.NAME.contains(query)",
+      "type": "bool",
+      "description": "valuecompletionprovider.logicboolean.memory.NAME.contains.description",
+      "version": "1.15",
+      "example": "autoTrigger: if memory.savedCoord.contains(lastDamagedBy.customTarget1.customTarget1)"
+    },
+    {
+      "name": "distance(x1, y1, x2, y2)",
+      "type": "float",
+      "description": "valuecompletionprovider.logicboolean.distance.description",
+      "version": "1.15",
+      "example": "isLocked: if distance(self.x, self.y, thisActionTarget.x, thisActionTarget.y) > 350"
+    },
+    {
+      "name": "distanceSquared(x1, y1, x2, y2)",
+      "type": "float",
+      "description": "valuecompletionprovider.logicboolean.distanceSquared.description",
+      "version": "1.15",
+      "example": "isLocked: if distanceSquared(self.x, self.y, thisActionTarget.x, thisActionTarget.y) > 19"
+    },
+    {
+      "name": "distanceBetween(unit1, unit2)",
+      "type": "float",
+      "description": "valuecompletionprovider.logicboolean.distanceBetween.description",
+      "version": "1.15",
+      "example": "isLocked: if distanceBetween(self, memory.antenna) > 1000"
+    },
+    {
+      "name": "distanceBetweenSquared(unit1, unit2)",
+      "type": "float",
+      "description": "valuecompletionprovider.logicboolean.distanceBetweenSquared.description",
+      "version": "1.15",
+      "example": "isLocked: if distanceBetweenSquared(self, memory.antenna) > 100"
+    },
+    {
+      "name": "game.nukesEnabled()",
+      "type": "bool",
+      "description": "valuecompletionprovider.logicboolean.game.nukesEnabled.description",
+      "version": "1.15",
+      "example": "isActive: if not game.nukesEnabled()"
+    },
+    {
+      "name": "int(x)",
+      "type": "int",
+      "description": "valuecompletionprovider.logicboolean.int.description",
+      "version": "1.15",
+      "example": "stack_indexCount: int(12 * (self.builtAmount * 0.1))"
+    },
+    {
+      "name": "select(bool, textA, textB)",
+      "type": "any",
+      "description": "valuecompletionprovider.logicboolean.select.description",
+      "version": "1.15",
+      "example": "setUnitMemory: isEvenX = select(self.x % 2, true, false)"
+    },
+    {
+      "name": "debug(logicBoolean)",
+      "type": "string",
+      "description": "valuecompletionprovider.logicboolean.debug.description",
+      "version": "1.15",
+      "example": "description: [DEBUG] %{debug(self.x > self.y)}"
+    },
+    {
+      "name": "str(x)",
+      "type": "string",
+      "description": "valuecompletionprovider.logicboolean.str.description",
+      "version": "1.15",
+      "example": "str(self.energy)+'x' == '100x'"
+    },
+    {
+      "name": "substring(text,start,end)",
+      "type": "string",
+      "description": "valuecompletionprovider.logicboolean.substring.description",
+      "version": "1.15",
+      "example": "substring('hello',0,2) == 'he'"
+    },
+    {
+      "name": "length(string)",
+      "type": "int",
+      "description": "valuecompletionprovider.logicboolean.length.description",
+      "version": "1.15",
+      "example": "length(memory.sms)"
+    },
+    {
+      "name": "squareRoot(num)",
+      "type": "float",
+      "description": "valuecompletionprovider.logicboolean.squareRoot.description",
+      "version": "1.15",
+      "example": "squareRoot(self.x + self.y)"
+    },
+    {
+      "name": "min(num1, num2)",
+      "type": "float",
+      "description": "valuecompletionprovider.logicboolean.min.description",
+      "version": "1.15",
+      "example": "damage = min(self.hp, self.energy)"
+    },
+    {
+      "name": "max(num1, num2)",
+      "type": "float",
+      "description": "valuecompletionprovider.logicboolean.max.description",
+      "version": "1.15",
+      "example": "max(5, 10) == 10"
+    },
+    {
+      "name": "createMarker(x, y, [height], [teamId], [dir])",
+      "type": "marker",
+      "description": "valuecompletionprovider.logicboolean.createMarker.description",
+      "version": "1.15",
+      "example": "fireTurretXAtGround_withTarget: createMarker(self.x + 500, self.y + 500)"
+    },
+    {
+      "name": "eventData(name, type, [default])",
+      "type": "any type",
+      "description": "valuecompletionprovider.logicboolean.eventData.description",
+      "version": "1.15",
+      "example": "text: %{eventData(name=\"msg\", type=\"string\")}"
+    },
+    {
+      "name": "sin(angle)",
+      "type": "float",
+      "description": "valuecompletionprovider.logicboolean.sin.description",
+      "version": "1.15",
+      "example": "sin(10) = 0.173"
+    },
+    {
+      "name": "cos(angle)",
+      "type": "float",
+      "description": "valuecompletionprovider.logicboolean.cos.description",
+      "version": "1.15",
+      "example": "cos(60) = 0.5"
+    },
+    {
+      "name": "rnd(min, max)",
+      "type": "float",
+      "description": "valuecompletionprovider.logicboolean.rnd.description",
+      "version": "1.15",
+      "example": "rnd(666, 888)"
+    },
+    {
+      "name": "lowercase(string)",
+      "type": "string",
+      "description": "valuecompletionprovider.logicboolean.lowercase.description",
+      "version": "1.15",
+      "example": "lowercase(\"Spaghetti Macaroni Lasagna\") -> \"spaghetti macaroni lasagna\""
+    },
+    {
+      "name": "uppercase(string)",
+      "type": "string",
+      "description": "valuecompletionprovider.logicboolean.uppercase.description",
+      "version": "1.15",
+      "example": "uppercase(\"fish dish wish\") -> \"FISH DISH WISH\""
+    },
+    {
+      "name": "direction(x1, y1, x2, y2)",
+      "type": "float",
+      "description": "valuecompletionprovider.logicboolean.direction.description",
+      "version": "1.15",
+      "example": "direction(self.x, self.y, attacking.x, attacking.y)"
+    },
+    {
+      "name": "directionBetween(unit1, unit2)",
+      "type": "float",
+      "description": "valuecompletionprovider.logicboolean.directionBetween.description",
+      "version": "1.15",
+      "example": "directionBetween(self, lastDamagedBy)"
+    },
+    {
+      "name": "self.isInMap()",
+      "type": "bool",
+      "description": "valuecompletionprovider.logicboolean.self.isInMap.description",
+      "version": "1.15",
+      "example": "autoTrigger: if not self.isInMap()"
+    },
+    {
+      "name": "game.mapWidth()",
+      "type": "float",
+      "description": "valuecompletionprovider.logicboolean.game.mapWidth.description",
+      "version": "1.15",
+      "example": "fireTurretXAtGround_withTarget: createMarker(rnd(0, game.mapWidth), rnd(0, game.mapHeight))"
+    },
+    {
+      "name": "game.mapHeight()",
+      "type": "float",
+      "description": "valuecompletionprovider.logicboolean.game.mapHeight.description",
+      "version": "1.15",
+      "example": "fireTurretXAtGround_withTarget: createMarker(rnd(0, game.mapWidth), rnd(0, game.mapHeight))"
+    },
+    {
+      "name": "self.teamDefeatedTech()",
+      "type": "bool",
+      "description": "valuecompletionprovider.logicboolean.self.teamDefeatedTech.description",
+      "version": "1.15p9",
+      "example": "autoTrigger: if attacking.teamDefeatedTech()"
+    },
+    {
+      "name": "self.teamWipedOut()",
+      "type": "bool",
+      "description": "valuecompletionprovider.logicboolean.self.teamWipedOut.description",
+      "version": "1.15p9",
+      "example": "autoTrigger: if self.teamWipedOut()"
+    },
+    {
+      "name": "self.teamVictory()",
+      "type": "bool",
+      "description": "valuecompletionprovider.logicboolean.self.teamVictory.description",
+      "version": "1.15p9",
+      "example": "autoTrigger: if self.teamVictory()"
+    }
+  ]
+}
