@@ -24,21 +24,26 @@ export class ValueCompletionProvider implements vscode.CompletionItemProvider {
         token: vscode.CancellationToken,
         context: vscode.CompletionContext
     ): vscode.ProviderResult<vscode.CompletionItem[] | vscode.CompletionList> {
+        console.log('ValueCompletionProvider: called with document=', document.fileName, 'position=', position);
         // 收集所有提供者的补全项
         const completions: vscode.CompletionItem[] = [];
         
         // 依次调用每个提供者的补全方法
         for (const provider of this.providers) {
+            console.log('ValueCompletionProvider: calling provider=', provider.constructor.name);
             const providerCompletions = provider.provideCompletionItems(document, position, token, context);
             if (providerCompletions) {
                 if (Array.isArray(providerCompletions)) {
+                    console.log('ValueCompletionProvider: got array completions, length=', providerCompletions.length);
                     completions.push(...providerCompletions);
                 } else if ('items' in providerCompletions) {
+                    console.log('ValueCompletionProvider: got completion list, length=', providerCompletions.items.length);
                     completions.push(...providerCompletions.items);
                 }
             }
         }
         
+        console.log('ValueCompletionProvider: returning completions, length=', completions.length);
         return completions;
     }
 }

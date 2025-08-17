@@ -12,22 +12,67 @@ export function extractExampleValue(example: string): string {
 }
 
 /**
+ * 获取节的基本名称（去除下划线后缀等）
+ * @param name 节名称
+ * @returns 基本节名称
+ */
+export function getBaseSectionName(name: string): string {
+    let baseName = name;
+    
+    // 处理带下划线的节名称，如 turret_NAME, projectile_NAME 等
+    if (name.includes("_")) {
+        baseName = name.substring(0, name.indexOf("_"));
+    }
+    
+    // 特殊处理 leg_ 和 arm_ 类型
+    if (name.startsWith("leg_")) {
+        baseName = "leg";
+    } else if (name.startsWith("arm_")) {
+        baseName = "arm";
+    }
+    
+    // 特殊处理 spawnUnits:LIST 和 spawnProjectiles:LIST 类型
+    if (name.startsWith("spawnUnits:")) {
+        baseName = "spawnUnits";
+    } else if (name.startsWith("spawnProjectiles:")) {
+        baseName = "spawnProjectiles";
+    }
+    
+    // 特殊处理 Prices/Resources 类型
+    if (name === "Prices/Resources") {
+        baseName = "prices";
+    }
+    
+    return baseName;
+}
+
+/**
  * 获取节的属性数据
  * @param sectionName 节名称
  * @returns 属性数组
  */
 export function getSectionProperties(sectionName: string): any[] {
     try {
+        console.log('getSectionProperties: sectionName=', sectionName);
+        
+        // 获取基本节名称
+        const baseSectionName = getBaseSectionName(sectionName);
+        console.log('getSectionProperties: baseSectionName=', baseSectionName);
+        
         // 构建语言特定的数据文件路径
-        let sectionPath = path.join(__dirname, '..', 'data', 'sections', `${sectionName}.json`);
+        let sectionPath = path.join(__dirname, '..', 'data', 'sections', `${baseSectionName}.json`);
         
         // 检查是否存在语言特定的文件
-        const localizedPath = path.join(__dirname, '..', 'data', 'sections', vscode.env.language, `${sectionName}.json`);
+        const localizedPath = path.join(__dirname, '..', 'data', 'sections', vscode.env.language, `${baseSectionName}.json`);
         if (fs.existsSync(localizedPath)) {
             sectionPath = localizedPath;
         }
         
+        console.log('getSectionProperties: sectionPath=', sectionPath);
+        console.log('getSectionProperties: file exists=', fs.existsSync(sectionPath));
+        
         const sectionData = JSON.parse(fs.readFileSync(sectionPath, 'utf8'));
+        console.log('getSectionProperties: sectionData=', sectionData);
         return sectionData.data || [];
     } catch (error) {
         console.error(`Error reading ${sectionName}.json:`, error);
