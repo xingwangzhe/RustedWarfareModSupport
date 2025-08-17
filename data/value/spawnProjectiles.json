@@ -1,0 +1,99 @@
+{
+  "type": "spawnProjectiles",
+  "description": "data.value.spawnProjectiles.description",
+  "example": "spawnProjectilesOnExplode: shrapnel(offsetDir=90), shrapnel(offsetDir=-90)",
+  "note": "data.value.spawnProjectiles.note",
+  "data": [
+    {
+      "name": "spawnChance",
+      "type": "float",
+      "description": "data.value.spawnProjectiles.spawnChance.description",
+      "version": "1.14",
+      "example": "spawnProjectilesOnEndOfLife: secondary*3(spawnChance=0.5)"
+    },
+    {
+      "name": "maxSpawnLimit",
+      "type": "int",
+      "description": "data.value.spawnProjectiles.maxSpawnLimit.description",
+      "version": "1.14",
+      "example": "spawnProjectilesOnExplode: bomblet*3(spawnChance=0.5, maxSpawnLimit=2)"
+    },
+    {
+      "name": "recursionLimit",
+      "type": "int",
+      "description": "data.value.spawnProjectiles.recursionLimit.description",
+      "version": "1.14",
+      "example": "spawnProjectileOnEndOfLife: flamingBits*4(spawnChance=0.35, recursionLimit=2)"
+    },
+    {
+      "name": "offsetX",
+      "type": "float",
+      "description": "data.value.spawnProjectiles.offsetX.description",
+      "version": "1.14",
+      "example": "spawnProjectileOnCreate: shot(offsetX=10, recursionLimit=0), shot(offsetX=-10, recursionLimit=0), shot(offsetY=10, recursionLimit=0)"
+    },
+    {
+      "name": "offsetY",
+      "type": "float",
+      "description": "data.value.spawnProjectiles.offsetY.description",
+      "version": "1.14",
+      "example": "spawnProjectileOnCreate: shot(offsetX=10, recursionLimit=0), shot(offsetX=-10, recursionLimit=0), shot(offsetY=10, recursionLimit=0)"
+    },
+    {
+      "name": "xOffsetRelative",
+      "type": "float",
+      "description": "data.value.spawnProjectiles.xOffsetRelative.description",
+      "version": "1.14",
+      "example": "spawnProjectileOnCreate: homingEnergy(xOffsetRelative=5, yOffsetRelative=10)"
+    },
+    {
+      "name": "yOffsetRelative",
+      "type": "float",
+      "description": "data.value.spawnProjectiles.yOffsetRelative.description",
+      "version": "1.14",
+      "example": "spawnProjectileOnCreate: homingEnergy(xOffsetRelative=5, yOffsetRelative=10)"
+    },
+    {
+      "name": "offsetRandomX",
+      "type": "float",
+      "description": "data.value.spawnProjectiles.offsetRandomX.description",
+      "version": "1.14",
+      "example": "spawnProjectileOnExplode: strayBullet(offsetRandomX=10, offsetRandomY=30)"
+    },
+    {
+      "name": "offsetRandomY",
+      "type": "float",
+      "description": "data.value.spawnProjectiles.offsetRandomY.description",
+      "version": "1.14",
+      "example": "spawnProjectileOnExplode: strayBullet(offsetRandomX=10, offsetRandomY=30)"
+    },
+    {
+      "name": "offsetRandomXY",
+      "type": "float",
+      "description": "data.value.spawnProjectiles.offsetRandomXY.description",
+      "version": "1.14",
+      "example": "spawnProjectileOnEndOfLife: shrapnels*20(spawnChance=0.2, offsetRandomXY=100)"
+    },
+    {
+      "name": "offsetHeight",
+      "type": "float",
+      "description": "data.value.spawnProjectiles.offsetHeight.description",
+      "version": "1.14",
+      "example": "spawnProjectileOnCreate: scythe(offsetHeight=20)"
+    },
+    {
+      "name": "offsetDir",
+      "type": "float",
+      "description": "data.value.spawnProjectiles.offsetDir.description",
+      "version": "1.14",
+      "example": "spawnProjectileOnExplode: stars(offsetDir=45)"
+    },
+    {
+      "name": "offsetRandomDir",
+      "type": "float",
+      "description": "data.value.spawnProjectiles.offsetRandomDir.description",
+      "version": "1.14",
+      "example": "spawnProjectileOnEndOfLife: fireworks(offsetRandomDir=72)"
+    }
+  ]
+}

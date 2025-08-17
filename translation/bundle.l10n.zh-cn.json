@@ -49,6 +49,7 @@
   "data.sections.attack": "对其他单位的攻击权限",
   "data.sections.attack.attackmovement": "设置攻击移动类型（normal/bomber）",
   "data.sections.attack.canattack": "启用或禁用单位的攻击能力",
+  "data.sections.attack.canattack": "启用或禁用单位的攻击能力",
   "data.sections.attack.canattackflyingunits": "允许单位攻击飞行单位",
   "data.sections.attack.canattacklandunits": "允许单位攻击地面单位",
   "data.sections.attack.canattacknottouchingwaterunits": "限制单位只能攻击与水接触的单位（用于鱼雷）",

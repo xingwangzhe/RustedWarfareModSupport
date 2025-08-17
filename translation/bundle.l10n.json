@@ -99,6 +99,7 @@
   "data.sections.core.buildingSelectionOffset": "Defaults to 0. Adds or removes padding on the drawn selection rect in UI.",
   "data.sections.core.buildingToFootprintOffsetX": "Defaults to 10. Change the building position in the footprint on the X-axis.",
   "data.sections.core.buildingToFootprintOffsetY": "Defaults to 10. Change the building position in the footprint on the Y-axis.",
+  "data.sections.core.buildingToFootprintOffsetY": "Defaults to 10. Change the building position in the footprint on the Y-axis.",
   "data.sections.core.canBuild_#_isLocked": "Use canBuild section instead.",
   "data.sections.core.canBuild_#_name/pos/isLocked": "Use canBuild section instead.",
   "data.sections.core.canBuild_#_name": "Use canBuild section instead.",

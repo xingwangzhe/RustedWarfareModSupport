@@ -1,0 +1,154 @@
+{
+  "type": "spawnUnits",
+  "description": "data.value.spawnUnits.description",
+  "example": "spawnUnits: crates*10(neutralTeam=true), tank(spawnChance=0.5)",
+  "data": [
+    {
+      "name": "neutralTeam",
+      "type": "bool",
+      "description": "data.value.spawnUnits.neutralTeam.description",
+      "version": "1.13.3",
+      "example": "spawnUnits: tank*3(neutralTeam=true, offsetRandomX=20, offsetRandomY=20, gridAlign=true)"
+    },
+    {
+      "name": "setToTeamOfLastAttacker",
+      "type": "bool",
+      "description": "data.value.spawnUnits.setToTeamOfLastAttacker.description",
+      "version": "1.13.3",
+      "example": "spawnUnits: egg(setToTeamOfLastAttacker=true)"
+    },
+    {
+      "name": "spawnChance",
+      "type": "float",
+      "description": "data.value.spawnUnits.spawnChance.description",
+      "version": "1.13.3",
+      "example": "spawnUnits: shards(spawnChance=0.3)"
+    },
+    {
+      "name": "spawnSource",
+      "type": "unit ref",
+      "description": "data.value.spawnUnits.spawnSource.description",
+      "version": "1.15",
+      "example": "spawnUnits: tank(spawnSource=memory.lastLocation)"
+    },
+    {
+      "name": "maxSpawnLimit",
+      "type": "int",
+      "description": "data.value.spawnUnits.maxSpawnLimit.description",
+      "version": "1.13.3",
+      "example": "spawnUnits: treeA(spawnChance=0.5, maxSpawnLimit=1), treeB(maxSpawnLimit=1)"
+    },
+    {
+      "name": "gridAlign",
+      "type": "bool",
+      "description": "data.value.spawnUnits.gridAlign.description",
+      "version": "1.13.3",
+      "example": "spawnUnits: hovertank(gridAlign: true)"
+    },
+    {
+      "name": "skipIfOverlapping",
+      "type": "bool",
+      "description": "data.value.spawnUnits.skipIfOverlapping.description",
+      "version": "1.13.3",
+      "example": "spawnUnits: crates*10(skipIfOverlapping=true, offsetRandomX=40, offsetRandomY=40, gridAlign=true)"
+    },
+    {
+      "name": "offsetX",
+      "type": "float",
+      "description": "data.value.spawnUnits.offsetX.description",
+      "version": "1.13.3",
+      "example": "spawnUnits: jet(offsetX=20), jet(offsetX=-20)"
+    },
+    {
+      "name": "offsetY",
+      "type": "float",
+      "description": "data.value.spawnUnits.offsetY.description",
+      "version": "1.13.3",
+      "example": "spawnUnits: scout(offsetY=40), scout(offsetY=-40)"
+    },
+    {
+      "name": "offsetDir",
+      "type": "float",
+      "description": "data.value.spawnUnits.offsetDir.description",
+      "version": "1.13.3",
+      "example": "spawnUnits: bike(offsetDir=-45)"
+    },
+    {
+      "name": "offsetHeight",
+      "type": "float",
+      "description": "data.value.spawnUnits.offsetHeight.description",
+      "version": "1.13.3",
+      "example": "spawnUnits: drone(offsetHeight=20)"
+    },
+    {
+      "name": "offsetRandomX",
+      "type": "float",
+      "description": "data.value.spawnUnits.offsetRandomX.description",
+      "version": "1.13.3",
+      "example": "spawnUnits: k9*5(offsetRandomX=45)"
+    },
+    {
+      "name": "offsetRandomY",
+      "type": "float",
+      "description": "data.value.spawnUnits.offsetRandomY.description",
+      "version": "default",
+      "example": "spawnUnits: scanners*10(offsetRandomY=60)"
+    },
+    {
+      "name": "offsetRandomDir",
+      "type": "float",
+      "description": "data.value.spawnUnits.offsetRandomDir.description",
+      "version": "default",
+      "example": "spawnUnits: chickens*20(offsetRandomDir=360)"
+    },
+    {
+      "name": "addResources",
+      "type": "resource ref",
+      "description": "data.value.spawnUnits.addResources.description",
+      "version": "1.13.3",
+      "example": "spawnUnits: crates(addResources=gold:30|stone:10, spawnChance=0.5)"
+    },
+    {
+      "name": "transportedUnitsToTransfer",
+      "type": "int",
+      "description": "data.value.spawnUnits.transportedUnitsToTransfer.description",
+      "version": "1.14",
+      "example": "spawnUnits: transporter(transportedUnitsToTransfer=5)"
+    },
+    {
+      "name": "copyWaypointsFrom",
+      "type": "unit ref",
+      "description": "data.value.spawnUnits.copyWaypointsFrom.description",
+      "version": "1.15",
+      "example": "spawnUnits: tank(copyWaypointsFrom=self)"
+    },
+    {
+      "name": "alwayStartDirAtZero",
+      "type": "bool",
+      "description": "data.value.spawnUnits.alwayStartDirAtZero.description",
+      "version": "1.14",
+      "example": "spawnUnits: builder(alwayStartDirAtZero=true)"
+    },
+    {
+      "name": "damagingBorder",
+      "type": "string",
+      "description": "data.value.spawnUnits.damagingBorder.description",
+      "version": "default",
+      "example": "spawnUnits: damagingBorder(techLevel=100), zoneMarker(techLevel=40)"
+    },
+    {
+      "name": "zoneMarker",
+      "type": "string",
+      "description": "data.value.spawnUnits.zoneMarker.description",
+      "version": "default",
+      "example": "spawnUnits: damagingBorder(techLevel=100), zoneMarker(techLevel=40)"
+    },
+    {
+      "name": "techLevel",
+      "type": "int",
+      "description": "data.value.spawnUnits.techLevel.description",
+      "version": "default",
+      "example": "spawnUnits: damagingBorder(techLevel=100), zoneMarker(techLevel=40)"
+    }
+  ]
+}
