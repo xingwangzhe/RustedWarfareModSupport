@@ -1,0 +1,146 @@
+[
+  {
+    "name": "string",
+    "color": "#FF6B6B"
+  },
+  {
+    "name": "int",
+    "color": "#4ECDC4"
+  },
+  {
+    "name": "float",
+    "color": "#45B7D1"
+  },
+  {
+    "name": "bool",
+    "color": "#96CEB4"
+  },
+  {
+    "name": "string(s)",
+    "color": "#FFEAA7"
+  },
+  {
+    "name": "int(s)",
+    "color": "#DDA0DD"
+  },
+  {
+    "name": "float / s",
+    "color": "#98D8C8"
+  },
+  {
+    "name": "LogicBoolean",
+    "color": "#F78FB3"
+  },
+  {
+    "name": "price",
+    "color": "#F8B195"
+  },
+  {
+    "name": "ints",
+    "color": "#A8E6CF"
+  },
+  {
+    "name": "time",
+    "color": "#FFACB7"
+  },
+  {
+    "name": "movementTypes",
+    "color": "#B39DDB"
+  },
+  {
+    "name": "turret ref",
+    "color": "#A5D8FF"
+  },
+  {
+    "name": "effect(s) ref",
+    "color": "#FF9AA2"
+  },
+  {
+    "name": "sound(s)",
+    "color": "#B5EAD7"
+  },
+  {
+    "name": "preset effects",
+    "color": "#C7CEEA"
+  },
+  {
+    "name": "LocaleString",
+    "color": "#E2F0CB"
+  },
+  {
+    "name": "file(s) (ini)",
+    "color": "#FFB7B2"
+  },
+  {
+    "name": "enum",
+    "color": "#D4A5A5"
+  },
+  {
+    "name": "memory",
+    "color": "#B5EAD7"
+  },
+  {
+    "name": "unit(s)",
+    "color": "#C7CEEA"
+  },
+  {
+    "name": "action ref",
+    "color": "#E2F0CB"
+  },
+  {
+    "name": "projectile ref",
+    "color": "#FFDAC1"
+  },
+  {
+    "name": "animation ref",
+    "color": "#E0BBE4"
+  },
+  {
+    "name": "color",
+    "color": "#95E1D3"
+  },
+  {
+    "name": "draw type",
+    "color": "#FCE77D"
+  },
+  {
+    "name": "fields values",
+    "color": "#F99374"
+  },
+  {
+    "name": "style type",
+    "color": "#A2D5F2"
+  },
+  {
+    "name": "effects",
+    "color": "#DEA5A4"
+  },
+  {
+    "name": "static integer",
+    "color": "#B39DDB"
+  },
+  {
+    "name": "static integer(price)",
+    "color": "#FFD3B6"
+  },
+  {
+    "name": "DynamicsDigital",
+    "color": "#A8E6CF"
+  },
+  {
+    "name": "number",
+    "color": "#FFAAA5"
+  },
+  {
+    "name": "image file",
+    "color": "#DCEDC1"
+  },
+  {
+    "name": "true, false",
+    "color": "#A5D8FF"
+  },
+  {
+    "name": "NONE, LAND, AIR, WATER, HOVER, BUILDING, OVER_CLIFF, OVER_CLIFF_WATER",
+    "color": "#FF9AA2"
+  }
+]

@@ -17,6 +17,7 @@ import {
     EffectCompletionProvider,
     AnimationCompletionProvider
 } from './completionProvider';
+import { SectionPropertyDecorator } from './decorator';
 
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
@@ -65,6 +66,10 @@ export function activate(context: vscode.ExtensionContext) {
 			provider
 		)
 	);
+
+	// 注册装饰器
+	const decorator = new SectionPropertyDecorator();
+	context.subscriptions.push(decorator);
 
 	context.subscriptions.push(disposable);
 	context.subscriptions.push(sectionParser);
