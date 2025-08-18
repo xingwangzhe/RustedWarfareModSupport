@@ -2,8 +2,10 @@
   "name": "rustedwarfaremodsupport",
   "displayName": "RustedWarfareModSupport",
   "icon": "favicon.png",
-  "description": "a mod 开发",
+  "description": "for RustedWarfareModSupport",
   "version": "1.2.1",
+  "author": "xingwangzhe",
+  "publisher": "xingwangzhe",
   "engines": {
     "vscode": "^1.103.0"
   },
