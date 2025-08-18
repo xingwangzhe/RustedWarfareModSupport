@@ -111,7 +111,7 @@ export class CoreCompletionProvider extends GenericCompletionProvider {
 
 export class CanBuildCompletionProvider extends GenericCompletionProvider {
     constructor() {
-        super('canBuild', (name: string) => name.startsWith('canBuild_'));
+        super('canBuild', (name: string) => /^canBuild_\w+$/u.test(name));
     }
 }
 
@@ -129,13 +129,13 @@ export class AttackCompletionProvider extends GenericCompletionProvider {
 
 export class TurretCompletionProvider extends GenericCompletionProvider {
     constructor() {
-        super('turret', (name: string) => name.startsWith('turret_'));
+        super('turret', (name: string) => /^turret_\w+$/u.test(name));
     }
 }
 
 export class ProjectileCompletionProvider extends GenericCompletionProvider {
     constructor() {
-        super('projectile', (name: string) => name.startsWith('projectile_'));
+        super('projectile', (name: string) => /^projectile_\w+$/u.test(name));
     }
 }
 
@@ -153,30 +153,30 @@ export class AiCompletionProvider extends GenericCompletionProvider {
 
 export class LegArmCompletionProvider extends GenericCompletionProvider {
     constructor() {
-        super('leg_arm', (sectionName: string) => sectionName.startsWith('leg_') || sectionName.startsWith('arm_'));
+        super('leg_arm', (sectionName: string) => /^leg_\w+$/u.test(sectionName) || /^arm_\w+$/u.test(sectionName));
     }
 }
 
 export class AttachmentCompletionProvider extends GenericCompletionProvider {
     constructor() {
-        super('attachment', (name: string) => /^attachment_\w+/.test(name));
+        super('attachment', (name: string) => /^attachment_\w+$/u.test(name));
     }
 }
 
 export class ActionCompletionProvider extends GenericCompletionProvider {
     constructor() {
-        super('action', (name: string) => /^(action_|hiddenAction_)\w+/.test(name));
+        super('action', (name: string) => /^(action_|hiddenAction_)\w+$/u.test(name));
     }
 }
 
 export class EffectCompletionProvider extends GenericCompletionProvider {
     constructor() {
-        super('effect', (name: string) => /^effect_\w+/.test(name));
+        super('effect', (name: string) => /^effect_\w+$/u.test(name));
     }
 }
 
 export class AnimationCompletionProvider extends GenericCompletionProvider {
     constructor() {
-        super('animation', (name: string) => /^animation_\w+/.test(name));
+        super('animation', (name: string) => /^animation_\w+$/u.test(name));
     }
 }

@@ -119,7 +119,7 @@ export function isInsideSection(document: vscode.TextDocument, position: vscode.
     for (let i = position.line - 1; i >= 0; i--) {
         const line = document.lineAt(i).text.trim();
         //弱匹配，因为只有节存在[]符号
-        if (line.startsWith('[') || line.endsWith(']')) {
+        if (line.startsWith('[') && line.endsWith(']')) {
             const sectionName = line.substring(1, line.length - 1);
             return sectionMatcher(sectionName);
         }
