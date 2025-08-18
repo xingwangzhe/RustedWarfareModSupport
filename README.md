@@ -1,4 +1,4 @@
-RustedWarfareModSupport
+# RustedWarfareModSupport
 
 ![Rustedwarfare](https://corrodinggames.com/images/rw-title.png)
 
@@ -7,6 +7,11 @@ RustedWarfareModSupport
 
 当前实现的功能有:基础值的自动补全，简单逻辑布尔补全
 
+## 参考
 
+NDT 代码表
+
+google 代码表
+
+## LICENSE
 本插件遵循AGPL3协议，但使用本插件制作模组可以不受该协议限制。
-
