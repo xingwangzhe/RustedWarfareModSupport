@@ -17,6 +17,8 @@
   "valuecompletionprovider.spawnunits.example.detail": "Unit spawn syntax example",
   "valuecompletionprovider.spawnunits.example.documentation": "Unit spawn syntax example for property `{0}`",
   "valuecompletionprovider.spawnunits.version": "Version",
+  "valuecompletionprovider.unitparameter.documentation": "{0}\n\n*Version: {1}*\n\n```ini\n{2}\n```",
+  "valuecompletionprovider.logicboolean.documentation": "{0}\n\n*Version: {1}*\n\n```ini\n{2}\n```",
   "valuecompletionprovider.logicboolean.example.detail": "LogicBoolean syntax example",
   "valuecompletionprovider.logicboolean.example.documentation": "LogicBoolean is an advanced logic expression used for conditional judgments, for example: `if self.hp(lessThan=100)` means the condition is true when the unit's health is less than 100",
   "valuecompletionprovider.logicboolean.true.description": "This value will meet the condition",

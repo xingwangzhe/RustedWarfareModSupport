@@ -17,6 +17,8 @@
   "valuecompletionprovider.spawnunits.example.detail": "单位生成语法示例",
   "valuecompletionprovider.spawnunits.example.documentation": "单位生成语法示例，用于属性 `{0}`",
   "valuecompletionprovider.spawnunits.version": "版本",
+  "valuecompletionprovider.unitparameter.documentation": "{0}\n\n*版本: {1}*\n\n```ini\n{2}\n```",
+  "valuecompletionprovider.logicboolean.documentation": "{0}\n\n*版本: {1}*\n\n```ini\n{2}\n```",
   "valuecompletionprovider.logicboolean.example.detail": "LogicBoolean语法示例",
   "valuecompletionprovider.logicboolean.example.documentation": "LogicBoolean是一种高级逻辑表达式，用于条件判断，例如：`if self.hp(lessThan=100)` 表示当单位生命值低于100时条件为真",
   "valuecompletionprovider.logicboolean.true.description": "此值将满足条件",

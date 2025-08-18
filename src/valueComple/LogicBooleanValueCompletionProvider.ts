@@ -14,16 +14,13 @@ export class LogicBooleanValueCompletionProvider extends BaseValueCompletionProv
     property: any
   ): vscode.ProviderResult<vscode.CompletionItem[] | vscode.CompletionList> {
     if (property && property.type === "LogicBoolean") {
-
       return this.getBasicLogicBooleanCompletionItems();
     }
-
 
     return [];
   }
 
   private getBasicLogicBooleanCompletionItems(): vscode.CompletionItem[] {
-
     const valuePath = path.join(
       __dirname,
       "..",
@@ -38,15 +35,14 @@ export class LogicBooleanValueCompletionProvider extends BaseValueCompletionProv
         item.name,
         vscode.CompletionItemKind.Value
       );
-      completionItem.detail = item.description;
-      completionItem.documentation = new vscode.MarkdownString(`
-${vscode.l10n.t(item.description)}
-
-*Version: ${item.version}*
-
-\`\`\`ini
-${item.example}
-\`\`\``);
+      completionItem.detail = vscode.l10n.t(item.description);
+      completionItem.documentation = new vscode.MarkdownString(
+        vscode.l10n.t('valuecompletionprovider.logicboolean.documentation', [
+          vscode.l10n.t(item.description),
+          item.version,
+          vscode.l10n.t(item.example)
+        ])
+      );
 
       // 对于LogicBoolean类型，直接插入值而不是name=value格式
       completionItem.insertText = new vscode.SnippetString(item.name);

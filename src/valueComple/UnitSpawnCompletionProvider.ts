@@ -2,6 +2,7 @@ import * as vscode from 'vscode';
 import * as fs from 'fs';
 import * as path from 'path';
 import { BaseValueCompletionProvider } from './BaseValueCompletionProvider';
+import { l10n } from 'vscode';
 
 /**
  * 单位生成类属性补全提供者类
@@ -85,10 +86,18 @@ export class UnitSpawnCompletionProvider extends BaseValueCompletionProvider {
             const valueData = JSON.parse(fs.readFileSync(valuePath, 'utf8'));
             
             // 创建一个示例补全项
-            const exampleItem = new vscode.CompletionItem(valueData.example.split(':')[1].trim(), vscode.CompletionItemKind.Value);
-            exampleItem.detail = vscode.l10n.t('valuecompletionprovider.spawnunits.example.detail');
+            const exampleItem = new vscode.CompletionItem(
+                valueData.example.split(':')[1].trim(), 
+                vscode.CompletionItemKind.Value
+            );
+            
+            // 使用单独的键进行国际化
+            const exampleDetail = l10n.t('valuecompletionprovider.spawnunits.example.detail');
+            const exampleDocKey = 'valuecompletionprovider.spawnunits.example.documentation';
+            
+            exampleItem.detail = exampleDetail;
             exampleItem.documentation = new vscode.MarkdownString(
-                vscode.l10n.t('valuecompletionprovider.spawnunits.example.documentation', propertyName)
+                l10n.t(exampleDocKey, propertyName)
             );
             
             return [exampleItem];
@@ -125,16 +134,22 @@ export class UnitSpawnCompletionProvider extends BaseValueCompletionProvider {
                     switch (param.type) {
                         case 'bool':
                             // 为布尔类型提供true/false选项
-                            paramItem.insertText = new vscode.SnippetString(`${param.name}=\${1|true,false|}`);
+                            paramItem.insertText = new vscode.SnippetString(
+                                `${param.name}=\${1|${l10n.t('true')},${l10n.t('false')}|}`
+                            );
                             break;
                         case 'float':
                         case 'int':
                             // 为数值类型提供数字占位符
-                            paramItem.insertText = new vscode.SnippetString(`${param.name}=\${1:0}`);
+                            paramItem.insertText = new vscode.SnippetString(
+                                `${param.name}=\${1:${l10n.t('number')}0}}`
+                            );
                             break;
                         default:
                             // 其他类型提供通用占位符
-                            paramItem.insertText = new vscode.SnippetString(`${param.name}=\${1}`);
+                            paramItem.insertText = new vscode.SnippetString(
+                                `${param.name}=\${1:${l10n.t('value')}}}`
+                            );
                     }
                     
                     paramItems.push(paramItem);
