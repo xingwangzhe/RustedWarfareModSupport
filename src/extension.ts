@@ -17,6 +17,7 @@ import {
 } from './completionProvider';
 import { SectionPropertyDecorator } from './decorator';
 import { ValueCompletionProvider } from './valueComple/valueCompletionProvider';
+import { RustedWarfareHoverProvider } from './hoverProvider';
 
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
@@ -74,6 +75,12 @@ export function activate(context: vscode.ExtensionContext) {
 		':', ' ', ',' // 在冒号、空格和逗号后触发值补全
 	);
 
+	// 注册悬停提供者
+	const hoverProvider = vscode.languages.registerHoverProvider(
+		{ language: 'ini' },
+		new RustedWarfareHoverProvider()
+	);
+
 	// 注册装饰器
 	const decorator = new SectionPropertyDecorator();
 	context.subscriptions.push(decorator);
@@ -81,6 +88,7 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(disposable);
 	context.subscriptions.push(sectionParser);
 	context.subscriptions.push(valueCompletionSubscription);
+	context.subscriptions.push(hoverProvider);
 	completionSubscriptions.forEach(subscription => context.subscriptions.push(subscription));
 }
 
