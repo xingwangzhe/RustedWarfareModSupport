@@ -1,6 +1,7 @@
 {
   "name": "rustedwarfaremodsupport",
   "displayName": "RustedWarfareModSupport",
+  "icon": "favicon.png",
   "description": "a mod 开发",
   "version": "1.2.1",
   "engines": {
