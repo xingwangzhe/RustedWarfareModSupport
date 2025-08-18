@@ -48,8 +48,6 @@ npm run watch
 npm run package
 ```
 
-这将生成优化后的代码并输出到 [dist](file:///home/xingwangzhe/%E6%A1%8C%E9%9D%A2/rustedwarfaremodsupport/dist) 目录，其中包含可用于发布的 [extension.js](file:///home/xingwangzhe/%E6%A1%8C%E9%9D%A2/rustedwarfaremodsupport/dist/extension.js) 文件。
-
 ### 运行测试
 
 ```bash
