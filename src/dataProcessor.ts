@@ -115,19 +115,16 @@ export function createRegexSectionMatcher(pattern: RegExp): (name: string) => bo
  * @returns 是否在节内
  */
 export function isInsideSection(document: vscode.TextDocument, position: vscode.Position, sectionMatcher: (sectionName: string) => boolean): boolean {
-    let insideSection = false;
-    for (let i = 0; i < position.line; i++) {
+    // 从光标所在行向上遍历，查找最近的节定义
+    for (let i = position.line - 1; i >= 0; i--) {
         const line = document.lineAt(i).text.trim();
-        if (line.startsWith('[') && line.endsWith(']')) {
+        //弱匹配，因为只有节存在[]符号
+        if (line.startsWith('[') || line.endsWith(']')) {
             const sectionName = line.substring(1, line.length - 1);
-            if (sectionMatcher(sectionName)) {
-                insideSection = true;
-            } else {
-                insideSection = false;
-            }
+            return sectionMatcher(sectionName);
         }
     }
-    return insideSection;
+    return false;
 }
 
 /**
