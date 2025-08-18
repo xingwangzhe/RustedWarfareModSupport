@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import { debugConfig as _debugConfig } from './_config';
+import { _debugConfig } from './_config';
 import { IniSectionSymbolProvider } from './Section';
 import {
     CoreCompletionProvider,

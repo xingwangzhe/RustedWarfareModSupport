@@ -2,7 +2,7 @@ import * as vscode from 'vscode';
 import * as fs from 'fs';
 import * as path from 'path';
 import { BaseValueCompletionProvider } from './BaseValueCompletionProvider';
-import { debugConfig } from '../_config';
+import { _debugConfig } from '../_config';
 
 /**
  * 单位生成类属性补全提供者类
@@ -23,16 +23,22 @@ export class UnitSpawnCompletionProvider extends BaseValueCompletionProvider {
         position: vscode.Position,
         property: any
     ): vscode.ProviderResult<vscode.CompletionItem[] | vscode.CompletionList> {
-        console.log('UnitSpawnCompletion: property=', property);
+        if (require('../_config')._debugConfig.general) {
+            console.log('UnitSpawnCompletion: property=', property);
+        }
         // 检查是否为单位生成类属性
         if (this.unitSpawnProperties.includes(property.name)) {
-            console.log('UnitSpawnCompletion: Matched unit spawn property');
+            if (require('../_config')._debugConfig.general) {
+                console.log('UnitSpawnCompletion: Matched unit spawn property');
+            }
             const lineText = document.lineAt(position.line).text;
             const textBeforeCursor = lineText.substring(0, position.character);
             
             // 检查光标是否在值的括号内
             const insideParentheses = this.isInsideParentheses(textBeforeCursor, lineText, position.character);
-            console.log('UnitSpawnCompletion: insideParentheses=', insideParentheses);
+            if (require('../_config')._debugConfig.general) {
+                console.log('UnitSpawnCompletion: insideParentheses=', insideParentheses);
+            }
             if (insideParentheses) {
                 // 提供参数补全项
                 return this.getUnitSpawnParamCompletionItems(property.name);
@@ -59,25 +65,35 @@ export class UnitSpawnCompletionProvider extends BaseValueCompletionProvider {
             return false;
         }
         
-        console.log('isInsideParentheses: colonIndex=', colonIndex);
-        console.log('isInsideParentheses: textBeforeCursor=', textBeforeCursor);
-        console.log('isInsideParentheses: lineText=', lineText);
-        console.log('isInsideParentheses: cursorPosition=', cursorPosition);
+        if (require('../_config')._debugConfig.general) {
+            console.log('isInsideParentheses: colonIndex=', colonIndex);
+            console.log('isInsideParentheses: textBeforeCursor=', textBeforeCursor);
+            console.log('isInsideParentheses: lineText=', lineText);
+            console.log('isInsideParentheses: cursorPosition=', cursorPosition);
+        }
         
         // 从光标前的位置开始，反向遍历到:位置
         for (let i = cursorPosition - 1; i > colonIndex; i--) {
-            console.log('isInsideParentheses: checking character at', i, 'which is', lineText[i]);
+            if (require('../_config')._debugConfig.general) {
+                console.log('isInsideParentheses: checking character at', i, 'which is', lineText[i]);
+            }
             if (lineText[i] === '(') {
-                console.log('isInsideParentheses: found open parenthesis');
+                if (require('../_config')._debugConfig.general) {
+                    console.log('isInsideParentheses: found open parenthesis');
+                }
                 return true;
             } else if (lineText[i] === ')') {
-                console.log('isInsideParentheses: found close parenthesis');
+                if (require('../_config')._debugConfig.general) {
+                    console.log('isInsideParentheses: found close parenthesis');
+                }
                 return false;
             }
         }
         
         // 如果光标位置处有未闭合的括号，则在括号内
-        console.log('isInsideParentheses: no parentheses found');
+        if (require('../_config')._debugConfig.general) {
+            console.log('isInsideParentheses: no parentheses found');
+        }
         return false;
     }
     
@@ -87,12 +103,16 @@ export class UnitSpawnCompletionProvider extends BaseValueCompletionProvider {
      * @returns 单位生成基本格式补全项数组
      */
     private getUnitSpawnCompletionItems(propertyName: string): vscode.CompletionItem[] {
-        console.log('getUnitSpawnCompletionItems: propertyName=', propertyName);
+        if (require('../_config')._debugConfig.general) {
+            console.log('getUnitSpawnCompletionItems: propertyName=', propertyName);
+        }
         try {
             // 读取对应属性的值定义文件
             const valueType = propertyName === 'spawnProjectiles' || propertyName === 'spawnProjectile' ? 'spawnProjectiles' : 'spawnUnits';
             const valuePath = path.join(__dirname, '..', 'data', 'value', `${valueType}.json`);
-            console.log('getUnitSpawnCompletionItems: valuePath=', valuePath);
+            if (require('../_config')._debugConfig.general) {
+                console.log('getUnitSpawnCompletionItems: valuePath=', valuePath);
+            }
             const valueData = JSON.parse(fs.readFileSync(valuePath, 'utf8'));
             
             // 创建一个示例补全项
@@ -104,7 +124,7 @@ export class UnitSpawnCompletionProvider extends BaseValueCompletionProvider {
             
             return [exampleItem];
         } catch (error) {
-            if (debugConfig.valueCompletion) {
+            if (_debugConfig.valueCompletion) {
                 console.error(`Error reading spawnUnits.json:`, error);
             }
             return [];
@@ -117,14 +137,20 @@ export class UnitSpawnCompletionProvider extends BaseValueCompletionProvider {
      * @returns 单位生成参数补全项数组
      */
     private getUnitSpawnParamCompletionItems(propertyName: string): vscode.CompletionItem[] {
-        console.log('getUnitSpawnParamCompletionItems: propertyName=', propertyName);
+        if (require('../_config')._debugConfig.general) {
+            console.log('getUnitSpawnParamCompletionItems: propertyName=', propertyName);
+        }
         try {
             // 读取对应属性的值定义文件
             const valueType = propertyName === 'spawnProjectiles' || propertyName === 'spawnProjectile' ? 'spawnProjectiles' : 'spawnUnits';
             const valuePath = path.join(__dirname, '..', 'data', 'value', `${valueType}.json`);
-            console.log('getUnitSpawnParamCompletionItems: valuePath=', valuePath);
+            if (require('../_config')._debugConfig.general) {
+                console.log('getUnitSpawnParamCompletionItems: valuePath=', valuePath);
+            }
             const valueData = JSON.parse(fs.readFileSync(valuePath, 'utf8'));
-            console.log('getUnitSpawnParamCompletionItems: valueData=', valueData);
+            if (require('../_config')._debugConfig.general) {
+                console.log('getUnitSpawnParamCompletionItems: valueData=', valueData);
+            }
             
             // 为每个参数创建补全项
             const paramItems: vscode.CompletionItem[] = [];
@@ -157,7 +183,9 @@ export class UnitSpawnCompletionProvider extends BaseValueCompletionProvider {
                 }
             }
             
-            console.log('getUnitSpawnParamCompletionItems: paramItems=', paramItems);
+            if (require('../_config')._debugConfig.general) {
+                console.log('getUnitSpawnParamCompletionItems: paramItems=', paramItems);
+            }
             return paramItems;
         } catch (error) {
             console.error(`Error reading value definition file:`, error);

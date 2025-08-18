@@ -53,11 +53,15 @@ export function getBaseSectionName(name: string): string {
  */
 export function getSectionProperties(sectionName: string): any[] {
     try {
-        console.log('getSectionProperties: sectionName=', sectionName);
+        if (require('./_config')._debugConfig.general) {
+            console.log('getSectionProperties: sectionName=', sectionName);
+        }
         
         // 获取基本节名称
         const baseSectionName = getBaseSectionName(sectionName);
-        console.log('getSectionProperties: baseSectionName=', baseSectionName);
+        if (require('./_config')._debugConfig.general) {
+            console.log('getSectionProperties: baseSectionName=', baseSectionName);
+        }
         
         // 构建语言特定的数据文件路径
         let sectionPath = path.join(__dirname, '..', 'data', 'sections', `${baseSectionName}.json`);
@@ -68,11 +72,15 @@ export function getSectionProperties(sectionName: string): any[] {
             sectionPath = localizedPath;
         }
         
-        console.log('getSectionProperties: sectionPath=', sectionPath);
-        console.log('getSectionProperties: file exists=', fs.existsSync(sectionPath));
+        if (require('./_config')._debugConfig.general) {
+            console.log('getSectionProperties: sectionPath=', sectionPath);
+            console.log('getSectionProperties: file exists=', fs.existsSync(sectionPath));
+        }
         
         const sectionData = JSON.parse(fs.readFileSync(sectionPath, 'utf8'));
-        console.log('getSectionProperties: sectionData=', sectionData);
+        if (require('./_config')._debugConfig.general) {
+            console.log('getSectionProperties: sectionData=', sectionData);
+        }
         return sectionData.data || [];
     } catch (error) {
         console.error(`Error reading ${sectionName}.json:`, error);
