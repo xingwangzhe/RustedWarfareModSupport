@@ -2,6 +2,7 @@ import * as vscode from 'vscode';
 import * as fs from 'fs';
 import * as path from 'path';
 import { BaseValueCompletionProvider } from './BaseValueCompletionProvider';
+import { debugConfig } from '../_config';
 
 /**
  * LogicBoolean值补全提供者类
@@ -78,7 +79,9 @@ export class LogicBooleanValueCompletionProvider extends BaseValueCompletionProv
             
             return [exampleItem];
         } catch (error) {
-            console.error('Error reading logicBoolean definition file:', error);
+            if (debugConfig.logicBoolean) {
+                console.error('Error reading logicBoolean definition file:', error);
+            }
             // 如果无法读取文件，返回默认示例
             const exampleItem = new vscode.CompletionItem('if self.hp(lessThan=100)', vscode.CompletionItemKind.Value);
             exampleItem.detail = vscode.l10n.t('valuecompletionprovider.logicboolean.example.detail');

@@ -2,6 +2,7 @@ import * as vscode from 'vscode';
 import * as fs from 'fs';
 import * as path from 'path';
 import { BaseValueCompletionProvider } from './BaseValueCompletionProvider';
+import { debugConfig } from '../_config';
 
 /**
  * 单位生成类属性补全提供者类
@@ -103,7 +104,9 @@ export class UnitSpawnCompletionProvider extends BaseValueCompletionProvider {
             
             return [exampleItem];
         } catch (error) {
-            console.error(`Error reading value definition file:`, error);
+            if (debugConfig.valueCompletion) {
+                console.error(`Error reading spawnUnits.json:`, error);
+            }
             return [];
         }
     }
