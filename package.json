@@ -27,9 +27,9 @@
     "url": "https://github.com/xingwangzhe/RustedWarfareModSupport"
   },
   "scripts": {
-    "vscode:prepublish": "npm run package",
-    "compile": "npm run check-types && npm run lint && node esbuild.js",
-    "watch": "npm-run-all -p watch:*",
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -b",
+    "watch": "tsc -b -w",
     "watch:esbuild": "node esbuild.js --watch",
     "watch:tsc": "tsc --noEmit --watch --project tsconfig.json",
     "package": "npm run check-types && npm run lint && node esbuild.js --production",
@@ -39,7 +39,9 @@
     "check-types": "tsc --noEmit",
     "lint": "eslint src translation",
     "test": "vscode-test",
-    "sort-translations": "node scripts/sort-translations.mjs"
+    "sort-translations": "node scripts/sort-translations.mjs",
+    "package:vsix": "vsce package",
+    "publish:vsix": "vsce publish"
   },
   "devDependencies": {
     "@types/vscode": "^1.103.0",
