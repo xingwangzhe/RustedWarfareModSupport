@@ -38,6 +38,11 @@ export function getBaseSectionName(name: string): string {
         baseName = "spawnProjectiles";
     }
     
+    // 特殊处理 action_ 和 hiddenAction_ 类型
+    if (name.startsWith("action_") || name.startsWith("hiddenAction_")) {
+        baseName = "action";
+    }
+    
     // 特殊处理 Prices/Resources 类型
     if (name === "Prices/Resources") {
         baseName = "prices";
@@ -53,15 +58,8 @@ export function getBaseSectionName(name: string): string {
  */
 export function getSectionProperties(sectionName: string): any[] {
     try {
-        if (require('./_config')._debugConfig.general) {
-            console.log('getSectionProperties: sectionName=', sectionName);
-        }
-        
         // 获取基本节名称
         const baseSectionName = getBaseSectionName(sectionName);
-        if (require('./_config')._debugConfig.general) {
-            console.log('getSectionProperties: baseSectionName=', baseSectionName);
-        }
         
         // 构建语言特定的数据文件路径
         let sectionPath = path.join(__dirname, '..', 'data', 'sections', `${baseSectionName}.json`);
@@ -72,15 +70,7 @@ export function getSectionProperties(sectionName: string): any[] {
             sectionPath = localizedPath;
         }
         
-        if (require('./_config')._debugConfig.general) {
-            console.log('getSectionProperties: sectionPath=', sectionPath);
-            console.log('getSectionProperties: file exists=', fs.existsSync(sectionPath));
-        }
-        
         const sectionData = JSON.parse(fs.readFileSync(sectionPath, 'utf8'));
-        if (require('./_config')._debugConfig.general) {
-            console.log('getSectionProperties: sectionData=', sectionData);
-        }
         return sectionData.data || [];
     } catch (error) {
         console.error(`Error reading ${sectionName}.json:`, error);

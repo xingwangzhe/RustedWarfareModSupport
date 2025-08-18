@@ -16,59 +16,32 @@ export abstract class BaseValueCompletionProvider implements vscode.CompletionIt
         const lineText = document.lineAt(position.line).text;
         const textBeforeCursor = lineText.substring(0, position.character);
         
-        if (require('../_config')._debugConfig.general) {
-            console.log('ValueCompletion: lineText=', lineText);
-            console.log('ValueCompletion: textBeforeCursor=', textBeforeCursor);
-        }
         
         // 查找冒号位置
         const colonIndex = textBeforeCursor.lastIndexOf(':');
-        if (colonIndex === -1) {
-            if (require('../_config')._debugConfig.general) {
-                console.log('ValueCompletion: No colon found');
-            }
-            return [];
-        }
         
         // 提取属性名称
-        const propertyText = textBeforeCursor.substring(0, colonIndex).trim();
-        if (require('../_config')._debugConfig.general) {
-            console.log('ValueCompletion: propertyText=', propertyText);
-        }
-        if (!propertyText) {
-            if (require('../_config')._debugConfig.general) {
-                console.log('ValueCompletion: Empty property text');
-            }
-            return [];
-        }
+        let propertyText = textBeforeCursor.substring(0, colonIndex).trim();
+        
+        // 处理可能的前缀，如 autoTrigger:
+        const prefixPattern = /^([a-zA-Z0-9]+:\s*)+/;  // 匹配类似 "prefix1: prefix2: " 的结构
+        propertyText = propertyText.replace(prefixPattern, '').trim();
+        
         
         // 确定当前所在的节
         const currentSection = this.getCurrentSection(document, position);
-        if (require('../_config')._debugConfig.general) {
-            console.log('ValueCompletion: currentSection=', currentSection);
-        }
         if (!currentSection) {
-            if (require('../_config')._debugConfig.general) {
-                console.log('ValueCompletion: No section found');
-            }
+            
             return [];
         }
         
         // 获取节的属性数据
         const properties = getSectionProperties(currentSection);
-        if (require('../_config')._debugConfig.general) {
-            console.log('ValueCompletion: properties=', properties);
-        }
         const property = properties.find((p: any) => p.name === propertyText);
         // 如果属性不存在，返回空
         if (!property) {
-            if (require('../_config')._debugConfig.general) {
-                console.log('ValueCompletion: Property not found in section');
-            }
+            
             return [];
-        }
-        if (require('../_config')._debugConfig.general) {
-            console.log('ValueCompletion: Found property=', property);
         }
         // 调用子类的具体实现
         return this.provideValueCompletionItems(document, position, property);
