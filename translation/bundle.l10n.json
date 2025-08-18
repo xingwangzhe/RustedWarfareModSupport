@@ -138,9 +138,7 @@
   "valuecompletionprovider.logicboolean.game.nukesEnabled.description": "Returns true if nukes are enabled in this game's settings.",
   "valuecompletionprovider.logicboolean.int.description": "Removes decimal places from a number.",
   "valuecompletionprovider.logicboolean.select.description": "returns textA if bool is true otherwise returns textB",
-  "valuecompletionprovider.logicboolean.debug.description": "Returns a text string helping to explain the reason for the current result. Can see into nested logic, comparisons, and operators."
-}
-
+  "valuecompletionprovider.logicboolean.debug.description": "Returns a text string helping to explain the reason for the current result. Can see into nested logic, comparisons, and operators.",
   "data.value.spawnUnits.offsetY.description": "Sets vertical position relative to source",
   "data.value.spawnUnits.offsetDir.description": "Set the facing direction of spawned units",
   "data.value.spawnUnits.offsetHeight.description": "Sets the height for spawned units",
