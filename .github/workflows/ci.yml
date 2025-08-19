@@ -2,11 +2,11 @@ name: CI
 
 on:
   push:
-    branches: [ main, master ]
+    branches: [ rustedwarfare-1.15 ]
     tags:
       - 'v*'
   pull_request:
-    branches: [ main, master ]
+    branches: [ rustedwarfare-1.15 ]
 
 jobs:
   build:
