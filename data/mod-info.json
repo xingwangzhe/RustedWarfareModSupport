@@ -1,6 +1,30 @@
 {
   "data": [
     {
+      "name": "minVersion",
+      "type": "string",
+      "description": "data.sections.mod-info.minVersion.description",
+      "version": "1.15p7",
+      "isOutdated": false,
+      "example": "minVersion: 1.15p7"
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "description": "data.sections.mod-info.title.description",
+      "version": "default",
+      "isOutdated": false,
+      "example": "title: Mega Builders"
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "description": "data.sections.mod-info.description.description",
+      "version": "default",
+      "isOutdated": false,
+      "example": "description: Example mod which replaces builders with Mega Builders."
+    },
+    {
       "name": "sourceFolder",
       "type": "string",
       "description": "data.sections.mod-info.sourceFolder.description",

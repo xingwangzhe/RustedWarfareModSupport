@@ -1,0 +1,212 @@
+{
+    "data": [
+        {
+            "name": "displayName",
+            "type": "string",
+            "description": "data.sections.global_resource.displayName",
+            "version": "default",
+            "isOutdated": false,
+            "example": "displayName: Gold"
+        },
+        {
+            "name": "displayNameShort",
+            "type": "string",
+            "description": "data.sections.global_resource.displayNameShort",
+            "version": "default",
+            "isOutdated": false,
+            "example": "displayNameShort: G"
+        },
+        {
+            "name": "hidden",
+            "type": "bool",
+            "description": "data.sections.global_resource.hidden",
+            "version": "default",
+            "isOutdated": false,
+            "example": "hidden: true"
+        },
+        {
+            "name": "priority",
+            "type": "float",
+            "description": "data.sections.global_resource.priority",
+            "version": "default",
+            "isOutdated": false,
+            "example": "priority: 1"
+        },
+        {
+            "name": "displayColor",
+            "type": "color",
+            "description": "data.sections.global_resource.displayColor",
+            "version": "default",
+            "isOutdated": false,
+            "example": "displayColor: #FF0000"
+        },
+        {
+            "name": "displayRoundedDown",
+            "type": "bool",
+            "description": "data.sections.global_resource.displayRoundedDown",
+            "version": "default",
+            "isOutdated": false,
+            "example": "displayRoundedDown: true"
+        },
+        {
+            "name": "displayWhenZero",
+            "type": "bool",
+            "description": "data.sections.global_resource.displayWhenZero",
+            "version": "default",
+            "isOutdated": false,
+            "example": "displayWhenZero: true"
+        },
+        {
+            "name": "iconImageUseInText",
+            "type": "bool",
+            "description": "data.sections.global_resource.iconImageUseInText",
+            "version": "default",
+            "isOutdated": false,
+            "example": "iconImageUseInText: false"
+        },
+        {
+            "name": "iconImage",
+            "type": "file (image)",
+            "description": "data.sections.global_resource.iconImage",
+            "version": "default",
+            "isOutdated": false,
+            "example": "iconImage: chemms.png"
+        },
+        {
+            "name": "displayNameHideWhenIconShownInText",
+            "type": "bool",
+            "description": "data.sections.global_resource.displayNameHideWhenIconShownInText",
+            "version": "default",
+            "isOutdated": false,
+            "example": "displayNameHideWhenIconShownInText: true"
+        },
+        {
+            "name": "displayNameHideWhenIconShownInHUD",
+            "type": "bool",
+            "description": "data.sections.global_resource.displayNameHideWhenIconShownInHUD",
+            "version": "default",
+            "isOutdated": false,
+            "example": "displayNameHideWhenIconShownInHUD: true"
+        },
+        {
+            "name": "displayColorUseInText",
+            "type": "bool",
+            "description": "data.sections.global_resource.displayColorUseInText",
+            "version": "default",
+            "isOutdated": false,
+            "example": "displayColorUseInText: false"
+        },
+        {
+            "name": "appendResourceInHUD",
+            "type": "resource ref",
+            "description": "data.sections.global_resource.appendResourceInHUD",
+            "version": "default",
+            "isOutdated": false,
+            "example": "appendResourceInHUD: <resources:name>"
+        },
+        {
+            "name": "displayPrefixInHUD",
+            "type": "string",
+            "description": "data.sections.global_resource.displayPrefixInHUD",
+            "version": "default",
+            "isOutdated": false,
+            "example": "displayPrefixInHUD: 321"
+        },
+        {
+            "name": "displayPostfixInHUD",
+            "type": "string",
+            "description": "data.sections.global_resource.displayPostfixInHUD",
+            "version": "default",
+            "isOutdated": false,
+            "example": "displayPostfixInHUD: 123"
+        },
+        {
+            "name": "displayTextAppendResourceWithGap",
+            "type": "bool",
+            "description": "data.sections.global_resource.displayTextAppendResourceWithGap",
+            "version": "default",
+            "isOutdated": false,
+            "example": "displayTextAppendResourceWithGap: true"
+        },
+        {
+            "name": "appendResourceInHUD_whenThisZero",
+            "type": "bool",
+            "description": "data.sections.global_resource.appendResourceInHUD_whenThisZero",
+            "version": "default",
+            "isOutdated": false,
+            "example": "appendResourceInHUD_whenThisZero: false"
+        },
+        {
+            "name": "includeInStats",
+            "type": "bool",
+            "description": "data.sections.global_resource.includeInStats",
+            "version": "default",
+            "isOutdated": false,
+            "example": "includeInStats: true"
+        },
+        {
+            "name": "valueInStats",
+            "type": "bool/int",
+            "description": "data.sections.global_resource.valueInStats",
+            "version": "default",
+            "isOutdated": false,
+            "example": "valueInStats: true"
+        },
+        {
+            "name": "displayInHud",
+            "type": "bool",
+            "description": "data.sections.global_resource.displayInHud",
+            "version": "default",
+            "isOutdated": false,
+            "example": "displayInHud: true"
+        },
+        {
+            "name": "displayDigitGrouping",
+            "type": "display type",
+            "description": "data.sections.global_resource.displayDigitGrouping",
+            "version": "default",
+            "isOutdated": false,
+            "example": "displayDigitGrouping: none"
+        },
+        {
+            "name": "displayTextAppendResource",
+            "type": "resource ref",
+            "description": "data.sections.global_resource.displayTextAppendResource",
+            "version": "default",
+            "isOutdated": false,
+            "example": "displayTextAppendResource: <resource:name>"
+        },
+        {
+            "name": "displayPos",
+            "type": "int",
+            "description": "data.sections.global_resource.displayPos",
+            "version": "default",
+            "isOutdated": false,
+            "example": "displayPos: 1"
+        },
+        {
+            "name": "displayWithRounding",
+            "type": "bool",
+            "description": "data.sections.global_resource.displayWithRounding",
+            "version": "default",
+            "isOutdated": false,
+            "example": "displayWithRounding: true"
+        },
+        {
+            "name": "displayTextPrefix",
+            "type": "string",
+            "description": "data.sections.global_resource.displayTextPrefix",
+            "version": "default",
+            "isOutdated": false,
+            "example": "displayTextPrefix: 321"
+        },
+        {
+            "name": "displayTextPostfix",
+            "type": "string",
+            "description": "data.sections.global_resource.displayTextPostfix",
+            "version": "default",
+            "isOutdated": false,
+            "example": "displayTextPostfix: 123"
+        }
+    ]
+}

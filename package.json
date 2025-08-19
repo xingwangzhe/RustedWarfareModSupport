@@ -13,8 +13,7 @@
     "Other"
   ],
   "activationEvents": [
-    "onLanguage:ini",
-    "onStartupFinished"
+    "onLanguage:ini"
   ],
   "main": "./dist/extension.js",
   "l10n": "./translation",

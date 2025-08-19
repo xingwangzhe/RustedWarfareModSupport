@@ -1,4 +1,6 @@
 import * as vscode from 'vscode';
+import * as fs from 'fs';
+import * as path from 'path';
 import { extractExampleValue, getSectionProperties, isInsideSection, isAtValidLineStart, hasColonInLine } from './dataProcessor';
 
 /**
@@ -61,6 +63,71 @@ function createCompletionItems(sectionName: string, properties: any[]): vscode.C
         
         return item;
     });
+}
+
+/**
+ * 创建节名称补全项数组
+ * @returns 补全项数组
+ */
+function createSectionCompletionItems(): vscode.CompletionItem[] {
+    try {
+        // 读取节数据
+        const sectionsPath = path.join(__dirname, '..', 'data', 'sections.json');
+        const sectionsData = JSON.parse(fs.readFileSync(sectionsPath, 'utf8'));
+        
+        // 为每个节创建补全项
+        return sectionsData.data.map((section: any) => {
+            const item = new vscode.CompletionItem(
+                section.name,
+                vscode.CompletionItemKind.Module
+            );
+            
+            // 设置文档信息
+            item.documentation = new vscode.MarkdownString(
+                `**${vscode.l10n.t('completionprovider.description')}:** ${vscode.l10n.t(section.description)}`
+            );
+            
+            // 设置插入文本，包含中括号
+            item.insertText = new vscode.SnippetString(`${section.name}`);
+            
+            // 设置排序优先级
+            item.sortText = '0';
+            
+            return item;
+        });
+    } catch (error) {
+        console.error('Error reading sections.json:', error);
+        return [];
+    }
+}
+
+/**
+ * 节名称补全提供者类
+ */
+export class SectionNameCompletionProvider implements vscode.CompletionItemProvider {
+    provideCompletionItems(
+        document: vscode.TextDocument,
+        position: vscode.Position,
+        token: vscode.CancellationToken,
+        context: vscode.CompletionContext
+    ): vscode.ProviderResult<vscode.CompletionItem[] | vscode.CompletionList> {
+        // 获取光标所在行的文本
+        const lineText = document.lineAt(position.line).text;
+        
+        // 获取光标前的文本
+        const textBeforeCursor = lineText.substring(0, position.character);
+        
+        // 检查光标前是否有[但没有匹配的]
+        const lastOpenBracketIndex = textBeforeCursor.lastIndexOf('[');
+        const lastCloseBracketIndex = textBeforeCursor.lastIndexOf(']');
+        
+        // 如果有未闭合的[（即存在[且它在最近的]之后），则提供节名称补全
+        if (lastOpenBracketIndex !== -1 && lastOpenBracketIndex > lastCloseBracketIndex) {
+            return createSectionCompletionItems();
+        }
+        
+        return [];
+    }
 }
 
 /**
@@ -187,37 +254,8 @@ export class ModInfoCompletionProvider extends GenericCompletionProvider {
     }
 }
 
-/**
- * 专门用于mod-info.txt文件的补全提供者
- * 支持在mod-info.txt文件中提供mod和music节的属性补全
- */
-export class ModInfoFileCompletionProvider implements vscode.CompletionItemProvider {
-    provideCompletionItems(
-        document: vscode.TextDocument,
-        position: vscode.Position,
-        token: vscode.CancellationToken,
-        context: vscode.CompletionContext
-    ): vscode.ProviderResult<vscode.CompletionItem[] | vscode.CompletionList> {
-        // 检查是否是mod-info.txt文件
-        if (!document.fileName.endsWith('mod-info.txt')) {
-            return [];
-        }
-
-        // 检查是否在有效的行首位置（允许输入属性名）
-        if (!isAtValidLineStart(document, position)) {
-            return [];
-        }
-        
-        // 如果行中已经包含冒号，则不提供属性补全（为值补全保留空间）
-        if (hasColonInLine(document, position)) {
-            return [];
-        }
-
-        // 获取属性并创建补全项
-        // 在mod-info.txt文件中，我们支持两种节的属性：mod和music
-        const modProperties = getSectionProperties('mod');
-        const musicProperties = getSectionProperties('music');
-        const allProperties = [...modProperties, ...musicProperties];
-        return createCompletionItems('mod-info', allProperties);
+export class GlobalResourceCompletionProvider extends GenericCompletionProvider {
+    constructor() {
+        super('global_resource', (name: string) => /^global_resource_\p{L}+$/u.test(name));
     }
 }

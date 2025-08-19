@@ -63,11 +63,14 @@ export abstract class BaseValueCompletionProvider implements vscode.CompletionIt
      * @returns 节名称，如果未找到则返回null
      */
     protected getCurrentSection(document: vscode.TextDocument, position: vscode.Position): string | null {
+        let stop = false;
         for (let i = position.line; i >= 0; i--) {
             const line = document.lineAt(i).text.trim();
             if (line.startsWith('[') && line.endsWith(']')) {
+                stop = true;
                 return line.substring(1, line.length - 1);
             }
+            if (stop) break;
         }
         return null;
     }

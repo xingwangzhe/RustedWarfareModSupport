@@ -10,7 +10,7 @@ export class ValueCompletionProvider implements vscode.CompletionItemProvider {
         this.providers = [
             new BoolValueCompletionProvider(),
             new UnitSpawnCompletionProvider(),
-            new LogicBooleanValueCompletionProvider()
+            new LogicBooleanValueCompletionProvider(),
         ];
     }
 

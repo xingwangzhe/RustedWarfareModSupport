@@ -1,3 +1,5 @@
+// The module 'vscode' contains the VS Code extensibility API
+// Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 import { IniSectionSymbolProvider } from './Section';
 import {
@@ -14,10 +16,11 @@ import {
     ActionCompletionProvider,
     EffectCompletionProvider,
     AnimationCompletionProvider,
-    ModInfoCompletionProvider,
-    ModInfoFileCompletionProvider} from './completionProvider';
-import { SectionPropertyDecorator } from './decorator';
+    SectionNameCompletionProvider,
+    GlobalResourceCompletionProvider
+} from './completionProvider';
 import { ValueCompletionProvider } from './valueComple/valueCompletionProvider';
+import { SectionPropertyDecorator } from './decorator';
 import { RustedWarfareHoverProvider } from './hoverProvider';
 
 // This method is called when your extension is activated
@@ -39,7 +42,7 @@ export function activate(context: vscode.ExtensionContext) {
 
 	// 注册文档解析器，用于识别节
 	const sectionParser = vscode.languages.registerDocumentSymbolProvider(
-		[{ language: 'ini' }, { pattern: '**/mod-info.txt' }], 
+		{ language: 'ini' }, 
 		new IniSectionSymbolProvider()
 	);
 
@@ -58,35 +61,37 @@ export function activate(context: vscode.ExtensionContext) {
 		new ActionCompletionProvider(),
 		new EffectCompletionProvider(),
 		new AnimationCompletionProvider(),
-		new ModInfoCompletionProvider()
+		new GlobalResourceCompletionProvider()
 	];
 
 	// 注册所有补全提供者（不设置触发字符，使用默认触发机制）
 	const completionSubscriptions = completionProviders.map(provider => 
 		vscode.languages.registerCompletionItemProvider(
-			[{ language: 'ini' }, { pattern: '**/mod-info.txt' }],
+			{ language: 'ini' },
 			provider
 		)
-	);
-
-	// 为mod-info.txt文件注册专门的补全提供者
-	const modInfoFileCompletionProvider = new ModInfoFileCompletionProvider();
-	const modInfoFileCompletionSubscription = vscode.languages.registerCompletionItemProvider(
-		{ pattern: '**/mod-info.txt' },
-		modInfoFileCompletionProvider
 	);
 
 	// 注册值补全提供者
 	const valueCompletionProvider = new ValueCompletionProvider();
 	const valueCompletionSubscription = vscode.languages.registerCompletionItemProvider(
-		[{ language: 'ini' }, { pattern: '**/mod-info.txt' }],
+		{ language: 'ini' },
 		valueCompletionProvider,
 		':', ' ', ',' // 在冒号、空格和逗号后触发值补全
 	);
 
+	// 注册节名称补全提供者，在多种字符输入时都可触发
+	const sectionNameCompletionProvider = new SectionNameCompletionProvider();
+	const sectionNameCompletionSubscription = vscode.languages.registerCompletionItemProvider(
+		{ language: 'ini' },
+		sectionNameCompletionProvider,
+		'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
+		'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
+	);
+
 	// 注册悬停提供者
 	const hoverProvider = vscode.languages.registerHoverProvider(
-		[{ language: 'ini' }, { pattern: '**/mod-info.txt' }],
+		{ language: 'ini' },
 		new RustedWarfareHoverProvider()
 	);
 
@@ -97,8 +102,8 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(disposable);
 	context.subscriptions.push(sectionParser);
 	context.subscriptions.push(valueCompletionSubscription);
+	context.subscriptions.push(sectionNameCompletionSubscription);
 	context.subscriptions.push(hoverProvider);
-	context.subscriptions.push(modInfoFileCompletionSubscription);
 	completionSubscriptions.forEach(subscription => context.subscriptions.push(subscription));
 }
 

@@ -17,12 +17,8 @@ export function extractExampleValue(example: string): string {
  * @returns 基本节名称
  */
 export function getBaseSectionName(name: string): string {
+    console.log('getBaseSectionName: input name=', name);
     let baseName = name;
-    
-    // 处理带下划线的节名称，如 turret_NAME, projectile_NAME 等
-    if (name.includes("_")) {
-        baseName = name.substring(0, name.indexOf("_"));
-    }
     
     // 特殊处理 leg_ 和 arm_ 类型
     if (name.startsWith("leg_")) {
@@ -47,7 +43,15 @@ export function getBaseSectionName(name: string): string {
     if (name === "Prices/Resources") {
         baseName = "prices";
     }
-    
+
+    if (name.startsWith('global_resource')) {
+        baseName = 'global_resource';
+    }
+
+    if (name.startsWith('canBuild')) {
+        baseName = 'canBuild';
+    }
+    console.log('getBaseSectionName: output baseName=', baseName);
     return baseName;
 }
 
@@ -58,19 +62,32 @@ export function getBaseSectionName(name: string): string {
  */
 export function getSectionProperties(sectionName: string): any[] {
     try {
+        console.log('getSectionProperties: sectionName=', sectionName);
         // 获取基本节名称
         const baseSectionName = getBaseSectionName(sectionName);
+        console.log('getSectionProperties: baseSectionName=', baseSectionName);
         
         // 构建语言特定的数据文件路径
         let sectionPath = path.join(__dirname, '..', 'data', 'sections', `${baseSectionName}.json`);
+        console.log('getSectionProperties: sectionPath=', sectionPath);
         
         // 检查是否存在语言特定的文件
         const localizedPath = path.join(__dirname, '..', 'data', 'sections', vscode.env.language, `${baseSectionName}.json`);
         if (fs.existsSync(localizedPath)) {
             sectionPath = localizedPath;
+            console.log('getSectionProperties: using localized path=', sectionPath);
+        }
+        
+        const fileExists = fs.existsSync(sectionPath);
+        console.log('getSectionProperties: fileExists=', fileExists);
+        
+        if (!fileExists) {
+            console.log('getSectionProperties: File does not exist, returning empty array');
+            return [];
         }
         
         const sectionData = JSON.parse(fs.readFileSync(sectionPath, 'utf8'));
+        console.log('getSectionProperties: sectionData loaded, items count=', sectionData.data ? sectionData.data.length : 0);
         return sectionData.data || [];
     } catch (error) {
         console.error(`Error reading ${sectionName}.json:`, error);
@@ -114,34 +131,37 @@ export function createRegexSectionMatcher(pattern: RegExp): (name: string) => bo
  */
 export function isInsideSection(document: vscode.TextDocument, position: vscode.Position, sectionMatcher: (sectionName: string) => boolean): boolean {
     // 从光标所在行向上遍历，查找最近的节定义
+    let stop = false;
     for (let i = position.line - 1; i >= 0; i--) {
         const line = document.lineAt(i).text.trim();
         //弱匹配，因为只有节存在[]符号
         if (line.startsWith('[') && line.endsWith(']')) {
             const sectionName = line.substring(1, line.length - 1);
+            stop = true;
             return sectionMatcher(sectionName);
         }
+        if(stop) break;
     }
     
-    // 特殊处理 mod-info.txt 文件
-    // 如果文件名是 mod-info.txt，则检查是否在文件开头（没有节的情况下）
-    if (document.fileName.endsWith('mod-info.txt')) {
-        // 检查是否在文件的前几行且没有遇到任何节
-        let hasSection = false;
-        for (let i = 0; i < Math.min(position.line, 10); i++) {
-            const line = document.lineAt(i).text.trim();
-            if (line.startsWith('[') && line.endsWith(']')) {
-                hasSection = true;
-                break;
-            }
-        }
+    // // 特殊处理 mod-info.txt 文件
+    // // 如果文件名是 mod-info.txt，则检查是否在文件开头（没有节的情况下）
+    // if (document.fileName.endsWith('mod-info.txt')) {
+    //     // 检查是否在文件的前几行且没有遇到任何节
+    //     let hasSection = false;
+    //     for (let i = 0; i < Math.min(position.line, 10); i++) {
+    //         const line = document.lineAt(i).text.trim();
+    //         if (line.startsWith('[') && line.endsWith(']')) {
+    //             hasSection = true;
+    //             break;
+    //         }
+    //     }
         
-        // 如果没有节且在文件开头附近，则认为是在mod-info节中
-        if (!hasSection && position.line < 10) {
-            // 直接检查是否匹配mod或music节
-            return sectionMatcher('mod') || sectionMatcher('music');
-        }
-    }
+    //     // 如果没有节且在文件开头附近，则认为是在mod-info节中
+    //     if (!hasSection && position.line < 10) {
+    //         // 直接检查是否匹配mod或music节
+    //         return sectionMatcher('mod') || sectionMatcher('music');
+    //     }
+    // }
     
     return false;
 }
