@@ -22,3 +22,4 @@ bun.lock
 bunfig.toml
 CONTRIBUTING*.md
 TECHNICAL_DOCS*.md
+.github/**
