@@ -10,33 +10,47 @@ import { extractExampleValue, getSectionProperties, isInsideSection, isAtValidLi
  */
 function generateCompletionDocumentation(property: any): vscode.MarkdownString {
     const doc = new vscode.MarkdownString();
-    
+
+    // 先翻译各字段
+    const nameLabel = vscode.l10n.t('completionprovider.name');
+    const typeLabel = vscode.l10n.t('completionprovider.type');
+    const versionLabel = vscode.l10n.t('completionprovider.version');
+    const descriptionLabel = vscode.l10n.t('completionprovider.description');
+    const isOutdatedLabel = vscode.l10n.t('completionprovider.isOutdated');
+    const exampleLabel = vscode.l10n.t('completionprovider.example');
+
+    const nameValue = vscode.l10n.t(property.name);
+    const typeValue = property.type;
+    const versionValue = property.version ? vscode.l10n.t(property.version) : '';
+    const descriptionValue = property.description ? vscode.l10n.t(property.description) : '';
+    const exampleValue = property.example ? vscode.l10n.t(property.example) : '';
+
     // 添加名称字段
-    doc.appendMarkdown(`**${vscode.l10n.t('completionprovider.name')}:** ${vscode.l10n.t(property.name)}\n\n`);
-    
+    doc.appendMarkdown(`**${nameLabel}:** ${nameValue}\n\n`);
+
     // 添加类型字段
-    doc.appendMarkdown(`**${vscode.l10n.t('completionprovider.type')}:** \`${property.type}\`\n\n`);
-    
+    doc.appendMarkdown(`**${typeLabel}:** \`${typeValue}\`\n\n`);
+
     // 添加版本字段
     if (property.version) {
-        doc.appendMarkdown(`**${vscode.l10n.t('completionprovider.version')}:** ${property.version}\n\n`);
+        doc.appendMarkdown(`**${versionLabel}:** ${versionValue}\n\n`);
     }
-    
+
     // 添加描述字段
     if (property.description) {
-        doc.appendMarkdown(`**${vscode.l10n.t('completionprovider.description')}:** ${vscode.l10n.t(property.description)}\n\n`);
+        doc.appendMarkdown(`**${descriptionLabel}:** ${descriptionValue}\n\n`);
     }
-    
+
     // 添加过时标记
     if (property.isOutdated) {
-        doc.appendMarkdown(`⚠️ **${vscode.l10n.t('completionprovider.isOutdated')}:** true\n\n`);
+        doc.appendMarkdown(`⚠️ **${isOutdatedLabel}:** true\n\n`);
     }
-    
+
     // 添加示例字段
     if (property.example) {
-        doc.appendMarkdown(`**${vscode.l10n.t('completionprovider.example')}:**\n\`\`\`ini\n${vscode.l10n.t(property.example)}\n\`\`\``);
+        doc.appendMarkdown(`**${exampleLabel}:**\n\`\`\`ini\n${exampleValue}\n\`\`\``);
     }
-    
+
     return doc;
 }
 

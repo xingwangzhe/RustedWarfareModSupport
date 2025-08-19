@@ -160,33 +160,47 @@ export class RustedWarfareHoverProvider implements vscode.HoverProvider {
     private createPropertyHover(property: any): vscode.Hover {
         // 创建悬停内容
         const hoverContent = new vscode.MarkdownString();
-        
+
+        // 先翻译各字段
+        const nameLabel = vscode.l10n.t('completionprovider.name');
+        const typeLabel = vscode.l10n.t('completionprovider.type');
+        const versionLabel = vscode.l10n.t('completionprovider.version');
+        const descriptionLabel = vscode.l10n.t('completionprovider.description');
+        const isOutdatedLabel = vscode.l10n.t('completionprovider.isOutdated');
+        const exampleLabel = vscode.l10n.t('completionprovider.example');
+
+        const nameValue = vscode.l10n.t(property.name);
+        const typeValue = property.type;
+        const versionValue = property.version ? vscode.l10n.t(property.version) : '';
+        const descriptionValue = property.description ? vscode.l10n.t(property.description) : '';
+        const exampleValue = property.example ? vscode.l10n.t(property.example) : '';
+
         // 添加名称字段
-        hoverContent.appendMarkdown(`**${vscode.l10n.t('completionprovider.name')}:** ${vscode.l10n.t(property.name)}\n\n`);
-        
+        hoverContent.appendMarkdown(`**${nameLabel}:** ${nameValue}\n\n`);
+
         // 添加类型字段
-        hoverContent.appendMarkdown(`**${vscode.l10n.t('completionprovider.type')}:** \`${property.type}\`\n\n`);
-        
+        hoverContent.appendMarkdown(`**${typeLabel}:** \`${typeValue}\`\n\n`);
+
         // 添加版本字段
         if (property.version) {
-            hoverContent.appendMarkdown(`**${vscode.l10n.t('completionprovider.version')}:** ${property.version}\n\n`);
+            hoverContent.appendMarkdown(`**${versionLabel}:** ${versionValue}\n\n`);
         }
-        
+
         // 添加描述字段
         if (property.description) {
-            hoverContent.appendMarkdown(`**${vscode.l10n.t('completionprovider.description')}:** ${vscode.l10n.t(property.description)}\n\n`);
+            hoverContent.appendMarkdown(`**${descriptionLabel}:** ${descriptionValue}\n\n`);
         }
-        
+
         // 添加过时标记
         if (property.isOutdated) {
-            hoverContent.appendMarkdown(`⚠️ **${vscode.l10n.t('completionprovider.isOutdated')}:** true\n\n`);
+            hoverContent.appendMarkdown(`⚠️ **${isOutdatedLabel}:** true\n\n`);
         }
-        
+
         // 添加示例字段
         if (property.example) {
-            hoverContent.appendMarkdown(`**${vscode.l10n.t('completionprovider.example')}:**\n\`\`\`ini\n${vscode.l10n.t(property.example)}\n\`\`\``);
+            hoverContent.appendMarkdown(`**${exampleLabel}:**\n\`\`\`ini\n${exampleValue}\n\`\`\``);
         }
-        
+
         return new vscode.Hover(hoverContent);
     }
     
