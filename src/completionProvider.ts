@@ -265,3 +265,16 @@ export class ResourceCompletionProvider extends GenericCompletionProvider {
         super('resource', (name: string) => /^resource_\p{L}+$/u.test(name));
     }
 }
+
+// 新增的补全提供者类
+export class DecalCompletionProvider extends GenericCompletionProvider {
+    constructor() {
+        super('decal', (name: string) => /^decal_\p{L}+$/u.test(name));
+    }
+}
+
+export class PlacementRuleCompletionProvider extends GenericCompletionProvider {
+    constructor() {
+        super('placementRule', (name: string) => /^placementRule_\p{L}+$/u.test(name));
+    }
+}

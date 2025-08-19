@@ -17,3 +17,6 @@ merge.js
 // 只打包构建好的翻译文件
 translation/*/
 !translation/bundle*.l10n.json
+DOCS.md
+bun.lock
+bunfig.toml
