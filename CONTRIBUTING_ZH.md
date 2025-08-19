@@ -20,6 +20,17 @@ rustedwarfaremodsupport/
 └── ...
 ```
 
+## 环境准备
+
+在开始贡献之前，请确保您的开发环境满足以下要求：
+
+1. 安装 Node.js (推荐使用 LTS 版本 22.18.0)
+2. 推荐安装 bun 包管理器（用于更快的构建速度）
+3. 全局安装 VS Code 扩展打包工具：
+   ```bash
+   npm install -g @vscode/vsce
+   ```
+
 ## 可以修改的内容
 
 ### 1. 翻译文件
@@ -64,15 +75,30 @@ rustedwarfaremodsupport/
 ## 测试您的更改
 
 1. 克隆仓库并安装依赖：
-   ```
+   ```bash
    npm install
+   # 或者使用 bun（如果已安装）
+   # bun install
    ```
 
 2. 在 VS Code 中按 F5 启动调试会话测试您的更改
 
 3. 或者构建插件进行测试：
-   ```
+   ```bash
+   # 合并翻译文件
+   npm run merge-translations
+   # 或者使用 bun（如果已安装）
+   # bun run merge-translations
+   
+   # 构建插件
    npm run package
+   # 或者使用 bun（如果已安装）
+   # bun run package
+   
+   # 创建 VSIX 包
+   npm run package:vsix
+   # 或者使用 bun（如果已安装）
+   # bun run package:vsix
    ```
 
 ## 提交 Pull Request

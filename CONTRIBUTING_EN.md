@@ -20,6 +20,17 @@ rustedwarfaremodsupport/
 └── ...
 ```
 
+## Environment Setup
+
+Before you start contributing, please ensure your development environment meets the following requirements:
+
+1. Install Node.js (LTS version 22.18.0 recommended)
+2. Install bun package manager (recommended for faster build times)
+3. Install the VS Code extension packaging tool globally:
+   ```bash
+   npm install -g @vscode/vsce
+   ```
+
 ## What You Can Modify
 
 ### 1. Translation Files
@@ -64,15 +75,30 @@ To maintain the stability and consistency of the plugin, please avoid modifying 
 ## Testing Your Changes
 
 1. Clone the repository and install dependencies:
-   ```
+   ```bash
    npm install
+   # Or use bun (if installed)
+   # bun install
    ```
 
 2. Press F5 in VS Code to start a debug session to test your changes
 
 3. Or build the plugin for testing:
-   ```
+   ```bash
+   # Merge translation files
+   npm run merge-translations
+   # Or use bun (if installed)
+   # bun run merge-translations
+   
+   # Build the plugin
    npm run package
+   # Or use bun (if installed)
+   # bun run package
+   
+   # Create VSIX package
+   npm run package:vsix
+   # Or use bun (if installed)
+   # bun run package:vsix
    ```
 
 ## Submitting a Pull Request
