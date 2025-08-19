@@ -17,7 +17,6 @@ export function extractExampleValue(example: string): string {
  * @returns 基本节名称
  */
 export function getBaseSectionName(name: string): string {
-    console.log('getBaseSectionName: input name=', name);
     let baseName = name;
     
     // 特殊处理 leg_ 和 arm_ 类型
@@ -51,7 +50,6 @@ export function getBaseSectionName(name: string): string {
     if (name.startsWith('canBuild')) {
         baseName = 'canBuild';
     }
-    console.log('getBaseSectionName: output baseName=', baseName);
     return baseName;
 }
 
@@ -62,32 +60,19 @@ export function getBaseSectionName(name: string): string {
  */
 export function getSectionProperties(sectionName: string): any[] {
     try {
-        console.log('getSectionProperties: sectionName=', sectionName);
         // 获取基本节名称
         const baseSectionName = getBaseSectionName(sectionName);
-        console.log('getSectionProperties: baseSectionName=', baseSectionName);
         
         // 构建语言特定的数据文件路径
         let sectionPath = path.join(__dirname, '..', 'data', 'sections', `${baseSectionName}.json`);
-        console.log('getSectionProperties: sectionPath=', sectionPath);
         
         // 检查是否存在语言特定的文件
         const localizedPath = path.join(__dirname, '..', 'data', 'sections', vscode.env.language, `${baseSectionName}.json`);
         if (fs.existsSync(localizedPath)) {
             sectionPath = localizedPath;
-            console.log('getSectionProperties: using localized path=', sectionPath);
-        }
-        
-        const fileExists = fs.existsSync(sectionPath);
-        console.log('getSectionProperties: fileExists=', fileExists);
-        
-        if (!fileExists) {
-            console.log('getSectionProperties: File does not exist, returning empty array');
-            return [];
         }
         
         const sectionData = JSON.parse(fs.readFileSync(sectionPath, 'utf8'));
-        console.log('getSectionProperties: sectionData loaded, items count=', sectionData.data ? sectionData.data.length : 0);
         return sectionData.data || [];
     } catch (error) {
         console.error(`Error reading ${sectionName}.json:`, error);

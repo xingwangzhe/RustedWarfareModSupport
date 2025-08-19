@@ -16,9 +16,11 @@ export abstract class BaseValueCompletionProvider implements vscode.CompletionIt
         const lineText = document.lineAt(position.line).text;
         const textBeforeCursor = lineText.substring(0, position.character);
         
-        
         // 查找冒号位置
         const colonIndex = textBeforeCursor.lastIndexOf(':');
+        if (colonIndex === -1) {
+            return [];
+        }
         
         // 提取属性名称
         let propertyText = textBeforeCursor.substring(0, colonIndex).trim();
@@ -27,11 +29,13 @@ export abstract class BaseValueCompletionProvider implements vscode.CompletionIt
         const prefixPattern = /^([a-zA-Z0-9]+:\s*)+/;  // 匹配类似 "prefix1: prefix2: " 的结构
         propertyText = propertyText.replace(prefixPattern, '').trim();
         
+        if (!propertyText) {
+            return [];
+        }
         
         // 确定当前所在的节
         const currentSection = this.getCurrentSection(document, position);
         if (!currentSection) {
-            
             return [];
         }
         
@@ -40,7 +44,6 @@ export abstract class BaseValueCompletionProvider implements vscode.CompletionIt
         const property = properties.find((p: any) => p.name === propertyText);
         // 如果属性不存在，返回空
         if (!property) {
-            
             return [];
         }
         // 调用子类的具体实现
@@ -67,8 +70,9 @@ export abstract class BaseValueCompletionProvider implements vscode.CompletionIt
         for (let i = position.line; i >= 0; i--) {
             const line = document.lineAt(i).text.trim();
             if (line.startsWith('[') && line.endsWith(']')) {
+                const sectionName = line.substring(1, line.length - 1);
                 stop = true;
-                return line.substring(1, line.length - 1);
+                return sectionName;
             }
             if (stop) break;
         }
