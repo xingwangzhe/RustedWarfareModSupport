@@ -1,0 +1,108 @@
+{
+    "data": [
+        {
+            "name": "anyRuleInGroup",
+            "type": "string",
+            "description": "data.sections.placementRule.anyRuleInGroup",
+            "version": "1.14",
+            "isOutdated": false,
+            "example": "anyRuleInGroup: struct"
+        },
+        {
+            "name": "searchTags",
+            "type": "tag list",
+            "description": "data.sections.placementRule.searchTags",
+            "version": "1.14",
+            "isOutdated": false,
+            "example": "searchTags: factory"
+        },
+        {
+            "name": "searchTeam",
+            "type": "relation",
+            "description": "data.sections.placementRule.searchTeam",
+            "version": "1.14",
+            "isOutdated": false,
+            "example": "searchTeam: own"
+        },
+        {
+            "name": "searchOffsetX",
+            "type": "float",
+            "description": "data.sections.placementRule.searchOffsetX",
+            "version": "1.14",
+            "isOutdated": false,
+            "example": "searchOffsetX: 100"
+        },
+        {
+            "name": "searchOffsetY",
+            "type": "float",
+            "description": "data.sections.placementRule.searchOffsetY",
+            "version": "1.14",
+            "isOutdated": false,
+            "example": "searchOffsetY: 200"
+        },
+        {
+            "name": "searchDistance",
+            "type": "float",
+            "description": "data.sections.placementRule.searchDistance",
+            "version": "1.14",
+            "isOutdated": false,
+            "example": "searchDistance: 500"
+        },
+        {
+            "name": "excludeIncompleteBuildings",
+            "type": "bool",
+            "description": "data.sections.placementRule.excludeIncompleteBuildings",
+            "version": "1.14",
+            "isOutdated": false,
+            "example": "excludeIncompleteBuildings: true"
+        },
+        {
+            "name": "excludeNonBuildings",
+            "type": "bool",
+            "description": "data.sections.placementRule.excludeNonBuildings",
+            "version": "1.14",
+            "isOutdated": false,
+            "example": "excludeNonBuildings:true"
+        },
+        {
+            "name": "minCount",
+            "type": "int",
+            "description": "data.sections.placementRule.minCount",
+            "version": "1.14",
+            "isOutdated": false,
+            "example": "minCount: 0"
+        },
+        {
+            "name": "maxCount",
+            "type": "int",
+            "description": "data.sections.placementRule.maxCount",
+            "version": "1.14",
+            "isOutdated": false,
+            "example": "maxCount: 1"
+        },
+        {
+            "name": "blocksPlacement",
+            "type": "bool",
+            "description": "data.sections.placementRule.blocksPlacement",
+            "version": "1.14",
+            "isOutdated": false,
+            "example": "blocksPlacement: false"
+        },
+        {
+            "name": "cannotPlaceMessage",
+            "type": "LocaleString",
+            "description": "data.sections.placementRule.cannotPlaceMessage",
+            "version": "1.14",
+            "isOutdated": false,
+            "example": "cannotPlaceMessage: \"No factory is nearby\""
+        },
+        {
+            "name": "checkEachTile",
+            "type": "bool",
+            "description": "data.sections.placementRule.checkEachTile",
+            "version": "1.14",
+            "isOutdated": false,
+            "example": "checkEachTile: false"
+        }
+    ]
+}

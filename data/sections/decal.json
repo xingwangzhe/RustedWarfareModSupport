@@ -1,0 +1,404 @@
+{
+    "data": [
+        {
+            "name": "image",
+            "type": "image",
+            "description": "data.sections.decal.image",
+            "version": "1.15p9",
+            "isOutdated": false,
+            "example": "image: fish.png"
+        },
+        {
+            "name": "layer",
+            "type": "enum",
+            "description": "data.sections.decal.layer",
+            "version": "1.15p9",
+            "isOutdated": false,
+            "example": "layer: beforeUI"
+        },
+        {
+            "name": "order",
+            "type": "float",
+            "description": "data.sections.decal.order",
+            "version": "1.15p9",
+            "isOutdated": false,
+            "example": "order: 2"
+        },
+        {
+            "name": "teamColors",
+            "type": "bool",
+            "description": "data.sections.decal.teamColors",
+            "version": "1.15p9",
+            "isOutdated": false,
+            "example": "teamColors: true"
+        },
+        {
+            "name": "alpha",
+            "type": "logicNumber",
+            "description": "data.sections.decal.alpha",
+            "version": "1.15p9",
+            "isOutdated": false,
+            "example": "alpha: 0.5"
+        },
+        {
+            "name": "isVisible",
+            "type": "LogicBoolean",
+            "description": "data.sections.decal.isVisible",
+            "version": "1.15p9",
+            "isOutdated": false,
+            "example": "isVisible: if self.hp > self.maxHp/2"
+        },
+        {
+            "name": "onlyWhenSelectedByOwnPlayer",
+            "type": "bool",
+            "description": "data.sections.decal.onlyWhenSelectedByOwnPlayer",
+            "version": "1.15p9",
+            "isOutdated": false,
+            "example": "onlyWhenSelectedByOwnPlayer : true"
+        },
+        {
+            "name": "onlyWhenSelectedByEnemyPlayer",
+            "type": "bool",
+            "description": "data.sections.decal.onlyWhenSelectedByEnemyPlayer",
+            "version": "1.15p9",
+            "isOutdated": false,
+            "example": "onlyWhenSelectedByEnemyPlayer: true"
+        },
+        {
+            "name": "onlyWhenSelectedByAllyNotOwnPlayer",
+            "type": "bool",
+            "description": "data.sections.decal.onlyWhenSelectedByAllyNotOwnPlayer",
+            "version": "1.15p9",
+            "isOutdated": false,
+            "example": "onlyWhenSelectedByAllyNotOwnPlayer: true"
+        },
+        {
+            "name": "onlyWhenSelectedByAnyPlayer",
+            "type": "bool",
+            "description": "data.sections.decal.onlyWhenSelectedByAnyPlayer",
+            "version": "1.15p9",
+            "isOutdated": false,
+            "example": "onlyWhenSelectedByAnyPlayer: true"
+        },
+        {
+            "name": "includeParentsSelection",
+            "type": "bool",
+            "description": "data.sections.decal.includeParentsSelection",
+            "version": "1.15p9",
+            "isOutdated": false,
+            "example": "includeParentsSelection: true"
+        },
+        {
+            "name": "onlyTeam",
+            "type": "TeamRelation",
+            "description": "data.sections.decal.onlyTeam",
+            "version": "1.15p9",
+            "isOutdated": false,
+            "example": "onlyTeam: any"
+        },
+        {
+            "name": "onlyWhileActive",
+            "type": "bool",
+            "description": "data.sections.decal.onlyWhileActive",
+            "version": "1.15p9",
+            "isOutdated": false,
+            "example": "onlyWhileActive: true"
+        },
+        {
+            "name": "onlyWhileAlive",
+            "type": "bool",
+            "description": "data.sections.decal.onlyWhileAlive",
+            "version": "1.15p9",
+            "isOutdated": false,
+            "example": "onlyWhileAlive: false"
+        },
+        {
+            "name": "onlyInPreview",
+            "type": "bool",
+            "description": "data.sections.decal.onlyInPreview",
+            "version": "1.15p9",
+            "isOutdated": false,
+            "example": "onlyInPreview: false"
+        },
+        {
+            "name": "onlyWithZoomLevelOrMore",
+            "type": "float",
+            "description": "data.sections.decal.onlyWithZoomLevelOrMore",
+            "version": "1.15p9",
+            "isOutdated": false,
+            "example": "onlyWithZoomLevelOrMore: 0.4"
+        },
+        {
+            "name": "onlyOnNonPreview",
+            "type": "bool",
+            "description": "data.sections.decal.onlyOnNonPreview",
+            "version": "1.15p9",
+            "isOutdated": false,
+            "example": "onlyOnNonPreview: true"
+        },
+        {
+            "name": "onlyPlayersWithUnitControl",
+            "type": "bool",
+            "description": "data.sections.decal.onlyPlayersWithUnitControl",
+            "version": "1.15p9",
+            "isOutdated": false,
+            "example": "onlyPlayersWithUnitControl: true"
+        },
+        {
+            "name": "onlyOnBodyFrameOf",
+            "type": "int",
+            "description": "data.sections.decal.onlyOnBodyFrameOf",
+            "version": "1.15p9",
+            "isOutdated": false,
+            "example": "onlyOnBodyFrameOf: 0"
+        },
+        {
+            "name": "xOffsetRelative",
+            "type": "int",
+            "description": "data.sections.decal.xOffsetRelative",
+            "version": "1.15p9",
+            "isOutdated": false,
+            "example": "xOffsetRelative: 50"
+        },
+        {
+            "name": "yOffsetRelative",
+            "type": "int",
+            "description": "data.sections.decal.yOffsetRelative",
+            "version": "1.15p9",
+            "isOutdated": false,
+            "example": "yOffsetRelative: 50"
+        },
+        {
+            "name": "xOffsetAbsolute",
+            "type": "logicNumber",
+            "description": "data.sections.decal.xOffsetAbsolute",
+            "version": "1.15p9",
+            "isOutdated": false,
+            "example": "xOffsetAbsolute: 40"
+        },
+        {
+            "name": "yOffsetAbsolute",
+            "type": "logicNumber",
+            "description": "data.sections.decal.yOffsetAbsolute",
+            "version": "1.15p9",
+            "isOutdated": false,
+            "example": "yOffsetAbsolute: 40"
+        },
+        {
+            "name": "hOffset",
+            "type": "int",
+            "description": "data.sections.decal.hOffset",
+            "version": "1.15p9",
+            "isOutdated": false,
+            "example": "hOffset: 10"
+        },
+        {
+            "name": "dirOffset",
+            "type": "int",
+            "description": "data.sections.decal.dirOffset",
+            "version": "1.15p9",
+            "isOutdated": false,
+            "example": "dirOffset: 45"
+        },
+        {
+            "name": "pivotOffset",
+            "type": "int",
+            "description": "data.sections.decal.pivotOffset",
+            "version": "1.15p9",
+            "isOutdated": false,
+            "example": "pivotOffset: 45"
+        },
+        {
+            "name": "alwaysStartDirAtZero",
+            "type": "bool",
+            "description": "data.sections.decal.alwaysStartDirAtZero",
+            "version": "1.15p9",
+            "isOutdated": false,
+            "example": "alwaysStartDirAtZero: true"
+        },
+        {
+            "name": "imageStack",
+            "type": "images",
+            "description": "data.sections.decal.imageStack",
+            "version": "1.15p9",
+            "isOutdated": false,
+            "example": "imageStack - carFloor.png, carBody.png*3, carRoof.png*2, antenna.png*10"
+        },
+        {
+            "name": "imageScale",
+            "type": "logicNumber",
+            "description": "data.sections.decal.imageScale",
+            "version": "1.15p9",
+            "isOutdated": false,
+            "example": "imageScale: 1 + (self.height * 0.1)"
+        },
+        {
+            "name": "imageScaleX",
+            "type": "logicNumber",
+            "description": "data.sections.decal.imageScaleX",
+            "version": "1.15p9",
+            "isOutdated": false,
+            "example": "imageScaleX: 1"
+        },
+        {
+            "name": "imageScaleY",
+            "type": "logicNumber",
+            "description": "data.sections.decal.imageScaleY",
+            "version": "1.15p9",
+            "isOutdated": false,
+            "example": "imageScaleY: (self.hp/self.maxHp)*100"
+        },
+        {
+            "name": "stack_hOffset",
+            "type": "float",
+            "description": "data.sections.decal.stack_hOffset",
+            "version": "1.15p9",
+            "isOutdated": false,
+            "example": "stack_hOffset: 4"
+        },
+        {
+            "name": "stack_frameOffset",
+            "type": "int",
+            "description": "data.sections.decal.stack_frameOffset",
+            "version": "1.15p9",
+            "isOutdated": false,
+            "example": "stack_frameOffset: 1"
+        },
+        {
+            "name": "stack_drawInReverseOrder",
+            "type": "bool",
+            "description": "data.sections.decal.stack_drawInReverseOrder",
+            "version": "1.15p9",
+            "isOutdated": false,
+            "example": "stack_drawInReverseOrder: true"
+        },
+        {
+            "name": "stack_indexStart",
+            "type": "logicNumber",
+            "description": "data.sections.decal.stack_indexStart",
+            "version": "1.15p9",
+            "isOutdated": false,
+            "example": "stack_indexStart: 0"
+        },
+        {
+            "name": "stack_indexCount",
+            "type": "logicNumber",
+            "description": "data.sections.decal.stack_indexCount",
+            "version": "1.15p9",
+            "isOutdated": false,
+            "example": "stack_indexCount: 10"
+        },
+        {
+            "name": "total_frames",
+            "type": "int",
+            "description": "data.sections.decal.total_frames",
+            "version": "1.15p9",
+            "isOutdated": false,
+            "example": "total_frames: 10"
+        },
+        {
+            "name": "frame_width",
+            "type": "int",
+            "description": "data.sections.decal.frame_width",
+            "version": "1.15p9",
+            "isOutdated": false,
+            "example": "frame_width: 20"
+        },
+        {
+            "name": "frame_height",
+            "type": "int",
+            "description": "data.sections.decal.frame_height",
+            "version": "1.15p9",
+            "isOutdated": false,
+            "example": "frame_height: 40"
+        },
+        {
+            "name": "frame",
+            "type": "logicNumber",
+            "description": "data.sections.decal.frame",
+            "version": "1.15p9",
+            "isOutdated": false,
+            "example": "frame: memory.frame"
+        },
+        {
+            "name": "addBodyFrameMultipliedBy",
+            "type": "int",
+            "description": "data.sections.decal.addBodyFrameMultipliedBy",
+            "version": "1.15p9",
+            "isOutdated": false,
+            "example": "addBodyFrameMultipliedBy: 2"
+        },
+        {
+            "name": "image_shadow",
+            "type": "image",
+            "description": "data.sections.decal.image_shadow",
+            "version": "1.15p9",
+            "isOutdated": false,
+            "example": "image_shadow: shadow.png"
+        },
+        {
+            "name": "shadowOffsetX",
+            "type": "int",
+            "description": "data.sections.decal.shadowOffsetX",
+            "version": "1.15p9",
+            "isOutdated": false,
+            "example": "shadowOffsetX: 0"
+        },
+        {
+            "name": "shadowOffsetY",
+            "type": "int",
+            "description": "data.sections.decal.shadowOffsetY",
+            "version": "1.15p9",
+            "isOutdated": false,
+            "example": "shadowOffsetY: 0"
+        },
+        {
+            "name": "basePosition",
+            "type": "marker",
+            "description": "data.sections.decal.basePosition",
+            "version": "1.15p9",
+            "isOutdated": false,
+            "example": "basePosition: self"
+        },
+        {
+            "name": "basePositionFromLegEnd",
+            "type": "leg/arm",
+            "description": "data.sections.decal.basePositionFromLegEnd",
+            "version": "1.15p9",
+            "isOutdated": false,
+            "example": "basePositionFromLegEnd: leg_3, basePositionFromLegEnd: arm_5"
+        },
+        {
+            "name": "basePositionFromTurret",
+            "type": "turret",
+            "description": "data.sections.decal.basePositionFromTurret",
+            "version": "1.15p9",
+            "isOutdated": false,
+            "example": "basePositionFromTurret: rocketLauncherBase"
+        },
+        {
+            "name": "drawLineTo",
+            "type": "marker ref",
+            "description": "data.sections.decal.drawLineTo",
+            "version": "1.15p9",
+            "isOutdated": false,
+            "example": "drawLineTo: attacking.customTarget2"
+        },
+        {
+            "name": "color",
+            "type": "color hex",
+            "description": "data.sections.decal.color",
+            "version": "1.15p9",
+            "isOutdated": false,
+            "example": "color: #ffff00"
+        },
+        {
+            "name": "lineWidth",
+            "type": "float",
+            "description": "data.sections.decal.lineWidth",
+            "version": "1.15p9",
+            "isOutdated": false,
+            "example": "lineWidth: 2"
+        }
+    ]
+}

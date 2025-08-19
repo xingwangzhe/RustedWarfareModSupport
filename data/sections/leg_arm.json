@@ -19,7 +19,7 @@
         {
             "name": "copyFrom",
             "type": "int",
-            "description": "data.sections.leg_arm.copyfrom",
+            "description": "data.sections.leg_arm.copyFrom",
             "version": "default",
             "isOutdated": false,
             "example": "copyFrom: 1"
@@ -43,7 +43,7 @@
         {
             "name": "rotateSpeed",
             "type": "float",
-            "description": "data.sections.leg_arm.rotatespeed",
+            "description": "data.sections.leg_arm.rotateSpeed",
             "version": "default",
             "isOutdated": false,
             "example": "rotateSpeed: 2"
@@ -51,7 +51,7 @@
         {
             "name": "endDirOffset",
             "type": "int",
-            "description": "data.sections.leg_arm.enddiroffset",
+            "description": "data.sections.leg_arm.endDirOffset",
             "version": "default",
             "isOutdated": false,
             "example": "endDirOffset: 45"
@@ -59,7 +59,7 @@
         {
             "name": "lockMovement",
             "type": "bool",
-            "description": "data.sections.leg_arm.lockmovement",
+            "description": "data.sections.leg_arm.lockMovement",
             "version": "default",
             "isOutdated": false,
             "example": "lockMovement: true"
@@ -67,7 +67,7 @@
         {
             "name": "heightSpeed",
             "type": "float",
-            "description": "data.sections.leg_arm.heightspeed",
+            "description": "data.sections.leg_arm.heightSpeed",
             "version": "default",
             "isOutdated": false,
             "example": "heightSpeed: 2"
@@ -75,7 +75,7 @@
         {
             "name": "moveSpeed",
             "type": "float",
-            "description": "data.sections.leg_arm.movespeed",
+            "description": "data.sections.leg_arm.moveSpeed",
             "version": "default",
             "isOutdated": false,
             "example": "moveSpeed: 3"
@@ -83,7 +83,7 @@
         {
             "name": "moveWarmUp",
             "type": "",
-            "description": "data.sections.leg_arm.movewarmup",
+            "description": "data.sections.leg_arm.moveWarmUp",
             "version": "default",
             "isOutdated": false,
             "example": "moveWarmUp: 2"
@@ -91,7 +91,7 @@
         {
             "name": "holdDisMin",
             "type": "float",
-            "description": "data.sections.leg_arm.holddismin",
+            "description": "data.sections.leg_arm.holdDisMin",
             "version": "default",
             "isOutdated": false,
             "example": "holdDisMin: 10"
@@ -99,7 +99,7 @@
         {
             "name": "holdDisMax",
             "type": "float",
-            "description": "data.sections.leg_arm.holddismax",
+            "description": "data.sections.leg_arm.holdDisMax",
             "version": "default",
             "isOutdated": false,
             "example": "holdDisMax: 20"
@@ -107,7 +107,7 @@
         {
             "name": "holdDisMin_maxMovingLegs",
             "type": "int",
-            "description": "data.sections.leg_arm.holddismin_maxmovinglegs",
+            "description": "data.sections.leg_arm.holdDisMin_maxMovingLegs",
             "version": "default",
             "isOutdated": false,
             "example": "holdDisMin_maxMovingLegs: 4"
@@ -115,7 +115,7 @@
         {
             "name": "hold_moveOnlyIfFurthest",
             "type": "bool",
-            "description": "data.sections.leg_arm.hold_moveonlyiffurthest",
+            "description": "data.sections.leg_arm.hold_moveOnlyIfFurthest",
             "version": "default",
             "isOutdated": false,
             "example": "hold_moveOnlyIfFurthest: true"
@@ -123,7 +123,7 @@
         {
             "name": "holdDisMin_checkNeighbours",
             "type": "bool",
-            "description": "data.sections.leg_arm.holddismin_checkneighbours",
+            "description": "data.sections.leg_arm.holdDisMin_checkNeighbours",
             "version": "default",
             "isOutdated": false,
             "example": "holdDisMin_checkNeighbours: true"
@@ -131,7 +131,7 @@
         {
             "name": "hardLimit",
             "type": "float",
-            "description": "data.sections.leg_arm.hardlimit",
+            "description": "data.sections.leg_arm.hardLimit",
             "version": "default",
             "isOutdated": false,
             "example": "hardLimit: 60"
@@ -139,7 +139,7 @@
         {
             "name": "estimatingPositionMultiplier",
             "type": "float",
-            "description": "data.sections.leg_arm.estimatingpositionmultiplier",
+            "description": "data.sections.leg_arm.estimatingPositionMultiplier",
             "version": "default",
             "isOutdated": false,
             "example": "estimatingPositionMultiplier: 2"
@@ -171,7 +171,7 @@
         {
             "name": "image_end_teamColors",
             "type": "bool",
-            "description": "data.sections.leg_arm.image_end_teamcolors",
+            "description": "data.sections.leg_arm.image_end_teamColors",
             "version": "1.13",
             "isOutdated": false,
             "example": "image_end_teamColors: true"
@@ -219,7 +219,7 @@
         {
             "name": "drawOverBody",
             "type": "bool",
-            "description": "data.sections.leg_arm.drawoverbody",
+            "description": "data.sections.leg_arm.drawOverBody",
             "version": "default",
             "isOutdated": false,
             "example": "drawOverBody: false"
@@ -227,7 +227,7 @@
         {
             "name": "drawUnderAllUnits",
             "type": "bool",
-            "description": "data.sections.leg_arm.drawunderallunits",
+            "description": "data.sections.leg_arm.drawUnderAllUnits",
             "version": "default",
             "isOutdated": false,
             "example": "drawUnderAllUnits: true"
@@ -235,7 +235,7 @@
         {
             "name": "drawDirOffset",
             "type": "float",
-            "description": "data.sections.leg_arm.drawdiroffset",
+            "description": "data.sections.leg_arm.drawDirOffset",
             "version": "default",
             "isOutdated": false,
             "example": "drawDirOffset: 73"
@@ -251,7 +251,7 @@
         {
             "name": "spinRate",
             "type": "float",
-            "description": "data.sections.leg_arm.spinrate",
+            "description": "data.sections.leg_arm.spinRate",
             "version": "default",
             "isOutdated": false,
             "example": "spinRate: 2"
@@ -259,7 +259,7 @@
         {
             "name": "favourOppositeSideNeighbours",
             "type": "bool",
-            "description": "data.sections.leg_arm.favouroppositesideneighbours",
+            "description": "data.sections.leg_arm.favourOppositeSideNeighbours",
             "version": "default",
             "isOutdated": false,
             "example": "favourOppositeSideNeighbours: true"
@@ -267,7 +267,7 @@
         {
             "name": "drawLegWhenZoomedOut",
             "type": "bool",
-            "description": "data.sections.leg_arm.drawlegwhenzoomedout",
+            "description": "data.sections.leg_arm.drawLegWhenZoomedOut",
             "version": "default",
             "isOutdated": false,
             "example": "drawLegWhenZoomedOut: false"
@@ -275,7 +275,7 @@
         {
             "name": "drawFootWhenZoomedOut",
             "type": "bool",
-            "description": "data.sections.leg_arm.drawfootwhenzoomedout",
+            "description": "data.sections.leg_arm.drawFootWhenZoomedOut",
             "version": "default",
             "isOutdated": false,
             "example": "drawFootWhenZoomedOut: false"
@@ -283,7 +283,7 @@
         {
             "name": "liftingHeightOffset",
             "type": "int",
-            "description": "data.sections.leg_arm.liftingheightoffset",
+            "description": "data.sections.leg_arm.liftingHeightOffset",
             "version": "1.15p9",
             "isOutdated": false,
             "example": "liftingHeightOffset: 20"
@@ -291,7 +291,7 @@
         {
             "name": "targetHeight",
             "type": "int",
-            "description": "data.sections.leg_arm.targetheight",
+            "description": "data.sections.leg_arm.targetHeight",
             "version": "default",
             "isOutdated": false,
             "example": "targetHeight: 10"
@@ -299,10 +299,18 @@
         {
             "name": "targetHeightRelative",
             "type": "bool",
-            "description": "data.sections.leg_arm.targetheightrelative",
+            "description": "data.sections.leg_arm.targetHeightRelative",
             "version": "default",
             "isOutdated": false,
             "example": "targetHeightRelative: true"
+        },
+        {
+            "name": "resetAngle",
+            "type": "float",
+            "description": "data.sections.leg_arm.resetAngle",
+            "version": "default",
+            "isOutdated": false,
+            "example": "resetAngle: float"
         }
     ]
 }

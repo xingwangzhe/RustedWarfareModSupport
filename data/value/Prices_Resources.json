@@ -1,0 +1,77 @@
+{
+  "type": "Prices_Resources",
+  "description": "data.value.Prices_Resources.description",
+  "example": "price: credits=100, energy=50",
+  "data": [
+    {
+      "name": "credits",
+      "type": "Global resource",
+      "description": "data.value.Prices_Resources.credits",
+      "version": "default",
+      "example": "price: 100"
+    },
+    {
+      "name": "energy",
+      "type": "Energy used for laser shield and ammunition",
+      "description": "data.value.Prices_Resources.energy",
+      "version": "default",
+      "example": "resourceUsage: energy=1"
+    },
+    {
+      "name": "hp",
+      "type": "Unit hitpoints",
+      "description": "data.value.Prices_Resources.hp",
+      "version": "default",
+      "example": "addResources: hp += 100"
+    },
+    {
+      "name": "shield",
+      "type": "Shielding for units",
+      "description": "data.value.Prices_Resources.shield",
+      "version": "default",
+      "example": "price: hp=-100, shield=100"
+    },
+    {
+      "name": "ammo",
+      "type": "Hidden value on each unit for use by mods",
+      "description": "data.value.Prices_Resources.ammo",
+      "version": "default",
+      "example": "price: hp=-100, shield=101"
+    },
+    {
+      "name": "setFlag",
+      "type": "0-31. Flags are stored in each unit",
+      "description": "data.value.Prices_Resources.setFlag",
+      "version": "default",
+      "example": "addResources: setFlag=1"
+    },
+    {
+      "name": "unsetFlag",
+      "type": "0-31",
+      "description": "data.value.Prices_Resources.unsetFlag",
+      "version": "default",
+      "example": "unsetFlag: 1"
+    },
+    {
+      "name": "hasFlag",
+      "type": "flag check",
+      "description": "data.value.Prices_Resources.hasFlag",
+      "version": "default",
+      "example": "price: hasFlag=1"
+    },
+    {
+      "name": "hasMissingFlag",
+      "type": "flag check",
+      "description": "data.value.Prices_Resources.hasMissingFlag",
+      "version": "default",
+      "example": "price: hasMissingFlag=1"
+    },
+    {
+      "name": "X",
+      "type": "Any resource defined in [global_resource_x] or [resource_x] sections",
+      "description": "data.value.Prices_Resources.X",
+      "version": "1.13.3",
+      "example": "gold=5, stone=21, credits=2001"
+    }
+  ]
+}

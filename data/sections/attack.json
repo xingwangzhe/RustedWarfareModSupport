@@ -3,7 +3,7 @@
         {
             "name": "canAttack",
             "type": "bool",
-            "description": "data.sections.attack.canattack",
+            "description": "data.sections.attack.canAttack",
             "version": "default",
             "isOutdated": false,
             "example": "canAttack: true"
@@ -11,15 +11,15 @@
         {
             "name": "canAttackFlyingUnits",
             "type": "LogicBoolean",
-            "description": "data.sections.attack.canattackflyingunits",
+            "description": "data.sections.attack.canAttackFlyingUnits",
             "version": "default",
             "isOutdated": false,
-            "example": "canAttackFlyingUnits: true"
+            "example": "canAttackFlyingUnits: false"
         },
         {
             "name": "canAttackLandUnits",
             "type": "LogicBoolean",
-            "description": "data.sections.attack.canattacklandunits",
+            "description": "data.sections.attack.canAttackLandUnits",
             "version": "default",
             "isOutdated": false,
             "example": "canAttackLandUnits: true"
@@ -27,31 +27,79 @@
         {
             "name": "canAttackUnderwaterUnits",
             "type": "LogicBoolean",
-            "description": "data.sections.attack.canattackunderwaterunits",
+            "description": "data.sections.attack.canAttackUnderwaterUnits",
             "version": "default",
             "isOutdated": false,
-            "example": "canAttackUnderwaterUnits: true"
+            "example": "canAttackUnderwaterUnits: false"
         },
         {
             "name": "canAttackNotTouchingWaterUnits",
             "type": "LogicBoolean",
-            "description": "data.sections.attack.canattacknottouchingwaterunits",
-            "version": "default",
+            "description": "data.sections.attack.canAttackNotTouchingWaterUnits",
+            "version": "1.13.3",
             "isOutdated": false,
             "example": "canAttackNotTouchingWaterUnits: false"
         },
         {
-            "name": "isFixedFiring",
-            "type": "bool",
-            "description": "data.sections.attack.isfixedfiring",
+            "name": "maxAttackRange",
+            "type": "float",
+            "description": "data.sections.attack.maxAttackRange",
             "version": "default",
             "isOutdated": false,
-            "example": "isFixedFiring: true"
+            "example": "maxAttackRange: 300"
+        },
+        {
+            "name": "shootDelay",
+            "type": "float",
+            "description": "data.sections.attack.shootDelay",
+            "version": "default",
+            "isOutdated": false,
+            "example": "shootDelay: 21, shootDelay: 5s"
+        },
+        {
+            "name": "canOnlyAttackUnitsWithTags",
+            "type": "tags",
+            "description": "data.sections.attack.canOnlyAttackUnitsWithTags",
+            "version": "1.13.3",
+            "isOutdated": false,
+            "example": "canOnlyAttackUnitsWithTags: metallic, ceramic"
+        },
+        {
+            "name": "canOnlyAttackUnitsWithoutTags",
+            "type": "tags",
+            "description": "data.sections.attack.canOnlyAttackUnitsWithoutTags",
+            "version": "1.13.3",
+            "isOutdated": false,
+            "example": "canOnlyAttackUnitsWithoutTags: corrosive, magnetic"
+        },
+        {
+            "name": "turretMultiTargeting",
+            "type": "bool",
+            "description": "data.sections.attack.turretMultiTargeting",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "turretMultiTargeting: true"
+        },
+        {
+            "name": "isMelee",
+            "type": "bool",
+            "description": "data.sections.attack.isMelee",
+            "version": "default",
+            "isOutdated": false,
+            "example": "isMelee: true"
+        },
+        {
+            "name": "meleeEngangementDistance",
+            "type": "int",
+            "description": "data.sections.attack.meleeEngangementDistance",
+            "version": "1.13.3",
+            "isOutdated": false,
+            "example": "meleeEngangementDistance: 400"
         },
         {
             "name": "turretRotateWithBody",
             "type": "bool",
-            "description": "data.sections.attack.turretrotatewithbody",
+            "description": "data.sections.attack.turretRotateWithBody",
             "version": "default",
             "isOutdated": false,
             "example": "turretRotateWithBody: true"
@@ -59,42 +107,90 @@
         {
             "name": "attackMovement",
             "type": "string",
-            "description": "data.sections.attack.attackmovement",
+            "description": "data.sections.attack.attackMovement",
             "version": "default",
             "isOutdated": false,
-            "example": "attackMovement: normal"
+            "example": "attackMovement: bomber"
         },
         {
             "name": "dieOnAttack",
             "type": "bool",
-            "description": "data.sections.attack.dieonattack",
+            "description": "data.sections.attack.dieOnAttack",
             "version": "default",
             "isOutdated": false,
             "example": "dieOnAttack: true"
         },
         {
-            "name": "removeOnAttack",
+            "name": "isFixedFiring",
             "type": "bool",
-            "description": "data.sections.attack.removeonattack",
+            "description": "data.sections.attack.isFixedFiring",
             "version": "default",
             "isOutdated": false,
-            "example": "removeOnAttack: true"
+            "example": "isFixedFiring: true"
         },
         {
-            "name": "maxAttackRange",
-            "type": "int",
-            "description": "data.sections.attack.maxattackrange",
-            "version": "default",
-            "isOutdated": false,
-            "example": "maxAttackRange: 200"
-        },
-        {
-            "name": "shootDelay",
+            "name": "aimOffsetSpread",
             "type": "float",
-            "description": "data.sections.attack.shootdelay",
+            "description": "data.sections.attack.aimOffsetSpread",
             "version": "default",
             "isOutdated": false,
-            "example": "shootDelay: 1.5"
+            "example": "aimOffsetSpread:0"
+        },
+        {
+            "name": "stopTargetingAfterFiring",
+            "type": "bool",
+            "description": "data.sections.attack.stopTargetingAfterFiring",
+            "version": "1.13",
+            "isOutdated": false,
+            "example": "stopTargetingAfterFiring: true"
+        },
+        {
+            "name": "disablePassiveTargeting",
+            "type": "bool",
+            "description": "data.sections.attack.disablePassiveTargeting",
+            "version": "default",
+            "isOutdated": false,
+            "example": "disablePassiveTargeting: true"
+        },
+        {
+            "name": "showRangeUIGuide",
+            "type": "bool",
+            "description": "data.sections.attack.showRangeUIGuide",
+            "version": "1.13.3",
+            "isOutdated": false,
+            "example": "showRangeUIGuide: true"
+        },
+        {
+            "name": "shootDelayMultiplier",
+            "type": "float",
+            "description": "data.sections.attack.shootDelayMultiplier",
+            "version": "1.15",
+            "isOutdated": false,
+            "example": "shootDelayMultiplier: 0.75"
+        },
+        {
+            "name": "shootDamageMultiplier",
+            "type": "float",
+            "description": "data.sections.attack.shootDamageMultiplier",
+            "version": "1.15",
+            "isOutdated": false,
+            "example": "shootDamageMultiplier: 2.43"
+        },
+        {
+            "name": "turretSize",
+            "type": "float",
+            "description": "data.sections.attack.turretSize",
+            "version": "1.13",
+            "isOutdated": true,
+            "example": ""
+        },
+        {
+            "name": "turretTurnSpeed",
+            "type": "float",
+            "description": "data.sections.attack.turretTurnSpeed",
+            "version": "1.13",
+            "isOutdated": true,
+            "example": ""
         }
     ]
 }

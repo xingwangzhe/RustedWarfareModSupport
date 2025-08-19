@@ -13,3 +13,7 @@ vsc-extension-quickstart.md
 **/*.map
 **/*.ts
 **/.vscode-test.*
+merge.js
+// 只打包构建好的翻译文件
+translation/*/
+!translation/bundle*.l10n.json

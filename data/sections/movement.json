@@ -3,7 +3,7 @@
         {
             "name": "movementType",
             "type": "string",
-            "description": "data.sections.movement.movementtype",
+            "description": "data.sections.movement.movementType",
             "version": "default",
             "isOutdated": false,
             "example": "movementType: LAND"
@@ -11,7 +11,7 @@
         {
             "name": "slowDeathFall",
             "type": "bool",
-            "description": "data.sections.movement.slowdeathfall",
+            "description": "data.sections.movement.slowDeathFall",
             "version": "default",
             "isOutdated": false,
             "example": "slowDeathFall: true"
@@ -19,7 +19,7 @@
         {
             "name": "moveSpeed",
             "type": "float",
-            "description": "data.sections.movement.movespeed",
+            "description": "data.sections.movement.moveSpeed",
             "version": "default",
             "isOutdated": false,
             "example": "moveSpeed: 1.2"
@@ -27,7 +27,7 @@
         {
             "name": "moveAccelerationSpeed",
             "type": "float",
-            "description": "data.sections.movement.moveaccelerationspeed",
+            "description": "data.sections.movement.moveAccelerationSpeed",
             "version": "default",
             "isOutdated": false,
             "example": "moveAccelerationSpeed: 0.07"
@@ -35,7 +35,7 @@
         {
             "name": "moveDecelerationSpeed",
             "type": "float",
-            "description": "data.sections.movement.movedecelerationspeed",
+            "description": "data.sections.movement.moveDecelerationSpeed",
             "version": "default",
             "isOutdated": false,
             "example": "moveDecelerationSpeed: 0.17"
@@ -43,7 +43,7 @@
         {
             "name": "reverseSpeedPercentage",
             "type": "float",
-            "description": "data.sections.movement.reversespeedpercentage",
+            "description": "data.sections.movement.reverseSpeedPercentage",
             "version": "default",
             "isOutdated": false,
             "example": "reverseSpeedPercentage: 0"
@@ -51,7 +51,7 @@
         {
             "name": "landOnGround",
             "type": "bool",
-            "description": "data.sections.movement.landonground",
+            "description": "data.sections.movement.landOnGround",
             "version": "default",
             "isOutdated": false,
             "example": "landOnGround: false"
@@ -59,7 +59,7 @@
         {
             "name": "targetHeight",
             "type": "float",
-            "description": "data.sections.movement.targetheight",
+            "description": "data.sections.movement.targetHeight",
             "version": "default",
             "isOutdated": false,
             "example": "targetHeight: 25"
@@ -67,7 +67,7 @@
         {
             "name": "targetHeightDrift",
             "type": "float",
-            "description": "data.sections.movement.targetheightdrift",
+            "description": "data.sections.movement.targetHeightDrift",
             "version": "default",
             "isOutdated": false,
             "example": "targetHeightDrift: 1"
@@ -75,7 +75,7 @@
         {
             "name": "startingHeightOffset",
             "type": "float",
-            "description": "data.sections.movement.startingheightoffset",
+            "description": "data.sections.movement.startingHeightOffset",
             "version": "default",
             "isOutdated": false,
             "example": "startingHeightOffset: 40"
@@ -83,7 +83,7 @@
         {
             "name": "heightChangeRate",
             "type": "float",
-            "description": "data.sections.movement.heightchangerate",
+            "description": "data.sections.movement.heightChangeRate",
             "version": "1.14",
             "isOutdated": false,
             "example": "heightChangeRate: 3"
@@ -91,7 +91,7 @@
         {
             "name": "fallingAcceleration",
             "type": "float",
-            "description": "data.sections.movement.fallingacceleration",
+            "description": "data.sections.movement.fallingAcceleration",
             "version": "1.14",
             "isOutdated": false,
             "example": "fallingAcceleration:"
@@ -99,7 +99,7 @@
         {
             "name": "fallingAccelerationDead",
             "type": "float",
-            "description": "data.sections.movement.fallingaccelerationdead",
+            "description": "data.sections.movement.fallingAccelerationDead",
             "version": "1.14",
             "isOutdated": false,
             "example": "fallingAccelerationDead:"
@@ -107,7 +107,7 @@
         {
             "name": "maxTurnSpeed",
             "type": "float",
-            "description": "data.sections.movement.maxturnspeed",
+            "description": "data.sections.movement.maxTurnSpeed",
             "version": "default",
             "isOutdated": false,
             "example": "maxTurnSpeed: 4"
@@ -115,7 +115,7 @@
         {
             "name": "turnAcceleration",
             "type": "float",
-            "description": "data.sections.movement.turnacceleration",
+            "description": "data.sections.movement.turnAcceleration",
             "version": "default",
             "isOutdated": false,
             "example": "turnAcceleration: 1"
@@ -123,7 +123,7 @@
         {
             "name": "moveSlidingMode",
             "type": "bool",
-            "description": "data.sections.movement.moveslidingmode",
+            "description": "data.sections.movement.moveSlidingMode",
             "version": "default",
             "isOutdated": false,
             "example": "moveSlidingMode: true"
@@ -131,7 +131,7 @@
         {
             "name": "moveIgnoringBody",
             "type": "bool",
-            "description": "data.sections.movement.moveignoringbody",
+            "description": "data.sections.movement.moveIgnoringBody",
             "version": "default",
             "isOutdated": false,
             "example": "moveIgnoringBody: true"
@@ -139,7 +139,7 @@
         {
             "name": "moveSlidingDir",
             "type": "int",
-            "description": "data.sections.movement.moveslidingdir",
+            "description": "data.sections.movement.moveSlidingDir",
             "version": "default",
             "isOutdated": false,
             "example": "moveSlidingDir: 180"
@@ -147,7 +147,7 @@
         {
             "name": "joinsGroupFormations",
             "type": "bool",
-            "description": "data.sections.movement.joinsgroupformations",
+            "description": "data.sections.movement.joinsGroupFormations",
             "version": "default",
             "isOutdated": false,
             "example": "joinsGroupFormations: false"

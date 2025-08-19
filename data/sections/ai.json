@@ -3,7 +3,7 @@
         {
             "name": "useAsBuilder",
             "type": "bool",
-            "description": "data.sections.ai.useasbuilder",
+            "description": "data.sections.ai.useAsBuilder",
             "version": "default",
             "isOutdated": false,
             "example": "useAsBuilder:"
@@ -11,7 +11,7 @@
         {
             "name": "useAsTransport",
             "type": "bool",
-            "description": "data.sections.ai.useastransport",
+            "description": "data.sections.ai.useAsTransport",
             "version": "default",
             "isOutdated": false,
             "example": "useAsTransport"
@@ -19,7 +19,7 @@
         {
             "name": "useAsHarvester",
             "type": "bool",
-            "description": "data.sections.ai.useasharvester",
+            "description": "data.sections.ai.useAsHarvester",
             "version": "default",
             "isOutdated": false,
             "example": "useAsHarvester"
@@ -27,7 +27,7 @@
         {
             "name": "disableUse",
             "type": "bool",
-            "description": "data.sections.ai.disableuse",
+            "description": "data.sections.ai.disableUse",
             "version": "default",
             "isOutdated": false,
             "example": "disableUse:"
@@ -35,7 +35,7 @@
         {
             "name": "ai_upgradePriority",
             "type": "float",
-            "description": "data.sections.ai.ai_upgradepriority",
+            "description": "data.sections.ai.ai_upgradePriority",
             "version": "default",
             "isOutdated": false,
             "example": "ai_upgradePriority"
@@ -43,7 +43,7 @@
         {
             "name": "maxGlobal",
             "type": "int",
-            "description": "data.sections.ai.maxglobal",
+            "description": "data.sections.ai.maxGlobal",
             "version": "default",
             "isOutdated": false,
             "example": "maxGlobal: 50"
@@ -51,7 +51,7 @@
         {
             "name": "maxEachBase",
             "type": "int",
-            "description": "data.sections.ai.maxeachbase",
+            "description": "data.sections.ai.maxEachBase",
             "version": "default",
             "isOutdated": false,
             "example": "maxEachBase: 10"
@@ -59,7 +59,7 @@
         {
             "name": "buildPriority",
             "type": "float",
-            "description": "data.sections.ai.buildpriority",
+            "description": "data.sections.ai.buildPriority",
             "version": "default",
             "isOutdated": false,
             "example": "buildPriority: 1"
@@ -67,7 +67,7 @@
         {
             "name": "noneInBaseExtraPriority",
             "type": "float",
-            "description": "data.sections.ai.noneinbaseextrapriority",
+            "description": "data.sections.ai.noneInBaseExtraPriority",
             "version": "default",
             "isOutdated": false,
             "example": "noneInBaseExtraPriority: 2"
@@ -75,7 +75,7 @@
         {
             "name": "noneGlobalExtraPriority",
             "type": "float",
-            "description": "data.sections.ai.noneglobalextrapriority",
+            "description": "data.sections.ai.noneGlobalExtraPriority",
             "version": "default",
             "isOutdated": false,
             "example": "noneGlobalExtraPriority: 4"
@@ -83,7 +83,7 @@
         {
             "name": "recommendedInEachBaseNum",
             "type": "float",
-            "description": "data.sections.ai.recommendedineachbasenum",
+            "description": "data.sections.ai.recommendedInEachBaseNum",
             "version": "default",
             "isOutdated": false,
             "example": "recommendedInEachBaseNum: 2"
@@ -91,7 +91,7 @@
         {
             "name": "recommendedInEachBasePriorityIfUnmet",
             "type": "float",
-            "description": "data.sections.ai.recommendedineachbasepriorityifunmet",
+            "description": "data.sections.ai.recommendedInEachBasePriorityIfUnmet",
             "version": "default",
             "isOutdated": false,
             "example": "recommendedInEachBasePriorityIfUnmet: 4"
@@ -99,7 +99,7 @@
         {
             "name": "upgradedFrom",
             "type": "string",
-            "description": "data.sections.ai.upgradedfrom",
+            "description": "data.sections.ai.upgradedFrom",
             "version": "default",
             "isOutdated": false,
             "example": "upgradedFrom: builderLevel1"
@@ -107,7 +107,7 @@
         {
             "name": "notPassivelyTargetedByOtherUnits",
             "type": "bool",
-            "description": "data.sections.ai.notpassivelytargetedbyotherunits",
+            "description": "data.sections.ai.notPassivelyTargetedByOtherUnits",
             "version": "1.14",
             "isOutdated": false,
             "example": "notPassivelyTargetedByOtherUnits: true"
@@ -115,7 +115,7 @@
         {
             "name": "lowPriorityTargetForOtherUnits",
             "type": "bool",
-            "description": "data.sections.ai.lowprioritytargetforotherunits",
+            "description": "data.sections.ai.lowPriorityTargetForOtherUnits",
             "version": "1.14",
             "isOutdated": false,
             "example": "lowPriorityTargetForOtherUnits: true"
@@ -123,7 +123,7 @@
         {
             "name": "whenUsingAsHarvester_recommendedInEachBase",
             "type": "int",
-            "description": "data.sections.ai.whenusingasharvester_recommendedineachbase",
+            "description": "data.sections.ai.whenUsingAsHarvester_recommendedInEachBase",
             "version": "1.13.3",
             "isOutdated": false,
             "example": "whenUsingAsHarvester_recommendedInEachBase: 3"
@@ -131,7 +131,7 @@
         {
             "name": "whenUsingAsHarvester_recommendedGlobal",
             "type": "int",
-            "description": "data.sections.ai.whenusingasharvester_recommendedglobal",
+            "description": "data.sections.ai.whenUsingAsHarvester_recommendedGlobal",
             "version": "1.13.3",
             "isOutdated": false,
             "example": "whenUsingAsHarvester_recommendedGlobal: 20"
@@ -139,7 +139,7 @@
         {
             "name": "whenUsingAsHarvester_includeOtherHarvesterCounts",
             "type": "bool",
-            "description": "data.sections.ai.whenusingasharvester_includeotherharvestercounts",
+            "description": "data.sections.ai.whenUsingAsHarvester_includeOtherHarvesterCounts",
             "version": "1.13.3",
             "isOutdated": false,
             "example": "whenUsingAsHarvester_includeOtherHarvesterCounts: true"
@@ -147,7 +147,7 @@
         {
             "name": "onlyUseAsHarvester_ifBaseHasUnitTagged",
             "type": "string",
-            "description": "data.sections.ai.onlyuseasharvester_ifbasehasunittagged",
+            "description": "data.sections.ai.onlyUseAsHarvester_ifBaseHasUnitTagged",
             "version": "1.13.3",
             "isOutdated": false,
             "example": "onlyUseAsHarvester_ifBaseHasUnitTagged: mineral, wood, stones"

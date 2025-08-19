@@ -19,7 +19,7 @@
         {
             "name": "copyFrom",
             "type": "turret ref",
-            "description": "data.sections.turret.copyfrom",
+            "description": "data.sections.turret.copyFrom",
             "version": "default",
             "isOutdated": false,
             "example": "copyFrom: 1"
@@ -35,7 +35,7 @@
         {
             "name": "altProjectile",
             "type": "projectile ref",
-            "description": "data.sections.turret.altprojectile",
+            "description": "data.sections.turret.altProjectile",
             "version": "default",
             "isOutdated": false,
             "example": "altProjectile: spear"
@@ -43,15 +43,15 @@
         {
             "name": "altProjectileCondition",
             "type": "LogicBoolean",
-            "description": "data.sections.turret.altprojectilecondition",
-            "version": "1.14",
+            "description": "data.sections.turret.altProjectileCondition",
+            "version": "default",
             "isOutdated": false,
             "example": "altProjectileCondition: if self.hp() < 100"
         },
         {
             "name": "barrelX",
             "type": "float",
-            "description": "data.sections.turret.barrelx",
+            "description": "data.sections.turret.barrelX",
             "version": "1.13",
             "isOutdated": false,
             "example": "barrelX: 0"
@@ -59,7 +59,7 @@
         {
             "name": "barrelY",
             "type": "float",
-            "description": "data.sections.turret.barrely",
+            "description": "data.sections.turret.barrelY",
             "version": "1.13",
             "isOutdated": false,
             "example": "barrelY: 5"
@@ -67,7 +67,7 @@
         {
             "name": "barrelHeight",
             "type": "float",
-            "description": "data.sections.turret.barrelheight",
+            "description": "data.sections.turret.barrelHeight",
             "version": "1.13.3",
             "isOutdated": false,
             "example": "barrelHeight: 10"
@@ -91,7 +91,7 @@
         {
             "name": "turnSpeed",
             "type": "float",
-            "description": "data.sections.turret.turnspeed",
+            "description": "data.sections.turret.turnSpeed",
             "version": "default",
             "isOutdated": false,
             "example": "turnSpeed: 2"
@@ -99,7 +99,7 @@
         {
             "name": "turnSpeedAcceleration",
             "type": "float",
-            "description": "data.sections.turret.turnspeedacceleration",
+            "description": "data.sections.turret.turnSpeedAcceleration",
             "version": "default",
             "isOutdated": false,
             "example": "turnSpeedAcceleration: 0.4"
@@ -107,7 +107,7 @@
         {
             "name": "turnSpeedDeceleration",
             "type": "float",
-            "description": "data.sections.turret.turnspeeddeceleration",
+            "description": "data.sections.turret.turnSpeedDeceleration",
             "version": "default",
             "isOutdated": false,
             "example": "turnSpeedDeceleration: 0.2"
@@ -115,7 +115,7 @@
         {
             "name": "idleDir",
             "type": "float",
-            "description": "data.sections.turret.idledir",
+            "description": "data.sections.turret.idleDir",
             "version": "default",
             "isOutdated": false,
             "example": "idleDir: 180"
@@ -123,7 +123,7 @@
         {
             "name": "idleDirReversing",
             "type": "float",
-            "description": "data.sections.turret.idledirreversing",
+            "description": "data.sections.turret.idleDirReversing",
             "version": "1.13",
             "isOutdated": false,
             "example": "idleDirReversing: 30"
@@ -131,7 +131,7 @@
         {
             "name": "shouldResetTurret",
             "type": "bool",
-            "description": "data.sections.turret.shouldresetturret",
+            "description": "data.sections.turret.shouldResetTurret",
             "version": "default",
             "isOutdated": false,
             "example": "shouldResetTurret: false"
@@ -139,7 +139,7 @@
         {
             "name": "idleSpin",
             "type": "float",
-            "description": "data.sections.turret.idlespin",
+            "description": "data.sections.turret.idleSpin",
             "version": "default",
             "isOutdated": false,
             "example": "idleSpin: 2"
@@ -147,7 +147,7 @@
         {
             "name": "idleSweepAngle",
             "type": "int",
-            "description": "data.sections.turret.idlesweepangle",
+            "description": "data.sections.turret.idleSweepAngle",
             "version": "1.14",
             "isOutdated": false,
             "example": "idleSweepAngle: 35"
@@ -155,7 +155,7 @@
         {
             "name": "idleSweepDelay",
             "type": "float",
-            "description": "data.sections.turret.idlesweepdelay",
+            "description": "data.sections.turret.idleSweepDelay",
             "version": "1.14",
             "isOutdated": false,
             "example": "idleSweepDelay: 20"
@@ -163,7 +163,7 @@
         {
             "name": "idleSweepSpeed",
             "type": "float",
-            "description": "data.sections.turret.idlesweepspeed",
+            "description": "data.sections.turret.idleSweepSpeed",
             "version": "1.14",
             "isOutdated": false,
             "example": "idleSweepSpeed: 0.3"
@@ -171,7 +171,7 @@
         {
             "name": "idleSweepCondition",
             "type": "LogicBoolean",
-            "description": "data.sections.turret.idlesweepcondition",
+            "description": "data.sections.turret.idleSweepCondition",
             "version": "1.14",
             "isOutdated": false,
             "example": "idleSweepCondition: if self.hp() > 400"
@@ -179,7 +179,7 @@
         {
             "name": "idleSweepAddRandomDelay",
             "type": "float",
-            "description": "data.sections.turret.idlesweepaddrandomdelay",
+            "description": "data.sections.turret.idleSweepAddRandomDelay",
             "version": "1.14",
             "isOutdated": false,
             "example": "idleSweepAddRandomDelay: 30"
@@ -187,7 +187,7 @@
         {
             "name": "idleSweepAddRandomAngle",
             "type": "int",
-            "description": "data.sections.turret.idlesweepaddrandomangle",
+            "description": "data.sections.turret.idleSweepAddRandomAngle",
             "version": "1.14",
             "isOutdated": false,
             "example": "idleSweepAddRandomAngle: 15"
@@ -195,7 +195,7 @@
         {
             "name": "attachedTo",
             "type": "turret ref",
-            "description": "data.sections.turret.attachedto",
+            "description": "data.sections.turret.attachedTo",
             "version": "default",
             "isOutdated": false,
             "example": "attachedTo: base"
@@ -211,7 +211,7 @@
         {
             "name": "isMainNanoTurret",
             "type": "bool",
-            "description": "data.sections.turret.ismainnanoturret",
+            "description": "data.sections.turret.isMainNanoTurret",
             "version": "default",
             "isOutdated": false,
             "example": "isMainNanoTurret: true"
@@ -219,7 +219,7 @@
         {
             "name": "energyUsage",
             "type": "float",
-            "description": "data.sections.turret.energyusage",
+            "description": "data.sections.turret.energyUsage",
             "version": "default",
             "isOutdated": false,
             "example": "energyUsage: 1"
@@ -227,7 +227,7 @@
         {
             "name": "resourceUsage",
             "type": "price",
-            "description": "data.sections.turret.resourceusage",
+            "description": "data.sections.turret.resourceUsage",
             "version": "default",
             "isOutdated": false,
             "example": "resourceUsage: credits=5, energy=5, hp=100, shield=5, ammo=1"
@@ -243,7 +243,7 @@
         {
             "name": "linkDelayWithTurret",
             "type": "turret ref",
-            "description": "data.sections.turret.linkdelaywithturret",
+            "description": "data.sections.turret.linkDelayWithTurret",
             "version": "default",
             "isOutdated": false,
             "example": "linkDelayWithTurret: 1"
@@ -259,7 +259,7 @@
         {
             "name": "warmupCallDownRate",
             "type": "float",
-            "description": "data.sections.turret.warmupcalldownrate",
+            "description": "data.sections.turret.warmupCallDownRate",
             "version": "default",
             "isOutdated": false,
             "example": "warmupCallDownRate: 10"
@@ -267,7 +267,7 @@
         {
             "name": "warmupNoReset",
             "type": "bool",
-            "description": "data.sections.turret.warmupnoreset",
+            "description": "data.sections.turret.warmupNoReset",
             "version": "default",
             "isOutdated": false,
             "example": "warmupNoReset: true"
@@ -275,7 +275,7 @@
         {
             "name": "warmupShootDelayTransfer",
             "type": "float",
-            "description": "data.sections.turret.warmupshootdelaytransfer",
+            "description": "data.sections.turret.warmupShootDelayTransfer",
             "version": "default",
             "isOutdated": false,
             "example": "warmupShootDelayTransfer: 20"
@@ -283,7 +283,7 @@
         {
             "name": "onShoot_freezeBodyMovementFor",
             "type": "float",
-            "description": "data.sections.turret.onshoot_freezebodymovementfor",
+            "description": "data.sections.turret.onShoot_freezeBodyMovementFor",
             "version": "1.13.3",
             "isOutdated": false,
             "example": "onShoot_freezeBodyMovementFor: 2s"
@@ -291,7 +291,7 @@
         {
             "name": "barrelOffsetX_onOddShots",
             "type": "float",
-            "description": "data.sections.turret.barreloffsetx_onoddshots",
+            "description": "data.sections.turret.barrelOffsetX_onOddShots",
             "version": "1.14",
             "isOutdated": false,
             "example": "barrelOffsetX_onOddShots: -10"
@@ -299,7 +299,7 @@
         {
             "name": "aimOffsetSpread",
             "type": "",
-            "description": "data.sections.turret.aimoffsetspread",
+            "description": "data.sections.turret.aimOffsetSpread",
             "version": "1.14",
             "isOutdated": false,
             "example": "aimOffsetSpread: 14"
@@ -307,7 +307,7 @@
         {
             "name": "canShoot",
             "type": "bool",
-            "description": "data.sections.turret.canshoot",
+            "description": "data.sections.turret.canShoot",
             "version": "default",
             "isOutdated": false,
             "example": "canShoot: true"
@@ -315,7 +315,7 @@
         {
             "name": "canAttackFlyingUnits",
             "type": "LogicBoolean",
-            "description": "data.sections.turret.canattackflyingunits",
+            "description": "data.sections.turret.canAttackFlyingUnits",
             "version": "default",
             "isOutdated": false,
             "example": "canAttackFlyingUnits: false"
@@ -323,7 +323,7 @@
         {
             "name": "canAttackLandUnits",
             "type": "LogicBoolean",
-            "description": "data.sections.turret.canattacklandunits",
+            "description": "data.sections.turret.canAttackLandUnits",
             "version": "default",
             "isOutdated": false,
             "example": "canAttackLandUnits: true"
@@ -331,7 +331,7 @@
         {
             "name": "canAttackUnderwaterUnits",
             "type": "LogicBoolean",
-            "description": "data.sections.turret.canattackunderwaterunits",
+            "description": "data.sections.turret.canAttackUnderwaterUnits",
             "version": "default",
             "isOutdated": false,
             "example": "canAttackUnderwaterUnits: true"
@@ -339,7 +339,7 @@
         {
             "name": "canAttackNotTouchingWaterUnits",
             "type": "LogicBoolean",
-            "description": "data.sections.turret.canattacknottouchingwaterunits",
+            "description": "data.sections.turret.canAttackNotTouchingWaterUnits",
             "version": "default",
             "isOutdated": false,
             "example": "canAttackNotTouchingWaterUnits: false"
@@ -347,7 +347,7 @@
         {
             "name": "canOnlyAttackUnitsWithTags",
             "type": "tags",
-            "description": "data.sections.turret.canonlyattackunitswithtags",
+            "description": "data.sections.turret.canOnlyAttackUnitsWithTags",
             "version": "1.13.3",
             "isOutdated": false,
             "example": "canOnlyAttackUnitsWithTags: shelled, armoured"
@@ -355,7 +355,7 @@
         {
             "name": "canOnlyAttackUnitsWithoutTags",
             "type": "tags",
-            "description": "data.sections.turret.canonlyattackunitswithouttags",
+            "description": "data.sections.turret.canOnlyAttackUnitsWithoutTags",
             "version": "1.13.3",
             "isOutdated": false,
             "example": "canOnlyAttackUnitsWithoutTags: corrosive, fleshy"
@@ -363,7 +363,7 @@
         {
             "name": "canAttackCondition",
             "type": "LogicBoolean",
-            "description": "data.sections.turret.canattackcondition",
+            "description": "data.sections.turret.canAttackCondition",
             "version": "default",
             "isOutdated": false,
             "example": "canAttackCondition: if not self.flying"
@@ -371,7 +371,7 @@
         {
             "name": "canAttackMaxAngle",
             "type": "float",
-            "description": "data.sections.turret.canattackmaxangle",
+            "description": "data.sections.turret.canAttackMaxAngle",
             "version": "1.14",
             "isOutdated": false,
             "example": "canAttackMaxAngle: 181"
@@ -379,7 +379,7 @@
         {
             "name": "clearTurretTargetAfterFiring",
             "type": "bool",
-            "description": "data.sections.turret.clearturrettargetafterfiring",
+            "description": "data.sections.turret.clearTurretTargetAfterFiring",
             "version": "1.13",
             "isOutdated": false,
             "example": "clearTurretTargetAfterFiring:"
@@ -387,15 +387,15 @@
         {
             "name": "limitingRange",
             "type": "float",
-            "description": "data.sections.turret.limitingrange",
-            "version": "1.13",
+            "description": "data.sections.turret.limitingRange",
+            "version": "default",
             "isOutdated": false,
             "example": "limitingRange: 100"
         },
         {
             "name": "limitingAngle",
             "type": "int",
-            "description": "data.sections.turret.limitingangle",
+            "description": "data.sections.turret.limitingAngle",
             "version": "1.13",
             "isOutdated": false,
             "example": "limitingAngle: 60"
@@ -403,7 +403,7 @@
         {
             "name": "limitingMinRange",
             "type": "int",
-            "description": "data.sections.turret.limitingminrange",
+            "description": "data.sections.turret.limitingMinRange",
             "version": "1.13",
             "isOutdated": false,
             "example": "limitingMinRange: 200"
@@ -411,7 +411,7 @@
         {
             "name": "interceptProjectiles_withTags",
             "type": "tags",
-            "description": "data.sections.turret.interceptprojectiles_withtags",
+            "description": "data.sections.turret.interceptProjectiles_withTags",
             "version": "default",
             "isOutdated": false,
             "example": "interceptProjectiles_withTags: nuke"
@@ -419,7 +419,7 @@
         {
             "name": "interceptProjectiles_andTargetingGroundUnderDistance",
             "type": "int",
-            "description": "data.sections.turret.interceptprojectiles_andtargetinggroundunderdistance",
+            "description": "data.sections.turret.interceptProjectiles_andTargetingGroundUnderDistance",
             "version": "default",
             "isOutdated": false,
             "example": "interceptProjectiles_andTargetingGroundUnderDistance: 100"
@@ -427,7 +427,7 @@
         {
             "name": "interceptProjectiles_andUnderDistance",
             "type": "int",
-            "description": "data.sections.turret.interceptprojectiles_andunderdistance",
+            "description": "data.sections.turret.interceptProjectiles_andUnderDistance",
             "version": "default",
             "isOutdated": false,
             "example": "interceptProjectiles_andUnderDistance: 300"
@@ -435,7 +435,7 @@
         {
             "name": "interceptProjectiles_andOverHeight",
             "type": "int",
-            "description": "data.sections.turret.interceptprojectiles_andoverheight",
+            "description": "data.sections.turret.interceptProjectiles_andOverHeight",
             "version": "default",
             "isOutdated": false,
             "example": "interceptProjectiles_andOverHeight: 10"
@@ -443,7 +443,7 @@
         {
             "name": "laserDefenceEnergyUse",
             "type": "float",
-            "description": "data.sections.turret.laserdefenceenergyuse",
+            "description": "data.sections.turret.laserDefenceEnergyUse",
             "version": "default",
             "isOutdated": false,
             "example": "laserDefenceEnergyUse: 0.25"
@@ -467,7 +467,7 @@
         {
             "name": "image_applyTeamColors",
             "type": "bool",
-            "description": "data.sections.turret.image_applyteamcolors",
+            "description": "data.sections.turret.image_applyTeamColors",
             "version": "default",
             "isOutdated": false,
             "example": "image_applyTeamColors: true"
@@ -475,7 +475,7 @@
         {
             "name": "image_drawOffsetX",
             "type": "float",
-            "description": "data.sections.turret.image_drawoffsetx",
+            "description": "data.sections.turret.image_drawOffsetX",
             "version": "default",
             "isOutdated": false,
             "example": "image_drawOffsetX: 0"
@@ -483,7 +483,7 @@
         {
             "name": "image_drawOffsetY",
             "type": "float",
-            "description": "data.sections.turret.image_drawoffsety",
+            "description": "data.sections.turret.image_drawOffsetY",
             "version": "default",
             "isOutdated": false,
             "example": "image_drawOffsetY: 30"
@@ -491,7 +491,7 @@
         {
             "name": "chargeEffectImage",
             "type": "file (image)",
-            "description": "data.sections.turret.chargeeffectimage",
+            "description": "data.sections.turret.chargeEffectImage",
             "version": "default",
             "isOutdated": false,
             "example": "chargeEffectImage: glow.png"
@@ -499,7 +499,7 @@
         {
             "name": "warmupStartEffect",
             "type": "effect ref",
-            "description": "data.sections.turret.warmupstarteffect",
+            "description": "data.sections.turret.warmupStartEffect",
             "version": "default",
             "isOutdated": false,
             "example": "warmupStartEffect: CUSTOM:abosrb"
@@ -526,7 +526,7 @@
             "description": "data.sections.turret.shoot_flame",
             "version": "default",
             "isOutdated": false,
-            "example": "shoot_flame: smoke, CUSTOM:lightFade, CUSTOM:pop*5"
+            "example": "eg: shoot_flame: smoke, CUSTOM:lightFade, CUSTOM:pop*5"
         },
         {
             "name": "shoot_light",
@@ -539,7 +539,7 @@
         {
             "name": "onShoot_playAnimation",
             "type": "animation ref",
-            "description": "data.sections.turret.onshoot_playanimation",
+            "description": "data.sections.turret.onShoot_playAnimation",
             "version": "1.13",
             "isOutdated": false,
             "example": "onShoot_playAnimation: heatUp"
@@ -547,7 +547,7 @@
         {
             "name": "onShoot_triggerActions",
             "type": "action refs",
-            "description": "data.sections.turret.onshoot_triggeractions",
+            "description": "data.sections.turret.onShoot_triggerActions",
             "version": "1.14",
             "isOutdated": false,
             "example": "onShoot_triggerActions: spawnShells"
@@ -555,7 +555,7 @@
         {
             "name": "unloadUpToXUnitsAndGiveAttackOrder",
             "type": "int",
-            "description": "data.sections.turret.unloaduptoxunitsandgiveattackorder",
+            "description": "data.sections.turret.unloadUpToXUnitsAndGiveAttackOrder",
             "version": "1.15",
             "isOutdated": false,
             "example": "unloadUpToXUnitsAndGiveAttackOrder: 1"
@@ -563,7 +563,7 @@
         {
             "name": "recoilOffset",
             "type": "float",
-            "description": "data.sections.turret.recoilooffset",
+            "description": "data.sections.turret.recoilOffset",
             "version": "default",
             "isOutdated": false,
             "example": "recoilOffset: 10"
@@ -571,7 +571,7 @@
         {
             "name": "recoilOutTime",
             "type": "float",
-            "description": "data.sections.turret.recoilouttime",
+            "description": "data.sections.turret.recoilOutTime",
             "version": "default",
             "isOutdated": false,
             "example": "recoilOutTime: 1s"
@@ -579,7 +579,7 @@
         {
             "name": "recoilReturnTime",
             "type": "float",
-            "description": "data.sections.turret.recoilreturntime",
+            "description": "data.sections.turret.recoilReturnTime",
             "version": "default",
             "isOutdated": false,
             "example": "recoilReturnTime: 0.5s"
@@ -587,7 +587,7 @@
         {
             "name": "showRangeUIGuide",
             "type": "bool",
-            "description": "data.sections.turret.showrangeuiguide",
+            "description": "data.sections.turret.showRangeUIGuide",
             "version": "1.13.3",
             "isOutdated": false,
             "example": "showRangeUIGuide: true"

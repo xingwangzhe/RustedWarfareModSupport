@@ -11,7 +11,7 @@
         {
             "name": "deflectionPower",
             "type": "float",
-            "description": "data.sections.projectile.deflectionpower",
+            "description": "data.sections.projectile.deflectionPower",
             "version": "default",
             "isOutdated": false,
             "example": "deflectionPower: -1"
@@ -19,7 +19,7 @@
         {
             "name": "explodeOnEndOfLife",
             "type": "bool",
-            "description": "data.sections.projectile.explodeonendoflife",
+            "description": "data.sections.projectile.explodeOnEndOfLife",
             "version": "1.13",
             "isOutdated": false,
             "example": "explodeOnEndOfLife: true"
@@ -27,7 +27,7 @@
         {
             "name": "autoTargetingOnDeadTarget",
             "type": "bool",
-            "description": "data.sections.projectile.autotargetingondeadtarget",
+            "description": "data.sections.projectile.autoTargetingOnDeadTarget",
             "version": "1.13",
             "isOutdated": false,
             "example": "autoTargetingOnDeadTarget: true"
@@ -35,7 +35,7 @@
         {
             "name": "autoTargetingOnDeadTargetRange",
             "type": "int",
-            "description": "data.sections.projectile.autotargetingondeadtargetrange",
+            "description": "data.sections.projectile.autoTargetingOnDeadTargetRange",
             "version": "1.14",
             "isOutdated": false,
             "example": "autoTargetingOnDeadTargetRange: 100"
@@ -43,7 +43,7 @@
         {
             "name": "autoTargetingOnDeadTargetLead",
             "type": "float",
-            "description": "data.sections.projectile.autotargetingondeadtargetlead",
+            "description": "data.sections.projectile.autoTargetingOnDeadTargetLead",
             "version": "1.14",
             "isOutdated": false,
             "example": "autoTargetingOnDeadTargetLead: 300"
@@ -51,7 +51,7 @@
         {
             "name": "unloadUpToXUnitsFromSource",
             "type": "int",
-            "description": "data.sections.projectile.unloaduptoxunitsfromsource",
+            "description": "data.sections.projectile.unloadUpToXUnitsFromSource",
             "version": "1.13",
             "isOutdated": false,
             "example": "unloadUpToXUnitsFromSource: 2"
@@ -59,7 +59,7 @@
         {
             "name": "teleportSource",
             "type": "bool",
-            "description": "data.sections.projectile.teleportsource",
+            "description": "data.sections.projectile.teleportSource",
             "version": "1.13",
             "isOutdated": false,
             "example": "teleportSource: true"
@@ -67,15 +67,15 @@
         {
             "name": "spawnUnit",
             "type": "projectile ref",
-            "description": "data.sections.projectile.spawnunit",
+            "description": "data.sections.projectile.spawnUnit",
             "version": "1.13",
             "isOutdated": false,
-            "example": "spawnUnit: heavyTank, tank*5, hoverTank(offsetX=10)"
+            "example": "eg: spawnUnit: heavyTank, tank*5, hoverTank(offsetX=10)"
         },
         {
             "name": "spawnProjectilesOnEndOfLife",
             "type": "projectile ref",
-            "description": "data.sections.projectile.spawnprojectilesonendoflife",
+            "description": "data.sections.projectile.spawnProjectilesOnEndOfLife",
             "version": "1.14",
             "isOutdated": false,
             "example": "spawnProjectilesOnEndOfLife: torpedo_split(offsetDir=90), torpedo_split(offsetDir=-90)"
@@ -83,7 +83,7 @@
         {
             "name": "spawnProjectilesOnExplode",
             "type": "projectile ref",
-            "description": "data.sections.projectile.spawnprojectilesonexplode",
+            "description": "data.sections.projectile.spawnProjectilesOnExplode",
             "version": "1.14",
             "isOutdated": false,
             "example": "spawnProjectilesOnExplode: flachette*4"
@@ -91,7 +91,7 @@
         {
             "name": "spawnProjectilesOnCreate",
             "type": "",
-            "description": "data.sections.projectile.spawnprojectilesoncreate",
+            "description": "data.sections.projectile.spawnProjectilesOnCreate",
             "version": "1.14",
             "isOutdated": false,
             "example": "spawnProjectilesOnCreate: shotgun"
@@ -99,7 +99,7 @@
         {
             "name": "convertHitToSourceTeam",
             "type": "bool",
-            "description": "data.sections.projectile.converthittosourceteam",
+            "description": "data.sections.projectile.convertHitToSourceTeam",
             "version": "1.13.3",
             "isOutdated": false,
             "example": "convertHitToSourceTeam: true"
@@ -115,7 +115,7 @@
         {
             "name": "flameWeapon",
             "type": "bool",
-            "description": "data.sections.projectile.flameweapon",
+            "description": "data.sections.projectile.flameWeapon",
             "version": "default",
             "isOutdated": false,
             "example": "flameWeapon: true"
@@ -123,7 +123,7 @@
         {
             "name": "delayedStartTimer",
             "type": "float",
-            "description": "data.sections.projectile.delayedstarttimer",
+            "description": "data.sections.projectile.delayedStartTimer",
             "version": "1.13",
             "isOutdated": false,
             "example": "delayedStartTimer: 2s"
@@ -131,7 +131,7 @@
         {
             "name": "directDamage",
             "type": "int",
-            "description": "data.sections.projectile.directdamage",
+            "description": "data.sections.projectile.directDamage",
             "version": "default",
             "isOutdated": false,
             "example": "directDamage: 30"
@@ -139,7 +139,7 @@
         {
             "name": "areaDamage",
             "type": "int",
-            "description": "data.sections.projectile.areadamage",
+            "description": "data.sections.projectile.areaDamage",
             "version": "default",
             "isOutdated": false,
             "example": "areaDamage: 10"
@@ -147,7 +147,7 @@
         {
             "name": "areaRadius",
             "type": "float",
-            "description": "data.sections.projectile.arearadius",
+            "description": "data.sections.projectile.areaRadius",
             "version": "1.13",
             "isOutdated": false,
             "example": "areaRadius: 100"
@@ -155,7 +155,7 @@
         {
             "name": "areaDamageNoFalloff",
             "type": "bool",
-            "description": "data.sections.projectile.areadamagenofalloff",
+            "description": "data.sections.projectile.areaDamageNoFalloff",
             "version": "1.13",
             "isOutdated": false,
             "example": "areaDamageNoFalloff: true"
@@ -163,7 +163,7 @@
         {
             "name": "areaRadiusFromEdge",
             "type": "bool",
-            "description": "data.sections.projectile.arearadiusfromedge",
+            "description": "data.sections.projectile.areaRadiusFromEdge",
             "version": "1.13",
             "isOutdated": false,
             "example": "areaRadiusFromEdge: true"
@@ -171,7 +171,7 @@
         {
             "name": "areaExpandTime",
             "type": "float",
-            "description": "data.sections.projectile.areaexpandtime",
+            "description": "data.sections.projectile.areaExpandTime",
             "version": "1.13",
             "isOutdated": false,
             "example": "areaExpandTime: 1s"
@@ -179,7 +179,7 @@
         {
             "name": "areaHitAirAndLandAtSameTime",
             "type": "bool",
-            "description": "data.sections.projectile.areahitairandlandatsametime",
+            "description": "data.sections.projectile.areaHitAirAndLandAtSameTime",
             "version": "1.13",
             "isOutdated": false,
             "example": "areaHitAirAndLandAtSameTime: true"
@@ -187,7 +187,7 @@
         {
             "name": "areaHitUnderwaterAlways",
             "type": "bool",
-            "description": "data.sections.projectile.areahitunderwateralways",
+            "description": "data.sections.projectile.areaHitUnderwaterAlways",
             "version": "1.13",
             "isOutdated": false,
             "example": "areaHitUnderwaterAlways: true"
@@ -195,7 +195,7 @@
         {
             "name": "areaIgnoreUnitsCloserThan",
             "type": "int",
-            "description": "data.sections.projectile.areaignoreunitscloserthan",
+            "description": "data.sections.projectile.areaIgnoreUnitsCloserThan",
             "version": "1.13",
             "isOutdated": false,
             "example": "areaIgnoreUnitsCloserThan: 10"
@@ -203,7 +203,7 @@
         {
             "name": "buildingDamageMultiplier",
             "type": "float",
-            "description": "data.sections.projectile.buildingdamagemultiplier",
+            "description": "data.sections.projectile.buildingDamageMultiplier",
             "version": "1.13",
             "isOutdated": false,
             "example": "buildingDamageMultiplier: 3"
@@ -211,7 +211,7 @@
         {
             "name": "shieldDamageMultiplier",
             "type": "float",
-            "description": "data.sections.projectile.shielddamagemultiplier",
+            "description": "data.sections.projectile.shieldDamageMultiplier",
             "version": "1.13",
             "isOutdated": false,
             "example": "shieldDamageMultiplier: 1.4"
@@ -219,7 +219,7 @@
         {
             "name": "shieldDefectionMultiplier",
             "type": "float",
-            "description": "data.sections.projectile.shielddefectionmultiplier",
+            "description": "data.sections.projectile.shieldDefectionMultiplier",
             "version": "1.13",
             "isOutdated": false,
             "example": "shieldDefectionMultiplier: 1.55"
@@ -227,7 +227,7 @@
         {
             "name": "hullDamageMultiplier",
             "type": "float",
-            "description": "data.sections.projectile.hulldamagemultiplier",
+            "description": "data.sections.projectile.hullDamageMultiplier",
             "version": "1.14",
             "isOutdated": false,
             "example": "hullDamageMultiplier: 2"
@@ -235,7 +235,7 @@
         {
             "name": "ignoreParentShootDamageMultiplier",
             "type": "bool",
-            "description": "data.sections.projectile.ignoreparentshootdamagemultiplier",
+            "description": "data.sections.projectile.ignoreParentShootDamageMultiplier",
             "version": "1.15",
             "isOutdated": false,
             "example": "ignoreParentShootDamageMultiplier: true"
@@ -243,7 +243,7 @@
         {
             "name": "armourIgnoreAmount",
             "type": "int",
-            "description": "data.sections.projectile.armourignoreamount",
+            "description": "data.sections.projectile.armourIgnoreAmount",
             "version": "default",
             "isOutdated": false,
             "example": "armourIgnoreAmount"
@@ -251,7 +251,7 @@
         {
             "name": "friendlyFire",
             "type": "bool/string",
-            "description": "data.sections.projectile.friendlyfire",
+            "description": "data.sections.projectile.friendlyFire",
             "version": "1.13",
             "isOutdated": false,
             "example": "friendlyFire: false / friendlyFire: true / friendlyFire: only-ignoreEnemy"
@@ -259,7 +259,7 @@
         {
             "name": "mutatorX_ifUnitWithTags",
             "type": "tags",
-            "description": "data.sections.projectile.mutatorx_ifunitwithtags",
+            "description": "data.sections.projectile.mutatorX_ifUnitWithTags",
             "version": "1.13.3",
             "isOutdated": false,
             "example": "mutator1_ifUnitWithTags: infantry"
@@ -267,7 +267,7 @@
         {
             "name": "mutatorX_ifUnitWithoutTags",
             "type": "tags",
-            "description": "data.sections.projectile.mutatorx_ifunitwithouttags",
+            "description": "data.sections.projectile.mutatorX_ifUnitWithoutTags",
             "version": "1.13.3",
             "isOutdated": false,
             "example": "mutator1_ifUnitWithoutTags: strongArmour"
@@ -275,7 +275,7 @@
         {
             "name": "mutatorX_directDamageMultiplier",
             "type": "float",
-            "description": "data.sections.projectile.mutatorx_directdamagemultiplier",
+            "description": "data.sections.projectile.mutatorX_directDamageMultiplier",
             "version": "1.13.3",
             "isOutdated": false,
             "example": "mutatorX_directDamageMultiplier: 5"
@@ -283,7 +283,7 @@
         {
             "name": "mutatorX_areaDamageMultiplier",
             "type": "float",
-            "description": "data.sections.projectile.mutatorx_areadamagemultiplier",
+            "description": "data.sections.projectile.mutatorX_areaDamageMultiplier",
             "version": "1.13.3",
             "isOutdated": false,
             "example": "mutatorX_areaDamageMultiplier: 1.2"
@@ -291,7 +291,7 @@
         {
             "name": "mutatorX_changedExplodeEffect",
             "type": "effect",
-            "description": "data.sections.projectile.mutatorx_changedexplodeeffect",
+            "description": "data.sections.projectile.mutatorX_changedExplodeEffect",
             "version": "1.13.3",
             "isOutdated": false,
             "example": "mutatorX_changedExplodeEffect: CUSTOM:specialBlast"
@@ -299,7 +299,7 @@
         {
             "name": "mutatorX_addResourcesDirectHit",
             "type": "resource",
-            "description": "data.sections.projectile.mutatorx_addresourcesdirecthit",
+            "description": "data.sections.projectile.mutatorX_addResourcesDirectHit",
             "version": "1.14",
             "isOutdated": false,
             "example": "mutatorX_addResourcesDirectHit: oil=1"
@@ -307,7 +307,7 @@
         {
             "name": "mutatorX_addResourcesAreaHit",
             "type": "resource",
-            "description": "data.sections.projectile.mutatorx_addresourcesareahit",
+            "description": "data.sections.projectile.mutatorX_addResourcesAreaHit",
             "version": "1.14",
             "isOutdated": false,
             "example": "mutatorX_addResourcesAreaHit: rust=4"
@@ -315,7 +315,7 @@
         {
             "name": "targetGround",
             "type": "bool",
-            "description": "data.sections.projectile.targetground",
+            "description": "data.sections.projectile.targetGround",
             "version": "default",
             "isOutdated": false,
             "example": "targetGround: true"
@@ -323,7 +323,7 @@
         {
             "name": "targetGround_includeTargetHeight",
             "type": "bool",
-            "description": "data.sections.projectile.targetground_includetargetheight",
+            "description": "data.sections.projectile.targetGround_includeTargetHeight",
             "version": "1.14",
             "isOutdated": false,
             "example": "targetGround_includeTargetHeight: 40"
@@ -331,7 +331,7 @@
         {
             "name": "targetGroundHeightOffset",
             "type": "float",
-            "description": "data.sections.projectile.targetgroundheightoffset",
+            "description": "data.sections.projectile.targetGroundHeightOffset",
             "version": "1.14",
             "isOutdated": false,
             "example": "targetGroundHeightOffset: 10"
@@ -347,7 +347,7 @@
         {
             "name": "targetSpeed",
             "type": "float",
-            "description": "data.sections.projectile.targetspeed",
+            "description": "data.sections.projectile.targetSpeed",
             "version": "default",
             "isOutdated": false,
             "example": "targetSpeed: 5"
@@ -355,7 +355,7 @@
         {
             "name": "targetSpeedAcceleration",
             "type": "float",
-            "description": "data.sections.projectile.targetspeedacceleration",
+            "description": "data.sections.projectile.targetSpeedAcceleration",
             "version": "1.13",
             "isOutdated": false,
             "example": "targetSpeedAcceleration: 0.3"
@@ -387,7 +387,7 @@
         {
             "name": "targetGroundSpread",
             "type": "float",
-            "description": "data.sections.projectile.targetgroundspread",
+            "description": "data.sections.projectile.targetGroundSpread",
             "version": "default",
             "isOutdated": false,
             "example": "targetGroundSpread: 20"
@@ -395,7 +395,7 @@
         {
             "name": "speedSpread",
             "type": "float",
-            "description": "data.sections.projectile.speedspread",
+            "description": "data.sections.projectile.speedSpread",
             "version": "default",
             "isOutdated": false,
             "example": "speedSpread: 3"
@@ -411,15 +411,15 @@
         {
             "name": "instantReuseLast",
             "type": "bool",
-            "description": "data.sections.projectile.instantreuselast",
-            "version": "1.14",
+            "description": "data.sections.projectile.instantReuseLast",
+            "version": "default",
             "isOutdated": false,
             "example": "instantReuseLast: true"
         },
         {
             "name": "instantReuseLast_alsoChangeTurretAim",
             "type": "bool",
-            "description": "data.sections.projectile.instantreuselast_alsochangeturretaim",
+            "description": "data.sections.projectile.instantReuseLast_alsoChangeTurretAim",
             "version": "1.14",
             "isOutdated": false,
             "example": "instantReuseLast_alsoChangeTurretAim: true"
@@ -427,7 +427,7 @@
         {
             "name": "instantReuseLast_keepAreaDamageList",
             "type": "bool",
-            "description": "data.sections.projectile.instantreuselast_keepareadamagelist",
+            "description": "data.sections.projectile.instantReuseLast_keepAreaDamageList",
             "version": "1.14",
             "isOutdated": false,
             "example": "instantReuseLast_keepAreaDamageList: true"
@@ -435,7 +435,7 @@
         {
             "name": "interceptProjectile_removeTargetLifeOnly",
             "type": "bool",
-            "description": "data.sections.projectile.interceptprojectile_removetargetlifeonly",
+            "description": "data.sections.projectile.interceptProjectile_removeTargetLifeOnly",
             "version": "1.14",
             "isOutdated": false,
             "example": "interceptProjectile_removeTargetLifeOnly: true"
@@ -443,7 +443,7 @@
         {
             "name": "disableLeadTargeting",
             "type": "bool",
-            "description": "data.sections.projectile.disableleadtargeting",
+            "description": "data.sections.projectile.disableLeadTargeting",
             "version": "1.13",
             "isOutdated": false,
             "example": "disableLeadTargeting: true"
@@ -451,7 +451,7 @@
         {
             "name": "leadTargetingSpeedCalculation",
             "type": "float",
-            "description": "data.sections.projectile.leadtargetingspeedcalculation",
+            "description": "data.sections.projectile.leadTargetingSpeedCalculation",
             "version": "1.13",
             "isOutdated": false,
             "example": "leadTargetingSpeedCalculation: 2"
@@ -459,7 +459,7 @@
         {
             "name": "initialUnguidedSpeedHeight",
             "type": "",
-            "description": "data.sections.projectile.initialunguidedspeedheight",
+            "description": "data.sections.projectile.initialUnguidedSpeedHeight",
             "version": "1.13.3",
             "isOutdated": false,
             "example": "initialUnguidedSpeedHeight: 30"
@@ -475,7 +475,7 @@
         {
             "name": "turnSpeed",
             "type": "float",
-            "description": "data.sections.projectile.turnspeed",
+            "description": "data.sections.projectile.turnSpeed",
             "version": "1.14",
             "isOutdated": false,
             "example": "turnSpeed: 0"
@@ -483,7 +483,7 @@
         {
             "name": "wobbleAmplitude",
             "type": "float",
-            "description": "data.sections.projectile.wobbleamplitude",
+            "description": "data.sections.projectile.wobbleAmplitude",
             "version": "1.14",
             "isOutdated": false,
             "example": "wobbleAmplitude: 10"
@@ -491,7 +491,7 @@
         {
             "name": "wobbleFrequency",
             "type": "float",
-            "description": "data.sections.projectile.wobblefrequency",
+            "description": "data.sections.projectile.wobbleFrequency",
             "version": "1.14",
             "isOutdated": false,
             "example": "wobbleFrequency: 4"
@@ -499,7 +499,7 @@
         {
             "name": "pushForce",
             "type": "float",
-            "description": "data.sections.projectile.pushforce",
+            "description": "data.sections.projectile.pushForce",
             "version": "1.14",
             "isOutdated": false,
             "example": "pushForce: 2"
@@ -507,7 +507,7 @@
         {
             "name": "pushVelocity",
             "type": "float",
-            "description": "data.sections.projectile.pushvelocity",
+            "description": "data.sections.projectile.pushVelocity",
             "version": "1.14",
             "isOutdated": false,
             "example": "pushVelocity: 5"
@@ -515,7 +515,7 @@
         {
             "name": "moveWithParent",
             "type": "bool",
-            "description": "data.sections.projectile.movewithparent",
+            "description": "data.sections.projectile.moveWithParent",
             "version": "1.14",
             "isOutdated": false,
             "example": "moveWithParent: true"
@@ -523,7 +523,7 @@
         {
             "name": "sweepOffset",
             "type": "float",
-            "description": "data.sections.projectile.sweepoffset",
+            "description": "data.sections.projectile.sweepOffset",
             "version": "1.14",
             "isOutdated": false,
             "example": "sweepOffset: 0.5"
@@ -531,7 +531,7 @@
         {
             "name": "sweepOffsetFromTargetRadius",
             "type": "float",
-            "description": "data.sections.projectile.sweepoffsetfromtargetradius",
+            "description": "data.sections.projectile.sweepOffsetFromTargetRadius",
             "version": "1.14",
             "isOutdated": false,
             "example": "sweepOffsetFromTargetRadius: 0.4"
@@ -539,7 +539,7 @@
         {
             "name": "sweepSpeed",
             "type": "float",
-            "description": "data.sections.projectile.sweepspeed",
+            "description": "data.sections.projectile.sweepSpeed",
             "version": "1.14",
             "isOutdated": false,
             "example": "sweepSpeed: 1.5"
@@ -547,7 +547,7 @@
         {
             "name": "retargetingInFlight",
             "type": "bool",
-            "description": "data.sections.projectile.retargetinginflight",
+            "description": "data.sections.projectile.retargetingInFlight",
             "version": "1.14",
             "isOutdated": false,
             "example": "retargetingInFlight: true"
@@ -555,7 +555,7 @@
         {
             "name": "retargetingInFlightSearchDelay",
             "type": "float/time",
-            "description": "data.sections.projectile.retargetinginflightsearchdelay",
+            "description": "data.sections.projectile.retargetingInFlightSearchDelay",
             "version": "1.14",
             "isOutdated": false,
             "example": "retargetingInFlightSearchDelay: 1s"
@@ -563,7 +563,7 @@
         {
             "name": "retargetingInFlightSearchRange",
             "type": "int",
-            "description": "data.sections.projectile.retargetinginflightsearchrange",
+            "description": "data.sections.projectile.retargetingInFlightSearchRange",
             "version": "1.14",
             "isOutdated": false,
             "example": "retargetingInFlightSearchRange: 300"
@@ -571,7 +571,7 @@
         {
             "name": "retargetingInFlightSearchLead",
             "type": "float",
-            "description": "data.sections.projectile.retargetinginflightsearchlead",
+            "description": "data.sections.projectile.retargetingInFlightSearchLead",
             "version": "1.14",
             "isOutdated": false,
             "example": "retargetingInFlightSearchLead: 30"
@@ -579,7 +579,7 @@
         {
             "name": "retargetingInFlightSearchOnlyTags",
             "type": "tag ref",
-            "description": "data.sections.projectile.retargetinginflightsearchonlytags",
+            "description": "data.sections.projectile.retargetingInFlightSearchOnlyTags",
             "version": "1.14",
             "isOutdated": false,
             "example": "retargetingInFlightSearchOnlyTags: lightArmor"
@@ -611,7 +611,7 @@
         {
             "name": "drawType",
             "type": "int",
-            "description": "data.sections.projectile.drawtype",
+            "description": "data.sections.projectile.drawType",
             "version": "default",
             "isOutdated": false,
             "example": "drawType:1"
@@ -619,7 +619,7 @@
         {
             "name": "drawSize",
             "type": "float",
-            "description": "data.sections.projectile.drawsize",
+            "description": "data.sections.projectile.drawSize",
             "version": "default",
             "isOutdated": false,
             "example": "drawSize: 1.5"
@@ -635,7 +635,7 @@
         {
             "name": "hitSound",
             "type": "bool",
-            "description": "data.sections.projectile.hitsound",
+            "description": "data.sections.projectile.hitSound",
             "version": "default",
             "isOutdated": false,
             "example": "hitSound: true"
@@ -643,7 +643,7 @@
         {
             "name": "explodeEffect",
             "type": "effect ref list",
-            "description": "data.sections.projectile.explodeeffect",
+            "description": "data.sections.projectile.explodeEffect",
             "version": "1.13",
             "isOutdated": false,
             "example": "explodeEffect: smallExplosion, CUSTOM:myExplodeEffect"
@@ -651,7 +651,7 @@
         {
             "name": "explodeEffectOnShield",
             "type": "effect ref list",
-            "description": "data.sections.projectile.explodeeffectonshield",
+            "description": "data.sections.projectile.explodeEffectOnShield",
             "version": "1.13",
             "isOutdated": false,
             "example": "explodeEffectOnShield: CUSTOM:EMPwave"
@@ -659,7 +659,7 @@
         {
             "name": "teamColorRatio",
             "type": "float",
-            "description": "data.sections.projectile.teamcolorratio",
+            "description": "data.sections.projectile.teamColorRatio",
             "version": "1.13",
             "isOutdated": false,
             "example": "teamColorRatio: 1"
@@ -667,7 +667,7 @@
         {
             "name": "teamColorRatio_sourceRatio",
             "type": "float",
-            "description": "data.sections.projectile.teamcolorratio_sourceratio",
+            "description": "data.sections.projectile.teamColorRatio_sourceRatio",
             "version": "1.14",
             "isOutdated": false,
             "example": "teamColorRatio_sourceRatio: 1"
@@ -675,7 +675,7 @@
         {
             "name": "drawUnderUnits",
             "type": "bool",
-            "description": "data.sections.projectile.drawunderunits",
+            "description": "data.sections.projectile.drawUnderUnits",
             "version": "1.13",
             "isOutdated": false,
             "example": "drawUnderUnits: true"
@@ -683,7 +683,7 @@
         {
             "name": "effectOnCreate",
             "type": "effect ref list",
-            "description": "data.sections.projectile.effectoncreate",
+            "description": "data.sections.projectile.effectOnCreate",
             "version": "1.13",
             "isOutdated": false,
             "example": "effectOnCreate: CUSTOM:puff"
@@ -691,7 +691,7 @@
         {
             "name": "shouldRevealFog",
             "type": "bool",
-            "description": "data.sections.projectile.shouldrevealfog",
+            "description": "data.sections.projectile.shouldRevealFog",
             "version": "1.13",
             "isOutdated": false,
             "example": "shouldRevealFog: true"
@@ -699,7 +699,7 @@
         {
             "name": "alwaysVisibleInFog",
             "type": "bool",
-            "description": "data.sections.projectile.alwaysvisibleinfog",
+            "description": "data.sections.projectile.alwaysVisibleInFog",
             "version": "1.13",
             "isOutdated": false,
             "example": "alwaysVisibleInFog: false"
@@ -707,7 +707,7 @@
         {
             "name": "nukeWeapon",
             "type": "bool",
-            "description": "data.sections.projectile.nukeweapon",
+            "description": "data.sections.projectile.nukeWeapon",
             "version": "1.13",
             "isOutdated": false,
             "example": "nukeWeapon: true"
@@ -715,7 +715,7 @@
         {
             "name": "trailEffect",
             "type": "bool/effect",
-            "description": "data.sections.projectile.traileffect",
+            "description": "data.sections.projectile.trailEffect",
             "version": "default",
             "isOutdated": false,
             "example": "trailEffect: true, trailEffect: CUSTOM:rocketThrust"
@@ -723,7 +723,7 @@
         {
             "name": "trailEffectRate",
             "type": "float",
-            "description": "data.sections.projectile.traileffectrate",
+            "description": "data.sections.projectile.trailEffectRate",
             "version": "1.13",
             "isOutdated": false,
             "example": "trailEffectRate: 4"
@@ -731,7 +731,7 @@
         {
             "name": "lightCastOnGround",
             "type": "bool",
-            "description": "data.sections.projectile.lightcastonground",
+            "description": "data.sections.projectile.lightCastOnGround",
             "version": "default",
             "isOutdated": false,
             "example": "lightCastOnGround: true"
@@ -739,7 +739,7 @@
         {
             "name": "lightSize",
             "type": "float",
-            "description": "data.sections.projectile.lightsize",
+            "description": "data.sections.projectile.lightSize",
             "version": "default",
             "isOutdated": false,
             "example": "lightSize: 1.5"
@@ -747,7 +747,7 @@
         {
             "name": "lightColor",
             "type": "color",
-            "description": "data.sections.projectile.lightcolor",
+            "description": "data.sections.projectile.lightColor",
             "version": "default",
             "isOutdated": false,
             "example": "lightColor: #ffe92b"
@@ -755,7 +755,7 @@
         {
             "name": "largeHitEffect",
             "type": "bool",
-            "description": "data.sections.projectile.largehiteffect",
+            "description": "data.sections.projectile.largeHitEffect",
             "version": "default",
             "isOutdated": false,
             "example": "largeHitEffect: true"
@@ -763,7 +763,7 @@
         {
             "name": "lightingEffect",
             "type": "bool",
-            "description": "data.sections.projectile.lightingeffect",
+            "description": "data.sections.projectile.lightingEffect",
             "version": "default",
             "isOutdated": false,
             "example": "lightingEffect: true"
@@ -771,7 +771,7 @@
         {
             "name": "laserEffect",
             "type": "bool",
-            "description": "data.sections.projectile.lasereffect",
+            "description": "data.sections.projectile.laserEffect",
             "version": "default",
             "isOutdated": false,
             "example": "laserEffect: true"
@@ -779,7 +779,7 @@
         {
             "name": "beamImage",
             "type": "file (image)",
-            "description": "data.sections.projectile.beamimage",
+            "description": "data.sections.projectile.beamImage",
             "version": "1.14",
             "isOutdated": false,
             "example": "beamImage: beam.png"
@@ -787,7 +787,7 @@
         {
             "name": "beamImageOffsetRate",
             "type": "float",
-            "description": "data.sections.projectile.beamimageoffsetrate",
+            "description": "data.sections.projectile.beamImageOffsetRate",
             "version": "1.14",
             "isOutdated": false,
             "example": "beamImageOffsetRate: 1"
@@ -795,7 +795,7 @@
         {
             "name": "beamImageStart",
             "type": "file (image)",
-            "description": "data.sections.projectile.beamimagestart",
+            "description": "data.sections.projectile.beamImageStart",
             "version": "1.14",
             "isOutdated": false,
             "example": "beamImageStart: beamStart.png"
@@ -803,7 +803,7 @@
         {
             "name": "beamImageStartRotated",
             "type": "bool",
-            "description": "data.sections.projectile.beamimagestartrotated",
+            "description": "data.sections.projectile.beamImageStartRotated",
             "version": "1.14",
             "isOutdated": false,
             "example": "beamImageStartRotated: true"
@@ -811,7 +811,7 @@
         {
             "name": "beamImageEnd",
             "type": "file (image)",
-            "description": "data.sections.projectile.beamimageend",
+            "description": "data.sections.projectile.beamImageEnd",
             "version": "1.14",
             "isOutdated": false,
             "example": "beamImageEnd: beamEnd.png"
@@ -819,7 +819,7 @@
         {
             "name": "beamImageEndRotated",
             "type": "bool",
-            "description": "data.sections.projectile.beamimageendrotated",
+            "description": "data.sections.projectile.beamImageEndRotated",
             "version": "1.14",
             "isOutdated": false,
             "example": "beamImageEndRotated: true"
