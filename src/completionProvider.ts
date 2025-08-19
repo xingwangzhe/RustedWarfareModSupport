@@ -259,3 +259,9 @@ export class GlobalResourceCompletionProvider extends GenericCompletionProvider 
         super('global_resource', (name: string) => /^global_resource_\p{L}+$/u.test(name));
     }
 }
+
+export class ResourceCompletionProvider extends GenericCompletionProvider {
+    constructor() {
+        super('resource', (name: string) => /^resource_\p{L}+$/u.test(name));
+    }
+}

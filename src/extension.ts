@@ -17,7 +17,8 @@ import {
     EffectCompletionProvider,
     AnimationCompletionProvider,
     SectionNameCompletionProvider,
-    GlobalResourceCompletionProvider
+    GlobalResourceCompletionProvider,
+    ResourceCompletionProvider
 } from './completionProvider';
 import { ValueCompletionProvider } from './valueComple/valueCompletionProvider';
 import { SectionPropertyDecorator } from './decorator';
@@ -61,7 +62,8 @@ export function activate(context: vscode.ExtensionContext) {
 		new ActionCompletionProvider(),
 		new EffectCompletionProvider(),
 		new AnimationCompletionProvider(),
-		new GlobalResourceCompletionProvider()
+		new GlobalResourceCompletionProvider(),
+		new ResourceCompletionProvider()
 	];
 
 	// 注册所有补全提供者（不设置触发字符，使用默认触发机制）

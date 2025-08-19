@@ -1,0 +1,172 @@
+{
+  "data": [
+    {
+      "name": "stackHorizontal",
+      "type": "Boolean",
+      "version": "1.0",
+      "description": "data.sections.resource.stackHorizontal.description",
+      "example": "stackHorizontal: true"
+    },
+    {
+      "name": "displayName",
+      "type": "String",
+      "version": "1.0",
+      "description": "data.sections.resource.displayName.description",
+      "example": "displayName: 计数器"
+    },
+    {
+      "name": "displayNameShort",
+      "type": "String",
+      "version": "1.0",
+      "description": "data.sections.resource.displayNameShort.description",
+      "example": "displayNameShort: s"
+    },
+    {
+      "name": "hidden",
+      "type": "Boolean",
+      "version": "1.0",
+      "description": "data.sections.resource.hidden.description",
+      "example": "hidden: true"
+    },
+    {
+      "name": "equivalentGlobalResourceForAI",
+      "type": "Boolean",
+      "version": "1.0",
+      "description": "data.sections.resource.equivalentGlobalResourceForAI.description",
+      "example": "equivalentGlobalResourceForAI: true"
+    },
+    {
+      "name": "displayRoundedDown",
+      "type": "Boolean",
+      "version": "1.0",
+      "description": "data.sections.resource.displayRoundedDown.description",
+      "example": "displayRoundedDown: true"
+    },
+    {
+      "name": "iconImageUseInText",
+      "type": "Boolean",
+      "version": "1.0",
+      "description": "data.sections.resource.iconImageUseInText.description",
+      "example": "iconImageUseInText: false"
+    },
+    {
+      "name": "iconImage",
+      "type": "String",
+      "version": "1.0",
+      "description": "data.sections.resource.iconImage.description",
+      "example": "iconImage: chemms.png"
+    },
+    {
+      "name": "displayNameHideWhenIconShownInText",
+      "type": "Boolean",
+      "version": "1.0",
+      "description": "data.sections.resource.displayNameHideWhenIconShownInText.description",
+      "example": "displayNameHideWhenIconShownInText: true"
+    },
+    {
+      "name": "displayNameHideWhenIconShownInHUD",
+      "type": "Boolean",
+      "version": "1.0",
+      "description": "data.sections.resource.displayNameHideWhenIconShownInHUD.description",
+      "example": "displayNameHideWhenIconShownInHUD: true"
+    },
+    {
+      "name": "displayColorUseInText",
+      "type": "Boolean",
+      "version": "1.0",
+      "description": "data.sections.resource.displayColorUseInText.description",
+      "example": "displayColorUseInText: false"
+    },
+    {
+      "name": "appendResourceInHUD",
+      "type": "ResourceRef",
+      "version": "1.0",
+      "description": "data.sections.resource.appendResourceInHUD.description",
+      "example": "appendResourceInHUD: <resources:name>"
+    },
+    {
+      "name": "displayPrefixInHUD",
+      "type": "String",
+      "version": "1.0",
+      "description": "data.sections.resource.displayPrefixInHUD.description",
+      "example": "displayPrefixInHUD: 321"
+    },
+    {
+      "name": "displayPostfixInHUD",
+      "type": "String",
+      "version": "1.0",
+      "description": "data.sections.resource.displayPostfixInHUD.description",
+      "example": "displayPostfixInHUD: 123"
+    },
+    {
+      "name": "displayTextAppendResourceWithGap",
+      "type": "Boolean",
+      "version": "1.0",
+      "description": "data.sections.resource.displayTextAppendResourceWithGap.description",
+      "example": "displayTextAppendResourceWithGap: true"
+    },
+    {
+      "name": "appendResourceInHUD_whenThisZero",
+      "type": "Boolean",
+      "version": "1.0",
+      "description": "data.sections.resource.appendResourceInHUD_whenThisZero.description",
+      "example": "appendResourceInHUD_whenThisZero: false"
+    },
+    {
+      "name": "includeInStats",
+      "type": "Boolean",
+      "version": "1.0",
+      "description": "data.sections.resource.includeInStats.description",
+      "example": "includeInStats: true"
+    },
+    {
+      "name": "valueInStats",
+      "type": "Number",
+      "version": "1.0",
+      "description": "data.sections.resource.valueInStats.description",
+      "example": "valueInStats: 1"
+    },
+    {
+      "name": "displayTextAppendResource",
+      "type": "ResourceRef",
+      "version": "1.0",
+      "description": "data.sections.resource.displayTextAppendResource.description",
+      "example": "displayTextAppendResource: <resource:name>"
+    },
+    {
+      "name": "displayDigitGrouping",
+      "type": "String",
+      "version": "1.0",
+      "description": "data.sections.resource.displayDigitGrouping.description",
+      "example": "displayDigitGrouping: none"
+    },
+    {
+      "name": "displayPos",
+      "type": "Number",
+      "version": "1.0",
+      "description": "data.sections.resource.displayPos.description",
+      "example": "displayPos: 1"
+    },
+    {
+      "name": "displayWithRounding",
+      "type": "Boolean",
+      "version": "1.0",
+      "description": "data.sections.resource.displayWithRounding.description",
+      "example": "displayWithRounding: true"
+    },
+    {
+      "name": "displayTextPrefix",
+      "type": "String",
+      "version": "1.0",
+      "description": "data.sections.resource.displayTextPrefix.description",
+      "example": "displayTextPrefix: 321"
+    },
+    {
+      "name": "displayTextPostfix",
+      "type": "String",
+      "version": "1.0",
+      "description": "data.sections.resource.displayTextPostfix.description",
+      "example": "displayTextPostfix: 123"
+    }
+  ]
+}

@@ -6,8 +6,9 @@
 A RustedWarfare mod development tool under development, implementing auto-completion and information features
 
 
-当前实现的功能有:基础值的自动补全，简单逻辑布尔补全,布尔逻辑补全，`mod-info.txt`补全
-Currently implemented features: basic value auto-completion, simple logic boolean completion
+当前实现的功能有:所有节的基础值的自动补全，简单逻辑布尔补全,布尔逻辑补全，`mod-info.txt`补全
+
+Currently implemented features: all section basic value auto-completion, simple logic boolean completion, boolean logic completion, `mod-info.txt` completion
 
 ## 参考
 ## References
