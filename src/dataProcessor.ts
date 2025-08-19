@@ -122,6 +122,27 @@ export function isInsideSection(document: vscode.TextDocument, position: vscode.
             return sectionMatcher(sectionName);
         }
     }
+    
+    // 特殊处理 mod-info.txt 文件
+    // 如果文件名是 mod-info.txt，则检查是否在文件开头（没有节的情况下）
+    if (document.fileName.endsWith('mod-info.txt')) {
+        // 检查是否在文件的前几行且没有遇到任何节
+        let hasSection = false;
+        for (let i = 0; i < Math.min(position.line, 10); i++) {
+            const line = document.lineAt(i).text.trim();
+            if (line.startsWith('[') && line.endsWith(']')) {
+                hasSection = true;
+                break;
+            }
+        }
+        
+        // 如果没有节且在文件开头附近，则认为是在mod-info节中
+        if (!hasSection && position.line < 10) {
+            // 直接检查是否匹配mod或music节
+            return sectionMatcher('mod') || sectionMatcher('music');
+        }
+    }
+    
     return false;
 }
 

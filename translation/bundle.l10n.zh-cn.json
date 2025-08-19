@@ -5,6 +5,7 @@
   "data.sections.logicBoolean": "可在所有逻辑字段中使用的高级逻辑",
   "data.sections.spawnProjectiles": "可用于生成抛射体的列表",
   "data.sections.spawnUnits": "可用于生成单位的列表",
+  "data.sections.mod-info": "MOD信息属性",
   "completionprovider.name": "属性名",
   "completionprovider.type": "类型",
   "completionprovider.version": "版本",
@@ -138,5 +139,11 @@
   "valuecompletionprovider.logicboolean.game.nukesEnabled.description": "如果在此游戏设置中启用了核武器，则返回true。",
   "valuecompletionprovider.logicboolean.int.description": "从数字中删除小数位。",
   "valuecompletionprovider.logicboolean.select.description": "如果bool为true则返回textA，否则返回textB",
-  "valuecompletionprovider.logicboolean.debug.description": "返回文本字符串，帮助解释当前结果的原因。可以看到嵌套逻辑、比较和运算符。"
+  "valuecompletionprovider.logicboolean.debug.description": "返回文本字符串，帮助解释当前结果的原因。可以看到嵌套逻辑、比较和运算符。",
+  "data.sections.mod-info.minVersion.description": "支持该mod运行的最低游戏版本。若不满足要求的最低版本，提示后仍可加载，但除地图外不可用，同时不提供代码错误的报错提醒。",
+  "data.sections.mod-info.title.description": "该mod在游戏中显示的标题",
+  "data.sections.mod-info.description.description": "该mod在游戏中显示的描述。使用\"\\n\"使其在显示时换行（pc版尚不能换行显示）",
+  "data.sections.mod-info.sourceFolder.description": "在游戏中播放mod里的.ogg或.wav音频文件作为背景音乐，填音乐文件夹的路径",
+  "data.sections.mod-info.whenUsingUnitsFromThisMod_playExclusively.description": "当使用该mod的单位时特别播放该mod的音乐，填\"true\"或\"false\"",
+  "data.sections.mod-info.addToNormalPlaylist.description": "加入音乐播放列表，填\"true\"或\"false\""
 }

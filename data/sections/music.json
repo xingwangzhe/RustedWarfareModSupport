@@ -1,0 +1,28 @@
+{
+  "data": [
+    {
+      "name": "sourceFolder",
+      "type": "string",
+      "description": "data.sections.mod-info.sourceFolder.description",
+      "version": "default",
+      "isOutdated": false,
+      "example": "sourceFolder: soundtrack"
+    },
+    {
+      "name": "whenUsingUnitsFromThisMod_playExclusively",
+      "type": "bool",
+      "description": "data.sections.mod-info.whenUsingUnitsFromThisMod_playExclusively.description",
+      "version": "default",
+      "isOutdated": false,
+      "example": "whenUsingUnitsFromThisMod_playExclusively: true"
+    },
+    {
+      "name": "addToNormalPlaylist",
+      "type": "bool",
+      "description": "data.sections.mod-info.addToNormalPlaylist.description",
+      "version": "default",
+      "isOutdated": false,
+      "example": "addToNormalPlaylist: false"
+    }
+  ]
+}

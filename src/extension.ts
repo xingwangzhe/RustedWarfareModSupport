@@ -13,8 +13,9 @@ import {
     AttachmentCompletionProvider,
     ActionCompletionProvider,
     EffectCompletionProvider,
-    AnimationCompletionProvider
-} from './completionProvider';
+    AnimationCompletionProvider,
+    ModInfoCompletionProvider,
+    ModInfoFileCompletionProvider} from './completionProvider';
 import { SectionPropertyDecorator } from './decorator';
 import { ValueCompletionProvider } from './valueComple/valueCompletionProvider';
 import { RustedWarfareHoverProvider } from './hoverProvider';
@@ -38,7 +39,7 @@ export function activate(context: vscode.ExtensionContext) {
 
 	// 注册文档解析器，用于识别节
 	const sectionParser = vscode.languages.registerDocumentSymbolProvider(
-		{ language: 'ini' }, 
+		[{ language: 'ini' }, { pattern: '**/mod-info.txt' }], 
 		new IniSectionSymbolProvider()
 	);
 
@@ -56,28 +57,36 @@ export function activate(context: vscode.ExtensionContext) {
 		new AttachmentCompletionProvider(),
 		new ActionCompletionProvider(),
 		new EffectCompletionProvider(),
-		new AnimationCompletionProvider()
+		new AnimationCompletionProvider(),
+		new ModInfoCompletionProvider()
 	];
 
 	// 注册所有补全提供者（不设置触发字符，使用默认触发机制）
 	const completionSubscriptions = completionProviders.map(provider => 
 		vscode.languages.registerCompletionItemProvider(
-			{ language: 'ini' },
+			[{ language: 'ini' }, { pattern: '**/mod-info.txt' }],
 			provider
 		)
+	);
+
+	// 为mod-info.txt文件注册专门的补全提供者
+	const modInfoFileCompletionProvider = new ModInfoFileCompletionProvider();
+	const modInfoFileCompletionSubscription = vscode.languages.registerCompletionItemProvider(
+		{ pattern: '**/mod-info.txt' },
+		modInfoFileCompletionProvider
 	);
 
 	// 注册值补全提供者
 	const valueCompletionProvider = new ValueCompletionProvider();
 	const valueCompletionSubscription = vscode.languages.registerCompletionItemProvider(
-		{ language: 'ini' },
+		[{ language: 'ini' }, { pattern: '**/mod-info.txt' }],
 		valueCompletionProvider,
 		':', ' ', ',' // 在冒号、空格和逗号后触发值补全
 	);
 
 	// 注册悬停提供者
 	const hoverProvider = vscode.languages.registerHoverProvider(
-		{ language: 'ini' },
+		[{ language: 'ini' }, { pattern: '**/mod-info.txt' }],
 		new RustedWarfareHoverProvider()
 	);
 
@@ -89,6 +98,7 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(sectionParser);
 	context.subscriptions.push(valueCompletionSubscription);
 	context.subscriptions.push(hoverProvider);
+	context.subscriptions.push(modInfoFileCompletionSubscription);
 	completionSubscriptions.forEach(subscription => context.subscriptions.push(subscription));
 }
 

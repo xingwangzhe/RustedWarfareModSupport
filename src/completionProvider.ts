@@ -180,3 +180,44 @@ export class AnimationCompletionProvider extends GenericCompletionProvider {
         super('animation', (name: string) => /^animation_\p{L}+$/u.test(name));
     }
 }
+
+export class ModInfoCompletionProvider extends GenericCompletionProvider {
+    constructor() {
+        super('mod-info', (name: string) => name === 'mod' || name === 'music');
+    }
+}
+
+/**
+ * 专门用于mod-info.txt文件的补全提供者
+ * 支持在mod-info.txt文件中提供mod和music节的属性补全
+ */
+export class ModInfoFileCompletionProvider implements vscode.CompletionItemProvider {
+    provideCompletionItems(
+        document: vscode.TextDocument,
+        position: vscode.Position,
+        token: vscode.CancellationToken,
+        context: vscode.CompletionContext
+    ): vscode.ProviderResult<vscode.CompletionItem[] | vscode.CompletionList> {
+        // 检查是否是mod-info.txt文件
+        if (!document.fileName.endsWith('mod-info.txt')) {
+            return [];
+        }
+
+        // 检查是否在有效的行首位置（允许输入属性名）
+        if (!isAtValidLineStart(document, position)) {
+            return [];
+        }
+        
+        // 如果行中已经包含冒号，则不提供属性补全（为值补全保留空间）
+        if (hasColonInLine(document, position)) {
+            return [];
+        }
+
+        // 获取属性并创建补全项
+        // 在mod-info.txt文件中，我们支持两种节的属性：mod和music
+        const modProperties = getSectionProperties('mod');
+        const musicProperties = getSectionProperties('music');
+        const allProperties = [...modProperties, ...musicProperties];
+        return createCompletionItems('mod-info', allProperties);
+    }
+}

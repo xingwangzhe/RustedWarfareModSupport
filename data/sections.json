@@ -99,6 +99,10 @@
         {
             "name": "prices",
             "description": "data.sections.prices"
+        },
+        {
+            "name": "mod-info",
+            "description": "data.sections.mod-info"
         }
     ]
 }
