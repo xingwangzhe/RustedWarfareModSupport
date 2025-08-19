@@ -16,19 +16,13 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
 
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '22.18.0'
-        cache: 'npm'
-
-    - name: Install bun
+    - name: Setup Bun
       uses: oven-sh/setup-bun@v1
       with:
         bun-version: latest
 
     - name: Install vsce globally
-      run: npm install -g @vscode/vsce
+      run: bun add -g @vscode/vsce
 
     - name: Install dependencies
       run: bun install
