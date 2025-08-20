@@ -109,7 +109,7 @@ export class SectionPropertyDecorator {
                                 new vscode.Position(i, lineEnd)
                             );
                             
-                            // 添加到对应的装饰类型中
+                            // 为属性值使用相同类型的颜色装饰
                             if (!decorations.has(propertyType)) {
                                 decorations.set(propertyType, []);
                             }
@@ -117,6 +117,14 @@ export class SectionPropertyDecorator {
                         }
                     }
                 }
+            }
+        }
+        
+        // 清除之前的装饰
+        for (const [typeName, ] of decorations.entries()) {
+            const decorator = colorizerManager.getDecorator(typeName);
+            if (decorator) {
+                editor.setDecorations(decorator, []);
             }
         }
         

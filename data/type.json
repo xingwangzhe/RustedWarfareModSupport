@@ -142,5 +142,201 @@
   {
     "name": "NONE, LAND, AIR, WATER, HOVER, BUILDING, OVER_CLIFF, OVER_CLIFF_WATER",
     "color": "#FF9AA2"
+  },
+  {
+    "name": "unit ref",
+    "color": "#C7CEEA"
+  },
+  {
+    "name": "tags",
+    "color": "#B39DDB"
+  },
+  {
+    "name": "logic",
+    "color": "#F78FB3"
+  },
+  {
+    "name": "file (image)",
+    "color": "#DCEDC1"
+  },
+  {
+    "name": "boolean",
+    "color": "#96CEB4"
+  },
+  {
+    "name": "time (seconds)",
+    "color": "#FFACB7"
+  },
+  {
+    "name": "strings(s)",
+    "color": "#FFEAA7"
+  },
+  {
+    "name": "price(s)",
+    "color": "#F8B195"
+  },
+  {
+    "name": "effect ref",
+    "color": "#FF9AA2"
+  },
+  {
+    "name": "sound ref",
+    "color": "#B5EAD7"
+  },
+  {
+    "name": "action refs",
+    "color": "#E2F0CB"
+  },
+  {
+    "name": "effects ref",
+    "color": "#FF9AA2"
+  },
+  {
+    "name": "resources",
+    "color": "#A8E6CF"
+  },
+  {
+    "name": "resource",
+    "color": "#A8E6CF"
+  },
+  {
+    "name": "customResource",
+    "color": "#A8E6CF"
+  },
+  {
+    "name": "customPrice",
+    "color": "#F8B195"
+  },
+  {
+    "name": "TeamRelation",
+    "color": "#B39DDB"
+  },
+  {
+    "name": "unitTypes",
+    "color": "#C7CEEA"
+  },
+  {
+    "name": "unitType",
+    "color": "#C7CEEA"
+  },
+  {
+    "name": "unit ref/marker",
+    "color": "#C7CEEA"
+  },
+  {
+    "name": "marker",
+    "color": "#A5D8FF"
+  },
+  {
+    "name": "point",
+    "color": "#A2D5F2"
+  },
+  {
+    "name": "point3d",
+    "color": "#A2D5F2"
+  },
+  {
+    "name": "relation",
+    "color": "#B39DDB"
+  },
+  {
+    "name": "event",
+    "color": "#D4A5A5"
+  },
+  {
+    "name": "fields",
+    "color": "#F99374"
+  },
+  {
+    "name": "addEnergy",
+    "color": "#FFAAA5"
+  },
+  {
+    "name": "dynamic resources",
+    "color": "#A8E6CF"
+  },
+  {
+    "name": "dynamic",
+    "color": "#A8E6CF"
+  },
+  {
+    "name": "key value pairs",
+    "color": "#F99374"
+  },
+  {
+    "name": "logicNumber",
+    "color": "#45B7D1"
+  },
+  {
+    "name": "Message Tag",
+    "color": "#D4A5A5"
+  },
+  {
+    "name": "decal refs",
+    "color": "#E0BBE4"
+  },
+  {
+    "name": "tag ref",
+    "color": "#B39DDB"
+  },
+  {
+    "name": "attachment ids",
+    "color": "#DDA0DD"
+  },
+  {
+    "name": "action ids",
+    "color": "#E2F0CB"
+  },
+  {
+    "name": "animation id",
+    "color": "#E0BBE4"
+  },
+  {
+    "name": "effect ref list",
+    "color": "#FF9AA2"
+  },
+  {
+    "name": "leg/arm",
+    "color": "#FFEAA7"
+  },
+  {
+    "name": "marker ref",
+    "color": "#A5D8FF"
+  },
+  {
+    "name": "color hex",
+    "color": "#95E1D3"
+  },
+  {
+    "name": "degrees",
+    "color": "#45B7D1"
+  },
+  {
+    "name": "any type",
+    "color": "#FF6B6B"
+  },
+  {
+    "name": "same type",
+    "color": "#FF6B6B"
+  },
+  {
+    "name": "value type",
+    "color": "#FF6B6B"
+  },
+  {
+    "name": "all arguments",
+    "color": "#FF6B6B"
+  },
+  {
+    "name": "self only",
+    "color": "#FF6B6B"
+  },
+  {
+    "name": "audio dir",
+    "color": "#FFB7B2"
+  },
+  {
+    "name": "usable frames",
+    "color": "#DDA0DD"
   }
 ]
