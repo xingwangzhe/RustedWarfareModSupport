@@ -23,6 +23,13 @@
         "command": "rustedwarfaremodsupport.helloWorld",
         "title": "Hello World"
       }
+    ],
+    "grammars": [
+      {
+        "language": "ini",
+        "scopeName": "source.ini",
+        "path": "./syntaxes/ini.tmLanguage.json"
+      }
     ]
   },
   "repository": {

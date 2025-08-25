@@ -1,0 +1,28 @@
+{
+  "name": "INI",
+  "scopeName": "source.ini",
+  "patterns": [
+    {
+      "include": "#multistring"
+    },
+    {
+      "include": "source.ini"
+    }
+  ],
+  "repository": {
+    "multistring": {
+      "begin": "\"\"\"\"\"\"",
+      "end": "\"\"\"\"\"\"",
+      "name": "text.ini",
+      "patterns": [
+        {
+          "include": "#multistring-content"
+        }
+      ]
+    },
+    "multistring-content": {
+      "match": "[^\"]+",
+      "name": "text.ini"
+    }
+  }
+}
