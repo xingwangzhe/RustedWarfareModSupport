@@ -11,56 +11,15 @@ A RustedWarfare mod development tool that provides in-editor completions and doc
 ### 节属性自动补全
 ### Section property completion
 
-- core 节基础属性补全
-- Core section basic property completion
+- 悬停信息提示（说明、示例、版本、弃用提示）
+- Hover information with description, example, version and deprecation notes
 
-- canBuild_* 节属性补全
-- canBuild_* section property completion
+![complete_section](for_readmeuse/complete_section.webp)
 
-- graphics 节属性补全
-- Graphics section property completion
+- 节折叠
+- Section folding
 
-- attack 节属性补全
-- Attack section property completion
-
-- turret_* 节属性补全
-- Turret_* section property completion
-
-- projectile_* 节属性补全
-- Projectile_* section property completion
-
-- movement 节属性补全
-- Movement section property completion
-
-- ai 节属性补全
-- AI section property completion
-
-- leg_arm 节属性补全
-- Leg / arm section property completion
-
-- attachment_* 节属性补全
-- Attachment_* section property completion
-
-- action_* 和 hiddenAction_* 节属性补全
-- Action_* and hiddenAction_* section property completion
-
-- effect_* 节属性补全
-- Effect_* section property completion
-
-- animation_* 节属性补全
-- Animation_* section property completion
-
-- global_resource_* 节属性补全
-- Global_resource_* section property completion
-
-- resource_* 节属性补全
-- Resource_* section property completion
-
-- decal_* 节属性补全
-- Decal_* section property completion
-
-- placementRule_* 节属性补全
-- PlacementRule_* section property completion
+![sections_folding](for_readmeuse/sections_folding.webp)
 
 ### 属性值自动补全
 ### Property value completion
@@ -74,6 +33,10 @@ A RustedWarfare mod development tool that provides in-editor completions and doc
 - 单位生成属性补全（单位名建议）
 - Unit spawn property completion (unit name suggestions)
 
+- 图片预览
+- Image preview
+![showpng1](for_readmeuse/showpng1.webp)
+![showpng2](for_readmeuse/showpng2.webp)
 - 列表/枚举/特定类型的值补全
 - List/enum/other type-specific value completion
 
@@ -83,11 +46,8 @@ A RustedWarfare mod development tool that provides in-editor completions and doc
 - `mod-info.txt` 文件识别与补全
 - File recognition and completion for `mod-info.txt`
 
-- 悬停信息提示（说明、示例、版本、弃用提示）
-- Hover information with description, example, version and deprecation notes
-
-- 多语言支持（中文/英文），翻译由 `merge.js` 合并
-- Multi-language support (Chinese/English), translations merged by `merge.js`
+- 多语言支持（中文/英文 将来会有更多语言支持），翻译由 `merge.js` 合并
+- Multi-language support (Chinese/English, more languages will be supported in the future), translations merged by `merge.js`
 
 ## 参考资料
 ## References
