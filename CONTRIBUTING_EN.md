@@ -1,112 +1,88 @@
-# RustedWarfare Mod Support Contributor Guide
+# RustedWarfare Mod Support — Contributor Guide (English)
 
-Thank you for your interest in the RustedWarfare Mod Support plugin! This guide will help you understand how to contribute to this project.
+Thank you for considering contributing to RustedWarfare Mod Support. This document describes the project layout, recommended development environment, where to contribute, how to run and verify changes, and the preferred pull request workflow.
 
-## Project Structure Overview
+## Checklist — what this file covers
 
-```
-rustedwarfaremodsupport/
-├── data/                 # Data files directory
-│   ├── sections/         # Section property definition files
-│   └── ...
-├── src/                  # Source code directory
-│   ├── valueComple/      # Property value completion providers
-│   └── ...               # Other core code
-├── translation/          # Translation files directory
-│   ├── en/               # English translations
-│   ├── zh-cn/            # Chinese translations
-│   └── ...
-├── dist/                 # Compiled code directory
-└── ...
-```
+- Local environment and prerequisites
+- How to run, build and package the extension
+- Where to modify translations, section definitions, and TypeScript code
+- Testing and verification steps (F5 + automated checks)
+- PR guidance and style expectations
 
-## Environment Setup
+## Prerequisites
 
-Before you start contributing, please ensure your development environment meets the following requirements:
+- Node.js (LTS recommended). Current project was tested with Node.js 22.x.
+- npm (comes with Node.js). bun is optional and may speed up install/build.
+- Optional: `vsce` to create/publish VSIX packages: `npm i -g @vscode/vsce`.
 
-1. Install Node.js (LTS version 22.18.0 recommended)
-2. Install bun package manager (recommended for faster build times)
-3. Install the VS Code extension packaging tool globally:
-   ```bash
-   npm install -g @vscode/vsce
-   ```
+## Project layout (important files)
 
-## What You Can Modify
+- `src/` — TypeScript source. Contains completion providers, hover provider, decorator, and value completion modules.
+- `data/` — JSON data files (section definitions and examples). These drive most completion and hover text.
+- `translation/` — L10n source; `merge.js` merges and sorts translations used by the extension.
+- `syntaxes/` — VS Code grammar for ini / mod-info files.
+- `esbuild.js` and `merge.js` — build scripts used before packaging.
+- `package.json` — scripts and extension metadata (see scripts section below).
 
-### 1. Translation Files
+## Common scripts (from `package.json`) and how to use them
 
-You can help us improve translations in various languages:
+- `npm run compile` — run TypeScript build (uses `tsc -b`).
+- `npm run watch` — merge translations then run `tsc -b -w` for incremental compilation.
+- `npm run watch:esbuild` — merge translations then run `esbuild.js --watch` to rebuild with esbuild on change.
+- `npm run package` — run type check, lint, then build production bundle with esbuild.
+- `npm run merge-translations` — run the `merge.js` script to combine translation JSON files into the `translation` output.
+- `npm run package:vsix` — merge translations then create a VSIX using `vsce package`.
 
-- [translation/en/](./translation/en/) - English translation files
-- [translation/zh-cn/](./translation/zh-cn/) - Chinese translation files
+Use `npm run <script>` in your terminal in the repository root.
 
-Each JSON file in these directories corresponds to different sections or functional modules.
+## Development workflow (recommended)
 
-### 2. Property Definitions
+1. Fork and clone your fork.
+2. Install dependencies: `npm install` (or `bun install`).
+3. Start a watch build: `npm run watch` (or `npm run watch:esbuild`).
+4. Open the repo in VS Code and press F5 to open a new Extension Development Host window. Use that window to open `.ini` / `mod-info.txt` test files.
+5. Iterate and test completion/hover behavior in the Extension Development Host.
 
-You can update or add property definitions:
+Notes:
+- `merge.js` must be run before builds so translation JSONs and merged data are up-to-date; the provided npm scripts run it automatically via `pre*` hooks.
 
-- [data/sections/](./data/sections/) directory contains property definition files for all sections
-- Each JSON file defines the properties of a section, including name, type, description, version, and example
+## What to modify
 
-### 3. Feature Extensions
+- Translations: `translation/en/` and `translation/zh-cn/` contain per-module JSON. Run `npm run merge-translations` after edits.
+- Section definitions: add or edit `data/sections/*.json`. Each file must follow the structure used by existing files (name, type, description key, example, version, isOutdated).
+- Value completion: `src/valueComple/` contains modular value completion providers. Add a provider and register it in the value completion registry if creating a new type.
+- Section completion: `src/completionProvider.ts` and related files — add new completion providers for custom sections and register them in `src/extension.ts`.
 
-You can add new features to the plugin:
+## Tests, linting and CI
 
-- Add new section completion support
-- Add new property value completion types
-- Improve existing functionality
+- Lint: `npm run lint` (runs ESLint against `src` and `translation`).
+- Type check: `npm run check-types`.
+- Tests: `npm test` (uses `vscode-test`).
 
-## What Not to Modify
+Before opening a PR, ensure: type checks pass, lint passes, and basic manual verification in the Extension Development Host.
 
-To maintain the stability and consistency of the plugin, please avoid modifying the following content:
+## Adding a new section — concrete steps
 
-1. [extension.ts](./src/extension.ts) - Plugin entry file, unless you need to register new completion providers
-2. Core architecture files like [dataProcessor.ts](./src/dataProcessor.ts) and [completionProvider.ts](./src/completionProvider.ts), unless you have significant improvements
-3. Dependencies and script configurations in [package.json](./package.json)
-4. Build and publish related configuration files
+1. Create `data/sections/<sectionName>.json` matching existing patterns (see other files in the folder).
+2. If you need special completion logic, add a new provider in `src/` (extend `GenericCompletionProvider` or add small specialized logic).
+3. Register the provider in `src/extension.ts` so it gets activated for matching section names.
+4. Update or add translations keys in `translation/*` and run `npm run merge-translations`.
+5. Build and test in Extension Development Host.
 
-## How to Add New Section Support
+## Submitting a PR
 
-1. Create a new JSON file in the [data/sections/](./data/sections/) directory
-2. Create a new completion provider class in [src/completionProvider.ts](./src/completionProvider.ts)
-3. Register the new completion provider in [src/extension.ts](./src/extension.ts)
+1. Push a feature branch to your fork with a clear name (e.g., `feature/add-foo-section`).
+2. Include a description of what changed and how to test it. If data files were added, include example files demonstrating usage.
+3. Run `npm run lint` and `npm run check-types` locally and fix issues before PR.
 
-## Testing Your Changes
+PR Review tips:
+- Keep changes scoped and small
+- Prefer data-driven changes (editing `data/` and `translation/`) over large code refactors
+- Add unit tests where appropriate
 
-1. Clone the repository and install dependencies:
-   ```bash
-   npm install
-   # Or use bun (if installed)
-   # bun install
-   ```
+## Contact & resources
 
-2. Press F5 in VS Code to start a debug session to test your changes
+Open issues for questions, bug reports, or design proposals. Maintain clear, minimal reproduction steps for bugs.
 
-3. Or build the plugin for testing:
-   ```bash
-   # Merge translation files
-   npm run merge-translations
-   # Or use bun (if installed)
-   # bun run merge-translations
-   
-   # Build the plugin
-   npm run package
-   # Or use bun (if installed)
-   # bun run package
-   
-   # Create VSIX package
-   npm run package:vsix
-   # Or use bun (if installed)
-   # bun run package:vsix
-   ```
-
-## Submitting a Pull Request
-
-1. Fork this repository
-2. Create your feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a Pull Request
-
-Thank you for your contribution!
+Thank you for contributing!

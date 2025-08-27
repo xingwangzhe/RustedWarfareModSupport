@@ -1,112 +1,91 @@
-# RustedWarfare Mod Support 贡献者指南
+# RustedWarfare Mod Support — 贡献者指南（中文）
 
-感谢您对 RustedWarfare Mod Support 插件的兴趣！本指南将帮助您了解如何为该项目做贡献。
+感谢您愿意为 RustedWarfare Mod Support 做贡献。本指南描述了仓库结构、推荐开发环境、常用脚本、修改位置、验证步骤以及提交 PR 的建议流程。
 
-## 项目结构概览
+## 本文档覆盖的要点
 
+- 开发环境与前置条件
+- 如何运行、构建与打包扩展
+- 可修改的位置（翻译、数据、代码）
+- 在 Extension Development Host 中测试的步骤
+- 提交 PR 的要求与建议
+
+## 前置条件
+
+- Node.js（推荐使用 LTS 版本，如 22.x）。
+- npm（随 Node.js 提供）。bun 可选以加速安装/构建流程。
+- 可选：全局安装 `vsce` 用于生成 VSIX：`npm i -g @vscode/vsce`。
+
+## 项目主要目录
+
+- `src/` — TypeScript 源代码，包含补全、悬停、装饰器与属性值补全模块。
+- `data/` — 数据驱动的节定义与示例 JSON，控制自动补全与说明文本。
+- `translation/` — 翻译源文件；`merge.js` 将多个翻译文件合并为最终 l10n 输出。
+- `syntaxes/` — 语法文件与文件名识别（用于 `mod-info.txt`）。
+- `esbuild.js` 与 `merge.js` — 打包/合并脚本。
+- `package.json` — 脚本与扩展元数据。
+
+## 常用 npm 脚本（摘自 `package.json`）
+
+- `npm run compile` — TypeScript 构建（`tsc -b`）。
+- `npm run watch` — 合并翻译后运行 `tsc -b -w`（增量编译）。
+- `npm run watch:esbuild` — 合并翻译后运行 `esbuild.js --watch`（使用 esbuild 实时打包）。
+- `npm run package` — 运行类型检查、lint，然后用 esbuild 生成生产包。
+- `npm run merge-translations` — 执行 `merge.js`，合并翻译文件。
+- `npm run package:vsix` — 合并翻译并执行 `vsce package` 生成 VSIX。
+
+使用例子：
+
+```bash
+npm install
+npm run watch:esbuild
+# 或者在另一个终端里直接按 F5 调试
 ```
-rustedwarfaremodsupport/
-├── data/                 # 数据文件目录
-│   ├── sections/         # 各节属性定义文件
-│   └── ...
-├── src/                  # 源代码目录
-│   ├── valueComple/      # 属性值补全提供者
-│   └── ...               # 其他核心代码
-├── translation/          # 翻译文件目录
-│   ├── en/               # 英文翻译
-│   ├── zh-cn/            # 中文翻译
-│   └── ...
-├── dist/                 # 编译后的代码目录
-└── ...
-```
 
-## 环境准备
+## 开发流程（推荐）
 
-在开始贡献之前，请确保您的开发环境满足以下要求：
+1. Fork 并 clone 仓库。
+2. 安装依赖：`npm install`（或 `bun install`）。
+3. 启动监听构建：`npm run watch` 或 `npm run watch:esbuild`。
+4. 在 VS Code 中打开项目并按 F5，使用 Extension Development Host 测试补全与悬停。
+5. 迭代开发并在 Host 窗口中验证变更。
 
-1. 安装 Node.js (推荐使用 LTS 版本 22.18.0)
-2. 推荐安装 bun 包管理器（用于更快的构建速度）
-3. 全局安装 VS Code 扩展打包工具：
-   ```bash
-   npm install -g @vscode/vsce
-   ```
+注意：脚本中的 `pre*` 钩子会自动运行 `merge.js`，确保翻译和合并数据是最新的。
 
-## 可以修改的内容
+## 可修改的内容和位置
 
-### 1. 翻译文件
+- 翻译：`translation/en/` 与 `translation/zh-cn/`，编辑后运行 `npm run merge-translations`。
+- 节定义：`data/sections/*.json`，新增或更新属性定义（字段需遵循现有文件结构）。
+- 值补全：`src/valueComple/` 中添加或修改值补全提供者，并在值补全注册器中注册。
+- 节补全：在 `src/completionProvider.ts` 中添加新的完成器类，如有需要在 `src/extension.ts` 注册。
 
-您可以帮助我们完善各种语言的翻译：
+## 测试、类型检查与 lint
 
-- [translation/en/](./translation/en/) - 英文翻译文件
-- [translation/zh-cn/](./translation/zh-cn/) - 中文翻译文件
+- 类型检查：`npm run check-types`。
+- Lint：`npm run lint`。
+- 测试：`npm test`（运行 `vscode-test`）。
 
-每个目录中的 JSON 文件对应不同的节或功能模块。
+在提交 PR 之前，请确保本地通过类型检查、lint，并在 Extension Development Host 中做基本手动验证。
 
-### 2. 属性定义
+## 新增节的具体步骤
 
-您可以更新或添加属性定义：
+1. 在 `data/sections/` 下创建 `<sectionName>.json`，参考已有 JSON 文件字段：name/type/description/example/version/isOutdated。
+2. 如需额外逻辑，创建或扩展 `src/` 下的补全提供者类（可继承 `GenericCompletionProvider`）。
+3. 在 `src/extension.ts` 中注册该提供者（使其在对应节名出现时生效）。
+4. 更新翻译条目并运行 `npm run merge-translations`。
+5. 构建并在 Extension Development Host 中验证。
 
-- [data/sections/](./data/sections/) 目录包含了所有节的属性定义文件
-- 每个 JSON 文件定义了一个节的属性，包括名称、类型、描述、版本和示例
+## 提交 PR
 
-### 3. 功能扩展
+1. 使用描述性分支名（例如 `feature/add-foo-section`）。
+2. PR 描述中写明变更和验证步骤，若添加数据文件请附示例用法。
+3. 在本地运行 `npm run lint` 与 `npm run check-types` 并修正问题后再提交。
 
-您可以为插件添加新功能：
+PR 建议：
+- 变更粒度小，单一责任优先
+- 优先数据驱动变更（修改 `data/` 与 `translation/`）而非大面积重构
+- 适当添加测试以减少回归
 
-- 添加新的节补全支持
-- 添加新的属性值补全类型
-- 改进现有功能
+如有疑问或需要设计讨论，请在 Issue 中描述复现步骤和预期行为。
 
-## 不建议修改的内容
-
-为了保持插件的稳定性和一致性，请避免修改以下内容：
-
-1. [extension.ts](./src/extension.ts) - 插件入口文件，除非您需要注册新的补全提供者
-2. 核心架构文件，如 [dataProcessor.ts](./src/dataProcessor.ts) 和 [completionProvider.ts](./src/completionProvider.ts)，除非您有重大改进
-3. [package.json](./package.json) 中的依赖和脚本配置
-4. 构建和发布相关的配置文件
-
-## 如何添加新的节支持
-
-1. 在 [data/sections/](./data/sections/) 目录中创建新的 JSON 文件
-2. 在 [src/completionProvider.ts](./src/completionProvider.ts) 中创建新的补全提供者类
-3. 在 [src/extension.ts](./src/extension.ts) 中注册新的补全提供者
-
-## 测试您的更改
-
-1. 克隆仓库并安装依赖：
-   ```bash
-   npm install
-   # 或者使用 bun（如果已安装）
-   # bun install
-   ```
-
-2. 在 VS Code 中按 F5 启动调试会话测试您的更改
-
-3. 或者构建插件进行测试：
-   ```bash
-   # 合并翻译文件
-   npm run merge-translations
-   # 或者使用 bun（如果已安装）
-   # bun run merge-translations
-   
-   # 构建插件
-   npm run package
-   # 或者使用 bun（如果已安装）
-   # bun run package
-   
-   # 创建 VSIX 包
-   npm run package:vsix
-   # 或者使用 bun（如果已安装）
-   # bun run package:vsix
-   ```
-
-## 提交 Pull Request
-
-1. Fork 本仓库
-2. 创建您的功能分支
-3. 提交您的更改
-4. 推送到分支
-5. 创建 Pull Request
-
-感谢您的贡献！
+感谢你的贡献！

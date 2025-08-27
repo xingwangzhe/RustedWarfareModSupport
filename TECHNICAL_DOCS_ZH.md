@@ -1,175 +1,112 @@
-# RustedWarfare Mod Support 技术文档
+# RustedWarfare Mod Support — 技术文档（中文）
 
-## 概述
+本文档面向维护者与开发者，说明扩展的架构、数据格式与扩展点，以便快速定位实现并安全地添加新特性。
 
-RustedWarfare Mod Support 是一个 VS Code 插件，为 Rusted Warfare 游戏模组开发提供智能代码补全和信息提示功能。该插件通过分析 Rusted Warfare 单位定义文件的结构，为开发者提供属性名、属性值和文档信息的自动补全。
+## 概览（高层）
 
-## 核心组件
+- 插件以数据驱动为主：大多数补全项和悬停文本来自 `data/` 下的 JSON。
+- 编辑器功能由 `src/` 中的小型提供者实现（completion/hover/decorator）。
+- 构建流程依赖 `merge.js`（合并翻译/数据）和 `esbuild.js`（生产打包）。
 
-### 1. 插件入口 [extension.ts](./src/extension.ts)
+## 关键模块说明
 
-这是插件的入口文件，负责注册所有功能组件：
+1) `src/extension.ts`
+- 注册语言功能（补全、悬停、符号解析等）和激活事件。
 
-- 文档符号解析器（Document Symbol Provider）
-- 各种补全提供者（Completion Providers）
-- 悬停信息提供者（Hover Provider）
-- 语法高亮装饰器（Decorator）
+2) `src/dataProcessor.ts`
+- 文档解析与上下文识别工具函数，常用方法：
+  - `isInsideSection(document, position, sectionName)`：判断光标是否处在某节范围内。
+  - `isAtValidLineStart(lineText, position)`：判断是否适合补全属性名的位置。
+  - `hasColonInLine(lineText)`：检测是否进入值位置。
+  - `getSectionProperties(sectionName)`：读取并返回该节的属性定义。
+  - `getBaseSectionName(fullSectionName)`：规范化节名（例如 `turret_basic` -> `turret`）。
 
-### 2. 数据处理器 [dataProcessor.ts](./src/dataProcessor.ts)
+3) `src/completionProvider.ts`
+- 实现 `GenericCompletionProvider`（基类）和多个针对不同节类型的完成器。
+- 职责：判断是否应激活、加载/过滤属性定义、生成 CompletionItem（含文档与插入文本）。
 
-该模块包含处理和分析文档内容的工具函数：
+4) `src/valueComple/`
+- 属性值补全提供者集合：
+  - `BaseValueCompletionProvider.ts`：基类，负责调度与共享工具。
+  - `BoolValueCompletionProvider.ts`：生成 `true` / `false` 补全。
+  - `LogicBooleanValueCompletionProvider.ts`：为逻辑表达式提供片段建议。
+  - `UnitSpawnCompletionProvider.ts`：基于数据建议单位名。
+  - `valueCompletionProvider.ts`：集中调度不同值类型的提供者。
 
-- `isInsideSection()` - 检查光标是否在特定节内
-- `isAtValidLineStart()` - 检查光标是否在有效位置
-- `hasColonInLine()` - 检查行中是否包含冒号
-- `getSectionProperties()` - 获取节的属性定义
-- `getBaseSectionName()` - 获取节的基本名称
+5) `src/hoverProvider.ts`
+- 悬停时显示属性描述、示例、版本与弃用提示，翻译 key 会被解析为可读文本。
 
-### 3. 补全提供者 [completionProvider.ts](./src/completionProvider.ts)
+6) `src/decorator.ts` 与 `src/coralor/`
+- 提供视觉修饰、颜色化与装饰器逻辑，增强可读性。
 
-这是插件的核心功能模块，包含所有属性补全相关的类：
+7) `src/Section.ts`
+- 将文档解析为节范围与元数据，供各提供者查询使用。
 
-#### 3.1 通用补全提供者
+## 数据与翻译格式
 
-`GenericCompletionProvider` 是所有节补全提供者的基类，它：
-
-- 检查当前光标位置是否在目标节内
-- 验证光标位置是否适合输入属性名
-- 获取节的属性定义
-- 生成补全项列表
-
-#### 3.2 特定节补全提供者
-
-针对不同类型的节，插件提供了专门的补全提供者类：
-
-- `CoreCompletionProvider` - core 节
-- `CanBuildCompletionProvider` - canBuild_* 节
-- `GraphicsCompletionProvider` - graphics 节
-- `AttackCompletionProvider` - attack 节
-- `TurretCompletionProvider` - turret_* 节
-- `ProjectileCompletionProvider` - projectile_* 节
-- `MovementCompletionProvider` - movement 节
-- `AiCompletionProvider` - ai 节
-- `LegArmCompletionProvider` - leg_* 和 arm_* 节
-- `AttachmentCompletionProvider` - attachment_* 节
-- `ActionCompletionProvider` - action_* 和 hiddenAction_* 节
-- `EffectCompletionProvider` - effect_* 节
-- `AnimationCompletionProvider` - animation_* 节
-- `GlobalResourceCompletionProvider` - global_resource_* 节
-- `ResourceCompletionProvider` - resource_* 节
-- `DecalCompletionProvider` - decal_* 节
-- `PlacementRuleCompletionProvider` - placementRule_* 节
-
-#### 3.3 节名称补全提供者
-
-`SectionNameCompletionProvider` 提供节名称的补全，当用户在方括号内输入时激活。
-
-### 4. 属性值补全提供者 [valueComple/](./src/valueComple/)
-
-该目录包含处理属性值补全的模块：
-
-#### 4.1 基础值补全提供者 [BaseValueCompletionProvider.ts](./src/valueComple/BaseValueCompletionProvider.ts)
-
-这是所有值补全提供者的基类，负责：
-
-- 检测光标是否在属性值位置（冒号后）
-- 识别当前节和属性
-- 根据属性类型分发给具体提供者
-
-#### 4.2 布尔值补全提供者 [BoolValueCompletionProvider.ts](./src/valueComple/BoolValueCompletionProvider.ts)
-
-为布尔类型属性提供 true/false 补全。
-
-#### 4.3 逻辑布尔值补全提供者 [LogicBooleanValueCompletionProvider.ts](./src/valueComple/LogicBooleanValueCompletionProvider.ts)
-
-为逻辑布尔表达式提供补全支持。
-
-#### 4.4 单位生成补全提供者 [UnitSpawnCompletionProvider.ts](./src/valueComple/UnitSpawnCompletionProvider.ts)
-
-为单位生成属性提供单位名称补全。
-
-#### 4.5 组合值补全提供者 [valueCompletionProvider.ts](./src/valueComple/valueCompletionProvider.ts)
-
-整合所有值补全提供者，统一提供值补全功能。
-
-### 5. 悬停信息提供者 [hoverProvider.ts](./src/hoverProvider.ts)
-
-该模块提供悬停时显示的详细信息，当用户将鼠标悬停在属性上时显示属性的详细文档。
-
-### 6. 装饰器 [decorator.ts](./src/decorator.ts)
-
-提供语法高亮和视觉增强功能。
-
-### 7. 节符号解析器 [Section.ts](./src/Section.ts)
-
-解析文档结构，识别各个节的位置和范围。
-
-## 数据文件结构
-
-### 1. 节定义文件 [data/sections/](./data/sections/)
-
-每个 JSON 文件定义一个节的属性：
+- `data/sections/<section>.json` — 节的属性定义，字段示例：
 
 ```json
 {
   "data": [
     {
-      "name": "propertyName",
-      "type": "BOOLEAN|STRING|INTEGER|FLOAT|LIST|etc",
-      "description": "description_key",
-      "version": "version_info",
-      "example": "example_value",
+      "name": "drive",
+      "type": "INTEGER",
+      "description": "core.drive.description",
+      "version": "1.10",
+      "example": "18",
       "isOutdated": false
     }
   ]
 }
 ```
 
-### 2. 翻译文件 [translation/](./translation/)
+- 翻译文件位于 `translation/<lang>/*.json`，翻译键由 `merge.js` 合并为最终输出，扩展使用翻译 key 以便国际化。
 
-提供多语言支持，每个语言目录包含对应的翻译键值对。
+## 常见工作流
 
-### 3. 节索引文件 [data/sections.json](./data/sections.json)
+属性名补全：
 
-定义所有可用节的名称和基本描述信息。
+1. 用户在节体内输入。完成器通过 `Section.ts` 确定当前节范围。
+2. 使用 `dataProcessor.getSectionProperties()` 读取节的属性定义。
+3. 根据上下文（是否已存在、光标位置等）过滤并返回补全项。
 
-## 工作流程
+属性值补全：
 
-### 1. 属性名补全流程
+1. 当用户输入 `:` 或光标到达值位置时，`valueCompletionProvider` 被触发。
+2. 根据属性类型分发到对应的值提供者（布尔、单位、枚举等）。
+3. 提供者返回带文档的建议项，必要时带 snippet 插入。
 
-1. 用户在节内输入属性名
-2. 对应的节补全提供者被激活
-3. 检查光标位置是否合适
-4. 获取节属性定义
-5. 生成补全项列表并显示给用户
+悬停：
 
-### 2. 属性值补全流程
+1. 悬停触发后，提供者定位属性并读取其定义与翻译 key。
+2. 解析翻译并生成含示例与版本说明的 Markdown 内容展示。
 
-1. 用户在属性名后输入冒号
-2. 值补全提供者被激活
-3. 识别当前节和属性
-4. 根据属性类型提供相应值补全
-5. 显示补全项给用户
+## 扩展步骤（如何添加功能）
 
-### 3. 悬停信息显示流程
+1. 编辑或新增 `data/sections/*.json` 来声明新属性或节，描述字段应为翻译 key。
+2. 如需新增值类型，在 `src/valueComple/` 下新增类，继承 `BaseValueCompletionProvider` 并实现 `provideValues()`，然后在 central registry 注册。
+3. 如需节级别特殊行为，实现新的 completion provider（继承 `GenericCompletionProvider`），并在 `src/extension.ts` 注册。
 
-1. 用户将鼠标悬停在属性上
-2. 悬停提供者被激活
-3. 获取属性定义和文档信息
-4. 格式化并显示详细信息
+## 构建与打包注意事项
 
-## 扩展性设计
+- 在生产构建前，请运行 `merge.js`（或运行 `npm run merge-translations`），以确保翻译和合并数据是最新的；npm 脚本的 `pre*` 钩子会自动调用它。
+- 使用 `esbuild.js` 进行生产打包，输出目录为 `dist/`，扩展入口为 `main: ./dist/extension.js`。
 
-插件采用模块化和数据驱动的设计，便于扩展：
+## 常见问题与排查
 
-1. 添加新节支持只需：
-   - 创建节定义文件
-   - 创建补全提供者类
-   - 在入口文件中注册
+- 补全不出现：在 Extension Development Host（F5 打开）中查看控制台错误信息。
+- 翻译不更新：执行 `npm run merge-translations` 并重启调试主机。
 
-2. 添加新属性值类型支持只需：
-   - 继承 BaseValueCompletionProvider
-   - 实现值补全逻辑
-   - 注册到 ValueCompletionProvider
+## 简明契约（Contract）
 
-3. 属性定义完全通过数据文件管理，无需修改代码
+- 输入：编辑器文档文本，光标位置，仓库 `data/` 与 `translation/` JSON 数据。
+- 输出：CompletionItem 列表、Hover 内容、装饰范围。
+
+## 边界情况
+
+- 大文件：提供者仅在节级别范围内工作以避免全局扫描性能问题。
+- 未知节名：尝试以 base section 的定义作为回退。
+- 弃用属性：`isOutdated` 字段会在悬停与补全提示中标注。
+
+需要查看具体函数或文件实现细节时，告诉我你想定位的功能或符号，我会列出精确的函数名和使用位置。

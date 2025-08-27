@@ -1,175 +1,117 @@
-# RustedWarfare Mod Support Technical Documentation
+# RustedWarfare Mod Support — Technical Documentation (English)
 
-## Overview
+This document explains the architecture, data formats, and extension points for the RustedWarfare Mod Support VS Code extension. It's intended for maintainers and contributors who need to understand how features are implemented and where to add new ones.
 
-RustedWarfare Mod Support is a VS Code plugin that provides intelligent code completion and information tips for Rusted Warfare game mod development. The plugin analyzes the structure of Rusted Warfare unit definition files and provides auto-completion of property names, property values, and documentation information for developers.
+## High-level architecture
 
-## Core Components
+- Data-driven core: most completion items and hover docs are produced from JSON files under `data/`.
+- Language features (completion/hover/decorations) are implemented in `src/` using small, focused providers.
+- Build pipeline: `merge.js` prepares/merges translation and data files; `esbuild.js` bundles code for production.
 
-### 1. Plugin Entry [extension.ts](./src/extension.ts)
+## Key modules and responsibilities
 
-This is the entry file of the plugin, responsible for registering all functional components:
+1) `src/extension.ts`
+- Registers language features and activation hooks.
+- Registers completion providers for section names, section properties, and value completion providers.
 
-- Document Symbol Provider
-- Various Completion Providers
-- Hover Information Provider
-- Syntax Highlighting Decorator
+2) `src/dataProcessor.ts`
+- Utilities for parsing document text and computing context. Key helpers:
+  - `isInsideSection(document, position, sectionName)` — whether the cursor is inside a specific section range.
+  - `isAtValidLineStart(lineText, position)` — whether completion for a property name is valid at this position.
+  - `hasColonInLine(lineText)` — helper to detect whether the cursor is in a value position.
+  - `getSectionProperties(sectionName)` — read property definitions from `data/sections/`.
+  - `getBaseSectionName(fullSectionName)` — normalize templated section names (e.g., `turret_basic` -> `turret`).
 
-### 2. Data Processor [dataProcessor.ts](./src/dataProcessor.ts)
+3) `src/completionProvider.ts`
+- Implements `GenericCompletionProvider` (base) and specialized providers for many section types.
+- Responsibilities:
+  - Detect if provider should activate for a section
+  - Load and filter property definitions for the current section and cursor position
+  - Produce CompletionItem instances with label, documentation, detail, and appropriate insert text
 
-This module contains utility functions for processing and analyzing document content:
+4) `src/valueComple/`
+- Contains providers for property value completion. Important files:
+  - `BaseValueCompletionProvider.ts` — base class, provides dispatch and shared helpers
+  - `BoolValueCompletionProvider.ts` — provides `true` / `false` suggestions
+  - `LogicBooleanValueCompletionProvider.ts` — suggests grammar fragments for logical expressions
+  - `UnitSpawnCompletionProvider.ts` — suggests valid unit names from data files
+  - `valueCompletionProvider.ts` — orchestrates and routes requests to specific value providers
 
-- `isInsideSection()` - Checks if the cursor is inside a specific section
-- `isAtValidLineStart()` - Checks if the cursor is at a valid position
-- `hasColonInLine()` - Checks if the line contains a colon
-- `getSectionProperties()` - Gets the property definitions of a section
-- `getBaseSectionName()` - Gets the base name of a section
+5) `src/hoverProvider.ts`
+- Produces hover content for properties: resolved translated description, example, version notes, and whether the property is deprecated.
 
-### 3. Completion Providers [completionProvider.ts](./src/completionProvider.ts)
+6) `src/decorator.ts` and `src/coralor/`
+- Visual decorations and colorization logic for better readability.
 
-This is the core functionality module of the plugin, containing all property completion related classes:
+7) `src/Section.ts`
+- Parses document structure into section ranges and metadata used by completion and hover providers.
 
-#### 3.1 Generic Completion Provider
+## Data formats
 
-`GenericCompletionProvider` is the base class for all section completion providers, which:
-
-- Checks if the current cursor position is within the target section
-- Verifies if the cursor position is suitable for entering property names
-- Gets the property definitions of the section
-- Generates a list of completion items
-
-#### 3.2 Specific Section Completion Providers
-
-For different types of sections, the plugin provides dedicated completion provider classes:
-
-- `CoreCompletionProvider` - core section
-- `CanBuildCompletionProvider` - canBuild_* sections
-- `GraphicsCompletionProvider` - graphics section
-- `AttackCompletionProvider` - attack section
-- `TurretCompletionProvider` - turret_* sections
-- `ProjectileCompletionProvider` - projectile_* sections
-- `MovementCompletionProvider` - movement section
-- `AiCompletionProvider` - ai section
-- `LegArmCompletionProvider` - leg_* and arm_* sections
-- `AttachmentCompletionProvider` - attachment_* sections
-- `ActionCompletionProvider` - action_* and hiddenAction_* sections
-- `EffectCompletionProvider` - effect_* sections
-- `AnimationCompletionProvider` - animation_* sections
-- `GlobalResourceCompletionProvider` - global_resource_* sections
-- `ResourceCompletionProvider` - resource_* sections
-- `DecalCompletionProvider` - decal_* sections
-- `PlacementRuleCompletionProvider` - placementRule_* sections
-
-#### 3.3 Section Name Completion Provider
-
-`SectionNameCompletionProvider` provides completion for section names, activated when the user types within square brackets.
-
-### 4. Property Value Completion Providers [valueComple/](./src/valueComple/)
-
-This directory contains modules for handling property value completion:
-
-#### 4.1 Base Value Completion Provider [BaseValueCompletionProvider.ts](./src/valueComple/BaseValueCompletionProvider.ts)
-
-This is the base class for all value completion providers, responsible for:
-
-- Detecting if the cursor is at a property value position (after colon)
-- Identifying the current section and property
-- Dispatching to specific providers based on property type
-
-#### 4.2 Boolean Value Completion Provider [BoolValueCompletionProvider.ts](./src/valueComple/BoolValueCompletionProvider.ts)
-
-Provides true/false completion for boolean type properties.
-
-#### 4.3 Logic Boolean Value Completion Provider [LogicBooleanValueCompletionProvider.ts](./src/valueComple/LogicBooleanValueCompletionProvider.ts)
-
-Provides completion support for logic boolean expressions.
-
-#### 4.4 Unit Spawn Completion Provider [UnitSpawnCompletionProvider.ts](./src/valueComple/UnitSpawnCompletionProvider.ts)
-
-Provides unit name completion for unit spawn properties.
-
-#### 4.5 Composite Value Completion Provider [valueCompletionProvider.ts](./src/valueComple/valueCompletionProvider.ts)
-
-Integrates all value completion providers and provides unified value completion functionality.
-
-### 5. Hover Information Provider [hoverProvider.ts](./src/hoverProvider.ts)
-
-This module provides detailed information displayed on hover, showing detailed documentation when users hover over properties.
-
-### 6. Decorator [decorator.ts](./src/decorator.ts)
-
-Provides syntax highlighting and visual enhancement features.
-
-### 7. Section Symbol Parser [Section.ts](./src/Section.ts)
-
-Parses document structure, identifying the positions and ranges of various sections.
-
-## Data File Structure
-
-### 1. Section Definition Files [data/sections/](./data/sections/)
-
-Each JSON file defines the properties of a section:
+- `data/sections/<section>.json` — section property definitions.
+  Example entry:
 
 ```json
 {
   "data": [
     {
-      "name": "propertyName",
-      "type": "BOOLEAN|STRING|INTEGER|FLOAT|LIST|etc",
-      "description": "description_key",
-      "version": "version_info",
-      "example": "example_value",
+      "name": "drive",
+      "type": "INTEGER",
+      "description": "core.drive.description",
+      "version": "1.10",
+      "example": "18",
       "isOutdated": false
     }
   ]
 }
 ```
 
-### 2. Translation Files [translation/](./translation/)
+- `translation/<lang>/*.json` — key/value translation files for description text shown in hover and completion details. `merge.js` consolidates them.
 
-Provides multilingual support, with each language directory containing corresponding translation key-value pairs.
+## Workflows
 
-### 3. Section Index File [data/sections.json](./data/sections.json)
+Property name completion:
 
-Defines the names and basic descriptions of all available sections.
+1. User types in a section body. The active completion provider inspects the current section via `Section.ts`.
+2. Provider calls `dataProcessor.getSectionProperties()` for the base section name.
+3. Candidate properties are filtered by context (already present entries, cursor column, etc.) and returned as completion items.
 
-## Workflow
+Property value completion:
 
-### 1. Property Name Completion Workflow
+1. When user types `:` or moves into a value position, the `valueCompletionProvider` is triggered.
+2. It determines the property type and dispatches to the appropriate value provider (boolean, unit, enum, etc.).
+3. Value provider returns context-aware suggestions with documentation and snippet-like insertion when appropriate.
 
-1. User types property name within a section
-2. The corresponding section completion provider is activated
-3. Cursor position is checked for suitability
-4. Section property definitions are retrieved
-5. Completion item list is generated and displayed to the user
+Hover content:
 
-### 2. Property Value Completion Workflow
+1. On hover, provider locates the property and reads its definition and translation key.
+2. It resolves translation text and composes Markdown with details, example and version notes.
 
-1. User types colon after property name
-2. Value completion provider is activated
-3. Current section and property are identified
-4. Appropriate value completion is provided based on property type
-5. Completion items are displayed to the user
+## Extending the extension
 
-### 3. Hover Information Display Workflow
+1. Add or update `data/sections/*.json` for new properties or sections. Keep descriptions as translation keys (not raw text) so translations can be maintained separately.
+2. If a new value type is needed, create a new class under `src/valueComple/`, extend `BaseValueCompletionProvider`, implement `provideValues()` and register it in the central `valueCompletionProvider.ts`.
+3. For section-specific logic, create a new completion provider class (extend `GenericCompletionProvider`) and register it in `src/extension.ts`.
 
-1. User hovers mouse over a property
-2. Hover provider is activated
-3. Property definitions and documentation information are retrieved
-4. Information is formatted and displayed in detail
+## Build & packaging notes
 
-## Extensibility Design
+- Always run `merge.js` (via `npm run merge-translations`) before production builds. The npm scripts' `pre*` hooks already call it.
+- Production bundling uses `esbuild.js` to produce optimized output under `dist/` that is published as the extension entry via `main: ./dist/extension.js`.
 
-The plugin uses a modular and data-driven design that is easy to extend:
+## Troubleshooting
 
-1. To add support for a new section:
-   - Create a section definition file
-   - Create a completion provider class
-   - Register in the entry file
+- If completions don't show, open the Extension Development Host (F5) and look for errors in the host's Developer Tools console.
+- If translations are stale, re-run `npm run merge-translations` and rebuild.
 
-2. To add support for a new property value type:
-   - Inherit from BaseValueCompletionProvider
-   - Implement value completion logic
-   - Register in ValueCompletionProvider
+## Contract (inputs/outputs)
 
-3. Property definitions are completely managed through data files, no code modification required
+- Inputs: editor document text, cursor position, project `data/` and `translation/` JSON files.
+- Outputs: CompletionItem lists, Hover content, decorated ranges.
+
+## Edge cases & notes
+
+- Large documents: providers aim to operate on section-local ranges to avoid scanning entire files.
+- Unknown sections: fallback providers attempt to use base section definitions where appropriate.
+- Deprecated/outdated properties: `isOutdated` flags are surfaced in hover text and completion details.
+
+If you need more detailed code pointers, tell me which feature or file you want to inspect and I'll list exact functions and usage sites.

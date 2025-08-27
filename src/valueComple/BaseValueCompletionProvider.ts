@@ -74,7 +74,7 @@ export abstract class BaseValueCompletionProvider implements vscode.CompletionIt
                 stop = true;
                 return sectionName;
             }
-            if (stop) break;
+            if (stop) {break;}
         }
         return null;
     }
