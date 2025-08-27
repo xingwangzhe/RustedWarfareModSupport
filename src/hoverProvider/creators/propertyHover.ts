@@ -23,12 +23,21 @@ export class PropertyHoverCreator {
             // 获取节的基本名称
             const baseSectionName = HoverUtils.getBaseSectionName(sectionName);
 
-            // 构建数据文件路径
-            const sectionPath = path.join(__dirname, '..', '..', 'data', 'sections', `${baseSectionName}.json`);
+            // 从当前文件位置向上查找项目根目录
+            // src/hoverProvider/creators/propertyHover.ts -> src/hoverProvider/creators/ -> src/hoverProvider/ -> src/ -> 项目根目录
+            const currentDir = path.dirname(__filename);
+            const projectRoot = path.join(currentDir, '..', '..', '..');
+
+            const sectionPath = path.join(projectRoot, 'data', 'sections', `${baseSectionName}.json`);
 
             // 检查是否存在语言特定的文件
-            const localizedPath = path.join(__dirname, '..', '..', 'data', 'sections', vscode.env.language, `${baseSectionName}.json`);
+            const localizedPath = path.join(projectRoot, 'data', 'sections', vscode.env.language, `${baseSectionName}.json`);
             const finalPath = fs.existsSync(localizedPath) ? localizedPath : sectionPath;
+
+            if (!fs.existsSync(finalPath)) {
+                console.warn(`Section file not found: ${finalPath}`);
+                return null;
+            }
 
             const sectionData = JSON.parse(fs.readFileSync(finalPath, 'utf8'));
             const property = sectionData.data.find((p: any) => p.name === lookupName);

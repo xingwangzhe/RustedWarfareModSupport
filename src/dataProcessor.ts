@@ -31,20 +31,25 @@ export function getSectionProperties(sectionName: string): any[] {
     try {
         // 获取基本节名称
         const baseSectionName = getBaseSectionName(sectionName);
-        
+
+        // 从当前文件位置向上查找项目根目录
+        // src/dataProcessor.ts -> src/ -> 项目根目录
+        const currentDir = path.dirname(__filename);
+        const projectRoot = path.join(currentDir, '..');
+
         // 构建语言特定的数据文件路径
-        let sectionPath = path.join(__dirname, '..', 'data', 'sections', `${baseSectionName}.json`);
-        
+        let sectionPath = path.join(projectRoot, 'data', 'sections', `${baseSectionName}.json`);
+
         // 检查是否存在语言特定的文件
-        const localizedPath = path.join(__dirname, '..', 'data', 'sections', vscode.env.language, `${baseSectionName}.json`);
+        const localizedPath = path.join(projectRoot, 'data', 'sections', vscode.env.language, `${baseSectionName}.json`);
         if (fs.existsSync(localizedPath)) {
             sectionPath = localizedPath;
         }
         
         // 如果目标文件不存在，尝试更宽松的匹配：在 sections 目录（或语言子目录）中查找最接近的文件名
     if (!fs.existsSync(sectionPath)) {
-            const localizedDir = path.join(__dirname, '..', 'data', 'sections', vscode.env.language);
-            const defaultDir = path.join(__dirname, '..', 'data', 'sections');
+            const localizedDir = path.join(projectRoot, 'data', 'sections', vscode.env.language);
+            const defaultDir = path.join(projectRoot, 'data', 'sections');
             const dirToSearch = fs.existsSync(localizedDir) ? localizedDir : defaultDir;
 
             try {
@@ -112,8 +117,12 @@ function findSectionPathByMetadata(sectionName: string): string | null {
         return sectionMetadataCache.get(sectionName) || null;
     }
 
-    const localizedDir = path.join(__dirname, '..', 'data', 'sections', vscode.env.language);
-    const defaultDir = path.join(__dirname, '..', 'data', 'sections');
+    // 从当前文件位置向上查找项目根目录
+    const currentDir = path.dirname(__filename);
+    const projectRoot = path.join(currentDir, '..');
+
+    const localizedDir = path.join(projectRoot, 'data', 'sections', vscode.env.language);
+    const defaultDir = path.join(projectRoot, 'data', 'sections');
     const dirs = [] as string[];
     if (fs.existsSync(localizedDir)) {
         dirs.push(localizedDir);

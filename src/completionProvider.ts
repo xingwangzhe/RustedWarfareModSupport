@@ -86,8 +86,13 @@ function createCompletionItems(sectionName: string, properties: any[]): vscode.C
  */
 function createSectionCompletionItems(): vscode.CompletionItem[] {
     try {
+        // 从当前文件位置向上查找项目根目录
+        // src/completionProvider.ts -> src/ -> 项目根目录
+        const currentDir = path.dirname(__filename);
+        const projectRoot = path.join(currentDir, '..');
+
         // 读取节数据
-        const sectionsPath = path.join(__dirname, '..', 'data', 'sections.json');
+        const sectionsPath = path.join(projectRoot, 'data', 'sections.json');
         const sectionsData = JSON.parse(fs.readFileSync(sectionsPath, 'utf8'));
         
         // 为每个节创建补全项

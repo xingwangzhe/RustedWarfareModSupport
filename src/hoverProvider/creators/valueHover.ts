@@ -178,7 +178,12 @@ export class ValueHoverCreator {
     public static createLogicBooleanSelfMethodHover(method: string): vscode.Hover | null {
         // 从logicboolean.json加载数据
         try {
-            const valuePath = path.join(__dirname, '..', '..', 'data', 'value', 'logicboolean.json');
+            // 从当前文件位置向上查找项目根目录
+            // src/hoverProvider/creators/valueHover.ts -> src/hoverProvider/creators/ -> src/hoverProvider/ -> src/ -> 项目根目录
+            const currentDir = path.dirname(__filename);
+            const projectRoot = path.join(currentDir, '..', '..', '..');
+
+            const valuePath = path.join(projectRoot, 'data', 'value', 'logicboolean.json');
             const valueData = JSON.parse(fs.readFileSync(valuePath, 'utf8'));
 
             // 查找匹配的方法
@@ -223,7 +228,12 @@ export class ValueHoverCreator {
     public static createLogicBooleanFunctionHover(func: string): vscode.Hover | null {
         // 从logicboolean.json加载数据
         try {
-            const valuePath = path.join(__dirname, '..', '..', 'data', 'value', 'logicboolean.json');
+            // 从当前文件位置向上查找项目根目录
+            // src/hoverProvider/creators/valueHover.ts -> src/hoverProvider/creators/ -> src/hoverProvider/ -> src/ -> 项目根目录
+            const currentDir = path.dirname(__filename);
+            const projectRoot = path.join(currentDir, '..', '..', '..');
+
+            const valuePath = path.join(projectRoot, 'data', 'value', 'logicboolean.json');
             const valueData = JSON.parse(fs.readFileSync(valuePath, 'utf8'));
 
             // 查找匹配的函数
