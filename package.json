@@ -30,7 +30,25 @@
         "scopeName": "source.ini",
         "path": "./syntaxes/ini.tmLanguage.json"
       }
-    ]
+    ],
+    "configuration": {
+      "title": "RustedWarfareModSupport",
+      "properties": {
+        "rustedwarfaremodsupport.showFoldingControls": {
+          "type": "string",
+          "default": "always",
+          "enum": [
+            "always",
+            "mouseover"
+          ],
+          "enumDescriptions": [
+            "Always show folding controls",
+            "Show folding controls on mouseover"
+          ],
+          "description": "Controls when folding controls are shown."
+        }
+      }
+    }
   },
   "repository": {
     "type": "git",

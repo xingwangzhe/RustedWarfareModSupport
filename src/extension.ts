@@ -2,6 +2,7 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 import { IniSectionSymbolProvider } from './Section';
+import { IniFoldingRangeProvider } from './IniFoldingProvider';
 import {
     CoreCompletionProvider,
     CanBuildCompletionProvider,
@@ -28,11 +29,62 @@ import { RustedWarfareHoverProvider } from './hoverProvider';
 
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
+
+// 应用折叠控件显示设置的函数
+function applyFoldingControls(editor: vscode.TextEditor, showFoldingControls: string) {
+	const config = vscode.workspace.getConfiguration();
+	const editorConfig = config.get<any>('editor', {});
+
+	// 更新编辑器的折叠控件显示设置
+	editorConfig.showFoldingControls = showFoldingControls;
+
+	// 应用配置到工作区
+	vscode.workspace.getConfiguration().update('editor.showFoldingControls', showFoldingControls, vscode.ConfigurationTarget.Workspace);
+}
+
 export function activate(context: vscode.ExtensionContext) {
 
 	// Use the console to output diagnostic information (console.log) and errors (console.error)
 	// This line of code will only be executed once when your extension is activated
 	console.log(vscode.l10n.t('Congratulations, your extension "rustedwarfaremodsupport" is now active!'));
+
+	// 读取配置并应用折叠控件显示设置
+	const config = vscode.workspace.getConfiguration('rustedwarfaremodsupport');
+	const showFoldingControls = config.get<string>('showFoldingControls', 'always');
+
+	// 为所有打开的文本编辑器应用设置
+	vscode.window.visibleTextEditors.forEach(editor => {
+		if (editor.document.languageId === 'ini') {
+			applyFoldingControls(editor, showFoldingControls);
+		}
+	});
+
+	// 监听配置变化
+	context.subscriptions.push(
+		vscode.workspace.onDidChangeConfiguration(e => {
+			if (e.affectsConfiguration('rustedwarfaremodsupport.showFoldingControls')) {
+				const newConfig = vscode.workspace.getConfiguration('rustedwarfaremodsupport');
+				const newShowFoldingControls = newConfig.get<string>('showFoldingControls', 'always');
+
+				vscode.window.visibleTextEditors.forEach(editor => {
+					if (editor.document.languageId === 'ini') {
+						applyFoldingControls(editor, newShowFoldingControls);
+					}
+				});
+			}
+		})
+	);
+
+	// 监听编辑器打开事件
+	context.subscriptions.push(
+		vscode.window.onDidChangeVisibleTextEditors(editors => {
+			editors.forEach(editor => {
+				if (editor.document.languageId === 'ini') {
+					applyFoldingControls(editor, showFoldingControls);
+				}
+			});
+		})
+	);
 
 	// The command has been defined in the package.json file
 	// Now provide the implementation of the command with registerCommand
@@ -47,6 +99,12 @@ export function activate(context: vscode.ExtensionContext) {
 	const sectionParser = vscode.languages.registerDocumentSymbolProvider(
 		{ language: 'ini' }, 
 		new IniSectionSymbolProvider()
+	);
+
+	// 注册折叠范围提供者，用于节和注释块折叠
+	const foldingProvider = vscode.languages.registerFoldingRangeProvider(
+		{ language: 'ini' },
+		new IniFoldingRangeProvider()
 	);
 
 	// 创建所有补全提供者的数组
@@ -107,6 +165,7 @@ export function activate(context: vscode.ExtensionContext) {
 
 	context.subscriptions.push(disposable);
 	context.subscriptions.push(sectionParser);
+	context.subscriptions.push(foldingProvider);
 	context.subscriptions.push(valueCompletionSubscription);
 	context.subscriptions.push(sectionNameCompletionSubscription);
 	context.subscriptions.push(hoverProvider);
