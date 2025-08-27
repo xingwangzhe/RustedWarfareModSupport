@@ -81,8 +81,7 @@ export class HoverCreators {
                 }
             }
 
-            // 添加类型字段
-            hoverContent.appendMarkdown(`**${vscode.l10n.t('completionprovider.type')}:** \`${property.type}\`\n\n`);
+            // 类型字段将由下方的增强显示（带图标）统一插入，避免重复
 
             // 添加版本字段
             if (property.version) {
@@ -101,7 +100,8 @@ export class HoverCreators {
 
             // 添加示例字段
             if (property.example) {
-                hoverContent.appendMarkdown(`**${vscode.l10n.t('completionprovider.example')}:**\n\`\`\`ini\n${vscode.l10n.t(property.example)}\n\`\`\``);
+                // 在代码块后追加空行，防止后续 Markdown 元素与代码块闭合符粘连
+                hoverContent.appendMarkdown(`**${vscode.l10n.t('completionprovider.example')}:**\n\`\`\`ini\n${vscode.l10n.t(property.example)}\n\`\`\`\n\n`);
             }
                 const typeLabel = vscode.l10n.t('completionprovider.type');
                 let typeDisplay = `\`${property.type}\``;
