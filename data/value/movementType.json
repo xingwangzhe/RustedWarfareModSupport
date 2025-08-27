@@ -1,0 +1,55 @@
+{
+  "name": "movementType",
+  "description": "data.value.movementType.description",
+  "example": "movementType: LAND",
+  "data": [
+    {
+      "name": "NONE",
+      "description": "data.value.movementType.NONE",
+      "version": "default",
+      "example": "movementType: NONE"
+    },
+    {
+      "name": "LAND",
+      "description": "data.value.movementType.LAND",
+      "version": "default",
+      "example": "movementType: LAND"
+    },
+    {
+      "name": "AIR",
+      "description": "data.value.movementType.AIR",
+      "version": "default",
+      "example": "movementType: AIR"
+    },
+    {
+      "name": "WATER",
+      "description": "data.value.movementType.WATER",
+      "version": "default",
+      "example": "movementType: WATER"
+    },
+    {
+      "name": "HOVER",
+      "description": "data.value.movementType.HOVER",
+      "version": "default",
+      "example": "movementType: HOVER"
+    },
+    {
+      "name": "BUILDING",
+      "description": "data.value.movementType.BUILDING",
+      "version": "default",
+      "example": "movementType: BUILDING"
+    },
+    {
+      "name": "OVER_CLIFF",
+      "description": "data.value.movementType.OVER_CLIFF",
+      "version": "default",
+      "example": "movementType: OVER_CLIFF"
+    },
+    {
+      "name": "OVER_CLIFF_WATER",
+      "description": "data.value.movementType.OVER_CLIFF_WATER",
+      "version": "default",
+      "example": "movementType: OVER_CLIFF_WATER"
+    }
+  ]
+}

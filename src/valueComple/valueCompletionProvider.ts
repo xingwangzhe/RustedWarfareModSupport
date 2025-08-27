@@ -2,6 +2,7 @@ import * as vscode from 'vscode';
 import { BoolValueCompletionProvider } from './BoolValueCompletionProvider';
 import { UnitSpawnCompletionProvider } from './UnitSpawnCompletionProvider';
 import { LogicBooleanValueCompletionProvider } from './LogicBooleanValueCompletionProvider';
+import { MovementTypeValueCompletionProvider } from './MovementTypeValueCompletionProvider';
 
 export class ValueCompletionProvider implements vscode.CompletionItemProvider {
     private providers: vscode.CompletionItemProvider[];
@@ -11,6 +12,7 @@ export class ValueCompletionProvider implements vscode.CompletionItemProvider {
             new BoolValueCompletionProvider(),
             new UnitSpawnCompletionProvider(),
             new LogicBooleanValueCompletionProvider(),
+            new MovementTypeValueCompletionProvider(),
         ];
     }
 
