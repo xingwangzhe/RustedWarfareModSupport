@@ -3,7 +3,7 @@
   "displayName": "RustedWarfareModSupport",
   "icon": "favicon.png",
   "description": "for RustedWarfareModSupport",
-  "version": "1.3.3",
+  "version": "1.3.4",
   "author": "xingwangzhe",
   "publisher": "xingwangzhe",
   "engines": {
@@ -12,9 +12,7 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": [
-    "onLanguage:ini"
-  ],
+  "activationEvents": [],
   "main": "./dist/extension.js",
   "l10n": "./translation",
   "contributes": {
@@ -29,13 +27,22 @@
         "language": "ini",
         "scopeName": "source.ini",
         "path": "./syntaxes/ini.tmLanguage.json",
-        "extensions": [
-          ".ini",
-          ".template"
+        "fileTypes": [
+          "ini",
+          "template"
         ],
         "filenames": [
           "mod-info.txt"
         ]
+      }
+    ],
+    "languages": [
+      {
+        "id": "ini",
+        "aliases": ["INI"],
+        "extensions": [".ini", ".template"],
+        "filenames": ["mod-info.txt"],
+        "configuration": "./language-configuration.json"
       }
     ],
     "configuration": {
