@@ -25,7 +25,7 @@ import {
 } from './completionProvider';
 import { ValueCompletionProvider } from './valueComple/valueCompletionProvider';
 import { SectionPropertyDecorator } from './decorator';
-import { RustedWarfareHoverProvider } from './hoverProvider';
+import { RustedWarfareHoverProvider } from './hoverProvider/hoverProvider';
 
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
