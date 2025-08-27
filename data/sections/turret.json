@@ -313,6 +313,14 @@
             "example": "canShoot: true"
         },
         {
+            "name": "canAttack",
+            "type": "bool",
+            "description": "data.sections.attack.canAttack",
+            "version": "default",
+            "isOutdated": false,
+            "example": "canAttack: true"
+        },
+        {
             "name": "canAttackFlyingUnits",
             "type": "LogicBoolean",
             "description": "data.sections.turret.canAttackFlyingUnits",
