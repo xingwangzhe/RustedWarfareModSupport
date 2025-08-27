@@ -28,7 +28,14 @@
       {
         "language": "ini",
         "scopeName": "source.ini",
-        "path": "./syntaxes/ini.tmLanguage.json"
+        "path": "./syntaxes/ini.tmLanguage.json",
+        "extensions": [
+          ".ini",
+          ".template"
+        ],
+        "filenames": [
+          "mod-info.txt"
+        ]
       }
     ],
     "configuration": {

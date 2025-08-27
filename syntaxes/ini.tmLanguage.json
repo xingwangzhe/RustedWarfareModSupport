@@ -6,7 +6,13 @@
       "include": "#multistring"
     },
     {
-      "include": "source.ini"
+      "include": "#comment"
+    },
+    {
+      "include": "#section"
+    },
+    {
+      "include": "#keyvalue"
     }
   ],
   "repository": {
@@ -23,6 +29,36 @@
     "multistring-content": {
       "match": "[^\"]+",
       "name": "text.ini"
+    }
+    ,
+    "comment": {
+      "match": "#.*$",
+      "name": "comment.line.number-sign.ini"
+    },
+    "section": {
+      "match": "^\\s*\\[([^\\]]+)\\]",
+      "name": "entity.name.section.ini",
+      "captures": {
+        "1": { "name": "entity.name.section.ini" }
+      }
+    },
+    "keyvalue": {
+      "begin": "^\\s*([A-Za-z0-9_\\.\\-]+)\\s*:",
+      "beginCaptures": {
+        "1": { "name": "variable.other.key.ini" },
+        "0": { "name": "punctuation.separator.keyvalue.ini" }
+      },
+      "end": "$",
+      "name": "meta.key-value.ini",
+      "patterns": [
+        {
+          "include": "#multistring-content"
+        },
+        {
+          "match": "#.*$",
+          "name": "comment.line.number-sign.ini"
+        }
+      ]
     }
   }
 }
