@@ -40,9 +40,13 @@ export class HoverCreators {
      * 创建属性悬停信息
      * @param sectionName 节名称
      * @param propertyName 属性名称
+     * @param originalName 原始属性名称（用于语言键）
      * @returns 悬停信息
      */
-    public static createPropertyHover(sectionName: string, propertyName: string): vscode.Hover | null {
+    public static createPropertyHover(sectionName: string, propertyName: string, originalName?: string): vscode.Hover | null {
+        // 如果是语言键，使用原始名称查找属性信息
+        const lookupName = originalName || propertyName;
+
         try {
             // 获取节的基本名称
             const baseSectionName = HoverUtils.getBaseSectionName(sectionName);
@@ -55,7 +59,7 @@ export class HoverCreators {
             const finalPath = fs.existsSync(localizedPath) ? localizedPath : sectionPath;
 
             const sectionData = JSON.parse(fs.readFileSync(finalPath, 'utf8'));
-            const property = sectionData.data.find((p: any) => p.name === propertyName);
+            const property = sectionData.data.find((p: any) => p.name === lookupName);
 
             if (!property) {
                 return null;
@@ -66,6 +70,14 @@ export class HoverCreators {
 
             // 添加名称字段
             hoverContent.appendMarkdown(`**${vscode.l10n.t('completionprovider.name')}:** ${vscode.l10n.t(property.name)}\n\n`);
+
+            // 如果是语言键，添加语言信息
+            if (originalName) {
+                const languageKeyInfo = HoverCreators.parseLanguageKey(propertyName);
+                if (languageKeyInfo) {
+                    hoverContent.appendMarkdown(`**${vscode.l10n.t('Language')}:** ${languageKeyInfo.languageCode.toUpperCase()} (${vscode.l10n.t('ISO 639-1')})\n\n`);
+                }
+            }
 
             // 添加类型字段
             hoverContent.appendMarkdown(`**${vscode.l10n.t('completionprovider.type')}:** \`${property.type}\`\n\n`);
@@ -102,11 +114,12 @@ export class HoverCreators {
      * @param sectionName 节名称
      * @param propertyName 属性名称
      * @param value 值
+     * @param originalName 原始属性名称（用于语言键）
      * @returns 悬停信息
      */
-    public static createPropertyValueHover(sectionName: string, propertyName: string, value: string): vscode.Hover | null {
+    public static createPropertyValueHover(sectionName: string, propertyName: string, value: string, originalName?: string): vscode.Hover | null {
         // 先获取属性信息
-        const propertyHover = HoverCreators.createPropertyHover(sectionName, propertyName);
+        const propertyHover = HoverCreators.createPropertyHover(sectionName, propertyName, originalName);
         if (!propertyHover) {
             return null;
         }
@@ -124,6 +137,27 @@ export class HoverCreators {
                 // 对于其他类型，返回属性信息
                 return propertyHover;
         }
+    }
+
+    /**
+     * 解析语言键
+     * @param keyName 键名
+     * @returns 语言键信息或null
+     */
+    private static parseLanguageKey(keyName: string): { baseName: string; languageCode: string } | null {
+        // 匹配 key_zh, key_en 等格式（直接以语言代码结尾）
+        const languageKeyPattern = /^(.+)_([a-z]{2})$/;
+        const match = keyName.match(languageKeyPattern);
+
+        if (match) {
+            const [, baseName, languageCode] = match;
+            return {
+                baseName,
+                languageCode: languageCode.toLowerCase()
+            };
+        }
+
+        return null;
     }
 
     /**

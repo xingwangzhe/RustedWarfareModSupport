@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import { SectionHoverInfo, PropertyHoverInfo, PropertyValueHoverInfo } from './types';
+import { SectionHoverInfo, PropertyHoverInfo, PropertyValueHoverInfo, LanguageKeyInfo } from './types';
 
 /**
  * 悬停检测器
@@ -54,6 +54,16 @@ export class HoverDetectors {
             return null;
         }
 
+        // 检查是否为语言键
+        const languageKeyInfo = HoverDetectors.parseLanguageKey(propertyName);
+        if (languageKeyInfo) {
+            return {
+                propertyName: languageKeyInfo.fullName,
+                originalName: languageKeyInfo.baseName,
+                isLanguageKey: true
+            };
+        }
+
         return { propertyName };
     }
 
@@ -85,7 +95,40 @@ export class HoverDetectors {
         const value = lineText.substring(colonIndex + 1).trim();
         const word = HoverDetectors.getWordAtPosition(lineText, characterPosition);
 
+        // 检查是否为语言键
+        const languageKeyInfo = HoverDetectors.parseLanguageKey(propertyName);
+        if (languageKeyInfo) {
+            return {
+                propertyName: languageKeyInfo.fullName,
+                value: word || value,
+                originalName: languageKeyInfo.baseName,
+                isLanguageKey: true
+            };
+        }
+
         return { propertyName, value: word || value };
+    }
+
+    /**
+     * 解析语言键
+     * @param keyName 键名
+     * @returns 语言键信息或null
+     */
+    public static parseLanguageKey(keyName: string): LanguageKeyInfo | null {
+        // 匹配 key_zh, key_en 等格式（直接以语言代码结尾）
+        const languageKeyPattern = /^(.+)_([a-z]{2})$/;
+        const match = keyName.match(languageKeyPattern);
+
+        if (match) {
+            const [, baseName, languageCode] = match;
+            return {
+                fullName: keyName,
+                baseName,
+                languageCode: languageCode.toLowerCase()
+            };
+        }
+
+        return null;
     }
 
     /**

@@ -35,7 +35,11 @@ export class RustedWarfareHoverProvider implements vscode.HoverProvider {
             const currentSection = HoverDetectors.getCurrentSection(document, position);
             if (currentSection) {
                 console.log(`Hover on property name: ${propertyHover.propertyName} in section: ${currentSection}`);
-                return HoverCreators.createPropertyHover(currentSection, propertyHover.propertyName);
+                return HoverCreators.createPropertyHover(
+                    currentSection,
+                    propertyHover.propertyName,
+                    propertyHover.originalName
+                );
             }
         }
 
@@ -45,7 +49,12 @@ export class RustedWarfareHoverProvider implements vscode.HoverProvider {
             const currentSection = HoverDetectors.getCurrentSection(document, position);
             if (currentSection) {
                 console.log(`Hover on property value: ${valueHover.value} for property: ${valueHover.propertyName} in section: ${currentSection}`);
-                return HoverCreators.createPropertyValueHover(currentSection, valueHover.propertyName, valueHover.value);
+                return HoverCreators.createPropertyValueHover(
+                    currentSection,
+                    valueHover.propertyName,
+                    valueHover.value,
+                    valueHover.originalName
+                );
             }
         }
 

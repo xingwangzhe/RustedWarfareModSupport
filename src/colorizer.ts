@@ -63,6 +63,19 @@ export class ColorizerManager {
             });
             this.decorators.set(typeName, decorator);
         }
+
+        // 添加语言键的特殊装饰器
+        const languageDecorator = vscode.window.createTextEditorDecorationType({
+            color: '#FFD700', // 金色
+            fontWeight: 'bold',
+            overviewRulerColor: '#FFD700',
+            overviewRulerLane: vscode.OverviewRulerLane.Right,
+            after: {
+                contentText: ' 🌐',
+                color: '#FFD700'
+            }
+        });
+        this.decorators.set('language', languageDecorator);
     }
 
     /**

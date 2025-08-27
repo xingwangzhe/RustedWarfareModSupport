@@ -85,21 +85,32 @@ export class SectionPropertyDecorator {
                 if (colonIndex > 0) {
                     // 提取属性名称
                     const propertyName = text.substring(0, colonIndex).trim();
-                    const propertyType = propertyTypeMap.get(propertyName);
-                    
+                    let lookupName = propertyName;
+
+                    // 检查是否为语言键
+                    const languageKeyInfo = this.parseLanguageKey(propertyName);
+                    if (languageKeyInfo) {
+                        lookupName = languageKeyInfo.baseName;
+                    }
+
+                    const propertyType = propertyTypeMap.get(lookupName);
+
                     if (propertyType) {
                         // 创建装饰范围（装饰属性名称）
                         const nameRange = new vscode.Range(
                             new vscode.Position(i, colonIndex - propertyName.length),
                             new vscode.Position(i, colonIndex)
                         );
-                        
+
+                        // 为语言键使用特殊的装饰类型
+                        const decorationType = languageKeyInfo ? 'language' : propertyType;
+
                         // 添加到对应的装饰类型中
-                        if (!decorations.has(propertyType)) {
-                            decorations.set(propertyType, []);
+                        if (!decorations.has(decorationType)) {
+                            decorations.set(decorationType, []);
                         }
-                        decorations.get(propertyType)?.push(nameRange);
-                        
+                        decorations.get(decorationType)?.push(nameRange);
+
                         // 创建装饰范围（装饰属性值）
                         const valueStart = colonIndex + 1;
                         const lineEnd = line.text.length;
@@ -108,12 +119,12 @@ export class SectionPropertyDecorator {
                                 new vscode.Position(i, valueStart),
                                 new vscode.Position(i, lineEnd)
                             );
-                            
+
                             // 为属性值使用相同类型的颜色装饰
-                            if (!decorations.has(propertyType)) {
-                                decorations.set(propertyType, []);
+                            if (!decorations.has(decorationType)) {
+                                decorations.set(decorationType, []);
                             }
-                            decorations.get(propertyType)?.push(valueRange);
+                            decorations.get(decorationType)?.push(valueRange);
                         }
                     }
                 }
@@ -175,5 +186,27 @@ export class SectionPropertyDecorator {
         }
         
         return sections;
+    }
+
+    /**
+     * 解析语言键
+     * @param keyName 键名
+     * @returns 语言键信息或null
+     */
+    private parseLanguageKey(keyName: string): { baseName: string; languageCode: string; fullName: string } | null {
+        // 匹配 key_zh, key_en 等格式（直接以语言代码结尾）
+        const languageKeyPattern = /^(.+)_([a-z]{2})$/;
+        const match = keyName.match(languageKeyPattern);
+
+        if (match) {
+            const [, baseName, languageCode] = match;
+            return {
+                fullName: keyName,
+                baseName,
+                languageCode: languageCode.toLowerCase()
+            };
+        }
+
+        return null;
     }
 }
