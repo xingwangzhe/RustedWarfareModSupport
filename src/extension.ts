@@ -26,6 +26,7 @@ import {
 import { ValueCompletionProvider } from './valueComple/valueCompletionProvider';
 import { SectionPropertyDecorator } from './coralor/decorator';
 import { RustedWarfareHoverProvider } from './hoverProvider/hoverProvider';
+// image zoom/preview features removed per user request
 
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
@@ -94,6 +95,8 @@ export function activate(context: vscode.ExtensionContext) {
 		// Display a message box to the user
 		vscode.window.showInformationMessage(vscode.l10n.t('Hello World from RustedWarfareModSupport!'));
 	});
+
+// image commands removed
 
 	// 注册文档解析器，用于识别节
 	const sectionParser = vscode.languages.registerDocumentSymbolProvider(

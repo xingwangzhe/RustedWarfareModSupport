@@ -62,11 +62,17 @@ export class HoverUtils {
         }
 
         const content = hover.contents[0];
+        let text = '';
         if (content && typeof content === 'object' && 'value' in content) {
-            const match = content.value.match(/\*\*Type:\*\* `([^`]+)`/);
-            if (match) {
-                return match[1];
-            }
+            text = content.value;
+        } else if (typeof content === 'string') {
+            text = content;
+        }
+
+        // 尽量宽松地匹配反引号中的类型信息，避免依赖本地化的标签文字
+        const backtickMatch = text.match(/`([^`]+)`/);
+        if (backtickMatch) {
+            return backtickMatch[1];
         }
 
         return '';

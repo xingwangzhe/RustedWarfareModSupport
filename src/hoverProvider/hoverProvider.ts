@@ -50,6 +50,8 @@ export class RustedWarfareHoverProvider implements vscode.HoverProvider {
             if (currentSection) {
                 console.log(`Hover on property value: ${valueHover.value} for property: ${valueHover.propertyName} in section: ${currentSection}`);
                 return HoverCreators.createPropertyValueHover(
+                    document,
+                    position,
                     currentSection,
                     valueHover.propertyName,
                     valueHover.value,

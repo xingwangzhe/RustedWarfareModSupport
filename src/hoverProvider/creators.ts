@@ -2,6 +2,8 @@ import * as vscode from 'vscode';
 import * as fs from 'fs';
 import * as path from 'path';
 import { HoverUtils } from './utils';
+import { resolveImagePath } from '../pubfun/imagePathResolver';
+import { createImageHoverFromPath } from '../pubfun/imageHover';
 
 /**
  * 悬停内容创建器
@@ -117,7 +119,7 @@ export class HoverCreators {
      * @param originalName 原始属性名称（用于语言键）
      * @returns 悬停信息
      */
-    public static createPropertyValueHover(sectionName: string, propertyName: string, value: string, originalName?: string): vscode.Hover | null {
+    public static createPropertyValueHover(document: vscode.TextDocument, position: vscode.Position, sectionName: string, propertyName: string, value: string, originalName?: string): vscode.Hover | null {
         // 先获取属性信息
         const propertyHover = HoverCreators.createPropertyHover(sectionName, propertyName, originalName);
         if (!propertyHover) {
@@ -126,6 +128,40 @@ export class HoverCreators {
 
         // 提取属性类型
         const propertyType = HoverUtils.extractPropertyType(propertyHover);
+
+        // 如果是图片类型，则尝试生成图片预览
+        if (propertyType && propertyType.toLowerCase().includes('image')) {
+            try {
+                // 获取当前行冒号后的完整值文本（优于只使用传入的 word）
+                const lineText = document.lineAt(position.line).text;
+                const colonIndex = lineText.indexOf(':');
+                const fullValueText = colonIndex >= 0 ? lineText.substring(colonIndex + 1).trim() : (value || '').trim();
+
+                // 移除注释部分
+                const cleaned = fullValueText.replace(/#.*$/, '').trim();
+
+                // 在整个值文本中查找包含图片扩展的路径片段（更宽松的后缀匹配）
+                const imagePathPattern = /[^\s#]+?\.(png|jpe?g|gif|webp|bmp)/i;
+                const found = cleaned.match(imagePathPattern);
+                const candidate = found ? found[0] : cleaned;
+
+                if (candidate) {
+                    try {
+                        const resolvedPath = resolveImagePath(candidate, document);
+                        if (resolvedPath) {
+                            const hover = createImageHoverFromPath(resolvedPath);
+                            if (hover) {
+                                return hover;
+                            }
+                        }
+                    } catch (e) {
+                        console.error('HoverCreators: error resolving image path', e);
+                    }
+                }
+            } catch (e) {
+                console.error('Error resolving image path for hover:', e);
+            }
+        }
 
         // 根据属性类型提供额外的值信息
         switch (propertyType) {

@@ -3,6 +3,7 @@ import { BoolValueCompletionProvider } from './BoolValueCompletionProvider';
 import { UnitSpawnCompletionProvider } from './UnitSpawnCompletionProvider';
 import { LogicBooleanValueCompletionProvider } from './LogicBooleanValueCompletionProvider';
 import { MovementTypeValueCompletionProvider } from './MovementTypeValueCompletionProvider';
+import { ImageValueCompletionProvider } from './ImageValueCompletionProvider';
 
 export class ValueCompletionProvider implements vscode.CompletionItemProvider {
     private providers: vscode.CompletionItemProvider[];
@@ -13,6 +14,7 @@ export class ValueCompletionProvider implements vscode.CompletionItemProvider {
             new UnitSpawnCompletionProvider(),
             new LogicBooleanValueCompletionProvider(),
             new MovementTypeValueCompletionProvider(),
+            new ImageValueCompletionProvider(),
         ];
     }
 
