@@ -86,16 +86,19 @@ export class PropertyHoverCreator {
                 // 在代码块后追加空行，防止后续 Markdown 元素与代码块闭合符粘连
                 hoverContent.appendMarkdown(`**${vscode.l10n.t('completionprovider.example')}:**\n\`\`\`ini\n${vscode.l10n.t(property.example)}\n\`\`\`\n\n`);
             }
-                const typeLabel = vscode.l10n.t('completionprovider.type');
-                let typeDisplay = `\`${property.type}\``;
-                try {
-                    if ((property.type || '').toLowerCase().includes('image') || (property.name || '').toLowerCase().includes('image')) {
-                        typeDisplay += ' 🖼️';
-                    }
-                } catch {
-                    // ignore
+
+            // 添加类型字段
+            const typeLabel = vscode.l10n.t('completionprovider.type');
+            let typeDisplay = `\`${property.type}\``;
+            try {
+                if ((property.type || '').toLowerCase().includes('image') || (property.name || '').toLowerCase().includes('image')) {
+                    typeDisplay += ' 🖼️';
                 }
-                hoverContent.appendMarkdown(`**${typeLabel}:** ${typeDisplay}\n\n`);
+            } catch {
+                // ignore
+            }
+            hoverContent.appendMarkdown(`**${typeLabel}:** ${typeDisplay}\n\n`);
+
             return new vscode.Hover(hoverContent);
         } catch (error) {
             console.error(`Error reading ${sectionName}.json:`, error);

@@ -1,6 +1,11 @@
 import { SectionHoverCreator } from './creators/sectionHover';
 import { PropertyHoverCreator } from './creators/propertyHover';
 import { ValueHoverCreator } from './creators/valueHover';
+import { createBooleanValueHover } from './creators/valueHover/booleanHover';
+import { createLogicBooleanValueHover } from './creators/valueHover/logicBooleanHover';
+import { createLogicBooleanKeywordHover } from './creators/valueHover/logicBooleanKeywordHover';
+import { createLogicBooleanSelfMethodHover } from './creators/valueHover/logicBooleanSelfMethodHover';
+import { createLogicBooleanFunctionHover } from './creators/valueHover/logicBooleanFunctionHover';
 
 /**
  * 悬停内容创建器
@@ -12,9 +17,9 @@ export class HoverCreators {
     public static createSectionHover = SectionHoverCreator.createSectionHover;
     public static createPropertyHover = PropertyHoverCreator.createPropertyHover;
     public static createPropertyValueHover = ValueHoverCreator.createPropertyValueHover;
-    public static createBooleanValueHover = ValueHoverCreator.createBooleanValueHover;
-    public static createLogicBooleanValueHover = ValueHoverCreator.createLogicBooleanValueHover;
-    public static createLogicBooleanKeywordHover = ValueHoverCreator.createLogicBooleanKeywordHover;
-    public static createLogicBooleanSelfMethodHover = ValueHoverCreator.createLogicBooleanSelfMethodHover;
-    public static createLogicBooleanFunctionHover = ValueHoverCreator.createLogicBooleanFunctionHover;
+    public static createBooleanValueHover = createBooleanValueHover;
+    public static createLogicBooleanValueHover = createLogicBooleanValueHover;
+    public static createLogicBooleanKeywordHover = createLogicBooleanKeywordHover;
+    public static createLogicBooleanSelfMethodHover = createLogicBooleanSelfMethodHover;
+    public static createLogicBooleanFunctionHover = createLogicBooleanFunctionHover;
 }

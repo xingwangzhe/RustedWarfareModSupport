@@ -69,7 +69,36 @@ export class HoverUtils {
             text = content;
         }
 
-        // 尽量宽松地匹配反引号中的类型信息，避免依赖本地化的标签文字
+        // 优先匹配类型字段中的反引号内容（查找各种语言的"类型"字段）
+        const typePatterns = [
+            /(?:类型|Type|Tipo|Typ|タイプ):\s*`([^`]+)`/i,
+            /\*\*(?:类型|Type|Tipo|Typ|タイプ):\*\*\s*`([^`]+)`/i
+        ];
+
+        for (const pattern of typePatterns) {
+            const match = text.match(pattern);
+            if (match) {
+                return match[1];
+            }
+        }
+
+        // 备用方案：匹配第一个反引号中的内容，但排除示例代码块中的反引号
+        const lines = text.split('\n');
+        for (const line of lines) {
+            // 跳过代码块
+            if (line.trim().startsWith('```') || line.trim().endsWith('```')) {
+                continue;
+            }
+            // 查找类型相关的行
+            if (line.includes('**') && line.includes('`') && line.includes(':')) {
+                const backtickMatch = line.match(/`([^`]+)`/);
+                if (backtickMatch) {
+                    return backtickMatch[1];
+                }
+            }
+        }
+
+        // 最后的备用方案：匹配第一个反引号中的内容
         const backtickMatch = text.match(/`([^`]+)`/);
         if (backtickMatch) {
             return backtickMatch[1];

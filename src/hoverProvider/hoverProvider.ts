@@ -25,7 +25,6 @@ export class RustedWarfareHoverProvider implements vscode.HoverProvider {
         // 判断1: 是否在节名称上悬停（[]内）
         const sectionHover = HoverDetectors.checkHoverOnSectionName(lineText, position.character);
         if (sectionHover) {
-            console.log(`Hover on section name: ${sectionHover.sectionName}`);
             return HoverCreators.createSectionHover(sectionHover.sectionName);
         }
 
@@ -34,7 +33,6 @@ export class RustedWarfareHoverProvider implements vscode.HoverProvider {
         if (propertyHover) {
             const currentSection = HoverDetectors.getCurrentSection(document, position);
             if (currentSection) {
-                console.log(`Hover on property name: ${propertyHover.propertyName} in section: ${currentSection}`);
                 return HoverCreators.createPropertyHover(
                     currentSection,
                     propertyHover.propertyName,
@@ -48,8 +46,7 @@ export class RustedWarfareHoverProvider implements vscode.HoverProvider {
         if (valueHover) {
             const currentSection = HoverDetectors.getCurrentSection(document, position);
             if (currentSection) {
-                console.log(`Hover on property value: ${valueHover.value} for property: ${valueHover.propertyName} in section: ${currentSection}`);
-                return HoverCreators.createPropertyValueHover(
+                const result = HoverCreators.createPropertyValueHover(
                     document,
                     position,
                     currentSection,
@@ -57,10 +54,9 @@ export class RustedWarfareHoverProvider implements vscode.HoverProvider {
                     valueHover.value,
                     valueHover.originalName
                 );
+                return result;
             }
         }
-
-        console.log('No hover match found');
         return null;
     }
 }
