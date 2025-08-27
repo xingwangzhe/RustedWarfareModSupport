@@ -2,6 +2,7 @@ import * as vscode from 'vscode';
 import * as fs from 'fs';
 import * as path from 'path';
 import { extractExampleValue, getSectionProperties, isInsideSection, isAtValidLineStart, hasColonInLine } from './dataProcessor';
+import { isBaseSection } from './pubfun/matchRules';
 
 /**
  * 为补全项生成格式化的文档信息
@@ -122,8 +123,8 @@ export class SectionNameCompletionProvider implements vscode.CompletionItemProvi
     provideCompletionItems(
         document: vscode.TextDocument,
         position: vscode.Position,
-        token: vscode.CancellationToken,
-        context: vscode.CompletionContext
+    _token: vscode.CancellationToken,
+    _context: vscode.CompletionContext
     ): vscode.ProviderResult<vscode.CompletionItem[] | vscode.CompletionList> {
         // 获取光标所在行的文本
         const lineText = document.lineAt(position.line).text;
@@ -159,8 +160,8 @@ export class GenericCompletionProvider implements vscode.CompletionItemProvider 
     provideCompletionItems(
         document: vscode.TextDocument,
         position: vscode.Position,
-        token: vscode.CancellationToken,
-        context: vscode.CompletionContext
+    _token: vscode.CancellationToken,
+    _context: vscode.CompletionContext
     ): vscode.ProviderResult<vscode.CompletionItem[] | vscode.CompletionList> {
         // 如果不在目标节内，返回空数组
         if (!isInsideSection(document, position, this.sectionMatcher)) {
@@ -192,7 +193,7 @@ export class CoreCompletionProvider extends GenericCompletionProvider {
 
 export class CanBuildCompletionProvider extends GenericCompletionProvider {
     constructor() {
-        super('canBuild', (name: string) => /^canBuild_\p{L}+$/u.test(name));
+    super('canBuild', (name: string) => isBaseSection(name, 'canBuild'));
     }
 }
 
@@ -210,13 +211,13 @@ export class AttackCompletionProvider extends GenericCompletionProvider {
 
 export class TurretCompletionProvider extends GenericCompletionProvider {
     constructor() {
-        super('turret', (name: string) => /^turret_\p{L}+$/u.test(name));
+    super('turret', (name: string) => isBaseSection(name, 'turret'));
     }
 }
 
 export class ProjectileCompletionProvider extends GenericCompletionProvider {
     constructor() {
-        super('projectile', (name: string) => /^projectile_\p{L}+$/u.test(name));
+    super('projectile', (name: string) => isBaseSection(name, 'projectile'));
     }
 }
 
@@ -234,31 +235,31 @@ export class AiCompletionProvider extends GenericCompletionProvider {
 
 export class LegArmCompletionProvider extends GenericCompletionProvider {
     constructor() {
-        super('leg_arm', (sectionName: string) => /^leg_\p{L}+$/u.test(sectionName) || /^arm_\p{L}+$/u.test(sectionName));
+    super('leg_arm', (sectionName: string) => isBaseSection(sectionName, 'leg_arm'));
     }
 }
 
 export class AttachmentCompletionProvider extends GenericCompletionProvider {
     constructor() {
-        super('attachment', (name: string) => /^attachment_\p{L}+$/u.test(name));
+    super('attachment', (name: string) => isBaseSection(name, 'attachment'));
     }
 }
 
 export class ActionCompletionProvider extends GenericCompletionProvider {
     constructor() {
-        super('action', (name: string) => /^(action_|hiddenAction_)\p{L}+$/u.test(name));
+    super('action', (name: string) => isBaseSection(name, 'action'));
     }
 }
 
 export class EffectCompletionProvider extends GenericCompletionProvider {
     constructor() {
-        super('effect', (name: string) => /^effect_\p{L}+$/u.test(name));
+    super('effect', (name: string) => isBaseSection(name, 'effect'));
     }
 }
 
 export class AnimationCompletionProvider extends GenericCompletionProvider {
     constructor() {
-        super('animation', (name: string) => /^animation_\p{L}+$/u.test(name));
+    super('animation', (name: string) => isBaseSection(name, 'animation'));
     }
 }
 
@@ -270,25 +271,25 @@ export class ModInfoCompletionProvider extends GenericCompletionProvider {
 
 export class GlobalResourceCompletionProvider extends GenericCompletionProvider {
     constructor() {
-        super('global_resource', (name: string) => /^global_resource_\p{L}+$/u.test(name));
+    super('global_resource', (name: string) => isBaseSection(name, 'global_resource'));
     }
 }
 
 export class ResourceCompletionProvider extends GenericCompletionProvider {
     constructor() {
-        super('resource', (name: string) => /^resource_\p{L}+$/u.test(name));
+    super('resource', (name: string) => isBaseSection(name, 'resource'));
     }
 }
 
 // 新增的补全提供者类
 export class DecalCompletionProvider extends GenericCompletionProvider {
     constructor() {
-        super('decal', (name: string) => /^decal_\p{L}+$/u.test(name));
+    super('decal', (name: string) => isBaseSection(name, 'decal'));
     }
 }
 
 export class PlacementRuleCompletionProvider extends GenericCompletionProvider {
     constructor() {
-        super('placementRule', (name: string) => /^placementRule_\p{L}+$/u.test(name));
+    super('placementRule', (name: string) => isBaseSection(name, 'placementRule'));
     }
 }

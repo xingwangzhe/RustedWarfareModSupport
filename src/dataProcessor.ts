@@ -1,6 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import * as vscode from 'vscode';
+import { matchBaseSection } from './pubfun/matchRules';
 
 /**
  * 从示例字符串中提取值部分
@@ -17,40 +18,8 @@ export function extractExampleValue(example: string): string {
  * @returns 基本节名称
  */
 export function getBaseSectionName(name: string): string {
-    let baseName = name;
-    
-    // 特殊处理 leg_ 和 arm_ 类型
-    if (name.startsWith("leg_")) {
-        baseName = "leg";
-    } else if (name.startsWith("arm_")) {
-        baseName = "arm";
-    }
-    
-    // 特殊处理 spawnUnits:LIST 和 spawnProjectiles:LIST 类型
-    if (name.startsWith("spawnUnits:")) {
-        baseName = "spawnUnits";
-    } else if (name.startsWith("spawnProjectiles:")) {
-        baseName = "spawnProjectiles";
-    }
-    
-    // 特殊处理 action_ 和 hiddenAction_ 类型
-    if (name.startsWith("action_") || name.startsWith("hiddenAction_")) {
-        baseName = "action";
-    }
-    
-    // 特殊处理 Prices/Resources 类型
-    if (name === "Prices/Resources") {
-        baseName = "prices";
-    }
-
-    if (name.startsWith('global_resource')) {
-        baseName = 'global_resource';
-    }
-
-    if (name.startsWith('canBuild')) {
-        baseName = 'canBuild';
-    }
-    return baseName;
+    // 使用公共匹配规则模块进行匹配
+    return matchBaseSection(name);
 }
 
 /**
@@ -72,12 +41,113 @@ export function getSectionProperties(sectionName: string): any[] {
             sectionPath = localizedPath;
         }
         
+        // 如果目标文件不存在，尝试更宽松的匹配：在 sections 目录（或语言子目录）中查找最接近的文件名
+    if (!fs.existsSync(sectionPath)) {
+            const localizedDir = path.join(__dirname, '..', 'data', 'sections', vscode.env.language);
+            const defaultDir = path.join(__dirname, '..', 'data', 'sections');
+            const dirToSearch = fs.existsSync(localizedDir) ? localizedDir : defaultDir;
+
+            try {
+                const files = fs.readdirSync(dirToSearch).filter(f => f.endsWith('.json'));
+                // 优先查找精确或前缀匹配
+                let matched: string | null = null;
+                for (const f of files) {
+                    const nameWithoutExt = path.basename(f, '.json');
+                    if (nameWithoutExt === sectionName || nameWithoutExt === baseSectionName) {
+                        matched = f;
+                        break;
+                    }
+                }
+
+                if (!matched) {
+                    for (const f of files) {
+                        const nameWithoutExt = path.basename(f, '.json');
+                        // 如果节名以文件名为前缀，或者文件名在节名中出现，则认为匹配
+                        if (sectionName.startsWith(nameWithoutExt + '_') || sectionName.startsWith(nameWithoutExt + ':') || sectionName.includes(nameWithoutExt)) {
+                            matched = f;
+                            break;
+                        }
+                    }
+                }
+
+                if (matched) {
+                    sectionPath = path.join(dirToSearch, matched);
+                }
+            } catch (err) {
+                // 忽略读取目录错误，稍后会抛出不存在文件的捕获分支
+                console.debug('Ignored error while searching sections dir:', err && (err as Error).message);
+            }
+        }
+
+        if (!fs.existsSync(sectionPath)) {
+            // 未找到合适的属性定义文件，作为最后的回退：按文件内部的 metadata(field `name`) 做严格匹配
+            const foundByMetadata = findSectionPathByMetadata(sectionName);
+            if (foundByMetadata) {
+                sectionPath = foundByMetadata;
+            }
+        }
+
+        if (!fs.existsSync(sectionPath)) {
+            // 最终仍未找到合适的属性定义文件
+            return [];
+        }
+
         const sectionData = JSON.parse(fs.readFileSync(sectionPath, 'utf8'));
         return sectionData.data || [];
     } catch (error) {
         console.error(`Error reading ${sectionName}.json:`, error);
         return [];
     }
+}
+
+// 缓存：从 sectionData.name 到 文件路径 的映射，避免重复昂贵扫描
+const sectionMetadataCache: Map<string, string> = new Map();
+
+/**
+ * 按需扫描 data/sections（先语言子目录，再默认目录），查找内部 metadata 的精确匹配（sectionData.name 字段）
+ * 仅在其他快速匹配策略失败后调用。
+ */
+function findSectionPathByMetadata(sectionName: string): string | null {
+    if (sectionMetadataCache.has(sectionName)) {
+        return sectionMetadataCache.get(sectionName) || null;
+    }
+
+    const localizedDir = path.join(__dirname, '..', 'data', 'sections', vscode.env.language);
+    const defaultDir = path.join(__dirname, '..', 'data', 'sections');
+    const dirs = [] as string[];
+    if (fs.existsSync(localizedDir)) {
+        dirs.push(localizedDir);
+    }
+    if (fs.existsSync(defaultDir)) {
+        dirs.push(defaultDir);
+    }
+
+    for (const dir of dirs) {
+        try {
+            const files = fs.readdirSync(dir).filter(f => f.endsWith('.json'));
+            for (const f of files) {
+                const p = path.join(dir, f);
+                try {
+                    const raw = fs.readFileSync(p, 'utf8');
+                    const json = JSON.parse(raw);
+                    // 如果文件内部定义了 name 字段并且严格匹配请求的节名，则认为是对应的定义文件
+                    if (json && typeof json.name === 'string' && json.name === sectionName) {
+                        sectionMetadataCache.set(sectionName, p);
+                        return p;
+                    }
+                } catch (e) {
+                    // 忽略单文件解析错误，继续扫描
+                    console.debug('Ignored parse error for', p, (e as Error).message);
+                }
+            }
+        } catch (e) {
+            console.debug('Ignored error while scanning dir for metadata:', dir, (e as Error).message);
+        }
+    }
+
+    // 未找到，缓存空结果以避免重复扫描
+    sectionMetadataCache.set(sectionName, '');
+    return null;
 }
 
 /**
@@ -125,7 +195,9 @@ export function isInsideSection(document: vscode.TextDocument, position: vscode.
             stop = true;
             return sectionMatcher(sectionName);
         }
-        if(stop) break;
+        if (stop) {
+            break;
+        }
     }
     
     // // 特殊处理 mod-info.txt 文件

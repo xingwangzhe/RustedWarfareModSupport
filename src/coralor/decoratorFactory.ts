@@ -10,27 +10,39 @@ export class DecoratorFactory {
 
     constructor() {
         this.decorators = new Map();
-        this.initializeDecorators();
     }
 
     /**
      * 初始化装饰器
      */
-    private initializeDecorators() {
-        const colorLoader = getColorLoader();
-        const typeColors = colorLoader.loadTypeColors();
-
-        // 为每种类型创建装饰器
-        for (const [typeName, color] of Object.entries(typeColors)) {
-            const decorator = vscode.window.createTextEditorDecorationType({
-                color: color,
-                overviewRulerColor: color,
-                overviewRulerLane: vscode.OverviewRulerLane.Right
-            });
-            this.decorators.set(typeName, decorator);
+    /**
+     * 按需创建或获取装饰器
+     */
+    private getOrCreateDecorator(typeName: string): vscode.TextEditorDecorationType {
+        const existing = this.decorators.get(typeName);
+        if (existing) {
+            return existing;
         }
 
-        // 添加语言键的特殊装饰器
+        const loader = getColorLoader();
+        const color = loader.getColor(typeName);
+
+        const decorator = vscode.window.createTextEditorDecorationType({
+            color: color,
+            overviewRulerColor: color,
+            overviewRulerLane: vscode.OverviewRulerLane.Right
+        });
+        this.decorators.set(typeName, decorator);
+        return decorator;
+    }
+
+    /**
+     * 初始化语言键装饰器（保留特殊样式）
+     */
+    private ensureLanguageDecorator() {
+        if (this.decorators.has('language')) {
+            return;
+        }
         const languageDecorator = vscode.window.createTextEditorDecorationType({
             color: '#FFD700', // 金色
             fontWeight: 'bold',
@@ -50,7 +62,17 @@ export class DecoratorFactory {
      * @returns 装饰器类型对象，如果未找到则返回undefined
      */
     public getDecorator(typeName: string): vscode.TextEditorDecorationType | undefined {
-        return this.decorators.get(typeName);
+        if (!typeName) {
+            return undefined;
+        }
+
+        // 特殊处理 language 键
+        if (typeName === 'language') {
+            this.ensureLanguageDecorator();
+            return this.decorators.get('language');
+        }
+
+        return this.getOrCreateDecorator(typeName);
     }
 
     /**
