@@ -466,7 +466,7 @@
         },
         {
             "name": "shadow",
-            "type": "",
+            "type": "bool",
             "description": "data.sections.effect.shadow",
             "version": "default",
             "isOutdated": false,
