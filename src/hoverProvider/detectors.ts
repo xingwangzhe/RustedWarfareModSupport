@@ -37,8 +37,11 @@ export class HoverDetectors {
      * @returns 属性名信息或null
      */
     public static checkHoverOnPropertyName(lineText: string, characterPosition: number): PropertyHoverInfo | null {
+        // 移除注释部分（#之后的内容）
+        const lineWithoutComment = lineText.split('#')[0];
+        
         // 查找冒号位置
-        const colonIndex = lineText.indexOf(':');
+        const colonIndex = lineWithoutComment.indexOf(':');
         if (colonIndex <= 0) {
             return null;
         }
@@ -49,7 +52,7 @@ export class HoverDetectors {
         }
 
         // 提取属性名
-        const propertyName = lineText.substring(0, colonIndex).trim();
+        const propertyName = lineWithoutComment.substring(0, colonIndex).trim();
         if (!propertyName) {
             return null;
         }
@@ -74,8 +77,11 @@ export class HoverDetectors {
      * @returns 属性值信息或null
      */
     public static checkHoverOnPropertyValue(lineText: string, characterPosition: number): PropertyValueHoverInfo | null {
+        // 移除注释部分（#之后的内容）
+        const lineWithoutComment = lineText.split('#')[0];
+
         // 查找冒号位置
-        const colonIndex = lineText.indexOf(':');
+        const colonIndex = lineWithoutComment.indexOf(':');
         if (colonIndex < 0) {
             return null;
         }
@@ -86,14 +92,14 @@ export class HoverDetectors {
         }
 
         // 提取属性名
-        const propertyName = lineText.substring(0, colonIndex).trim();
+        const propertyName = lineWithoutComment.substring(0, colonIndex).trim();
         if (!propertyName) {
             return null;
         }
 
         // 提取属性值
-        const value = lineText.substring(colonIndex + 1).trim();
-        const word = HoverDetectors.getWordAtPosition(lineText, characterPosition);
+        const value = lineWithoutComment.substring(colonIndex + 1).trim();
+        const word = HoverDetectors.getWordAtPosition(lineWithoutComment, characterPosition);
 
         // 检查是否为语言键
         const languageKeyInfo = HoverDetectors.parseLanguageKey(propertyName);

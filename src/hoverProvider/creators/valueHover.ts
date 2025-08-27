@@ -77,8 +77,8 @@ export class ValueHoverCreator {
             case 'LogicBoolean':
                 return ValueHoverCreator.createLogicBooleanValueHover(value);
             default:
-                // 对于其他类型，返回属性信息
-                return propertyHover;
+                // 对于其他类型，不显示属性键的hover信息，留待将来自定义
+                return null;
         }
     }
 
