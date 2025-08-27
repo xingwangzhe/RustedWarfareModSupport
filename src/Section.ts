@@ -33,14 +33,67 @@ export class IniSectionSymbolProvider implements vscode.DocumentSymbolProvider {
     return vscode.l10n.t(`data.sections.${baseName}`);
   }
 
+  // 根据键名和值确定符号类型
+  private getSymbolKindForKey(key: string, value: string): vscode.SymbolKind {
+    // 数字类型
+    if (!isNaN(Number(value)) || /^\d+\.?\d*$/.test(value)) {
+      return vscode.SymbolKind.Number;
+    }
+
+    // 布尔类型
+    if (value.toLowerCase() === 'true' || value.toLowerCase() === 'false') {
+      return vscode.SymbolKind.Boolean;
+    }
+
+    // 颜色类型（RGB或颜色名称）
+    if (/^(#|rgb|rgba|hsl|hsla)/.test(value) || /^(red|blue|green|yellow|black|white|gray|grey)/i.test(value)) {
+      return vscode.SymbolKind.Constant;
+    }
+
+    // 文件路径类型
+    if (value.includes('/') || value.includes('\\') || value.includes('.')) {
+      return vscode.SymbolKind.File;
+    }
+
+    // 数组/列表类型
+    if (value.includes(',') || value.startsWith('[') || value.endsWith(']')) {
+      return vscode.SymbolKind.Array;
+    }
+
+    // 特殊配置类型
+    if (key.toLowerCase().includes('price') || key.toLowerCase().includes('cost')) {
+      return vscode.SymbolKind.Number;
+    }
+
+    if (key.toLowerCase().includes('name') || key.toLowerCase().includes('title')) {
+      return vscode.SymbolKind.String;
+    }
+
+    if (key.toLowerCase().includes('description') || key.toLowerCase().includes('text')) {
+      return vscode.SymbolKind.String;
+    }
+
+    if (key.toLowerCase().includes('image') || key.toLowerCase().includes('icon') || key.toLowerCase().includes('texture')) {
+      return vscode.SymbolKind.File;
+    }
+
+    if (key.toLowerCase().includes('sound') || key.toLowerCase().includes('music') || key.toLowerCase().includes('audio')) {
+      return vscode.SymbolKind.File;
+    }
+
+    // 默认类型
+    return vscode.SymbolKind.Property;
+  }
+
   public provideDocumentSymbols(
     document: vscode.TextDocument,
-    token: vscode.CancellationToken
+    _token: vscode.CancellationToken
   ): Promise<vscode.DocumentSymbol[]> {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       const symbols: vscode.DocumentSymbol[] = [];
       let sectionStart: vscode.Position | null = null;
       let sectionName: string | null = null;
+      let sectionChildren: vscode.DocumentSymbol[] = [];
 
       for (let i = 0; i < document.lineCount; i++) {
         const line = document.lineAt(i);
@@ -59,12 +112,42 @@ export class IniSectionSymbolProvider implements vscode.DocumentSymbolProvider {
               sectionRange,
               new vscode.Range(sectionStart, sectionStart)
             );
+            // 添加子符号（键值对）
+            sectionSymbol.children = sectionChildren;
             symbols.push(sectionSymbol);
           }
 
           // 开始新的节
           sectionStart = line.range.start;
           sectionName = lineText.substring(1, lineText.length - 1);
+          sectionChildren = []; // 重置子符号数组
+        }
+        // 处理键值对（在节内部）
+        else if (sectionStart !== null && lineText.includes(':') && !lineText.startsWith('#') && !lineText.startsWith(';')) {
+          const colonIndex = lineText.indexOf(':');
+          if (colonIndex > 0) {
+            const key = lineText.substring(0, colonIndex).trim();
+            const value = lineText.substring(colonIndex + 1).trim();
+
+            if (key) {
+              // 根据键的类型确定符号类型
+              const symbolKind = this.getSymbolKindForKey(key, value);
+              const keyRange = new vscode.Range(
+                new vscode.Position(i, line.text.indexOf(key)),
+                new vscode.Position(i, line.text.indexOf(key) + key.length)
+              );
+
+              const keySymbol = new vscode.DocumentSymbol(
+                key,
+                value || '',
+                symbolKind,
+                keyRange,
+                keyRange
+              );
+
+              sectionChildren.push(keySymbol);
+            }
+          }
         }
       }
 
@@ -80,6 +163,8 @@ export class IniSectionSymbolProvider implements vscode.DocumentSymbolProvider {
           sectionRange,
           new vscode.Range(sectionStart, sectionStart)
         );
+        // 添加子符号（键值对）
+        sectionSymbol.children = sectionChildren;
         symbols.push(sectionSymbol);
       }
 
