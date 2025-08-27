@@ -35,8 +35,11 @@ A RustedWarfare mod development tool that provides in-editor completions and doc
 
 - 图片预览
 - Image preview
+
 ![showpng1](for_readmeuse/showpng1.webp)
+
 ![showpng2](for_readmeuse/showpng2.webp)
+
 - 列表/枚举/特定类型的值补全
 - List/enum/other type-specific value completion
 
@@ -58,17 +61,6 @@ A RustedWarfare mod development tool that provides in-editor completions and doc
 - Google 代码表
 - Google code table
 
-## 文档
-## Documentation
-
-有关如何为该项目做贡献，请参阅下面的贡献者指南。  
-For information on how to contribute to this project, see the contributor guides below.
-
-- 贡献者指南（中文）：`CONTRIBUTING_ZH.md`  
-- Contributor guide (English): `CONTRIBUTING_EN.md`
-
-- 技术文档（中文）：`TECHNICAL_DOCS_ZH.md`  
-- Technical documentation (English): `TECHNICAL_DOCS_EN.md`
 
 ## 许可证
 ## License
