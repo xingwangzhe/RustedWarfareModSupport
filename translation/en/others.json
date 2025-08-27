@@ -15,6 +15,8 @@
   "valuecompletionprovider.logicboolean.example.documentation": "Example of logical expression usage",
   "valuecompletionprovider.true.description": "Boolean true value",
   "valuecompletionprovider.false.description": "Boolean false value",
+  "data.value.bool.true.description": "Represents the boolean value true",
+  "data.value.bool.false.description": "Represents the boolean value false",
   "Congratulations, your extension \"rustedwarfaremodsupport\" is now active!": "Congratulations, your extension \"rustedwarfaremodsupport\" is now active!",
   "Hello World from RustedWarfareModSupport!": "Hello World from RustedWarfareModSupport!"
 }

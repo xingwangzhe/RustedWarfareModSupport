@@ -1801,6 +1801,8 @@
   "valuecompletionprovider.logicboolean.example.documentation": "逻辑表达式使用示例",
   "valuecompletionprovider.true.description": "布尔真值",
   "valuecompletionprovider.false.description": "布尔假值",
+  "data.value.bool.true.description": "表示布尔值true",
+  "data.value.bool.false.description": "表示布尔值false",
   "Congratulations, your extension \"rustedwarfaremodsupport\" is now active!": "恭喜，您的 \"rustedwarfaremodsupport\" 扩展现已激活！",
   "Hello World from RustedWarfareModSupport!": "你好世界，来自 RustedWarfareModSupport！",
   "data.sections.placementRule.anyRuleInGroup": "组内任意规则",

@@ -8,6 +8,8 @@ import * as vscode from 'vscode';
 export function createLogicBooleanKeywordHover(keyword: string): vscode.Hover | null {
     const hoverContent = new vscode.MarkdownString();
 
+    console.log(`[DEBUG] LogicBooleanKeywordHover - Creating hover for keyword: ${keyword}`);
+
     switch (keyword) {
         case 'true':
             hoverContent.appendMarkdown(`**${vscode.l10n.t('valuecompletionprovider.bool.detail')}**\n\n`);
@@ -34,8 +36,10 @@ export function createLogicBooleanKeywordHover(keyword: string): vscode.Hover | 
             hoverContent.appendMarkdown(vscode.l10n.t('valuecompletionprovider.logicboolean.not.description'));
             break;
         default:
+            console.log(`[DEBUG] LogicBooleanKeywordHover - Unknown keyword: ${keyword}, returning null`);
             return null;
     }
 
+    console.log(`[DEBUG] LogicBooleanKeywordHover - Successfully created hover for: ${keyword}`);
     return new vscode.Hover(hoverContent);
 }

@@ -1,0 +1,21 @@
+{
+  "name": "bool",
+  "description": "data.sections.bool",
+  "example": "canPlayerCancel: true",
+  "data": [
+    {
+      "name": "true",
+      "type": "bool",
+      "description": "data.value.bool.true.description",
+      "version": "default",
+      "example": "canPlayerCancel: true"
+    },
+    {
+      "name": "false",
+      "type": "bool",
+      "description": "data.value.bool.false.description",
+      "version": "default",
+      "example": "canPlayerCancel: false"
+    }
+  ]
+}

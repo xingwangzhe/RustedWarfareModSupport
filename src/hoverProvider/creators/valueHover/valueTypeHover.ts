@@ -74,6 +74,8 @@ function mapPropertyTypeToValueFile(propertyType: string): string | null {
         'price': 'Prices_Resources',
         'int / price': 'Prices_Resources',
         'logicBoolean': 'logicboolean',
+        'LogicBoolean': 'logicboolean',
+        'bool': 'bool',
         'spawnProjectiles': 'spawnProjectiles',
         'spawnUnits': 'spawnUnits'
     };
