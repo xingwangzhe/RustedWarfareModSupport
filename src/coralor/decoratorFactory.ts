@@ -27,11 +27,43 @@ export class DecoratorFactory {
         const loader = getColorLoader();
         const color = loader.getColor(typeName);
 
-        const decorator = vscode.window.createTextEditorDecorationType({
-            color: color,
-            overviewRulerColor: color,
-            overviewRulerLane: vscode.OverviewRulerLane.Right
-        });
+        // 为 image 类型提供一个轻量的行尾图标装饰（虚掩提示），其余类型使用普通颜色装饰
+        let decorator: vscode.TextEditorDecorationType;
+        try {
+            if (typeName && typeName.toLowerCase().includes('image')) {
+                // 仅当是值装饰（约定：propertyType + '_value'）时才显示行尾图片图标；其他 image 类型使用普通颜色装饰
+                if (typeName.toLowerCase().endsWith('_value')) {
+                    decorator = vscode.window.createTextEditorDecorationType({
+                        color: color,
+                        overviewRulerColor: color,
+                        overviewRulerLane: vscode.OverviewRulerLane.Right,
+                        after: {
+                            contentText: '    🖼️',
+                            color: '#95a5a6'
+                        }
+                    });
+                } else {
+                    decorator = vscode.window.createTextEditorDecorationType({
+                        color: color,
+                        overviewRulerColor: color,
+                        overviewRulerLane: vscode.OverviewRulerLane.Right
+                    });
+                }
+            } else {
+                decorator = vscode.window.createTextEditorDecorationType({
+                    color: color,
+                    overviewRulerColor: color,
+                    overviewRulerLane: vscode.OverviewRulerLane.Right
+                });
+            }
+    } catch {
+            // fallback
+            decorator = vscode.window.createTextEditorDecorationType({
+                color: color,
+                overviewRulerColor: color,
+                overviewRulerLane: vscode.OverviewRulerLane.Right
+            });
+        }
         this.decorators.set(typeName, decorator);
         return decorator;
     }

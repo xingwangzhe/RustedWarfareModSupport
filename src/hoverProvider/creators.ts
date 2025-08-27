@@ -103,7 +103,16 @@ export class HoverCreators {
             if (property.example) {
                 hoverContent.appendMarkdown(`**${vscode.l10n.t('completionprovider.example')}:**\n\`\`\`ini\n${vscode.l10n.t(property.example)}\n\`\`\``);
             }
-
+                const typeLabel = vscode.l10n.t('completionprovider.type');
+                let typeDisplay = `\`${property.type}\``;
+                try {
+                    if ((property.type || '').toLowerCase().includes('image') || (property.name || '').toLowerCase().includes('image')) {
+                        typeDisplay += ' 🖼️';
+                    }
+                } catch {
+                    // ignore
+                }
+                hoverContent.appendMarkdown(`**${typeLabel}:** ${typeDisplay}\n\n`);
             return new vscode.Hover(hoverContent);
         } catch (error) {
             console.error(`Error reading ${sectionName}.json:`, error);
@@ -141,9 +150,15 @@ export class HoverCreators {
                 const cleaned = fullValueText.replace(/#.*$/, '').trim();
 
                 // 在整个值文本中查找包含图片扩展的路径片段（更宽松的后缀匹配）
+                // allow paths that include backslashes and unicode characters; stop at whitespace or #
                 const imagePathPattern = /[^\s#]+?\.(png|jpe?g|gif|webp|bmp)/i;
                 const found = cleaned.match(imagePathPattern);
-                const candidate = found ? found[0] : cleaned;
+                let candidate = found ? found[0] : cleaned;
+
+                // normalize windows-style backslashes to platform separator before resolving
+                if (candidate.indexOf('\\') >= 0) {
+                    candidate = candidate.replace(/\\+/g, require('path').sep);
+                }
 
                 if (candidate) {
                     try {

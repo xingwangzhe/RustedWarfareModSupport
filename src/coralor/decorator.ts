@@ -111,7 +111,7 @@ export class SectionPropertyDecorator {
                         // 为语言键使用特殊的装饰类型
                         const decorationType = languageKeyInfo ? 'language' : propertyType;
 
-                        // 添加到对应的装饰类型中
+                        // 添加到对应的装饰类型中（名称部分仍按属性类型或 language 处理）
                         if (!decorations.has(decorationType)) {
                             decorations.set(decorationType, []);
                         }
@@ -126,11 +126,20 @@ export class SectionPropertyDecorator {
                                 new vscode.Position(i, lineEnd)
                             );
 
-                            // 为属性值使用相同类型的颜色装饰
-                            if (!decorations.has(decorationType)) {
-                                decorations.set(decorationType, []);
+                            // 如果是 image 类型，则把值用单独的装饰类型（propertyType + '_value'）来装饰，以展示行尾图标；
+                            // 否则和名称使用相同的装饰类型
+                            if (propertyType.toLowerCase().includes('image')) {
+                                const valueDecorationType = `${propertyType}_value`;
+                                if (!decorations.has(valueDecorationType)) {
+                                    decorations.set(valueDecorationType, []);
+                                }
+                                decorations.get(valueDecorationType)?.push(valueRange);
+                            } else {
+                                if (!decorations.has(decorationType)) {
+                                    decorations.set(decorationType, []);
+                                }
+                                decorations.get(decorationType)?.push(valueRange);
                             }
-                            decorations.get(decorationType)?.push(valueRange);
                         }
                     }
                 }

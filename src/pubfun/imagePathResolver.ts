@@ -29,9 +29,12 @@ export function resolveImagePath(candidate: string, document: vscode.TextDocumen
     const workspaceFolders = vscode.workspace.workspaceFolders || [];
     let c = candidate.trim().replace(/^"|"$/g, '').replace(/^'|'$/g, '');
 
-    // ROOT: prefix -> try mod root then workspace root
-    if (/^ROOT[:/]/i.test(c)) {
-        const rel = c.replace(/^ROOT[:/]+/i, '');
+    // normalize backslashes to platform separator (support Windows-style paths like ROOT:\path\to\file)
+    c = c.replace(/\\+/g, path.sep);
+
+    // ROOT: prefix -> try mod root then workspace root (support ROOT:/ and ROOT:\ formats)
+    if (/^ROOT[:\\/]/i.test(c)) {
+        const rel = c.replace(/^ROOT[:\\/]+/i, '');
         const modRoot = findNearestModRoot(path.dirname(document.fileName));
         if (modRoot) {
             const p = path.join(modRoot, rel);
@@ -48,7 +51,7 @@ export function resolveImagePath(candidate: string, document: vscode.TextDocumen
         }
     }
 
-    // absolute path
+    // absolute path (after normalization)
     if (path.isAbsolute(c)) {
         if (fs.existsSync(c)) {
             return c;

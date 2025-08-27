@@ -47,10 +47,18 @@ export class ImageValueCompletionProvider extends BaseValueCompletionProvider {
                     for (const f of files) {
                         const lower = f.toLowerCase();
                         if (exts.some(e => lower.endsWith(e))) {
-                            const it = new vscode.CompletionItem('ROOT:' + path.sep + f, vscode.CompletionItemKind.File);
-                            it.detail = 'image (workspace root)';
-                            it.documentation = new vscode.MarkdownString('Image file in workspace root (use ROOT:)');
-                            items.push(it);
+                            // keep existing style using path.sep
+                            const it1 = new vscode.CompletionItem('ROOT:' + path.sep + f, vscode.CompletionItemKind.File);
+                            it1.detail = 'image (workspace root)';
+                            it1.documentation = new vscode.MarkdownString('Image file in workspace root (use ROOT:)');
+                            items.push(it1);
+
+                            // also add Windows-style backslash suggestion: ROOT:\sub\file.png (useful for mod files with backslashes)
+                            const backslashCandidate = 'ROOT:' + '\\' + f;
+                            const it2 = new vscode.CompletionItem(backslashCandidate, vscode.CompletionItemKind.File);
+                            it2.detail = 'image (workspace root, backslash)';
+                            it2.documentation = new vscode.MarkdownString('Image file in workspace root (use ROOT:\\ )');
+                            items.push(it2);
                         }
                     }
                 }
