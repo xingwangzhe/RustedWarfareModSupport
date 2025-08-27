@@ -1,7 +1,6 @@
 import * as vscode from 'vscode';
 import * as fs from 'fs';
 import * as path from 'path';
-import { getSectionProperties } from './dataProcessor';
 
 /**
  * RustedWarfare配置文件的悬停提供者
@@ -18,50 +17,124 @@ export class RustedWarfareHoverProvider implements vscode.HoverProvider {
     public provideHover(
         document: vscode.TextDocument,
         position: vscode.Position,
-        token: vscode.CancellationToken
+        _token: vscode.CancellationToken
     ): vscode.ProviderResult<vscode.Hover> {
-        // 获取当前行文本
         const line = document.lineAt(position.line);
         const lineText = line.text;
-        
-        // 检查是否在节内
-        const currentSection = this.getCurrentSection(document, position);
-        if (!currentSection) {
-            return null;
+
+        // 判断1: 是否在节名称上悬停（[]内）
+        const sectionHover = this.checkHoverOnSectionName(lineText, position.character);
+        if (sectionHover) {
+            console.log(`Hover on section name: ${sectionHover.sectionName}`);
+            return this.createSectionHover(sectionHover.sectionName);
         }
-        
-        
-        // 获取节属性
-        const properties = getSectionProperties(currentSection);
-        if (properties.length === 0) {
-            console.log('No properties found for section');
-            return null;
+
+        // 判断2: 是否在属性名上悬停（行首到冒号前）
+        const propertyHover = this.checkHoverOnPropertyName(lineText, position.character);
+        if (propertyHover) {
+            const currentSection = this.getCurrentSection(document, position);
+            if (currentSection) {
+                console.log(`Hover on property name: ${propertyHover.propertyName} in section: ${currentSection}`);
+                return this.createPropertyHover(currentSection, propertyHover.propertyName);
+            }
         }
-        
-        // 创建属性名称到属性对象的映射
-        const propertyMap = new Map<string, any>();
-        for (const prop of properties) {
-            propertyMap.set(prop.name, prop);
+
+        // 判断3: 是否在属性值上悬停（冒号后）
+        const valueHover = this.checkHoverOnPropertyValue(lineText, position.character);
+        if (valueHover) {
+            const currentSection = this.getCurrentSection(document, position);
+            if (currentSection) {
+                console.log(`Hover on property value: ${valueHover.value} for property: ${valueHover.propertyName} in section: ${currentSection}`);
+                return this.createPropertyValueHover(currentSection, valueHover.propertyName, valueHover.value);
+            }
         }
-        
-        // 检查悬停位置是否在属性名上
-        const hoverOnPropertyName = this.checkHoverOnPropertyName(lineText, position.character, propertyMap);
-        if (hoverOnPropertyName) {
-            console.log(`Hover on property name: ${hoverOnPropertyName.property.name}`);
-            return this.createPropertyHover(hoverOnPropertyName.property);
-        }
-        
-        // 检查悬停位置是否在属性值上
-        const hoverOnPropertyValue = this.checkHoverOnPropertyValue(lineText, position.character, propertyMap);
-        if (hoverOnPropertyValue) {
-            console.log(`Hover on property value. Property: ${hoverOnPropertyValue.property.name}, Word: ${hoverOnPropertyValue.word}`);
-            return this.createPropertyValueHover(hoverOnPropertyValue.property, hoverOnPropertyValue.valuePart, hoverOnPropertyValue.word, 0);
-        }
-        
+
         console.log('No hover match found');
         return null;
     }
-    
+
+    /**
+     * 检查是否在节名称上悬停
+     * @param lineText 行文本
+     * @param characterPosition 字符位置
+     * @returns 节名称信息或null
+     */
+    private checkHoverOnSectionName(lineText: string, characterPosition: number): { sectionName: string } | null {
+        // 查找[]的位置
+        const openBracketIndex = lineText.indexOf('[');
+        const closeBracketIndex = lineText.indexOf(']');
+
+        if (openBracketIndex === -1 || closeBracketIndex === -1 || openBracketIndex >= closeBracketIndex) {
+            return null;
+        }
+
+        // 检查光标是否在[]内
+        if (characterPosition > openBracketIndex && characterPosition < closeBracketIndex) {
+            const sectionName = lineText.substring(openBracketIndex + 1, closeBracketIndex);
+            return { sectionName };
+        }
+
+        return null;
+    }
+
+    /**
+     * 检查是否在属性名上悬停
+     * @param lineText 行文本
+     * @param characterPosition 字符位置
+     * @returns 属性名信息或null
+     */
+    private checkHoverOnPropertyName(lineText: string, characterPosition: number): { propertyName: string } | null {
+        // 查找冒号位置
+        const colonIndex = lineText.indexOf(':');
+        if (colonIndex <= 0) {
+            return null;
+        }
+
+        // 检查光标是否在冒号之前（属性名部分）
+        if (characterPosition >= colonIndex) {
+            return null;
+        }
+
+        // 提取属性名
+        const propertyName = lineText.substring(0, colonIndex).trim();
+        if (!propertyName) {
+            return null;
+        }
+
+        return { propertyName };
+    }
+
+    /**
+     * 检查是否在属性值上悬停
+     * @param lineText 行文本
+     * @param characterPosition 字符位置
+     * @returns 属性值信息或null
+     */
+    private checkHoverOnPropertyValue(lineText: string, characterPosition: number): { propertyName: string, value: string } | null {
+        // 查找冒号位置
+        const colonIndex = lineText.indexOf(':');
+        if (colonIndex < 0) {
+            return null;
+        }
+
+        // 检查光标是否在冒号之后（属性值部分）
+        if (characterPosition <= colonIndex) {
+            return null;
+        }
+
+        // 提取属性名
+        const propertyName = lineText.substring(0, colonIndex).trim();
+        if (!propertyName) {
+            return null;
+        }
+
+        // 提取属性值
+        const value = lineText.substring(colonIndex + 1).trim();
+        const word = this.getWordAtPosition(lineText, characterPosition);
+
+        return { propertyName, value: word || value };
+    }
+
     /**
      * 获取当前所在的节名称
      * @param document 文档对象
@@ -78,132 +151,181 @@ export class RustedWarfareHoverProvider implements vscode.HoverProvider {
         }
         return null;
     }
-    
+
     /**
-     * 检查悬停是否在属性名上
-     * @param lineText 行文本
-     * @param characterPosition 字符位置
-     * @param propertyMap 属性映射
-     * @returns 属性对象，如果未找到则返回null
-     */
-    private checkHoverOnPropertyName(
-        lineText: string, 
-        characterPosition: number, 
-        propertyMap: Map<string, any>
-    ): { property: any } | null {
-        // 查找冒号位置
-        const colonIndex = lineText.indexOf(':');
-        if (colonIndex <= 0) {
-            return null;
-        }
-        
-        // 检查光标是否在冒号之前（属性名部分）
-        if (characterPosition >= colonIndex) {
-            return null;
-        }
-        
-        // 提取属性名
-        const propertyName = lineText.substring(0, colonIndex).trim();
-        
-        // 查找匹配的属性
-        const property = propertyMap.get(propertyName);
-        if (property) {
-            return { property };
-        }
-        
-        return null;
-    }
-    
-    /**
-     * 检查悬停是否在属性值上
-     * @param lineText 行文本
-     * @param characterPosition 字符位置
-     * @param propertyMap 属性映射
-     * @returns 属性对象和值部分信息，如果未找到则返回null
-     */
-    private checkHoverOnPropertyValue(
-        lineText: string, 
-        characterPosition: number, 
-        propertyMap: Map<string, any>
-    ): { property: any, valuePart: string, word: string } | null {
-        // 查找冒号位置
-        const colonIndex = lineText.indexOf(':');
-        if (colonIndex < 0) {
-            return null;
-        }
-        
-        // 检查光标是否在冒号之后（属性值部分）
-        if (characterPosition <= colonIndex) {
-            return null;
-        }
-        
-        // 提取属性名
-        const propertyName = lineText.substring(0, colonIndex).trim();
-        
-        // 查找匹配的属性
-        const property = propertyMap.get(propertyName);
-        if (property) {
-            // 获取值部分
-            const valuePart = lineText.substring(colonIndex + 1).trim();
-            const word = this.getWordAtPosition(lineText, characterPosition);
-            return { property, valuePart, word };
-        }
-        
-        return null;
-    }
-    
-    /**
-     * 创建属性悬停信息
-     * @param property 属性对象
+     * 创建节悬停信息
+     * @param sectionName 节名称
      * @returns 悬停信息
      */
-    private createPropertyHover(property: any): vscode.Hover {
-        // 创建悬停内容
-        const hoverContent = new vscode.MarkdownString();
+    private createSectionHover(sectionName: string): vscode.Hover | null {
+        try {
+            // 读取节数据
+            const sectionsPath = path.join(__dirname, '..', 'data', 'sections.json');
+            const sectionsData = JSON.parse(fs.readFileSync(sectionsPath, 'utf8'));
 
-        // 先翻译各字段
-        const nameLabel = vscode.l10n.t('completionprovider.name');
-        const typeLabel = vscode.l10n.t('completionprovider.type');
-        const versionLabel = vscode.l10n.t('completionprovider.version');
-        const descriptionLabel = vscode.l10n.t('completionprovider.description');
-        const isOutdatedLabel = vscode.l10n.t('completionprovider.isOutdated');
-        const exampleLabel = vscode.l10n.t('completionprovider.example');
+            // 查找匹配的节
+            const section = sectionsData.data.find((s: any) => s.name === sectionName);
+            if (!section) {
+                return null;
+            }
 
-        const nameValue = vscode.l10n.t(property.name);
-        const typeValue = property.type;
-        const versionValue = property.version ? vscode.l10n.t(property.version) : '';
-        const descriptionValue = property.description ? vscode.l10n.t(property.description) : '';
-        const exampleValue = property.example ? vscode.l10n.t(property.example) : '';
+            const hoverContent = new vscode.MarkdownString();
+            hoverContent.appendMarkdown(`**${vscode.l10n.t('completionprovider.name')}:** ${vscode.l10n.t(section.name)}\n\n`);
+            hoverContent.appendMarkdown(`**${vscode.l10n.t('completionprovider.description')}:** ${vscode.l10n.t(section.description)}`);
 
-        // 添加名称字段
-        hoverContent.appendMarkdown(`**${nameLabel}:** ${nameValue}\n\n`);
-
-        // 添加类型字段
-        hoverContent.appendMarkdown(`**${typeLabel}:** \`${typeValue}\`\n\n`);
-
-        // 添加版本字段
-        if (property.version) {
-            hoverContent.appendMarkdown(`**${versionLabel}:** ${versionValue}\n\n`);
+            return new vscode.Hover(hoverContent);
+        } catch (error) {
+            console.error('Error reading sections.json:', error);
+            return null;
         }
-
-        // 添加描述字段
-        if (property.description) {
-            hoverContent.appendMarkdown(`**${descriptionLabel}:** ${descriptionValue}\n\n`);
-        }
-
-        // 添加过时标记
-        if (property.isOutdated) {
-            hoverContent.appendMarkdown(`⚠️ **${isOutdatedLabel}:** true\n\n`);
-        }
-
-        // 添加示例字段
-        if (property.example) {
-            hoverContent.appendMarkdown(`**${exampleLabel}:**\n\`\`\`ini\n${exampleValue}\n\`\`\``);
-        }
-
-        return new vscode.Hover(hoverContent);
     }
-    
+
+    /**
+     * 创建属性悬停信息
+     * @param sectionName 节名称
+     * @param propertyName 属性名称
+     * @returns 悬停信息
+     */
+    private createPropertyHover(sectionName: string, propertyName: string): vscode.Hover | null {
+        try {
+            // 获取节的基本名称
+            const baseSectionName = this.getBaseSectionName(sectionName);
+
+            // 构建数据文件路径
+            const sectionPath = path.join(__dirname, '..', 'data', 'sections', `${baseSectionName}.json`);
+
+            // 检查是否存在语言特定的文件
+            const localizedPath = path.join(__dirname, '..', 'data', 'sections', vscode.env.language, `${baseSectionName}.json`);
+            const finalPath = fs.existsSync(localizedPath) ? localizedPath : sectionPath;
+
+            const sectionData = JSON.parse(fs.readFileSync(finalPath, 'utf8'));
+            const property = sectionData.data.find((p: any) => p.name === propertyName);
+
+            if (!property) {
+                return null;
+            }
+
+            // 创建悬停内容
+            const hoverContent = new vscode.MarkdownString();
+
+            // 添加名称字段
+            hoverContent.appendMarkdown(`**${vscode.l10n.t('completionprovider.name')}:** ${vscode.l10n.t(property.name)}\n\n`);
+
+            // 添加类型字段
+            hoverContent.appendMarkdown(`**${vscode.l10n.t('completionprovider.type')}:** \`${property.type}\`\n\n`);
+
+            // 添加版本字段
+            if (property.version) {
+                hoverContent.appendMarkdown(`**${vscode.l10n.t('completionprovider.version')}:** ${property.version}\n\n`);
+            }
+
+            // 添加描述字段
+            if (property.description) {
+                hoverContent.appendMarkdown(`**${vscode.l10n.t('completionprovider.description')}:** ${vscode.l10n.t(property.description)}\n\n`);
+            }
+
+            // 添加过时标记
+            if (property.isOutdated) {
+                hoverContent.appendMarkdown(`⚠️ **${vscode.l10n.t('completionprovider.isOutdated')}:** true\n\n`);
+            }
+
+            // 添加示例字段
+            if (property.example) {
+                hoverContent.appendMarkdown(`**${vscode.l10n.t('completionprovider.example')}:**\n\`\`\`ini\n${vscode.l10n.t(property.example)}\n\`\`\``);
+            }
+
+            return new vscode.Hover(hoverContent);
+        } catch (error) {
+            console.error(`Error reading ${sectionName}.json:`, error);
+            return null;
+        }
+    }
+
+    /**
+     * 创建属性值悬停信息
+     * @param sectionName 节名称
+     * @param propertyName 属性名称
+     * @param value 值
+     * @returns 悬停信息
+     */
+    private createPropertyValueHover(sectionName: string, propertyName: string, value: string): vscode.Hover | null {
+        // 先获取属性信息
+        const propertyHover = this.createPropertyHover(sectionName, propertyName);
+        if (!propertyHover) {
+            return null;
+        }
+
+        // 从属性悬停中提取类型信息
+        const content = propertyHover.contents[0];
+        let propertyType = '';
+
+        if (content instanceof vscode.MarkdownString) {
+            const match = content.value.match(/\*\*Type:\*\* `([^`]+)`/);
+            if (match) {
+                propertyType = match[1];
+            }
+        }
+
+        // 根据属性类型提供额外的值信息
+        switch (propertyType) {
+            case 'bool':
+                return this.createBooleanValueHover(value);
+            case 'LogicBoolean':
+                return this.createLogicBooleanValueHover(value);
+            default:
+                // 对于其他类型，返回属性信息
+                return propertyHover;
+        }
+    }
+
+    /**
+     * 获取节的基本名称
+     * @param name 节名称
+     * @returns 基本节名称
+     */
+    private getBaseSectionName(name: string): string {
+        let baseName = name;
+
+        // 处理带下划线的节名称，如 turret_NAME, projectile_NAME 等
+        if (name.includes("_")) {
+            baseName = name.substring(0, name.indexOf("_"));
+        }
+
+        // 特殊处理 leg_ 和 arm_ 类型
+        if (name.startsWith("leg_")) {
+            baseName = "leg";
+        } else if (name.startsWith("arm_")) {
+            baseName = "arm";
+        }
+
+        // 特殊处理 spawnUnits:LIST 和 spawnProjectiles:LIST 类型
+        if (name.startsWith("spawnUnits:")) {
+            baseName = "spawnUnits";
+        } else if (name.startsWith("spawnProjectiles:")) {
+            baseName = "spawnProjectiles";
+        }
+
+        // 特殊处理 action_ 和 hiddenAction_ 类型
+        if (name.startsWith("action_") || name.startsWith("hiddenAction_")) {
+            baseName = "action";
+        }
+
+        // 特殊处理 Prices/Resources 类型
+        if (name === "Prices/Resources") {
+            baseName = "prices";
+        }
+
+        if (name.startsWith('global_resource')) {
+            baseName = 'global_resource';
+        }
+
+        if (name.startsWith('canBuild')) {
+            baseName = 'canBuild';
+        }
+
+        return baseName;
+    }
+
     /**
      * 获取指定位置的单词
      * @param text 文本
@@ -214,23 +336,22 @@ export class RustedWarfareHoverProvider implements vscode.HoverProvider {
         if (position < 0 || position > text.length) {
             return '';
         }
-        
+
         // 以空格等为分隔符查找单词
         const leftPart = text.substring(0, position);
         const rightPart = text.substring(position);
-        
+
         // 查找左侧边界
         const leftMatch = leftPart.match(/[^\s(),]*$/);
         const leftWord = leftMatch ? leftMatch[0] : '';
-        
+
         // 查找右侧边界
         const rightMatch = rightPart.match(/^[^\s(),]*/);
         const rightWord = rightMatch ? rightMatch[0] : '';
-        
+
         const word = leftWord + rightWord;
-        
+
         // 检查是否是self.xxx格式的方法调用
-        // 如果当前单词是点号右侧的部分，且点号左侧是self，则组合成self.xxx
         if (leftWord.endsWith('.') && leftWord.length > 1) {
             const beforeDot = leftWord.substring(0, leftWord.length - 1);
             if (beforeDot === 'self') {
@@ -238,7 +359,7 @@ export class RustedWarfareHoverProvider implements vscode.HoverProvider {
                 return result;
             }
         }
-        
+
         // 如果当前单词是self，且点号右侧有内容，则组合成self.xxx
         if (leftWord === 'self' && rightPart.startsWith('.')) {
             const rightPartAfterDot = rightPart.substring(1);
@@ -249,76 +370,59 @@ export class RustedWarfareHoverProvider implements vscode.HoverProvider {
                 return result;
             }
         }
-        
+
         return word;
     }
-    
+
     /**
-     * 创建属性值悬停信息
-     * @param property 属性对象
-     * @param valuePart 值部分文本
-     * @param word 光标下的单词
-     * @param positionInValue 坐标在值中的位置
+     * 创建布尔值悬停信息
+     * @param word 单词
      * @returns 悬停信息
      */
-    private createPropertyValueHover(
-        property: any, 
-        valuePart: string, 
-        word: string,
-        positionInValue: number
-    ): vscode.Hover | null {
-        // 根据属性类型提供相应的值信息
-        switch (property.type) {
-            case 'bool':
-                return this.createBooleanValueHover(word);
-            case 'LogicBoolean':
-                return this.createLogicBooleanValueHover(word, valuePart, positionInValue);
-            case 'string':
-            case 'int':
-            case 'float':
-            case 'string(s)':
-            case 'int(s)':
-            case 'float / s':
-                // 对于基本类型，显示属性信息
-                return this.createPropertyHover(property);
-            default:
-                // 对于其他类型，也显示属性信息
-                return this.createPropertyHover(property);
+    private createBooleanValueHover(word: string): vscode.Hover | null {
+        const trimmedValue = word.trim();
+        if (trimmedValue === 'true' || trimmedValue === 'false') {
+            const hoverContent = new vscode.MarkdownString();
+            hoverContent.appendMarkdown(`**${vscode.l10n.t('valuecompletionprovider.bool.detail')}**\n\n`);
+
+            if (trimmedValue === 'true') {
+                hoverContent.appendMarkdown(vscode.l10n.t('valuecompletionprovider.true.description'));
+            } else {
+                hoverContent.appendMarkdown(vscode.l10n.t('valuecompletionprovider.false.description'));
+            }
+
+            return new vscode.Hover(hoverContent);
         }
+
+        return null;
     }
-    
+
     /**
      * 创建LogicBoolean值悬停信息
      * @param word 单词
-     * @param valuePart 值部分文本
-     * @param positionInValue 坐标在值中的位置
      * @returns 悬停信息
      */
-    private createLogicBooleanValueHover(
-        word: string, 
-        valuePart: string, 
-        positionInValue: number
-    ): vscode.Hover | null {
+    private createLogicBooleanValueHover(word: string): vscode.Hover | null {
         const trimmedWord = word.trim();
         if (!trimmedWord) {
             return null;
         }
-        
+
         // 检查是否为LogicBoolean关键字
-        if (trimmedWord === 'true' || trimmedWord === 'false' || trimmedWord === 'if' || 
+        if (trimmedWord === 'true' || trimmedWord === 'false' || trimmedWord === 'if' ||
             trimmedWord === 'and' || trimmedWord === 'or' || trimmedWord === 'not') {
             return this.createLogicBooleanKeywordHover(trimmedWord);
         }
-        
+
         // 检查是否为self.开头的方法
         if (trimmedWord.startsWith('self.')) {
             return this.createLogicBooleanSelfMethodHover(trimmedWord);
         }
-        
+
         // 检查是否为其他LogicBoolean函数
         return this.createLogicBooleanFunctionHover(trimmedWord);
     }
-    
+
     /**
      * 创建LogicBoolean关键字悬停信息
      * @param keyword 关键字
@@ -326,7 +430,7 @@ export class RustedWarfareHoverProvider implements vscode.HoverProvider {
      */
     private createLogicBooleanKeywordHover(keyword: string): vscode.Hover | null {
         const hoverContent = new vscode.MarkdownString();
-        
+
         switch (keyword) {
             case 'true':
                 hoverContent.appendMarkdown(`**${vscode.l10n.t('valuecompletionprovider.bool.detail')}**\n\n`);
@@ -355,56 +459,55 @@ export class RustedWarfareHoverProvider implements vscode.HoverProvider {
             default:
                 return null;
         }
-        
+
         return new vscode.Hover(hoverContent);
     }
-    
+
     /**
      * 创建LogicBoolean self方法悬停信息
      * @param method 方法名
      * @returns 悬停信息
      */
     private createLogicBooleanSelfMethodHover(method: string): vscode.Hover | null {
-        
         // 从logicboolean.json加载数据
         try {
             const valuePath = path.join(__dirname, '..', 'data', 'value', 'logicboolean.json');
             const valueData = JSON.parse(fs.readFileSync(valuePath, 'utf8'));
-            
+
             // 查找匹配的方法
             const methodPart = method.substring(5); // 移除"self."前缀
             const methodBase = methodPart.split('(')[0]; // 获取方法名，忽略参数部分
-            
+
             console.log(`Searching for method: self.${methodBase} or starting with self.${methodBase}.`);
-            
+
             for (const item of valueData.data) {
                 if (item.name === `self.${methodBase}` || item.name.startsWith(`self.${methodBase}.`) || item.name === `self.${methodBase}()`) {
                     console.log(`Found matching method: ${item.name}`);
-                    
+
                     const hoverContent = new vscode.MarkdownString();
                     hoverContent.appendMarkdown(`**LogicBoolean Function**\n\n`);
                     hoverContent.appendMarkdown(`${vscode.l10n.t(item.description)}\n\n`);
-                    
+
                     if (item.version) {
                         hoverContent.appendMarkdown(`*Version: ${item.version}*\n\n`);
                     }
-                    
+
                     if (item.example) {
                         hoverContent.appendMarkdown(`\`\`\`ini\n${vscode.l10n.t(item.example)}\n\`\`\``);
                     }
-                    
+
                     return new vscode.Hover(hoverContent);
                 }
             }
-            
+
             console.log(`No matching method found for: ${method}`);
         } catch (error) {
             console.error('Error reading logicboolean.json:', error);
         }
-        
+
         return null;
     }
-    
+
     /**
      * 创建LogicBoolean函数悬停信息
      * @param func 函数名
@@ -415,58 +518,35 @@ export class RustedWarfareHoverProvider implements vscode.HoverProvider {
         try {
             const valuePath = path.join(__dirname, '..', 'data', 'value', 'logicboolean.json');
             const valueData = JSON.parse(fs.readFileSync(valuePath, 'utf8'));
-            
+
             // 查找匹配的函数
             const funcBase = func.split('(')[0]; // 获取函数名，忽略参数部分
-            
+
             for (const item of valueData.data) {
                 if (item.name === funcBase) {
                     const hoverContent = new vscode.MarkdownString();
                     hoverContent.appendMarkdown(`**LogicBoolean Function**\n\n`);
                     hoverContent.appendMarkdown(`${vscode.l10n.t(item.description)}\n\n`);
-                    
+
                     if (item.version) {
                         hoverContent.appendMarkdown(`*Version: ${item.version}*\n\n`);
                     }
-                    
+
                     if (item.example) {
                         hoverContent.appendMarkdown(`\`\`\`ini\n${vscode.l10n.t(item.example)}\n\`\`\``);
                     }
-                    
+
                     return new vscode.Hover(hoverContent);
                 }
             }
         } catch (error) {
             console.error('Error reading logicboolean.json:', error);
         }
-        
+
         // 如果没有找到特定的函数，显示通用的LogicBoolean信息
         const hoverContent = new vscode.MarkdownString();
         hoverContent.appendMarkdown(`**LogicBoolean**\n\n`);
         hoverContent.appendMarkdown(vscode.l10n.t('valuecompletionprovider.logicboolean.example.documentation'));
         return new vscode.Hover(hoverContent);
-    }
-    
-    /**
-     * 创建布尔值悬停信息
-     * @param word 单词
-     * @returns 悬停信息
-     */
-    private createBooleanValueHover(word: string): vscode.Hover | null {
-        const trimmedValue = word.trim();
-        if (trimmedValue === 'true' || trimmedValue === 'false') {
-            const hoverContent = new vscode.MarkdownString();
-            hoverContent.appendMarkdown(`**${vscode.l10n.t('valuecompletionprovider.bool.detail')}**\n\n`);
-            
-            if (trimmedValue === 'true') {
-                hoverContent.appendMarkdown(vscode.l10n.t('valuecompletionprovider.true.description'));
-            } else {
-                hoverContent.appendMarkdown(vscode.l10n.t('valuecompletionprovider.false.description'));
-            }
-            
-            return new vscode.Hover(hoverContent);
-        }
-        
-        return null;
     }
 }
