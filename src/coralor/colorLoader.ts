@@ -1,6 +1,8 @@
 import * as fs from 'fs';
 import * as path from 'path';
+import * as vscode from 'vscode';
 import { TypeColorMap } from './types';
+import { getExtensionId } from '../extension';
 
 /**
  * 颜色加载器类
@@ -18,7 +20,15 @@ export class ColorLoader {
         }
 
         try {
-            const typePath = path.join(__dirname, '..', 'data', 'type.json');
+            // 获取扩展的实际路径
+            const extension = vscode.extensions.getExtension(getExtensionId());
+            if (!extension) {
+                console.error('Cannot find extension');
+                throw new Error('Cannot find extension');
+            }
+
+            const extensionPath = extension.extensionPath;
+            const typePath = path.join(extensionPath, 'data', 'type.json');
             const typeData = JSON.parse(fs.readFileSync(typePath, 'utf8'));
             const colorMap: TypeColorMap = {};
 

@@ -2,6 +2,7 @@ import * as vscode from 'vscode';
 import * as fs from 'fs';
 import * as path from 'path';
 import { HoverUtils } from '../utils';
+import { getExtensionId } from '../../extension';
 
 /**
  * 属性悬停创建器
@@ -23,15 +24,18 @@ export class PropertyHoverCreator {
             // 获取节的基本名称
             const baseSectionName = HoverUtils.getBaseSectionName(sectionName);
 
-            // 从当前文件位置向上查找项目根目录
-            // src/hoverProvider/creators/propertyHover.ts -> src/hoverProvider/creators/ -> src/hoverProvider/ -> src/ -> 项目根目录
-            const currentDir = path.dirname(__filename);
-            const projectRoot = path.join(currentDir, '..', '..', '..');
+            // 获取扩展的实际路径 - 这是VS Code扩展的标准做法
+            const extension = vscode.extensions.getExtension(getExtensionId());
+            if (!extension) {
+                console.error('Cannot find extension');
+                return null;
+            }
 
-            const sectionPath = path.join(projectRoot, 'data', 'sections', `${baseSectionName}.json`);
+            const extensionPath = extension.extensionPath;
+            const sectionPath = path.join(extensionPath, 'data', 'sections', `${baseSectionName}.json`);
 
             // 检查是否存在语言特定的文件
-            const localizedPath = path.join(projectRoot, 'data', 'sections', vscode.env.language, `${baseSectionName}.json`);
+            const localizedPath = path.join(extensionPath, 'data', 'sections', vscode.env.language, `${baseSectionName}.json`);
             const finalPath = fs.existsSync(localizedPath) ? localizedPath : sectionPath;
 
             if (!fs.existsSync(finalPath)) {

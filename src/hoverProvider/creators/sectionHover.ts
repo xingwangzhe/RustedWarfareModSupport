@@ -1,6 +1,7 @@
 import * as vscode from 'vscode';
 import * as fs from 'fs';
 import * as path from 'path';
+import { getExtensionId } from '../../extension';
 
 /**
  * 节悬停创建器
@@ -14,13 +15,17 @@ export class SectionHoverCreator {
      */
     public static createSectionHover(sectionName: string): vscode.Hover | null {
         try {
-            // 从当前文件位置向上查找项目根目录
-            // src/hoverProvider/creators/sectionHover.ts -> src/hoverProvider/creators/ -> src/hoverProvider/ -> src/ -> 项目根目录
-            const currentDir = path.dirname(__filename);
-            const projectRoot = path.join(currentDir, '..', '..', '..');
+            // 获取扩展的实际路径
+            const extension = vscode.extensions.getExtension(getExtensionId());
+            if (!extension) {
+                console.error('Cannot find extension');
+                return null;
+            }
+
+            const extensionPath = extension.extensionPath;
 
             // 读取节数据
-            const sectionsPath = path.join(projectRoot, 'data', 'sections.json');
+            const sectionsPath = path.join(extensionPath, 'data', 'sections.json');
             const sectionsData = JSON.parse(fs.readFileSync(sectionsPath, 'utf8'));
 
             // 查找匹配的节

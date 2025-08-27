@@ -2,6 +2,7 @@ import * as vscode from "vscode";
 import { BaseValueCompletionProvider } from "./BaseValueCompletionProvider";
 import * as fs from "fs";
 import * as path from "path";
+import { getExtensionId } from "../extension";
 
 /**
  * LogicBoolean值补全提供者类
@@ -21,9 +22,16 @@ export class LogicBooleanValueCompletionProvider extends BaseValueCompletionProv
   }
 
   private getBasicLogicBooleanCompletionItems(): vscode.CompletionItem[] {
+    // 获取扩展的实际路径
+    const extension = vscode.extensions.getExtension(getExtensionId());
+    if (!extension) {
+      console.error('Cannot find extension');
+      return [];
+    }
+
+    const extensionPath = extension.extensionPath;
     const valuePath = path.join(
-      __dirname,
-      "..",
+      extensionPath,
       "data",
       "value",
       "logicboolean.json"

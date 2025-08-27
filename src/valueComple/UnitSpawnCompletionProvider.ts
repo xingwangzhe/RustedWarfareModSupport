@@ -3,6 +3,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { BaseValueCompletionProvider } from './BaseValueCompletionProvider';
 import { l10n } from 'vscode';
+import { getExtensionId } from '../extension';
 
 /**
  * 单位生成类属性补全提供者类
@@ -80,9 +81,18 @@ export class UnitSpawnCompletionProvider extends BaseValueCompletionProvider {
      */
     private getUnitSpawnCompletionItems(propertyName: string): vscode.CompletionItem[] {
         try {
+            // 获取扩展的实际路径
+            const extension = vscode.extensions.getExtension(getExtensionId());
+            if (!extension) {
+                console.error('Cannot find extension');
+                return [];
+            }
+
+            const extensionPath = extension.extensionPath;
+
             // 读取对应属性的值定义文件
             const valueType = propertyName === 'spawnProjectiles' || propertyName === 'spawnProjectile' ? 'spawnProjectiles' : 'spawnUnits';
-            const valuePath = path.join(__dirname, '..', 'data', 'value', `${valueType}.json`);
+            const valuePath = path.join(extensionPath, 'data', 'value', `${valueType}.json`);
             const valueData = JSON.parse(fs.readFileSync(valuePath, 'utf8'));
             
             // 创建一个示例补全项
@@ -114,9 +124,18 @@ export class UnitSpawnCompletionProvider extends BaseValueCompletionProvider {
      */
     private getUnitSpawnParamCompletionItems(propertyName: string): vscode.CompletionItem[] {
         try {
+            // 获取扩展的实际路径
+            const extension = vscode.extensions.getExtension(getExtensionId());
+            if (!extension) {
+                console.error('Cannot find extension');
+                return [];
+            }
+
+            const extensionPath = extension.extensionPath;
+
             // 读取对应属性的值定义文件
             const valueType = propertyName === 'spawnProjectiles' || propertyName === 'spawnProjectile' ? 'spawnProjectiles' : 'spawnUnits';
-            const valuePath = path.join(__dirname, '..', 'data', 'value', `${valueType}.json`);
+            const valuePath = path.join(extensionPath, 'data', 'value', `${valueType}.json`);
             const valueData = JSON.parse(fs.readFileSync(valuePath, 'utf8'));
             
             // 为每个参数创建补全项

@@ -177,3 +177,11 @@ export function activate(context: vscode.ExtensionContext) {
 
 // This method is called when your extension is deactivated
 export function deactivate() {}
+
+/**
+ * 获取当前扩展的完整ID (publisher.name)
+ */
+export function getExtensionId(): string {
+    const packageJson = require('../package.json');
+    return `${packageJson.publisher}.${packageJson.name}`;
+}

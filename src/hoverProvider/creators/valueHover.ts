@@ -5,6 +5,7 @@ import { HoverUtils } from '../utils';
 import { resolveImagePath } from '../../pubfun/imagePathResolver';
 import { createImageHoverFromPath } from '../../pubfun/imageHover';
 import { PropertyHoverCreator } from './propertyHover';
+import { getExtensionId } from '../../extension';
 
 /**
  * 值悬停创建器
@@ -178,12 +179,15 @@ export class ValueHoverCreator {
     public static createLogicBooleanSelfMethodHover(method: string): vscode.Hover | null {
         // 从logicboolean.json加载数据
         try {
-            // 从当前文件位置向上查找项目根目录
-            // src/hoverProvider/creators/valueHover.ts -> src/hoverProvider/creators/ -> src/hoverProvider/ -> src/ -> 项目根目录
-            const currentDir = path.dirname(__filename);
-            const projectRoot = path.join(currentDir, '..', '..', '..');
+            // 获取扩展的实际路径
+            const extension = vscode.extensions.getExtension(getExtensionId());
+            if (!extension) {
+                console.error('Cannot find extension');
+                return null;
+            }
 
-            const valuePath = path.join(projectRoot, 'data', 'value', 'logicboolean.json');
+            const extensionPath = extension.extensionPath;
+            const valuePath = path.join(extensionPath, 'data', 'value', 'logicboolean.json');
             const valueData = JSON.parse(fs.readFileSync(valuePath, 'utf8'));
 
             // 查找匹配的方法
@@ -228,12 +232,15 @@ export class ValueHoverCreator {
     public static createLogicBooleanFunctionHover(func: string): vscode.Hover | null {
         // 从logicboolean.json加载数据
         try {
-            // 从当前文件位置向上查找项目根目录
-            // src/hoverProvider/creators/valueHover.ts -> src/hoverProvider/creators/ -> src/hoverProvider/ -> src/ -> 项目根目录
-            const currentDir = path.dirname(__filename);
-            const projectRoot = path.join(currentDir, '..', '..', '..');
+            // 获取扩展的实际路径
+            const extension = vscode.extensions.getExtension(getExtensionId());
+            if (!extension) {
+                console.error('Cannot find extension');
+                return null;
+            }
 
-            const valuePath = path.join(projectRoot, 'data', 'value', 'logicboolean.json');
+            const extensionPath = extension.extensionPath;
+            const valuePath = path.join(extensionPath, 'data', 'value', 'logicboolean.json');
             const valueData = JSON.parse(fs.readFileSync(valuePath, 'utf8'));
 
             // 查找匹配的函数

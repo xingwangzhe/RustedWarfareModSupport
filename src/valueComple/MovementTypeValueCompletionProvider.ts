@@ -2,6 +2,7 @@ import * as vscode from 'vscode';
 import * as fs from 'fs';
 import * as path from 'path';
 import { BaseValueCompletionProvider } from './BaseValueCompletionProvider';
+import { getExtensionId } from '../extension';
 
 export class MovementTypeValueCompletionProvider extends BaseValueCompletionProvider {
     protected provideValueCompletionItems(
@@ -15,7 +16,15 @@ export class MovementTypeValueCompletionProvider extends BaseValueCompletionProv
         }
 
         try {
-            const valuePath = path.join(__dirname, '..', 'data', 'value', `movementType.json`);
+            // 获取扩展的实际路径
+            const extension = vscode.extensions.getExtension(getExtensionId());
+            if (!extension) {
+                console.error('Cannot find extension');
+                return [];
+            }
+
+            const extensionPath = extension.extensionPath;
+            const valuePath = path.join(extensionPath, 'data', 'value', `movementType.json`);
             if (!fs.existsSync(valuePath)) {
                 return [];
             }

@@ -2,6 +2,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as vscode from 'vscode';
 import { matchBaseSection } from './pubfun/matchRules';
+import { getExtensionId } from './extension';
 
 /**
  * 从示例字符串中提取值部分
@@ -32,24 +33,28 @@ export function getSectionProperties(sectionName: string): any[] {
         // 获取基本节名称
         const baseSectionName = getBaseSectionName(sectionName);
 
-        // 从当前文件位置向上查找项目根目录
-        // src/dataProcessor.ts -> src/ -> 项目根目录
-        const currentDir = path.dirname(__filename);
-        const projectRoot = path.join(currentDir, '..');
+        // 获取扩展的实际路径
+        const extension = vscode.extensions.getExtension(getExtensionId());
+        if (!extension) {
+            console.error('Cannot find extension');
+            return [];
+        }
+
+        const extensionPath = extension.extensionPath;
 
         // 构建语言特定的数据文件路径
-        let sectionPath = path.join(projectRoot, 'data', 'sections', `${baseSectionName}.json`);
+        let sectionPath = path.join(extensionPath, 'data', 'sections', `${baseSectionName}.json`);
 
         // 检查是否存在语言特定的文件
-        const localizedPath = path.join(projectRoot, 'data', 'sections', vscode.env.language, `${baseSectionName}.json`);
+        const localizedPath = path.join(extensionPath, 'data', 'sections', vscode.env.language, `${baseSectionName}.json`);
         if (fs.existsSync(localizedPath)) {
             sectionPath = localizedPath;
         }
         
         // 如果目标文件不存在，尝试更宽松的匹配：在 sections 目录（或语言子目录）中查找最接近的文件名
     if (!fs.existsSync(sectionPath)) {
-            const localizedDir = path.join(projectRoot, 'data', 'sections', vscode.env.language);
-            const defaultDir = path.join(projectRoot, 'data', 'sections');
+            const localizedDir = path.join(extensionPath, 'data', 'sections', vscode.env.language);
+            const defaultDir = path.join(extensionPath, 'data', 'sections');
             const dirToSearch = fs.existsSync(localizedDir) ? localizedDir : defaultDir;
 
             try {
@@ -117,12 +122,15 @@ function findSectionPathByMetadata(sectionName: string): string | null {
         return sectionMetadataCache.get(sectionName) || null;
     }
 
-    // 从当前文件位置向上查找项目根目录
-    const currentDir = path.dirname(__filename);
-    const projectRoot = path.join(currentDir, '..');
+    // 获取扩展的实际路径
+    const extension = vscode.extensions.getExtension(getExtensionId());
+    if (!extension) {
+        return null;
+    }
 
-    const localizedDir = path.join(projectRoot, 'data', 'sections', vscode.env.language);
-    const defaultDir = path.join(projectRoot, 'data', 'sections');
+    const extensionPath = extension.extensionPath;
+    const localizedDir = path.join(extensionPath, 'data', 'sections', vscode.env.language);
+    const defaultDir = path.join(extensionPath, 'data', 'sections');
     const dirs = [] as string[];
     if (fs.existsSync(localizedDir)) {
         dirs.push(localizedDir);
