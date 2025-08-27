@@ -20,6 +20,11 @@ export function createValueTypeHover(propertyType: string, value: string): vscod
         return null;
     }
 
+    // 如果属性类型看起来像是示例代码而不是真正的类型，返回null
+    if (propertyType.includes(':') || propertyType.includes('if ') || propertyType.includes('self.')) {
+        return null;
+    }
+
     try {
         // 获取扩展的实际路径
         const extension = vscode.extensions.getExtension(getExtensionId());
@@ -68,24 +73,11 @@ function mapPropertyTypeToValueFile(propertyType: string): string | null {
     const typeMapping: { [key: string]: string } = {
         'price': 'Prices_Resources',
         'int / price': 'Prices_Resources',
-        'string(s)': 'logicboolean', // 可能需要调整
         'logicBoolean': 'logicboolean',
-        'LogicBoolean': 'logicboolean',
-        'bool': 'logicboolean',
         'spawnProjectiles': 'spawnProjectiles',
-        'spawnUnits': 'spawnUnits',
-        'movementTypes': 'logicboolean', // 可能需要专门的文件
-        'sound(s)': 'logicboolean', // 可能需要专门的文件
-        'file(s) (ini)': 'logicboolean', // 可能需要专门的文件
-        'preset effects': 'logicboolean', // 可能需要专门的文件
-        'effect(s) ref': 'logicboolean', // 可能需要专门的文件
-        'turret ref': 'logicboolean', // 可能需要专门的文件
-        'ints': 'logicboolean', // 可能需要专门的文件
-        'LocaleString': 'logicboolean', // 可能需要专门的文件
-        'float': 'logicboolean', // 基础类型
-        'int': 'logicboolean', // 基础类型
-        'string': 'logicboolean' // 基础类型
+        'spawnUnits': 'spawnUnits'
     };
+
 
     // 直接匹配
     if (typeMapping[propertyType]) {

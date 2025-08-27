@@ -69,28 +69,16 @@ export class HoverUtils {
             text = content;
         }
 
-        // 优先匹配类型字段中的反引号内容（查找各种语言的"类型"字段）
-        const typePatterns = [
-            /(?:类型|Type|Tipo|Typ|タイプ):\s*`([^`]+)`/i,
-            /\*\*(?:类型|Type|Tipo|Typ|タイプ):\*\*\s*`([^`]+)`/i
-        ];
-
-        for (const pattern of typePatterns) {
-            const match = text.match(pattern);
-            if (match) {
-                return match[1];
-            }
-        }
-
-        // 备用方案：匹配第一个反引号中的内容，但排除示例代码块中的反引号
+        // 优先匹配类型字段中的反引号内容
+        // 查找包含"类型:"或"Type:"的行，但排除示例代码块
         const lines = text.split('\n');
         for (const line of lines) {
             // 跳过代码块
             if (line.trim().startsWith('```') || line.trim().endsWith('```')) {
                 continue;
             }
-            // 查找类型相关的行
-            if (line.includes('**') && line.includes('`') && line.includes(':')) {
+            // 查找类型相关的行（包含类型关键词且有反引号）
+            if ((line.includes('类型') || line.includes('Type')) && line.includes('`') && line.includes(':')) {
                 const backtickMatch = line.match(/`([^`]+)`/);
                 if (backtickMatch) {
                     return backtickMatch[1];
@@ -98,12 +86,7 @@ export class HoverUtils {
             }
         }
 
-        // 最后的备用方案：匹配第一个反引号中的内容
-        const backtickMatch = text.match(/`([^`]+)`/);
-        if (backtickMatch) {
-            return backtickMatch[1];
-        }
-
+        // 如果没找到明确的类型字段，返回空字符串而不是匹配示例代码
         return '';
     }
 }
