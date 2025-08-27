@@ -24,7 +24,7 @@ import {
     PlacementRuleCompletionProvider
 } from './completionProvider';
 import { ValueCompletionProvider } from './valueComple/valueCompletionProvider';
-import { SectionPropertyDecorator } from './decorator';
+import { SectionPropertyDecorator } from './coralor/decorator';
 import { RustedWarfareHoverProvider } from './hoverProvider/hoverProvider';
 
 // This method is called when your extension is activated
