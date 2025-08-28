@@ -26,7 +26,6 @@
   "data.sections.resource.displayPrefixInHUD": "Préfixe d'Affichage dans l'IHM",
   "data.sections.resource.displayPrefixInHUD.description": "Préfixe à afficher dans l'IHM",
   "data.sections.resource.displayPostfixInHUD": "Postfixe d'Affichage dans l'IHM",
-  "data.sections.resource.displayPostfixInHUD.description": "Postfixe à afficher dans l'IHM",
   "data.sections.resource.displayTextAppendResourceWithGap": "Texte d'Affichage Ajouter Ressource Avec Écart",
   "data.sections.resource.displayTextAppendResourceWithGap.description": "Ajouter un écart lors de l'ajout de ressource dans le texte",
   "data.sections.resource.appendResourceInHUD_whenThisZero": "Ajouter Ressource dans l'IHM Quand Ceci Zéro",

@@ -1,0 +1,6 @@
+{
+  "data.value.bool.true": "صحيح",
+  "data.value.bool.true.description": "يمثل القيمة المنطقية صحيح",
+  "data.value.bool.false": "خطأ", 
+  "data.value.bool.false.description": "يمثل القيمة المنطقية خطأ"
+}

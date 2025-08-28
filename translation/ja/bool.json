@@ -1,0 +1,6 @@
+{
+  "data.value.bool.true": "真",
+  "data.value.bool.true.description": "ブール値の真を表します",
+  "data.value.bool.false": "偽", 
+  "data.value.bool.false.description": "ブール値の偽を表します"
+}

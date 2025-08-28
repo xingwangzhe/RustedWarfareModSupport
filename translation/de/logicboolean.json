@@ -49,9 +49,6 @@
   "data.value.logicboolean.self.isInWater": "Ist im Wasser",
   "data.value.logicboolean.self.isInWater.description": "Prüft ob Einheit eine Wasser-Kachel berührt",
   "data.value.logicboolean.self.isOverwater": "Ist über Wasser",
-  "data.value.logicboolean.self.isOverwater.description": "Prüft ob Einheit über Wasser ist ohne es zu berühren"
-}
-  "data.value.logicboolean.self.isOverwater": "Ist über Wasser",
   "data.value.logicboolean.self.isOverwater.description": "Prüft ob Einheit eine Wasser-Kachel berührt oder darüber ist",
   "data.value.logicboolean.self.isOverLiquid": "Ist über Flüssigkeit",
   "data.value.logicboolean.self.isOverLiquid.description": "Prüft ob Einheit eine Flüssigkeits-Kachel berührt oder darüber ist (Wasser, Lava)",
@@ -224,7 +221,7 @@
   "data.value.logicboolean.memory.NAME.size": "Speicher Name Größe",
   "data.value.logicboolean.memory.NAME.size.description": "Gibt die Größe des Arrays zurück (einschließlich leerer Indizes zwischen Indizes)",
   "data.value.logicboolean.memory.NAME.contains": "Speicher Name enthält",
-  "data.value.logicboolean.memory.NAME.contains": "Gibt true zurück wenn die Abfrage innerhalb des Arrays gefunden wird. Sucht im Grunde ob etwas existiert.",
+  "data.value.logicboolean.memory.NAME.contains.description": "Gibt true zurück wenn die Abfrage innerhalb des Arrays gefunden wird. Sucht im Grunde ob etwas existiert.",
   "data.value.logicboolean.distance": "Entfernung",
   "data.value.logicboolean.distance.description": "Gibt die Differenz zwischen zwei Punkten zurück",
   "data.value.logicboolean.distanceSquared": "Entfernung quadriert",

@@ -26,7 +26,6 @@
   "data.sections.resource.displayPrefixInHUD": "Prefixo de Exibição no HUD",
   "data.sections.resource.displayPrefixInHUD.description": "Prefixo para exibir no HUD",
   "data.sections.resource.displayPostfixInHUD": "Sufixo de Exibição no HUD",
-  "data.sections.resource.displayPostfixInHUD.description": "Sufixo para exibir no HUD",
   "data.sections.resource.displayTextAppendResourceWithGap": "Texto de Exibição Anexar Recurso com Espaço",
   "data.sections.resource.displayTextAppendResourceWithGap.description": "Adicionar espaço ao anexar recurso no texto",
   "data.sections.resource.appendResourceInHUD_whenThisZero": "Anexar Recurso no HUD Quando Este é Zero",

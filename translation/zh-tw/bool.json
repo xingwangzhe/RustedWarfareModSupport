@@ -1,0 +1,6 @@
+{
+  "data.value.bool.true": "真",
+  "data.value.bool.true.description": "表示布林值真",
+  "data.value.bool.false": "假", 
+  "data.value.bool.false.description": "表示布林值假"
+}

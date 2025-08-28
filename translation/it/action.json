@@ -191,6 +191,8 @@
   "data.sections.action.fireTurretXAtGround_onlyOverPassableTileOf.description": "Permetti solo piastrelle attraversabili da questo tipo movimento da essere selezionate (es., LAND,BUILDING,WATER,HOVER)",
   "data.sections.action.fireTurretXAtGround_showGuideDecals": "Spara Torretta X a Terra Mostra Decal Guida",
   "data.sections.action.fireTurretXAtGround_showGuideDecals.description": "Disegna decal alla posizione bersaglio. Raccomandato impostare decal con layer: inactive",
+  "data.sections.action.fireTurretXAtGround_withTarget": "Spara Torretta X a Terra con Bersaglio",
+  "data.sections.action.fireTurretXAtGround_withTarget.description": "Spara una torretta mirata alla posizione dell'unità o marcatore indicato",
   "data.sections.action.spawnUnits": "Genera Unità",
   "data.sections.action.spawnUnits.description": "Genera unità al bersaglio dell'azione. Vedi 'Sezione linea Genera unità' in questo doc per dettagli.",
   "data.sections.action.produceUnits": "Produci Unità",

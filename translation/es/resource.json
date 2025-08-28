@@ -26,7 +26,6 @@
   "data.sections.resource.displayPrefixInHUD": "Prefijo Mostrar En HUD",
   "data.sections.resource.displayPrefixInHUD.description": "Prefijo para mostrar en HUD",
   "data.sections.resource.displayPostfixInHUD": "Postfijo Mostrar En HUD",
-  "data.sections.resource.displayPostfixInHUD.description": "Postfijo para mostrar en HUD",
   "data.sections.resource.displayTextAppendResourceWithGap": "Texto Mostrar Agregar Recurso Con Espacio",
   "data.sections.resource.displayTextAppendResourceWithGap.description": "Agregar espacio cuando agregando recurso en texto",
   "data.sections.resource.appendResourceInHUD_whenThisZero": "Agregar Recurso En HUD Cuando Esto Cero",

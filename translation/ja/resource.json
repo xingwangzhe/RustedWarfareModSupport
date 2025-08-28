@@ -26,7 +26,6 @@
   "data.sections.resource.displayPrefixInHUD": "HUD内表示接頭辞",
   "data.sections.resource.displayPrefixInHUD.description": "HUD内に表示する接頭辞",
   "data.sections.resource.displayPostfixInHUD": "HUD内表示接尾辞",
-  "data.sections.resource.displayPostfixInHUD.description": "HUD内に表示する接尾辞",
   "data.sections.resource.displayTextAppendResourceWithGap": "ギャップ付き表示テキスト追加リソース",
   "data.sections.resource.displayTextAppendResourceWithGap.description": "テキストでリソースを追加する際にギャップを追加します",
   "data.sections.resource.appendResourceInHUD_whenThisZero": "このゼロ時にHUD内リソース追加",

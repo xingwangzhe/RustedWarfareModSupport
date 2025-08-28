@@ -26,7 +26,6 @@
   "data.sections.resource.displayPrefixInHUD": "Префикс отображения в HUD",
   "data.sections.resource.displayPrefixInHUD.description": "Префикс для отображения в HUD",
   "data.sections.resource.displayPostfixInHUD": "Постфикс отображения в HUD",
-  "data.sections.resource.displayPostfixInHUD.description": "Постфикс для отображения в HUD",
   "data.sections.resource.displayTextAppendResourceWithGap": "Добавить ресурс в текст отображения с пробелом",
   "data.sections.resource.displayTextAppendResourceWithGap.description": "Добавить пробел при добавлении ресурса в текст",
   "data.sections.resource.appendResourceInHUD_whenThisZero": "Добавить ресурс в HUD когда этот ноль",

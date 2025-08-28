@@ -26,7 +26,6 @@
   "data.sections.resource.displayPrefixInHUD": "HUD에 접두사 표시",
   "data.sections.resource.displayPrefixInHUD.description": "HUD에 표시할 접두사",
   "data.sections.resource.displayPostfixInHUD": "HUD에 접미사 표시",
-  "data.sections.resource.displayPostfixInHUD.description": "HUD에 표시할 접미사",
   "data.sections.resource.displayTextAppendResourceWithGap": "간격으로 자원 텍스트 표시 추가",
   "data.sections.resource.displayTextAppendResourceWithGap.description": "텍스트에 자원을 추가할 때 간격을 추가합니다",
   "data.sections.resource.appendResourceInHUD_whenThisZero": "이것이 0일 때 HUD에 자원 추가",

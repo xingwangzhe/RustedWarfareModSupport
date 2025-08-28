@@ -1,4 +1,6 @@
 {
+  "data.value.bool.true": "Истина",
   "data.value.bool.true.description": "Булево значение истинности",
+  "data.value.bool.false": "Ложь",
   "data.value.bool.false.description": "Булево значение ложности"
 }

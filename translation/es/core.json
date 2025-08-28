@@ -264,6 +264,8 @@
   "data.sections.core.builtFrom_1_isLocked": "Construido Desde Está Bloqueado",
   "data.sections.core.builtFrom_1_isLocked.description": "Si es verdadero esta unidad no puede ser construida en este enlace de construcción. (puede ser condicionado si logicBooleans son usados)",
   "data.sections.core.exit_x": "Salida X",
+  "data.sections.core.builtFrom_1_isLockedMessage": "Mensaje de Construido Desde Está Bloqueado",
+  "data.sections.core.builtFrom_1_isLockedMessage.description": "Mensaje mostrado cuando este enlace de construcción está bloqueado.",
   "data.sections.core.exit_x.description": "Dónde aparecen unidades creadas o descargadas desde el transporte o edificio. Por defecto 0.",
   "data.sections.core.exit_y": "Salida Y",
   "data.sections.core.exit_y.description": "Dónde aparecen unidades creadas o descargadas desde el transporte o edificio. Por defecto 5.",
