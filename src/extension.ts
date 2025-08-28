@@ -27,6 +27,7 @@ import { ValueCompletionProvider } from './valueComple/valueCompletionProvider';
 import { SectionPropertyDecorator } from './coralor/decorator';
 import { RustedWarfareHoverProvider } from './hoverProvider/hoverProvider';
 import { MemoryDefinitionCompletionProvider } from './memory/MemoryDefinitionCompletionProvider';
+import { MemoryValueCompletionProvider } from './memory/MemoryValueCompletionProvider';
 // image zoom/preview features removed per user request
 
 // This method is called when your extension is activated
@@ -145,7 +146,7 @@ export function activate(context: vscode.ExtensionContext) {
 	const valueCompletionSubscription = vscode.languages.registerCompletionItemProvider(
 		{ language: 'ini' },
 		valueCompletionProvider,
-		':', ' ', ',', '.' // 在冒号、空格、逗号和点号后触发值补全
+		':', ' ', ',', '.', 'm' // 在冒号、空格、逗号、点号和m后触发值补全
 	);
 
 	// 注册节名称补全提供者，在多种字符输入时都可触发
@@ -165,6 +166,14 @@ export function activate(context: vscode.ExtensionContext) {
 		'@', ' ' // 在@和空格后触发
 	);
 
+	// 注册memory值补全提供者，在任意位置都可以触发
+	const memoryValueProvider = new MemoryValueCompletionProvider();
+	const memoryValueSubscription = vscode.languages.registerCompletionItemProvider(
+		{ language: 'ini' },
+		memoryValueProvider,
+		'm', '.' // 在m和.后触发memory补全
+	);
+
 	// 注册悬停提供者
 	const hoverProvider = vscode.languages.registerHoverProvider(
 		{ language: 'ini' },
@@ -181,6 +190,7 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(valueCompletionSubscription);
 	context.subscriptions.push(sectionNameCompletionSubscription);
 	context.subscriptions.push(memoryDefinitionSubscription);
+	context.subscriptions.push(memoryValueSubscription);
 	context.subscriptions.push(hoverProvider);
 	completionSubscriptions.forEach(subscription => context.subscriptions.push(subscription));
 }

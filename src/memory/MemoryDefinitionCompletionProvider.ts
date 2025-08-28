@@ -44,7 +44,7 @@ export class MemoryDefinitionCompletionProvider implements vscode.CompletionItem
         item.documentation = new vscode.MarkdownString(
             `**@memory** - ${vscode.l10n.t('memory.definition.description')}\n\n` +
             `${vscode.l10n.t('memory.definition.format')}\n\n` +
-            `**${vscode.l10n.t('memory.definition.supportedTypes')}** int, float, string, bool, number, text, boolean, logic\n\n` +
+            `**${vscode.l10n.t('memory.definition.supportedTypes')}** ${vscode.l10n.t('memory.definition.supportedTypesList')}\n\n` +
             `**${vscode.l10n.t('memory.definition.example')}**\n` +
             '```\n' +
             `${vscode.l10n.t('memory.definition.exampleHp')}\n` +
@@ -115,6 +115,7 @@ export class MemoryDefinitionCompletionProvider implements vscode.CompletionItem
      */
     private getTypeDescription(type: string): string {
         const descriptions: { [key: string]: string } = {
+            // 基础类型使用翻译
             'int': vscode.l10n.t('type.int.description'),
             'float': vscode.l10n.t('type.float.description'),
             'string': vscode.l10n.t('type.string.description'),
@@ -122,7 +123,12 @@ export class MemoryDefinitionCompletionProvider implements vscode.CompletionItem
             'number': vscode.l10n.t('type.number.description'),
             'text': vscode.l10n.t('type.text.description'),
             'boolean': vscode.l10n.t('type.boolean.description'),
-            'logic': vscode.l10n.t('type.logic.description')
+            'logic': vscode.l10n.t('type.logic.description'),
+            // 数组类型直接显示原生类型
+            'boolean[]': 'boolean[] - Boolean array',
+            'float[]': 'float[] - Float array',
+            'number[]': 'number[] - Number array',
+            'unit[]': 'unit[] - Unit array'
         };
         return descriptions[type] || vscode.l10n.t('type.custom.description');
     }

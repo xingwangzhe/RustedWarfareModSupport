@@ -50,6 +50,13 @@ A RustedWarfare mod development tool that provides in-editor completions and doc
 
 ![showpng2](for_readmeuse/showpng2.webp)
 
+- 简单内存值补全上下文
+
+- Simple memory value completion context
+
+![memory1](for_readmeuse/easymemory1.webp)
+
+
 - 列表/枚举/特定类型的值补全（只完成了一些）
 
 - List/enum/other type-specific value completion (only partially implemented)
