@@ -78,6 +78,10 @@ A RustedWarfare mod development tool that provides in-editor completions and doc
 
 - Google code table
 
+- [RWini_Plugin](https://github.com/Blackburn507/RWini_Plugin) 部分语法高亮
+
+- [RWini_Plugin](https://github.com/Blackburn507/RWini_Plugin) partial syntax highlighting
+
 您可以通过在 [GitHub](https://github.com/xingwangzhe/RustedWarfareModSupport) 上提交问题来改进本插件。
 
 you can improve this plugin by submitting issues on [GitHub](https://github.com/xingwangzhe/RustedWarfareModSupport).

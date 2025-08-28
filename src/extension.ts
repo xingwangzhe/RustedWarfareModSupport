@@ -26,6 +26,7 @@ import {
 import { ValueCompletionProvider } from './valueComple/valueCompletionProvider';
 import { SectionPropertyDecorator } from './coralor/decorator';
 import { RustedWarfareHoverProvider } from './hoverProvider/hoverProvider';
+import { MemoryDefinitionCompletionProvider } from './memory/MemoryDefinitionCompletionProvider';
 // image zoom/preview features removed per user request
 
 // This method is called when your extension is activated
@@ -144,7 +145,7 @@ export function activate(context: vscode.ExtensionContext) {
 	const valueCompletionSubscription = vscode.languages.registerCompletionItemProvider(
 		{ language: 'ini' },
 		valueCompletionProvider,
-		':', ' ', ',' // 在冒号、空格和逗号后触发值补全
+		':', ' ', ',', '.' // 在冒号、空格、逗号和点号后触发值补全
 	);
 
 	// 注册节名称补全提供者，在多种字符输入时都可触发
@@ -154,6 +155,14 @@ export function activate(context: vscode.ExtensionContext) {
 		sectionNameCompletionProvider,
 		'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
 		'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
+	);
+
+	// 注册@memory定义补全提供者
+	const memoryDefinitionProvider = new MemoryDefinitionCompletionProvider();
+	const memoryDefinitionSubscription = vscode.languages.registerCompletionItemProvider(
+		{ language: 'ini' },
+		memoryDefinitionProvider,
+		'@', ' ' // 在@和空格后触发
 	);
 
 	// 注册悬停提供者
@@ -171,6 +180,7 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(foldingProvider);
 	context.subscriptions.push(valueCompletionSubscription);
 	context.subscriptions.push(sectionNameCompletionSubscription);
+	context.subscriptions.push(memoryDefinitionSubscription);
 	context.subscriptions.push(hoverProvider);
 	completionSubscriptions.forEach(subscription => context.subscriptions.push(subscription));
 }

@@ -12,6 +12,15 @@
       "include": "#section"
     },
     {
+      "include": "#templateKey"
+    },
+    {
+      "include": "#memoryDefinition"
+    },
+    {
+      "include": "#key"
+    },
+    {
       "include": "#keyvalue"
     }
   ],
@@ -28,9 +37,19 @@
     },
     "multistring-content": {
       "match": "[^\"]+",
-      "name": "text.ini"
-    }
-    ,
+      "name": "text.ini",
+      "patterns": [
+        {
+          "include": "#localRef"
+        },
+        {
+          "include": "#filePath"
+        },
+        {
+          "include": "#customVariable"
+        }
+      ]
+    },
     "comment": {
       "match": "#.*$",
       "name": "comment.line.number-sign.ini"
@@ -42,6 +61,18 @@
         "1": { "name": "entity.name.section.ini" }
       }
     },
+    "templateKey": {
+      "name": "storage.type.templateKey.ini",
+      "match": "(?<!\\w+: *)(@\\w+)"
+    },
+    "memoryDefinition": {
+      "name": "storage.type.memoryDefinition.ini",
+      "match": "(?<!\\w+: *)@memory\\s+\\w+:\\w+"
+    },
+    "key": {
+      "name": "variable.other.key.ini",
+      "match": "(?<!\\w+: *)\\w+:"
+    },
     "keyvalue": {
       "begin": "^\\s*([A-Za-z0-9_\\.\\-]+)\\s*:",
       "beginCaptures": {
@@ -52,6 +83,15 @@
       "name": "meta.key-value.ini",
       "patterns": [
         {
+          "include": "#localRef"
+        },
+        {
+          "include": "#filePath"
+        },
+        {
+          "include": "#customVariable"
+        },
+        {
           "include": "#multistring-content"
         },
         {
@@ -59,6 +99,18 @@
           "name": "comment.line.number-sign.ini"
         }
       ]
+    },
+    "localRef": {
+      "name": "storage.type.localRef.ini",
+      "match": "(\\${[^{}]*}|%(?={))"
+    },
+    "filePath": {
+      "name": "support.class.filePath.ini",
+      "match": "(ROOT:)?[^\\s]+\\.(ini|txt|template|png|ogg|wav)"
+    },
+    "customVariable": {
+      "name": "variable.parameter.customVariable.ini",
+      "match": "\\b(memory\\.\\w+|resource\\.\\w+|null|index)\\b"
     }
   }
 }
