@@ -1,0 +1,6 @@
+{
+  "data.value.bool.true": "Істина",
+  "data.value.bool.true.description": "Представляє булеве значення true",
+  "data.value.bool.false": "Хиба",
+  "data.value.bool.false.description": "Представляє булеве значення false"
+}

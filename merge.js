@@ -118,6 +118,7 @@ const languages = [
   'es',           // Spanish (西班牙语)
   'it',           // Italian (意大利语)
   'pt',           // Portuguese (葡萄牙语)
+  'uk',           // Ukrainian (乌克兰语)
   'ru'            // Russian (俄语)
 ];
 

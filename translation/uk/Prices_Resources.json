@@ -1,0 +1,22 @@
+{
+  "data.value.Prices_Resources.credits": "Кредити",
+  "data.value.Prices_Resources.credits.description": "Глобальний ресурс",
+  "data.value.Prices_Resources.energy": "Енергія",
+  "data.value.Prices_Resources.energy.description": "Енергія що використовується для лазерного щита та боєприпасів",
+  "data.value.Prices_Resources.hp": "Очки здоров'я",
+  "data.value.Prices_Resources.hp.description": "Очки здоров'я одиниці",
+  "data.value.Prices_Resources.shield": "Щит",
+  "data.value.Prices_Resources.shield.description": "Захист для одиниць",
+  "data.value.Prices_Resources.ammo": "Боєприпаси",
+  "data.value.Prices_Resources.ammo.description": "Приховане значення на кожній одиниці для використання модифікаціями",
+  "data.value.Prices_Resources.setFlag": "Встановити прапор",
+  "data.value.Prices_Resources.setFlag.description": "використовувати з addResources, resourceUsage або price. 0-31. Прапори зберігаються в кожній одиниці",
+  "data.value.Prices_Resources.unsetFlag": "Зняти прапор",
+  "data.value.Prices_Resources.unsetFlag.description": "використовувати з addResources, resourceUsage або price. 0-31",
+  "data.value.Prices_Resources.hasFlag": "Має прапор",
+  "data.value.Prices_Resources.hasFlag.description": "використовувати з price або resourceUsage",
+  "data.value.Prices_Resources.hasMissingFlag": "Має відсутній прапор",
+  "data.value.Prices_Resources.hasMissingFlag.description": "використовувати з price або resourceUsage",
+  "data.value.Prices_Resources.X": "Власний ресурс",
+  "data.value.Prices_Resources.X.description": "Будь-який ресурс визначений в секціях [global_resource_x] або [resource_x]"
+}
