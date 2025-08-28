@@ -1,0 +1,19 @@
+{
+  "data.value.movementType.description": "Defines movement types used to determine passable terrain and unit movement behavior. (繁体)",
+  "data.value.movementType.NONE": "None (繁体)",
+  "data.value.movementType.NONE.description": "No movement type / not applicable. (繁体)",
+  "data.value.movementType.LAND": "Land (繁体)",
+  "data.value.movementType.LAND.description": "Standard ground movement on land tiles. (繁体)",
+  "data.value.movementType.AIR": "Air (繁体)",
+  "data.value.movementType.AIR.description": "Aerial units that fly above the terrain. (繁体)",
+  "data.value.movementType.WATER": "Water (繁体)",
+  "data.value.movementType.WATER.description": "Units that move on or in water tiles. (繁体)",
+  "data.value.movementType.HOVER": "Hover (繁体)",
+  "data.value.movementType.HOVER.description": "Hovering units that can traverse both land and some water without sinking. (繁体)",
+  "data.value.movementType.BUILDING": "Building (繁体)",
+  "data.value.movementType.BUILDING.description": "Immobile building footprint; treated differently for pathing and placement. (繁体)",
+  "data.value.movementType.OVER_CLIFF": "Over Cliff (繁体)",
+  "data.value.movementType.OVER_CLIFF.description": "Can traverse cliff or elevated tiles that normal land units cannot. (繁体)",
+  "data.value.movementType.OVER_CLIFF_WATER": "Over Cliff Water (繁体)",
+  "data.value.movementType.OVER_CLIFF_WATER.description": "Can traverse cliff tiles that include water or wet cliff terrain. (繁体)"
+}

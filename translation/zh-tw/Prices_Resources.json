@@ -1,0 +1,22 @@
+{
+  "data.value.Prices_Resources.credits": "Credits (繁体)",
+  "data.value.Prices_Resources.credits.description": "Global resource (繁体)",
+  "data.value.Prices_Resources.energy": "Energy (繁体)",
+  "data.value.Prices_Resources.energy.description": "Energy used for laser shield and ammunition (繁体)",
+  "data.value.Prices_Resources.hp": "Hit Points (繁体)",
+  "data.value.Prices_Resources.hp.description": "Unit hitpoints (繁体)",
+  "data.value.Prices_Resources.shield": "Shield (繁体)",
+  "data.value.Prices_Resources.shield.description": "Shielding for units (繁体)",
+  "data.value.Prices_Resources.ammo": "Ammunition (繁体)",
+  "data.value.Prices_Resources.ammo.description": "Hidden value on each unit for use by mods (繁体)",
+  "data.value.Prices_Resources.setFlag": "Set Flag (繁体)",
+  "data.value.Prices_Resources.setFlag.description": "use with addResources, resourceUsage or price. 0-31. Flags are stored in each unit (繁体)",
+  "data.value.Prices_Resources.unsetFlag": "Unset Flag (繁体)",
+  "data.value.Prices_Resources.unsetFlag.description": "use with addResources, resourceUsage or price. 0-31 (繁体)",
+  "data.value.Prices_Resources.hasFlag": "Has Flag (繁体)",
+  "data.value.Prices_Resources.hasFlag.description": "use with price or resourceUsage (繁体)",
+  "data.value.Prices_Resources.hasMissingFlag": "Has Missing Flag (繁体)",
+  "data.value.Prices_Resources.hasMissingFlag.description": "use with price or resourceUsage (繁体)",
+  "data.value.Prices_Resources.X": "Custom Resource (繁体)",
+  "data.value.Prices_Resources.X.description": "Any resource defined in [global_resource_x] or [resource_x] sections (繁体)"
+}

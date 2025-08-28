@@ -1,0 +1,22 @@
+{
+  "data.value.Prices_Resources.credits": "الاعتمادات",
+  "data.value.Prices_Resources.credits.description": "مورد عام",
+  "data.value.Prices_Resources.energy": "الطاقة",
+  "data.value.Prices_Resources.energy.description": "الطاقة المستخدمة للدرع الليزري والذخيرة",
+  "data.value.Prices_Resources.hp": "نقاط الضرب",
+  "data.value.Prices_Resources.hp.description": "نقاط ضرب الوحدة",
+  "data.value.Prices_Resources.shield": "الدرع",
+  "data.value.Prices_Resources.shield.description": "الدرع للوحدات",
+  "data.value.Prices_Resources.ammo": "الذخيرة",
+  "data.value.Prices_Resources.ammo.description": "قيمة مخفية على كل وحدة للاستخدام بواسطة التعديلات",
+  "data.value.Prices_Resources.setFlag": "تعيين العلامة",
+  "data.value.Prices_Resources.setFlag.description": "استخدم مع addResources أو resourceUsage أو price. 0-31. العلامات محفوظة في كل وحدة",
+  "data.value.Prices_Resources.unsetFlag": "إلغاء تعيين العلامة",
+  "data.value.Prices_Resources.unsetFlag.description": "استخدم مع addResources أو resourceUsage أو price. 0-31",
+  "data.value.Prices_Resources.hasFlag": "يحتوي على علامة",
+  "data.value.Prices_Resources.hasFlag.description": "استخدم مع price أو resourceUsage",
+  "data.value.Prices_Resources.hasMissingFlag": "يحتوي على علامة مفقودة",
+  "data.value.Prices_Resources.hasMissingFlag.description": "استخدم مع price أو resourceUsage",
+  "data.value.Prices_Resources.X": "مورد مخصص",
+  "data.value.Prices_Resources.X.description": "أي مورد مُعرَّف في أقسام [global_resource_x] أو [resource_x]"
+}
