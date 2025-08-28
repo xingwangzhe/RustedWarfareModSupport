@@ -111,6 +111,7 @@ const languages = [
   'en',           // English (英语) - 默认语言，VS Code的标准语言
   'zh-cn',        // Chinese Simplified (简体中文)
   'zh-tw',        // Chinese Traditional (繁体中文)
+  'zh-hk',       // Chinese Traditional (繁体中文)
   'ja',           // Japanese (日语)
   'ko',           // Korean (韩语)
   'de',           // German (德语)
