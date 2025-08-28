@@ -2,10 +2,19 @@
   "name": "rustedwarfaremodsupport",
   "displayName": "RustedWarfareModSupport",
   "icon": "favicon.png",
-  "description": "for RustedWarfareModSupport",
-  "version": "1.3.14",
+  "description": "A VS Code extension that provides in-editor completions, documentation hints, and development tools for RustedWarfare mod development. Supports INI file editing with intelligent autocompletion for game configuration properties.",
+  "version": "1.3.15",
   "author": "xingwangzhe",
   "publisher": "xingwangzhe",
+  "license": "AGPL-3.0",
+  "homepage": "https://github.com/xingwangzhe/RustedWarfareModSupport",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xingwangzhe/RustedWarfareModSupport.git"
+  },
+  "bugs": {
+    "url": "https://github.com/xingwangzhe/RustedWarfareModSupport/issues"
+  },
   "engines": {
     "vscode": "^1.103.0"
   },
@@ -65,10 +74,17 @@
       }
     }
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/xingwangzhe/RustedWarfareModSupport"
-  },
+  "keywords": [
+    "rustedwarfare",
+    "mod",
+    "development",
+    "ini",
+    "completion",
+    "hover",
+    "vscode-extension",
+    "game-development",
+    "modding"
+  ],
   "scripts": {
     "vscode:prepublish": "npm run compile",
     "precompile": "node merge.js",
