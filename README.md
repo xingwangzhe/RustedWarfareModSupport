@@ -2,10 +2,14 @@
 
 ![Rustedwarfare](https://corrodinggames.com/images/rw-title.png)
 
+[![版本 / Version](https://img.shields.io/badge/version-1.5.16-blue.svg)](CHANGELOG.md)
+[![许可证 / License](https://img.shields.io/badge/license-AGPL--3.0-green.svg)](LICENSE.md)
 
-- 多语言支持（支持11种语言：简体中文、繁体中文、英文、阿拉伯语、德语、西班牙语、法语、意大利语、日语、韩语、葡萄牙语、乌克兰语、俄语），翻译由 `merge.js` 合并
+> 📋 [更新日志 / Changelog](CHANGELOG.md) | 🐛 [报告问题 / Report Issues](https://github.com/xingwangzhe/RustedWarfareModSupport/issues) | 📖 [文档 / Documentation](https://github.com/xingwangzhe/RustedWarfareModSupport/wiki)
 
-- Multi-language support (supports 11 languages: Simplified Chinese, Traditional Chinese, English, Arabic, German, Spanish, French, Italian, Japanese, Korean, Portuguese, Ukrainian, Russian), translations merged by `merge.js`
+- 多语言支持（支持12种语言：简体中文、繁体中文、英文、阿拉伯语、德语、西班牙语、法语、意大利语、日语、韩语、葡萄牙语、乌克兰语、俄语），翻译由 `merge.js` 合并
+
+- Multi-language support (supports 12 languages: Simplified Chinese, Traditional Chinese, English, Arabic, German, Spanish, French, Italian, Japanese, Korean, Portuguese, Ukrainian, Russian), translations merged by `merge.js`
 
 
 
