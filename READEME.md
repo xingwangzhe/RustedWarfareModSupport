@@ -2,6 +2,13 @@
 
 ![Rustedwarfare](https://corrodinggames.com/images/rw-title.png)
 
+
+- 多语言支持（支持11种语言：简体中文、繁体中文、英文、阿拉伯语、德语、西班牙语、法语、意大利语、日语、韩语、葡萄牙语、乌克兰语、俄语），翻译由 `merge.js` 合并
+
+- Multi-language support (supports 11 languages: Simplified Chinese, Traditional Chinese, English, Arabic, German, Spanish, French, Italian, Japanese, Korean, Portuguese, Ukrainian, Russian), translations merged by `merge.js`
+
+
+
 正在开发的一个 RustedWarfare 模组开发工具，提供编辑器内的补全与文档提示功能。
 
 A RustedWarfare mod development tool that provides in-editor completions and documentation hints.
@@ -72,9 +79,6 @@ A RustedWarfare mod development tool that provides in-editor completions and doc
 - 感谢copilot的代码与翻译支持
 - Thanks to copilot for code and translation support
 
-- 多语言支持（支持11种语言：简体中文、繁体中文、英文、阿拉伯语、德语、西班牙语、法语、意大利语、日语、韩语、葡萄牙语、乌克兰语、俄语），翻译由 `merge.js` 合并
-
-- Multi-language support (supports 11 languages: Simplified Chinese, Traditional Chinese, English, Arabic, German, Spanish, French, Italian, Japanese, Korean, Portuguese, Ukrainian, Russian), translations merged by `merge.js`
 
 ## 参考资料
 ## References
