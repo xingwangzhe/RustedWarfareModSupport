@@ -11,6 +11,7 @@ export class PanelDataManager {
     constructor() {
         this.initializeDefaultItems();
         this.initializeFileExtensions();
+        this.registerConfigurationListeners();
     }
 
     /**
@@ -38,6 +39,26 @@ export class PanelDataManager {
             defaultExtensions: ['.ini', '.template', 'mod-info.txt'],
             customExtensions: customExtensions
         };
+    }
+
+    /**
+     * 注册配置监听器
+     */
+    private registerConfigurationListeners(): void {
+        vscode.workspace.onDidChangeConfiguration(e => {
+            if (e.affectsConfiguration('rustedwarfaremodsupport.customFileExtensions')) {
+                this.handleCustomExtensionsChange();
+            }
+        });
+    }
+
+    /**
+     * 处理自定义扩展名配置变化
+     */
+    private handleCustomExtensionsChange(): void {
+        // 重新初始化文件扩展名配置
+        this.initializeFileExtensions();
+        console.log('PanelDataManager: Updated custom file extensions from configuration');
     }
 
     /**
@@ -126,11 +147,11 @@ export class PanelDataManager {
         }
 
         // 添加到自定义后缀列表
-        this.fileExtensions.customExtensions.push(extension);
+        const updatedExtensions = [...this.fileExtensions.customExtensions, extension];
 
-        // 保存到配置
+        // 保存到配置（这会触发配置变化监听器，自动更新内部状态）
         const config = vscode.workspace.getConfiguration('rustedwarfaremodsupport');
-        config.update('customFileExtensions', this.fileExtensions.customExtensions, vscode.ConfigurationTarget.Global);
+        config.update('customFileExtensions', updatedExtensions, vscode.ConfigurationTarget.Global);
 
         return {
             success: true,
@@ -150,20 +171,20 @@ export class PanelDataManager {
             };
         }
 
-        // 从自定义后缀列表中移除
-        const index = this.fileExtensions.customExtensions.indexOf(extension);
-        if (index === -1) {
+        // 检查是否存在于自定义后缀列表中
+        if (!this.fileExtensions.customExtensions.includes(extension)) {
             return {
                 success: false,
                 message: vscode.l10n.t('panel.fileExtensions.remove.notFound')
             };
         }
 
-        this.fileExtensions.customExtensions.splice(index, 1);
+        // 从自定义后缀列表中移除
+        const updatedExtensions = this.fileExtensions.customExtensions.filter(ext => ext !== extension);
 
-        // 保存到配置
+        // 保存到配置（这会触发配置变化监听器，自动更新内部状态）
         const config = vscode.workspace.getConfiguration('rustedwarfaremodsupport');
-        config.update('customFileExtensions', this.fileExtensions.customExtensions, vscode.ConfigurationTarget.Global);
+        config.update('customFileExtensions', updatedExtensions, vscode.ConfigurationTarget.Global);
 
         return {
             success: true,

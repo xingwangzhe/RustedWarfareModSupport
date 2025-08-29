@@ -28,7 +28,7 @@ import { SectionPropertyDecorator } from './coralor/decorator';
 import { RustedWarfareHoverProvider } from './hoverProvider/hoverProvider';
 import { MemoryDefinitionCompletionProvider } from './memory/MemoryDefinitionCompletionProvider';
 import { MemoryValueCompletionProvider } from './memory/MemoryValueCompletionProvider';
-import { registerModPanel } from './panel';
+import { initializePanelManager, getPanelManager } from './panel/panelManager';
 // image zoom/preview features removed per user request
 
 // This method is called when your extension is activated
@@ -89,6 +89,9 @@ export function activate(context: vscode.ExtensionContext) {
 			});
 		})
 	);
+
+	// 初始化面板管理器
+	initializePanelManager(context);
 
 	// The command has been defined in the package.json file
 	// Now provide the implementation of the command with registerCommand
@@ -185,8 +188,8 @@ export function activate(context: vscode.ExtensionContext) {
 	const decorator = new SectionPropertyDecorator();
 	context.subscriptions.push(decorator);
 
-	// 注册自定义面板
-	registerModPanel(context);
+	// 初始化面板管理器（包含Mod Panel注册）
+	initializePanelManager(context);
 
 	// 将所有订阅添加到context.subscriptions中
 	context.subscriptions.push(
@@ -198,7 +201,8 @@ export function activate(context: vscode.ExtensionContext) {
 		sectionNameCompletionSubscription,
 		memoryDefinitionSubscription,
 		memoryValueSubscription,
-		hoverProvider
+		hoverProvider,
+		...getPanelManager().getCustomExtensionsManager().getSubscriptions()
 	);
 }
 

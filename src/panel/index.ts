@@ -162,6 +162,11 @@ export function registerModPanel(context: vscode.ExtensionContext): void {
     const modPanelProvider = new ModPanelProvider();
     const treeDataProvider = vscode.window.registerTreeDataProvider('rustedwarfaremodsupport-panel', modPanelProvider);
 
+    // 将面板提供者引用传递给PanelManager
+    import('./panelManager.js').then(({ getPanelManager }) => {
+        getPanelManager().setModPanelProvider(modPanelProvider);
+    });
+
     // 注册添加文件后缀命令
     const addFileExtensionCommand = vscode.commands.registerCommand('rustedwarfaremodsupport.addFileExtension', async () => {
         const extension = await vscode.window.showInputBox({
