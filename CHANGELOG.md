@@ -1,5 +1,10 @@
 # 更新日志 / Changelog
 
+## [1.6.22] - 2025-08-29
+
+- 自定义翻译实现，弃用vscode翻译api
+- Custom translation implementation, abandoning vscode translation API
+
 ## [1.6.20] - 2025-08-29
 
 - **面板提供后缀选项，额外的后缀支持**  

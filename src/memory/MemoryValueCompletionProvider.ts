@@ -1,5 +1,6 @@
 import * as vscode from 'vscode';
 import { memoryManager } from './MemoryManager';
+import { t } from '../translationManager';
 
 /**
  * 内存变量值补全提供者
@@ -35,19 +36,19 @@ export class MemoryValueCompletionProvider implements vscode.CompletionItemProvi
      */
     private provideMemoryKeywordCompletion(): vscode.CompletionItem[] {
         const item = new vscode.CompletionItem('memory', vscode.CompletionItemKind.Module);
-        item.detail = vscode.l10n.t('memory.description');
+        item.detail = t('memory.description');
         item.documentation = new vscode.MarkdownString(
-            `**memory** - ${vscode.l10n.t('memory.description')}\n\n` +
-            `${vscode.l10n.t('memory.usage')}\n\n` +
-            `**${vscode.l10n.t('memory.availableVariables')}**\n` +
-            `${vscode.l10n.t('memory.availableVariablesDescription')}\n\n` +
-            `**${vscode.l10n.t('memory.example')}**\n` +
+            `**memory** - ${t('memory.description')}\n\n` +
+            `${t('memory.usage')}\n\n` +
+            `**${t('memory.availableVariables')}**\n` +
+            `${t('memory.availableVariablesDescription')}\n\n` +
+            `**${t('memory.example')}**\n` +
             '```\n' +
-            `${vscode.l10n.t('memory.exampleHp')}\n` +
-            `${vscode.l10n.t('memory.exampleName')}\n` +
-            `${vscode.l10n.t('memory.exampleIsAlive')}\n` +
+            `${t('memory.exampleHp')}\n` +
+            `${t('memory.exampleName')}\n` +
+            `${t('memory.exampleIsAlive')}\n` +
             '```\n\n' +
-            `${vscode.l10n.t('memory.note')}`
+            `${t('memory.note')}`
         );
         item.insertText = 'memory.';
         item.sortText = '01'; // 优先级高
@@ -69,10 +70,10 @@ export class MemoryValueCompletionProvider implements vscode.CompletionItemProvi
 
             item.detail = `${variable.type} - Memory variable`;
             item.documentation = new vscode.MarkdownString(
-                vscode.l10n.t('memory.variable.documentation', variable.name, variable.type) + '\n\n' +
-                vscode.l10n.t('memory.variable.definedIn', variable.document.fileName) + '\n' +
-                vscode.l10n.t('memory.variable.line', variable.line + 1) + '\n\n' +
-                vscode.l10n.t('memory.variable.access')
+                t('memory.variable.documentation', variable.name, variable.type) + '\n\n' +
+                t('memory.variable.definedIn', variable.document.fileName) + '\n' +
+                t('memory.variable.line', variable.line + 1) + '\n\n' +
+                t('memory.variable.access')
             );
 
             item.insertText = variable.name;

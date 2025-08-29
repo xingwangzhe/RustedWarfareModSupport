@@ -3,7 +3,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { BaseValueCompletionProvider } from './BaseValueCompletionProvider';
 import { getExtensionId } from '../extension';
-
+import { t } from '../translationManager';
 /**
  * 布尔值补全提供者类
  * 用于提供布尔类型属性的补全建议
@@ -55,21 +55,21 @@ export class BoolValueCompletionProvider extends BaseValueCompletionProvider {
             
             for (const item of boolData.data) {
                 const completionItem = new vscode.CompletionItem(item.name, vscode.CompletionItemKind.Value);
-                completionItem.detail = vscode.l10n.t('valuecompletionprovider.bool.detail');
+                completionItem.detail = t('valuecompletionprovider.bool.detail');
                 
                 // 使用数据文件中的描述
                 const descriptionKey = item.description;
                 if (descriptionKey) {
-                    completionItem.documentation = new vscode.MarkdownString(vscode.l10n.t(descriptionKey));
+                    completionItem.documentation = new vscode.MarkdownString(t(descriptionKey));
                 }
                 
                 // 添加示例信息
                 if (item.example) {
-                    const exampleText = vscode.l10n.t(item.example);
+                    const exampleText = t(item.example);
                     if (completionItem.documentation instanceof vscode.MarkdownString) {
-                        completionItem.documentation.appendMarkdown(`\n\n**${vscode.l10n.t('completionprovider.example')}:**\n\`\`\`ini\n${exampleText}\n\`\`\``);
+                        completionItem.documentation.appendMarkdown(`\n\n**${t('completionprovider.example')}:**\n\`\`\`ini\n${exampleText}\n\`\`\``);
                     } else {
-                        completionItem.documentation = new vscode.MarkdownString(`${completionItem.documentation}\n\n**${vscode.l10n.t('completionprovider.example')}:**\n\`\`\`ini\n${exampleText}\n\`\`\``);
+                        completionItem.documentation = new vscode.MarkdownString(`${completionItem.documentation}\n\n**${t('completionprovider.example')}:**\n\`\`\`ini\n${exampleText}\n\`\`\``);
                     }
                 }
                 
@@ -91,12 +91,12 @@ export class BoolValueCompletionProvider extends BaseValueCompletionProvider {
      */
     private getFallbackBoolItems(): vscode.CompletionItem[] {
         const trueItem = new vscode.CompletionItem('true', vscode.CompletionItemKind.Value);
-        trueItem.detail = vscode.l10n.t('valuecompletionprovider.bool.detail');
-        trueItem.documentation = new vscode.MarkdownString(vscode.l10n.t('valuecompletionprovider.true.description'));
+        trueItem.detail = t('valuecompletionprovider.bool.detail');
+        trueItem.documentation = new vscode.MarkdownString(t('valuecompletionprovider.true.description'));
         
         const falseItem = new vscode.CompletionItem('false', vscode.CompletionItemKind.Value);
-        falseItem.detail = vscode.l10n.t('valuecompletionprovider.bool.detail');
-        falseItem.documentation = new vscode.MarkdownString(vscode.l10n.t('valuecompletionprovider.false.description'));
+        falseItem.detail = t('valuecompletionprovider.bool.detail');
+        falseItem.documentation = new vscode.MarkdownString(t('valuecompletionprovider.false.description'));
         
         return [trueItem, falseItem];
     }

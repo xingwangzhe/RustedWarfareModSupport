@@ -4,6 +4,7 @@ import * as path from 'path';
 import { extractExampleValue, getSectionProperties, isInsideSection, isAtValidLineStart, hasColonInLine } from './dataProcessor';
 import { isBaseSection } from './pubfun/matchRules';
 import { getExtensionId } from './extension';
+import { t } from './translationManager';
 
 /**
  * 为补全项生成格式化的文档信息
@@ -14,18 +15,18 @@ function generateCompletionDocumentation(property: any): vscode.MarkdownString {
     const doc = new vscode.MarkdownString();
 
     // 先翻译各字段
-    const nameLabel = vscode.l10n.t('completionprovider.name');
-    const typeLabel = vscode.l10n.t('completionprovider.type');
-    const versionLabel = vscode.l10n.t('completionprovider.version');
-    const descriptionLabel = vscode.l10n.t('completionprovider.description');
-    const isOutdatedLabel = vscode.l10n.t('completionprovider.isOutdated');
-    const exampleLabel = vscode.l10n.t('completionprovider.example');
+    const nameLabel = t('completionprovider.name');
+    const typeLabel = t('completionprovider.type');
+    const versionLabel = t('completionprovider.version');
+    const descriptionLabel = t('completionprovider.description');
+    const isOutdatedLabel = t('completionprovider.isOutdated');
+    const exampleLabel = t('completionprovider.example');
 
-    const nameValue = vscode.l10n.t(property.name);
+    const nameValue = t(property.name);
     const typeValue = property.type;
-    const versionValue = property.version ? vscode.l10n.t(property.version) : '';
-    const descriptionValue = property.description ? vscode.l10n.t(property.description) : '';
-    const exampleValue = property.example ? vscode.l10n.t(property.example) : '';
+    const versionValue = property.version ? t(property.version) : '';
+    const descriptionValue = property.description ? t(property.description) : '';
+    const exampleValue = property.example ? t(property.example) : '';
 
     // 添加名称字段
     doc.appendMarkdown(`**${nameLabel}:** ${nameValue}\n\n`);
@@ -109,7 +110,7 @@ function createSectionCompletionItems(): vscode.CompletionItem[] {
             
             // 设置文档信息
             item.documentation = new vscode.MarkdownString(
-                `**${vscode.l10n.t('completionprovider.description')}:** ${vscode.l10n.t(section.description)}`
+                `**${t('completionprovider.description')}:** ${t(section.description)}`
             );
             
             // 设置插入文本，包含中括号

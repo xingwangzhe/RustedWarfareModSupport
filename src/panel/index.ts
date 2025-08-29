@@ -1,6 +1,7 @@
 import * as vscode from 'vscode';
 import { PanelDataManager } from './provider';
 import { PanelItemData } from './types';
+import { t } from '../translationManager';
 
 /**
  * Mod Panel Item - 面板中的树节点项
@@ -72,8 +73,8 @@ export class ModPanelProvider implements vscode.TreeDataProvider<ModPanelItem> {
 
         // 文件后缀管理标题 - 作为可折叠的父项
         const titleItem = new ModPanelItem(
-            vscode.l10n.t('panel.fileExtensions.title'),
-            vscode.l10n.t('panel.fileExtensions.description'),
+            t('panel.fileExtensions.title'),
+            t('panel.fileExtensions.description'),
             vscode.TreeItemCollapsibleState.Expanded
         );
         // 设置一个标识符来识别这个父项
@@ -93,8 +94,8 @@ export class ModPanelProvider implements vscode.TreeDataProvider<ModPanelItem> {
 
         // 添加输入框提示
         items.push(new ModPanelItem(
-            `${vscode.l10n.t('panel.fileExtensions.add.placeholder')} - ${vscode.l10n.t('panel.fileExtensions.add.button')}`,
-            vscode.l10n.t('panel.fileExtensions.description'),
+            `${t('panel.fileExtensions.add.placeholder')} - ${t('panel.fileExtensions.add.button')}`,
+            t('panel.fileExtensions.description'),
             vscode.TreeItemCollapsibleState.None,
             'rustedwarfaremodsupport.addFileExtension'
         ));
@@ -102,7 +103,7 @@ export class ModPanelProvider implements vscode.TreeDataProvider<ModPanelItem> {
         // 获取所有文件后缀项
         const fileExtensions = this.dataManager.getFileExtensionItems();
         fileExtensions.forEach(ext => {
-            const tooltip = ext.isDefault ? ext.tooltip : `${ext.tooltip} - ${vscode.l10n.t('panel.fileExtensions.remove.tooltip')}`;
+            const tooltip = ext.isDefault ? ext.tooltip : `${ext.tooltip} - ${t('panel.fileExtensions.remove.tooltip')}`;
             const item = new ModPanelItem(
                 ext.label,
                 tooltip,
@@ -170,14 +171,14 @@ export function registerModPanel(context: vscode.ExtensionContext): void {
     // 注册添加文件后缀命令
     const addFileExtensionCommand = vscode.commands.registerCommand('rustedwarfaremodsupport.addFileExtension', async () => {
         const extension = await vscode.window.showInputBox({
-            prompt: vscode.l10n.t('panel.fileExtensions.add.placeholder'),
+            prompt: t('panel.fileExtensions.add.placeholder'),
             placeHolder: '.cfg',
             validateInput: (value) => {
                 if (!value) {
-                    return vscode.l10n.t('panel.fileExtensions.add.emptyInput');
+                    return t('panel.fileExtensions.add.emptyInput');
                 }
                 if (!value.startsWith('.')) {
-                    return vscode.l10n.t('panel.fileExtensions.invalidFormat');
+                    return t('panel.fileExtensions.invalidFormat');
                 }
                 return null;
             }
@@ -198,12 +199,12 @@ export function registerModPanel(context: vscode.ExtensionContext): void {
     // 注册移除文件后缀命令
     const removeFileExtensionCommand = vscode.commands.registerCommand('rustedwarfaremodsupport.removeFileExtension', async (extension: string) => {
         const confirm = await vscode.window.showWarningMessage(
-            vscode.l10n.t('panel.fileExtensions.remove.confirm'),
+            t('panel.fileExtensions.remove.confirm'),
             { modal: true },
-            vscode.l10n.t('panel.fileExtensions.confirm')
+            t('panel.fileExtensions.confirm')
         );
 
-        if (confirm === vscode.l10n.t('panel.fileExtensions.confirm')) {
+        if (confirm === t('panel.fileExtensions.confirm')) {
             const result = modPanelProvider.getDataManager().removeCustomFileExtension(extension);
             if (result.success) {
                 vscode.window.showInformationMessage(result.message);

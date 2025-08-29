@@ -1,6 +1,7 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
+import { t } from './translationManager';
 import { IniSectionSymbolProvider } from './Section';
 import { IniFoldingRangeProvider } from './IniFoldingProvider';
 import {
@@ -50,7 +51,7 @@ export function activate(context: vscode.ExtensionContext) {
 
 	// Use the console to output diagnostic information (console.log) and errors (console.error)
 	// This line of code will only be executed once when your extension is activated
-	console.log(vscode.l10n.t('Congratulations, your extension "rustedwarfaremodsupport" is now active!'));
+	console.log(t('Congratulations, your extension "rustedwarfaremodsupport" is now active!'));
 
 	// 读取配置并应用折叠控件显示设置
 	const config = vscode.workspace.getConfiguration('rustedwarfaremodsupport');
@@ -99,7 +100,7 @@ export function activate(context: vscode.ExtensionContext) {
 	const disposable = vscode.commands.registerCommand('rustedwarfaremodsupport.helloWorld', () => {
 		// The code you place here will be executed every time your command is executed
 		// Display a message box to the user
-		vscode.window.showInformationMessage(vscode.l10n.t('Hello World from RustedWarfareModSupport!'));
+		vscode.window.showInformationMessage(t('Hello World from RustedWarfareModSupport!'));
 	});
 
 // image commands removed

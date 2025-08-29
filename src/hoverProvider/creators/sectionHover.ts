@@ -2,7 +2,7 @@ import * as vscode from 'vscode';
 import * as fs from 'fs';
 import * as path from 'path';
 import { getExtensionId } from '../../extension';
-
+import { t } from '../../translationManager';
 /**
  * 节悬停创建器
  * 负责创建节的悬停信息
@@ -35,8 +35,8 @@ export class SectionHoverCreator {
             }
 
             const hoverContent = new vscode.MarkdownString();
-            hoverContent.appendMarkdown(`**${vscode.l10n.t('completionprovider.name')}:** ${vscode.l10n.t(section.name)}\n\n`);
-            hoverContent.appendMarkdown(`**${vscode.l10n.t('completionprovider.description')}:** ${vscode.l10n.t(section.description)}`);
+            hoverContent.appendMarkdown(`**${t('completionprovider.name')}:** ${t(section.name)}\n\n`);
+            hoverContent.appendMarkdown(`**${t('completionprovider.description')}:** ${t(section.description)}`);
 
             return new vscode.Hover(hoverContent);
         } catch (error) {

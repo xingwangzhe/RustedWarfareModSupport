@@ -1,5 +1,6 @@
 import * as vscode from 'vscode';
 import { PanelItemData, FileExtensionConfig, FileExtensionItem } from './types';
+import { t } from '../translationManager';
 
 /**
  * 面板数据管理器
@@ -107,8 +108,8 @@ export class PanelDataManager {
             items.push({
                 extension: ext,
                 isDefault: true,
-                label: `${ext} (${vscode.l10n.t('panel.fileExtensions.defaultExtensions')})`,
-                tooltip: vscode.l10n.t('panel.fileExtensions.defaultExtensions')
+                label: `${ext} (${t('panel.fileExtensions.defaultExtensions')})`,
+                tooltip: t('panel.fileExtensions.defaultExtensions')
             });
         });
 
@@ -118,7 +119,7 @@ export class PanelDataManager {
                 extension: ext,
                 isDefault: false,
                 label: ext,
-                tooltip: vscode.l10n.t('panel.fileExtensions.customExtensions')
+                tooltip: t('panel.fileExtensions.customExtensions')
             });
         });
 
@@ -133,7 +134,7 @@ export class PanelDataManager {
         if (!extension.startsWith('.')) {
             return {
                 success: false,
-                message: vscode.l10n.t('panel.fileExtensions.invalidFormat')
+                message: t('panel.fileExtensions.invalidFormat')
             };
         }
 
@@ -142,7 +143,7 @@ export class PanelDataManager {
         if (allExtensions.includes(extension)) {
             return {
                 success: false,
-                message: vscode.l10n.t('panel.fileExtensions.duplicate')
+                message: t('panel.fileExtensions.duplicate')
             };
         }
 
@@ -155,7 +156,7 @@ export class PanelDataManager {
 
         return {
             success: true,
-            message: vscode.l10n.t('panel.fileExtensions.add.success', extension)
+            message: t('panel.fileExtensions.add.success', extension)
         };
     }
 
@@ -167,7 +168,7 @@ export class PanelDataManager {
         if (this.fileExtensions.defaultExtensions.includes(extension)) {
             return {
                 success: false,
-                message: vscode.l10n.t('panel.fileExtensions.remove.cannotDeleteDefault')
+                message: t('panel.fileExtensions.remove.cannotDeleteDefault')
             };
         }
 
@@ -175,7 +176,7 @@ export class PanelDataManager {
         if (!this.fileExtensions.customExtensions.includes(extension)) {
             return {
                 success: false,
-                message: vscode.l10n.t('panel.fileExtensions.remove.notFound')
+                message: t('panel.fileExtensions.remove.notFound')
             };
         }
 
@@ -188,7 +189,7 @@ export class PanelDataManager {
 
         return {
             success: true,
-            message: vscode.l10n.t('panel.fileExtensions.remove.success', extension)
+            message: t('panel.fileExtensions.remove.success', extension)
         };
     }
 

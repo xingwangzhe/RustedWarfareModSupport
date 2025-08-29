@@ -1,0 +1,139 @@
+import * as vscode from 'vscode';
+import * as path from 'path';
+import * as fs from 'fs';
+
+/**
+ * 自定义翻译管理器
+ * 解决VS Code l10n在英文环境下直接返回键值的问题
+ */
+export class TranslationManager {
+    private static instance: TranslationManager;
+    private translations: Map<string, string> = new Map();
+    private currentLocale: string = 'en';
+
+    private constructor() {
+        this.loadTranslations();
+    }
+
+    public static getInstance(): TranslationManager {
+        if (!TranslationManager.instance) {
+            TranslationManager.instance = new TranslationManager();
+        }
+        return TranslationManager.instance;
+    }
+
+    /**
+     * 加载翻译文件
+     */
+    private loadTranslations(): void {
+        try {
+            // 获取当前语言环境
+            this.currentLocale = vscode.env.language || 'en';
+
+            // 获取扩展的翻译目录路径
+            const extensionPath = vscode.extensions.getExtension('xingwangzhe.rustedwarfaremodsupport')?.extensionPath;
+            if (!extensionPath) {
+                console.warn('无法获取扩展路径，使用默认翻译');
+                return;
+            }
+
+            const translationDir = path.join(extensionPath, 'translation');
+
+            // 尝试加载当前语言的翻译文件
+            let translationFile = path.join(translationDir, `bundle.l10n.${this.currentLocale}.json`);
+
+            // 如果当前语言的翻译文件不存在，尝试加载基础翻译文件
+            if (!fs.existsSync(translationFile)) {
+                translationFile = path.join(translationDir, 'bundle.l10n.json');
+            }
+
+            // 如果基础翻译文件也不存在，使用默认翻译
+            if (!fs.existsSync(translationFile)) {
+                console.warn('翻译文件不存在，使用默认翻译');
+                return;
+            }
+
+            // 读取并解析翻译文件
+            const translationContent = fs.readFileSync(translationFile, 'utf8');
+            const translations = JSON.parse(translationContent);
+
+            // 清空现有翻译并加载新翻译
+            this.translations.clear();
+            for (const [key, value] of Object.entries(translations)) {
+                this.translations.set(key, value as string);
+            }
+
+            console.log(`已加载 ${this.translations.size} 个翻译条目 (语言: ${this.currentLocale})`);
+        } catch (error) {
+            console.error('加载翻译文件时出错:', error);
+        }
+    }
+
+    /**
+     * 获取翻译文本
+     * @param key 翻译键
+     * @param args 格式化参数
+     * @returns 翻译后的文本，如果找不到则返回键值
+     */
+    public t(key: string, ...args: any[]): string {
+        // 从翻译文件中查找
+        const translation = this.translations.get(key);
+
+        if (translation) {
+            // 如果有格式化参数，进行替换
+            if (args.length > 0) {
+                return this.formatString(translation, args);
+            }
+            return translation;
+        }
+
+        // 如果找不到翻译，返回键值（用于调试）
+        console.warn(`翻译键未找到: ${key}`);
+        return key;
+    }
+
+    /**
+     * 格式化字符串，支持 {0}, {1} 等占位符
+     */
+    private formatString(template: string, args: any[]): string {
+        return template.replace(/\{(\d+)\}/g, (match, index) => {
+            const argIndex = parseInt(index, 10);
+            return argIndex < args.length ? String(args[argIndex]) : match;
+        });
+    }
+
+    /**
+     * 重新加载翻译（用于语言切换）
+     */
+    public reloadTranslations(): void {
+        this.loadTranslations();
+    }
+
+    /**
+     * 获取当前语言环境
+     */
+    public getCurrentLocale(): string {
+        return this.currentLocale;
+    }
+
+    /**
+     * 获取所有翻译键（用于调试）
+     */
+    public getAllKeys(): string[] {
+        return Array.from(this.translations.keys());
+    }
+}
+
+/**
+ * 便捷的翻译函数
+ */
+export function t(key: string, ...args: any[]): string {
+    return TranslationManager.getInstance().t(key, ...args);
+}
+
+/**
+ * 重新加载翻译的函数
+ */
+export function reloadTranslations(): void {
+    TranslationManager.getInstance().reloadTranslations();
+}

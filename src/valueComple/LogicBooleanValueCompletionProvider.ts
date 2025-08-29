@@ -3,7 +3,7 @@ import { BaseValueCompletionProvider } from "./BaseValueCompletionProvider";
 import * as fs from "fs";
 import * as path from "path";
 import { getExtensionId } from "../extension";
-
+import { t } from '../translationManager';
 /**
  * LogicBoolean值补全提供者类
  * 用于提供LogicBoolean类型属性的补全建议
@@ -43,12 +43,12 @@ export class LogicBooleanValueCompletionProvider extends BaseValueCompletionProv
         item.name,
         vscode.CompletionItemKind.Value
       );
-      completionItem.detail = vscode.l10n.t(item.description);
+      completionItem.detail = t(item.description);
       completionItem.documentation = new vscode.MarkdownString(
-        vscode.l10n.t('valuecompletionprovider.logicboolean.documentation', [
-          vscode.l10n.t(item.description),
+        t('valuecompletionprovider.logicboolean.documentation', [
+          t(item.description),
           item.version,
-          vscode.l10n.t(item.example)
+          t(item.example)
         ])
       );
 

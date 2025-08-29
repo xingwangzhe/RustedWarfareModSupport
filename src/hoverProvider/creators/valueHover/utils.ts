@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-
+import { t } from '../../../translationManager';
 /**
  * 在值类型数据中查找匹配的项目
  * @param valueData 值类型数据
@@ -137,26 +137,26 @@ export function createValueItemHover(item: any, valueData: any): vscode.Hover | 
     hoverContent.appendMarkdown(`**${valueData.type || 'Value'} Parameter**\n\n`);
 
     // 添加参数名称
-    hoverContent.appendMarkdown(`**${vscode.l10n.t('completionprovider.name')}:** \`${item.name}\`\n\n`);
+    hoverContent.appendMarkdown(`**${t('completionprovider.name')}:** \`${item.name}\`\n\n`);
 
     // 添加类型
     if (item.type) {
-        hoverContent.appendMarkdown(`**${vscode.l10n.t('completionprovider.type')}:** ${item.type}\n\n`);
+        hoverContent.appendMarkdown(`**${t('completionprovider.type')}:** ${item.type}\n\n`);
     }
 
     // 添加描述
     if (item.description) {
-        hoverContent.appendMarkdown(`**${vscode.l10n.t('completionprovider.description')}:** ${vscode.l10n.t(item.description)}\n\n`);
+        hoverContent.appendMarkdown(`**${t('completionprovider.description')}:** ${t(item.description)}\n\n`);
     }
 
     // 添加版本
     if (item.version) {
-        hoverContent.appendMarkdown(`**${vscode.l10n.t('completionprovider.version')}:** ${item.version}\n\n`);
+        hoverContent.appendMarkdown(`**${t('completionprovider.version')}:** ${item.version}\n\n`);
     }
 
     // 添加示例
     if (item.example) {
-        hoverContent.appendMarkdown(`**${vscode.l10n.t('completionprovider.example')}:**\n\`\`\`ini\n${vscode.l10n.t(item.example)}\n\`\`\`\n\n`);
+        hoverContent.appendMarkdown(`**${t('completionprovider.example')}:**\n\`\`\`ini\n${t(item.example)}\n\`\`\`\n\n`);
     }
 
     return new vscode.Hover(hoverContent);
@@ -175,12 +175,12 @@ export function createValueTypeGeneralHover(valueData: any): vscode.Hover | null
 
     // 添加描述
     if (valueData.description) {
-        hoverContent.appendMarkdown(`${vscode.l10n.t(valueData.description)}\n\n`);
+        hoverContent.appendMarkdown(`${t(valueData.description)}\n\n`);
     }
 
     // 添加示例
     if (valueData.example) {
-        hoverContent.appendMarkdown(`**${vscode.l10n.t('completionprovider.example')}:**\n\`\`\`ini\n${vscode.l10n.t(valueData.example)}\n\`\`\`\n\n`);
+        hoverContent.appendMarkdown(`**${t('completionprovider.example')}:**\n\`\`\`ini\n${t(valueData.example)}\n\`\`\`\n\n`);
     }
 
     // 列出可用的参数

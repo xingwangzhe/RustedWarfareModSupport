@@ -3,6 +3,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { BaseValueCompletionProvider } from './BaseValueCompletionProvider';
 import { getExtensionId } from '../extension';
+import { t } from '../translationManager';
 
 export class MovementTypeValueCompletionProvider extends BaseValueCompletionProvider {
     protected provideValueCompletionItems(
@@ -35,7 +36,7 @@ export class MovementTypeValueCompletionProvider extends BaseValueCompletionProv
                 for (const v of valueData.data) {
                     const it = new vscode.CompletionItem(v.name, vscode.CompletionItemKind.Value);
                     it.detail = v.version || '';
-                    it.documentation = new vscode.MarkdownString(vscode.l10n.t(v.description));
+                    it.documentation = new vscode.MarkdownString(t(v.description));
                     items.push(it);
                 }
             }

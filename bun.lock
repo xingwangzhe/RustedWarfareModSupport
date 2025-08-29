@@ -3,16 +3,19 @@
   "workspaces": {
     "": {
       "name": "rustedwarfaremodsupport",
+      "dependencies": {
+        "@vscode/l10n": "^0.0.18",
+      },
       "devDependencies": {
         "@types/mocha": "^10.0.10",
-        "@types/node": "^22.17.2",
+        "@types/node": "^22.18.0",
         "@types/vscode": "^1.103.0",
-        "@typescript-eslint/eslint-plugin": "^8.39.1",
-        "@typescript-eslint/parser": "^8.39.1",
+        "@typescript-eslint/eslint-plugin": "^8.41.0",
+        "@typescript-eslint/parser": "^8.41.0",
         "@vscode/test-cli": "^0.0.11",
         "@vscode/test-electron": "^2.5.2",
         "esbuild": "^0.25.9",
-        "eslint": "^9.33.0",
+        "eslint": "^9.34.0",
         "npm-run-all": "^4.1.5",
         "typescript": "^5.9.2",
       },
@@ -148,6 +151,8 @@
     "@typescript-eslint/utils": ["@typescript-eslint/utils@8.41.0", "https://registry.npmmirror.com/@typescript-eslint/utils/-/utils-8.41.0.tgz", { "dependencies": { "@eslint-community/eslint-utils": "^4.7.0", "@typescript-eslint/scope-manager": "8.41.0", "@typescript-eslint/types": "8.41.0", "@typescript-eslint/typescript-estree": "8.41.0" }, "peerDependencies": { "eslint": "^8.57.0 || ^9.0.0", "typescript": ">=4.8.4 <6.0.0" } }, "sha512-udbCVstxZ5jiPIXrdH+BZWnPatjlYwJuJkDA4Tbo3WyYLh8NvB+h/bKeSZHDOFKfphsZYJQqaFtLeXEqurQn1A=="],
 
     "@typescript-eslint/visitor-keys": ["@typescript-eslint/visitor-keys@8.41.0", "https://registry.npmmirror.com/@typescript-eslint/visitor-keys/-/visitor-keys-8.41.0.tgz", { "dependencies": { "@typescript-eslint/types": "8.41.0", "eslint-visitor-keys": "^4.2.1" } }, "sha512-+GeGMebMCy0elMNg67LRNoVnUFPIm37iu5CmHESVx56/9Jsfdpsvbv605DQ81Pi/x11IdKUsS5nzgTYbCQU9fg=="],
+
+    "@vscode/l10n": ["@vscode/l10n@0.0.18", "https://registry.npmmirror.com/@vscode/l10n/-/l10n-0.0.18.tgz", {}, "sha512-KYSIHVmslkaCDyw013pphY+d7x1qV8IZupYfeIfzNA+nsaWHbn5uPuQRvdRFsa9zFzGeudPuoGoZ1Op4jrJXIQ=="],
 
     "@vscode/test-cli": ["@vscode/test-cli@0.0.11", "https://registry.npmmirror.com/@vscode/test-cli/-/test-cli-0.0.11.tgz", { "dependencies": { "@types/mocha": "^10.0.2", "c8": "^9.1.0", "chokidar": "^3.5.3", "enhanced-resolve": "^5.15.0", "glob": "^10.3.10", "minimatch": "^9.0.3", "mocha": "^11.1.0", "supports-color": "^9.4.0", "yargs": "^17.7.2" }, "bin": { "vscode-test": "out/bin.mjs" } }, "sha512-qO332yvzFqGhBMJrp6TdwbIydiHgCtxXc2Nl6M58mbH/Z+0CyLR76Jzv4YWPEthhrARprzCRJUqzFvTHFhTj7Q=="],
 

@@ -78,12 +78,12 @@ export class PanelManager {
             return;
         }
 
-        // 注册刷新面板命令
-        const refreshPanelCommand = vscode.commands.registerCommand('rustedwarfaremodsupport-panel.refresh', () => {
-            this.refreshPanel();
-        });
+        // 刷新面板命令已在 panel/index.ts 中注册，这里不再重复注册
+        // const refreshPanelCommand = vscode.commands.registerCommand('rustedwarfaremodsupport-panel.refresh', () => {
+        //     this.refreshPanel();
+        // });
 
-        this.context.subscriptions.push(refreshPanelCommand);
+        // this.context.subscriptions.push(refreshPanelCommand);
     }
 
     /**

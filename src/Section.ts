@@ -1,5 +1,6 @@
 // 节解析器类
 import * as vscode from "vscode";
+import { t } from './translationManager';
 
 export class IniSectionSymbolProvider implements vscode.DocumentSymbolProvider {
   public generateSectionData(name: string): string {
@@ -30,7 +31,7 @@ export class IniSectionSymbolProvider implements vscode.DocumentSymbolProvider {
       baseName = "prices";
     }
     
-    return vscode.l10n.t(`data.sections.${baseName}`);
+    return t(`data.sections.${baseName}`);
   }
 
   // 根据键名和值确定符号类型

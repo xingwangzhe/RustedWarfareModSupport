@@ -2,7 +2,7 @@ import * as vscode from 'vscode';
 import * as fs from 'fs';
 import * as path from 'path';
 import { getExtensionId } from '../../../extension';
-
+import { t } from '../../../translationManager';
 /**
  * 创建LogicBoolean self方法悬停信息
  * @param method 方法名
@@ -43,14 +43,14 @@ export function createLogicBooleanSelfMethodHover(method: string): vscode.Hover 
 
                 const hoverContent = new vscode.MarkdownString();
                 hoverContent.appendMarkdown(`**LogicBoolean Function**\n\n`);
-                hoverContent.appendMarkdown(`${vscode.l10n.t(item.description)}\n\n`);
+                hoverContent.appendMarkdown(`${t(item.description)}\n\n`);
 
                 if (item.version) {
                     hoverContent.appendMarkdown(`*Version: ${item.version}*\n\n`);
                 }
 
                 if (item.example) {
-                    hoverContent.appendMarkdown(`\`\`\`ini\n${vscode.l10n.t(item.example)}\n\`\`\``);
+                    hoverContent.appendMarkdown(`\`\`\`ini\n${t(item.example)}\n\`\`\``);
                 }
 
                 return new vscode.Hover(hoverContent);

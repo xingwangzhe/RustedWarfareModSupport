@@ -4,7 +4,7 @@ import * as path from 'path';
 import { BaseValueCompletionProvider } from './BaseValueCompletionProvider';
 import { l10n } from 'vscode';
 import { getExtensionId } from '../extension';
-
+import { t } from '../translationManager';
 /**
  * 单位生成类属性补全提供者类
  * 用于提供spawnUnits、produceUnits等属性的补全建议
@@ -146,7 +146,7 @@ export class UnitSpawnCompletionProvider extends BaseValueCompletionProvider {
                     const paramItem = new vscode.CompletionItem(`${param.name}=`, vscode.CompletionItemKind.Property);
                     paramItem.detail = param.type;
                     paramItem.documentation = new vscode.MarkdownString(
-                        `${vscode.l10n.t(param.description)}\n\n*${vscode.l10n.t('valuecompletionprovider.spawnunits.version')}: ${param.version}*\n\n\`\`\`ini\n${vscode.l10n.t(param.example)}\n\`\`\``
+                        `${t(param.description)}\n\n*${t('valuecompletionprovider.spawnunits.version')}: ${param.version}*\n\n\`\`\`ini\n${t(param.example)}\n\`\`\``
                     );
                     
                     // 根据参数类型设置插入文本

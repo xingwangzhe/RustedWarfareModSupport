@@ -3,7 +3,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { HoverUtils } from '../utils';
 import { getExtensionId } from '../../extension';
-
+import { t } from '../../translationManager';
 /**
  * 属性悬停创建器
  * 负责创建属性的悬停信息
@@ -54,13 +54,13 @@ export class PropertyHoverCreator {
             const hoverContent = new vscode.MarkdownString();
 
             // 添加名称字段
-            hoverContent.appendMarkdown(`**${vscode.l10n.t('completionprovider.name')}:** ${vscode.l10n.t(property.name)}\n\n`);
+            hoverContent.appendMarkdown(`**${t('completionprovider.name')}:** ${t(property.name)}\n\n`);
 
             // 如果是语言键，添加语言信息
             if (originalName) {
                 const languageKeyInfo = PropertyHoverCreator.parseLanguageKey(propertyName);
                 if (languageKeyInfo) {
-                    hoverContent.appendMarkdown(`**${vscode.l10n.t('Language')}:** ${languageKeyInfo.languageCode.toUpperCase()} (${vscode.l10n.t('ISO 639-1')})\n\n`);
+                    hoverContent.appendMarkdown(`**${t('Language')}:** ${languageKeyInfo.languageCode.toUpperCase()} (${t('ISO 639-1')})\n\n`);
                 }
             }
 
@@ -68,27 +68,27 @@ export class PropertyHoverCreator {
 
             // 添加版本字段
             if (property.version) {
-                hoverContent.appendMarkdown(`**${vscode.l10n.t('completionprovider.version')}:** ${property.version}\n\n`);
+                hoverContent.appendMarkdown(`**${t('completionprovider.version')}:** ${property.version}\n\n`);
             }
 
             // 添加描述字段
             if (property.description) {
-                hoverContent.appendMarkdown(`**${vscode.l10n.t('completionprovider.description')}:** ${vscode.l10n.t(property.description)}\n\n`);
+                hoverContent.appendMarkdown(`**${t('completionprovider.description')}:** ${t(property.description)}\n\n`);
             }
 
             // 添加过时标记
             if (property.isOutdated) {
-                hoverContent.appendMarkdown(`⚠️ **${vscode.l10n.t('completionprovider.isOutdated')}:** true\n\n`);
+                hoverContent.appendMarkdown(`⚠️ **${t('completionprovider.isOutdated')}:** true\n\n`);
             }
 
             // 添加示例字段
             if (property.example) {
                 // 在代码块后追加空行，防止后续 Markdown 元素与代码块闭合符粘连
-                hoverContent.appendMarkdown(`**${vscode.l10n.t('completionprovider.example')}:**\n\`\`\`ini\n${vscode.l10n.t(property.example)}\n\`\`\`\n\n`);
+                hoverContent.appendMarkdown(`**${t('completionprovider.example')}:**\n\`\`\`ini\n${t(property.example)}\n\`\`\`\n\n`);
             }
 
             // 添加类型字段
-            const typeLabel = vscode.l10n.t('completionprovider.type');
+            const typeLabel = t('completionprovider.type');
             let typeDisplay = `\`${property.type}\``;
             try {
                 if ((property.type || '').toLowerCase().includes('image') || (property.name || '').toLowerCase().includes('image')) {
