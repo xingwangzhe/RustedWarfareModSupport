@@ -1,5 +1,9 @@
 # 支持多语言的 RustedWarfare Mod Support
 
+欢迎在群聊交流 RustedWarfare 模组开发
+
+QQ:GMBOX的mod群: [1006360455](https://qm.qq.com/q/3ivoMQepwA)
+
 ![Rustedwarfare](https://corrodinggames.com/images/rw-title.png)
 
 [![版本 / Version](https://img.shields.io/badge/version-1.5.16-blue.svg)](CHANGELOG.md)
