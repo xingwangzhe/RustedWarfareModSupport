@@ -89,6 +89,14 @@
             "Show folding controls on mouseover"
           ],
           "description": "Controls when folding controls are shown."
+        },
+        "rustedwarfaremodsupport.customFileExtensions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [],
+          "description": "Custom file extensions to support in addition to the default ones (.ini, .template, mod-info.txt)"
         }
       }
     }

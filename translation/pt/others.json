@@ -18,5 +18,21 @@
   "data.value.bool.true.description": "Representa o valor booleano verdadeiro",
   "data.value.bool.false.description": "Representa o valor booleano falso",
   "Congratulations, your extension \"rustedwarfaremodsupport\" is now active!": "Parabéns, sua extensão \"rustedwarfaremodsupport\" está agora ativa!",
-  "Hello World from RustedWarfareModSupport!": "Olá Mundo do RustedWarfareModSupport!"
+  "Hello World from RustedWarfareModSupport!": "Olá Mundo do RustedWarfareModSupport!",
+  "panel.fileExtensions.title": "Gerenciamento de Extensões de Arquivo",
+  "panel.fileExtensions.description": "Gerenciar tipos de extensões de arquivo suportadas",
+  "panel.fileExtensions.add.placeholder": "Digite a extensão do arquivo (exemplo: .cfg)",
+  "panel.fileExtensions.add.button": "Adicionar",
+  "panel.fileExtensions.add.emptyInput": "A extensão do arquivo não pode estar vazia",
+  "panel.fileExtensions.defaultExtensions": "Extensões padrão",
+  "panel.fileExtensions.customExtensions": "Extensões personalizadas",
+  "panel.fileExtensions.remove.confirm": "Tem certeza de que deseja excluir esta extensão de arquivo?",
+  "panel.fileExtensions.remove.cannotDeleteDefault": "Não é possível excluir a extensão de arquivo padrão",
+  "panel.fileExtensions.remove.notFound": "Extensão de arquivo não encontrada",
+  "panel.fileExtensions.invalidFormat": "Formato de extensão de arquivo inválido, deve começar com um ponto (.)",
+  "panel.fileExtensions.duplicate": "Esta extensão de arquivo já existe",
+  "panel.fileExtensions.add.success": "Extensão de arquivo adicionada: {0}",
+  "panel.fileExtensions.remove.success": "Extensão de arquivo removida: {0}",
+  "panel.fileExtensions.confirm": "Confirmar",
+  "panel.fileExtensions.remove.tooltip": "Clique para excluir"
 }

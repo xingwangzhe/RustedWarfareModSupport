@@ -18,5 +18,21 @@
   "data.value.bool.true.description": "ブール値trueを表します",
   "data.value.bool.false.description": "ブール値falseを表します",
   "Congratulations, your extension \"rustedwarfaremodsupport\" is now active!": "おめでとうございます、拡張機能「rustedwarfaremodsupport」がアクティブになりました！",
-  "Hello World from RustedWarfareModSupport!": "RustedWarfareModSupportからのHello World！"
+  "Hello World from RustedWarfareModSupport!": "RustedWarfareModSupportからのHello World！",
+  "panel.fileExtensions.title": "ファイル拡張子管理",
+  "panel.fileExtensions.description": "サポートされるファイル拡張子の種類を管理",
+  "panel.fileExtensions.add.placeholder": "ファイル拡張子を入力 (例: .cfg)",
+  "panel.fileExtensions.add.button": "追加",
+  "panel.fileExtensions.add.emptyInput": "ファイル拡張子を空にすることはできません",
+  "panel.fileExtensions.defaultExtensions": "デフォルト拡張子",
+  "panel.fileExtensions.customExtensions": "カスタム拡張子",
+  "panel.fileExtensions.remove.confirm": "このファイル拡張子を削除してもよろしいですか？",
+  "panel.fileExtensions.remove.cannotDeleteDefault": "デフォルトのファイル拡張子は削除できません",
+  "panel.fileExtensions.remove.notFound": "ファイル拡張子が存在しません",
+  "panel.fileExtensions.invalidFormat": "ファイル拡張子の形式が無効です。ドット(.)で始まる必要があります",
+  "panel.fileExtensions.duplicate": "このファイル拡張子は既に存在します",
+  "panel.fileExtensions.add.success": "ファイル拡張子を追加しました: {0}",
+  "panel.fileExtensions.remove.success": "ファイル拡張子を削除しました: {0}",
+  "panel.fileExtensions.confirm": "確認",
+  "panel.fileExtensions.remove.tooltip": "クリックして削除"
 }

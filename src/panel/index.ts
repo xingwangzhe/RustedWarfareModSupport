@@ -29,6 +29,8 @@ export class ModPanelItem extends vscode.TreeItem {
  */
 export class ModPanelProvider implements vscode.TreeDataProvider<ModPanelItem> {
     private dataManager: PanelDataManager;
+    private _onDidChangeTreeData: vscode.EventEmitter<ModPanelItem | undefined | null | void> = new vscode.EventEmitter<ModPanelItem | undefined | null | void>();
+    readonly onDidChangeTreeData: vscode.Event<ModPanelItem | undefined | null | void> = this._onDidChangeTreeData.event;
 
     constructor() {
         this.dataManager = new PanelDataManager();
@@ -42,16 +44,84 @@ export class ModPanelProvider implements vscode.TreeDataProvider<ModPanelItem> {
         if (!element) {
             // Root level items
             const items = this.dataManager.getItems();
-            return Promise.resolve(
-                items.map(item => new ModPanelItem(
+            const fileExtensionItems = this.createFileExtensionItems();
+            return Promise.resolve([
+                ...items.map(item => new ModPanelItem(
                     item.label,
                     item.tooltip,
                     item.collapsibleState,
                     item.command
-                ))
-            );
+                )),
+                ...fileExtensionItems
+            ]);
         }
+
+        // 如果是文件扩展名管理标题，返回其子项
+        if ((element as any).isFileExtensionParent) {
+            return Promise.resolve(this.createFileExtensionChildren());
+        }
+
         return Promise.resolve([]);
+    }
+
+    /**
+     * 创建文件后缀管理项（只返回父项）
+     */
+    private createFileExtensionItems(): ModPanelItem[] {
+        const items: ModPanelItem[] = [];
+
+        // 文件后缀管理标题 - 作为可折叠的父项
+        const titleItem = new ModPanelItem(
+            vscode.l10n.t('panel.fileExtensions.title'),
+            vscode.l10n.t('panel.fileExtensions.description'),
+            vscode.TreeItemCollapsibleState.Expanded
+        );
+        // 设置一个标识符来识别这个父项
+        (titleItem as any).isFileExtensionParent = true;
+        // 设置图标来表示这是一个可展开的项
+        titleItem.iconPath = new vscode.ThemeIcon('folder-opened');
+        items.push(titleItem);
+
+        return items;
+    }
+
+    /**
+     * 创建文件后缀管理的子项
+     */
+    private createFileExtensionChildren(): ModPanelItem[] {
+        const items: ModPanelItem[] = [];
+
+        // 添加输入框提示
+        items.push(new ModPanelItem(
+            `${vscode.l10n.t('panel.fileExtensions.add.placeholder')} - ${vscode.l10n.t('panel.fileExtensions.add.button')}`,
+            vscode.l10n.t('panel.fileExtensions.description'),
+            vscode.TreeItemCollapsibleState.None,
+            'rustedwarfaremodsupport.addFileExtension'
+        ));
+
+        // 获取所有文件后缀项
+        const fileExtensions = this.dataManager.getFileExtensionItems();
+        fileExtensions.forEach(ext => {
+            const tooltip = ext.isDefault ? ext.tooltip : `${ext.tooltip} - ${vscode.l10n.t('panel.fileExtensions.remove.tooltip')}`;
+            const item = new ModPanelItem(
+                ext.label,
+                tooltip,
+                vscode.TreeItemCollapsibleState.None
+            );
+
+            // 如果不是默认后缀，添加删除命令
+            if (!ext.isDefault) {
+                item.command = {
+                    command: 'rustedwarfaremodsupport.removeFileExtension',
+                    title: 'Remove File Extension',
+                    arguments: [ext.extension]
+                };
+            }
+
+            items.push(item);
+        });
+
+        return items;
     }
 
     /**
@@ -73,7 +143,14 @@ export class ModPanelProvider implements vscode.TreeDataProvider<ModPanelItem> {
      */
     refresh(): void {
         // 触发树视图刷新
-        // 注意：这里需要外部调用者来触发刷新事件
+        this._onDidChangeTreeData.fire();
+    }
+
+    /**
+     * 获取数据管理器
+     */
+    getDataManager(): PanelDataManager {
+        return this.dataManager;
     }
 }
 
@@ -85,5 +162,63 @@ export function registerModPanel(context: vscode.ExtensionContext): void {
     const modPanelProvider = new ModPanelProvider();
     const treeDataProvider = vscode.window.registerTreeDataProvider('rustedwarfaremodsupport-panel', modPanelProvider);
 
-    context.subscriptions.push(treeDataProvider);
+    // 注册添加文件后缀命令
+    const addFileExtensionCommand = vscode.commands.registerCommand('rustedwarfaremodsupport.addFileExtension', async () => {
+        const extension = await vscode.window.showInputBox({
+            prompt: vscode.l10n.t('panel.fileExtensions.add.placeholder'),
+            placeHolder: '.cfg',
+            validateInput: (value) => {
+                if (!value) {
+                    return vscode.l10n.t('panel.fileExtensions.add.emptyInput');
+                }
+                if (!value.startsWith('.')) {
+                    return vscode.l10n.t('panel.fileExtensions.invalidFormat');
+                }
+                return null;
+            }
+        });
+
+        if (extension) {
+            const result = modPanelProvider.getDataManager().addCustomFileExtension(extension);
+            if (result.success) {
+                vscode.window.showInformationMessage(result.message);
+                // 刷新面板显示
+                modPanelProvider.refresh();
+            } else {
+                vscode.window.showErrorMessage(result.message);
+            }
+        }
+    });
+
+    // 注册移除文件后缀命令
+    const removeFileExtensionCommand = vscode.commands.registerCommand('rustedwarfaremodsupport.removeFileExtension', async (extension: string) => {
+        const confirm = await vscode.window.showWarningMessage(
+            vscode.l10n.t('panel.fileExtensions.remove.confirm'),
+            { modal: true },
+            vscode.l10n.t('panel.fileExtensions.confirm')
+        );
+
+        if (confirm === vscode.l10n.t('panel.fileExtensions.confirm')) {
+            const result = modPanelProvider.getDataManager().removeCustomFileExtension(extension);
+            if (result.success) {
+                vscode.window.showInformationMessage(result.message);
+                // 刷新面板显示
+                modPanelProvider.refresh();
+            } else {
+                vscode.window.showErrorMessage(result.message);
+            }
+        }
+    });
+
+    // 注册刷新面板命令
+    const refreshPanelCommand = vscode.commands.registerCommand('rustedwarfaremodsupport-panel.refresh', () => {
+        modPanelProvider.refresh();
+    });
+
+    context.subscriptions.push(
+        treeDataProvider,
+        addFileExtensionCommand,
+        removeFileExtensionCommand,
+        refreshPanelCommand
+    );
 }
