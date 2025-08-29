@@ -88,6 +88,38 @@ export class PathCompatibilityUtils {
     }
 
     /**
+     * 从文本中提取多个图片路径（支持逗号分隔）
+     * @param text 包含路径的文本
+     * @returns 找到的图片路径数组
+     */
+    public static extractImagePaths(text: string): string[] {
+        if (!text) {
+            return [];
+        }
+
+        // 移除注释
+        const cleaned = text.replace(/#.*$/gm, '').trim();
+
+        // 按逗号分割，但要小心处理引号内的逗号
+        const parts = cleaned.split(',').map(part => part.trim());
+
+        const imagePaths: string[] = [];
+
+        for (const part of parts) {
+            // 匹配图片文件路径的正则表达式
+            // 支持包含反斜杠和unicode字符的路径
+            const imagePathPattern = /[^\s#]+?\.(png|jpe?g|gif|webp|bmp)/i;
+            const match = part.match(imagePathPattern);
+
+            if (match) {
+                imagePaths.push(match[0]);
+            }
+        }
+
+        return imagePaths;
+    }
+
+    /**
      * 创建跨平台兼容的路径建议
      * @param basePath 基础路径
      * @param fileName 文件名

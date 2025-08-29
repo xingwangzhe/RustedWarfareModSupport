@@ -39,7 +39,7 @@ export class ValueHoverCreator {
             return null;
         }
 
-        // 如果是图片类型，则尝试生成图片预览
+                // 如果是图片类型，则尝试生成图片预览
         if (propertyType && propertyType.toLowerCase().includes('image')) {
             try {
                 // 获取当前行冒号后的完整值文本（优于只使用传入的 word）
@@ -50,24 +50,63 @@ export class ValueHoverCreator {
                 // 移除注释部分
                 const cleaned = fullValueText.replace(/#.*$/, '').trim();
 
-                // 使用PathCompatibilityUtils提取和规范化图片路径
-                const extractedPath = PathCompatibilityUtils.extractImagePath(cleaned);
-                let candidate = extractedPath || cleaned;
+                // 使用PathCompatibilityUtils提取多个图片路径（支持逗号分隔）
+                const extractedPaths = PathCompatibilityUtils.extractImagePaths(cleaned);
 
-                // 规范化路径分隔符，支持正斜杠和反斜杠
-                candidate = PathCompatibilityUtils.normalizePathSeparators(candidate);
+                if (extractedPaths.length > 0) {
+                    const hoverContents: vscode.MarkdownString[] = [];
 
-                if (candidate) {
-                    try {
-                        const resolvedPath = resolveImagePath(candidate, document);
-                        if (resolvedPath) {
-                            const hover = createImageHoverFromPath(resolvedPath);
-                            if (hover) {
-                                return hover;
+                    for (const pathCandidate of extractedPaths) {
+                        // 规范化路径分隔符，支持正斜杠和反斜杠
+                        const candidate = PathCompatibilityUtils.normalizePathSeparators(pathCandidate);
+
+                        try {
+                            const resolvedPath = resolveImagePath(candidate, document);
+                            if (resolvedPath) {
+                                const hover = createImageHoverFromPath(resolvedPath);
+                                if (hover && hover.contents) {
+                                    // 如果是单个MarkdownString
+                                    if (hover.contents instanceof vscode.MarkdownString) {
+                                        hoverContents.push(hover.contents);
+                                    }
+                                    // 如果是数组，过滤出MarkdownString类型
+                                    else if (Array.isArray(hover.contents)) {
+                                        const markdownContents = hover.contents.filter(
+                                            content => content instanceof vscode.MarkdownString
+                                        ) as vscode.MarkdownString[];
+                                        hoverContents.push(...markdownContents);
+                                    }
+                                }
                             }
+                        } catch (e) {
+                            console.error('HoverCreators: error resolving image path', e);
                         }
-                    } catch (e) {
-                        console.error('HoverCreators: error resolving image path', e);
+                    }
+
+                    // 如果有图片内容，返回组合的hover
+                    if (hoverContents.length > 0) {
+                        return new vscode.Hover(hoverContents);
+                    }
+                } else {
+                    // 回退到单个路径处理（保持向后兼容）
+                    const extractedPath = PathCompatibilityUtils.extractImagePath(cleaned);
+                    let candidate = extractedPath || cleaned;
+
+                    // 规范化路径分隔符，支持正斜杠和反斜杠
+                    candidate = PathCompatibilityUtils.normalizePathSeparators(candidate);
+
+                    if (candidate) {
+                        try {
+                            const resolvedPath = resolveImagePath(candidate, document);
+                            if (resolvedPath) {
+                                const hover = createImageHoverFromPath(resolvedPath);
+                                if (hover) {
+                                    return hover;
+                                }
+                            }
+                        } catch (e) {
+                            console.error('HoverCreators: error resolving image path', e);
+                        }
                     }
                 }
             } catch (e) {
