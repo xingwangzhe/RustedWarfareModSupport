@@ -28,34 +28,8 @@ import { SectionPropertyDecorator } from './coralor/decorator';
 import { RustedWarfareHoverProvider } from './hoverProvider/hoverProvider';
 import { MemoryDefinitionCompletionProvider } from './memory/MemoryDefinitionCompletionProvider';
 import { MemoryValueCompletionProvider } from './memory/MemoryValueCompletionProvider';
+import { registerModPanel } from './panel';
 // image zoom/preview features removed per user request
-
-// Tree Data Provider for the custom panel
-class ModPanelProvider implements vscode.TreeDataProvider<ModPanelItem> {
-    getTreeItem(element: ModPanelItem): vscode.TreeItem {
-        return element;
-    }
-
-    getChildren(element?: ModPanelItem): Thenable<ModPanelItem[]> {
-        if (!element) {
-            // Root level items
-            return Promise.resolve([
-                new ModPanelItem('Welcome', 'Welcome to RustedWarfare Mod Support', vscode.TreeItemCollapsibleState.None)
-            ]);
-        }
-        return Promise.resolve([]);
-    }
-}
-
-class ModPanelItem extends vscode.TreeItem {
-    constructor(
-        public readonly label: string,
-        public readonly tooltip: string,
-        public readonly collapsibleState: vscode.TreeItemCollapsibleState
-    ) {
-        super(label, collapsibleState);
-    }
-}
 
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
@@ -211,20 +185,21 @@ export function activate(context: vscode.ExtensionContext) {
 	const decorator = new SectionPropertyDecorator();
 	context.subscriptions.push(decorator);
 
-	// 注册自定义面板的Tree Data Provider
-	const modPanelProvider = new ModPanelProvider();
-	const treeDataProvider = vscode.window.registerTreeDataProvider('rustedwarfaremodsupport-panel', modPanelProvider);
+	// 注册自定义面板
+	registerModPanel(context);
 
-	context.subscriptions.push(disposable);
-	context.subscriptions.push(sectionParser);
-	context.subscriptions.push(foldingProvider);
-	context.subscriptions.push(valueCompletionSubscription);
-	context.subscriptions.push(sectionNameCompletionSubscription);
-	context.subscriptions.push(memoryDefinitionSubscription);
-	context.subscriptions.push(memoryValueSubscription);
-	context.subscriptions.push(hoverProvider);
-	context.subscriptions.push(treeDataProvider);
-	completionSubscriptions.forEach(subscription => context.subscriptions.push(subscription));
+	// 将所有订阅添加到context.subscriptions中
+	context.subscriptions.push(
+		disposable,
+		sectionParser,
+		foldingProvider,
+		...completionSubscriptions,
+		valueCompletionSubscription,
+		sectionNameCompletionSubscription,
+		memoryDefinitionSubscription,
+		memoryValueSubscription,
+		hoverProvider
+	);
 }
 
 // This method is called when your extension is deactivated
