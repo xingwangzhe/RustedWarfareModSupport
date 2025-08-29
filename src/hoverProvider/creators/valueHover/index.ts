@@ -2,6 +2,7 @@ import * as vscode from 'vscode';
 import { HoverUtils } from '../../utils';
 import { resolveImagePath } from '../../../pubfun/imagePathResolver';
 import { createImageHoverFromPath } from '../../../pubfun/imageHover';
+import { PathCompatibilityUtils } from '../../../pubfun/pathCompatibility';
 import { PropertyHoverCreator } from '../propertyHover';
 import { createBooleanValueHover } from './booleanHover';
 import { createLogicBooleanValueHover } from './logicBooleanHover';
@@ -49,16 +50,12 @@ export class ValueHoverCreator {
                 // 移除注释部分
                 const cleaned = fullValueText.replace(/#.*$/, '').trim();
 
-                // 在整个值文本中查找包含图片扩展的路径片段（更宽松的后缀匹配）
-                // allow paths that include backslashes and unicode characters; stop at whitespace or #
-                const imagePathPattern = /[^\s#]+?\.(png|jpe?g|gif|webp|bmp)/i;
-                const found = cleaned.match(imagePathPattern);
-                let candidate = found ? found[0] : cleaned;
+                // 使用PathCompatibilityUtils提取和规范化图片路径
+                const extractedPath = PathCompatibilityUtils.extractImagePath(cleaned);
+                let candidate = extractedPath || cleaned;
 
-                // normalize windows-style backslashes to platform separator before resolving
-                if (candidate.indexOf('\\') >= 0) {
-                    candidate = candidate.replace(/\\+/g, require('path').sep);
-                }
+                // 规范化路径分隔符，支持正斜杠和反斜杠
+                candidate = PathCompatibilityUtils.normalizePathSeparators(candidate);
 
                 if (candidate) {
                     try {
