@@ -96,12 +96,14 @@ export class PathCompatibilityUtils {
     public static createPathSuggestions(basePath: string, fileName: string): string[] {
         const suggestions: string[] = [];
 
-        // 当前平台格式
-        suggestions.push(path.join(basePath, fileName));
+        // 当前平台格式（使用path.join确保正确）
+        const platformPath = path.join(basePath, fileName);
+        suggestions.push(platformPath);
 
-        // 如果是Windows，也提供反斜杠格式
+        // 如果是Windows，也提供Linux/Mac格式（正斜杠）
         if (path.sep === '\\') {
-            suggestions.push(path.join(basePath, fileName).replace(/\//g, '\\'));
+            const unixStylePath = platformPath.replace(/\\/g, '/');
+            suggestions.push(unixStylePath);
         }
 
         return suggestions;

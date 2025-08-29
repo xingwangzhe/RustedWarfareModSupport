@@ -3,14 +3,18 @@
 ## [1.5.19] - 2025-08-29
 
 ### ✨ 新增功能 / New Features
-- 🛠️ **路径兼容性增强** - 全面支持正斜杠和反斜杠路径格式
-  - 支持多种图片路径格式：`ROOT:/images/icon.png`、`ROOT:\images\icon.png`
-  - 自动路径规范化，将Windows反斜杠转换为当前平台路径分隔符
-  - 智能图片路径提取和验证
-  - 跨平台补全建议（同时提供正斜杠和反斜杠格式）
+- 🛠️ **跨平台路径兼容性** - 全面支持Windows、Linux、macOS的路径格式
+  - **自动路径规范化**：将反斜杠路径自动转换为当前平台格式
+  - **智能路径检测**：识别并处理多种路径格式
+  - **跨平台补全建议**：
+    - Windows：同时提供 `ROOT:\images\icon.png` 和 `ROOT:/images/icon.png`
+    - Linux/macOS：提供标准正斜杠格式 `ROOT:/images/icon.png`
+  - **支持的路径格式**：
+    - 相对路径：`images/icon.png`,`images\icon.png`
+    - ROOT前缀：`ROOT:/images/icon.png` 或 `ROOT:\images\icon.png`
 
 ### 🔧 技术改进 / Technical Improvements
-- 📦 新增 `PathCompatibilityUtils` 工具类，提供统一的路径处理功能
+- 📦 新增 `PathCompatibilityUtils` 工具类，提供统一的跨平台路径处理
 - 🔄 重构图片路径解析逻辑，使用标准ES模块导入
 - 🧹 代码清理：删除不必要的测试文件，优化项目结构
 
