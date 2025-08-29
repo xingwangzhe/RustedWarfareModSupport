@@ -5,8 +5,7 @@
 [![版本 / Version](https://img.shields.io/badge/version-1.5.16-blue.svg)](CHANGELOG.md)
 [![许可证 / License](https://img.shields.io/badge/license-AGPL--3.0-green.svg)](LICENSE.md)
 
-> 📋 [更新日志 / Changelog](CHANGELOG.md) | 🐛 [报告问题 / Report Issues](https://github.com/xingwangzhe/RustedWarfareModSupport/issues) | 📖 [文档 / Documentation](https://github.com/xingwangzhe/RustedWarfareModSupport/wiki)
-
+> 📋 [更新日志 / Changelog](CHANGELOG.md) | 🐛 [报告问题 / Report Issues](https://github.com/xingwangzhe/RustedWarfareModSupport/issues)
 - 多语言支持（支持12种语言：简体中文、繁体中文、英文、阿拉伯语、德语、西班牙语、法语、意大利语、日语、韩语、葡萄牙语、乌克兰语、俄语），翻译由 `merge.js` 合并
 
 - Multi-language support (supports 12 languages: Simplified Chinese, Traditional Chinese, English, Arabic, German, Spanish, French, Italian, Japanese, Korean, Portuguese, Ukrainian, Russian), translations merged by `merge.js`
@@ -83,6 +82,13 @@ A RustedWarfare mod development tool that provides in-editor completions and doc
 - 感谢copilot的代码与翻译支持
 - Thanks to copilot for code and translation support
 
+### 侧边栏管理面板
+
+### Panel Management
+
+- 通过左侧边栏的面板来实现配置后缀，用户可以方便地添加、删除和管理自定义文件后缀。
+
+- The panel now supports managing custom file extensions through the sidebar.
 
 ## 参考资料
 ## References
