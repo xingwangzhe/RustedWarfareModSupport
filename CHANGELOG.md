@@ -2,9 +2,8 @@
 
 ## [1.6.22] - 2025-08-29
 
-- 自定义翻译实现，弃用vscode翻译api
-- Custom translation implementation, abandoning vscode translation API
-
+- 自定义翻译实现，弃用vscode翻译api，修正en翻译问题
+- Custom translation implementation, abandoning vscode translation API, fixing en translation issues
 - 更友好的颜色高亮
 - Improved color highlighting for better readability
 
