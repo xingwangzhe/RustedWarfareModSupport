@@ -32,6 +32,25 @@
         "title": "Hello World"
       }
     ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "rustedwarfaremodsupport-explorer",
+          "title": "RustedWarfare Mod",
+          "icon": "./resources/mod-icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "rustedwarfaremodsupport-explorer": [
+        {
+          "id": "rustedwarfaremodsupport-panel",
+          "name": "Mod Panel",
+          "icon": "./resources/mod-icon.svg",
+          "contextualTitle": "RustedWarfare Mod Panel"
+        }
+      ]
+    },
     "grammars": [
       {
         "language": "ini",
