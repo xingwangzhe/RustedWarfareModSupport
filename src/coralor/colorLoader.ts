@@ -44,12 +44,12 @@ export class ColorLoader {
             console.error('Error loading type colors:', error);
             // 返回合理的默认颜色映射
             this.cachedMap = {
-                'string': '#D9534F',
-                'int': '#2A9DF4',
-                'float': '#3AA0D8',
-                'bool': '#28A745',
-                'string(s)': '#E94B3C',
-                'int(s)': '#1F78B4'
+                'string': '#E53E3E',
+                'int': '#3182CE',
+                'float': '#2C5282',
+                'bool': '#38A169',
+                'string(s)': '#FC8181',
+                'int(s)': '#63B3ED'
             };
             return this.cachedMap;
         }
@@ -73,18 +73,18 @@ export class ColorLoader {
 
         // 语义规则分组（优先顺序自上而下）
         const rules: Array<{ re: RegExp; color: string }> = [
-            { re: /string|locale|name|text|message|leg\/arm/, color: '#D9534F' },
-            { re: /int|float|number|degrees|static integer|logicnumber/, color: '#2A9DF4' },
-            { re: /bool|true|false|logic|logicboolean/, color: '#28A745' },
-            { re: /ref|id|ids|refs|action ids|marker ref|animation id/, color: '#7B2CBF' },
-            { re: /price|cost|money/, color: '#D4A017' },
-            { re: /effect|effects|decal|projectile|animation/, color: '#8E44AD' },
-            { re: /sound|audio/, color: '#5EA14B' },
-            { re: /resource|resources|customResource|dynamic resources|dynamic/, color: '#1E9A81' },
-            { re: /time|seconds/, color: '#FF8C42' },
-            { re: /point|point3d|marker|marker ref/, color: '#17A2B8' },
-            { re: /tag|tags|tag ref/, color: '#8A5A44' },
-            { re: /image|file/, color: '#9FA8DA' }
+            { re: /string|locale|name|text|message|leg\/arm/, color: '#E53E3E' },
+            { re: /int|float|number|degrees|static integer|logicnumber/, color: '#3182CE' },
+            { re: /bool|true|false|logic|logicboolean/, color: '#38A169' },
+            { re: /ref|id|ids|refs|action ids|marker ref|animation id/, color: '#805AD5' },
+            { re: /price|cost|money/, color: '#D69E2E' },
+            { re: /effect|effects|decal|projectile|animation/, color: '#9F7AEA' },
+            { re: /sound|audio/, color: '#48BB78' },
+            { re: /resource|resources|customResource|dynamic resources|dynamic/, color: '#319795' },
+            { re: /time|seconds/, color: '#DD6B20' },
+            { re: /point|point3d|marker|marker ref/, color: '#00B5D8' },
+            { re: /tag|tags|tag ref/, color: '#718096' },
+            { re: /image|file/, color: '#00B5D8' }
         ];
 
         for (const r of rules) {

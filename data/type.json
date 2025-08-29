@@ -1,342 +1,342 @@
 [
   {
     "name": "string",
-  "color": "#D9534F"
+    "color": "#E53E3E"
   },
   {
     "name": "int",
-  "color": "#2A9DF4"
+    "color": "#3182CE"
   },
   {
     "name": "float",
-  "color": "#3AA0D8"
+    "color": "#2C5282"
   },
   {
     "name": "bool",
-  "color": "#28A745"
+    "color": "#38A169"
   },
   {
     "name": "string(s)",
-  "color": "#E94B3C"
+    "color": "#FC8181"
   },
   {
     "name": "int(s)",
-  "color": "#1F78B4"
+    "color": "#63B3ED"
   },
   {
     "name": "float / s",
-  "color": "#2E9ECF"
+    "color": "#4299E1"
   },
   {
     "name": "LogicBoolean",
-  "color": "#C2185B"
+    "color": "#68D391"
   },
   {
     "name": "price",
-  "color": "#D4A017"
+    "color": "#D69E2E"
   },
   {
     "name": "ints",
-  "color": "#1572A1"
+    "color": "#4A5568"
   },
   {
     "name": "time",
-  "color": "#FF8C42"
+    "color": "#DD6B20"
   },
   {
     "name": "movementTypes",
-  "color": "#117A65"
+    "color": "#2F855A"
   },
   {
     "name": "turret ref",
-  "color": "#7B2CBF"
+    "color": "#805AD5"
   },
   {
     "name": "effect(s) ref",
-  "color": "#8E44AD"
+    "color": "#9F7AEA"
   },
   {
     "name": "sound(s)",
-  "color": "#6AA84F"
+    "color": "#48BB78"
   },
   {
     "name": "preset effects",
-  "color": "#7F3FBF"
+    "color": "#B794F6"
   },
   {
     "name": "LocaleString",
-  "color": "#D64541"
+    "color": "#FEB2B2"
   },
   {
     "name": "file(s) (ini)",
-  "color": "#B0A8B9"
+    "color": "#4FD1C5"
   },
   {
     "name": "enum",
-  "color": "#9A6324"
+    "color": "#A0AEC0"
   },
   {
     "name": "memory",
-  "color": "#6CBF6B"
+    "color": "#9AE6B4"
   },
   {
     "name": "unit(s)",
-  "color": "#2E7DB0"
+    "color": "#2D3748"
   },
   {
     "name": "action ref",
-  "color": "#8A3BBC"
+    "color": "#6B46C1"
   },
   {
     "name": "projectile ref",
-  "color": "#7A42B4"
+    "color": "#553C9A"
   },
   {
     "name": "animation ref",
-  "color": "#6F42C1"
+    "color": "#4C51BF"
   },
   {
     "name": "color",
-  "color": "#1AA39A"
+    "color": "#319795"
   },
   {
     "name": "draw type",
-  "color": "#FFB400"
+    "color": "#ED8936"
   },
   {
     "name": "fields values",
-  "color": "#FF7A00"
+    "color": "#F6AD55"
   },
   {
     "name": "style type",
-  "color": "#2B6CB0"
+    "color": "#2C5282"
   },
   {
     "name": "effects",
-  "color": "#9B59B6"
+    "color": "#D53F8C"
   },
   {
     "name": "static integer",
-  "color": "#1E90FF"
+    "color": "#2B6CB0"
   },
   {
     "name": "static integer(price)",
-  "color": "#CFA40A"
+    "color": "#B7791F"
   },
   {
     "name": "DynamicsDigital",
-  "color": "#27AE60"
+    "color": "#38B2AC"
   },
   {
     "name": "number",
-  "color": "#0476D9"
+    "color": "#3182CE"
   },
   {
     "name": "image file",
-  "color": "#9FA8DA"
+    "color": "#00B5D8"
   },
   {
     "name": "true, false",
-  "color": "#2ECC71"
+    "color": "#48BB78"
   },
   {
     "name": "NONE, LAND, AIR, WATER, HOVER, BUILDING, OVER_CLIFF, OVER_CLIFF_WATER",
-  "color": "#FF6F00"
+    "color": "#C05621"
   },
   {
     "name": "unit ref",
-  "color": "#2B6F9E"
+    "color": "#1A365D"
   },
   {
     "name": "tags",
-  "color": "#8A5A44"
+    "color": "#718096"
   },
   {
     "name": "logic",
-  "color": "#C83E6D"
+    "color": "#E53E3E"
   },
   {
     "name": "file (image)",
-  "color": "#9FB1D4"
+    "color": "#00B5D8"
   },
   {
     "name": "boolean",
-  "color": "#2EA44F"
+    "color": "#38A169"
   },
   {
     "name": "time (seconds)",
-  "color": "#FF9E1B"
+    "color": "#DD6B20"
   },
   {
     "name": "strings(s)",
-  "color": "#E04E39"
+    "color": "#FC8181"
   },
   {
     "name": "price(s)",
-  "color": "#BF8B00"
+    "color": "#D69E2E"
   },
   {
     "name": "effect ref",
-  "color": "#8D3DB6"
+    "color": "#9F7AEA"
   },
   {
     "name": "sound ref",
-  "color": "#5EA14B"
+    "color": "#48BB78"
   },
   {
     "name": "action refs",
-  "color": "#7A39B7"
+    "color": "#6B46C1"
   },
   {
     "name": "effects ref",
-  "color": "#7F3FB0"
+    "color": "#B794F6"
   },
   {
     "name": "resources",
-  "color": "#1E9A81"
+    "color": "#319795"
   },
   {
     "name": "resource",
-  "color": "#1B8E6A"
+    "color": "#2C7A7B"
   },
   {
     "name": "customResource",
-  "color": "#178F6A"
+    "color": "#285E61"
   },
   {
     "name": "customPrice",
-  "color": "#B78600"
+    "color": "#B7791F"
   },
   {
     "name": "TeamRelation",
-  "color": "#7B5E2A"
+    "color": "#744210"
   },
   {
     "name": "unitTypes",
-  "color": "#2C7DA0"
+    "color": "#2D3748"
   },
   {
     "name": "unitType",
-  "color": "#2B78A6"
+    "color": "#1A365D"
   },
   {
     "name": "unit ref/marker",
-  "color": "#256B95"
+    "color": "#2C5282"
   },
   {
     "name": "marker",
-  "color": "#2F8FCE"
+    "color": "#4299E1"
   },
   {
     "name": "point",
-  "color": "#17A2B8"
+    "color": "#00B5D8"
   },
   {
     "name": "point3d",
-  "color": "#1799B0"
+    "color": "#319795"
   },
   {
     "name": "relation",
-  "color": "#836953"
+    "color": "#A0AEC0"
   },
   {
     "name": "event",
-  "color": "#A63D2A"
+    "color": "#E53E3E"
   },
   {
     "name": "fields",
-  "color": "#FF6600"
+    "color": "#ED8936"
   },
   {
     "name": "addEnergy",
-  "color": "#FF3B30"
+    "color": "#C53030"
   },
   {
     "name": "dynamic resources",
-  "color": "#1F9A77"
+    "color": "#38B2AC"
   },
   {
     "name": "dynamic",
-  "color": "#1AA86B"
+    "color": "#319795"
   },
   {
     "name": "key value pairs",
-  "color": "#FF6F00"
+    "color": "#F6AD55"
   },
   {
     "name": "logicNumber",
-  "color": "#2B9ED9"
+    "color": "#63B3ED"
   },
   {
     "name": "Message Tag",
-  "color": "#944E3E"
+    "color": "#FEB2B2"
   },
   {
     "name": "decal refs",
-  "color": "#6C3FA6"
+    "color": "#B794F6"
   },
   {
     "name": "tag ref",
-  "color": "#8B5A3C"
+    "color": "#A0AEC0"
   },
   {
     "name": "attachment ids",
-  "color": "#A64DA5"
+    "color": "#D53F8C"
   },
   {
     "name": "action ids",
-  "color": "#9443B8"
+    "color": "#805AD5"
   },
   {
     "name": "animation id",
-  "color": "#6A39B0"
+    "color": "#6B46C1"
   },
   {
     "name": "effect ref list",
-  "color": "#7B36A8"
+    "color": "#9F7AEA"
   },
   {
     "name": "leg/arm",
-  "color": "#F08C5A"
+    "color": "#FC8181"
   },
   {
     "name": "marker ref",
-  "color": "#2D83B8"
+    "color": "#4299E1"
   },
   {
     "name": "color hex",
-  "color": "#17A589"
+    "color": "#38B2AC"
   },
   {
     "name": "degrees",
-  "color": "#2296D3"
+    "color": "#63B3ED"
   },
   {
     "name": "any type",
-  "color": "#B3372E"
+    "color": "#FED7D7"
   },
   {
     "name": "same type",
-  "color": "#A63A32"
+    "color": "#FEB2B2"
   },
   {
     "name": "value type",
-  "color": "#9F332D"
+    "color": "#FC8181"
   },
   {
     "name": "all arguments",
-  "color": "#8E2F28"
+    "color": "#E53E3E"
   },
   {
     "name": "self only",
-  "color": "#7A2A24"
+    "color": "#C53030"
   },
   {
     "name": "audio dir",
-  "color": "#BC8F8F"
+    "color": "#E6FFFA"
   },
   {
     "name": "usable frames",
-  "color": "#A35A99"
+    "color": "#D53F8C"
   }
 ]

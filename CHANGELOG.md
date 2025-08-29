@@ -5,6 +5,9 @@
 - 自定义翻译实现，弃用vscode翻译api
 - Custom translation implementation, abandoning vscode translation API
 
+- 更友好的颜色高亮
+- Improved color highlighting for better readability
+
 ## [1.6.20] - 2025-08-29
 
 - **面板提供后缀选项，额外的后缀支持**  
