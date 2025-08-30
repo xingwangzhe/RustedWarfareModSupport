@@ -1,4 +1,9 @@
 {
+  "panel.export.label": "تصدير",
+  "panel.export.direct": "تصدير مباشر",
+  "panel.export.direct.tooltip": "تصدير المود مباشرة بدون تشويش",
+  "panel.export.obfuscated": "تصدير مشوش",
+  "panel.export.obfuscated.tooltip": "تصدير المود مع التشويش لحماية",
   "panel.exportManager": "مدير التصدير",
   "panel.exportManager.directExport": "تصدير مباشر",
   "panel.exportManager.obfuscatedExport": "تصدير مشوش",

@@ -1,4 +1,9 @@
 {
+  "panel.export.label": "導出",
+  "panel.export.direct": "直接導出",
+  "panel.export.direct.tooltip": "直接導出模組，不進行混淆",
+  "panel.export.obfuscated": "混淆導出",
+  "panel.export.obfuscated.tooltip": "導出模組並進行混淆以保護模組",
   "panel.exportManager": "導出管理",
   "panel.exportManager.directExport": "直接導出",
   "panel.exportManager.obfuscatedExport": "加密導出",

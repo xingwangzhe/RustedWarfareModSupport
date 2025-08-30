@@ -1,4 +1,9 @@
 {
+  "panel.export.label": "エクスポート",
+  "panel.export.direct": "直接エクスポート",
+  "panel.export.direct.tooltip": "難読化せずにMODを直接エクスポート",
+  "panel.export.obfuscated": "難読化エクスポート",
+  "panel.export.obfuscated.tooltip": "保護のために難読化してMODをエクスポート",
   "panel.exportManager": "エクスポート管理",
   "panel.exportManager.directExport": "直接エクスポート",
   "panel.exportManager.obfuscatedExport": "難読化エクスポート",

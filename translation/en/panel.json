@@ -1,4 +1,9 @@
 {
+  "panel.export.label": "Export",
+  "panel.export.direct": "Direct Export",
+  "panel.export.direct.tooltip": "Export mod directly without obfuscation",
+  "panel.export.obfuscated": "Obfuscated Export",
+  "panel.export.obfuscated.tooltip": "Export mod with obfuscation for protection",
   "panel.exportManager": "Export Manager",
   "panel.exportManager.directExport": "Direct Export",
   "panel.exportManager.obfuscatedExport": "Obfuscated Export",

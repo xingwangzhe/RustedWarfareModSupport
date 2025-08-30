@@ -1,4 +1,9 @@
 {
+  "panel.export.label": "내보내기",
+  "panel.export.direct": "직접 내보내기",
+  "panel.export.direct.tooltip": "난독화 없이 MOD를 직접 내보내기",
+  "panel.export.obfuscated": "난독화 내보내기",
+  "panel.export.obfuscated.tooltip": "보호를 위해 난독화하여 MOD 내보내기",
   "panel.exportManager": "내보내기 관리자",
   "panel.exportManager.directExport": "직접 내보내기",
   "panel.exportManager.obfuscatedExport": "난독화 내보내기",

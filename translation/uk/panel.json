@@ -1,4 +1,9 @@
 {
+  "panel.export.label": "Експорт",
+  "panel.export.direct": "Прямий експорт",
+  "panel.export.direct.tooltip": "Експортувати мод безпосередньо без обфускації",
+  "panel.export.obfuscated": "Обфусцированный експорт",
+  "panel.export.obfuscated.tooltip": "Експортувати мод з обфускацією для захисту",
   "panel.exportManager": "Менеджер експорту",
   "panel.exportManager.directExport": "Прямий експорт",
   "panel.exportManager.obfuscatedExport": "Обфусцированный експорт",

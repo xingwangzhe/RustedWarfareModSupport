@@ -1,4 +1,9 @@
 {
+  "panel.export.label": "Export",
+  "panel.export.direct": "Direkter Export",
+  "panel.export.direct.tooltip": "Mod direkt ohne Verschleierung exportieren",
+  "panel.export.obfuscated": "Verschleierter Export",
+  "panel.export.obfuscated.tooltip": "Mod mit Verschleierung zum Schutz exportieren",
   "panel.exportManager": "Export-Manager",
   "panel.exportManager.directExport": "Direkter Export",
   "panel.exportManager.obfuscatedExport": "Verschleierter Export",
