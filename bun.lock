@@ -5,6 +5,7 @@
       "name": "rustedwarfaremodsupport",
       "dependencies": {
         "@vscode/l10n": "^0.0.18",
+        "jszip": "^3.10.1",
       },
       "devDependencies": {
         "@types/mocha": "^10.0.10",

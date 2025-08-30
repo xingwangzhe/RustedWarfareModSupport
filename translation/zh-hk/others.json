@@ -18,21 +18,5 @@
   "data.value.bool.true.description": "表示布爾值 true",
   "data.value.bool.false.description": "表示布爾值 false",
   "Congratulations, your extension \"rustedwarfaremodsupport\" is now active!": "恭喜，您的擴展 \"rustedwarfaremodsupport\" 現在已激活！",
-  "Hello World from RustedWarfareModSupport!": "來自 RustedWarfareModSupport 的 Hello World！",
-  "panel.fileExtensions.title": "檔案擴展名管理",
-  "panel.fileExtensions.description": "管理支援的檔案擴展名類型",
-  "panel.fileExtensions.add.placeholder": "輸入檔案擴展名 (例如: .cfg)",
-  "panel.fileExtensions.add.button": "新增",
-  "panel.fileExtensions.add.emptyInput": "檔案擴展名不能為空",
-  "panel.fileExtensions.defaultExtensions": "預設擴展名",
-  "panel.fileExtensions.customExtensions": "自訂擴展名",
-  "panel.fileExtensions.remove.confirm": "確定要刪除此檔案擴展名嗎？",
-  "panel.fileExtensions.remove.cannotDeleteDefault": "無法刪除預設檔案擴展名",
-  "panel.fileExtensions.remove.notFound": "檔案擴展名不存在",
-  "panel.fileExtensions.invalidFormat": "檔案擴展名格式無效，必須以點(.)開頭",
-  "panel.fileExtensions.duplicate": "此檔案擴展名已存在",
-  "panel.fileExtensions.add.success": "已新增檔案擴展名: {0}",
-  "panel.fileExtensions.remove.success": "已移除檔案擴展名: {0}",
-  "panel.fileExtensions.confirm": "確定",
-  "panel.fileExtensions.remove.tooltip": "點擊刪除"
+  "Hello World from RustedWarfareModSupport!": "來自 RustedWarfareModSupport 的 Hello World！"
 }

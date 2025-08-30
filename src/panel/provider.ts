@@ -21,9 +21,16 @@ export class PanelDataManager {
     private initializeDefaultItems(): void {
         this.items = [
             {
-                label: 'Welcome',
-                tooltip: 'Welcome to RustedWarfare Mod Support',
+                label: t('panel.welcome.label'),
+                tooltip: t('panel.welcome.tooltip'),
                 collapsibleState: vscode.TreeItemCollapsibleState.None
+            },
+            {
+                label: t('panel.export.label'),
+                tooltip: t('panel.export.tooltip'),
+                collapsibleState: vscode.TreeItemCollapsibleState.Expanded,
+                command: undefined,
+                iconPath: 'package'
             }
         ];
     }

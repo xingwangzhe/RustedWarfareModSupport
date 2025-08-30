@@ -155,6 +155,7 @@
     "@vscode/test-electron": "^2.5.2"
   },
   "dependencies": {
-    "@vscode/l10n": "^0.0.18"
+    "@vscode/l10n": "^0.0.18",
+    "jszip": "^3.10.1"
   }
 }

@@ -46,14 +46,58 @@ export class ModPanelProvider implements vscode.TreeDataProvider<ModPanelItem> {
             // Root level items
             const items = this.dataManager.getItems();
             const fileExtensionItems = this.createFileExtensionItems();
+            // 检查是否有“导出管理”节点
+            const exportNode = items.find(item => item.label === t('panel.export.label'));
+            const exportPanelItems = exportNode ? [
+                new ModPanelItem(
+                    t('panel.export.direct'),
+                    t('panel.export.direct.tooltip'),
+                    vscode.TreeItemCollapsibleState.None,
+                    'rustedwarfaremodsupport.exportDirect'
+                ),
+                new ModPanelItem(
+                    t('panel.export.obfuscated'),
+                    t('panel.export.obfuscated.tooltip'),
+                    vscode.TreeItemCollapsibleState.None,
+                    'rustedwarfaremodsupport.exportObfuscated'
+                )
+            ] : [];
             return Promise.resolve([
-                ...items.map(item => new ModPanelItem(
-                    item.label,
-                    item.tooltip,
-                    item.collapsibleState,
-                    item.command
-                )),
+                ...items.map(item => {
+                    if (item.label === t('panel.export.label')) {
+                        // 导出管理节点，返回子项
+                        return new ModPanelItem(
+                            item.label,
+                            item.tooltip,
+                            vscode.TreeItemCollapsibleState.Expanded
+                        );
+                    }
+                    return new ModPanelItem(
+                        item.label,
+                        item.tooltip,
+                        item.collapsibleState,
+                        item.command
+                    );
+                }),
                 ...fileExtensionItems
+            ]);
+        }
+
+        // 如果是“导出管理”节点，返回其子项
+        if (element && element.label === t('panel.export.label')) {
+            return Promise.resolve([
+                new ModPanelItem(
+                    t('panel.export.direct'),
+                    t('panel.export.direct.tooltip'),
+                    vscode.TreeItemCollapsibleState.None,
+                    'rustedwarfaremodsupport.exportDirect'
+                ),
+                new ModPanelItem(
+                    t('panel.export.obfuscated'),
+                    t('panel.export.obfuscated.tooltip'),
+                    vscode.TreeItemCollapsibleState.None,
+                    'rustedwarfaremodsupport.exportObfuscated'
+                )
             ]);
         }
 

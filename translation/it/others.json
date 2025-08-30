@@ -18,21 +18,5 @@
   "data.value.bool.true.description": "Rappresenta il valore booleano true",
   "data.value.bool.false.description": "Rappresenta il valore booleano false",
   "Congratulations, your extension \"rustedwarfaremodsupport\" is now active!": "Congratulazioni, la tua estensione \"rustedwarfaremodsupport\" è ora attiva!",
-  "Hello World from RustedWarfareModSupport!": "Ciao mondo da RustedWarfareModSupport!",
-  "panel.fileExtensions.title": "Gestione Estensioni File",
-  "panel.fileExtensions.description": "Gestisci i tipi di estensioni file supportate",
-  "panel.fileExtensions.add.placeholder": "Inserisci estensione file (esempio: .cfg)",
-  "panel.fileExtensions.add.button": "Aggiungi",
-  "panel.fileExtensions.add.emptyInput": "L'estensione file non può essere vuota",
-  "panel.fileExtensions.defaultExtensions": "Estensioni predefinite",
-  "panel.fileExtensions.customExtensions": "Estensioni personalizzate",
-  "panel.fileExtensions.remove.confirm": "Sei sicuro di voler eliminare questa estensione file?",
-  "panel.fileExtensions.remove.cannotDeleteDefault": "Impossibile eliminare l'estensione file predefinita",
-  "panel.fileExtensions.remove.notFound": "Estensione file non trovata",
-  "panel.fileExtensions.invalidFormat": "Formato estensione file non valido, deve iniziare con un punto (.)",
-  "panel.fileExtensions.duplicate": "Questa estensione file esiste già",
-  "panel.fileExtensions.add.success": "Estensione file aggiunta: {0}",
-  "panel.fileExtensions.remove.success": "Estensione file rimossa: {0}",
-  "panel.fileExtensions.confirm": "Conferma",
-  "panel.fileExtensions.remove.tooltip": "Clicca per eliminare"
+  "Hello World from RustedWarfareModSupport!": "Ciao mondo da RustedWarfareModSupport!"
 }
