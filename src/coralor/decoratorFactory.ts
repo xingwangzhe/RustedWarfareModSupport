@@ -3,22 +3,28 @@ import { getColorLoader } from './colorLoader';
 
 /**
  * 装饰器工厂类
- * 负责创建和管理文本装饰器
+ * 负责创建和管理文本装饰器，支持主题切换
  */
 export class DecoratorFactory {
     private decorators: Map<string, vscode.TextEditorDecorationType>;
+    private currentTheme: vscode.ColorThemeKind | null = null;
 
     constructor() {
         this.decorators = new Map();
     }
 
     /**
-     * 初始化装饰器
-     */
-    /**
      * 按需创建或获取装饰器
      */
     private getOrCreateDecorator(typeName: string): vscode.TextEditorDecorationType {
+        const activeTheme = vscode.window.activeColorTheme.kind;
+        
+        // 如果主题改变，清除所有装饰器缓存
+        if (this.currentTheme !== activeTheme) {
+            this.dispose();
+            this.currentTheme = activeTheme;
+        }
+
         const existing = this.decorators.get(typeName);
         if (existing) {
             return existing;
@@ -75,14 +81,20 @@ export class DecoratorFactory {
         if (this.decorators.has('language')) {
             return;
         }
+        
+        const isDarkTheme = vscode.window.activeColorTheme.kind === vscode.ColorThemeKind.Dark || 
+                           vscode.window.activeColorTheme.kind === vscode.ColorThemeKind.HighContrast;
+        
+        const languageColor = isDarkTheme ? '#FFD700' : '#B45309'; // 暗色用金色，亮色用深橙色
+        
         const languageDecorator = vscode.window.createTextEditorDecorationType({
-            color: '#FFD700', // 金色
+            color: languageColor,
             fontWeight: 'bold',
-            overviewRulerColor: '#FFD700',
+            overviewRulerColor: languageColor,
             overviewRulerLane: vscode.OverviewRulerLane.Right,
             after: {
                 contentText: ' 🌐',
-                color: '#FFD700'
+                color: languageColor
             }
         });
         this.decorators.set('language', languageDecorator);
@@ -100,6 +112,16 @@ export class DecoratorFactory {
 
         // 特殊处理 language 键
         if (typeName === 'language') {
+            // 检查当前主题是否与缓存的主题匹配
+            const currentTheme = vscode.window.activeColorTheme.kind;
+            const cachedTheme = this.currentTheme;
+            
+            // 如果主题改变，重新创建language装饰器
+            if (cachedTheme !== currentTheme) {
+                this.decorators.delete('language');
+                this.currentTheme = currentTheme;
+            }
+            
             this.ensureLanguageDecorator();
             return this.decorators.get('language');
         }

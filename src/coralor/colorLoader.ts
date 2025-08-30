@@ -6,15 +6,24 @@ import { getExtensionId } from '../extension';
 
 /**
  * 颜色加载器类
- * 负责从配置文件加载类型颜色映射
+ * 负责从配置文件加载类型颜色映射，支持暗色和亮色主题
  */
 export class ColorLoader {
     private cachedMap: TypeColorMap | null = null;
+    private currentTheme: vscode.ColorThemeKind | null = null;
 
     /**
-     * 从 type.json 加载类型颜色映射（带缓存）
+     * 从 type.json 加载类型颜色映射（带缓存，根据主题）
      */
     public loadTypeColors(): TypeColorMap {
+        const activeTheme = vscode.window.activeColorTheme.kind;
+        
+        // 如果主题改变，清除缓存
+        if (this.currentTheme !== activeTheme) {
+            this.cachedMap = null;
+            this.currentTheme = activeTheme;
+        }
+
         if (this.cachedMap) {
             return this.cachedMap;
         }
@@ -32,9 +41,20 @@ export class ColorLoader {
             const typeData = JSON.parse(fs.readFileSync(typePath, 'utf8'));
             const colorMap: TypeColorMap = {};
 
+            // 根据当前主题选择颜色
+            const isDarkTheme = activeTheme === vscode.ColorThemeKind.Dark || 
+                               activeTheme === vscode.ColorThemeKind.HighContrast;
+
             for (const type of typeData) {
-                if (type && type.name && type.color && this.isValidColor(type.color)) {
-                    colorMap[type.name] = type.color;
+                if (type && type.name) {
+                    let color = type.color; // 默认暗色
+                    if (!isDarkTheme && type.color_light) {
+                        color = type.color_light;
+                    }
+                    
+                    if (color && this.isValidColor(color)) {
+                        colorMap[type.name] = color;
+                    }
                 }
             }
 
@@ -42,15 +62,29 @@ export class ColorLoader {
             return colorMap;
         } catch (error) {
             console.error('Error loading type colors:', error);
-            // 返回合理的默认颜色映射
-            this.cachedMap = {
-                'string': '#E53E3E',
-                'int': '#3182CE',
-                'float': '#2C5282',
-                'bool': '#38A169',
-                'string(s)': '#FC8181',
-                'int(s)': '#63B3ED'
-            };
+            // 返回合理的默认颜色映射，根据主题区分
+            const isDarkTheme = vscode.window.activeColorTheme.kind === vscode.ColorThemeKind.Dark || 
+                               vscode.window.activeColorTheme.kind === vscode.ColorThemeKind.HighContrast;
+            
+            if (isDarkTheme) {
+                this.cachedMap = {
+                    'string': '#FF6B6B',
+                    'int': '#4ECDC4',
+                    'float': '#4ECDC4',
+                    'bool': '#51CF66',
+                    'string(s)': '#FF6B6B',
+                    'int(s)': '#4ECDC4'
+                };
+            } else {
+                this.cachedMap = {
+                    'string': '#DC2626',
+                    'int': '#0D9488',
+                    'float': '#0D9488',
+                    'bool': '#16A34A',
+                    'string(s)': '#DC2626',
+                    'int(s)': '#0D9488'
+                };
+            }
             return this.cachedMap;
         }
     }
@@ -61,7 +95,9 @@ export class ColorLoader {
     public getColor(typeName: string): string {
         const map = this.loadTypeColors();
         if (!typeName) {
-            return '#888888';
+            const isDarkTheme = vscode.window.activeColorTheme.kind === vscode.ColorThemeKind.Dark || 
+                               vscode.window.activeColorTheme.kind === vscode.ColorThemeKind.HighContrast;
+            return isDarkTheme ? '#94A3B8' : '#64748B'; // 根据主题返回不同的灰色
         }
 
         // 精确匹配
@@ -70,26 +106,35 @@ export class ColorLoader {
         }
 
         const key = typeName.toLowerCase();
+        const isDarkTheme = vscode.window.activeColorTheme.kind === vscode.ColorThemeKind.Dark || 
+                           vscode.window.activeColorTheme.kind === vscode.ColorThemeKind.HighContrast;
 
         // 语义规则分组（优先顺序自上而下）
-        const rules: Array<{ re: RegExp; color: string }> = [
-            { re: /string|locale|name|text|message|leg\/arm/, color: '#E53E3E' },
-            { re: /int|float|number|degrees|static integer|logicnumber/, color: '#3182CE' },
-            { re: /bool|true|false|logic|logicboolean/, color: '#38A169' },
-            { re: /ref|id|ids|refs|action ids|marker ref|animation id/, color: '#805AD5' },
-            { re: /price|cost|money/, color: '#D69E2E' },
-            { re: /effect|effects|decal|projectile|animation/, color: '#9F7AEA' },
-            { re: /sound|audio/, color: '#48BB78' },
-            { re: /resource|resources|customResource|dynamic resources|dynamic/, color: '#319795' },
-            { re: /time|seconds/, color: '#DD6B20' },
-            { re: /point|point3d|marker|marker ref/, color: '#00B5D8' },
-            { re: /tag|tags|tag ref/, color: '#718096' },
-            { re: /image|file/, color: '#00B5D8' }
+        const rules: Array<{ re: RegExp; darkColor: string; lightColor: string }> = [
+            { re: /string|locale|name|text|message|leg\/arm/, darkColor: '#FF6B6B', lightColor: '#DC2626' },
+            { re: /int|float|number|degrees|static integer|logicnumber/, darkColor: '#4ECDC4', lightColor: '#0D9488' },
+            { re: /bool|true|false|logic|logicboolean/, darkColor: '#51CF66', lightColor: '#16A34A' },
+            { re: /ref|id|ids|refs|action ids|marker ref|animation id/, darkColor: '#A855F7', lightColor: '#7C3AED' },
+            { re: /price|cost|money/, darkColor: '#FBBF24', lightColor: '#D97706' },
+            { re: /effect|effects|decal|projectile|animation/, darkColor: '#EC4899', lightColor: '#BE185D' },
+            { re: /sound|audio/, darkColor: '#10B981', lightColor: '#059669' },
+            { re: /resource|resources|customResource|dynamic resources|dynamic/, darkColor: '#06B6D4', lightColor: '#0891B2' },
+            { re: /time|seconds/, darkColor: '#FF8A65', lightColor: '#C2410C' },
+            { re: /point|point3d|marker|marker ref/, darkColor: '#F59E0B', lightColor: '#D97706' },
+            { re: /tag|tags|tag ref/, darkColor: '#94A3B8', lightColor: '#64748B' },
+            { re: /image|file/, darkColor: '#10B981', lightColor: '#059669' },
+            { re: /unit|marker/, darkColor: '#6C5CE7', lightColor: '#4C1D95' },
+            { re: /logic|event/, darkColor: '#EF4444', lightColor: '#DC2626' },
+            { re: /field|key|value/, darkColor: '#F97316', lightColor: '#EA580C' },
+            { re: /color|hex/, darkColor: '#8B5CF6', lightColor: '#7C3AED' },
+            { re: /enum|memory|draw|style|relation/, darkColor: '#64748B', lightColor: '#475569' },
+            { re: /attachment|leg|arm|frame/, darkColor: '#F472B6', lightColor: '#DB2777' },
+            { re: /list|array|collection|items/, darkColor: '#FBBF24', lightColor: '#D97706' }
         ];
 
         for (const r of rules) {
             if (r.re.test(key)) {
-                return r.color;
+                return isDarkTheme ? r.darkColor : r.lightColor;
             }
         }
 
@@ -102,16 +147,43 @@ export class ColorLoader {
     }
 
     private hashToColor(input: string) {
+        const isDarkTheme = vscode.window.activeColorTheme.kind === vscode.ColorThemeKind.Dark || 
+                           vscode.window.activeColorTheme.kind === vscode.ColorThemeKind.HighContrast;
+        
         // djb2 hash
         let hash = 5381;
         for (let i = 0; i < input.length; i++) {
             hash = (hash * 33) ^ input.charCodeAt(i);
         }
+        
+        // 根据主题调整hash值，确保不同主题下生成不同的颜色
+        if (!isDarkTheme) {
+            hash = (hash * 31) ^ 0xDEADBEEF; // 亮色主题的种子
+        }
+        
         const r = (hash & 0xFF0000) >> 16;
         const g = (hash & 0x00FF00) >> 8;
         const b = hash & 0x0000FF;
+        
+        // 根据主题调整颜色的亮度和饱和度
+        let adjustedR = r;
+        let adjustedG = g;
+        let adjustedB = b;
+        
+        if (isDarkTheme) {
+            // 暗色主题：提高亮度，确保在暗色背景下可见
+            adjustedR = Math.min(255, r + 80);
+            adjustedG = Math.min(255, g + 80);
+            adjustedB = Math.min(255, b + 80);
+        } else {
+            // 亮色主题：降低亮度，确保在亮色背景下有对比度
+            adjustedR = Math.max(0, r - 40);
+            adjustedG = Math.max(0, g - 40);
+            adjustedB = Math.max(0, b - 40);
+        }
+        
         const toHex = (v: number) => ('0' + (v & 0xFF).toString(16)).slice(-2);
-        return `#${toHex(r)}${toHex(g)}${toHex(b)}`;
+        return `#${toHex(adjustedR)}${toHex(adjustedG)}${toHex(adjustedB)}`;
     }
 }
 

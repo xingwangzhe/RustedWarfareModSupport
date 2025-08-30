@@ -40,6 +40,18 @@ export class SectionPropertyDecorator {
             })
         );
 
+        // 订阅主题更改事件
+        disposables.push(
+            vscode.window.onDidChangeActiveColorTheme(() => {
+                // 主题改变时，更新所有可见编辑器的装饰
+                vscode.window.visibleTextEditors.forEach(editor => {
+                    if (editor.document.languageId === 'ini') {
+                        this.updateDecorations(editor);
+                    }
+                });
+            })
+        );
+
         this.disposable = vscode.Disposable.from(...disposables);
 
         // 立即更新当前编辑器的装饰

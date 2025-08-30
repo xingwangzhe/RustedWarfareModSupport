@@ -1,5 +1,10 @@
 # 更新日志 / Changelog
 
+## [1.6.23] - 2025-08-30
+
+- 更易阅读的颜色高对比度 
+- Improved color contrast for better readability
+
 ## [1.6.22] - 2025-08-29
 
 - 自定义翻译实现，弃用vscode翻译api，修正en翻译问题
@@ -56,4 +61,5 @@
 - 之前日志忘记录了，故遗失 / Previous logs were lost due to missing updates
 - i forgot to update the changelog, so it's lost
 
+- 节，键值，预览图片，内存上下文实现 / Section, key-value, preview image, memory context implementation
 - 节，键值，预览图片，内存上下文实现 / Section, key-value, preview image, memory context implementation
