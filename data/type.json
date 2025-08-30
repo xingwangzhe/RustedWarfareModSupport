@@ -1,342 +1,427 @@
 [
   {
     "name": "string",
-    "color": "#E53E3E"
+    "color": "#E53E3E",
+    "color_light": "#C53030"
   },
   {
     "name": "int",
-    "color": "#3182CE"
+    "color": "#3182CE",
+    "color_light": "#2C5282"
   },
   {
     "name": "float",
-    "color": "#2C5282"
+    "color": "#2C5282",
+    "color_light": "#2A4365"
   },
   {
     "name": "bool",
-    "color": "#38A169"
+    "color": "#38A169",
+    "color_light": "#2F855A"
   },
   {
     "name": "string(s)",
-    "color": "#FC8181"
+    "color": "#FC8181",
+    "color_light": "#E53E3E"
   },
   {
     "name": "int(s)",
-    "color": "#63B3ED"
+    "color": "#63B3ED",
+    "color_light": "#3182CE"
   },
   {
     "name": "float / s",
-    "color": "#4299E1"
+    "color": "#4299E1",
+    "color_light": "#2C5282"
   },
   {
     "name": "LogicBoolean",
-    "color": "#68D391"
+    "color": "#68D391",
+    "color_light": "#38A169"
   },
   {
     "name": "price",
-    "color": "#D69E2E"
+    "color": "#D69E2E",
+    "color_light": "#B7791F"
   },
   {
     "name": "ints",
-    "color": "#4A5568"
+    "color": "#2B6CB0",
+    "color_light": "#2C5282"
   },
   {
     "name": "time",
-    "color": "#DD6B20"
+    "color": "#DD6B20",
+    "color_light": "#C05621"
   },
   {
     "name": "movementTypes",
-    "color": "#2F855A"
+    "color": "#2F855A",
+    "color_light": "#22543D"
   },
   {
     "name": "turret ref",
-    "color": "#805AD5"
+    "color": "#805AD5",
+    "color_light": "#553C9A"
   },
   {
     "name": "effect(s) ref",
-    "color": "#9F7AEA"
+    "color": "#9F7AEA",
+    "color_light": "#6B46C1"
   },
   {
     "name": "sound(s)",
-    "color": "#48BB78"
+    "color": "#48BB78",
+    "color_light": "#2F855A"
   },
   {
     "name": "preset effects",
-    "color": "#B794F6"
+    "color": "#B794F6",
+    "color_light": "#805AD5"
   },
   {
     "name": "LocaleString",
-    "color": "#FEB2B2"
+    "color": "#FEB2B2",
+    "color_light": "#FC8181"
   },
   {
     "name": "file(s) (ini)",
-    "color": "#4FD1C5"
+    "color": "#4FD1C5",
+    "color_light": "#319795"
   },
   {
     "name": "enum",
-    "color": "#A0AEC0"
+    "color": "#A0AEC0",
+    "color_light": "#718096"
   },
   {
     "name": "memory",
-    "color": "#9AE6B4"
+    "color": "#9AE6B4",
+    "color_light": "#68D391"
   },
   {
     "name": "unit(s)",
-    "color": "#2D3748"
+    "color": "#2D3748",
+    "color_light": "#1A202C"
   },
   {
     "name": "action ref",
-    "color": "#6B46C1"
+    "color": "#6B46C1",
+    "color_light": "#553C9A"
   },
   {
     "name": "projectile ref",
-    "color": "#553C9A"
+    "color": "#553C9A",
+    "color_light": "#44337A"
   },
   {
     "name": "animation ref",
-    "color": "#4C51BF"
+    "color": "#4C51BF",
+    "color_light": "#3730A3"
   },
   {
     "name": "color",
-    "color": "#319795"
+    "color": "#319795",
+    "color_light": "#2C7A7B"
   },
   {
     "name": "draw type",
-    "color": "#ED8936"
+    "color": "#ED8936",
+    "color_light": "#DD6B20"
   },
   {
     "name": "fields values",
-    "color": "#F6AD55"
+    "color": "#F6AD55",
+    "color_light": "#D69E2E"
   },
   {
     "name": "style type",
-    "color": "#2C5282"
+    "color": "#2C5282",
+    "color_light": "#2A4365"
   },
   {
     "name": "effects",
-    "color": "#D53F8C"
+    "color": "#D53F8C",
+    "color_light": "#B83280"
   },
   {
     "name": "static integer",
-    "color": "#2B6CB0"
+    "color": "#2B6CB0",
+    "color_light": "#2C5282"
   },
   {
     "name": "static integer(price)",
-    "color": "#B7791F"
+    "color": "#B7791F",
+    "color_light": "#9C6B0A"
   },
   {
     "name": "DynamicsDigital",
-    "color": "#38B2AC"
+    "color": "#38B2AC",
+    "color_light": "#319795"
   },
   {
     "name": "number",
-    "color": "#3182CE"
+    "color": "#3182CE",
+    "color_light": "#2C5282"
   },
   {
     "name": "image file",
-    "color": "#00B5D8"
+    "color": "#00B5D8",
+    "color_light": "#0891B2"
   },
   {
     "name": "true, false",
-    "color": "#48BB78"
+    "color": "#48BB78",
+    "color_light": "#38A169"
   },
   {
     "name": "NONE, LAND, AIR, WATER, HOVER, BUILDING, OVER_CLIFF, OVER_CLIFF_WATER",
-    "color": "#C05621"
+    "color": "#C05621",
+    "color_light": "#9C2A00"
   },
   {
     "name": "unit ref",
-    "color": "#1A365D"
+    "color": "#1A365D",
+    "color_light": "#1E293B"
   },
   {
     "name": "tags",
-    "color": "#718096"
+    "color": "#718096",
+    "color_light": "#4A5568"
   },
   {
     "name": "logic",
-    "color": "#E53E3E"
+    "color": "#E53E3E",
+    "color_light": "#C53030"
   },
   {
     "name": "file (image)",
-    "color": "#00B5D8"
+    "color": "#00B5D8",
+    "color_light": "#0891B2"
   },
   {
     "name": "boolean",
-    "color": "#38A169"
+    "color": "#38A169",
+    "color_light": "#2F855A"
   },
   {
     "name": "time (seconds)",
-    "color": "#DD6B20"
+    "color": "#DD6B20",
+    "color_light": "#C05621"
   },
   {
     "name": "strings(s)",
-    "color": "#FC8181"
+    "color": "#FC8181",
+    "color_light": "#E53E3E"
   },
   {
     "name": "price(s)",
-    "color": "#D69E2E"
+    "color": "#D69E2E",
+    "color_light": "#B7791F"
   },
   {
     "name": "effect ref",
-    "color": "#9F7AEA"
+    "color": "#9F7AEA",
+    "color_light": "#6B46C1"
   },
   {
     "name": "sound ref",
-    "color": "#48BB78"
+    "color": "#48BB78",
+    "color_light": "#2F855A"
   },
   {
     "name": "action refs",
-    "color": "#6B46C1"
+    "color": "#6B46C1",
+    "color_light": "#553C9A"
   },
   {
     "name": "effects ref",
-    "color": "#B794F6"
+    "color": "#B794F6",
+    "color_light": "#805AD5"
   },
   {
     "name": "resources",
-    "color": "#319795"
+    "color": "#319795",
+    "color_light": "#2C7A7B"
   },
   {
     "name": "resource",
-    "color": "#2C7A7B"
+    "color": "#2C7A7B",
+    "color_light": "#285E61"
   },
   {
     "name": "customResource",
-    "color": "#285E61"
+    "color": "#285E61",
+    "color_light": "#234E52"
   },
   {
     "name": "customPrice",
-    "color": "#B7791F"
+    "color": "#B7791F",
+    "color_light": "#9C6B0A"
   },
   {
     "name": "TeamRelation",
-    "color": "#744210"
+    "color": "#744210",
+    "color_light": "#652B0A"
   },
   {
     "name": "unitTypes",
-    "color": "#2D3748"
+    "color": "#2D3748",
+    "color_light": "#1A202C"
   },
   {
     "name": "unitType",
-    "color": "#1A365D"
+    "color": "#1A365D",
+    "color_light": "#1E293B"
   },
   {
     "name": "unit ref/marker",
-    "color": "#2C5282"
+    "color": "#4299E1",
+    "color_light": "#3182CE"
   },
   {
     "name": "marker",
-    "color": "#4299E1"
+    "color": "#4299E1",
+    "color_light": "#3182CE"
   },
   {
     "name": "point",
-    "color": "#00B5D8"
+    "color": "#00B5D8",
+    "color_light": "#0891B2"
   },
   {
     "name": "point3d",
-    "color": "#319795"
+    "color": "#00B5D8",
+    "color_light": "#0891B2"
   },
   {
     "name": "relation",
-    "color": "#A0AEC0"
+    "color": "#A0AEC0",
+    "color_light": "#718096"
   },
   {
     "name": "event",
-    "color": "#E53E3E"
+    "color": "#E53E3E",
+    "color_light": "#C53030"
   },
   {
     "name": "fields",
-    "color": "#ED8936"
+    "color": "#ED8936",
+    "color_light": "#DD6B20"
   },
   {
     "name": "addEnergy",
-    "color": "#C53030"
+    "color": "#C53030",
+    "color_light": "#9B2C2C"
   },
   {
     "name": "dynamic resources",
-    "color": "#38B2AC"
+    "color": "#38B2AC",
+    "color_light": "#319795"
   },
   {
     "name": "dynamic",
-    "color": "#319795"
+    "color": "#319795",
+    "color_light": "#2C7A7B"
   },
   {
     "name": "key value pairs",
-    "color": "#F6AD55"
+    "color": "#F6AD55",
+    "color_light": "#D69E2E"
   },
   {
     "name": "logicNumber",
-    "color": "#63B3ED"
+    "color": "#63B3ED",
+    "color_light": "#3182CE"
   },
   {
     "name": "Message Tag",
-    "color": "#FEB2B2"
+    "color": "#FEB2B2",
+    "color_light": "#FC8181"
   },
   {
     "name": "decal refs",
-    "color": "#B794F6"
+    "color": "#B794F6",
+    "color_light": "#805AD5"
   },
   {
     "name": "tag ref",
-    "color": "#A0AEC0"
+    "color": "#A0AEC0",
+    "color_light": "#718096"
   },
   {
     "name": "attachment ids",
-    "color": "#D53F8C"
+    "color": "#805AD5",
+    "color_light": "#553C9A"
   },
   {
     "name": "action ids",
-    "color": "#805AD5"
+    "color": "#805AD5",
+    "color_light": "#553C9A"
   },
   {
     "name": "animation id",
-    "color": "#6B46C1"
+    "color": "#4C51BF",
+    "color_light": "#3730A3"
   },
   {
     "name": "effect ref list",
-    "color": "#9F7AEA"
+    "color": "#9F7AEA",
+    "color_light": "#6B46C1"
   },
   {
     "name": "leg/arm",
-    "color": "#FC8181"
+    "color": "#FC8181",
+    "color_light": "#E53E3E"
   },
   {
     "name": "marker ref",
-    "color": "#4299E1"
+    "color": "#4299E1",
+    "color_light": "#3182CE"
   },
   {
     "name": "color hex",
-    "color": "#38B2AC"
+    "color": "#38B2AC",
+    "color_light": "#319795"
   },
   {
     "name": "degrees",
-    "color": "#63B3ED"
+    "color": "#63B3ED",
+    "color_light": "#3182CE"
   },
   {
     "name": "any type",
-    "color": "#FED7D7"
+    "color": "#FED7D7",
+    "color_light": "#FEB2B2"
   },
   {
     "name": "same type",
-    "color": "#FEB2B2"
+    "color": "#FEB2B2",
+    "color_light": "#FC8181"
   },
   {
     "name": "value type",
-    "color": "#FC8181"
+    "color": "#FC8181",
+    "color_light": "#E53E3E"
   },
   {
     "name": "all arguments",
-    "color": "#E53E3E"
+    "color": "#E53E3E",
+    "color_light": "#C53030"
   },
   {
     "name": "self only",
-    "color": "#C53030"
+    "color": "#C53030",
+    "color_light": "#9B2C2C"
   },
   {
     "name": "audio dir",
-    "color": "#E6FFFA"
+    "color": "#E6FFFA",
+    "color_light": "#B2F5EA"
   },
   {
     "name": "usable frames",
-    "color": "#D53F8C"
+    "color": "#D53F8C",
+    "color_light": "#B83280"
   }
 ]

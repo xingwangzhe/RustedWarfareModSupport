@@ -3,6 +3,11 @@ export interface TypeColorMap {
     [key: string]: string;
 }
 
+export interface ThemeAwareColorMap {
+    light: TypeColorMap;
+    dark: TypeColorMap;
+}
+
 export interface LanguageKeyInfo {
     baseName: string;
     languageCode: string;
@@ -14,3 +19,5 @@ export interface SectionInfo {
     startLine: number;
     endLine: number;
 }
+
+export type ThemeKind = 'light' | 'dark' | 'highContrast' | 'highContrastLight';

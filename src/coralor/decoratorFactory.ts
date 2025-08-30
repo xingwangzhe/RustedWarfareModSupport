@@ -3,13 +3,38 @@ import { getColorLoader } from './colorLoader';
 
 /**
  * 装饰器工厂类
- * 负责创建和管理文本装饰器
+ * 负责创建和管理文本装饰器，支持主题感知
  */
 export class DecoratorFactory {
     private decorators: Map<string, vscode.TextEditorDecorationType>;
+    private themeChangeDisposable: vscode.Disposable | null = null;
 
     constructor() {
         this.decorators = new Map();
+        this.setupThemeChangeListener();
+    }
+
+    /**
+     * 设置主题变化监听器
+     */
+    private setupThemeChangeListener() {
+        // 监听主题配置变化
+        this.themeChangeDisposable = vscode.workspace.onDidChangeConfiguration(event => {
+            if (event.affectsConfiguration('workbench.colorTheme')) {
+                // 主题变化时清理所有装饰器，下次使用时会重新创建
+                this.disposeDecorators();
+            }
+        });
+    }
+
+    /**
+     * 清理所有装饰器（但不销毁工厂）
+     */
+    private disposeDecorators() {
+        for (const decorator of this.decorators.values()) {
+            decorator.dispose();
+        }
+        this.decorators.clear();
     }
 
     /**
@@ -69,20 +94,28 @@ export class DecoratorFactory {
     }
 
     /**
-     * 初始化语言键装饰器（保留特殊样式）
+     * 初始化语言键装饰器（保留特殊样式，支持主题感知）
      */
     private ensureLanguageDecorator() {
         if (this.decorators.has('language')) {
             return;
         }
+
+        // 根据当前主题选择合适的颜色
+        const config = vscode.workspace.getConfiguration();
+        const theme = config.get<string>('workbench.colorTheme', '');
+        const isLightTheme = theme.toLowerCase().includes('light') || theme.toLowerCase().includes('white');
+
+        const languageColor = isLightTheme ? '#B7791F' : '#F6AD55'; // 金色在亮色主题下稍深，在暗色主题下稍亮
+
         const languageDecorator = vscode.window.createTextEditorDecorationType({
-            color: '#FFD700', // 金色
+            color: languageColor,
             fontWeight: 'bold',
-            overviewRulerColor: '#FFD700',
+            overviewRulerColor: languageColor,
             overviewRulerLane: vscode.OverviewRulerLane.Right,
             after: {
                 contentText: ' 🌐',
-                color: '#FFD700'
+                color: languageColor
             }
         });
         this.decorators.set('language', languageDecorator);
@@ -119,6 +152,12 @@ export class DecoratorFactory {
      * 清理所有装饰器资源
      */
     public dispose() {
+        // 清理主题变化监听器
+        if (this.themeChangeDisposable) {
+            this.themeChangeDisposable.dispose();
+            this.themeChangeDisposable = null;
+        }
+
         // 清理所有装饰器
         for (const decorator of this.decorators.values()) {
             decorator.dispose();
