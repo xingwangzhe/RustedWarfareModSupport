@@ -1,5 +1,10 @@
 # 更新日志 / Changelog
 
+## [1.7.23] - 2025-08-31
+
+- 面板现在可以导出模组为.zip和.rwmod格式
+- The panel can now export mods as .zip and .rwmod files
+
 ## [1.6.23] - 2025-08-30
 
 - 更易阅读的颜色高对比度 

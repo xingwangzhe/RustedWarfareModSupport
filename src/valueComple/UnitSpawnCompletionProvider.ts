@@ -102,12 +102,12 @@ export class UnitSpawnCompletionProvider extends BaseValueCompletionProvider {
             );
             
             // 使用单独的键进行国际化
-            const exampleDetail = l10n.t('valuecompletionprovider.spawnunits.example.detail');
+            const exampleDetail = t('valuecompletionprovider.spawnunits.example.detail');
             const exampleDocKey = 'valuecompletionprovider.spawnunits.example.documentation';
             
             exampleItem.detail = exampleDetail;
             exampleItem.documentation = new vscode.MarkdownString(
-                l10n.t(exampleDocKey, propertyName)
+                t(exampleDocKey, propertyName)
             );
             
             return [exampleItem];
@@ -154,20 +154,20 @@ export class UnitSpawnCompletionProvider extends BaseValueCompletionProvider {
                         case 'bool':
                             // 为布尔类型提供true/false选项
                             paramItem.insertText = new vscode.SnippetString(
-                                `${param.name}=\${1|${l10n.t('true')},${l10n.t('false')}|}`
+                                `${param.name}=\${1|${t('true')},${t('false')}|}`
                             );
                             break;
                         case 'float':
                         case 'int':
                             // 为数值类型提供数字占位符
                             paramItem.insertText = new vscode.SnippetString(
-                                `${param.name}=\${1:${l10n.t('number')}0}}`
+                                `${param.name}=\${1:${t('number')}0}}`
                             );
                             break;
                         default:
                             // 其他类型提供通用占位符
                             paramItem.insertText = new vscode.SnippetString(
-                                `${param.name}=\${1:${l10n.t('value')}}}`
+                                `${param.name}=\${1:${t('value')}}}`
                             );
                     }
                     

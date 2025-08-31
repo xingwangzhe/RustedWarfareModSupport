@@ -1,15 +1,10 @@
 {
   "panel.export.label": "تصدير",
-  "panel.export.direct": "تصدير مباشر",
-  "panel.export.direct.tooltip": "تصدير المود مباشرة بدون تشويش",
-  "panel.export.obfuscated": "تصدير مشوش",
-  "panel.export.obfuscated.tooltip": "تصدير المود مع التشويش لحماية",
+  "panel.export.auto": "تصدير (ZIP + RWMOD)",
+  "panel.export.auto.tooltip": "اختيار مكان الحفظ وتصدير كلا التنسيقين ZIP و RWMOD",
   "panel.exportManager": "مدير التصدير",
-  "panel.exportManager.directExport": "تصدير مباشر",
-  "panel.exportManager.obfuscatedExport": "تصدير مشوش",
   "panel.exportManager.exportZip": "تصدير كـ .zip",
   "panel.exportManager.exportRwmod": "تصدير كـ .rwmod",
-  "panel.exportManager.obfuscateTip": "تشويش أسماء الملفات والمحتوى لحماية المود",
   "panel.exportManager.success": "تم التصدير بنجاح!",
   "panel.exportManager.failed": "فشل التصدير!",
   "panel.fileExtensions.title": "إدارة امتدادات الملفات",
@@ -27,5 +22,7 @@
   "panel.fileExtensions.add.success": "تمت إضافة امتداد الملف: {0}",
   "panel.fileExtensions.remove.success": "تمت إزالة امتداد الملف: {0}",
   "panel.fileExtensions.confirm": "تأكيد",
-  "panel.fileExtensions.remove.tooltip": "انقر للحذف"
+  "panel.fileExtensions.remove.tooltip": "انقر للحذف",
+  "panel.exportManager.cancelled": "تم إلغاء التصدير بواسطة المستخدم",
+  "panel.exportManager.completed": "تم إكمال التصدير:\nZIP: {0}\nRWMOD: {1}"
 }

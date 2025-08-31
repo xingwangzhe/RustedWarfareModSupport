@@ -1,15 +1,10 @@
 {
   "panel.export.label": "Экспорт",
-  "panel.export.direct": "Прямой экспорт",
-  "panel.export.direct.tooltip": "Экспортировать мод напрямую без обфускации",
-  "panel.export.obfuscated": "Обфусцированный экспорт",
-  "panel.export.obfuscated.tooltip": "Экспортировать мод с обфускацией для защиты",
+  "panel.export.auto": "Экспорт (ZIP + RWMOD)",
+  "panel.export.auto.tooltip": "Выбрать место сохранения и экспортировать оба формата ZIP и RWMOD",
   "panel.exportManager": "Менеджер экспорта",
-  "panel.exportManager.directExport": "Прямой экспорт",
-  "panel.exportManager.obfuscatedExport": "Обфусцированный экспорт",
   "panel.exportManager.exportZip": "Экспортировать как .zip",
   "panel.exportManager.exportRwmod": "Экспортировать как .rwmod",
-  "panel.exportManager.obfuscateTip": "Обфусцируйте имена файлов и содержимое для защиты мода",
   "panel.exportManager.success": "Экспорт успешен!",
   "panel.exportManager.failed": "Экспорт не удался!",
   "panel.fileExtensions.title": "Управление Расширениями Файлов",
@@ -27,5 +22,7 @@
   "panel.fileExtensions.add.success": "Расширение файла добавлено: {0}",
   "panel.fileExtensions.remove.success": "Расширение файла удалено: {0}",
   "panel.fileExtensions.confirm": "Подтвердить",
-  "panel.fileExtensions.remove.tooltip": "Нажмите для удаления"
+  "panel.fileExtensions.remove.tooltip": "Нажмите для удаления",
+  "panel.exportManager.cancelled": "Экспорт отменен пользователем",
+  "panel.exportManager.completed": "Экспорт завершен:\nZIP: {0}\nRWMOD: {1}"
 }

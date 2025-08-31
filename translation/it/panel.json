@@ -1,15 +1,10 @@
 {
   "panel.export.label": "Esporta",
-  "panel.export.direct": "Esportazione diretta",
-  "panel.export.direct.tooltip": "Esporta mod direttamente senza offuscamento",
-  "panel.export.obfuscated": "Esportazione offuscata",
-  "panel.export.obfuscated.tooltip": "Esporta mod con offuscamento per protezione",
+  "panel.export.auto": "Esporta (ZIP + RWMOD)",
+  "panel.export.auto.tooltip": "Seleziona la posizione di salvataggio ed esporta entrambi i formati ZIP e RWMOD",
   "panel.exportManager": "Gestore esportazione",
-  "panel.exportManager.directExport": "Esportazione diretta",
-  "panel.exportManager.obfuscatedExport": "Esportazione offuscata",
   "panel.exportManager.exportZip": "Esporta come .zip",
   "panel.exportManager.exportRwmod": "Esporta come .rwmod",
-  "panel.exportManager.obfuscateTip": "Offusca nomi e contenuti dei file per proteggere la mod",
   "panel.exportManager.success": "Esportazione riuscita!",
   "panel.exportManager.failed": "Esportazione fallita!",
   "panel.fileExtensions.title": "Gestione Estensioni File",
@@ -27,5 +22,7 @@
   "panel.fileExtensions.add.success": "Estensione file aggiunta: {0}",
   "panel.fileExtensions.remove.success": "Estensione file rimossa: {0}",
   "panel.fileExtensions.confirm": "Conferma",
-  "panel.fileExtensions.remove.tooltip": "Clicca per eliminare"
+  "panel.fileExtensions.remove.tooltip": "Clicca per eliminare",
+  "panel.exportManager.cancelled": "Esportazione annullata dall'utente",
+  "panel.exportManager.completed": "Esportazione completata:\nZIP: {0}\nRWMOD: {1}"
 }
