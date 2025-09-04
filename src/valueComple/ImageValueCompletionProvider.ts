@@ -1,7 +1,7 @@
 import * as vscode from 'vscode';
 import * as fs from 'fs';
 import * as path from 'path';
-import { PathCompatibilityUtils } from '../pubfun/pathCompatibility';
+import { PathCompatibilityUtils } from '../common/pathCompatibility';
 import { BaseValueCompletionProvider } from './BaseValueCompletionProvider';
 
 export class ImageValueCompletionProvider extends BaseValueCompletionProvider {

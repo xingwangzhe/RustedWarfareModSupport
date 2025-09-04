@@ -1,8 +1,8 @@
 import * as vscode from 'vscode';
 import { HoverUtils } from '../../utils';
-import { resolveImagePath } from '../../../pubfun/imagePathResolver';
-import { createImageHoverFromPath } from '../../../pubfun/imageHover';
-import { PathCompatibilityUtils } from '../../../pubfun/pathCompatibility';
+import { resolveImagePath } from '../../../common/imagePathResolver';
+import { createImageHoverFromPath } from '../../../common/imageHover';
+import { PathCompatibilityUtils } from '../../../common/pathCompatibility';
 import { PropertyHoverCreator } from '../propertyHover';
 import { createBooleanValueHover } from './booleanHover';
 import { createLogicBooleanValueHover } from './logicBooleanHover';

@@ -2,7 +2,7 @@ import * as vscode from 'vscode';
 import * as fs from 'fs';
 import * as path from 'path';
 import { extractExampleValue, getSectionProperties, isInsideSection, isAtValidLineStart, hasColonInLine } from './dataProcessor';
-import { isBaseSection } from './pubfun/matchRules';
+import { isBaseSection } from './common/matchRules';
 import { getExtensionId } from './extension';
 import { t } from './translationManager';
 

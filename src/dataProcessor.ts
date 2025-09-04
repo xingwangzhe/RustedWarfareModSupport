@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import * as vscode from 'vscode';
-import { matchBaseSection } from './pubfun/matchRules';
+import { matchBaseSection } from './common/matchRules';
 import { getExtensionId } from './extension';
 
 /**
