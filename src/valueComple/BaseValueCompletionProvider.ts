@@ -1,5 +1,6 @@
 import * as vscode from 'vscode';
 import { getSectionProperties } from '../dataProcessor';
+import { getCurrentSection } from '../common/sectionUtils';
 
 /**
  * 基础值补全提供者抽象类
@@ -66,16 +67,6 @@ export abstract class BaseValueCompletionProvider implements vscode.CompletionIt
      * @returns 节名称，如果未找到则返回null
      */
     protected getCurrentSection(document: vscode.TextDocument, position: vscode.Position): string | null {
-        let stop = false;
-        for (let i = position.line; i >= 0; i--) {
-            const line = document.lineAt(i).text.trim();
-            if (line.startsWith('[') && line.endsWith(']')) {
-                const sectionName = line.substring(1, line.length - 1);
-                stop = true;
-                return sectionName;
-            }
-            if (stop) {break;}
-        }
-        return null;
+        return getCurrentSection(document, position);
     }
 }

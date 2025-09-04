@@ -1,8 +1,6 @@
 import * as vscode from 'vscode';
-import * as fs from 'fs';
-import * as path from 'path';
 import { BaseValueCompletionProvider } from './BaseValueCompletionProvider';
-import { getExtensionId } from '../extension';
+import { createCompletionItemsFromDataFile } from '../common/valueCompletionUtils';
 import { t } from '../translationManager';
 
 export class MovementTypeValueCompletionProvider extends BaseValueCompletionProvider {
@@ -16,35 +14,8 @@ export class MovementTypeValueCompletionProvider extends BaseValueCompletionProv
             return [];
         }
 
-        try {
-            // 获取扩展的实际路径
-            const extension = vscode.extensions.getExtension(getExtensionId());
-            if (!extension) {
-                console.error('Cannot find extension');
-                return [];
-            }
-
-            const extensionPath = extension.extensionPath;
-            const valuePath = path.join(extensionPath, 'data', 'value', `movementType.json`);
-            if (!fs.existsSync(valuePath)) {
-                return [];
-            }
-
-            const valueData = JSON.parse(fs.readFileSync(valuePath, 'utf8'));
-            const items: vscode.CompletionItem[] = [];
-            if (valueData.data && Array.isArray(valueData.data)) {
-                for (const v of valueData.data) {
-                    const it = new vscode.CompletionItem(v.name, vscode.CompletionItemKind.Value);
-                    it.detail = v.version || '';
-                    it.documentation = new vscode.MarkdownString(t(v.description));
-                    items.push(it);
-                }
-            }
-
-            return items;
-        } catch (error) {
-            console.error('MovementTypeValueCompletionProvider error:', error);
-            return [];
-        }
+        return createCompletionItemsFromDataFile('movementType', vscode.CompletionItemKind.Value, 'valuecompletionprovider.movementtype.detail', {
+            customDocumentation: (item: any) => new vscode.MarkdownString(t(item.description))
+        });
     }
 }

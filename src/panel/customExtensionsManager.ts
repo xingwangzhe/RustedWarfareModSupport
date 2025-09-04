@@ -2,25 +2,10 @@ import * as vscode from 'vscode';
 import { IniSectionSymbolProvider } from '../Section';
 import { IniFoldingRangeProvider } from '../IniFoldingProvider';
 import {
-    CoreCompletionProvider,
-    CanBuildCompletionProvider,
-    GraphicsCompletionProvider,
-    AttackCompletionProvider,
-    TurretCompletionProvider,
-    ProjectileCompletionProvider,
-    MovementCompletionProvider,
-    AiCompletionProvider,
-    LegArmCompletionProvider,
-    AttachmentCompletionProvider,
-    ActionCompletionProvider,
-    EffectCompletionProvider,
-    AnimationCompletionProvider,
     SectionNameCompletionProvider,
-    GlobalResourceCompletionProvider,
-    ResourceCompletionProvider,
-    DecalCompletionProvider,
-    PlacementRuleCompletionProvider
+    GenericCompletionProvider
 } from '../completionProvider';
+import { createCompletionProviders, completionProviderConfigs } from '../common/completionFactory';
 import { ValueCompletionProvider } from '../valueComple/valueCompletionProvider';
 import { RustedWarfareHoverProvider } from '../hoverProvider/hoverProvider';
 import { MemoryDefinitionCompletionProvider } from '../memory/MemoryDefinitionCompletionProvider';
@@ -188,25 +173,7 @@ export class CustomFileExtensionsManager {
             );
 
             // 注册补全提供者
-            const completionProviders = [
-                new CoreCompletionProvider(),
-                new CanBuildCompletionProvider(),
-                new GraphicsCompletionProvider(),
-                new AttackCompletionProvider(),
-                new TurretCompletionProvider(),
-                new ProjectileCompletionProvider(),
-                new MovementCompletionProvider(),
-                new AiCompletionProvider(),
-                new LegArmCompletionProvider(),
-                new AttachmentCompletionProvider(),
-                new ActionCompletionProvider(),
-                new EffectCompletionProvider(),
-                new AnimationCompletionProvider(),
-                new GlobalResourceCompletionProvider(),
-                new ResourceCompletionProvider(),
-                new DecalCompletionProvider(),
-                new PlacementRuleCompletionProvider()
-            ];
+            const completionProviders = createCompletionProviders(completionProviderConfigs);
 
             const completionSubscriptions = completionProviders.map(provider =>
                 vscode.languages.registerCompletionItemProvider(

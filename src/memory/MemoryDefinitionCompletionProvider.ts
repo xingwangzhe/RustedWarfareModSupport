@@ -1,6 +1,7 @@
 import * as vscode from 'vscode';
 import { memoryManager } from './MemoryManager';
 import { t } from '../translationManager';
+import { getCurrentSection } from '../common/sectionUtils';
 /**
  * @memory定义补全提供者
  * 在core节中提供@memory name:type的补全
@@ -101,13 +102,7 @@ export class MemoryDefinitionCompletionProvider implements vscode.CompletionItem
      * 获取当前所在的节
      */
     private getCurrentSection(document: vscode.TextDocument, position: vscode.Position): string | null {
-        for (let i = position.line; i >= 0; i--) {
-            const line = document.lineAt(i).text.trim();
-            if (line.startsWith('[') && line.endsWith(']')) {
-                return line.substring(1, line.length - 1);
-            }
-        }
-        return null;
+        return getCurrentSection(document, position);
     }
 
     /**

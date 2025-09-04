@@ -5,25 +5,10 @@ import { t } from './translationManager';
 import { IniSectionSymbolProvider } from './Section';
 import { IniFoldingRangeProvider } from './IniFoldingProvider';
 import {
-    CoreCompletionProvider,
-    CanBuildCompletionProvider,
-    GraphicsCompletionProvider,
-    AttackCompletionProvider,
-    TurretCompletionProvider,
-    ProjectileCompletionProvider,
-    MovementCompletionProvider,
-    AiCompletionProvider,
-    LegArmCompletionProvider,
-    AttachmentCompletionProvider,
-    ActionCompletionProvider,
-    EffectCompletionProvider,
-    AnimationCompletionProvider,
     SectionNameCompletionProvider,
-    GlobalResourceCompletionProvider,
-    ResourceCompletionProvider,
-    DecalCompletionProvider,
-    PlacementRuleCompletionProvider
+    GenericCompletionProvider
 } from './completionProvider';
+import { createCompletionProviders, completionProviderConfigs } from './common/completionFactory';
 import { ValueCompletionProvider } from './valueComple/valueCompletionProvider';
 import { SectionPropertyDecorator } from './coralor/decorator';
 import { RustedWarfareHoverProvider } from './hoverProvider/hoverProvider';
@@ -123,25 +108,7 @@ export function activate(context: vscode.ExtensionContext) {
 	);
 
 	// 创建所有补全提供者的数组
-	const completionProviders = [
-		new CoreCompletionProvider(),
-		new CanBuildCompletionProvider(),
-		new GraphicsCompletionProvider(),
-		new AttackCompletionProvider(),
-		new TurretCompletionProvider(),
-		new ProjectileCompletionProvider(),
-		new MovementCompletionProvider(),
-		new AiCompletionProvider(),
-		new LegArmCompletionProvider(),
-		new AttachmentCompletionProvider(),
-		new ActionCompletionProvider(),
-		new EffectCompletionProvider(),
-		new AnimationCompletionProvider(),
-		new GlobalResourceCompletionProvider(),
-		new ResourceCompletionProvider(),
-		new DecalCompletionProvider(),
-		new PlacementRuleCompletionProvider()
-	];
+	const completionProviders = createCompletionProviders(completionProviderConfigs);
 
 	// 注册所有补全提供者（不设置触发字符，使用默认触发机制）
 	const completionSubscriptions = completionProviders.map(provider => 
@@ -193,9 +160,6 @@ export function activate(context: vscode.ExtensionContext) {
 	// 注册装饰器
 	const decorator = new SectionPropertyDecorator();
 	context.subscriptions.push(decorator);
-
-	// 初始化面板管理器（包含Mod Panel注册）
-	initializePanelManager(context);
 
 	// 将所有订阅添加到context.subscriptions中
 	context.subscriptions.push(

@@ -2,7 +2,6 @@ import * as vscode from 'vscode';
 import * as fs from 'fs';
 import * as path from 'path';
 import { BaseValueCompletionProvider } from './BaseValueCompletionProvider';
-import { l10n } from 'vscode';
 import { getExtensionId } from '../extension';
 import { t } from '../translationManager';
 /**

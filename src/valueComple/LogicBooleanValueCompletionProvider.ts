@@ -1,9 +1,8 @@
 import * as vscode from "vscode";
 import { BaseValueCompletionProvider } from "./BaseValueCompletionProvider";
-import * as fs from "fs";
-import * as path from "path";
-import { getExtensionId } from "../extension";
+import { createCompletionItemsFromDataFile } from '../common/valueCompletionUtils';
 import { t } from '../translationManager';
+
 /**
  * LogicBoolean值补全提供者类
  * 用于提供LogicBoolean类型属性的补全建议
@@ -22,40 +21,15 @@ export class LogicBooleanValueCompletionProvider extends BaseValueCompletionProv
   }
 
   private getBasicLogicBooleanCompletionItems(): vscode.CompletionItem[] {
-    // 获取扩展的实际路径
-    const extension = vscode.extensions.getExtension(getExtensionId());
-    if (!extension) {
-      console.error('Cannot find extension');
-      return [];
-    }
-
-    const extensionPath = extension.extensionPath;
-    const valuePath = path.join(
-      extensionPath,
-      "data",
-      "value",
-      "logicboolean.json"
-    );
-    const valueData = JSON.parse(fs.readFileSync(valuePath, "utf8"));
-
-    return valueData.data.map((item: any) => {
-      const completionItem = new vscode.CompletionItem(
-        item.name,
-        vscode.CompletionItemKind.Value
-      );
-      completionItem.detail = t(item.description);
-      completionItem.documentation = new vscode.MarkdownString(
+    return createCompletionItemsFromDataFile('logicboolean', vscode.CompletionItemKind.Value, 'valuecompletionprovider.logicboolean.detail', {
+      useNameAsInsertText: true,
+      customDocumentation: (item: any) => new vscode.MarkdownString(
         t('valuecompletionprovider.logicboolean.documentation', [
           t(item.description),
           item.version,
           t(item.example)
         ])
-      );
-
-      // 对于LogicBoolean类型，直接插入值而不是name=value格式
-      completionItem.insertText = new vscode.SnippetString(item.name);
-
-      return completionItem;
+      )
     });
   }
 }

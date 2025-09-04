@@ -5,6 +5,7 @@ import { extractExampleValue, getSectionProperties, isInsideSection, isAtValidLi
 import { isBaseSection } from './common/matchRules';
 import { getExtensionId } from './extension';
 import { t } from './translationManager';
+import { loadSectionsData } from './common/dataLoader';
 
 /**
  * 为补全项生成格式化的文档信息
@@ -88,21 +89,11 @@ function createCompletionItems(sectionName: string, properties: any[]): vscode.C
  */
 function createSectionCompletionItems(): vscode.CompletionItem[] {
     try {
-        // 获取扩展的实际路径
-        const extension = vscode.extensions.getExtension(getExtensionId());
-        if (!extension) {
-            console.error('Cannot find extension');
-            return [];
-        }
-
-        const extensionPath = extension.extensionPath;
-
         // 读取节数据
-        const sectionsPath = path.join(extensionPath, 'data', 'sections.json');
-        const sectionsData = JSON.parse(fs.readFileSync(sectionsPath, 'utf8'));
+        const sectionsData = loadSectionsData();
         
         // 为每个节创建补全项
-        return sectionsData.data.map((section: any) => {
+        return sectionsData.map((section: any) => {
             const item = new vscode.CompletionItem(
                 section.name,
                 vscode.CompletionItemKind.Module
@@ -192,115 +183,5 @@ export class GenericCompletionProvider implements vscode.CompletionItemProvider 
         // 获取属性并创建补全项
         const properties = getSectionProperties(this.sectionName);
         return createCompletionItems(this.sectionName, properties);
-    }
-}
-
-// 特定节的补全提供者类
-export class CoreCompletionProvider extends GenericCompletionProvider {
-    constructor() {
-        super('core', (name: string) => name === 'core');
-    }
-}
-
-export class CanBuildCompletionProvider extends GenericCompletionProvider {
-    constructor() {
-    super('canBuild', (name: string) => isBaseSection(name, 'canBuild'));
-    }
-}
-
-export class GraphicsCompletionProvider extends GenericCompletionProvider {
-    constructor() {
-        super('graphics', (name: string) => name === 'graphics');
-    }
-}
-
-export class AttackCompletionProvider extends GenericCompletionProvider {
-    constructor() {
-        super('attack', (name: string) => name === 'attack');
-    }
-}
-
-export class TurretCompletionProvider extends GenericCompletionProvider {
-    constructor() {
-    super('turret', (name: string) => isBaseSection(name, 'turret'));
-    }
-}
-
-export class ProjectileCompletionProvider extends GenericCompletionProvider {
-    constructor() {
-    super('projectile', (name: string) => isBaseSection(name, 'projectile'));
-    }
-}
-
-export class MovementCompletionProvider extends GenericCompletionProvider {
-    constructor() {
-        super('movement', (name: string) => name === 'movement');
-    }
-}
-
-export class AiCompletionProvider extends GenericCompletionProvider {
-    constructor() {
-        super('ai', (name: string) => name === 'ai');
-    }
-}
-
-export class LegArmCompletionProvider extends GenericCompletionProvider {
-    constructor() {
-    super('leg_arm', (sectionName: string) => isBaseSection(sectionName, 'leg_arm'));
-    }
-}
-
-export class AttachmentCompletionProvider extends GenericCompletionProvider {
-    constructor() {
-    super('attachment', (name: string) => isBaseSection(name, 'attachment'));
-    }
-}
-
-export class ActionCompletionProvider extends GenericCompletionProvider {
-    constructor() {
-    super('action', (name: string) => isBaseSection(name, 'action'));
-    }
-}
-
-export class EffectCompletionProvider extends GenericCompletionProvider {
-    constructor() {
-    super('effect', (name: string) => isBaseSection(name, 'effect'));
-    }
-}
-
-export class AnimationCompletionProvider extends GenericCompletionProvider {
-    constructor() {
-    super('animation', (name: string) => isBaseSection(name, 'animation'));
-    }
-}
-
-export class ModInfoCompletionProvider extends GenericCompletionProvider {
-    constructor() {
-        super('mod-info', (name: string) => name === 'mod' || name === 'music');
-    }
-}
-
-export class GlobalResourceCompletionProvider extends GenericCompletionProvider {
-    constructor() {
-    super('global_resource', (name: string) => isBaseSection(name, 'global_resource'));
-    }
-}
-
-export class ResourceCompletionProvider extends GenericCompletionProvider {
-    constructor() {
-    super('resource', (name: string) => isBaseSection(name, 'resource'));
-    }
-}
-
-// 新增的补全提供者类
-export class DecalCompletionProvider extends GenericCompletionProvider {
-    constructor() {
-    super('decal', (name: string) => isBaseSection(name, 'decal'));
-    }
-}
-
-export class PlacementRuleCompletionProvider extends GenericCompletionProvider {
-    constructor() {
-    super('placementRule', (name: string) => isBaseSection(name, 'placementRule'));
     }
 }
