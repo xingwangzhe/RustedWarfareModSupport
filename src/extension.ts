@@ -110,11 +110,12 @@ export function activate(context: vscode.ExtensionContext) {
 	// 创建所有补全提供者的数组
 	const completionProviders = createCompletionProviders(completionProviderConfigs);
 
-	// 注册所有补全提供者（不设置触发字符，使用默认触发机制）
-	const completionSubscriptions = completionProviders.map(provider => 
+	// 注册所有补全提供者（设置触发字符，避免在[时触发）
+	const completionSubscriptions = completionProviders.map(provider =>
 		vscode.languages.registerCompletionItemProvider(
 			{ language: 'ini' },
-			provider
+			provider,
+			' ', '\t', '\n' // 只在空格、制表符、换行后触发
 		)
 	);
 

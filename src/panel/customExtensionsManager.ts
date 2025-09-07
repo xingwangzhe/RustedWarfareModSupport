@@ -178,7 +178,8 @@ export class CustomFileExtensionsManager {
             const completionSubscriptions = completionProviders.map(provider =>
                 vscode.languages.registerCompletionItemProvider(
                     { language: 'ini' },
-                    provider
+                    provider,
+                    ' ', '\t', '\n' // 只在空格、制表符、换行后触发
                 )
             );
 
