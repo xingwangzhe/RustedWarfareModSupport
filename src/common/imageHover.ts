@@ -5,7 +5,9 @@ import * as fs from "fs";
  * Create a MarkdownString containing image path and preview for the given absolute file path.
  * Returns null if the file does not exist.
  */
-export function createImageMarkdownWithPath(absPath: string): vscode.MarkdownString | null {
+export function createImageMarkdownWithPath(
+  absPath: string
+): vscode.MarkdownString | null {
   try {
     if (!absPath || !fs.existsSync(absPath)) {
       return null;

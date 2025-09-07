@@ -108,7 +108,8 @@ export class ImageValueCompletionProvider extends BaseValueCompletionProvider {
                 );
                 if (resolvedPath && fs.existsSync(resolvedPath)) {
                   // 使用公共函数创建包含路径和图片预览的MarkdownString
-                  const imageMarkdown = createImageMarkdownWithPath(resolvedPath);
+                  const imageMarkdown =
+                    createImageMarkdownWithPath(resolvedPath);
 
                   if (imageMarkdown) {
                     console.log(
