@@ -1,5 +1,34 @@
 # 更新日志 / Changelog
 
+## [1.7.24] - 2025-09-07
+
+### ⚡ 性能优化 / Performance Improvements
+
+- **节流机制优化**  
+  添加节流机制限制装饰更新频率，避免过度触发  
+  **Throttling Mechanism**  
+  Added throttling to limit decoration update frequency and prevent excessive triggering
+
+- **增量装饰更新**  
+  优化装饰更新逻辑，只更新有变化的装饰类型  
+  **Incremental Decoration Updates**  
+  Optimized decoration updates to only refresh changed decoration types
+
+- **智能装饰管理**  
+  添加装饰类型跟踪，自动清除不需要的装饰  
+  **Smart Decoration Management**  
+  Added decoration type tracking with automatic cleanup of unused decorations
+
+### 🐛 修复 / Fixes
+
+- ✅ **修正节名称上下文补全位置**  
+   修复节名称补全时的上下文位置问题  
+   Fixed section name context completion positioning
+
+- ✅ **修复@重复补全**  
+   解决@符号的重复补全问题  
+   Fixed duplicate @ completion issue
+
 ## [1.7.23] - 2025-08-31
 
 - 面板现在可以导出模组为.zip和.rwmod格式
