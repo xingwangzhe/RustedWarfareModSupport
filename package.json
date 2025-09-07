@@ -78,9 +78,16 @@
     "languages": [
       {
         "id": "ini",
-        "aliases": ["INI"],
-        "extensions": [".ini", ".template"],
-        "filenames": ["mod-info.txt"],
+        "aliases": [
+          "INI"
+        ],
+        "extensions": [
+          ".ini",
+          ".template"
+        ],
+        "filenames": [
+          "mod-info.txt"
+        ],
         "configuration": "./language-configuration.json"
       }
     ],

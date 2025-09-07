@@ -31,17 +31,17 @@
 
 ## [1.7.23] - 2025-08-31
 
-- 面板现在可以导出模组为.zip和.rwmod格式
+- 面板现在可以导出模组为.zip 和.rwmod 格式
 - The panel can now export mods as .zip and .rwmod files
 
 ## [1.6.23] - 2025-08-30
 
-- 更易阅读的颜色高对比度 
+- 更易阅读的颜色高对比度
 - Improved color contrast for better readability
 
 ## [1.6.22] - 2025-08-29
 
-- 自定义翻译实现，弃用vscode翻译api，修正en翻译问题
+- 自定义翻译实现，弃用 vscode 翻译 api，修正 en 翻译问题
 - Custom translation implementation, abandoning vscode translation API, fixing en translation issues
 - 更友好的颜色高亮
 - Improved color highlighting for better readability
