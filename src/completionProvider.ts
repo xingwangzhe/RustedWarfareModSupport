@@ -130,19 +130,21 @@ export class SectionNameCompletionProvider implements vscode.CompletionItemProvi
     ): vscode.ProviderResult<vscode.CompletionItem[] | vscode.CompletionList> {
         // 获取光标所在行的文本
         const lineText = document.lineAt(position.line).text;
-        
+
         // 获取光标前的文本
         const textBeforeCursor = lineText.substring(0, position.character);
-        
+
         // 检查光标前是否有[但没有匹配的]
         const lastOpenBracketIndex = textBeforeCursor.lastIndexOf('[');
         const lastCloseBracketIndex = textBeforeCursor.lastIndexOf(']');
-        
-        // 如果有未闭合的[（即存在[且它在最近的]之后），则提供节名称补全
-        if (lastOpenBracketIndex !== -1 && lastOpenBracketIndex > lastCloseBracketIndex) {
+
+        // 只有当[在行首（前面只有空白字符）且未闭合时，才提供节名称补全
+        if (lastOpenBracketIndex !== -1 &&
+            lastOpenBracketIndex > lastCloseBracketIndex &&
+            /^\s*\[$/.test(textBeforeCursor)) {
             return createSectionCompletionItems();
         }
-        
+
         return [];
     }
 }
