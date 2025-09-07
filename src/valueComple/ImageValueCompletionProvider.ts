@@ -4,7 +4,7 @@ import * as path from "path";
 import { PathCompatibilityUtils } from "../common/pathCompatibility";
 import { BaseValueCompletionProvider } from "./BaseValueCompletionProvider";
 import { resolveImagePath } from "../common/imagePathResolver";
-import { createImageHoverFromPath } from "../common/imageHover";
+import { createImageMarkdownWithPath } from "../common/imageHover";
 
 export class ImageValueCompletionProvider extends BaseValueCompletionProvider {
   protected provideValueCompletionItems(
@@ -49,21 +49,22 @@ export class ImageValueCompletionProvider extends BaseValueCompletionProvider {
               )}`
             );
             if (fs.existsSync(fullPath)) {
-              // 直接创建图片预览的MarkdownString
-              const uri = vscode.Uri.file(fullPath);
-              const imageMarkdown = new vscode.MarkdownString();
-              
-              // 添加路径信息
-              imageMarkdown.appendMarkdown(`**Path:** \`${fullPath}\`\n\n`);
-              
-              // 添加图片预览
-              imageMarkdown.appendMarkdown(`![](${uri.toString()})`);
-              imageMarkdown.isTrusted = true;
+              // 使用公共函数创建包含路径和图片预览的MarkdownString
+              const imageMarkdown = createImageMarkdownWithPath(fullPath);
 
-              console.log(
-                `[DEBUG] ImageCompletion - setting image documentation directly`
-              );
-              it.documentation = imageMarkdown;
+              if (imageMarkdown) {
+                console.log(
+                  `[DEBUG] ImageCompletion - setting image documentation directly`
+                );
+                it.documentation = imageMarkdown;
+              } else {
+                console.log(
+                  `[DEBUG] ImageCompletion - failed to create markdown, fallback to text`
+                );
+                it.documentation = new vscode.MarkdownString(
+                  "Image file in current folder"
+                );
+              }
             } else {
               console.log(
                 `[DEBUG] ImageCompletion - file not found, fallback to text`
@@ -106,21 +107,22 @@ export class ImageValueCompletionProvider extends BaseValueCompletionProvider {
                   `[DEBUG] ImageCompletion - suggestion: ${suggestion}, resolvedPath: ${resolvedPath}`
                 );
                 if (resolvedPath && fs.existsSync(resolvedPath)) {
-                  // 直接创建图片预览的MarkdownString
-                  const uri = vscode.Uri.file(resolvedPath);
-                  const imageMarkdown = new vscode.MarkdownString();
-                  
-                  // 添加路径信息
-                  imageMarkdown.appendMarkdown(`**Path:** \`${resolvedPath}\`\n\n`);
-                  
-                  // 添加图片预览
-                  imageMarkdown.appendMarkdown(`![](${uri.toString()})`);
-                  imageMarkdown.isTrusted = true;
+                  // 使用公共函数创建包含路径和图片预览的MarkdownString
+                  const imageMarkdown = createImageMarkdownWithPath(resolvedPath);
 
-                  console.log(
-                    `[DEBUG] ImageCompletion - setting image documentation directly`
-                  );
-                  it.documentation = imageMarkdown;
+                  if (imageMarkdown) {
+                    console.log(
+                      `[DEBUG] ImageCompletion - setting image documentation directly`
+                    );
+                    it.documentation = imageMarkdown;
+                  } else {
+                    console.log(
+                      `[DEBUG] ImageCompletion - failed to create markdown, fallback to text`
+                    );
+                    it.documentation = new vscode.MarkdownString(
+                      `Image file in workspace root\nPath: ${suggestion}`
+                    );
+                  }
                 } else {
                   console.log(
                     `[DEBUG] ImageCompletion - no resolved path or file not found, fallback to text`
