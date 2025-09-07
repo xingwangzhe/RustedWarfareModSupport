@@ -52,10 +52,17 @@ export class ImageValueCompletionProvider extends BaseValueCompletionProvider {
               // 直接创建图片预览的MarkdownString
               const uri = vscode.Uri.file(fullPath);
               const imageMarkdown = new vscode.MarkdownString();
+              
+              // 添加路径信息
+              imageMarkdown.appendMarkdown(`**Path:** \`${fullPath}\`\n\n`);
+              
+              // 添加图片预览
               imageMarkdown.appendMarkdown(`![](${uri.toString()})`);
               imageMarkdown.isTrusted = true;
-              
-              console.log(`[DEBUG] ImageCompletion - setting image documentation directly`);
+
+              console.log(
+                `[DEBUG] ImageCompletion - setting image documentation directly`
+              );
               it.documentation = imageMarkdown;
             } else {
               console.log(
@@ -102,10 +109,17 @@ export class ImageValueCompletionProvider extends BaseValueCompletionProvider {
                   // 直接创建图片预览的MarkdownString
                   const uri = vscode.Uri.file(resolvedPath);
                   const imageMarkdown = new vscode.MarkdownString();
+                  
+                  // 添加路径信息
+                  imageMarkdown.appendMarkdown(`**Path:** \`${resolvedPath}\`\n\n`);
+                  
+                  // 添加图片预览
                   imageMarkdown.appendMarkdown(`![](${uri.toString()})`);
                   imageMarkdown.isTrusted = true;
-                  
-                  console.log(`[DEBUG] ImageCompletion - setting image documentation directly`);
+
+                  console.log(
+                    `[DEBUG] ImageCompletion - setting image documentation directly`
+                  );
                   it.documentation = imageMarkdown;
                 } else {
                   console.log(

@@ -13,10 +13,16 @@ export function createImageHoverFromPath(absPath: string): vscode.Hover | null {
         }
 
         const uri = vscode.Uri.file(absPath);
-    const hoverContent = new vscode.MarkdownString();
-    hoverContent.appendMarkdown(`![](${uri.toString()})`);
-    hoverContent.isTrusted = true;
-    return new vscode.Hover(hoverContent);
+        const hoverContent = new vscode.MarkdownString();
+        
+        // 添加路径信息
+        hoverContent.appendMarkdown(`**Path:** \`${absPath}\`\n\n`);
+        
+        // 添加图片预览
+        hoverContent.appendMarkdown(`![](${uri.toString()})`);
+        hoverContent.isTrusted = true;
+        
+        return new vscode.Hover(hoverContent);
     } catch {
         return null;
     }
