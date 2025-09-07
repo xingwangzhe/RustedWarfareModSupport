@@ -1,70 +1,120 @@
-import * as vscode from 'vscode';
-import * as fs from 'fs';
-import * as path from 'path';
-import { PathCompatibilityUtils } from '../common/pathCompatibility';
-import { BaseValueCompletionProvider } from './BaseValueCompletionProvider';
+import * as vscode from "vscode";
+import * as fs from "fs";
+import * as path from "path";
+import { PathCompatibilityUtils } from "../common/pathCompatibility";
+import { BaseValueCompletionProvider } from "./BaseValueCompletionProvider";
+import { resolveImagePath } from "../common/imagePathResolver";
+import { createImageHoverFromPath } from "../common/imageHover";
 
 export class ImageValueCompletionProvider extends BaseValueCompletionProvider {
-    protected provideValueCompletionItems(
-        document: vscode.TextDocument,
-        position: vscode.Position,
-        property: any
-    ): vscode.ProviderResult<vscode.CompletionItem[] | vscode.CompletionList> {
-        // 仅在属性类型为 file (image) 或 name 包含 image 的时候生效
-        const type = (property.type || '').toLowerCase();
-        if (!(type.includes('image') || property.name.toLowerCase().includes('image'))) {
-            return [];
-        }
-
-        // 获取当前文档目录
-        const docDir = path.dirname(document.fileName);
-
-        // 支持的图片扩展
-        const exts = ['.png', '.jpg', '.jpeg', '.gif', '.webp', '.bmp'];
-
-        const items: vscode.CompletionItem[] = [];
-
-        try {
-            // 列出当前目录下的文件
-            if (fs.existsSync(docDir)) {
-                const files = fs.readdirSync(docDir);
-                for (const f of files) {
-                    const lower = f.toLowerCase();
-                    if (exts.some(e => lower.endsWith(e))) {
-                        const it = new vscode.CompletionItem(f, vscode.CompletionItemKind.File);
-                        it.detail = 'image';
-                        it.documentation = new vscode.MarkdownString('Image file in current folder');
-                        items.push(it);
-                    }
-                }
-            }
-
-            // 尝试 workspace 根目录（ROOT: 映射）
-            const workspaceFolders = vscode.workspace.workspaceFolders || [];
-            if (workspaceFolders.length > 0) {
-                const wf = workspaceFolders[0].uri.fsPath;
-                if (fs.existsSync(wf)) {
-                    const files = fs.readdirSync(wf);
-                    for (const f of files) {
-                        const lower = f.toLowerCase();
-                        if (exts.some(e => lower.endsWith(e))) {
-                            // 使用PathCompatibilityUtils生成跨平台路径建议
-                            const suggestions = PathCompatibilityUtils.createPathSuggestions('ROOT:', f);
-                            
-                            for (const suggestion of suggestions) {
-                                const it = new vscode.CompletionItem(suggestion, vscode.CompletionItemKind.File);
-                                it.detail = 'image (workspace root)';
-                                it.documentation = new vscode.MarkdownString(`Image file in workspace root\nPath: ${suggestion}`);
-                                items.push(it);
-                            }
-                        }
-                    }
-                }
-            }
-        } catch (error) {
-            console.error('ImageValueCompletionProvider error:', error);
-        }
-
-        return items;
+  protected provideValueCompletionItems(
+    document: vscode.TextDocument,
+    position: vscode.Position,
+    property: any
+  ): vscode.ProviderResult<vscode.CompletionItem[] | vscode.CompletionList> {
+    // 仅在属性类型为 file (image) 或 name 包含 image 的时候生效
+    const type = (property.type || "").toLowerCase();
+    if (
+      !(type.includes("image") || property.name.toLowerCase().includes("image"))
+    ) {
+      return [];
     }
+
+    // 获取当前文档目录
+    const docDir = path.dirname(document.fileName);
+
+    // 支持的图片扩展
+    const exts = [".png", ".jpg", ".jpeg", ".gif", ".webp", ".bmp"];
+
+    const items: vscode.CompletionItem[] = [];
+
+    try {
+      // 列出当前目录下的文件
+      if (fs.existsSync(docDir)) {
+        const files = fs.readdirSync(docDir);
+        for (const f of files) {
+          const lower = f.toLowerCase();
+          if (exts.some((e) => lower.endsWith(e))) {
+            const it = new vscode.CompletionItem(
+              f,
+              vscode.CompletionItemKind.File
+            );
+            it.detail = "image";
+
+            // 解析图片路径并创建预览
+            const resolvedPath = resolveImagePath(f, document);
+            if (resolvedPath) {
+              const hover = createImageHoverFromPath(resolvedPath);
+              if (hover && hover.contents instanceof vscode.MarkdownString) {
+                it.documentation = hover.contents;
+              } else {
+                it.documentation = new vscode.MarkdownString(
+                  "Image file in current folder"
+                );
+              }
+            } else {
+              it.documentation = new vscode.MarkdownString(
+                "Image file in current folder"
+              );
+            }
+
+            items.push(it);
+          }
+        }
+      }
+
+      // 尝试 workspace 根目录（ROOT: 映射）
+      const workspaceFolders = vscode.workspace.workspaceFolders || [];
+      if (workspaceFolders.length > 0) {
+        const wf = workspaceFolders[0].uri.fsPath;
+        if (fs.existsSync(wf)) {
+          const files = fs.readdirSync(wf);
+          for (const f of files) {
+            const lower = f.toLowerCase();
+            if (exts.some((e) => lower.endsWith(e))) {
+              // 使用PathCompatibilityUtils生成跨平台路径建议
+              const suggestions = PathCompatibilityUtils.createPathSuggestions(
+                "ROOT:",
+                f
+              );
+
+              for (const suggestion of suggestions) {
+                const it = new vscode.CompletionItem(
+                  suggestion,
+                  vscode.CompletionItemKind.File
+                );
+                it.detail = "image (workspace root)";
+
+                // 解析图片路径并创建预览
+                const resolvedPath = resolveImagePath(suggestion, document);
+                if (resolvedPath) {
+                  const hover = createImageHoverFromPath(resolvedPath);
+                  if (
+                    hover &&
+                    hover.contents instanceof vscode.MarkdownString
+                  ) {
+                    it.documentation = hover.contents;
+                  } else {
+                    it.documentation = new vscode.MarkdownString(
+                      `Image file in workspace root\nPath: ${suggestion}`
+                    );
+                  }
+                } else {
+                  it.documentation = new vscode.MarkdownString(
+                    `Image file in workspace root\nPath: ${suggestion}`
+                  );
+                }
+
+                items.push(it);
+              }
+            }
+          }
+        }
+      }
+    } catch (error) {
+      console.error("ImageValueCompletionProvider error:", error);
+    }
+
+    return items;
+  }
 }
