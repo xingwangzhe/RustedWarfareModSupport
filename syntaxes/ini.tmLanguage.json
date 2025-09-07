@@ -52,7 +52,7 @@
     },
     "comment": {
       "match": "#.*$",
-      "name": "comment.line.number-sign.ini"
+      "name": "comment.line"
     },
     "section": {
       "match": "^\\s*\\[([^\\]]+)\\]",

@@ -61,23 +61,23 @@
   },
   {
     "name": "bool",
-    "color": "#51CF66",
-    "color_light": "#16A34A"
+    "color": "#3B82F6",
+    "color_light": "#2563EB"
   },
   {
     "name": "boolean",
-    "color": "#51CF66",
-    "color_light": "#16A34A"
+    "color": "#3B82F6",
+    "color_light": "#2563EB"
   },
   {
     "name": "LogicBoolean",
-    "color": "#51CF66",
-    "color_light": "#16A34A"
+    "color": "#3B82F6",
+    "color_light": "#2563EB"
   },
   {
     "name": "true, false",
-    "color": "#51CF66",
-    "color_light": "#16A34A"
+    "color": "#3B82F6",
+    "color_light": "#2563EB"
   },
   {
     "name": "price",
@@ -156,8 +156,8 @@
   },
   {
     "name": "file(s) (ini)",
-    "color": "#10B981",
-    "color_light": "#059669"
+    "color": "#3B82F6",
+    "color_light": "#2563EB"
   },
   {
     "name": "enum",
@@ -266,28 +266,28 @@
   },
   {
     "name": "image file",
-    "color": "#10B981",
-    "color_light": "#059669"
+    "color": "#3B82F6",
+    "color_light": "#2563EB"
   },
   {
     "name": "file (image)",
-    "color": "#10B981",
-    "color_light": "#059669"
+    "color": "#3B82F6",
+    "color_light": "#2563EB"
   },
   {
     "name": "sound ref",
-    "color": "#10B981",
-    "color_light": "#059669"
+    "color": "#3B82F6",
+    "color_light": "#2563EB"
   },
   {
     "name": "sound(s)",
-    "color": "#10B981",
-    "color_light": "#059669"
+    "color": "#3B82F6",
+    "color_light": "#2563EB"
   },
   {
     "name": "audio dir",
-    "color": "#10B981",
-    "color_light": "#059669"
+    "color": "#3B82F6",
+    "color_light": "#2563EB"
   },
   {
     "name": "point",
