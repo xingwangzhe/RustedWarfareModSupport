@@ -5,7 +5,7 @@
 ### ✨ 新增功能 / New Features
 
 - **图片预览功能增强**  
-  在hover和补全中同时显示图片路径和预览  
+  在 hover 和补全中同时显示图片路径和预览  
   **Enhanced Image Preview**  
   Display both image path and preview in hover and completion
 
