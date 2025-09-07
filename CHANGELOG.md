@@ -1,5 +1,29 @@
 # 更新日志 / Changelog
 
+## [1.7.25] - 2025-09-07
+
+### ✨ 新增功能 / New Features
+
+- **图片预览功能增强**  
+  在hover和补全中同时显示图片路径和预览  
+  **Enhanced Image Preview**  
+  Display both image path and preview in hover and completion
+
+- **公共函数重构**  
+  提取图片预览逻辑到公共函数，提高代码复用性  
+  **Public Function Refactoring**  
+  Extract image preview logic into public functions for better code reusability
+
+### 🐛 修复 / Fixes
+
+- ✅ **修复图片补全预览显示问题**  
+   解决补全列表中图片预览无法正确显示的问题  
+   Fixed image preview display issues in completion list
+
+- ✅ **优化图片路径解析**  
+   改进图片路径解析逻辑，支持更多路径格式  
+   Improved image path resolution logic with better format support
+
 ## [1.7.24] - 2025-09-07
 
 ### ⚡ 性能优化 / Performance Improvements
