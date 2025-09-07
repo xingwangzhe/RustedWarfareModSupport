@@ -43,21 +43,24 @@ export class ImageValueCompletionProvider extends BaseValueCompletionProvider {
 
             // 解析图片路径并创建预览
             const fullPath = path.join(docDir, f);
-            console.log(`[DEBUG] ImageCompletion - filename: ${f}, fullPath: ${fullPath}, exists: ${fs.existsSync(fullPath)}`);
+            console.log(
+              `[DEBUG] ImageCompletion - filename: ${f}, fullPath: ${fullPath}, exists: ${fs.existsSync(
+                fullPath
+              )}`
+            );
             if (fs.existsSync(fullPath)) {
-              const hover = createImageHoverFromPath(fullPath);
-              console.log(`[DEBUG] ImageCompletion - hover created: ${hover ? 'yes' : 'no'}`);
-              if (hover && hover.contents instanceof vscode.MarkdownString) {
-                console.log(`[DEBUG] ImageCompletion - setting image documentation`);
-                it.documentation = hover.contents;
-              } else {
-                console.log(`[DEBUG] ImageCompletion - fallback to text`);
-                it.documentation = new vscode.MarkdownString(
-                  "Image file in current folder"
-                );
-              }
+              // 直接创建图片预览的MarkdownString
+              const uri = vscode.Uri.file(fullPath);
+              const imageMarkdown = new vscode.MarkdownString();
+              imageMarkdown.appendMarkdown(`![](${uri.toString()})`);
+              imageMarkdown.isTrusted = true;
+              
+              console.log(`[DEBUG] ImageCompletion - setting image documentation directly`);
+              it.documentation = imageMarkdown;
             } else {
-              console.log(`[DEBUG] ImageCompletion - file not found, fallback to text`);
+              console.log(
+                `[DEBUG] ImageCompletion - file not found, fallback to text`
+              );
               it.documentation = new vscode.MarkdownString(
                 "Image file in current folder"
               );
@@ -92,24 +95,22 @@ export class ImageValueCompletionProvider extends BaseValueCompletionProvider {
 
                 // 解析图片路径并创建预览
                 const resolvedPath = resolveImagePath(suggestion, document);
-                console.log(`[DEBUG] ImageCompletion - suggestion: ${suggestion}, resolvedPath: ${resolvedPath}`);
+                console.log(
+                  `[DEBUG] ImageCompletion - suggestion: ${suggestion}, resolvedPath: ${resolvedPath}`
+                );
                 if (resolvedPath && fs.existsSync(resolvedPath)) {
-                  const hover = createImageHoverFromPath(resolvedPath);
-                  console.log(`[DEBUG] ImageCompletion - hover created: ${hover ? 'yes' : 'no'}`);
-                  if (
-                    hover &&
-                    hover.contents instanceof vscode.MarkdownString
-                  ) {
-                    console.log(`[DEBUG] ImageCompletion - setting image documentation`);
-                    it.documentation = hover.contents;
-                  } else {
-                    console.log(`[DEBUG] ImageCompletion - fallback to text`);
-                    it.documentation = new vscode.MarkdownString(
-                      `Image file in workspace root\nPath: ${suggestion}`
-                    );
-                  }
+                  // 直接创建图片预览的MarkdownString
+                  const uri = vscode.Uri.file(resolvedPath);
+                  const imageMarkdown = new vscode.MarkdownString();
+                  imageMarkdown.appendMarkdown(`![](${uri.toString()})`);
+                  imageMarkdown.isTrusted = true;
+                  
+                  console.log(`[DEBUG] ImageCompletion - setting image documentation directly`);
+                  it.documentation = imageMarkdown;
                 } else {
-                  console.log(`[DEBUG] ImageCompletion - no resolved path or file not found, fallback to text`);
+                  console.log(
+                    `[DEBUG] ImageCompletion - no resolved path or file not found, fallback to text`
+                  );
                   it.documentation = new vscode.MarkdownString(
                     `Image file in workspace root\nPath: ${suggestion}`
                   );
