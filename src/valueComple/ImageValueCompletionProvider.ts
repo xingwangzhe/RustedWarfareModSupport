@@ -42,17 +42,22 @@ export class ImageValueCompletionProvider extends BaseValueCompletionProvider {
             it.detail = "image";
 
             // 解析图片路径并创建预览
-            const resolvedPath = resolveImagePath(f, document);
-            if (resolvedPath) {
-              const hover = createImageHoverFromPath(resolvedPath);
+            const fullPath = path.join(docDir, f);
+            console.log(`[DEBUG] ImageCompletion - filename: ${f}, fullPath: ${fullPath}, exists: ${fs.existsSync(fullPath)}`);
+            if (fs.existsSync(fullPath)) {
+              const hover = createImageHoverFromPath(fullPath);
+              console.log(`[DEBUG] ImageCompletion - hover created: ${hover ? 'yes' : 'no'}`);
               if (hover && hover.contents instanceof vscode.MarkdownString) {
+                console.log(`[DEBUG] ImageCompletion - setting image documentation`);
                 it.documentation = hover.contents;
               } else {
+                console.log(`[DEBUG] ImageCompletion - fallback to text`);
                 it.documentation = new vscode.MarkdownString(
                   "Image file in current folder"
                 );
               }
             } else {
+              console.log(`[DEBUG] ImageCompletion - file not found, fallback to text`);
               it.documentation = new vscode.MarkdownString(
                 "Image file in current folder"
               );
@@ -87,19 +92,24 @@ export class ImageValueCompletionProvider extends BaseValueCompletionProvider {
 
                 // 解析图片路径并创建预览
                 const resolvedPath = resolveImagePath(suggestion, document);
-                if (resolvedPath) {
+                console.log(`[DEBUG] ImageCompletion - suggestion: ${suggestion}, resolvedPath: ${resolvedPath}`);
+                if (resolvedPath && fs.existsSync(resolvedPath)) {
                   const hover = createImageHoverFromPath(resolvedPath);
+                  console.log(`[DEBUG] ImageCompletion - hover created: ${hover ? 'yes' : 'no'}`);
                   if (
                     hover &&
                     hover.contents instanceof vscode.MarkdownString
                   ) {
+                    console.log(`[DEBUG] ImageCompletion - setting image documentation`);
                     it.documentation = hover.contents;
                   } else {
+                    console.log(`[DEBUG] ImageCompletion - fallback to text`);
                     it.documentation = new vscode.MarkdownString(
                       `Image file in workspace root\nPath: ${suggestion}`
                     );
                   }
                 } else {
+                  console.log(`[DEBUG] ImageCompletion - no resolved path or file not found, fallback to text`);
                   it.documentation = new vscode.MarkdownString(
                     `Image file in workspace root\nPath: ${suggestion}`
                   );
