@@ -26,8 +26,8 @@
   ],
   "repository": {
     "multistring": {
-      "begin": "\"\"\"\"\"\"",
-      "end": "\"\"\"\"\"\"",
+      "begin": "\"\"\"",
+      "end": "\"\"\"",
       "name": "text.ini",
       "patterns": [
         {
