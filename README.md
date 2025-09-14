@@ -1,3 +1,6 @@
+> 🤖 感谢 GitHub Copilot 在代码开发过程中提供的智能辅助和支持！
+> 🤖 Thanks to GitHub Copilot for intelligent assistance and support during development!
+
 > 欢迎给仓库点个 ⭐，您的支持是我们持续开发的动力！
 > Welcome to star this repository ⭐, your support motivates us to keep improving!
 

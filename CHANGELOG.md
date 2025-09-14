@@ -1,5 +1,54 @@
 # 更新日志 / Changelog
 
+## [1.7.26] - 2025-01-17
+
+### ✨ 新增功能 / New Features
+
+- **AutoTriggerOnEvent 枚举支持**  
+  添加了完整的 autoTriggerOnEvent 枚举值补全支持  
+  **AutoTriggerOnEvent Enum Support**  
+  Added comprehensive autoTriggerOnEvent enum value completion support
+
+- **构建流程优化**  
+  更新 CI/CD 工作流，支持手动触发构建和自动创建发布草稿  
+  **Build Process Enhancement**  
+  Updated CI/CD workflow with manual trigger support and automatic release draft creation
+
+### 🐛 修复 / Fixes
+
+- ✅ **三引号注释块语法高亮修复**  
+   完全重构了注释检测逻辑，解决三引号注释块仍显示属性装饰的问题  
+   Fixed triple-quote comment block syntax highlighting issue with complete refactoring of comment detection logic
+
+- ✅ **多行值块检测优化**  
+   改进了多行块的检测准确性，避免误判注释为属性值  
+   Improved multiline value block detection accuracy to prevent misidentifying comments as property values
+
+- ✅ **节名称解析修复**  
+   修复节名称在特定上下文中的解析问题  
+   Fixed section name parsing issues in specific contexts
+
+- ✅ **TextMate 语法规则完善**  
+   完善了 INI 文件的语法高亮规则，改进注释和多行块的识别  
+   Enhanced TextMate syntax rules for INI files with improved comment and multiline block recognition
+
+### 🔧 技术改进 / Technical Improvements
+
+- **状态机注释检测**  
+  实现了基于状态机的注释检测逻辑，准确区分注释块和多行字符串值  
+  **State Machine Comment Detection**  
+  Implemented state machine-based comment detection to accurately distinguish comment blocks from multiline string values
+
+- **装饰器逻辑重构**  
+  重构了装饰器工厂的注释处理逻辑，提高代码可维护性  
+  **Decorator Logic Refactoring**  
+  Refactored decorator factory's comment handling logic for better maintainability
+
+- **多语言翻译扩展**  
+  为新功能添加了完整的多语言翻译支持（14 种语言）  
+  **Multilingual Translation Extension**  
+  Added comprehensive multilingual translation support for new features (14 languages)
+
 ## [1.7.25] - 2025-09-07
 
 ### ✨ 新增功能 / New Features
