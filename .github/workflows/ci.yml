@@ -1,52 +1,102 @@
 name: CI
 
 on:
+  workflow_dispatch:
+    inputs:
+      create_release:
+        description: "Create release draft"
+        required: false
+        default: false
+        type: boolean
   push:
-    branches: [ rustedwarfare-1.15 ]
-    tags:
-      - 'v*'
+    branches: [rustedwarfare-1.15]
   pull_request:
-    branches: [ rustedwarfare-1.15 ]
+    branches: [rustedwarfare-1.15]
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    
+
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-    - name: Setup Bun
-      uses: oven-sh/setup-bun@v1
-      with:
-        bun-version: latest
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
 
-    - name: Install vsce globally
-      run: bun add -g @vscode/vsce
+      - name: Install vsce globally
+        run: bun add -g @vscode/vsce
 
-    - name: Install dependencies
-      run: bun install
+      - name: Install dependencies
+        run: bun install
 
-    - name: Merge translations
-      run: bun run merge-translations
+      - name: Merge translations
+        run: bun run merge-translations
 
-    - name: Check types
-      run: bun run check-types
+      - name: Check types
+        run: bun run check-types
 
-    - name: Lint code
-      run: bun run lint
+      - name: Lint code
+        run: bun run lint
 
-    - name: Compile extension
-      run: bun run compile
+      - name: Compile extension
+        run: bun run compile
 
-    - name: Package extension
-      run: bun run package
+      - name: Package extension
+        run: bun run package
 
-    - name: Create VSIX package
-      run: bun run package:vsix
+      - name: Create VSIX package
+        run: bun run package:vsix
 
-    - name: Upload VSIX as artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: rustedwarfare-mod-support
-        path: "*.vsix"
+      - name: Upload VSIX as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: rustedwarfare-mod-support
+          path: "*.vsix"
+
+      - name: Extract version from package.json
+        if: github.event.inputs.create_release == 'true' || github.event_name == 'workflow_dispatch'
+        id: extract_version
+        run: |
+          VERSION=$(cat package.json | jq -r '.version')
+          echo "version=v$VERSION" >> $GITHUB_OUTPUT
+          echo "Extension version: v$VERSION"
+
+      - name: Create Release Draft
+        if: github.event.inputs.create_release == 'true' || github.event_name == 'workflow_dispatch'
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ steps.extract_version.outputs.version }}
+          name: Release ${{ steps.extract_version.outputs.version }}
+          draft: true
+          prerelease: false
+          files: "*.vsix"
+          body: |
+            ## What's Changed
+
+            ### Features
+            - 
+
+            ### Bug Fixes
+            - 
+
+            ### Other Changes
+            - 
+
+            **Full Changelog**: https://github.com/${{ github.repository }}/compare/...
+
+            ## Installation
+
+            1. Download the `.vsix` file from the assets below
+            2. Open VS Code
+            3. Run command: `Extensions: Install from VSIX...`
+            4. Select the downloaded file
+
+            Or install via command line:
+            ```bash
+            code --install-extension rustedwarfaremodsupport-${{ steps.extract_version.outputs.version }}.vsix
+            ```
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
