@@ -232,6 +232,7 @@ export function activate(context: vscode.ExtensionContext) {
     vscode.languages.registerCompletionItemProvider(
       { language: "ini" },
       sectionNameCompletionProvider,
+      "[", // 添加[作为触发字符
       "a",
       "b",
       "c",
