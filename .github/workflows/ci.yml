@@ -1,4 +1,4 @@
-name: CI
+name: Manual Build and Release
 
 on:
   workflow_dispatch:
@@ -8,10 +8,6 @@ on:
         required: false
         default: false
         type: boolean
-  push:
-    branches: [rustedwarfare-1.15]
-  pull_request:
-    branches: [rustedwarfare-1.15]
 
 permissions:
   contents: write
