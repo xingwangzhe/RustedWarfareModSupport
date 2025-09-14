@@ -103,34 +103,75 @@ export class SectionPropertyDecorator {
     // 获取文档中的所有节
     const sections = this.sectionParser.parseSections(document);
 
-    // 帮助函数：判断是否为独立的三引号行(块注释分隔符)
-    const isStandaloneTripleQuote = (text: string) => {
-      // 允许前后空白, 中间只有三个引号, 或三个引号后面只跟#注释
+    // 预扫描：识别三引号注释块并强制着色为注释
+    let inTripleQuoteBlock = false;
+    let inMultilineValue = false; // 跟踪是否在多行属性值中
+
+    for (let i = 0; i < document.lineCount; i++) {
+      const line = document.lineAt(i);
+      const text = line.text;
       const trimmed = text.trim();
-      if (trimmed === '"""') {
-        return true;
-      }
-      if (trimmed.startsWith('"""')) {
-        const after = trimmed.substring(3).trimStart();
-        if (after.startsWith("#") || after.length === 0) {
-          return true; // 行尾只是注释
+
+      // 检测是否是属性行开始多行值
+      const colonIndex = text.indexOf(":");
+      if (colonIndex > 0 && text.includes('"""')) {
+        const afterColon = text.substring(colonIndex + 1).trim();
+        if (afterColon.startsWith('"""')) {
+          // 这是属性值的多行字符串开始
+          inMultilineValue = true;
+          if (afterColon === '"""') {
+            // 如果冒号后只有三引号，继续处理下一行
+            continue;
+          } else if (afterColon.endsWith('"""') && afterColon.length > 3) {
+            // 单行内完成的多行值
+            inMultilineValue = false;
+            continue;
+          }
+          continue;
         }
       }
-      return false;
-    };
 
-    // 帮助函数：判断一行是否像属性行 (name: value)
-    const isPropertyLine = (text: string) => {
-      if (!text) {
-        return false;
+      // 如果在多行值中，检查是否结束
+      if (inMultilineValue) {
+        if (trimmed === '"""' || trimmed.endsWith('"""')) {
+          inMultilineValue = false;
+        }
+        continue; // 跳过多行值内容，不当作注释处理
       }
-      const colon = text.indexOf(":");
-      if (colon <= 0) {
-        return false;
+
+      // 检测独立的三引号行（只有独立行才被视为注释分隔符）
+      const isStandaloneTripleQuote =
+        trimmed === '"""' ||
+        (trimmed.startsWith('"""') &&
+          (trimmed.substring(3).trim() === "" ||
+            trimmed.substring(3).trim().startsWith("#")));
+
+      if (isStandaloneTripleQuote) {
+        inTripleQuoteBlock = !inTripleQuoteBlock;
+        // 三引号行本身也着色为注释
+        const range = new vscode.Range(
+          new vscode.Position(i, 0),
+          new vscode.Position(i, line.text.length)
+        );
+        if (!decorations.has("tripleQuoteComment")) {
+          decorations.set("tripleQuoteComment", []);
+        }
+        decorations.get("tripleQuoteComment")?.push(range);
+        continue;
       }
-      const keyPart = text.substring(0, colon).trim();
-      return /[A-Za-z0-9_.-]+$/.test(keyPart);
-    };
+
+      // 如果在三引号块内，整行着色为注释
+      if (inTripleQuoteBlock) {
+        const range = new vscode.Range(
+          new vscode.Position(i, 0),
+          new vscode.Position(i, line.text.length)
+        );
+        if (!decorations.has("tripleQuoteComment")) {
+          decorations.set("tripleQuoteComment", []);
+        }
+        decorations.get("tripleQuoteComment")?.push(range);
+      }
+    }
 
     // 为每个节获取属性并应用装饰
     for (const section of sections) {
@@ -145,18 +186,8 @@ export class SectionPropertyDecorator {
         propertyTypeMap.set(prop.name, prop.type);
       }
 
-      // 注释状态：多行块注释基于独立三引号行判定；comment_ 节使用节名判定
-      let inBlockComment = false;
+      // 注释状态：comment_ 节使用节名判定
       let inCommentSection = false;
-
-      // 不跨节继承 comment_ 节; 仅检测三引号是否在节开始前已经打开(理论上不应跨节, 只做安全处理)
-      for (let j = section.startLine - 1; j >= 0; j--) {
-        const txt = document.lineAt(j).text;
-        if (isStandaloneTripleQuote(txt)) {
-          // 遇到一个独立分隔符但未遇到起始 => 说明之前已关闭, 停止回溯
-          break;
-        }
-      }
 
       // 遍历节内的行 (包含节标题行, 但其不会被处理为属性)
       for (let i = section.startLine; i < section.endLine; i++) {
@@ -185,19 +216,8 @@ export class SectionPropertyDecorator {
           continue;
         }
 
-        // 处理三引号块注释：只有独立行才切换状态
-        if (isStandaloneTripleQuote(text)) {
-          inBlockComment = !inBlockComment; // toggle
-          continue; // 分隔符行不处理属性
-        }
-
-        // 如果在块注释或 comment_ 节中，跳过
-        if (inBlockComment || inCommentSection) {
-          continue;
-        }
-
-        // 如果这一行本质不是属性行，跳过
-        if (!isPropertyLine(text)) {
+        // 简化：只跳过comment_节，不处理三引号块注释
+        if (inCommentSection) {
           continue;
         }
 
