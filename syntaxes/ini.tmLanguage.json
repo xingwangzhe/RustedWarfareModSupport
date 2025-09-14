@@ -3,6 +3,12 @@
   "scopeName": "source.ini",
   "patterns": [
     {
+      "include": "#multilineComment"
+    },
+    {
+      "include": "#commentSection"
+    },
+    {
       "include": "#multistring"
     },
     {
@@ -32,6 +38,30 @@
       "patterns": [
         {
           "include": "#multistring-content"
+        }
+      ]
+    },
+    "multilineComment": {
+      "begin": "^\\s*\"\"\"",
+      "end": "\"\"\"",
+      "name": "comment.block",
+      "contentName": "comment.block",
+      "patterns": [
+        {
+          "match": ".*",
+          "name": "comment.block"
+        }
+      ]
+    },
+    "commentSection": {
+      "begin": "^\\s*\\[comment_[^\\]]*\\]",
+      "end": "^\\s*\\[[^\\]]*\\]",
+      "name": "comment.block",
+      "contentName": "comment.block.content",
+      "patterns": [
+        {
+          "match": ".*",
+          "name": "comment.block"
         }
       ]
     },

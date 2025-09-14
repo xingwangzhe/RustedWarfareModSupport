@@ -103,6 +103,35 @@ export class SectionPropertyDecorator {
     // 获取文档中的所有节
     const sections = this.sectionParser.parseSections(document);
 
+    // 帮助函数：判断是否为独立的三引号行(块注释分隔符)
+    const isStandaloneTripleQuote = (text: string) => {
+      // 允许前后空白, 中间只有三个引号, 或三个引号后面只跟#注释
+      const trimmed = text.trim();
+      if (trimmed === '"""') {
+        return true;
+      }
+      if (trimmed.startsWith('"""')) {
+        const after = trimmed.substring(3).trimStart();
+        if (after.startsWith("#") || after.length === 0) {
+          return true; // 行尾只是注释
+        }
+      }
+      return false;
+    };
+
+    // 帮助函数：判断一行是否像属性行 (name: value)
+    const isPropertyLine = (text: string) => {
+      if (!text) {
+        return false;
+      }
+      const colon = text.indexOf(":");
+      if (colon <= 0) {
+        return false;
+      }
+      const keyPart = text.substring(0, colon).trim();
+      return /[A-Za-z0-9_.-]+$/.test(keyPart);
+    };
+
     // 为每个节获取属性并应用装饰
     for (const section of sections) {
       const properties = getSectionProperties(section.name);
@@ -116,14 +145,61 @@ export class SectionPropertyDecorator {
         propertyTypeMap.set(prop.name, prop.type);
       }
 
-      // 遍历节内的行
-      for (let i = section.startLine + 1; i < section.endLine; i++) {
+      // 注释状态：多行块注释基于独立三引号行判定；comment_ 节使用节名判定
+      let inBlockComment = false;
+      let inCommentSection = false;
+
+      // 不跨节继承 comment_ 节; 仅检测三引号是否在节开始前已经打开(理论上不应跨节, 只做安全处理)
+      for (let j = section.startLine - 1; j >= 0; j--) {
+        const txt = document.lineAt(j).text;
+        if (isStandaloneTripleQuote(txt)) {
+          // 遇到一个独立分隔符但未遇到起始 => 说明之前已关闭, 停止回溯
+          break;
+        }
+      }
+
+      // 遍历节内的行 (包含节标题行, 但其不会被处理为属性)
+      for (let i = section.startLine; i < section.endLine; i++) {
         if (i >= document.lineCount) {
           break;
         }
 
         const line = document.lineAt(i);
         const text = line.text;
+        const trimmed = text.trim();
+
+        // section 标题行跳过属性处理
+        if (i === section.startLine) {
+          if (/^\s*\[comment_[^\]]*\]\s*$/.test(trimmed)) {
+            inCommentSection = true;
+          } else {
+            inCommentSection = false; // 新节重置 comment_ 区域
+          }
+          continue;
+        }
+
+        // 结束 comment_ 节：遇到下一个节标题
+        if (/^\s*\[[^\]]*\]\s*$/.test(trimmed)) {
+          inCommentSection = /^\s*\[comment_[^\]]*\]\s*$/.test(trimmed);
+          // 不把节标题行当属性
+          continue;
+        }
+
+        // 处理三引号块注释：只有独立行才切换状态
+        if (isStandaloneTripleQuote(text)) {
+          inBlockComment = !inBlockComment; // toggle
+          continue; // 分隔符行不处理属性
+        }
+
+        // 如果在块注释或 comment_ 节中，跳过
+        if (inBlockComment || inCommentSection) {
+          continue;
+        }
+
+        // 如果这一行本质不是属性行，跳过
+        if (!isPropertyLine(text)) {
+          continue;
+        }
 
         // 检查是否是属性行（包含冒号）
         const colonIndex = text.indexOf(":");
@@ -188,7 +264,7 @@ export class SectionPropertyDecorator {
     }
 
     // 优化：只更新有变化的装饰类型，避免闪烁
-    const allDecorationTypes = new Set([...decorations.keys()]);
+    const allDecorationTypes = new Set(decorations.keys());
 
     // 获取当前已应用的装饰类型
     const currentDecorators = colorizerManager.getAllDecorators();
