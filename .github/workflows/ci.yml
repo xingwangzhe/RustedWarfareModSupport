@@ -13,6 +13,13 @@ on:
   pull_request:
     branches: [rustedwarfare-1.15]
 
+permissions:
+  contents: write
+  actions: read
+  checks: write
+  issues: read
+  pull-requests: read
+
 jobs:
   build:
     runs-on: ubuntu-latest
