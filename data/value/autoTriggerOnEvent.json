@@ -1,0 +1,133 @@
+{
+  "name": "autoTriggerOnEvent",
+  "description": "data.value.autotriggeronevent.description",
+  "example": "autoTriggerOnEvent: created",
+  "data": [
+    {
+      "name": "created",
+      "type": "event",
+      "description": "data.value.autotriggeronevent.created.description",
+      "version": "1.13.3-1.15p9",
+      "example": "autoTriggerOnEvent: created"
+    },
+    {
+      "name": "completeAndActive",
+      "type": "event",
+      "description": "data.value.autotriggeronevent.completeandactive.description",
+      "version": "1.13.3-1.15p9",
+      "example": "autoTriggerOnEvent: completeAndActive"
+    },
+    {
+      "name": "destroyed",
+      "type": "event",
+      "description": "data.value.autotriggeronevent.destroyed.description",
+      "version": "1.13.3-1.15p9",
+      "example": "autoTriggerOnEvent: destroyed"
+    },
+    {
+      "name": "killedAnyUnit",
+      "type": "event",
+      "description": "data.value.autotriggeronevent.killedanyunit.description",
+      "version": "1.13.3-1.15p9",
+      "example": "autoTriggerOnEvent: killedAnyUnit"
+    },
+    {
+      "name": "queuedUnitFinished",
+      "type": "event",
+      "description": "data.value.autotriggeronevent.queuedunitfinished.description",
+      "version": "1.13.3-1.15p9",
+      "example": "autoTriggerOnEvent: queuedUnitFinished"
+    },
+    {
+      "name": "queueItemAdded(withActionTag=\"#\")",
+      "type": "event",
+      "description": "data.value.autotriggeronevent.queueitemadded.description",
+      "version": "1.13.3-1.15p9",
+      "example": "autoTriggerOnEvent: queueItemAdded(withActionTag=\"actionFire\")"
+    },
+    {
+      "name": "queueItemCancelled(withActionTag=\"#\")",
+      "type": "event",
+      "description": "data.value.autotriggeronevent.queueitemcancelled.description",
+      "version": "1.13.3-1.15p9",
+      "example": "autoTriggerOnEvent: queueItemCancelled(withActionTag=\"actionFire\")"
+    },
+    {
+      "name": "teleported",
+      "type": "event",
+      "description": "data.value.autotriggeronevent.teleported.description",
+      "version": "1.13.3-1.15p9",
+      "example": "autoTriggerOnEvent: teleported"
+    },
+    {
+      "name": "touchTargetSuccess",
+      "type": "event",
+      "description": "data.value.autotriggeronevent.touchtargetsuccess.description",
+      "version": "1.13.3-1.15p9",
+      "example": "autoTriggerOnEvent: touchTargetSuccess"
+    },
+    {
+      "name": "newWaypointGivenByPlayer",
+      "type": "event",
+      "description": "data.value.autotriggeronevent.newwaypointgivenbyplayer.description",
+      "version": "1.13.3-1.15p9",
+      "example": "autoTriggerOnEvent: newWaypointGivenByPlayer"
+    },
+    {
+      "name": "teamChanged",
+      "type": "event",
+      "description": "data.value.autotriggeronevent.teamchanged.description",
+      "version": "1.13.3-1.15p9",
+      "example": "autoTriggerOnEvent: teamChanged"
+    },
+    {
+      "name": "transportingNewUnit",
+      "type": "event",
+      "description": "data.value.autotriggeronevent.transportingnewunit.description",
+      "version": "1.13.3-1.15p9",
+      "example": "autoTriggerOnEvent: transportingNewUnit"
+    },
+    {
+      "name": "transportUnloadedOrRemovedUnit",
+      "type": "event",
+      "description": "data.value.autotriggeronevent.transportunloadedorremovedunit.description",
+      "version": "1.13.3-1.15p9",
+      "example": "autoTriggerOnEvent: transportUnloadedOrRemovedUnit"
+    },
+    {
+      "name": "tookDamage(withTag=\"#\")",
+      "type": "event",
+      "description": "data.value.autotriggeronevent.tookdamage.description",
+      "version": "1.13.3-1.15p9",
+      "example": "autoTriggerOnEvent: tookDamage(withTag=\"damageTag\")"
+    },
+    {
+      "name": "newMessage(withTag=\"#\")",
+      "type": "event",
+      "description": "data.value.autotriggeronevent.newmessage.description",
+      "version": "1.13.3-1.15p9",
+      "example": "autoTriggerOnEvent: newMessage(withTag=\"messageTag\")"
+    },
+    {
+      "name": "enteredTransport",
+      "type": "event",
+      "description": "data.value.autotriggeronevent.enteredtransport.description",
+      "version": "1.13.3-1.15p9",
+      "example": "autoTriggerOnEvent: enteredTransport"
+    },
+    {
+      "name": "leftTransport",
+      "type": "event",
+      "description": "data.value.autotriggeronevent.lefttransport.description",
+      "version": "1.13.3-1.15p9",
+      "example": "autoTriggerOnEvent: leftTransport"
+    },
+    {
+      "name": "attachmentRemoved",
+      "type": "event",
+      "description": "data.value.autotriggeronevent.attachmentremoved.description",
+      "version": "1.13.3-1.15p9",
+      "example": "autoTriggerOnEvent: attachmentRemoved"
+    }
+  ]
+}

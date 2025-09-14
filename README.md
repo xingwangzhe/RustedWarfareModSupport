@@ -5,7 +5,7 @@
 
 欢迎在群聊交流 RustedWarfare 模组开发
 
-QQ:GMBOX的mod群: [1006360455](https://qm.qq.com/q/3ivoMQepwA)
+QQ:GMBOX 的 mod 群: [1006360455](https://qm.qq.com/q/3ivoMQepwA)
 
 ![Rustedwarfare](https://corrodinggames.com/images/rw-title.png)
 
@@ -13,11 +13,10 @@ QQ:GMBOX的mod群: [1006360455](https://qm.qq.com/q/3ivoMQepwA)
 [![许可证 / License](https://img.shields.io/badge/license-AGPL--3.0-green.svg)](LICENSE.md)
 
 > 📋 [更新日志 / Changelog](CHANGELOG.md) | 🐛 [报告问题 / Report Issues](https://github.com/xingwangzhe/RustedWarfareModSupport/issues)
-- 多语言支持（支持12种语言：简体中文、繁体中文、英文、阿拉伯语、德语、西班牙语、法语、意大利语、日语、韩语、葡萄牙语、乌克兰语、俄语），翻译由 `merge.js` 合并
 
-- Multi-language support (supports 12 languages: Simplified Chinese, Traditional Chinese, English, Arabic, German, Spanish, French, Italian, Japanese, Korean, Portuguese, Ukrainian, Russian), translations merged by `merge.js`
+- 多语言支持
 
-
+- Multi-language support
 
 正在开发的一个 RustedWarfare 模组开发工具，提供编辑器内的补全与文档提示功能。
 
@@ -73,7 +72,6 @@ A RustedWarfare mod development tool that provides in-editor completions and doc
 
 ![memory1](for_readmeuse/easymemory1.webp)
 
-
 - 列表/枚举/特定类型的值补全（只完成了一些）
 
 - List/enum/other type-specific value completion (only partially implemented)
@@ -86,7 +84,7 @@ A RustedWarfare mod development tool that provides in-editor completions and doc
 
 - File recognition and completion for `mod-info.txt`
 
-- 感谢copilot的代码与翻译支持
+- 感谢 copilot 的代码与翻译支持
 - Thanks to copilot for code and translation support
 
 ### 侧边栏管理面板
@@ -98,12 +96,12 @@ A RustedWarfare mod development tool that provides in-editor completions and doc
 - The panel now supports managing custom file extensions through the sidebar.
 
 ## 参考资料
+
 ## References
 
 - NDT 代码表
 
 - NDT code table
-
 
 - Google 代码表
 
@@ -118,6 +116,7 @@ A RustedWarfare mod development tool that provides in-editor completions and doc
 you can improve this plugin by submitting issues on [GitHub](https://github.com/xingwangzhe/RustedWarfareModSupport).
 
 ## 许可证
+
 ## License
 
 本插件遵循 AGPL-3.0 协议（详见仓库 LICENSE.md）。
