@@ -1,5 +1,53 @@
 # 更新日志 / Changelog
 
+## [1.7.29] - 2025-09-15
+
+### ✨ 新增功能 / New Features
+
+- **数据驱动语法高亮系统**  
+  基于项目数据文件自动生成语法高亮规则，支持所有17个节类型和969个属性  
+  **Data-driven Syntax Highlighting System**  
+  Automatically generate syntax highlighting rules based on project data files, supporting all 17 section types and 969 properties
+
+- **精简图片装饰器**  
+  保留图片图标显示功能，移除复杂的着色器系统，提升性能  
+  **Streamlined Image Decorator**  
+  Retain image icon display functionality while removing complex colorizer system for better performance
+
+### 🔧 技术改进 / Technical Improvements
+
+- **性能优化**  
+  使用 `startsWith()` 替代正则表达式进行节匹配，显著提升性能  
+  **Performance Optimization**  
+  Replace regex with `startsWith()` for section matching, significantly improving performance
+
+- **构建流程自动化**  
+  集成语法生成到构建流程，自动化开发和发布过程  
+  **Automated Build Process**  
+  Integrate syntax generation into build pipeline for automated development and release
+
+- **代码架构优化**  
+  重构装饰器系统，专注核心功能，减少代码复杂度  
+  **Code Architecture Optimization**  
+  Refactored decorator system to focus on core functionality and reduce code complexity
+
+### 🐛 修复 / Fixes
+
+- ✅ **语法高亮配置修复**  
+   修复 scopeName 不匹配问题，移除单引号字符串错误识别  
+   Fixed scopeName mismatch and removed incorrect single quote string recognition
+
+- ✅ **多下划线节名支持**  
+   改进节名匹配算法，支持复杂的多下划线节名（如 `[attachment_word1_word2]`）  
+   Enhanced section name matching to support complex multi-underscore patterns
+
+### 🗑️ 移除功能 / Removed Features
+
+- **复杂着色器系统**  
+  移除 `src/coralor/` 文件夹中的复杂着色器功能，保留核心图片图标显示  
+  **Complex Colorizer System**  
+  Removed complex colorizer functionality from `src/coralor/` folder while preserving core image icon display
+
 ## [1.7.28] - 2025-09-15
 
 修正匹配方法，使用更简单的`startsWiths()`匹配节，同时优化了性能

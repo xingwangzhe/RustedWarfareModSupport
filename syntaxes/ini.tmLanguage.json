@@ -1,5 +1,5 @@
 {
-  "name": "INI",
+  "name": "RustedWarfare INI",
   "scopeName": "source.ini",
   "patterns": [
     {
@@ -24,9 +24,6 @@
       "include": "#memoryDefinition"
     },
     {
-      "include": "#key"
-    },
-    {
       "include": "#keyvalue"
     }
   ],
@@ -34,113 +31,495 @@
     "multistring": {
       "begin": "\"\"\"",
       "end": "\"\"\"",
-      "name": "text.ini",
+      "name": "string.quoted.triple.ini",
       "patterns": [
         {
-          "include": "#multistring-content"
+          "include": "#logicExpression"
+        },
+        {
+          "include": "#filePath"
+        },
+        {
+          "include": "#customVariable"
         }
       ]
     },
     "multilineComment": {
       "begin": "^\\s*\"\"\"",
       "end": "\"\"\"",
-      "name": "comment.block",
-      "contentName": "comment.block",
-      "patterns": [
-        {
-          "match": ".*",
-          "name": "comment.block"
-        }
-      ]
+      "name": "comment.block.ini",
+      "contentName": "comment.block.ini"
     },
     "commentSection": {
       "begin": "^\\s*\\[comment_[^\\]]*\\]",
-      "end": "^\\s*\\[[^\\]]*\\]",
-      "name": "comment.block",
-      "contentName": "comment.block.content",
+      "end": "(?=^\\s*\\[[^\\]]*\\])",
+      "name": "comment.block.section.ini",
+      "contentName": "comment.block.content.ini",
       "patterns": [
         {
           "match": ".*",
-          "name": "comment.block"
-        }
-      ]
-    },
-    "multistring-content": {
-      "match": "[^\"]+",
-      "name": "text.ini",
-      "patterns": [
-        {
-          "include": "#localRef"
-        },
-        {
-          "include": "#filePath"
-        },
-        {
-          "include": "#customVariable"
+          "name": "comment.block.ini"
         }
       ]
     },
     "comment": {
       "match": "#.*$",
-      "name": "comment.line"
+      "name": "comment.line.number-sign.ini"
     },
     "section": {
-      "match": "^\\s*\\[([^\\]]+)\\]",
-      "name": "entity.name.section.ini",
-      "captures": {
-        "1": { "name": "entity.name.section.ini" }
-      }
+      "patterns": [
+        {
+          "match": "^\\s*\\[(core)\\]",
+          "name": "entity.name.section.core.ini",
+          "captures": {
+            "1": {
+              "name": "keyword.control.section.core.ini"
+            }
+          }
+        },
+        {
+          "match": "^\\s*\\[(graphics)\\]",
+          "name": "entity.name.section.standard.ini",
+          "captures": {
+            "1": {
+              "name": "keyword.control.section.standard.ini"
+            }
+          }
+        },
+        {
+          "match": "^\\s*\\[(attack)\\]",
+          "name": "entity.name.section.standard.ini",
+          "captures": {
+            "1": {
+              "name": "keyword.control.section.standard.ini"
+            }
+          }
+        },
+        {
+          "match": "^\\s*\\[(movement)\\]",
+          "name": "entity.name.section.standard.ini",
+          "captures": {
+            "1": {
+              "name": "keyword.control.section.standard.ini"
+            }
+          }
+        },
+        {
+          "match": "^\\s*\\[(ai)\\]",
+          "name": "entity.name.section.standard.ini",
+          "captures": {
+            "1": {
+              "name": "keyword.control.section.standard.ini"
+            }
+          }
+        },
+        {
+          "match": "^\\s*\\[(Prices/Resources)\\]",
+          "name": "entity.name.section.prices.ini",
+          "captures": {
+            "1": {
+              "name": "keyword.control.section.prices.ini"
+            }
+          }
+        },
+        {
+          "match": "^\\s*\\[(action)_([^\\]]+)\\]",
+          "name": "entity.name.section.action.ini",
+          "captures": {
+            "1": {
+              "name": "keyword.control.section.action.ini"
+            },
+            "2": {
+              "name": "variable.parameter.section.action.ini"
+            }
+          }
+        },
+        {
+          "match": "^\\s*\\[(hiddenAction)_([^\\]]+)\\]",
+          "name": "entity.name.section.hiddenAction.ini",
+          "captures": {
+            "1": {
+              "name": "keyword.control.section.hiddenAction.ini"
+            },
+            "2": {
+              "name": "variable.parameter.section.hiddenAction.ini"
+            }
+          }
+        },
+        {
+          "match": "^\\s*\\[(turret)_([^\\]]+)\\]",
+          "name": "entity.name.section.turret.ini",
+          "captures": {
+            "1": {
+              "name": "keyword.control.section.turret.ini"
+            },
+            "2": {
+              "name": "variable.parameter.section.turret.ini"
+            }
+          }
+        },
+        {
+          "match": "^\\s*\\[(projectile)_([^\\]]+)\\]",
+          "name": "entity.name.section.projectile.ini",
+          "captures": {
+            "1": {
+              "name": "keyword.control.section.projectile.ini"
+            },
+            "2": {
+              "name": "variable.parameter.section.projectile.ini"
+            }
+          }
+        },
+        {
+          "match": "^\\s*\\[(attachment)_([^\\]]+)\\]",
+          "name": "entity.name.section.attachment.ini",
+          "captures": {
+            "1": {
+              "name": "keyword.control.section.attachment.ini"
+            },
+            "2": {
+              "name": "variable.parameter.section.attachment.ini"
+            }
+          }
+        },
+        {
+          "match": "^\\s*\\[(effect)_([^\\]]+)\\]",
+          "name": "entity.name.section.effect.ini",
+          "captures": {
+            "1": {
+              "name": "keyword.control.section.effect.ini"
+            },
+            "2": {
+              "name": "variable.parameter.section.effect.ini"
+            }
+          }
+        },
+        {
+          "match": "^\\s*\\[(animation)_([^\\]]+)\\]",
+          "name": "entity.name.section.animation.ini",
+          "captures": {
+            "1": {
+              "name": "keyword.control.section.animation.ini"
+            },
+            "2": {
+              "name": "variable.parameter.section.animation.ini"
+            }
+          }
+        },
+        {
+          "match": "^\\s*\\[(leg)_([^\\]]+)\\]",
+          "name": "entity.name.section.leg.ini",
+          "captures": {
+            "1": {
+              "name": "keyword.control.section.leg.ini"
+            },
+            "2": {
+              "name": "variable.parameter.section.leg.ini"
+            }
+          }
+        },
+        {
+          "match": "^\\s*\\[(arm)_([^\\]]+)\\]",
+          "name": "entity.name.section.arm.ini",
+          "captures": {
+            "1": {
+              "name": "keyword.control.section.arm.ini"
+            },
+            "2": {
+              "name": "variable.parameter.section.arm.ini"
+            }
+          }
+        },
+        {
+          "match": "^\\s*\\[(resource)_([^\\]]+)\\]",
+          "name": "entity.name.section.resource.ini",
+          "captures": {
+            "1": {
+              "name": "keyword.control.section.resource.ini"
+            },
+            "2": {
+              "name": "variable.parameter.section.resource.ini"
+            }
+          }
+        },
+        {
+          "match": "^\\s*\\[(global_resource)_([^\\]]+)\\]",
+          "name": "entity.name.section.global_resource.ini",
+          "captures": {
+            "1": {
+              "name": "keyword.control.section.global_resource.ini"
+            },
+            "2": {
+              "name": "variable.parameter.section.global_resource.ini"
+            }
+          }
+        },
+        {
+          "match": "^\\s*\\[(decal)_([^\\]]+)\\]",
+          "name": "entity.name.section.decal.ini",
+          "captures": {
+            "1": {
+              "name": "keyword.control.section.decal.ini"
+            },
+            "2": {
+              "name": "variable.parameter.section.decal.ini"
+            }
+          }
+        },
+        {
+          "match": "^\\s*\\[(canBuild)_([^\\]]+)\\]",
+          "name": "entity.name.section.canBuild.ini",
+          "captures": {
+            "1": {
+              "name": "keyword.control.section.canBuild.ini"
+            },
+            "2": {
+              "name": "variable.parameter.section.canBuild.ini"
+            }
+          }
+        },
+        {
+          "match": "^\\s*\\[(placementRule)_([^\\]]+)\\]",
+          "name": "entity.name.section.placementRule.ini",
+          "captures": {
+            "1": {
+              "name": "keyword.control.section.placementRule.ini"
+            },
+            "2": {
+              "name": "variable.parameter.section.placementRule.ini"
+            }
+          }
+        },
+        {
+          "match": "^\\s*\\[(template)_([^\\]]+)\\]",
+          "name": "entity.name.section.template.ini",
+          "captures": {
+            "1": {
+              "name": "keyword.control.section.template.ini"
+            },
+            "2": {
+              "name": "variable.parameter.section.template.ini"
+            }
+          }
+        },
+        {
+          "match": "^\\s*\\[spawnUnits:([^\\]]+)\\]",
+          "name": "entity.name.section.spawnUnits.ini",
+          "captures": {
+            "1": {
+              "name": "variable.parameter.section.spawnUnits.ini"
+            }
+          }
+        },
+        {
+          "match": "^\\s*\\[spawnProjectiles:([^\\]]+)\\]",
+          "name": "entity.name.section.spawnProjectiles.ini",
+          "captures": {
+            "1": {
+              "name": "variable.parameter.section.spawnProjectiles.ini"
+            }
+          }
+        },
+        {
+          "match": "^\\s*\\[([^\\]]+)\\]",
+          "name": "entity.name.section.generic.ini",
+          "captures": {
+            "1": {
+              "name": "variable.other.section.generic.ini"
+            }
+          }
+        }
+      ]
     },
     "templateKey": {
-      "name": "storage.type.templateKey.ini",
-      "match": "(?<!\\w+: *)(@\\w+)"
+      "patterns": [
+        {
+          "match": "^\\s*(@(?:copyFromSection|copyFrom_skipThisSection)):\\s*(.*)$",
+          "captures": {
+            "1": {
+              "name": "keyword.control.template.ini"
+            },
+            "2": {
+              "name": "variable.parameter.template.ini"
+            }
+          }
+        },
+        {
+          "match": "^\\s*(@(?:define|global))\\b",
+          "name": "keyword.control.template.ini"
+        },
+        {
+          "match": "(?<!\\w+:\\s*)(@\\w+)",
+          "name": "keyword.control.template.ini"
+        }
+      ]
     },
     "memoryDefinition": {
-      "name": "storage.type.memoryDefinition.ini",
-      "match": "(?<!\\w+: *)@memory\\s+\\w+:\\w+"
-    },
-    "key": {
-      "name": "variable.other.key.ini",
-      "match": "(?<!\\w+: *)\\w+:"
+      "match": "^\\s*@memory\\s+(\\w+)\\s*:\\s*(unit|float|boolean|bool|number|string)(\\[\\])?",
+      "captures": {
+        "1": {
+          "name": "variable.other.memory.name.ini"
+        },
+        "2": {
+          "name": "storage.type.memory.type.ini"
+        },
+        "3": {
+          "name": "storage.modifier.memory.array.ini"
+        }
+      }
     },
     "keyvalue": {
-      "begin": "^\\s*([A-Za-z0-9_\\.\\-]+)\\s*:",
+      "begin": "^\\s*([A-Za-z0-9_\\.\\-]+)\\s*(:)",
       "beginCaptures": {
-        "1": { "name": "variable.other.key.ini" },
-        "0": { "name": "punctuation.separator.keyvalue.ini" }
+        "1": {
+          "name": "variable.other.key.ini"
+        },
+        "2": {
+          "name": "punctuation.separator.keyvalue.ini"
+        }
       },
       "end": "$",
       "name": "meta.key-value.ini",
       "patterns": [
         {
-          "include": "#localRef"
+          "include": "#valueTypes"
         },
         {
-          "include": "#filePath"
-        },
-        {
-          "include": "#customVariable"
-        },
-        {
-          "include": "#multistring-content"
-        },
-        {
-          "match": "#.*$",
-          "name": "comment.line.number-sign.ini"
+          "include": "#comment"
         }
       ]
     },
-    "localRef": {
-      "name": "storage.type.localRef.ini",
-      "match": "(\\${[^{}]*}|%(?={))"
+    "valueTypes": {
+      "patterns": [
+        {
+          "include": "#multistring"
+        },
+        {
+          "include": "#logicExpression"
+        },
+        {
+          "match": "\\b(true|false|0|1)\\b",
+          "name": "constant.language.boolean.ini"
+        },
+        {
+          "match": "\\b(?:-)?(?:NaN|Infinity|\\d*\\.\\d+|\\d+)\\b",
+          "name": "constant.numeric.ini"
+        },
+        {
+          "match": "\\b(?:-)?(?:NaN|Infinity|\\d*\\.\\d+|\\d+)(?:s|ms)?\\b",
+          "name": "constant.numeric.time.ini"
+        },
+        {
+          "match": "#[0-9a-fA-F]{6}\\b",
+          "name": "constant.other.color.hex.ini"
+        },
+        {
+          "match": "\\b(credits|energy|hp|shield|ammo|setFlag|unsetFlag|hasFlag|hasMissingFlag|X)\\b",
+          "name": "constant.language.enum.Prices_Resources.ini"
+        },
+        {
+          "match": "\\b(created|completeAndActive|destroyed|killedAnyUnit|queuedUnitFinished|queueItemAdded\\(withActionTag=\"#\"\\)|queueItemCancelled\\(withActionTag=\"#\"\\)|teleported|touchTargetSuccess|newWaypointGivenByPlayer|teamChanged|transportingNewUnit|transportUnloadedOrRemovedUnit|tookDamage\\(withTag=\"#\"\\)|newMessage\\(withTag=\"#\"\\)|enteredTransport|leftTransport|attachmentRemoved)\\b",
+          "name": "constant.language.enum.autoTriggerOnEvent.ini"
+        },
+        {
+          "match": "\\b(true|false)\\b",
+          "name": "constant.language.enum.bool.ini"
+        },
+        {
+          "match": "\\b(true|false|if|and|or|not|<|>|<=|>=|==|!=|\\+|-|/|\\*|%|self\\.isUnderwater\\(\\)|self\\.isAtGroundHeight\\(\\)|self\\.isFlying\\(\\)|self\\.isMoving\\(\\)|self\\.isReversing\\(\\)|self\\.isAtTopSpeed\\(\\)|self\\.isInWater\\(\\)|self\\.isOverwater\\(\\)|self\\.isOverLiquid\\(\\)|self\\.isOverClift\\(\\)|self\\.isOverPassableTile\\(\\)|self\\.isOverOpenLand\\(\\)|self\\.hasResources\\(\\)|self\\.resource\\(\\)|self\\.resource\\.RESOURCE_TYPE|self\\.isResourceLargerThan|self\\.hp\\(\\)|self\\.maxHp\\(\\)|self\\.height\\(\\)|self\\.ammo\\(\\)|self\\.isAmmoEmpty\\(\\)|self\\.ammoIncludingQueued\\(\\)|self\\.energy\\(\\)|self\\.energyIncludingQueued\\(\\)|self\\.isEnergyFull\\(\\)|self\\.isEnergyEmpty\\(\\)|self\\.maxEnergy\\(\\)|self\\.isEnergyRecharging\\(\\)|self\\.shield\\(\\)|self\\.maxShield\\(\\)|self\\.kills\\(\\)|self\\.queueSize\\(\\)|self\\.id\\(\\)|self\\.teamId\\(\\)|self\\.teamName\\(\\)|self\\.playerName\\(\\)|self\\.x\\(\\)|self\\.y\\(\\)|self\\.z\\(\\)|self\\.dir\\(\\)|self\\.priceCredits\\(\\)|self\\.builtAmount\\(\\)|self\\.completed\\(\\)|self\\.speed\\(\\)|self\\.maxMoveSpeed\\(\\)|self\\.hasFlag\\(\\)|self\\.tags\\(\\)|self\\.globalTeamTags\\(\\)|self\\.transportingCount\\(\\)|self\\.numberOfAttachedUnits\\(\\)|self\\.isAttacking\\(\\)|self\\.hasActiveWaypoint\\(\\)|self\\.numberOfQueuedWaypoints\\(\\)|self\\.transportingUnitWithTags\\(\\)|self\\.hasParent\\(\\)|self\\.hasTakenDamage\\(\\)|self\\.timeAlive\\(\\)|self\\.lastConverted\\(\\)|self\\.customTimer\\(\\)|self\\.isOnNeutralTeam\\(\\)|self\\.numberOfUnitsInTeam\\(\\)|self\\.numberOfUnitsInAllyTeam\\(\\)|self\\.numberOfUnitsInAllyNotOwnTeam\\(\\)|self\\.numberOfUnitsInEnemyTeam\\(\\)|numberOfUnitsInNeutralTeam\\(\\)|numberOfUnitsInAggressiveTeam\\(\\)|numberOfUnitsInAllTeams\\(\\)|self\\.hasUnitInTeam\\(\\)|self\\.noUnitInTeam\\(\\)|self\\.isControlledByAI\\(\\)|self\\.readUnitMemory\\(\\)|thisActionTarget|thisActionIndex|eventSource|attachment|transporting|attacking|lastDamagedBy|parent|activeWaypointTarget|customTarget1|customTarget2|nearestUnit|globalSearchForFirstUnit|nullUnit|getAsMarker|getOffsetAbsolute|getOffsetRelative|eventSource|readUnitMemory|memory\\.NAME|memory\\.NAME\\.size|memory\\.NAME\\.contains\\(query\\)|distance\\(x1, y1, x2, y2\\)|distanceSquared\\(x1, y1, x2, y2\\)|distanceBetween\\(unit1, unit2\\)|distanceBetweenSquared\\(unit1, unit2\\)|game\\.nukesEnabled\\(\\)|int\\(x\\)|select\\(bool, textA, textB\\)|debug\\(logicBoolean\\)|str\\(x\\)|substring\\(text,start,end\\)|length\\(string\\)|squareRoot\\(num\\)|min\\(num1, num2\\)|max\\(num1, num2\\)|createMarker\\(x, y, \\[height\\], \\[teamId\\], \\[dir\\]\\)|eventData\\(name, type, \\[default\\]\\)|sin\\(angle\\)|cos\\(angle\\)|rnd\\(min, max\\)|lowercase\\(string\\)|uppercase\\(string\\)|direction\\(x1, y1, x2, y2\\)|directionBetween\\(unit1, unit2\\)|self\\.isInMap\\(\\)|game\\.mapWidth\\(\\)|game\\.mapHeight\\(\\)|self\\.teamDefeatedTech\\(\\)|self\\.teamWipedOut\\(\\)|self\\.teamVictory\\(\\))\\b",
+          "name": "constant.language.enum.logicboolean.ini"
+        },
+        {
+          "match": "\\b(NONE|LAND|AIR|WATER|HOVER|BUILDING|OVER_CLIFF|OVER_CLIFF_WATER)\\b",
+          "name": "constant.language.enum.movementType.ini"
+        },
+        {
+          "match": "\\b(spawnChance|maxSpawnLimit|recursionLimit|offsetX|offsetY|xOffsetRelative|yOffsetRelative|offsetRandomX|offsetRandomY|offsetRandomXY|offsetHeight|offsetDir|offsetRandomDir)\\b",
+          "name": "constant.language.enum.spawnProjectiles.ini"
+        },
+        {
+          "match": "\\b(neutralTeam|setToTeamOfLastAttacker|spawnChance|spawnSource|maxSpawnLimit|gridAlign|skipIfOverlapping|offsetX|offsetY|offsetDir|offsetHeight|offsetRandomX|offsetRandomY|offsetRandomDir|addResources|transportedUnitsToTransfer|copyWaypointsFrom|alwayStartDirAtZero|damagingBorder|zoneMarker|techLevel)\\b",
+          "name": "constant.language.enum.spawnUnits.ini"
+        },
+        {
+          "match": "\\b(ROOT:)?[^\\s,]+\\.(ini|txt|template|png|jpg|jpeg|ogg|wav|mp3)\\b",
+          "name": "string.other.filepath.ini"
+        },
+        {
+          "match": "\\$\\{[^}]+\\}",
+          "name": "variable.other.placeholder.ini"
+        },
+        {
+          "begin": "\"",
+          "end": "\"",
+          "name": "string.quoted.double.ini",
+          "patterns": [
+            {
+              "include": "#logicExpression"
+            }
+          ]
+        }
+      ]
+    },
+    "logicExpression": {
+      "patterns": [
+        {
+          "match": "\\b(self|memory\\.\\w+|resource\\.\\w+|null|index|thisActionTarget|eventSource|activeWaypointTarget|customTarget[12])\\b",
+          "name": "variable.language.logic.ini"
+        },
+        {
+          "match": "\\.(x|y|z|dir|speed|maxMoveSpeed|size|teamId|id|builtAmount|hp|maxHp|maxShield|maxEnergy|height|ammo|energy|shield|kills|isFlying|isMoving|underwater|flying|completed)\\b",
+          "name": "variable.other.property.logic.ini"
+        },
+        {
+          "match": "\\b(distance|distanceSquared|min|max|sin|cos|rnd|direction|squareRoot|int|length)(?=\\()",
+          "name": "support.function.math.logic.ini"
+        },
+        {
+          "match": "\\b(nearestUnit|globalSearchForFirstUnit|attachment|transporting|numberOfUnitsInTeam|hasUnitInTeam|readUnitMemory|createMarker)(?=\\()",
+          "name": "support.function.unit.logic.ini"
+        },
+        {
+          "match": "\\b(and|or|not)\\b",
+          "name": "keyword.operator.logical.logic.ini"
+        },
+        {
+          "match": "(<=|>=|<|>|==|!=|=|\\+|-|/|\\*|%)",
+          "name": "keyword.operator.comparison.logic.ini"
+        },
+        {
+          "match": "\\b(true|false|if)\\b",
+          "name": "constant.language.boolean.logic.ini"
+        },
+        {
+          "match": "\\b(select)(?=\\()",
+          "name": "support.function.control.logic.ini"
+        }
+      ]
     },
     "filePath": {
-      "name": "support.class.filePath.ini",
-      "match": "(ROOT:)?[^\\s]+\\.(ini|txt|template|png|ogg|wav)"
+      "patterns": [
+        {
+          "match": "\\b(ROOT:)?[^\\s,]+\\.(ini|txt|template|png|jpg|jpeg|ogg|wav|mp3)\\b",
+          "name": "string.other.filepath.ini"
+        }
+      ]
     },
     "customVariable": {
-      "name": "variable.parameter.customVariable.ini",
-      "match": "\\b(memory\\.\\w+|resource\\.\\w+|null|index)\\b"
+      "patterns": [
+        {
+          "match": "\\$\\{[^}]+\\}",
+          "name": "variable.other.placeholder.ini"
+        },
+        {
+          "match": "\\bmemory\\.\\w+\\b",
+          "name": "variable.other.memory.ini"
+        },
+        {
+          "match": "\\bresource\\.\\w+\\b",
+          "name": "variable.other.resource.ini"
+        }
+      ]
     }
   }
 }

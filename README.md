@@ -12,7 +12,7 @@ QQ:GMBOX 的 mod 群: [1006360455](https://qm.qq.com/q/3ivoMQepwA)
 
 ![Rustedwarfare](https://corrodinggames.com/images/rw-title.png)
 
-[![版本 / Version](https://img.shields.io/badge/version-1.7.26-blue)](CHANGELOG.md)
+[![版本 / Version](https://img.shields.io/badge/version-1.7.29-blue)](CHANGELOG.md)
 [![许可证 / License](https://img.shields.io/badge/license-AGPL--3.0-green.svg)](LICENSE.md)
 
 > 📋 [更新日志 / Changelog](CHANGELOG.md) | 🐛 [报告问题 / Report Issues](https://github.com/xingwangzhe/RustedWarfareModSupport/issues)
@@ -117,6 +117,9 @@ A RustedWarfare mod development tool that provides in-editor completions and doc
 您可以通过在 [GitHub](https://github.com/xingwangzhe/RustedWarfareModSupport) 上提交问题来改进本插件。
 
 you can improve this plugin by submitting issues on [GitHub](https://github.com/xingwangzhe/RustedWarfareModSupport).
+
+
+- INI代码高亮v0.99 十山部(碎梦)
 
 ## 许可证
 

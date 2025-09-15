@@ -13,7 +13,7 @@ import {
   completionProviderConfigs,
 } from "./common/completionFactory";
 import { ValueCompletionProvider } from "./valueComple/valueCompletionProvider";
-import { SectionPropertyDecorator } from "./coralor/decorator";
+import { ImagePropertyDecorator } from "./common/imagePropertyDecorator";
 import { RustedWarfareHoverProvider } from "./hoverProvider/hoverProvider";
 import { MemoryDefinitionCompletionProvider } from "./memory/MemoryDefinitionCompletionProvider";
 import { MemoryValueCompletionProvider } from "./memory/MemoryValueCompletionProvider";
@@ -313,9 +313,9 @@ export function activate(context: vscode.ExtensionContext) {
     new RustedWarfareHoverProvider()
   );
 
-  // 注册装饰器
-  const decorator = new SectionPropertyDecorator();
-  context.subscriptions.push(decorator);
+  // 注册图片装饰器 - 只显示图片图标
+  const imageDecorator = new ImagePropertyDecorator();
+  context.subscriptions.push(imageDecorator);
 
   // 将所有订阅添加到context.subscriptions中
   context.subscriptions.push(
