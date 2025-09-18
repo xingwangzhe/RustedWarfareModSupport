@@ -15,7 +15,9 @@ import { RustedWarfareHoverProvider } from "./hoverProvider/hoverProvider";
 import { MemoryDefinitionCompletionProvider } from "./memory/MemoryDefinitionCompletionProvider";
 import { MemoryValueCompletionProvider } from "./memory/MemoryValueCompletionProvider";
 import { initializePanelManager, getPanelManager } from "./panel/panelManager";
-// image zoom/preview features removed per user request
+// 直接导入面板相关模块，避免动态导入
+import { ModPanelProvider, ModPanelItem } from "./panel/index";
+import { PanelDataManager } from "./panel/provider";
 
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
@@ -101,10 +103,8 @@ export function activate(context: vscode.ExtensionContext) {
   // 初始化面板管理器
   initializePanelManager(context);
 
-  // 注册导出相关命令
-  import("./panel/exportManager.js").then(({ registerExportCommands }) => {
-    registerExportCommands(context);
-  });
+  // 直接注册Mod Panel，避免动态导入
+  registerModPanelDirect(context);
 
   // The command has been defined in the package.json file
   // Now provide the implementation of the command with registerCommand
@@ -338,4 +338,89 @@ export function deactivate() {}
 export function getExtensionId(): string {
   const packageJson = require("../package.json");
   return `${packageJson.publisher}.${packageJson.name}`;
+}
+
+/**
+ * 直接注册Mod Panel，避免动态导入
+ * @param context VS Code扩展上下文
+ */
+function registerModPanelDirect(context: vscode.ExtensionContext): void {
+  const modPanelProvider = new ModPanelProvider();
+  const treeDataProvider = vscode.window.registerTreeDataProvider(
+    "rustedwarfaremodsupport-panel",
+    modPanelProvider
+  );
+
+  // 注册添加文件后缀命令
+  const addFileExtensionCommand = vscode.commands.registerCommand(
+    "rustedwarfaremodsupport.addFileExtension",
+    async () => {
+      const extension = await vscode.window.showInputBox({
+        prompt: t("panel.fileExtensions.add.placeholder"),
+        placeHolder: ".cfg",
+        validateInput: (value) => {
+          if (!value) {
+            return t("panel.fileExtensions.add.emptyInput");
+          }
+          if (!value.startsWith(".")) {
+            return t("panel.fileExtensions.invalidFormat");
+          }
+          return null;
+        },
+      });
+
+      if (extension) {
+        const result = modPanelProvider
+          .getDataManager()
+          .addCustomFileExtension(extension);
+        if (result.success) {
+          vscode.window.showInformationMessage(result.message);
+          // 刷新面板显示
+          modPanelProvider.refresh();
+        } else {
+          vscode.window.showErrorMessage(result.message);
+        }
+      }
+    }
+  );
+
+  // 注册移除文件后缀命令
+  const removeFileExtensionCommand = vscode.commands.registerCommand(
+    "rustedwarfaremodsupport.removeFileExtension",
+    async (extension: string) => {
+      const confirm = await vscode.window.showWarningMessage(
+        t("panel.fileExtensions.remove.confirm"),
+        { modal: true },
+        t("panel.fileExtensions.confirm")
+      );
+
+      if (confirm === t("panel.fileExtensions.confirm")) {
+        const result = modPanelProvider
+          .getDataManager()
+          .removeCustomFileExtension(extension);
+        if (result.success) {
+          vscode.window.showInformationMessage(result.message);
+          // 刷新面板显示
+          modPanelProvider.refresh();
+        } else {
+          vscode.window.showErrorMessage(result.message);
+        }
+      }
+    }
+  );
+
+  // 注册刷新面板命令
+  const refreshPanelCommand = vscode.commands.registerCommand(
+    "rustedwarfaremodsupport-panel.refresh",
+    () => {
+      modPanelProvider.refresh();
+    }
+  );
+
+  context.subscriptions.push(
+    treeDataProvider,
+    addFileExtensionCommand,
+    removeFileExtensionCommand,
+    refreshPanelCommand
+  );
 }
