@@ -39,7 +39,12 @@ export abstract class BaseValueCompletionProvider
 
     // 检查属性是否属于当前section
     const sectionProperties = getSectionProperties(currentSection);
-    if (!sectionProperties || !(propertyName in sectionProperties)) {
+
+    // 检查属性是否存在于section的属性列表中
+    const propertyExists = sectionProperties.some(
+      (prop: any) => prop.name === propertyName
+    );
+    if (!sectionProperties || !propertyExists) {
       return [];
     }
 

@@ -7,9 +7,10 @@ export class SetUnitStatsValueCompletionProvider extends BaseValueCompletionProv
   protected provideValueCompletionItems(
     document: vscode.TextDocument,
     position: vscode.Position,
-    property: any
+    propertyName: string,
+    _sectionName: string
   ): vscode.ProviderResult<vscode.CompletionItem[] | vscode.CompletionList> {
-    if (property.name !== "setUnitStats") {
+    if (propertyName !== "setUnitStats") {
       return [];
     }
 

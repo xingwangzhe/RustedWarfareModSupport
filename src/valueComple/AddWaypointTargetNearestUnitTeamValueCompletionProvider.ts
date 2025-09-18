@@ -7,9 +7,10 @@ export class AddWaypointTargetNearestUnitTeamValueCompletionProvider extends Bas
   protected provideValueCompletionItems(
     document: vscode.TextDocument,
     position: vscode.Position,
-    property: any
+    propertyName: string,
+    _sectionName: string
   ): vscode.ProviderResult<vscode.CompletionItem[] | vscode.CompletionList> {
-    if (property.name !== "addWaypoint_target_nearestUnit_team") {
+    if (propertyName !== "addWaypoint_target_nearestUnit_team") {
       return [];
     }
 

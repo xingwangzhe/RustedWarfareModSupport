@@ -7,9 +7,10 @@ export class AutoTriggerCheckRateValueCompletionProvider extends BaseValueComple
   protected provideValueCompletionItems(
     document: vscode.TextDocument,
     position: vscode.Position,
-    property: any
+    propertyName: string,
+    _sectionName: string
   ): vscode.ProviderResult<vscode.CompletionItem[] | vscode.CompletionList> {
-    if (property.name !== "autoTriggerCheckRate") {
+    if (propertyName !== "autoTriggerCheckRate") {
       return [];
     }
 

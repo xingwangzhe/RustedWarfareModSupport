@@ -7,9 +7,10 @@ export class FireTurretXAtGroundOnlyOverPassableTileOfValueCompletionProvider ex
   protected provideValueCompletionItems(
     document: vscode.TextDocument,
     position: vscode.Position,
-    property: any
+    propertyName: string,
+    _sectionName: string
   ): vscode.ProviderResult<vscode.CompletionItem[] | vscode.CompletionList> {
-    if (property.name !== "fireTurretXAtGround_onlyOverPassableTileOf") {
+    if (propertyName !== "fireTurretXAtGround_onlyOverPassableTileOf") {
       return [];
     }
 
