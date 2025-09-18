@@ -1,0 +1,17 @@
+{
+  "data.value.onactions.description": "この動作をトリガーするアクション状態を定義します。",
+  "data.value.onactions.move": "移動",
+  "data.value.onactions.move.description": "ユニットが移動しているときにトリガーされます",
+  "data.value.onactions.attack": "攻撃",
+  "data.value.onactions.attack.description": "ユニットが攻撃しているときにトリガーされます",
+  "data.value.onactions.idle": "待機",
+  "data.value.onactions.idle.description": "ユニットが待機しているときにトリガーされます",
+  "data.value.onactions.underconstruction": "建設中",
+  "data.value.onactions.underconstruction.description": "ユニットが建設中のときにトリガーされます",
+  "data.value.onactions.underconstructionwithlinkedbuilttime": "リンクされた建設時間付き建設中",
+  "data.value.onactions.underconstructionwithlinkedbuilttime.description": "ユニットがリンクされた建設時間付きで建設中のときにトリガーされます",
+  "data.value.onactions.queuedunits": "キューされたユニット",
+  "data.value.onactions.queuedunits.description": "ユニットが生産のためにキューされたときにトリガーされます",
+  "data.value.onactions.repair": "修理",
+  "data.value.onactions.repair.description": "ユニットが修理しているときにトリガーされます"
+}

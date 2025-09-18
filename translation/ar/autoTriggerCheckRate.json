@@ -1,0 +1,9 @@
+{
+  "data.value.autotriggercheckrate.description": "يحدد عدد مرات فحص الزناد التلقائي لشروطه.",
+  "data.value.autotriggercheckrate.everyframe": "كل إطار",
+  "data.value.autotriggercheckrate.everyframe.description": "فحص كل إطار لعبة (الأكثر تكراراً)",
+  "data.value.autotriggercheckrate.every4frames": "كل 4 إطارات",
+  "data.value.autotriggercheckrate.every4frames.description": "فحص كل 4 إطارات لعبة",
+  "data.value.autotriggercheckrate.every8frames": "كل 8 إطارات",
+  "data.value.autotriggercheckrate.every8frames.description": "فحص كل 8 إطارات لعبة (الأقل تكراراً)"
+}

@@ -1,0 +1,13 @@
+{
+  "data.value.onnewmapspawn.description": "Definiert, wo Einheiten spawnen sollen, wenn eine neue Karte geladen wird.",
+  "data.value.onnewmapspawn.emptyresourcepools_asneutral": "Leere Ressourcenbecken als Neutral",
+  "data.value.onnewmapspawn.emptyresourcepools_asneutral.description": "In leeren Ressourcenbecken als neutrale Einheiten spawnen",
+  "data.value.onnewmapspawn.emptyoroccupiedresourcepools_asneutral": "Leere oder besetzte Ressourcenbecken als Neutral",
+  "data.value.onnewmapspawn.emptyoroccupiedresourcepools_asneutral.description": "In leeren oder besetzten Ressourcenbecken als neutrale Einheiten spawnen",
+  "data.value.onnewmapspawn.mapcenter_asneutral": "Kartenmitte als Neutral",
+  "data.value.onnewmapspawn.mapcenter_asneutral.description": "In Kartenmitte als neutrale Einheiten spawnen",
+  "data.value.onnewmapspawn.mapcenter_eachactiveteam": "Kartenmitte jedes aktiven Teams",
+  "data.value.onnewmapspawn.mapcenter_eachactiveteam.description": "In Kartenmitte für jedes aktive Team spawnen",
+  "data.value.onnewmapspawn.spawnpoint_eachactiveteam": "Spawnpunkt jedes aktiven Teams",
+  "data.value.onnewmapspawn.spawnpoint_eachactiveteam.description": "An bestimmten Spawnpunkten für jedes aktive Team spawnen"
+}

@@ -1,0 +1,9 @@
+{
+  "data.value.displaydigitgrouping.description": "Définit comment les chiffres doivent être groupés dans les affichages numériques.",
+  "data.value.displaydigitgrouping.none": "Aucun",
+  "data.value.displaydigitgrouping.none.description": "Aucun groupement de chiffres (ex: 1000000)",
+  "data.value.displaydigitgrouping.comma": "Virgule",
+  "data.value.displaydigitgrouping.comma.description": "Utiliser la virgule comme séparateur de milliers (ex: 1,000,000)",
+  "data.value.displaydigitgrouping.space": "Espace",
+  "data.value.displaydigitgrouping.space.description": "Utiliser l'espace comme séparateur de milliers (ex: 1 000 000)"
+}

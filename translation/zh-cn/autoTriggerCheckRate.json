@@ -1,0 +1,9 @@
+{
+  "data.value.autotriggercheckrate.description": "定义自动触发检查其条件的频率。",
+  "data.value.autotriggercheckrate.everyframe": "每帧",
+  "data.value.autotriggercheckrate.everyframe.description": "每游戏帧检查一次（最频繁）",
+  "data.value.autotriggercheckrate.every4frames": "每4帧",
+  "data.value.autotriggercheckrate.every4frames.description": "每4游戏帧检查一次",
+  "data.value.autotriggercheckrate.every8frames": "每8帧",
+  "data.value.autotriggercheckrate.every8frames.description": "每8游戏帧检查一次（最不频繁）"
+}

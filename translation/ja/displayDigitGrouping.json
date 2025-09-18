@@ -1,0 +1,9 @@
+{
+  "data.value.displaydigitgrouping.description": "数値表示で桁をどのようにグループ化するかを定義します。",
+  "data.value.displaydigitgrouping.none": "なし",
+  "data.value.displaydigitgrouping.none.description": "桁区切りなし（例: 1000000）",
+  "data.value.displaydigitgrouping.comma": "コンマ",
+  "data.value.displaydigitgrouping.comma.description": "コンマを千の区切りとして使用（例: 1,000,000）",
+  "data.value.displaydigitgrouping.space": "スペース",
+  "data.value.displaydigitgrouping.space.description": "スペースを千の区切りとして使用（例: 1 000 000）"
+}

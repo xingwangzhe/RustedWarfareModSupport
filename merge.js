@@ -120,7 +120,8 @@ const languages = [
   'it',           // Italian (意大利语)
   'pt',           // Portuguese (葡萄牙语)
   'uk',           // Ukrainian (乌克兰语)
-  'ru'            // Russian (俄语)
+  'ru',           // Russian (俄语)
+  'ar'            // Arabic (阿拉伯语)
 ];
 
 // 进度条显示函数

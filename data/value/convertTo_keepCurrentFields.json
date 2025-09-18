@@ -1,0 +1,115 @@
+{
+  "name": "convertTo_keepCurrentFields",
+  "description": "data.value.convertto_keepcurrentfields.description",
+  "example": "convertTo_keepCurrentFields: maxHp",
+  "data": [
+    {
+      "name": "maxHp",
+      "description": "data.value.convertto_keepcurrentfields.maxhp",
+      "version": "1.13.3-1.15p9",
+      "example": "convertTo_keepCurrentFields: maxHp"
+    },
+    {
+      "name": "hp",
+      "description": "data.value.convertto_keepcurrentfields.hp",
+      "version": "1.13.3-1.15p9",
+      "example": "convertTo_keepCurrentFields: hp"
+    },
+    {
+      "name": "maxShield",
+      "description": "data.value.convertto_keepcurrentfields.maxshield",
+      "version": "1.13.3-1.15p9",
+      "example": "convertTo_keepCurrentFields: maxShield"
+    },
+    {
+      "name": "shield",
+      "description": "data.value.convertto_keepcurrentfields.shield",
+      "version": "1.13.3-1.15p9",
+      "example": "convertTo_keepCurrentFields: shield"
+    },
+    {
+      "name": "shieldRegen",
+      "description": "data.value.convertto_keepcurrentfields.shieldregen",
+      "version": "1.13.3-1.15p9",
+      "example": "convertTo_keepCurrentFields: shieldRegen"
+    },
+    {
+      "name": "maxEnergy",
+      "description": "data.value.convertto_keepcurrentfields.maxenergy",
+      "version": "1.13.3-1.15p9",
+      "example": "convertTo_keepCurrentFields: maxEnergy"
+    },
+    {
+      "name": "energy",
+      "description": "data.value.convertto_keepcurrentfields.energy",
+      "version": "1.13.3-1.15p9",
+      "example": "convertTo_keepCurrentFields: energy"
+    },
+    {
+      "name": "armour",
+      "description": "data.value.convertto_keepcurrentfields.armour",
+      "version": "1.13.3-1.15p9",
+      "example": "convertTo_keepCurrentFields: armour"
+    },
+    {
+      "name": "mass",
+      "description": "data.value.convertto_keepcurrentfields.mass",
+      "version": "1.13.3-1.15p9",
+      "example": "convertTo_keepCurrentFields: mass"
+    },
+    {
+      "name": "shootDelayMultiplier",
+      "description": "data.value.convertto_keepcurrentfields.shootdelaymultiplier",
+      "version": "1.13.3-1.15p9",
+      "example": "convertTo_keepCurrentFields: shootDelayMultiplier"
+    },
+    {
+      "name": "shootDamageMultiplier",
+      "description": "data.value.convertto_keepcurrentfields.shootdamagemultiplier",
+      "version": "1.13.3-1.15p9",
+      "example": "convertTo_keepCurrentFields: shootDamageMultiplier"
+    },
+    {
+      "name": "moveSpeed",
+      "description": "data.value.convertto_keepcurrentfields.movespeed",
+      "version": "1.13.3-1.15p9",
+      "example": "convertTo_keepCurrentFields: moveSpeed"
+    },
+    {
+      "name": "maxTurnSpeed",
+      "description": "data.value.convertto_keepcurrentfields.maxturnspeed",
+      "version": "1.13.3-1.15p9",
+      "example": "convertTo_keepCurrentFields: maxTurnSpeed"
+    },
+    {
+      "name": "maxAttackRange",
+      "description": "data.value.convertto_keepcurrentfields.maxattackrange",
+      "version": "1.13.3-1.15p9",
+      "example": "convertTo_keepCurrentFields: maxAttackRange"
+    },
+    {
+      "name": "selfRegenRate",
+      "description": "data.value.convertto_keepcurrentfields.selfregenrate",
+      "version": "1.13.3-1.15p9",
+      "example": "convertTo_keepCurrentFields: selfRegenRate"
+    },
+    {
+      "name": "heightTarget",
+      "description": "data.value.convertto_keepcurrentfields.heighttarget",
+      "version": "1.13.3-1.15p9",
+      "example": "convertTo_keepCurrentFields: heightTarget"
+    },
+    {
+      "name": "nanoFactorySpeed",
+      "description": "data.value.convertto_keepcurrentfields.nanofactoryspeed",
+      "version": "1.13.3-1.15p9",
+      "example": "convertTo_keepCurrentFields: nanoFactorySpeed"
+    },
+    {
+      "name": "fogOfWarSightRange",
+      "description": "data.value.convertto_keepcurrentfields.fogofwarsightrange",
+      "version": "1.13.3-1.15p9",
+      "example": "convertTo_keepCurrentFields: fogOfWarSightRange"
+    }
+  ]
+}

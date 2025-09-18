@@ -1,0 +1,17 @@
+{
+  "data.value.addwaypoint_target_nearestunit_team.description": "Defines which team affiliation to target when finding the nearest unit.",
+  "data.value.addwaypoint_target_nearestunit_team.own": "Own",
+  "data.value.addwaypoint_target_nearestunit_team.own.description": "Target units from your own team",
+  "data.value.addwaypoint_target_nearestunit_team.neutral": "Neutral",
+  "data.value.addwaypoint_target_nearestunit_team.neutral.description": "Target neutral units",
+  "data.value.addwaypoint_target_nearestunit_team.allynotown": "Ally Not Own",
+  "data.value.addwaypoint_target_nearestunit_team.allynotown.description": "Target allied units that are not your own",
+  "data.value.addwaypoint_target_nearestunit_team.ally": "Ally",
+  "data.value.addwaypoint_target_nearestunit_team.ally.description": "Target all allied units",
+  "data.value.addwaypoint_target_nearestunit_team.enemy": "Enemy",
+  "data.value.addwaypoint_target_nearestunit_team.enemy.description": "Target enemy units",
+  "data.value.addwaypoint_target_nearestunit_team.any": "Any",
+  "data.value.addwaypoint_target_nearestunit_team.any.description": "Target any unit regardless of team",
+  "data.value.addwaypoint_target_nearestunit_team.notown": "Not Own",
+  "data.value.addwaypoint_target_nearestunit_team.notown.description": "Target any unit that is not your own"
+}

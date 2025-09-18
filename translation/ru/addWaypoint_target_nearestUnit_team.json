@@ -1,0 +1,17 @@
+{
+  "data.value.addwaypoint_target_nearestunit_team.description": "Определяет, какую командную принадлежность целить при поиске ближайшего юнита.",
+  "data.value.addwaypoint_target_nearestunit_team.own": "Свой",
+  "data.value.addwaypoint_target_nearestunit_team.own.description": "Целить юниты из своей команды",
+  "data.value.addwaypoint_target_nearestunit_team.neutral": "Нейтральный",
+  "data.value.addwaypoint_target_nearestunit_team.neutral.description": "Целить нейтральные юниты",
+  "data.value.addwaypoint_target_nearestunit_team.allynotown": "Союзник Не Свой",
+  "data.value.addwaypoint_target_nearestunit_team.allynotown.description": "Целить союзные юниты, которые не являются вашими",
+  "data.value.addwaypoint_target_nearestunit_team.ally": "Союзник",
+  "data.value.addwaypoint_target_nearestunit_team.ally.description": "Целить все союзные юниты",
+  "data.value.addwaypoint_target_nearestunit_team.enemy": "Враг",
+  "data.value.addwaypoint_target_nearestunit_team.enemy.description": "Целить вражеские юниты",
+  "data.value.addwaypoint_target_nearestunit_team.any": "Любой",
+  "data.value.addwaypoint_target_nearestunit_team.any.description": "Целить любой юнит независимо от команды",
+  "data.value.addwaypoint_target_nearestunit_team.notown": "Не Свой",
+  "data.value.addwaypoint_target_nearestunit_team.notown.description": "Целить любой юнит, который не является вашим"
+}

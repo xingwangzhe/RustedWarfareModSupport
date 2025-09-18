@@ -1,0 +1,19 @@
+{
+  "name": "drawType",
+  "description": "data.value.drawtype.description",
+  "example": "drawType: normal",
+  "data": [
+    {
+      "name": "normal",
+      "description": "data.value.drawtype.normal",
+      "version": "1.13.3-1.15p9",
+      "example": "drawType: normal"
+    },
+    {
+      "name": "displacement",
+      "description": "data.value.drawtype.displacement",
+      "version": "1.13.3-1.15p9",
+      "example": "drawType: displacement"
+    }
+  ]
+}

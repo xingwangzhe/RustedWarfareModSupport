@@ -1,0 +1,17 @@
+{
+  "data.value.onactions.description": "Визначає стан дії, який запускає цю поведінку.",
+  "data.value.onactions.move": "Рухатися",
+  "data.value.onactions.move.description": "Запускається, коли юніт рухається",
+  "data.value.onactions.attack": "Атакувати",
+  "data.value.onactions.attack.description": "Запускається, коли юніт атакує",
+  "data.value.onactions.idle": "Бездіяльність",
+  "data.value.onactions.idle.description": "Запускається, коли юніт бездіяльний",
+  "data.value.onactions.underconstruction": "В Будівництві",
+  "data.value.onactions.underconstruction.description": "Запускається, коли юніт знаходиться в будівництві",
+  "data.value.onactions.underconstructionwithlinkedbuilttime": "В Будівництві З Пов'язаним Часом Будівництва",
+  "data.value.onactions.underconstructionwithlinkedbuilttime.description": "Запускається, коли юніт знаходиться в будівництві з пов'язаним часом будівництва",
+  "data.value.onactions.queuedunits": "Юніти В Черзі",
+  "data.value.onactions.queuedunits.description": "Запускається, коли юніти поставлені в чергу на виробництво",
+  "data.value.onactions.repair": "Ремонтувати",
+  "data.value.onactions.repair.description": "Запускається, коли юніт ремонтується"
+}

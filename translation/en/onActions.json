@@ -1,0 +1,17 @@
+{
+  "data.value.onactions.description": "Defines the action state that triggers this behavior.",
+  "data.value.onactions.move": "Move",
+  "data.value.onactions.move.description": "Triggered when the unit is moving",
+  "data.value.onactions.attack": "Attack",
+  "data.value.onactions.attack.description": "Triggered when the unit is attacking",
+  "data.value.onactions.idle": "Idle",
+  "data.value.onactions.idle.description": "Triggered when the unit is idle",
+  "data.value.onactions.underconstruction": "Under Construction",
+  "data.value.onactions.underconstruction.description": "Triggered when the unit is under construction",
+  "data.value.onactions.underconstructionwithlinkedbuilttime": "Under Construction With Linked Build Time",
+  "data.value.onactions.underconstructionwithlinkedbuilttime.description": "Triggered when the unit is under construction with linked build time",
+  "data.value.onactions.queuedunits": "Queued Units",
+  "data.value.onactions.queuedunits.description": "Triggered when units are queued for production",
+  "data.value.onactions.repair": "Repair",
+  "data.value.onactions.repair.description": "Triggered when the unit is repairing"
+}

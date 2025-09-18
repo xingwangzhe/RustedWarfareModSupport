@@ -1,0 +1,9 @@
+{
+  "data.value.autotriggercheckrate.description": "Definisce quanto spesso l'autotrigger dovrebbe controllare le sue condizioni.",
+  "data.value.autotriggercheckrate.everyframe": "Ogni Fotogramma",
+  "data.value.autotriggercheckrate.everyframe.description": "Controlla ogni fotogramma di gioco (più frequente)",
+  "data.value.autotriggercheckrate.every4frames": "Ogni 4 Fotogrammi",
+  "data.value.autotriggercheckrate.every4frames.description": "Controlla ogni 4 fotogrammi di gioco",
+  "data.value.autotriggercheckrate.every8frames": "Ogni 8 Fotogrammi",
+  "data.value.autotriggercheckrate.every8frames.description": "Controlla ogni 8 fotogrammi di gioco (meno frequente)"
+}

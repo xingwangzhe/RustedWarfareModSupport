@@ -1,0 +1,7 @@
+{
+  "data.value.drawtype.description": "Define como a unidade ou efeito deve ser desenhado na tela.",
+  "data.value.drawtype.normal": "Normal",
+  "data.value.drawtype.normal.description": "Modo de desenho padrão",
+  "data.value.drawtype.displacement": "Deslocamento",
+  "data.value.drawtype.displacement.description": "Modo de desenho de deslocamento para efeitos visuais especiais"
+}

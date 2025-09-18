@@ -1,0 +1,7 @@
+{
+  "data.value.drawtype.description": "定义单位或效果在屏幕上的绘制方式。",
+  "data.value.drawtype.normal": "正常",
+  "data.value.drawtype.normal.description": "标准绘制模式",
+  "data.value.drawtype.displacement": "位移",
+  "data.value.drawtype.displacement.description": "位移绘制模式，用于特殊视觉效果"
+}

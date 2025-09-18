@@ -1,0 +1,9 @@
+{
+  "data.value.autotriggercheckrate.description": "定義自動觸發器檢查其條件的頻率。",
+  "data.value.autotriggercheckrate.everyframe": "每幀",
+  "data.value.autotriggercheckrate.everyframe.description": "檢查每個遊戲幀（最頻繁）",
+  "data.value.autotriggercheckrate.every4frames": "每4幀",
+  "data.value.autotriggercheckrate.every4frames.description": "每4個遊戲幀檢查一次",
+  "data.value.autotriggercheckrate.every8frames": "每8幀",
+  "data.value.autotriggercheckrate.every8frames.description": "每8個遊戲幀檢查一次（最少）"
+}

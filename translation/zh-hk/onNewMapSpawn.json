@@ -1,0 +1,13 @@
+{
+  "data.value.onnewmapspawn.description": "定義載入新地圖時單位應該在哪裡生成。",
+  "data.value.onnewmapspawn.emptyresourcepools_asneutral": "空資源池作為中立",
+  "data.value.onnewmapspawn.emptyresourcepools_asneutral.description": "在中立單位中於空資源池生成",
+  "data.value.onnewmapspawn.emptyoroccupiedresourcepools_asneutral": "空或佔用資源池作為中立",
+  "data.value.onnewmapspawn.emptyoroccupiedresourcepools_asneutral.description": "在中立單位中於空或佔用資源池生成",
+  "data.value.onnewmapspawn.mapcenter_asneutral": "地圖中心作為中立",
+  "data.value.onnewmapspawn.mapcenter_asneutral.description": "在中立單位中於地圖中心生成",
+  "data.value.onnewmapspawn.mapcenter_eachactiveteam": "地圖中心每個活躍隊伍",
+  "data.value.onnewmapspawn.mapcenter_eachactiveteam.description": "為每個活躍隊伍在地圖中心生成",
+  "data.value.onnewmapspawn.spawnpoint_eachactiveteam": "生成點每個活躍隊伍",
+  "data.value.onnewmapspawn.spawnpoint_eachactiveteam.description": "為每個活躍隊伍在指定生成點生成"
+}

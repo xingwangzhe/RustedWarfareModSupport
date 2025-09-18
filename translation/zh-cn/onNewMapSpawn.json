@@ -1,0 +1,13 @@
+{
+  "data.value.onnewmapspawn.description": "定义新地图加载时单位应生成的位置。",
+  "data.value.onnewmapspawn.emptyresourcepools_asneutral": "空资源池（中立）",
+  "data.value.onnewmapspawn.emptyresourcepools_asneutral.description": "在中立单位中生成空资源池",
+  "data.value.onnewmapspawn.emptyoroccupiedresourcepools_asneutral": "空或占用资源池（中立）",
+  "data.value.onnewmapspawn.emptyoroccupiedresourcepools_asneutral.description": "在中立单位中生成空或占用的资源池",
+  "data.value.onnewmapspawn.mapcenter_asneutral": "地图中心（中立）",
+  "data.value.onnewmapspawn.mapcenter_asneutral.description": "在中立单位中生成地图中心",
+  "data.value.onnewmapspawn.mapcenter_eachactiveteam": "地图中心（每个活跃队伍）",
+  "data.value.onnewmapspawn.mapcenter_eachactiveteam.description": "为每个活跃队伍生成地图中心",
+  "data.value.onnewmapspawn.spawnpoint_eachactiveteam": "生成点（每个活跃队伍）",
+  "data.value.onnewmapspawn.spawnpoint_eachactiveteam.description": "为每个活跃队伍生成指定生成点"
+}

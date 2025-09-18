@@ -1,0 +1,9 @@
+{
+  "data.value.displaydigitgrouping.description": "定義數位顯示中數位的分組方式。",
+  "data.value.displaydigitgrouping.none": "無",
+  "data.value.displaydigitgrouping.none.description": "無數位分組（例如：1000000）",
+  "data.value.displaydigitgrouping.comma": "逗號",
+  "data.value.displaydigitgrouping.comma.description": "使用逗號作為千位分隔符（例如：1,000,000）",
+  "data.value.displaydigitgrouping.space": "空格",
+  "data.value.displaydigitgrouping.space.description": "使用空格作為千位分隔符（例如：1 000 000）"
+}

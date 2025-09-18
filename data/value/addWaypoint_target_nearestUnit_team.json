@@ -1,0 +1,49 @@
+{
+  "name": "addWaypoint_target_nearestUnit_team",
+  "description": "data.value.addwaypoint_target_nearestunit_team.description",
+  "example": "addWaypoint_target_nearestUnit_team: own",
+  "data": [
+    {
+      "name": "own",
+      "description": "data.value.addwaypoint_target_nearestunit_team.own",
+      "version": "1.13.3-1.15p9",
+      "example": "addWaypoint_target_nearestUnit_team: own"
+    },
+    {
+      "name": "neutral",
+      "description": "data.value.addwaypoint_target_nearestunit_team.neutral",
+      "version": "1.13.3-1.15p9",
+      "example": "addWaypoint_target_nearestUnit_team: neutral"
+    },
+    {
+      "name": "allyNotOwn",
+      "description": "data.value.addwaypoint_target_nearestunit_team.allynotown",
+      "version": "1.13.3-1.15p9",
+      "example": "addWaypoint_target_nearestUnit_team: allyNotOwn"
+    },
+    {
+      "name": "ally",
+      "description": "data.value.addwaypoint_target_nearestunit_team.ally",
+      "version": "1.13.3-1.15p9",
+      "example": "addWaypoint_target_nearestUnit_team: ally"
+    },
+    {
+      "name": "enemy",
+      "description": "data.value.addwaypoint_target_nearestunit_team.enemy",
+      "version": "1.13.3-1.15p9",
+      "example": "addWaypoint_target_nearestUnit_team: enemy"
+    },
+    {
+      "name": "any",
+      "description": "data.value.addwaypoint_target_nearestunit_team.any",
+      "version": "1.13.3-1.15p9",
+      "example": "addWaypoint_target_nearestUnit_team: any"
+    },
+    {
+      "name": "notOwn",
+      "description": "data.value.addwaypoint_target_nearestunit_team.notown",
+      "version": "1.13.3-1.15p9",
+      "example": "addWaypoint_target_nearestUnit_team: notOwn"
+    }
+  ]
+}

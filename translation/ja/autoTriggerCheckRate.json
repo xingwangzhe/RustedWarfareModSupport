@@ -1,0 +1,9 @@
+{
+  "data.value.autotriggercheckrate.description": "自動トリガーが条件をチェックする頻度を定義します。",
+  "data.value.autotriggercheckrate.everyframe": "毎フレーム",
+  "data.value.autotriggercheckrate.everyframe.description": "毎ゲームフレームをチェック（最も頻繁）",
+  "data.value.autotriggercheckrate.every4frames": "4フレームごと",
+  "data.value.autotriggercheckrate.every4frames.description": "4ゲームフレームごとにチェック",
+  "data.value.autotriggercheckrate.every8frames": "8フレームごと",
+  "data.value.autotriggercheckrate.every8frames.description": "8ゲームフレームごとにチェック（最も少ない）"
+}

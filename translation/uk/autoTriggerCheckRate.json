@@ -1,0 +1,9 @@
+{
+  "data.value.autotriggercheckrate.description": "Визначає, як часто автотригер повинен перевіряти свої умови.",
+  "data.value.autotriggercheckrate.everyframe": "Кожен Кадр",
+  "data.value.autotriggercheckrate.everyframe.description": "Перевіряти кожен ігровий кадр (найчастіше)",
+  "data.value.autotriggercheckrate.every4frames": "Кожні 4 Кадри",
+  "data.value.autotriggercheckrate.every4frames.description": "Перевіряти кожні 4 ігрові кадри",
+  "data.value.autotriggercheckrate.every8frames": "Кожні 8 Кадрів",
+  "data.value.autotriggercheckrate.every8frames.description": "Перевіряти кожні 8 ігрових кадрів (найрідше)"
+}

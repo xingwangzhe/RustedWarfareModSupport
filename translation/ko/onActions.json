@@ -1,0 +1,17 @@
+{
+  "data.value.onactions.description": "이 동작을 트리거하는 액션 상태를 정의합니다.",
+  "data.value.onactions.move": "이동",
+  "data.value.onactions.move.description": "유닛이 이동할 때 트리거됩니다",
+  "data.value.onactions.attack": "공격",
+  "data.value.onactions.attack.description": "유닛이 공격할 때 트리거됩니다",
+  "data.value.onactions.idle": "대기",
+  "data.value.onactions.idle.description": "유닛이 대기 중일 때 트리거됩니다",
+  "data.value.onactions.underconstruction": "건설 중",
+  "data.value.onactions.underconstruction.description": "유닛이 건설 중일 때 트리거됩니다",
+  "data.value.onactions.underconstructionwithlinkedbuilttime": "연결된 건설 시간으로 건설 중",
+  "data.value.onactions.underconstructionwithlinkedbuilttime.description": "유닛이 연결된 건설 시간으로 건설 중일 때 트리거됩니다",
+  "data.value.onactions.queuedunits": "대기열 유닛",
+  "data.value.onactions.queuedunits.description": "유닛이 생산을 위해 대기열에 있을 때 트리거됩니다",
+  "data.value.onactions.repair": "수리",
+  "data.value.onactions.repair.description": "유닛이 수리 중일 때 트리거됩니다"
+}

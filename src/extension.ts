@@ -4,10 +4,7 @@ import * as vscode from "vscode";
 import { t } from "./translationManager";
 import { IniSectionSymbolProvider } from "./Section";
 import { IniFoldingRangeProvider } from "./IniFoldingProvider";
-import {
-  SectionNameCompletionProvider,
-  GenericCompletionProvider,
-} from "./completionProvider";
+import { SectionNameCompletionProvider } from "./completionProvider";
 import {
   createCompletionProviders,
   completionProviderConfigs,

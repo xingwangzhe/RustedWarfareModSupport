@@ -1,0 +1,17 @@
+{
+  "data.value.fireturretxatground_onlyoverpassabletileof.description": "定义炮塔向地面目标开火时可越过的地形类型。",
+  "data.value.fireturretxatground_onlyoverpassabletileof.none": "无",
+  "data.value.fireturretxatground_onlyoverpassabletileof.none.description": "无法越过任何地形开火",
+  "data.value.fireturretxatground_onlyoverpassabletileof.building": "建筑",
+  "data.value.fireturretxatground_onlyoverpassabletileof.building.description": "可越过建筑格开火",
+  "data.value.fireturretxatground_onlyoverpassabletileof.land": "陆地",
+  "data.value.fireturretxatground_onlyoverpassabletileof.land.description": "可越过陆地格开火",
+  "data.value.fireturretxatground_onlyoverpassabletileof.hover": "悬停",
+  "data.value.fireturretxatground_onlyoverpassabletileof.hover.description": "可越过悬停地形开火",
+  "data.value.fireturretxatground_onlyoverpassabletileof.air": "空中",
+  "data.value.fireturretxatground_onlyoverpassabletileof.air.description": "可越过空中空间开火",
+  "data.value.fireturretxatground_onlyoverpassabletileof.over_cliff": "越过悬崖",
+  "data.value.fireturretxatground_onlyoverpassabletileof.over_cliff.description": "可越过悬崖地形开火",
+  "data.value.fireturretxatground_onlyoverpassabletileof.over_water_cliff": "越过水崖",
+  "data.value.fireturretxatground_onlyoverpassabletileof.over_water_cliff.description": "可越过水崖地形开火"
+}

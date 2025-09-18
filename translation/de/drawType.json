@@ -1,0 +1,7 @@
+{
+  "data.value.drawtype.description": "Definiert, wie die Einheit oder der Effekt auf dem Bildschirm gezeichnet werden soll.",
+  "data.value.drawtype.normal": "Normal",
+  "data.value.drawtype.normal.description": "Standard-Zeichenmodus",
+  "data.value.drawtype.displacement": "Verschiebung",
+  "data.value.drawtype.displacement.description": "Verschiebungs-Zeichenmodus für spezielle visuelle Effekte"
+}

@@ -1,0 +1,17 @@
+{
+  "data.value.fireturretxatground_onlyoverpassabletileof.description": "터렛이 지상 목표물 위로 발사할 수 있는 지형 유형을 정의합니다.",
+  "data.value.fireturretxatground_onlyoverpassabletileof.none": "없음",
+  "data.value.fireturretxatground_onlyoverpassabletileof.none.description": "어떤 지형 위로도 발사할 수 없음",
+  "data.value.fireturretxatground_onlyoverpassabletileof.building": "건물",
+  "data.value.fireturretxatground_onlyoverpassabletileof.building.description": "건물 타일 위로 발사할 수 있음",
+  "data.value.fireturretxatground_onlyoverpassabletileof.land": "육지",
+  "data.value.fireturretxatground_onlyoverpassabletileof.land.description": "육지 타일 위로 발사할 수 있음",
+  "data.value.fireturretxatground_onlyoverpassabletileof.hover": "호버",
+  "data.value.fireturretxatground_onlyoverpassabletileof.hover.description": "호버 지형 위로 발사할 수 있음",
+  "data.value.fireturretxatground_onlyoverpassabletileof.air": "공기",
+  "data.value.fireturretxatground_onlyoverpassabletileof.air.description": "공기 공간 위로 발사할 수 있음",
+  "data.value.fireturretxatground_onlyoverpassabletileof.over_cliff": "절벽 위",
+  "data.value.fireturretxatground_onlyoverpassabletileof.over_cliff.description": "절벽 지형 위로 발사할 수 있음",
+  "data.value.fireturretxatground_onlyoverpassabletileof.over_water_cliff": "물 절벽 위",
+  "data.value.fireturretxatground_onlyoverpassabletileof.over_water_cliff.description": "물 절벽 지형 위로 발사할 수 있음"
+}

@@ -1,0 +1,37 @@
+{
+  "name": "onNewMapSpawn",
+  "description": "data.value.onnewmapspawn.description",
+  "example": "onNewMapSpawn: emptyResourcePools_asNeutral",
+  "data": [
+    {
+      "name": "emptyResourcePools_asNeutral",
+      "description": "data.value.onnewmapspawn.emptyresourcepools_asneutral",
+      "version": "1.13.3-1.15p9",
+      "example": "onNewMapSpawn: emptyResourcePools_asNeutral"
+    },
+    {
+      "name": "emptyOrOccupiedResourcePools_asNeutral",
+      "description": "data.value.onnewmapspawn.emptyoroccupiedresourcepools_asneutral",
+      "version": "1.13.3-1.15p9",
+      "example": "onNewMapSpawn: emptyOrOccupiedResourcePools_asNeutral"
+    },
+    {
+      "name": "mapCenter_asNeutral",
+      "description": "data.value.onnewmapspawn.mapcenter_asneutral",
+      "version": "1.13.3-1.15p9",
+      "example": "onNewMapSpawn: mapCenter_asNeutral"
+    },
+    {
+      "name": "mapCenter_eachActiveTeam",
+      "description": "data.value.onnewmapspawn.mapcenter_eachactiveteam",
+      "version": "1.13.3-1.15p9",
+      "example": "onNewMapSpawn: mapCenter_eachActiveTeam"
+    },
+    {
+      "name": "spawnPoint_eachActiveTeam",
+      "description": "data.value.onnewmapspawn.spawnpoint_eachactiveteam",
+      "version": "1.13.3-1.15p9",
+      "example": "onNewMapSpawn: spawnPoint_eachActiveTeam"
+    }
+  ]
+}

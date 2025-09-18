@@ -1,0 +1,49 @@
+{
+  "name": "fireTurretXAtGround_onlyOverPassableTileOf",
+  "description": "data.value.fireturretxatground_onlyoverpassabletileof.description",
+  "example": "fireTurretXAtGround_onlyOverPassableTileOf: NONE",
+  "data": [
+    {
+      "name": "NONE",
+      "description": "data.value.fireturretxatground_onlyoverpassabletileof.none",
+      "version": "1.13.3-1.15p9",
+      "example": "fireTurretXAtGround_onlyOverPassableTileOf: NONE"
+    },
+    {
+      "name": "BUILDING",
+      "description": "data.value.fireturretxatground_onlyoverpassabletileof.building",
+      "version": "1.13.3-1.15p9",
+      "example": "fireTurretXAtGround_onlyOverPassableTileOf: BUILDING"
+    },
+    {
+      "name": "LAND",
+      "description": "data.value.fireturretxatground_onlyoverpassabletileof.land",
+      "version": "1.13.3-1.15p9",
+      "example": "fireTurretXAtGround_onlyOverPassableTileOf: LAND"
+    },
+    {
+      "name": "HOVER",
+      "description": "data.value.fireturretxatground_onlyoverpassabletileof.hover",
+      "version": "1.13.3-1.15p9",
+      "example": "fireTurretXAtGround_onlyOverPassableTileOf: HOVER"
+    },
+    {
+      "name": "AIR",
+      "description": "data.value.fireturretxatground_onlyoverpassabletileof.air",
+      "version": "1.13.3-1.15p9",
+      "example": "fireTurretXAtGround_onlyOverPassableTileOf: AIR"
+    },
+    {
+      "name": "OVER_CLIFF",
+      "description": "data.value.fireturretxatground_onlyoverpassabletileof.over_cliff",
+      "version": "1.13.3-1.15p9",
+      "example": "fireTurretXAtGround_onlyOverPassableTileOf: OVER_CLIFF"
+    },
+    {
+      "name": "OVER_WATER_CLIFF",
+      "description": "data.value.fireturretxatground_onlyoverpassabletileof.over_water_cliff",
+      "version": "1.13.3-1.15p9",
+      "example": "fireTurretXAtGround_onlyOverPassableTileOf: OVER_WATER_CLIFF"
+    }
+  ]
+}

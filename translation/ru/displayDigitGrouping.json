@@ -1,0 +1,9 @@
+{
+  "data.value.displaydigitgrouping.description": "Определяет, как цифры должны группироваться в числовых дисплеях.",
+  "data.value.displaydigitgrouping.none": "Нет",
+  "data.value.displaydigitgrouping.none.description": "Без группировки цифр (например, 1000000)",
+  "data.value.displaydigitgrouping.comma": "Запятая",
+  "data.value.displaydigitgrouping.comma.description": "Использовать запятую как разделитель тысяч (например, 1.000.000)",
+  "data.value.displaydigitgrouping.space": "Пробел",
+  "data.value.displaydigitgrouping.space.description": "Использовать пробел как разделитель тысяч (например, 1 000 000)"
+}

@@ -1,0 +1,17 @@
+{
+  "data.value.onactions.description": "يحدد حالة الإجراء التي تفعل هذا السلوك.",
+  "data.value.onactions.move": "تحرك",
+  "data.value.onactions.move.description": "يتم تفعيله عندما تتحرك الوحدة",
+  "data.value.onactions.attack": "هجوم",
+  "data.value.onactions.attack.description": "يتم تفعيله عندما تهاجم الوحدة",
+  "data.value.onactions.idle": "خامل",
+  "data.value.onactions.idle.description": "يتم تفعيله عندما تكون الوحدة خاملة",
+  "data.value.onactions.underconstruction": "قيد الإنشاء",
+  "data.value.onactions.underconstruction.description": "يتم تفعيله عندما تكون الوحدة قيد الإنشاء",
+  "data.value.onactions.underconstructionwithlinkedbuilttime": "قيد الإنشاء مع وقت بناء مرتبط",
+  "data.value.onactions.underconstructionwithlinkedbuilttime.description": "يتم تفعيله عندما تكون الوحدة قيد الإنشاء مع وقت بناء مرتبط",
+  "data.value.onactions.queuedunits": "وحدات في قائمة الانتظار",
+  "data.value.onactions.queuedunits.description": "يتم تفعيله عندما تكون الوحدات في قائمة انتظار الإنتاج",
+  "data.value.onactions.repair": "إصلاح",
+  "data.value.onactions.repair.description": "يتم تفعيله عندما تقوم الوحدة بالإصلاح"
+}

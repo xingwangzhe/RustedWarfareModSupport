@@ -1,0 +1,17 @@
+{
+  "data.value.addwaypoint_target_nearestunit_team.description": "Definisce quale affiliazione di squadra prendere di mira quando si trova l'unità più vicina.",
+  "data.value.addwaypoint_target_nearestunit_team.own": "Proprio",
+  "data.value.addwaypoint_target_nearestunit_team.own.description": "Prendi di mira unità dalla tua squadra",
+  "data.value.addwaypoint_target_nearestunit_team.neutral": "Neutrale",
+  "data.value.addwaypoint_target_nearestunit_team.neutral.description": "Prendi di mira unità neutrali",
+  "data.value.addwaypoint_target_nearestunit_team.allynotown": "Alleato Non Proprio",
+  "data.value.addwaypoint_target_nearestunit_team.allynotown.description": "Prendi di mira unità alleate che non sono tue",
+  "data.value.addwaypoint_target_nearestunit_team.ally": "Alleato",
+  "data.value.addwaypoint_target_nearestunit_team.ally.description": "Prendi di mira tutte le unità alleate",
+  "data.value.addwaypoint_target_nearestunit_team.enemy": "Nemico",
+  "data.value.addwaypoint_target_nearestunit_team.enemy.description": "Prendi di mira unità nemiche",
+  "data.value.addwaypoint_target_nearestunit_team.any": "Qualsiasi",
+  "data.value.addwaypoint_target_nearestunit_team.any.description": "Prendi di mira qualsiasi unità indipendentemente dalla squadra",
+  "data.value.addwaypoint_target_nearestunit_team.notown": "Non Proprio",
+  "data.value.addwaypoint_target_nearestunit_team.notown.description": "Prendi di mira qualsiasi unità che non sia tua"
+}

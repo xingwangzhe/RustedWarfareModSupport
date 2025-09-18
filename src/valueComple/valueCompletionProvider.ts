@@ -5,6 +5,16 @@ import { LogicBooleanValueCompletionProvider } from "./LogicBooleanValueCompleti
 import { MovementTypeValueCompletionProvider } from "./MovementTypeValueCompletionProvider";
 import { ImageValueCompletionProvider } from "./ImageValueCompletionProvider";
 import { AutoTriggerOnEventValueCompletionProvider } from "./AutoTriggerOnEventValueCompletionProvider";
+import { AddWaypointTypeValueCompletionProvider } from "./AddWaypointTypeValueCompletionProvider";
+import { AutoTriggerCheckRateValueCompletionProvider } from "./AutoTriggerCheckRateValueCompletionProvider";
+import { OnActionsValueCompletionProvider } from "./OnActionsValueCompletionProvider";
+import { DrawTypeValueCompletionProvider } from "./DrawTypeValueCompletionProvider";
+import { AddWaypointTargetNearestUnitTeamValueCompletionProvider } from "./AddWaypointTargetNearestUnitTeamValueCompletionProvider";
+import { FireTurretXAtGroundOnlyOverPassableTileOfValueCompletionProvider } from "./FireTurretXAtGroundOnlyOverPassableTileOfValueCompletionProvider";
+import { SetUnitStatsValueCompletionProvider } from "./SetUnitStatsValueCompletionProvider";
+import { ConvertToKeepCurrentFieldsValueCompletionProvider } from "./ConvertToKeepCurrentFieldsValueCompletionProvider";
+import { OnNewMapSpawnValueCompletionProvider } from "./OnNewMapSpawnValueCompletionProvider";
+import { DisplayDigitGroupingValueCompletionProvider } from "./DisplayDigitGroupingValueCompletionProvider";
 
 export class ValueCompletionProvider implements vscode.CompletionItemProvider {
   private providers: vscode.CompletionItemProvider[];
@@ -17,6 +27,16 @@ export class ValueCompletionProvider implements vscode.CompletionItemProvider {
       new MovementTypeValueCompletionProvider(),
       new ImageValueCompletionProvider(),
       new AutoTriggerOnEventValueCompletionProvider(),
+      new AddWaypointTypeValueCompletionProvider(),
+      new AutoTriggerCheckRateValueCompletionProvider(),
+      new OnActionsValueCompletionProvider(),
+      new DrawTypeValueCompletionProvider(),
+      new AddWaypointTargetNearestUnitTeamValueCompletionProvider(),
+      new FireTurretXAtGroundOnlyOverPassableTileOfValueCompletionProvider(),
+      new SetUnitStatsValueCompletionProvider(),
+      new ConvertToKeepCurrentFieldsValueCompletionProvider(),
+      new OnNewMapSpawnValueCompletionProvider(),
+      new DisplayDigitGroupingValueCompletionProvider(),
     ];
   }
 

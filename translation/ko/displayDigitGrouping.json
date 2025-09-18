@@ -1,0 +1,9 @@
+{
+  "data.value.displaydigitgrouping.description": "숫자 표시에서 숫자가 어떻게 그룹화되어야 하는지 정의합니다.",
+  "data.value.displaydigitgrouping.none": "없음",
+  "data.value.displaydigitgrouping.none.description": "숫자 그룹화 없음 (예: 1000000)",
+  "data.value.displaydigitgrouping.comma": "쉼표",
+  "data.value.displaydigitgrouping.comma.description": "천 단위 구분자로 쉼표 사용 (예: 1,000,000)",
+  "data.value.displaydigitgrouping.space": "공백",
+  "data.value.displaydigitgrouping.space.description": "천 단위 구분자로 공백 사용 (예: 1 000 000)"
+}

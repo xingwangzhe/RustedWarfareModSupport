@@ -1,0 +1,17 @@
+{
+  "data.value.addwaypoint_target_nearestunit_team.description": "Define qué afiliación de equipo apuntar al encontrar la unidad más cercana.",
+  "data.value.addwaypoint_target_nearestunit_team.own": "Propio",
+  "data.value.addwaypoint_target_nearestunit_team.own.description": "Apuntar unidades de tu propio equipo",
+  "data.value.addwaypoint_target_nearestunit_team.neutral": "Neutral",
+  "data.value.addwaypoint_target_nearestunit_team.neutral.description": "Apuntar unidades neutrales",
+  "data.value.addwaypoint_target_nearestunit_team.allynotown": "Aliado No Propio",
+  "data.value.addwaypoint_target_nearestunit_team.allynotown.description": "Apuntar unidades aliadas que no son tuyas",
+  "data.value.addwaypoint_target_nearestunit_team.ally": "Aliado",
+  "data.value.addwaypoint_target_nearestunit_team.ally.description": "Apuntar todas las unidades aliadas",
+  "data.value.addwaypoint_target_nearestunit_team.enemy": "Enemigo",
+  "data.value.addwaypoint_target_nearestunit_team.enemy.description": "Apuntar unidades enemigas",
+  "data.value.addwaypoint_target_nearestunit_team.any": "Cualquiera",
+  "data.value.addwaypoint_target_nearestunit_team.any.description": "Apuntar cualquier unidad independientemente del equipo",
+  "data.value.addwaypoint_target_nearestunit_team.notown": "No Propio",
+  "data.value.addwaypoint_target_nearestunit_team.notown.description": "Apuntar cualquier unidad que no sea tuya"
+}

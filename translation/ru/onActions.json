@@ -1,0 +1,17 @@
+{
+  "data.value.onactions.description": "Определяет состояние действия, которое запускает это поведение.",
+  "data.value.onactions.move": "Двигаться",
+  "data.value.onactions.move.description": "Запускается, когда юнит движется",
+  "data.value.onactions.attack": "Атаковать",
+  "data.value.onactions.attack.description": "Запускается, когда юнит атакует",
+  "data.value.onactions.idle": "Бездействие",
+  "data.value.onactions.idle.description": "Запускается, когда юнит бездействует",
+  "data.value.onactions.underconstruction": "В Строительстве",
+  "data.value.onactions.underconstruction.description": "Запускается, когда юнит находится в строительстве",
+  "data.value.onactions.underconstructionwithlinkedbuilttime": "В Строительстве Со Связанным Временем Строительства",
+  "data.value.onactions.underconstructionwithlinkedbuilttime.description": "Запускается, когда юнит находится в строительстве со связанным временем строительства",
+  "data.value.onactions.queuedunits": "Юниты В Очереди",
+  "data.value.onactions.queuedunits.description": "Запускается, когда юниты поставлены в очередь на производство",
+  "data.value.onactions.repair": "Ремонтировать",
+  "data.value.onactions.repair.description": "Запускается, когда юнит ремонтируется"
+}

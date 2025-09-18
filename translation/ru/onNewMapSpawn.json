@@ -1,0 +1,13 @@
+{
+  "data.value.onnewmapspawn.description": "Определяет, где юниты должны появляться при загрузке новой карты.",
+  "data.value.onnewmapspawn.emptyresourcepools_asneutral": "Пустые Ресурсные Бассейны Как Нейтральные",
+  "data.value.onnewmapspawn.emptyresourcepools_asneutral.description": "Появляются в пустых ресурсных бассейнах как нейтральные юниты",
+  "data.value.onnewmapspawn.emptyoroccupiedresourcepools_asneutral": "Пустые Или Занятые Ресурсные Бассейны Как Нейтральные",
+  "data.value.onnewmapspawn.emptyoroccupiedresourcepools_asneutral.description": "Появляются в пустых или занятых ресурсных бассейнах как нейтральные юниты",
+  "data.value.onnewmapspawn.mapcenter_asneutral": "Центр Карты Как Нейтральный",
+  "data.value.onnewmapspawn.mapcenter_asneutral.description": "Появляются в центре карты как нейтральные юниты",
+  "data.value.onnewmapspawn.mapcenter_eachactiveteam": "Центр Карты Каждая Активная Команда",
+  "data.value.onnewmapspawn.mapcenter_eachactiveteam.description": "Появляются в центре карты для каждой активной команды",
+  "data.value.onnewmapspawn.spawnpoint_eachactiveteam": "Точка Появления Каждая Активная Команда",
+  "data.value.onnewmapspawn.spawnpoint_eachactiveteam.description": "Появляются в назначенных точках появления для каждой активной команды"
+}

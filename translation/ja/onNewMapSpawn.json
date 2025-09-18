@@ -1,0 +1,13 @@
+{
+  "data.value.onnewmapspawn.description": "新しいマップが読み込まれたときにユニットがスポーンする場所を定義します。",
+  "data.value.onnewmapspawn.emptyresourcepools_asneutral": "空のリソースプールを中立として",
+  "data.value.onnewmapspawn.emptyresourcepools_asneutral.description": "空のリソースプールに中立ユニットとしてスポーンします",
+  "data.value.onnewmapspawn.emptyoroccupiedresourcepools_asneutral": "空または占有されたリソースプールを中立として",
+  "data.value.onnewmapspawn.emptyoroccupiedresourcepools_asneutral.description": "空または占有されたリソースプールに中立ユニットとしてスポーンします",
+  "data.value.onnewmapspawn.mapcenter_asneutral": "マップセンターを中立として",
+  "data.value.onnewmapspawn.mapcenter_asneutral.description": "マップセンターに中立ユニットとしてスポーンします",
+  "data.value.onnewmapspawn.mapcenter_eachactiveteam": "各アクティブチームのマップセンター",
+  "data.value.onnewmapspawn.mapcenter_eachactiveteam.description": "各アクティブチームのマップセンターにスポーンします",
+  "data.value.onnewmapspawn.spawnpoint_eachactiveteam": "各アクティブチームのスポーンポイント",
+  "data.value.onnewmapspawn.spawnpoint_eachactiveteam.description": "各アクティブチームの指定されたスポーンポイントにスポーンします"
+}

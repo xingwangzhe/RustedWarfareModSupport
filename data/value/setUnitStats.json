@@ -1,0 +1,115 @@
+{
+  "name": "setUnitStats",
+  "description": "data.value.setunitstats.description",
+  "example": "setUnitStats: maxHp",
+  "data": [
+    {
+      "name": "maxHp",
+      "description": "data.value.setunitstats.maxhp",
+      "version": "1.13.3-1.15p9",
+      "example": "setUnitStats: maxHp"
+    },
+    {
+      "name": "hp",
+      "description": "data.value.setunitstats.hp",
+      "version": "1.13.3-1.15p9",
+      "example": "setUnitStats: hp"
+    },
+    {
+      "name": "maxShield",
+      "description": "data.value.setunitstats.maxshield",
+      "version": "1.13.3-1.15p9",
+      "example": "setUnitStats: maxShield"
+    },
+    {
+      "name": "shield",
+      "description": "data.value.setunitstats.shield",
+      "version": "1.13.3-1.15p9",
+      "example": "setUnitStats: shield"
+    },
+    {
+      "name": "shieldRegen",
+      "description": "data.value.setunitstats.shieldregen",
+      "version": "1.13.3-1.15p9",
+      "example": "setUnitStats: shieldRegen"
+    },
+    {
+      "name": "maxEnergy",
+      "description": "data.value.setunitstats.maxenergy",
+      "version": "1.13.3-1.15p9",
+      "example": "setUnitStats: maxEnergy"
+    },
+    {
+      "name": "energy",
+      "description": "data.value.setunitstats.energy",
+      "version": "1.13.3-1.15p9",
+      "example": "setUnitStats: energy"
+    },
+    {
+      "name": "armour",
+      "description": "data.value.setunitstats.armour",
+      "version": "1.13.3-1.15p9",
+      "example": "setUnitStats: armour"
+    },
+    {
+      "name": "mass",
+      "description": "data.value.setunitstats.mass",
+      "version": "1.13.3-1.15p9",
+      "example": "setUnitStats: mass"
+    },
+    {
+      "name": "shootDelayMultiplier",
+      "description": "data.value.setunitstats.shootdelaymultiplier",
+      "version": "1.13.3-1.15p9",
+      "example": "setUnitStats: shootDelayMultiplier"
+    },
+    {
+      "name": "shootDamageMultiplier",
+      "description": "data.value.setunitstats.shootdamagemultiplier",
+      "version": "1.13.3-1.15p9",
+      "example": "setUnitStats: shootDamageMultiplier"
+    },
+    {
+      "name": "moveSpeed",
+      "description": "data.value.setunitstats.movespeed",
+      "version": "1.13.3-1.15p9",
+      "example": "setUnitStats: moveSpeed"
+    },
+    {
+      "name": "maxTurnSpeed",
+      "description": "data.value.setunitstats.maxturnspeed",
+      "version": "1.13.3-1.15p9",
+      "example": "setUnitStats: maxTurnSpeed"
+    },
+    {
+      "name": "maxAttackRange",
+      "description": "data.value.setunitstats.maxattackrange",
+      "version": "1.13.3-1.15p9",
+      "example": "setUnitStats: maxAttackRange"
+    },
+    {
+      "name": "selfRegenRate",
+      "description": "data.value.setunitstats.selfregenrate",
+      "version": "1.13.3-1.15p9",
+      "example": "setUnitStats: selfRegenRate"
+    },
+    {
+      "name": "heightTarget",
+      "description": "data.value.setunitstats.heighttarget",
+      "version": "1.13.3-1.15p9",
+      "example": "setUnitStats: heightTarget"
+    },
+    {
+      "name": "nanoFactorySpeed",
+      "description": "data.value.setunitstats.nanofactoryspeed",
+      "version": "1.13.3-1.15p9",
+      "example": "setUnitStats: nanoFactorySpeed"
+    },
+    {
+      "name": "fogOfWarSightRange",
+      "description": "data.value.setunitstats.fogofwarsightrange",
+      "version": "1.13.3-1.15p9",
+      "example": "setUnitStats: fogOfWarSightRange"
+    }
+  ]
+}

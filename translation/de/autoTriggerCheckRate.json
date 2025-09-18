@@ -1,0 +1,9 @@
+{
+  "data.value.autotriggercheckrate.description": "Definiert, wie oft der automatische Trigger seine Bedingungen überprüfen soll.",
+  "data.value.autotriggercheckrate.everyframe": "Jeder Frame",
+  "data.value.autotriggercheckrate.everyframe.description": "Jeden Spiel-Frame überprüfen (am häufigsten)",
+  "data.value.autotriggercheckrate.every4frames": "Alle 4 Frames",
+  "data.value.autotriggercheckrate.every4frames.description": "Alle 4 Spiel-Frames überprüfen",
+  "data.value.autotriggercheckrate.every8frames": "Alle 8 Frames",
+  "data.value.autotriggercheckrate.every8frames.description": "Alle 8 Spiel-Frames überprüfen (am seltensten)"
+}

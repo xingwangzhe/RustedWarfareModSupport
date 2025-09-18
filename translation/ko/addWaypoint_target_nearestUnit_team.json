@@ -1,0 +1,17 @@
+{
+  "data.value.addwaypoint_target_nearestunit_team.description": "가장 가까운 유닛을 찾을 때 타겟팅할 팀 소속을 정의합니다.",
+  "data.value.addwaypoint_target_nearestunit_team.own": "자신의 팀",
+  "data.value.addwaypoint_target_nearestunit_team.own.description": "자신의 팀 유닛을 타겟팅",
+  "data.value.addwaypoint_target_nearestunit_team.neutral": "중립",
+  "data.value.addwaypoint_target_nearestunit_team.neutral.description": "중립 유닛을 타겟팅",
+  "data.value.addwaypoint_target_nearestunit_team.allynotown": "아군 (자신의 팀 아님)",
+  "data.value.addwaypoint_target_nearestunit_team.allynotown.description": "자신의 팀이 아닌 아군 유닛을 타겟팅",
+  "data.value.addwaypoint_target_nearestunit_team.ally": "아군",
+  "data.value.addwaypoint_target_nearestunit_team.ally.description": "모든 아군 유닛을 타겟팅",
+  "data.value.addwaypoint_target_nearestunit_team.enemy": "적",
+  "data.value.addwaypoint_target_nearestunit_team.enemy.description": "적 유닛을 타겟팅",
+  "data.value.addwaypoint_target_nearestunit_team.any": "아무거나",
+  "data.value.addwaypoint_target_nearestunit_team.any.description": "팀에 관계없이 아무 유닛이나 타겟팅",
+  "data.value.addwaypoint_target_nearestunit_team.notown": "자신의 팀 아님",
+  "data.value.addwaypoint_target_nearestunit_team.notown.description": "자신의 팀이 아닌 아무 유닛이나 타겟팅"
+}

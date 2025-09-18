@@ -1,0 +1,13 @@
+{
+  "data.value.onnewmapspawn.description": "Defines where units should spawn when a new map is loaded.",
+  "data.value.onnewmapspawn.emptyresourcepools_asneutral": "Empty Resource Pools as Neutral",
+  "data.value.onnewmapspawn.emptyresourcepools_asneutral.description": "Spawn in empty resource pools as neutral units",
+  "data.value.onnewmapspawn.emptyoroccupiedresourcepools_asneutral": "Empty or Occupied Resource Pools as Neutral",
+  "data.value.onnewmapspawn.emptyoroccupiedresourcepools_asneutral.description": "Spawn in empty or occupied resource pools as neutral units",
+  "data.value.onnewmapspawn.mapcenter_asneutral": "Map Center as Neutral",
+  "data.value.onnewmapspawn.mapcenter_asneutral.description": "Spawn at map center as neutral units",
+  "data.value.onnewmapspawn.mapcenter_eachactiveteam": "Map Center Each Active Team",
+  "data.value.onnewmapspawn.mapcenter_eachactiveteam.description": "Spawn at map center for each active team",
+  "data.value.onnewmapspawn.spawnpoint_eachactiveteam": "Spawn Point Each Active Team",
+  "data.value.onnewmapspawn.spawnpoint_eachactiveteam.description": "Spawn at designated spawn points for each active team"
+}

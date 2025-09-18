@@ -1,0 +1,7 @@
+{
+  "data.value.drawtype.description": "ユニットまたはエフェクトを画面にどのように描画するかを定義します。",
+  "data.value.drawtype.normal": "通常",
+  "data.value.drawtype.normal.description": "標準描画モード",
+  "data.value.drawtype.displacement": "変位",
+  "data.value.drawtype.displacement.description": "特殊な視覚効果のための変位描画モード"
+}

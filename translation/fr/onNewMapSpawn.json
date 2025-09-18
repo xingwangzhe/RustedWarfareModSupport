@@ -1,0 +1,13 @@
+{
+  "data.value.onnewmapspawn.description": "Définit où les unités doivent apparaître lorsqu'une nouvelle carte est chargée.",
+  "data.value.onnewmapspawn.emptyresourcepools_asneutral": "Réserves de ressources vides comme neutre",
+  "data.value.onnewmapspawn.emptyresourcepools_asneutral.description": "Apparaître dans les réserves de ressources vides comme unités neutres",
+  "data.value.onnewmapspawn.emptyoroccupiedresourcepools_asneutral": "Réserves de ressources vides ou occupées comme neutre",
+  "data.value.onnewmapspawn.emptyoroccupiedresourcepools_asneutral.description": "Apparaître dans les réserves de ressources vides ou occupées comme unités neutres",
+  "data.value.onnewmapspawn.mapcenter_asneutral": "Centre de la carte comme neutre",
+  "data.value.onnewmapspawn.mapcenter_asneutral.description": "Apparaître au centre de la carte comme unités neutres",
+  "data.value.onnewmapspawn.mapcenter_eachactiveteam": "Centre de la carte chaque équipe active",
+  "data.value.onnewmapspawn.mapcenter_eachactiveteam.description": "Apparaître au centre de la carte pour chaque équipe active",
+  "data.value.onnewmapspawn.spawnpoint_eachactiveteam": "Point d'apparition chaque équipe active",
+  "data.value.onnewmapspawn.spawnpoint_eachactiveteam.description": "Apparaître aux points d'apparition désignés pour chaque équipe active"
+}

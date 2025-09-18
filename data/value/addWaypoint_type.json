@@ -1,0 +1,79 @@
+{
+  "name": "addWaypoint_type",
+  "description": "data.value.addwaypoint_type.description",
+  "example": "addWaypoint_type: move",
+  "data": [
+    {
+      "name": "move",
+      "description": "data.value.addwaypoint_type.move",
+      "version": "1.13.3-1.15p9",
+      "example": "addWaypoint_type: move"
+    },
+    {
+      "name": "attackMove",
+      "description": "data.value.addwaypoint_type.attackmove",
+      "version": "1.13.3-1.15p9",
+      "example": "addWaypoint_type: attackMove"
+    },
+    {
+      "name": "guard",
+      "description": "data.value.addwaypoint_type.guard",
+      "version": "1.13.3-1.15p9",
+      "example": "addWaypoint_type: guard"
+    },
+    {
+      "name": "loadInto",
+      "description": "data.value.addwaypoint_type.loadinto",
+      "version": "1.13.3-1.15p9",
+      "example": "addWaypoint_type: loadInto"
+    },
+    {
+      "name": "loadUp",
+      "description": "data.value.addwaypoint_type.loadup",
+      "version": "1.13.3-1.15p9",
+      "example": "addWaypoint_type: loadUp"
+    },
+    {
+      "name": "attack",
+      "description": "data.value.addwaypoint_type.attack",
+      "version": "1.13.3-1.15p9",
+      "example": "addWaypoint_type: attack"
+    },
+    {
+      "name": "reclaim",
+      "description": "data.value.addwaypoint_type.reclaim",
+      "version": "1.13.3-1.15p9",
+      "example": "addWaypoint_type: reclaim"
+    },
+    {
+      "name": "repair",
+      "description": "data.value.addwaypoint_type.repair",
+      "version": "1.13.3-1.15p9",
+      "example": "addWaypoint_type: repair"
+    },
+    {
+      "name": "touchTarget",
+      "description": "data.value.addwaypoint_type.touchtarget",
+      "version": "1.13.3-1.15p9",
+      "example": "addWaypoint_type: touchTarget"
+    },
+    {
+      "name": "build",
+      "description": "data.value.addwaypoint_type.build",
+      "version": "1.13.3-1.15p9",
+      "example": "addWaypoint_type: build"
+    },
+    {
+      "name": "follow",
+      "description": "data.value.addwaypoint_type.follow",
+      "version": "1.13.3-1.15p9",
+      "example": "addWaypoint_type: follow"
+    },
+    {
+      "name": "setPassiveTarget",
+      "description": "data.value.addwaypoint_type.setpassivetarget",
+      "version": "1.13.3-1.15p9",
+      "example": "addWaypoint_type: setPassiveTarget"
+    }
+  ]
+}

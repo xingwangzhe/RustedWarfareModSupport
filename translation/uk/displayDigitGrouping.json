@@ -1,0 +1,9 @@
+{
+  "data.value.displaydigitgrouping.description": "Визначає, як цифри повинні групуватися в числових дисплеях.",
+  "data.value.displaydigitgrouping.none": "Немає",
+  "data.value.displaydigitgrouping.none.description": "Без групування цифр (наприклад, 1000000)",
+  "data.value.displaydigitgrouping.comma": "Кома",
+  "data.value.displaydigitgrouping.comma.description": "Використовувати кому як роздільник тисяч (наприклад, 1.000.000)",
+  "data.value.displaydigitgrouping.space": "Пробіл",
+  "data.value.displaydigitgrouping.space.description": "Використовувати пробіл як роздільник тисяч (наприклад, 1 000 000)"
+}

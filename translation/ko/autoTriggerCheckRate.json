@@ -1,0 +1,9 @@
+{
+  "data.value.autotriggercheckrate.description": "자동 트리거가 조건을 확인하는 빈도를 정의합니다.",
+  "data.value.autotriggercheckrate.everyframe": "매 프레임",
+  "data.value.autotriggercheckrate.everyframe.description": "매 게임 프레임을 확인합니다 (가장 빈번함)",
+  "data.value.autotriggercheckrate.every4frames": "4프레임마다",
+  "data.value.autotriggercheckrate.every4frames.description": "4 게임 프레임마다 확인합니다",
+  "data.value.autotriggercheckrate.every8frames": "8프레임마다",
+  "data.value.autotriggercheckrate.every8frames.description": "8 게임 프레임마다 확인합니다 (가장 적음)"
+}

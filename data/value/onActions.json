@@ -1,0 +1,49 @@
+{
+  "name": "onActions",
+  "description": "data.value.onactions.description",
+  "example": "onActions: move",
+  "data": [
+    {
+      "name": "move",
+      "description": "data.value.onactions.move",
+      "version": "1.13.3-1.15p9",
+      "example": "onActions: move"
+    },
+    {
+      "name": "attack",
+      "description": "data.value.onactions.attack",
+      "version": "1.13.3-1.15p9",
+      "example": "onActions: attack"
+    },
+    {
+      "name": "idle",
+      "description": "data.value.onactions.idle",
+      "version": "1.13.3-1.15p9",
+      "example": "onActions: idle"
+    },
+    {
+      "name": "underConstruction",
+      "description": "data.value.onactions.underconstruction",
+      "version": "1.13.3-1.15p9",
+      "example": "onActions: underConstruction"
+    },
+    {
+      "name": "underConstructionWithLinkedBuiltTime",
+      "description": "data.value.onactions.underconstructionwithlinkedbuilttime",
+      "version": "1.13.3-1.15p9",
+      "example": "onActions: underConstructionWithLinkedBuiltTime"
+    },
+    {
+      "name": "queuedUnits",
+      "description": "data.value.onactions.queuedunits",
+      "version": "1.13.3-1.15p9",
+      "example": "onActions: queuedUnits"
+    },
+    {
+      "name": "repair",
+      "description": "data.value.onactions.repair",
+      "version": "1.13.3-1.15p9",
+      "example": "onActions: repair"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "data.value.displaydigitgrouping.description": "Define como os dígitos devem ser agrupados em displays numéricos.",
+  "data.value.displaydigitgrouping.none": "Nenhum",
+  "data.value.displaydigitgrouping.none.description": "Sem agrupamento de dígitos (ex. 1000000)",
+  "data.value.displaydigitgrouping.comma": "Vírgula",
+  "data.value.displaydigitgrouping.comma.description": "Usar vírgula como separador de milhares (ex. 1.000.000)",
+  "data.value.displaydigitgrouping.space": "Espaço",
+  "data.value.displaydigitgrouping.space.description": "Usar espaço como separador de milhares (ex. 1 000 000)"
+}

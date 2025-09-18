@@ -1,0 +1,17 @@
+{
+  "data.value.addwaypoint_target_nearestunit_team.description": "定义寻找最近单位时针对的队伍归属。",
+  "data.value.addwaypoint_target_nearestunit_team.own": "己方",
+  "data.value.addwaypoint_target_nearestunit_team.own.description": "针对己方队伍的单位",
+  "data.value.addwaypoint_target_nearestunit_team.neutral": "中立",
+  "data.value.addwaypoint_target_nearestunit_team.neutral.description": "针对中立单位",
+  "data.value.addwaypoint_target_nearestunit_team.allynotown": "盟友（非己方）",
+  "data.value.addwaypoint_target_nearestunit_team.allynotown.description": "针对非己方的盟友单位",
+  "data.value.addwaypoint_target_nearestunit_team.ally": "盟友",
+  "data.value.addwaypoint_target_nearestunit_team.ally.description": "针对所有盟友单位",
+  "data.value.addwaypoint_target_nearestunit_team.enemy": "敌人",
+  "data.value.addwaypoint_target_nearestunit_team.enemy.description": "针对敌方单位",
+  "data.value.addwaypoint_target_nearestunit_team.any": "任意",
+  "data.value.addwaypoint_target_nearestunit_team.any.description": "针对任何单位，无论队伍归属",
+  "data.value.addwaypoint_target_nearestunit_team.notown": "非己方",
+  "data.value.addwaypoint_target_nearestunit_team.notown.description": "针对任何非己方的单位"
+}

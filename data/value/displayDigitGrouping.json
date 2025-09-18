@@ -1,0 +1,25 @@
+{
+  "name": "displayDigitGrouping",
+  "description": "data.value.displaydigitgrouping.description",
+  "example": "displayDigitGrouping: none",
+  "data": [
+    {
+      "name": "none",
+      "description": "data.value.displaydigitgrouping.none",
+      "version": "1.13.3-1.15p9",
+      "example": "displayDigitGrouping: none"
+    },
+    {
+      "name": "comma",
+      "description": "data.value.displaydigitgrouping.comma",
+      "version": "1.13.3-1.15p9",
+      "example": "displayDigitGrouping: comma"
+    },
+    {
+      "name": "space",
+      "description": "data.value.displaydigitgrouping.space",
+      "version": "1.13.3-1.15p9",
+      "example": "displayDigitGrouping: space"
+    }
+  ]
+}
