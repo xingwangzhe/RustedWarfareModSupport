@@ -119,7 +119,9 @@ A RustedWarfare mod development tool that provides in-editor completions and doc
 you can improve this plugin by submitting issues on [GitHub](https://github.com/xingwangzhe/RustedWarfareModSupport).
 
 
-- INI代码高亮v0.99 十山部(碎梦)
+- INI代码高亮v0.99 娱乐部部长
+
+- 枚举属性 GMBOX 
 
 ## 许可证
 

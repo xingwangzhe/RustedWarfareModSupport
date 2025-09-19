@@ -1,5 +1,14 @@
 # 更新日志 / Changelog
 
+## [1.7.30] - 2025-9-19
+
+- 补全一些枚举类
+- 添加缺失的翻译键
+
+
+- Complete some enum classes
+- Add missing translation keys
+
 ## [1.7.29] - 2025-09-15
 
 ### ✨ 新增功能 / New Features
@@ -51,6 +60,7 @@
 ## [1.7.28] - 2025-09-15
 
 修正匹配方法，使用更简单的`startsWiths()`匹配节，同时优化了性能
+Fixed matching method, using simpler `startsWith()` for section matching while optimizing performance
 
 ## [1.7.27] - 2025-09-14
 
