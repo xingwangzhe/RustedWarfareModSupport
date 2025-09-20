@@ -1,183 +1,226 @@
-import * as vscode from 'vscode';
-import * as fs from 'fs';
-import * as path from 'path';
-import { BaseValueCompletionProvider } from './BaseValueCompletionProvider';
-import { getExtensionId } from '../extension';
-import { t } from '../translationManager';
+import * as vscode from "vscode";
+import * as fs from "fs";
+import * as path from "path";
+import { BaseValueCompletionProvider } from "./BaseValueCompletionProvider";
+import { getExtensionId } from "../extension";
+import { getSectionProperties } from "../dataProcessor";
+import { t } from "../translationManager";
 /**
  * 单位生成类属性补全提供者类
  * 用于提供spawnUnits、produceUnits等属性的补全建议
  */
 export class UnitSpawnCompletionProvider extends BaseValueCompletionProvider {
-    // 支持单位生成语法的属性列表
-    private readonly unitSpawnProperties = [
-        'spawnUnits',
-        'spawnUnit',
-        'produceUnits',
-        'addUnitsIntoTransport',
-        'attachments_addNewUnits'
-    ];
+  // 支持单位生成语法的属性列表
+  private readonly unitSpawnProperties = [
+    "spawnUnits",
+    "spawnUnit",
+    "produceUnits",
+    "addUnitsIntoTransport",
+    "attachments_addNewUnits",
+  ];
 
-    protected provideValueCompletionItems(
-        document: vscode.TextDocument,
-        position: vscode.Position,
-        property: any
-    ): vscode.ProviderResult<vscode.CompletionItem[] | vscode.CompletionList> {
-        // 检查是否为单位生成类属性
-        if (this.unitSpawnProperties.includes(property.name)) {
-            const lineText = document.lineAt(position.line).text;
-            const textBeforeCursor = lineText.substring(0, position.character);
-            
-            // 检查光标是否在值的括号内
-            const insideParentheses = this.isInsideParentheses(textBeforeCursor, lineText, position.character);
-            if (insideParentheses) {
-                // 提供参数补全项
-                return this.getUnitSpawnParamCompletionItems(property.name);
-            }
-            
-            // 否则提供基本格式示例
-            return this.getUnitSpawnCompletionItems(property.name);
-        }
-        
-        return [];
+  protected provideValueCompletionItems(
+    document: vscode.TextDocument,
+    position: vscode.Position,
+    propertyName: string,
+    sectionName: string
+  ): vscode.ProviderResult<vscode.CompletionItem[] | vscode.CompletionList> {
+    // 获取节属性以检查属性类型
+    const sectionProperties = getSectionProperties(sectionName);
+    const property = sectionProperties.find(
+      (prop: any) => prop.name === propertyName
+    );
+
+    // 检查是否为单位生成类属性
+    if (property && this.unitSpawnProperties.includes(property.name)) {
+      const lineText = document.lineAt(position.line).text;
+      const textBeforeCursor = lineText.substring(0, position.character);
+
+      // 检查光标是否在值的括号内
+      const insideParentheses = this.isInsideParentheses(
+        textBeforeCursor,
+        lineText,
+        position.character
+      );
+      if (insideParentheses) {
+        // 提供参数补全项
+        return this.getUnitSpawnParamCompletionItems(property.name);
+      }
+
+      // 否则提供基本格式示例
+      return this.getUnitSpawnCompletionItems(property.name);
     }
-    
-    /**
-     * 检查光标是否在属性值的括号内
-     * @param textBeforeCursor 光标前的文本
-     * @param lineText 整行文本
-     * @param cursorPosition 光标位置
-     * @returns 是否在括号内
-     */
-    private isInsideParentheses(textBeforeCursor: string, lineText: string, cursorPosition: number): boolean {
-        // 查找属性值开始位置（冒号后）
-        const colonIndex = textBeforeCursor.lastIndexOf(':');
-        if (colonIndex === -1) {
-            return false;
-        }
-        
-        
-        // 从光标前的位置开始，反向遍历到:位置
-        for (let i = cursorPosition - 1; i > colonIndex; i--) {
-            if (lineText[i] === '(') {
-                
-                return true;
-            } else if (lineText[i] === ')') {
-                
-                return false;
-            }
-        }
-        
-        // 如果光标位置处有未闭合的括号，则在括号内
-        
+
+    return [];
+  }
+
+  /**
+   * 检查光标是否在属性值的括号内
+   * @param textBeforeCursor 光标前的文本
+   * @param lineText 整行文本
+   * @param cursorPosition 光标位置
+   * @returns 是否在括号内
+   */
+  private isInsideParentheses(
+    textBeforeCursor: string,
+    lineText: string,
+    cursorPosition: number
+  ): boolean {
+    // 查找属性值开始位置（冒号后）
+    const colonIndex = textBeforeCursor.lastIndexOf(":");
+    if (colonIndex === -1) {
+      return false;
+    }
+
+    // 从光标前的位置开始，反向遍历到:位置
+    for (let i = cursorPosition - 1; i > colonIndex; i--) {
+      if (lineText[i] === "(") {
+        return true;
+      } else if (lineText[i] === ")") {
         return false;
+      }
     }
-    
-    /**
-     * 获取单位生成基本格式补全项
-     * @param propertyName 属性名称
-     * @returns 单位生成基本格式补全项数组
-     */
-    private getUnitSpawnCompletionItems(propertyName: string): vscode.CompletionItem[] {
-        try {
-            // 获取扩展的实际路径
-            const extension = vscode.extensions.getExtension(getExtensionId());
-            if (!extension) {
-                console.error('Cannot find extension');
-                return [];
-            }
 
-            const extensionPath = extension.extensionPath;
+    // 如果光标位置处有未闭合的括号，则在括号内
 
-            // 读取对应属性的值定义文件
-            const valueType = propertyName === 'spawnProjectiles' || propertyName === 'spawnProjectile' ? 'spawnProjectiles' : 'spawnUnits';
-            const valuePath = path.join(extensionPath, 'data', 'value', `${valueType}.json`);
-            const valueData = JSON.parse(fs.readFileSync(valuePath, 'utf8'));
-            
-            // 创建一个示例补全项
-            const exampleItem = new vscode.CompletionItem(
-                valueData.example.split(':')[1].trim(), 
-                vscode.CompletionItemKind.Value
-            );
-            
-            // 使用单独的键进行国际化
-            const exampleDetail = t('valuecompletionprovider.spawnunits.example.detail');
-            const exampleDocKey = 'valuecompletionprovider.spawnunits.example.documentation';
-            
-            exampleItem.detail = exampleDetail;
-            exampleItem.documentation = new vscode.MarkdownString(
-                t(exampleDocKey, propertyName)
-            );
-            
-            return [exampleItem];
-        } catch (error) {
-            
-            return [];
+    return false;
+  }
+
+  /**
+   * 获取单位生成基本格式补全项
+   * @param propertyName 属性名称
+   * @returns 单位生成基本格式补全项数组
+   */
+  private getUnitSpawnCompletionItems(
+    propertyName: string
+  ): vscode.CompletionItem[] {
+    try {
+      // 获取扩展的实际路径
+      const extension = vscode.extensions.getExtension(getExtensionId());
+      if (!extension) {
+        console.error("Cannot find extension");
+        return [];
+      }
+
+      const extensionPath = extension.extensionPath;
+
+      // 读取对应属性的值定义文件
+      const valueType =
+        propertyName === "spawnProjectiles" ||
+        propertyName === "spawnProjectile"
+          ? "spawnProjectiles"
+          : "spawnUnits";
+      const valuePath = path.join(
+        extensionPath,
+        "data",
+        "value",
+        `${valueType}.json`
+      );
+      const valueData = JSON.parse(fs.readFileSync(valuePath, "utf8"));
+
+      // 创建一个示例补全项
+      const exampleItem = new vscode.CompletionItem(
+        valueData.example.split(":")[1].trim(),
+        vscode.CompletionItemKind.Value
+      );
+
+      // 使用单独的键进行国际化
+      const exampleDetail = t(
+        "valuecompletionprovider.spawnunits.example.detail"
+      );
+      const exampleDocKey =
+        "valuecompletionprovider.spawnunits.example.documentation";
+
+      exampleItem.detail = exampleDetail;
+      exampleItem.documentation = new vscode.MarkdownString(
+        t(exampleDocKey, propertyName)
+      );
+
+      return [exampleItem];
+    } catch (error) {
+      console.error(`Error reading value definition file:`, error);
+      return [];
+    }
+  }
+
+  /**
+   * 获取单位生成参数补全项（用于括号内）
+   * @param propertyName 属性名称
+   * @returns 单位生成参数补全项数组
+   */
+  private getUnitSpawnParamCompletionItems(
+    propertyName: string
+  ): vscode.CompletionItem[] {
+    try {
+      // 获取扩展的实际路径
+      const extension = vscode.extensions.getExtension(getExtensionId());
+      if (!extension) {
+        console.error("Cannot find extension");
+        return [];
+      }
+
+      const extensionPath = extension.extensionPath;
+
+      // 读取对应属性的值定义文件
+      const valueType =
+        propertyName === "spawnProjectiles" ||
+        propertyName === "spawnProjectile"
+          ? "spawnProjectiles"
+          : "spawnUnits";
+      const valuePath = path.join(
+        extensionPath,
+        "data",
+        "value",
+        `${valueType}.json`
+      );
+      const valueData = JSON.parse(fs.readFileSync(valuePath, "utf8"));
+
+      // 为每个参数创建补全项
+      const paramItems: vscode.CompletionItem[] = [];
+      if (valueData.data && Array.isArray(valueData.data)) {
+        for (const param of valueData.data) {
+          // 创建参数补全项，格式为 paramName=
+          const paramItem = new vscode.CompletionItem(
+            `${param.name}=`,
+            vscode.CompletionItemKind.Property
+          );
+          paramItem.detail = param.type;
+          paramItem.documentation = new vscode.MarkdownString(
+            `${t(param.description)}\n\n*${t(
+              "valuecompletionprovider.spawnunits.version"
+            )}: ${param.version}*\n\n\`\`\`ini\n${t(param.example)}\n\`\`\``
+          );
+
+          // 根据参数类型设置插入文本
+          switch (param.type) {
+            case "bool":
+              // 为布尔类型提供true/false选项
+              paramItem.insertText = new vscode.SnippetString(
+                `${param.name}=\${1|${t("true")},${t("false")}|}`
+              );
+              break;
+            case "float":
+            case "int":
+              // 为数值类型提供数字占位符
+              paramItem.insertText = new vscode.SnippetString(
+                `${param.name}=\${1:${t("number")}0}}`
+              );
+              break;
+            default:
+              // 其他类型提供通用占位符
+              paramItem.insertText = new vscode.SnippetString(
+                `${param.name}=\${1:${t("value")}}}`
+              );
+          }
+
+          paramItems.push(paramItem);
         }
-    }
-    
-    /**
-     * 获取单位生成参数补全项（用于括号内）
-     * @param propertyName 属性名称
-     * @returns 单位生成参数补全项数组
-     */
-    private getUnitSpawnParamCompletionItems(propertyName: string): vscode.CompletionItem[] {
-        try {
-            // 获取扩展的实际路径
-            const extension = vscode.extensions.getExtension(getExtensionId());
-            if (!extension) {
-                console.error('Cannot find extension');
-                return [];
-            }
+      }
 
-            const extensionPath = extension.extensionPath;
-
-            // 读取对应属性的值定义文件
-            const valueType = propertyName === 'spawnProjectiles' || propertyName === 'spawnProjectile' ? 'spawnProjectiles' : 'spawnUnits';
-            const valuePath = path.join(extensionPath, 'data', 'value', `${valueType}.json`);
-            const valueData = JSON.parse(fs.readFileSync(valuePath, 'utf8'));
-            
-            // 为每个参数创建补全项
-            const paramItems: vscode.CompletionItem[] = [];
-            if (valueData.data && Array.isArray(valueData.data)) {
-                for (const param of valueData.data) {
-                    // 创建参数补全项，格式为 paramName=
-                    const paramItem = new vscode.CompletionItem(`${param.name}=`, vscode.CompletionItemKind.Property);
-                    paramItem.detail = param.type;
-                    paramItem.documentation = new vscode.MarkdownString(
-                        `${t(param.description)}\n\n*${t('valuecompletionprovider.spawnunits.version')}: ${param.version}*\n\n\`\`\`ini\n${t(param.example)}\n\`\`\``
-                    );
-                    
-                    // 根据参数类型设置插入文本
-                    switch (param.type) {
-                        case 'bool':
-                            // 为布尔类型提供true/false选项
-                            paramItem.insertText = new vscode.SnippetString(
-                                `${param.name}=\${1|${t('true')},${t('false')}|}`
-                            );
-                            break;
-                        case 'float':
-                        case 'int':
-                            // 为数值类型提供数字占位符
-                            paramItem.insertText = new vscode.SnippetString(
-                                `${param.name}=\${1:${t('number')}0}}`
-                            );
-                            break;
-                        default:
-                            // 其他类型提供通用占位符
-                            paramItem.insertText = new vscode.SnippetString(
-                                `${param.name}=\${1:${t('value')}}}`
-                            );
-                    }
-                    
-                    paramItems.push(paramItem);
-                }
-            }
-            
-            return paramItems;
-        } catch (error) {
-            console.error(`Error reading value definition file:`, error);
-            return [];
-        }
+      return paramItems;
+    } catch (error) {
+      console.error(`Error reading value definition file:`, error);
+      return [];
     }
+  }
 }

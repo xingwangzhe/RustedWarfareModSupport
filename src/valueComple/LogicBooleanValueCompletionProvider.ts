@@ -1,7 +1,8 @@
 import * as vscode from "vscode";
 import { BaseValueCompletionProvider } from "./BaseValueCompletionProvider";
-import { createCompletionItemsFromDataFile } from '../common/valueCompletionUtils';
-import { t } from '../translationManager';
+import { createCompletionItemsFromDataFile } from "../common/valueCompletionUtils";
+import { getSectionProperties } from "../dataProcessor";
+import { t } from "../translationManager";
 
 /**
  * LogicBoolean值补全提供者类
@@ -11,8 +12,15 @@ export class LogicBooleanValueCompletionProvider extends BaseValueCompletionProv
   protected provideValueCompletionItems(
     document: vscode.TextDocument,
     position: vscode.Position,
-    property: any
+    propertyName: string,
+    sectionName: string
   ): vscode.ProviderResult<vscode.CompletionItem[] | vscode.CompletionList> {
+    // 获取节属性以检查属性类型
+    const sectionProperties = getSectionProperties(sectionName);
+    const property = sectionProperties.find(
+      (prop: any) => prop.name === propertyName
+    );
+
     if (property && property.type === "LogicBoolean") {
       return this.getBasicLogicBooleanCompletionItems();
     }
@@ -21,15 +29,21 @@ export class LogicBooleanValueCompletionProvider extends BaseValueCompletionProv
   }
 
   private getBasicLogicBooleanCompletionItems(): vscode.CompletionItem[] {
-    return createCompletionItemsFromDataFile('logicboolean', vscode.CompletionItemKind.Value, 'valuecompletionprovider.logicboolean.detail', {
-      useNameAsInsertText: true,
-      customDocumentation: (item: any) => new vscode.MarkdownString(
-        t('valuecompletionprovider.logicboolean.documentation', [
-          t(item.description),
-          item.version,
-          t(item.example)
-        ])
-      )
-    });
+    return createCompletionItemsFromDataFile(
+      "logicboolean",
+      vscode.CompletionItemKind.Value,
+      "valuecompletionprovider.logicboolean.detail",
+      {
+        useNameAsInsertText: true,
+        customDocumentation: (item: any) =>
+          new vscode.MarkdownString(
+            t("valuecompletionprovider.logicboolean.documentation", [
+              t(item.description),
+              item.version,
+              t(item.example),
+            ])
+          ),
+      }
+    );
   }
 }

@@ -5,13 +5,25 @@ import { PathCompatibilityUtils } from "../common/pathCompatibility";
 import { BaseValueCompletionProvider } from "./BaseValueCompletionProvider";
 import { resolveImagePath } from "../common/imagePathResolver";
 import { createImageMarkdownWithPath } from "../common/imageHover";
+import { getSectionProperties } from "../dataProcessor";
 
 export class ImageValueCompletionProvider extends BaseValueCompletionProvider {
   protected provideValueCompletionItems(
     document: vscode.TextDocument,
     position: vscode.Position,
-    property: any
+    propertyName: string,
+    sectionName: string
   ): vscode.ProviderResult<vscode.CompletionItem[] | vscode.CompletionList> {
+    // 获取节属性以检查属性类型
+    const sectionProperties = getSectionProperties(sectionName);
+    const property = sectionProperties.find(
+      (prop: any) => prop.name === propertyName
+    );
+
+    if (!property) {
+      return [];
+    }
+
     // 仅在属性类型为 file (image) 或 name 包含 image 的时候生效
     const type = (property.type || "").toLowerCase();
     if (

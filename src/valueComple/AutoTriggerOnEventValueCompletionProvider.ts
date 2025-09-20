@@ -11,10 +11,11 @@ export class AutoTriggerOnEventValueCompletionProvider extends BaseValueCompleti
   protected provideValueCompletionItems(
     document: vscode.TextDocument,
     position: vscode.Position,
-    property: any
+    propertyName: string,
+    _sectionName: string
   ): vscode.ProviderResult<vscode.CompletionItem[] | vscode.CompletionList> {
     // 检查属性是否为 autoTriggerOnEvent
-    if (property.name === "autoTriggerOnEvent") {
+    if (propertyName === "autoTriggerOnEvent") {
       return this.getAutoTriggerOnEventCompletionItems();
     }
 
