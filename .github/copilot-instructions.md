@@ -51,6 +51,21 @@ const DEFAULT_TRIGGER_CHARACTERS = [':', ' ', ','];
 
 // Always use explicit types for public APIs
 public createImageHover(path: string): vscode.Hover | null {}
+
+// CRITICAL: Value completion providers must use consistent parameter signatures
+protected provideValueCompletionItems(
+  document: vscode.TextDocument,
+  position: vscode.Position,
+  propertyName: string,  // ✅ Correct
+  sectionName: string    // ✅ Correct
+): vscode.ProviderResult<vscode.CompletionItem[] | vscode.CompletionList>
+
+// ❌ NEVER use this (breaks completion):
+protected provideValueCompletionItems(
+  document: vscode.TextDocument,
+  position: vscode.Position,
+  property: any  // ❌ Wrong - causes completion to fail
+): vscode.ProviderResult<vscode.CompletionItem[] | vscode.CompletionList>
 ```
 
 ### File Organization
@@ -139,6 +154,14 @@ private throttledUpdate = throttle(() => {
 - **Values**: Various types including booleans, numbers, strings, file paths
 - **Memory Definitions**: Special syntax `@memory: variableName`
 
+### Value Completion Provider Architecture
+
+- **Base Class**: `BaseValueCompletionProvider` with consistent parameter signature
+- **Parameter Requirements**: All providers must use `(propertyName: string, sectionName: string)`
+- **Data Access**: Use `getSectionProperties(sectionName)` to retrieve property metadata
+- **Type Checking**: Validate property types before providing completion items
+- **Error Handling**: Implement proper error handling in all catch blocks
+
 ### Common Value Types
 
 - **Boolean**: `true`, `false`
@@ -171,13 +194,77 @@ console.log(`[DEBUG] ComponentName - operation: ${details}`);
 - Test with various INI file structures
 - Verify cross-platform path handling
 - Check performance with large files
+- **CRITICAL**: Test value completion providers after parameter fixes
+  - Create test INI files with different property types
+  - Verify completion triggers for each provider type
+  - Check that `bun run compile` passes without errors
+  - Test completion in Extension Development Host
+
+### Validation Steps for Completion Providers
+
+1. **Parameter Type Check**: Ensure all providers use `(propertyName: string, sectionName: string)`
+2. **Import Verification**: Confirm `getSectionProperties` is imported from `../dataProcessor`
+3. **Compilation Test**: Run `bun run compile` to catch type errors
+4. **Functional Testing**: Test completion in actual INI files
+5. **Error Handling**: Verify proper error handling in catch blocks
 
 ## Common Tasks
+
+### Fixing Value Completion Provider Parameter Types
+
+**IMPORTANT**: All value completion providers must use consistent parameter signatures to work properly.
+
+**Correct Signature** (BaseValueCompletionProvider):
+
+```typescript
+protected provideValueCompletionItems(
+  document: vscode.TextDocument,
+  position: vscode.Position,
+  propertyName: string,
+  sectionName: string
+): vscode.ProviderResult<vscode.CompletionItem[] | vscode.CompletionList>
+```
+
+**Incorrect Signature** (will cause completion to fail):
+
+```typescript
+protected provideValueCompletionItems(
+  document: vscode.TextDocument,
+  position: vscode.Position,
+  property: any  // ❌ Wrong parameter type
+): vscode.ProviderResult<vscode.CompletionItem[] | vscode.CompletionList>
+```
+
+**Fixing Steps**:
+
+1. Update parameter signature from `property: any` to `propertyName: string, sectionName: string`
+2. Add import: `import { getSectionProperties } from '../dataProcessor';`
+3. Replace property access with section lookup:
+
+   ```typescript
+   // Before (incorrect):
+   if (property.name === 'targetProperty') { ... }
+
+   // After (correct):
+   const sectionProperties = getSectionProperties(sectionName);
+   const property = sectionProperties.find((prop: any) => prop.name === propertyName);
+   if (property && property.name === 'targetProperty') { ... }
+   ```
+
+4. Run `bun run compile` to verify no errors
+
+**Recently Fixed Providers**:
+
+- BoolValueCompletionProvider.ts
+- ImageValueCompletionProvider.ts
+- LogicBooleanValueCompletionProvider.ts
+- MovementTypeValueCompletionProvider.ts
+- UnitSpawnCompletionProvider.ts
 
 ### Adding New Value Completion
 
 1. Create new provider extending `BaseValueCompletionProvider`
-2. Implement `provideValueCompletionItems` method
+2. Implement `provideValueCompletionItems` method with correct signature
 3. Register in `valueCompletionProvider.ts`
 4. Add trigger characters if needed
 
@@ -246,7 +333,7 @@ if (!path.isAbsolute(resolvedPath) || !resolvedPath.startsWith(workspaceRoot)) {
 ### Scripts
 
 ```bash
-bun run compile     # TypeScript compilation
+bun run compile     # TypeScript compilation - ALWAYS run after parameter fixes
 bun run watch       # Watch mode development
 bun run package     # Create VSIX package
 bun run lint        # ESLint checking
@@ -259,6 +346,8 @@ bun run test        # Run tests
 - Update `CHANGELOG.md` for user-facing changes
 - Write descriptive commit messages
 - Test in multiple VS Code versions
+- **CRITICAL**: Always run `bun run compile` after modifying completion providers
+- Verify parameter type consistency across all value completion providers
 
 ## Dependencies
 
