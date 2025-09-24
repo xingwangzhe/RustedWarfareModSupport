@@ -1,6 +1,5 @@
 {
   "name": "movementType",
-  "description": "data.value.movementType.description",
   "example": "movementType: LAND",
   "data": [
     {

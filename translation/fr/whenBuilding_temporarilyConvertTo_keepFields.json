@@ -1,0 +1,20 @@
+{
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.maxhp": "PV Max",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.hp": "PV",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.maxshield": "Bouclier Max",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.shield": "Bouclier",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.shieldregen": "Régénération Bouclier",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.maxenergy": "Énergie Max",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.energy": "Énergie",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.armour": "Armure",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.mass": "Masse",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.shootdelaymultiplier": "Multiplicateur Délai Tir",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.shootdamagemultiplier": "Multiplicateur Dégâts Tir",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.movespeed": "Vitesse Mouvement",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.maxturnspeed": "Vitesse Rotation Max",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.maxattackrange": "Portée Attaque Max",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.selfregenrate": "Taux Régénération",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.heighttarget": "Cible Hauteur",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.nanofactoryspeed": "Vitesse Nano-usine",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.fogofwarsightrange": "Portée Vue Brouillard"
+}

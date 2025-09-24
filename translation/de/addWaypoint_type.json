@@ -1,27 +1,14 @@
 {
-  "data.value.addwaypoint_type.description": "Definiert den Typ des Wegpunkts, der zur Bewegungswarteschlange der Einheit hinzugefügt werden soll.",
   "data.value.addwaypoint_type.move": "Bewegen",
-  "data.value.addwaypoint_type.move.description": "Zur angegebenen Position bewegen",
   "data.value.addwaypoint_type.attackmove": "Angriffsbewegung",
-  "data.value.addwaypoint_type.attackmove.description": "Zur Position bewegen und dabei alle angetroffenen Feinde angreifen",
   "data.value.addwaypoint_type.guard": "Bewachen",
-  "data.value.addwaypoint_type.guard.description": "Die angegebene Position oder Einheit bewachen",
   "data.value.addwaypoint_type.loadinto": "Einladen in",
-  "data.value.addwaypoint_type.loadinto.description": "In die angegebene Transporteinheit einladen",
   "data.value.addwaypoint_type.loadup": "Aufladen",
-  "data.value.addwaypoint_type.loadup.description": "Einheiten in dieses Transportmittel aufladen",
   "data.value.addwaypoint_type.attack": "Angreifen",
-  "data.value.addwaypoint_type.attack.description": "Das angegebene Ziel angreifen",
   "data.value.addwaypoint_type.reclaim": "Zurückfordern",
-  "data.value.addwaypoint_type.reclaim.description": "Die angegebene Ressource oder Einheit zurückfordern",
   "data.value.addwaypoint_type.repair": "Reparieren",
-  "data.value.addwaypoint_type.repair.description": "Die angegebene Einheit reparieren",
   "data.value.addwaypoint_type.touchtarget": "Ziel berühren",
-  "data.value.addwaypoint_type.touchtarget.description": "Zum Berühren des angegebenen Ziels bewegen",
   "data.value.addwaypoint_type.build": "Bauen",
-  "data.value.addwaypoint_type.build.description": "An der angegebenen Position bauen",
   "data.value.addwaypoint_type.follow": "Folgen",
-  "data.value.addwaypoint_type.follow.description": "Der angegebenen Einheit folgen",
-  "data.value.addwaypoint_type.setpassivetarget": "Passives Ziel setzen",
-  "data.value.addwaypoint_type.setpassivetarget.description": "Die angegebene Einheit als passives Ziel setzen"
+  "data.value.addwaypoint_type.setpassivetarget": "Passives Ziel setzen"
 }

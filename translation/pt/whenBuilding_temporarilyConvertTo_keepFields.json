@@ -1,0 +1,20 @@
+{
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.maxhp": "HP Máximo",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.hp": "HP",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.maxshield": "Escudo Máximo",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.shield": "Escudo",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.shieldregen": "Regeneração do Escudo",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.maxenergy": "Energia Máxima",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.energy": "Energia",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.armour": "Armadura",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.mass": "Massa",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.shootdelaymultiplier": "Multiplicador de Atraso de Tiro",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.shootdamagemultiplier": "Multiplicador de Dano de Tiro",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.movespeed": "Velocidade de Movimento",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.maxturnspeed": "Velocidade Máxima de Giro",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.maxattackrange": "Alcance Máximo de Ataque",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.selfregenrate": "Taxa de Regeneração Própria",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.heighttarget": "Alvo de Altura",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.nanofactoryspeed": "Velocidade da Fábrica Nano",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.fogofwarsightrange": "Alcance de Visão Névoa de Guerra"
+}

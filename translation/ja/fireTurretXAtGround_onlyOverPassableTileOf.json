@@ -1,17 +1,9 @@
 {
-  "data.value.fireturretxatground_onlyoverpassabletileof.description": "タレットが地上目標に対してどの地形タイプを越えて発射できるかを定義します。",
   "data.value.fireturretxatground_onlyoverpassabletileof.none": "なし",
-  "data.value.fireturretxatground_onlyoverpassabletileof.none.description": "どの地形も越えて発射できない",
   "data.value.fireturretxatground_onlyoverpassabletileof.building": "建物",
-  "data.value.fireturretxatground_onlyoverpassabletileof.building.description": "建物タイルを越えて発射可能",
   "data.value.fireturretxatground_onlyoverpassabletileof.land": "陸地",
-  "data.value.fireturretxatground_onlyoverpassabletileof.land.description": "陸地タイルを越えて発射可能",
   "data.value.fireturretxatground_onlyoverpassabletileof.hover": "ホバー",
-  "data.value.fireturretxatground_onlyoverpassabletileof.hover.description": "ホバー地形を越えて発射可能",
   "data.value.fireturretxatground_onlyoverpassabletileof.air": "空中",
-  "data.value.fireturretxatground_onlyoverpassabletileof.air.description": "空中空間を越えて発射可能",
   "data.value.fireturretxatground_onlyoverpassabletileof.over_cliff": "崖越え",
-  "data.value.fireturretxatground_onlyoverpassabletileof.over_cliff.description": "崖地形を越えて発射可能",
-  "data.value.fireturretxatground_onlyoverpassabletileof.over_water_cliff": "水上崖越え",
-  "data.value.fireturretxatground_onlyoverpassabletileof.over_water_cliff.description": "水上崖地形を越えて発射可能"
+  "data.value.fireturretxatground_onlyoverpassabletileof.over_water_cliff": "水上崖越え"
 }

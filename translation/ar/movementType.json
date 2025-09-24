@@ -1,19 +1,10 @@
 {
-  "data.value.movementType.description": "يُعرِّف أنواع الحركة المستخدمة لتحديد التضاريس القابلة للعبور وسلوك حركة الوحدات.",
   "data.value.movementType.NONE": "لا شيء",
-  "data.value.movementType.NONE.description": "لا نوع حركة / غير قابل للتطبيق.",
   "data.value.movementType.LAND": "أرض",
-  "data.value.movementType.LAND.description": "حركة أرضية قياسية على مربعات الأرض.",
   "data.value.movementType.AIR": "جو",
-  "data.value.movementType.AIR.description": "وحدات جوية تطير فوق التضاريس.",
   "data.value.movementType.WATER": "ماء",
-  "data.value.movementType.WATER.description": "وحدات تتحرك على أو في مربعات الماء.",
   "data.value.movementType.HOVER": "تحويم",
-  "data.value.movementType.HOVER.description": "وحدات تحويم يمكنها عبور الأرض وبعض المياه دون الغرق.",
   "data.value.movementType.BUILDING": "مبنى",
-  "data.value.movementType.BUILDING.description": "مساحة مبنى ثابتة؛ تُعامل بشكل مختلف للتنقل والوضع.",
   "data.value.movementType.OVER_CLIFF": "على الجرف",
-  "data.value.movementType.OVER_CLIFF.description": "يمكن عبور مربعات الجرف أو المرتفعة التي لا تستطيع وحدات الأرض العادية عبورها.",
-  "data.value.movementType.OVER_CLIFF_WATER": "على جرف الماء",
-  "data.value.movementType.OVER_CLIFF_WATER.description": "يمكن عبور مربعات الجرف التي تشمل الماء أو تضاريس الجرف الرطبة."
+  "data.value.movementType.OVER_CLIFF_WATER": "على جرف الماء"
 }

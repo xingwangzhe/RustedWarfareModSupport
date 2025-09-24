@@ -1,0 +1,9 @@
+{
+  "data.value.transportunitsrequiremovementtype.none": "없음",
+  "data.value.transportunitsrequiremovementtype.building": "건물",
+  "data.value.transportunitsrequiremovementtype.land": "육상",
+  "data.value.transportunitsrequiremovementtype.hover": "호버",
+  "data.value.transportunitsrequiremovementtype.air": "공중",
+  "data.value.transportunitsrequiremovementtype.over_cliff": "절벽 넘기",
+  "data.value.transportunitsrequiremovementtype.over_water_cliff": "물 위 절벽 넘기"
+}

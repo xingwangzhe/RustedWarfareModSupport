@@ -1,5 +1,13 @@
 # 更新日志 / Changelog
 
+## [1.7.32] - 2025-9-24
+
+- 修复系统性翻译键缺失问题，为所有值补全提供者添加完整的多语言翻译支持（27个翻译键，13种语言）
+- 解决值补全详情显示错误翻译键的问题，现在显示正确的本地化文本
+
+- Fixed systematic missing translation keys issue, added comprehensive multilingual translation support for all value completion providers (27 translation keys, 13 languages)
+- Resolved value completion detail display showing incorrect translation keys, now displays proper localized text
+
 ## [1.7.31] - 2025-9-20
 
 - 修复值补全提供者参数类型不一致问题

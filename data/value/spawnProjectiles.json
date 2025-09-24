@@ -1,6 +1,5 @@
 {
   "type": "spawnProjectiles",
-  "description": "data.value.spawnProjectiles.description",
   "example": "spawnProjectilesOnExplode: shrapnel(offsetDir=90), shrapnel(offsetDir=-90)",
   "note": "data.value.spawnProjectiles.note",
   "data": [

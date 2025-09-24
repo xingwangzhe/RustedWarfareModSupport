@@ -1,6 +1,5 @@
 {
   "name": "drawType",
-  "description": "data.value.drawtype.description",
   "example": "drawType: normal",
   "data": [
     {

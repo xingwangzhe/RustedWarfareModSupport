@@ -1,13 +1,7 @@
 {
-  "data.value.onnewmapspawn.description": "يحدد مكان ظهور الوحدات عند تحميل خريطة جديدة.",
   "data.value.onnewmapspawn.emptyresourcepools_asneutral": "مجموعات الموارد الفارغة كمحايدة",
-  "data.value.onnewmapspawn.emptyresourcepools_asneutral.description": "الظهور في مجموعات الموارد الفارغة كوحدات محايدة",
   "data.value.onnewmapspawn.emptyoroccupiedresourcepools_asneutral": "مجموعات الموارد الفارغة أو المحتلة كمحايدة",
-  "data.value.onnewmapspawn.emptyoroccupiedresourcepools_asneutral.description": "الظهور في مجموعات الموارد الفارغة أو المحتلة كوحدات محايدة",
   "data.value.onnewmapspawn.mapcenter_asneutral": "مركز الخريطة كمحايد",
-  "data.value.onnewmapspawn.mapcenter_asneutral.description": "الظهور في مركز الخريطة كوحدات محايدة",
   "data.value.onnewmapspawn.mapcenter_eachactiveteam": "مركز الخريطة لكل فريق نشط",
-  "data.value.onnewmapspawn.mapcenter_eachactiveteam.description": "الظهور في مركز الخريطة لكل فريق نشط",
-  "data.value.onnewmapspawn.spawnpoint_eachactiveteam": "نقطة الظهور لكل فريق نشط",
-  "data.value.onnewmapspawn.spawnpoint_eachactiveteam.description": "الظهور في نقاط الظهور المحددة لكل فريق نشط"
+  "data.value.onnewmapspawn.spawnpoint_eachactiveteam": "نقطة الظهور لكل فريق نشط"
 }

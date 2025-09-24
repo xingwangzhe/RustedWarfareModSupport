@@ -1,6 +1,4 @@
 {
   "data.value.bool.true": "참",
-  "data.value.bool.true.description": "부울 값 참을 나타냅니다",
-  "data.value.bool.false": "거짓", 
-  "data.value.bool.false.description": "부울 값 거짓을 나타냅니다"
+  "data.value.bool.false": "거짓"
 }

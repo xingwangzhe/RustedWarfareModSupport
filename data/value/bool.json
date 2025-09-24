@@ -1,6 +1,5 @@
 {
   "name": "bool",
-  "description": "data.sections.bool",
   "example": "canPlayerCancel: true",
   "data": [
     {

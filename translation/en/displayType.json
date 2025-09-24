@@ -1,0 +1,11 @@
+{
+  "data.value.displaytype.none": "None",
+  "data.value.displaytype.rally": "Rally",
+  "data.value.displaytype.upgrade": "Upgrade",
+  "data.value.displaytype.queueunit": "Queue Unit",
+  "data.value.displaytype.building": "Building",
+  "data.value.displaytype.action": "Action",
+  "data.value.displaytype.infoonly": "Info Only",
+  "data.value.displaytype.nfoonlynobox": "Info Only No Box",
+  "data.value.displaytype.infoonlystockpile": "Info Only Stockpile"
+}

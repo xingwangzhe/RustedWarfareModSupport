@@ -10,7 +10,6 @@
   "panel.exportManager.cancelled": "Export vom Benutzer abgebrochen",
   "panel.exportManager.completed": "Export abgeschlossen:\nZIP: {0}\nRWMOD: {1}",
   "panel.fileExtensions.title": "Dateierweiterungsverwaltung",
-  "panel.fileExtensions.description": "Verwaltung der unterstützten Dateierweiterungstypen",
   "panel.fileExtensions.add.placeholder": "Dateierweiterung eingeben (z.B.: .cfg)",
   "panel.fileExtensions.add.button": "Hinzufügen",
   "panel.fileExtensions.add.emptyInput": "Dateierweiterung darf nicht leer sein",

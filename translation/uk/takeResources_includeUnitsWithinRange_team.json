@@ -1,0 +1,9 @@
+{
+  "data.value.takeResources_includeUnitsWithinRange_team.own": "Власна",
+  "data.value.takeResources_includeUnitsWithinRange_team.neutral": "Нейтральна",
+  "data.value.takeResources_includeUnitsWithinRange_team.allynotown": "Союзник Не Власний",
+  "data.value.takeResources_includeUnitsWithinRange_team.ally": "Союзник",
+  "data.value.takeResources_includeUnitsWithinRange_team.enemy": "Ворог",
+  "data.value.takeResources_includeUnitsWithinRange_team.any": "Будь-який",
+  "data.value.takeResources_includeUnitsWithinRange_team.notown": "Не Власний"
+}

@@ -1,0 +1,9 @@
+{
+  "data.value.searchteam.own": "Eigenes",
+  "data.value.searchteam.neutral": "Neutral",
+  "data.value.searchteam.allynotown": "Verbündet nicht eigen",
+  "data.value.searchteam.ally": "Verbündet",
+  "data.value.searchteam.enemy": "Feind",
+  "data.value.searchteam.any": "Beliebig",
+  "data.value.searchteam.notown": "Nicht eigen"
+}

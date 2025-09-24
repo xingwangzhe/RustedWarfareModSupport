@@ -1,0 +1,20 @@
+{
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.maxhp": "最大生命值",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.hp": "生命值",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.maxshield": "最大護盾",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.shield": "護盾",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.shieldregen": "護盾再生",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.maxenergy": "最大能量",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.energy": "能量",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.armour": "護甲",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.mass": "質量",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.shootdelaymultiplier": "射擊延遲倍數",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.shootdamagemultiplier": "射擊傷害倍數",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.movespeed": "移動速度",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.maxturnspeed": "最大轉彎速度",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.maxattackrange": "最大攻擊範圍",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.selfregenrate": "自我再生速率",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.heighttarget": "高度目標",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.nanofactoryspeed": "奈米工廠速度",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.fogofwarsightrange": "戰爭迷霧視野範圍"
+}

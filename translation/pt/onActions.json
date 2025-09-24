@@ -1,17 +1,9 @@
 {
-  "data.value.onactions.description": "Define o estado da ação que ativa este comportamento.",
   "data.value.onactions.move": "Mover",
-  "data.value.onactions.move.description": "Ativado quando a unidade está se movendo",
   "data.value.onactions.attack": "Atacar",
-  "data.value.onactions.attack.description": "Ativado quando a unidade está atacando",
   "data.value.onactions.idle": "Ocioso",
-  "data.value.onactions.idle.description": "Ativado quando a unidade está ociosa",
   "data.value.onactions.underconstruction": "Em Construção",
-  "data.value.onactions.underconstruction.description": "Ativado quando a unidade está em construção",
   "data.value.onactions.underconstructionwithlinkedbuilttime": "Em Construção Com Tempo De Construção Vinculado",
-  "data.value.onactions.underconstructionwithlinkedbuilttime.description": "Ativado quando a unidade está em construção com tempo de construção vinculado",
   "data.value.onactions.queuedunits": "Unidades Enfileiradas",
-  "data.value.onactions.queuedunits.description": "Ativado quando unidades são enfileiradas para produção",
-  "data.value.onactions.repair": "Reparar",
-  "data.value.onactions.repair.description": "Ativado quando a unidade está reparando"
+  "data.value.onactions.repair": "Reparar"
 }

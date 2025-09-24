@@ -1,0 +1,9 @@
+{
+  "data.value.searchteam.own": "خاصتي",
+  "data.value.searchteam.neutral": "محايد",
+  "data.value.searchteam.allynotown": "حليف غير خاصتي",
+  "data.value.searchteam.ally": "حليف",
+  "data.value.searchteam.enemy": "عدو",
+  "data.value.searchteam.any": "أي",
+  "data.value.searchteam.notown": "ليس خاصتي"
+}

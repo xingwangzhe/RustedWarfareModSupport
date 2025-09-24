@@ -1,19 +1,10 @@
 {
-	"data.value.movementType.description": "Визначає типи руху що використовуються для визначення прохідної місцевості та поведінки руху одиниці.",
-	"data.value.movementType.NONE": "Немає",
-	"data.value.movementType.NONE.description": "Немає типу руху / не застосовується.",
-	"data.value.movementType.LAND": "Земля",
-	"data.value.movementType.LAND.description": "Стандартний наземний рух на земельних плитках.",
-	"data.value.movementType.AIR": "Повітря",
-	"data.value.movementType.AIR.description": "Повітряні одиниці що літають над місцевістю.",
-	"data.value.movementType.WATER": "Вода",
-	"data.value.movementType.WATER.description": "Одиниці що рухаються на або в водяних плитках.",
-	"data.value.movementType.HOVER": "Зависання",
-	"data.value.movementType.HOVER.description": "Зависаючі одиниці що можуть пересуватися як по землі так і по деяких водах без потопання.",
-	"data.value.movementType.BUILDING": "Будівля",
-	"data.value.movementType.BUILDING.description": "Нерухомий відбиток будівлі; обробляється по-іншому для прокладання шляху та розміщення.",
-	"data.value.movementType.OVER_CLIFF": "Над скелею",
-	"data.value.movementType.OVER_CLIFF.description": "Може пересуватися скелястими або піднятими плитками що звичайні наземні одиниці не можуть.",
-	"data.value.movementType.OVER_CLIFF_WATER": "Над скелею вода",
-	"data.value.movementType.OVER_CLIFF_WATER.description": "Може пересуватися скелястими плитками що включають воду або мокру скелясту місцевість."
+  "data.value.movementType.NONE": "Немає",
+  "data.value.movementType.LAND": "Земля",
+  "data.value.movementType.AIR": "Повітря",
+  "data.value.movementType.WATER": "Вода",
+  "data.value.movementType.HOVER": "Зависання",
+  "data.value.movementType.BUILDING": "Будівля",
+  "data.value.movementType.OVER_CLIFF": "Над скелею",
+  "data.value.movementType.OVER_CLIFF_WATER": "Над скелею вода"
 }

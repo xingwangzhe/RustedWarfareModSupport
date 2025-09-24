@@ -1,6 +1,5 @@
 {
   "name": "onActions",
-  "description": "data.value.onactions.description",
   "example": "onActions: move",
   "data": [
     {

@@ -1,0 +1,20 @@
+{
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.maxhp": "최대 HP",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.hp": "HP",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.maxshield": "최대 실드",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.shield": "실드",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.shieldregen": "실드 재생",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.maxenergy": "최대 에너지",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.energy": "에너지",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.armour": "아머",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.mass": "질량",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.shootdelaymultiplier": "사격 지연 배수",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.shootdamagemultiplier": "사격 데미지 배수",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.movespeed": "이동 속도",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.maxturnspeed": "최대 회전 속도",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.maxattackrange": "최대 공격 범위",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.selfregenrate": "자체 재생률",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.heighttarget": "높이 목표",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.nanofactoryspeed": "나노 팩토리 속도",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.fogofwarsightrange": "전쟁 안개 시야 범위"
+}

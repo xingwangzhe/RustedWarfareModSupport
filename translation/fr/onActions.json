@@ -1,17 +1,9 @@
 {
-  "data.value.onactions.description": "Définit l'état d'action qui déclenche ce comportement.",
   "data.value.onactions.move": "Déplacement",
-  "data.value.onactions.move.description": "Déclenché lorsque l'unité se déplace",
   "data.value.onactions.attack": "Attaque",
-  "data.value.onactions.attack.description": "Déclenché lorsque l'unité attaque",
   "data.value.onactions.idle": "Inactif",
-  "data.value.onactions.idle.description": "Déclenché lorsque l'unité est inactive",
   "data.value.onactions.underconstruction": "En construction",
-  "data.value.onactions.underconstruction.description": "Déclenché lorsque l'unité est en construction",
   "data.value.onactions.underconstructionwithlinkedbuilttime": "En construction avec temps de construction lié",
-  "data.value.onactions.underconstructionwithlinkedbuilttime.description": "Déclenché lorsque l'unité est en construction avec temps de construction lié",
   "data.value.onactions.queuedunits": "Unités en file d'attente",
-  "data.value.onactions.queuedunits.description": "Déclenché lorsque des unités sont mises en file d'attente pour la production",
-  "data.value.onactions.repair": "Réparation",
-  "data.value.onactions.repair.description": "Déclenché lorsque l'unité répare"
+  "data.value.onactions.repair": "Réparation"
 }

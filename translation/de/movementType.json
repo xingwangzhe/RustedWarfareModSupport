@@ -1,19 +1,10 @@
 {
-  "data.value.movementType.description": "Definiert Bewegungstypen, die verwendet werden, um passierbares Gelände und Einheitenbewegungsverhalten zu bestimmen.",
   "data.value.movementType.NONE": "Keine",
-  "data.value.movementType.NONE.description": "Kein Bewegungstyp / nicht anwendbar.",
   "data.value.movementType.LAND": "Land",
-  "data.value.movementType.LAND.description": "Standard-Bodenbewegung auf Landkacheln.",
   "data.value.movementType.AIR": "Luft",
-  "data.value.movementType.AIR.description": "Luft-Einheiten, die über dem Gelände fliegen.",
   "data.value.movementType.WATER": "Wasser",
-  "data.value.movementType.WATER.description": "Einheiten, die sich auf oder in Wasserkacheln bewegen.",
   "data.value.movementType.HOVER": "Schweben",
-  "data.value.movementType.HOVER.description": "Schwebe-Einheiten, die sowohl Land als auch etwas Wasser durchqueren können, ohne zu sinken.",
   "data.value.movementType.BUILDING": "Gebäude",
-  "data.value.movementType.BUILDING.description": "Unbeweglicher Gebäude-Fußabdruck; wird anders für Wegfindung und Platzierung behandelt.",
   "data.value.movementType.OVER_CLIFF": "Über Klippe",
-  "data.value.movementType.OVER_CLIFF.description": "Kann Klippen oder erhöhte Kacheln durchqueren, die normale Land-Einheiten nicht können.",
-  "data.value.movementType.OVER_CLIFF_WATER": "Über Klippe Wasser",
-  "data.value.movementType.OVER_CLIFF_WATER.description": "Kann Klippenkacheln durchqueren, die Wasser oder nasses Klippengelände enthalten."
+  "data.value.movementType.OVER_CLIFF_WATER": "Über Klippe Wasser"
 }

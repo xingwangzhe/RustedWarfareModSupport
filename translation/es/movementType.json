@@ -1,19 +1,10 @@
 {
-"data.value.movementType.description": "Define tipos movimiento usados para determinar terreno pasable y comportamiento movimiento unidad.",
-"data.value.movementType.NONE": "Ninguno",
-"data.value.movementType.NONE.description": "Sin tipo movimiento / no aplicable.",
-"data.value.movementType.LAND": "Tierra",
-"data.value.movementType.LAND.description": "Movimiento suelo estándar en tiles tierra.",
-"data.value.movementType.AIR": "Aire",
-"data.value.movementType.AIR.description": "Unidades aéreas que vuelan arriba del terreno.",
-"data.value.movementType.WATER": "Agua",
-"data.value.movementType.WATER.description": "Unidades que se mueven en o en tiles agua.",
-"data.value.movementType.HOVER": "Flotar",
-"data.value.movementType.HOVER.description": "Unidades flotantes que pueden atravesar tanto tierra como algo de agua sin hundirse.",
-"data.value.movementType.BUILDING": "Edificio",
-"data.value.movementType.BUILDING.description": "Huella edificio inmóvil; tratada diferente para pathing y colocación.",
-"data.value.movementType.OVER_CLIFF": "Sobre Acantilado",
-"data.value.movementType.OVER_CLIFF.description": "Puede atravesar tiles acantilado o elevados que unidades tierra normales no pueden.",
-"data.value.movementType.OVER_CLIFF_WATER": "Sobre Acantilado Agua",
-"data.value.movementType.OVER_CLIFF_WATER.description": "Puede atravesar tiles acantilado que incluyen agua o terreno acantilado húmedo."
+  "data.value.movementType.NONE": "Ninguno",
+  "data.value.movementType.LAND": "Tierra",
+  "data.value.movementType.AIR": "Aire",
+  "data.value.movementType.WATER": "Agua",
+  "data.value.movementType.HOVER": "Flotar",
+  "data.value.movementType.BUILDING": "Edificio",
+  "data.value.movementType.OVER_CLIFF": "Sobre Acantilado",
+  "data.value.movementType.OVER_CLIFF_WATER": "Sobre Acantilado Agua"
 }

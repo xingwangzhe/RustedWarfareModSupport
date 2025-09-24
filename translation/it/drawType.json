@@ -1,7 +1,4 @@
 {
-  "data.value.drawtype.description": "Definisce come l'unità o l'effetto dovrebbero essere disegnati sullo schermo.",
   "data.value.drawtype.normal": "Normale",
-  "data.value.drawtype.normal.description": "Modalità di disegno standard",
-  "data.value.drawtype.displacement": "Spostamento",
-  "data.value.drawtype.displacement.description": "Modalità di disegno di spostamento per effetti visivi speciali"
+  "data.value.drawtype.displacement": "Spostamento"
 }

@@ -1,0 +1,9 @@
+{
+  "data.value.transportunitsrequiremovementtype.none": "Nessuno",
+  "data.value.transportunitsrequiremovementtype.building": "Edificio",
+  "data.value.transportunitsrequiremovementtype.land": "Terra",
+  "data.value.transportunitsrequiremovementtype.hover": "Fluttuante",
+  "data.value.transportunitsrequiremovementtype.air": "Aria",
+  "data.value.transportunitsrequiremovementtype.over_cliff": "Sopra Scogliera",
+  "data.value.transportunitsrequiremovementtype.over_water_cliff": "Sopra Scogliera Acqua"
+}

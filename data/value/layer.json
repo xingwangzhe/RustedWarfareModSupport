@@ -1,0 +1,42 @@
+{
+  "name": "layer",
+  "example": "layer: inactive",
+  "data": [
+    {
+      "name": "inactive",
+      "description": "data.value.layer.inactive",
+      "version": "1.13.3-1.15p9",
+      "example": "layer: inactive"
+    },
+    {
+      "name": "shadow",
+      "description": "data.value.layer.shadow",
+      "version": "1.13.3-1.15p9",
+      "example": "layer: shadow"
+    },
+    {
+      "name": "afterBody",
+      "description": "data.value.layer.afterbody",
+      "version": "1.13.3-1.15p9",
+      "example": "layer: afterBody"
+    },
+    {
+      "name": "beforeBody",
+      "description": "data.value.layer.beforebody",
+      "version": "1.13.3-1.15p9",
+      "example": "layer: beforeBody"
+    },
+    {
+      "name": "onTop",
+      "description": "data.value.layer.ontop",
+      "version": "1.13.3-1.15p9",
+      "example": "layer: onTop"
+    },
+    {
+      "name": "beforeUI",
+      "description": "data.value.layer.beforeui",
+      "version": "1.13.3-1.15p9",
+      "example": "layer: beforeUI"
+    }
+  ]
+}

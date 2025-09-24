@@ -1,6 +1,5 @@
 {
   "name": "autoTriggerCheckRate",
-  "description": "data.value.autotriggercheckrate.description",
   "example": "autoTriggerCheckRate: everyFrame",
   "data": [
     {

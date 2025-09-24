@@ -1,19 +1,10 @@
 {
-"data.value.movementType.description": "통과 가능한 지형과 유닛 이동 행동을 결정하는 데 사용되는 이동 타입을 정의합니다.",
-"data.value.movementType.NONE": "없음",
-"data.value.movementType.NONE.description": "이동 타입 없음 / 해당 없음.",
-"data.value.movementType.LAND": "육지",
-"data.value.movementType.LAND.description": "육지 타일에서의 표준 지상 이동.",
-"data.value.movementType.AIR": "공중",
-"data.value.movementType.AIR.description": "지형 위를 비행하는 공중 유닛.",
-"data.value.movementType.WATER": "물",
-"data.value.movementType.WATER.description": "물 타일 위나 안에서 이동하는 유닛.",
-"data.value.movementType.HOVER": "호버",
-"data.value.movementType.HOVER.description": "가라앉지 않고 육지와 일부 물을 모두 횡단할 수 있는 호버링 유닛.",
-"data.value.movementType.BUILDING": "건물",
-"data.value.movementType.BUILDING.description": "고정된 건물 공간; 경로 지정과 배치에서 다르게 처리됩니다.",
-"data.value.movementType.OVER_CLIFF": "절벽 위",
-"data.value.movementType.OVER_CLIFF.description": "일반 육지 유닛이 할 수 없는 절벽이나 고도 타일을 횡단할 수 있습니다.",
-"data.value.movementType.OVER_CLIFF_WATER": "절벽 물 위",
-"data.value.movementType.OVER_CLIFF_WATER.description": "물이나 젖은 절벽 지형을 포함하는 절벽 타일을 횡단할 수 있습니다."
+  "data.value.movementType.NONE": "없음",
+  "data.value.movementType.LAND": "육지",
+  "data.value.movementType.AIR": "공중",
+  "data.value.movementType.WATER": "물",
+  "data.value.movementType.HOVER": "호버",
+  "data.value.movementType.BUILDING": "건물",
+  "data.value.movementType.OVER_CLIFF": "절벽 위",
+  "data.value.movementType.OVER_CLIFF_WATER": "절벽 물 위"
 }

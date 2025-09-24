@@ -1,0 +1,9 @@
+{
+  "data.value.onlyteam.own": "Eigenes",
+  "data.value.onlyteam.neutral": "Neutral",
+  "data.value.onlyteam.allynotown": "Verbündet nicht eigen",
+  "data.value.onlyteam.ally": "Verbündet",
+  "data.value.onlyteam.enemy": "Feind",
+  "data.value.onlyteam.any": "Beliebig",
+  "data.value.onlyteam.notown": "Nicht eigen"
+}

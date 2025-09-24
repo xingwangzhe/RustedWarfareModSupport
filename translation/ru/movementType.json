@@ -1,19 +1,10 @@
 {
-"data.value.movementType.description": "Определяет типы движения, используемые для определения проходимой местности и поведения движения юнитов.",
-"data.value.movementType.NONE": "Нет",
-"data.value.movementType.NONE.description": "Нет типа движения / не применимо.",
-"data.value.movementType.LAND": "Земля",
-"data.value.movementType.LAND.description": "Стандартное наземное движение по земельным тайлам.",
-"data.value.movementType.AIR": "Воздух",
-"data.value.movementType.AIR.description": "Воздушные юниты, которые летают над местностью.",
-"data.value.movementType.WATER": "Вода",
-"data.value.movementType.WATER.description": "Юниты, которые перемещаются по водным тайлам или в них.",
-"data.value.movementType.HOVER": "Парящий",
-"data.value.movementType.HOVER.description": "Парящие юниты, которые могут пересекать как землю, так и некоторую воду, не тоня.",
-"data.value.movementType.BUILDING": "Здание",
-"data.value.movementType.BUILDING.description": "Неподвижный след здания; обрабатывается по-разному для маршрутизации и размещения.",
-"data.value.movementType.OVER_CLIFF": "Над Обрывом",
-"data.value.movementType.OVER_CLIFF.description": "Может пересекать обрывы или возвышенные тайлы, которые обычные наземные юниты не могут.",
-"data.value.movementType.OVER_CLIFF_WATER": "Над Обрывом Вода",
-"data.value.movementType.OVER_CLIFF_WATER.description": "Может пересекать тайлы обрыва, которые включают воду или влажную обрывистую местность."
+  "data.value.movementType.NONE": "Нет",
+  "data.value.movementType.LAND": "Земля",
+  "data.value.movementType.AIR": "Воздух",
+  "data.value.movementType.WATER": "Вода",
+  "data.value.movementType.HOVER": "Парящий",
+  "data.value.movementType.BUILDING": "Здание",
+  "data.value.movementType.OVER_CLIFF": "Над Обрывом",
+  "data.value.movementType.OVER_CLIFF_WATER": "Над Обрывом Вода"
 }

@@ -1,26 +1,4 @@
 {
-  "data.value.autotriggeronevent.description": "Aktion wird ausgelöst, wenn ein Ereignis bei einer bestimmten Einheit auftritt. Optionen: created, completeAndActive, destroyed, killedAnyUnit, queuedUnitFinished, queueItemAdded(withActionTag=\"#\"), queueItemCancelled(withActionTag=\"#\"), teleported, touchTargetSuccess, newWaypointGivenByPlayer, teamChanged, transportingNewUnit, transportUnloadedOrRemovedUnit, tookDamage(withTag=\"#\"), newMessage(withTag=\"#\"), enteredTransport, leftTransport, attachmentRemoved. withTag Parameter für tookDamage verwendet Tag vom Projektil und ist optional. withTag Parameter für newMessage verwendet Nachricht-Tags.",
-  "data.value.autotriggeronevent.created.description": "Wird ausgelöst, wenn die Einheit erstellt wird",
-  "data.value.autotriggeronevent.completeandactive.description": "Wird ausgelöst, wenn die Einheit vollständig gebaut und aktiv wird",
-  "data.value.autotriggeronevent.destroyed.description": "Wird ausgelöst, wenn die Einheit zerstört wird",
-  "data.value.autotriggeronevent.killedanyunit.description": "Wird ausgelöst, wenn diese Einheit eine andere Einheit tötet",
-  "data.value.autotriggeronevent.queuedunitfinished.description": "Wird ausgelöst, wenn eine Einheit in der Warteschlange fertiggestellt wird",
-  "data.value.autotriggeronevent.queueitemadded.description": "Wird ausgelöst, wenn eine Aktion mit einem bestimmten Aktions-Tag zur Warteschlange hinzugefügt wird",
-  "data.value.autotriggeronevent.queueitemcancelled.description": "Wird ausgelöst, wenn eine Aktion mit einem bestimmten Aktions-Tag aus der Warteschlange entfernt wird",
-  "data.value.autotriggeronevent.teleported.description": "Wird ausgelöst, wenn die Einheit teleportiert wird",
-  "data.value.autotriggeronevent.touchtargetsuccess.description": "Wird ausgelöst, wenn die Einheit erfolgreich ihr Ziel berührt",
-  "data.value.autotriggeronevent.newwaypointgivenbyplayer.description": "Wird ausgelöst, wenn ein neuer Wegpunkt vom Spieler gegeben wird",
-  "data.value.autotriggeronevent.teamchanged.description": "Wird ausgelöst, wenn die Einheit das Team wechselt",
-  "data.value.autotriggeronevent.transportingnewunit.description": "Wird ausgelöst, wenn die Einheit beginnt, eine neue Einheit zu transportieren",
-  "data.value.autotriggeronevent.transportunloadedorremovedunit.description": "Wird ausgelöst, wenn eine Einheit aus dem Transport entladen oder entfernt wird",
-  "data.value.autotriggeronevent.tookdamage.description": "Wird ausgelöst, wenn die Einheit Schaden mit einem bestimmten Tag erhält",
-  "data.value.autotriggeronevent.newmessage.description": "Wird ausgelöst, wenn die Einheit eine neue Nachricht mit einem bestimmten Tag erhält",
-  "data.value.autotriggeronevent.enteredtransport.description": "Wird ausgelöst, wenn die Einheit in einen Transport eintritt",
-  "data.value.autotriggeronevent.lefttransport.description": "Wird ausgelöst, wenn die Einheit einen Transport verlässt",
-  "data.value.autotriggeronevent.attachmentremoved.description": "Wird ausgelöst, wenn eine Befestigung von der Einheit entfernt wird",
   "data.value.autotriggeronevent.parameter.actiontag": "Aktions-Tag",
-  "data.value.autotriggeronevent.parameter.actiontag.description": "Das Tag der hinzugefügten oder entfernten Aktion",
-  "data.value.autotriggeronevent.parameter.tag": "Tag",
-  "data.value.autotriggeronevent.parameter.tookdamage.tag.description": "Das Tag des Projektils, das den Schaden verursacht hat (optional)",
-  "data.value.autotriggeronevent.parameter.newmessage.tag.description": "Das Tag der erhaltenen Nachricht"
+  "data.value.autotriggeronevent.parameter.tag": "Tag"
 }

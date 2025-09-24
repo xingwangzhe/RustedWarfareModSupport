@@ -1,22 +1,12 @@
 {
   "data.value.Prices_Resources.credits": "クレジット",
-  "data.value.Prices_Resources.credits.description": "グローバルリソース",
   "data.value.Prices_Resources.energy": "エネルギー",
-  "data.value.Prices_Resources.energy.description": "レーザーシールドと弾薬に使用されるエネルギー",
   "data.value.Prices_Resources.hp": "ヒットポイント",
-  "data.value.Prices_Resources.hp.description": "ユニットのヒットポイント",
   "data.value.Prices_Resources.shield": "シールド",
-  "data.value.Prices_Resources.shield.description": "ユニットのシールド",
   "data.value.Prices_Resources.ammo": "弾薬",
-  "data.value.Prices_Resources.ammo.description": "MODで使用するための各ユニットの隠し値",
   "data.value.Prices_Resources.setFlag": "フラグ設定",
-  "data.value.Prices_Resources.setFlag.description": "addResources、resourceUsageまたはpriceと一緒に使用。0-31。各ユニットにフラグが保存される",
   "data.value.Prices_Resources.unsetFlag": "フラグ解除",
-  "data.value.Prices_Resources.unsetFlag.description": "addResources、resourceUsageまたはpriceと一緒に使用。0-31",
   "data.value.Prices_Resources.hasFlag": "フラグあり",
-  "data.value.Prices_Resources.hasFlag.description": "priceまたはresourceUsageと一緒に使用",
   "data.value.Prices_Resources.hasMissingFlag": "フラグなし",
-  "data.value.Prices_Resources.hasMissingFlag.description": "priceまたはresourceUsageと一緒に使用",
-  "data.value.Prices_Resources.X": "カスタムリソース",
-  "data.value.Prices_Resources.X.description": "[global_resource_x]または[resource_x]セクションで定義された任意のリソース"
+  "data.value.Prices_Resources.X": "カスタムリソース"
 }

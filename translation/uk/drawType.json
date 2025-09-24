@@ -1,7 +1,4 @@
 {
-  "data.value.drawtype.description": "Визначає, як юніт або ефект повинні бути намальовані на екрані.",
   "data.value.drawtype.normal": "Нормальний",
-  "data.value.drawtype.normal.description": "Стандартний режим малювання",
-  "data.value.drawtype.displacement": "Зміщення",
-  "data.value.drawtype.displacement.description": "Режим малювання зміщення для спеціальних візуальних ефектів"
+  "data.value.drawtype.displacement": "Зміщення"
 }

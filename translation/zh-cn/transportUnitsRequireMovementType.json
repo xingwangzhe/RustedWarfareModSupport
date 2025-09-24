@@ -1,0 +1,9 @@
+{
+  "data.value.transportunitsrequiremovementtype.none": "无",
+  "data.value.transportunitsrequiremovementtype.building": "建筑",
+  "data.value.transportunitsrequiremovementtype.land": "陆地",
+  "data.value.transportunitsrequiremovementtype.hover": "悬浮",
+  "data.value.transportunitsrequiremovementtype.air": "空中",
+  "data.value.transportunitsrequiremovementtype.over_cliff": "越过悬崖",
+  "data.value.transportunitsrequiremovementtype.over_water_cliff": "越过水上悬崖"
+}

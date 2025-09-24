@@ -10,7 +10,6 @@
   "panel.exportManager.cancelled": "Exportation annulée par l'utilisateur",
   "panel.exportManager.completed": "Exportation terminée:\nZIP: {0}\nRWMOD: {1}",
   "panel.fileExtensions.title": "Gestion des Extensions de Fichiers",
-  "panel.fileExtensions.description": "Gérer les types d'extensions de fichiers pris en charge",
   "panel.fileExtensions.add.placeholder": "Entrer l'extension de fichier (ex.: .cfg)",
   "panel.fileExtensions.add.button": "Ajouter",
   "panel.fileExtensions.add.emptyInput": "L'extension de fichier ne peut pas être vide",

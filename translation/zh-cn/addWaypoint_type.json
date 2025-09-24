@@ -1,27 +1,14 @@
 {
-  "data.value.addwaypoint_type.description": "定义添加到单位移动队列的路径点类型。",
   "data.value.addwaypoint_type.move": "移动",
-  "data.value.addwaypoint_type.move.description": "移动到指定位置",
   "data.value.addwaypoint_type.attackmove": "攻击移动",
-  "data.value.addwaypoint_type.attackmove.description": "移动到位置时攻击遇到的任何敌人",
   "data.value.addwaypoint_type.guard": "守卫",
-  "data.value.addwaypoint_type.guard.description": "守卫指定位置或单位",
   "data.value.addwaypoint_type.loadinto": "装载到",
-  "data.value.addwaypoint_type.loadinto.description": "装载到指定的运输单位中",
   "data.value.addwaypoint_type.loadup": "装载",
-  "data.value.addwaypoint_type.loadup.description": "将单位装载到此运输工具中",
   "data.value.addwaypoint_type.attack": "攻击",
-  "data.value.addwaypoint_type.attack.description": "攻击指定目标",
   "data.value.addwaypoint_type.reclaim": "回收",
-  "data.value.addwaypoint_type.reclaim.description": "回收指定的资源或单位",
   "data.value.addwaypoint_type.repair": "修理",
-  "data.value.addwaypoint_type.repair.description": "修理指定的单位",
   "data.value.addwaypoint_type.touchtarget": "接触目标",
-  "data.value.addwaypoint_type.touchtarget.description": "移动到接触指定目标",
   "data.value.addwaypoint_type.build": "建造",
-  "data.value.addwaypoint_type.build.description": "在指定位置建造",
   "data.value.addwaypoint_type.follow": "跟随",
-  "data.value.addwaypoint_type.follow.description": "跟随指定的单位",
-  "data.value.addwaypoint_type.setpassivetarget": "设置被动目标",
-  "data.value.addwaypoint_type.setpassivetarget.description": "将指定单位设置为被动目标"
+  "data.value.addwaypoint_type.setpassivetarget": "设置被动目标"
 }

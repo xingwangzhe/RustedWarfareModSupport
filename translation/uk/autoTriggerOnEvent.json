@@ -1,26 +1,4 @@
 {
-  "data.value.autotriggeronevent.description": "Запускає дію при виникненні певної події в юніті. Опції: created, completeAndActive, destroyed, killedAnyUnit, queuedUnitFinished, queueItemAdded(withActionTag=\"#\"), queueItemCancelled(withActionTag=\"#\"), teleported, touchTargetSuccess, newWaypointGivenByPlayer, teamChanged, transportingNewUnit, transportUnloadedOrRemovedUnit, tookDamage(withTag=\"#\"), newMessage(withTag=\"#\"), enteredTransport, leftTransport, attachmentRemoved. Параметр withTag для tookDamage використовує тег снаряда і є необов'язковим. Параметр withTag для newMessage використовує тег повідомлення.",
-  "data.value.autotriggeronevent.created.description": "Запускається при першому створенні юніта",
-  "data.value.autotriggeronevent.completeandactive.description": "Запускається коли юніт повністю побудований і активований",
-  "data.value.autotriggeronevent.destroyed.description": "Запускається коли юніт знищений",
-  "data.value.autotriggeronevent.killedanyunit.description": "Запускається коли цей юніт вбиває інший юніт",
-  "data.value.autotriggeronevent.queuedunitfinished.description": "Запускається коли юніт у черзі завершений",
-  "data.value.autotriggeronevent.queueitemadded.description": "Запускається коли дія з певним тегом додана до черги",
-  "data.value.autotriggeronevent.queueitemcancelled.description": "Запускається коли дія з певним тегом скасована з черги",
-  "data.value.autotriggeronevent.teleported.description": "Запускається коли юніт телепортовано",
-  "data.value.autotriggeronevent.touchtargetsuccess.description": "Запускається коли юніт успішно торкається цілі",
-  "data.value.autotriggeronevent.newwaypointgivenbyplayer.description": "Запускається коли гравець дає новий waypoint",
-  "data.value.autotriggeronevent.teamchanged.description": "Запускається коли юніт змінює команду",
-  "data.value.autotriggeronevent.transportingnewunit.description": "Запускається коли юніт починає транспортувати новий юніт",
-  "data.value.autotriggeronevent.transportunloadedorremovedunit.description": "Запускається коли юніт вивантажено або видалено з транспорту",
-  "data.value.autotriggeronevent.tookdamage.description": "Запускається коли юніт отримує шкоду з певним тегом",
-  "data.value.autotriggeronevent.newmessage.description": "Запускається коли юніт отримує нове повідомлення з певним тегом",
-  "data.value.autotriggeronevent.enteredtransport.description": "Запускається коли юніт входить у транспорт",
-  "data.value.autotriggeronevent.lefttransport.description": "Запускається коли юніт виходить з транспорту",
-  "data.value.autotriggeronevent.attachmentremoved.description": "Запускається коли вкладення видалено з юніта",
   "data.value.autotriggeronevent.parameter.actiontag": "Тег дії",
-  "data.value.autotriggeronevent.parameter.actiontag.description": "Тег дії яке було додано або скасовано",
-  "data.value.autotriggeronevent.parameter.tag": "Тег",
-  "data.value.autotriggeronevent.parameter.tookdamage.tag.description": "Тег снаряда який заподіяв шкоду (необов'язково)",
-  "data.value.autotriggeronevent.parameter.newmessage.tag.description": "Тег отриманого повідомлення"
+  "data.value.autotriggeronevent.parameter.tag": "Тег"
 }

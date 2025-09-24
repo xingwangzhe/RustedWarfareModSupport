@@ -1,27 +1,14 @@
 {
-  "data.value.addwaypoint_type.description": "Определяет тип точки маршрута для добавления в очередь движения юнита.",
   "data.value.addwaypoint_type.move": "Переместить",
-  "data.value.addwaypoint_type.move.description": "Переместиться в указанное место",
   "data.value.addwaypoint_type.attackmove": "Атакующее перемещение",
-  "data.value.addwaypoint_type.attackmove.description": "Переместиться в место, атакуя любых встреченных врагов",
   "data.value.addwaypoint_type.guard": "Охранять",
-  "data.value.addwaypoint_type.guard.description": "Охранять указанное место или юнит",
   "data.value.addwaypoint_type.loadinto": "Загрузить в",
-  "data.value.addwaypoint_type.loadinto.description": "Загрузить в указанный транспортный юнит",
   "data.value.addwaypoint_type.loadup": "Загрузка",
-  "data.value.addwaypoint_type.loadup.description": "Загрузить юнитов в этот транспорт",
   "data.value.addwaypoint_type.attack": "Атаковать",
-  "data.value.addwaypoint_type.attack.description": "Атаковать указанную цель",
   "data.value.addwaypoint_type.reclaim": "Восстановить",
-  "data.value.addwaypoint_type.reclaim.description": "Восстановить указанный ресурс или юнит",
   "data.value.addwaypoint_type.repair": "Ремонтировать",
-  "data.value.addwaypoint_type.repair.description": "Ремонтировать указанный юнит",
   "data.value.addwaypoint_type.touchtarget": "Коснуться цели",
-  "data.value.addwaypoint_type.touchtarget.description": "Переместиться, чтобы коснуться указанной цели",
   "data.value.addwaypoint_type.build": "Строить",
-  "data.value.addwaypoint_type.build.description": "Строить в указанном месте",
   "data.value.addwaypoint_type.follow": "Следовать",
-  "data.value.addwaypoint_type.follow.description": "Следовать за указанным юнитом",
-  "data.value.addwaypoint_type.setpassivetarget": "Установить пассивную цель",
-  "data.value.addwaypoint_type.setpassivetarget.description": "Установить указанный юнит как пассивную цель"
+  "data.value.addwaypoint_type.setpassivetarget": "Установить пассивную цель"
 }

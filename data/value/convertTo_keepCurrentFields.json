@@ -1,6 +1,5 @@
 {
   "name": "convertTo_keepCurrentFields",
-  "description": "data.value.convertto_keepcurrentfields.description",
   "example": "convertTo_keepCurrentFields: maxHp",
   "data": [
     {

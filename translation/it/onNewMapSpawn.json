@@ -1,13 +1,7 @@
 {
-  "data.value.onnewmapspawn.description": "Definisce dove le unità dovrebbero apparire quando viene caricata una nuova mappa.",
   "data.value.onnewmapspawn.emptyresourcepools_asneutral": "Pozze Di Risorse Vuote Come Neutrali",
-  "data.value.onnewmapspawn.emptyresourcepools_asneutral.description": "Appaiono in pozze di risorse vuote come unità neutrali",
   "data.value.onnewmapspawn.emptyoroccupiedresourcepools_asneutral": "Pozze Di Risorse Vuote O Occupate Come Neutrali",
-  "data.value.onnewmapspawn.emptyoroccupiedresourcepools_asneutral.description": "Appaiono in pozze di risorse vuote o occupate come unità neutrali",
   "data.value.onnewmapspawn.mapcenter_asneutral": "Centro Mappa Come Neutrale",
-  "data.value.onnewmapspawn.mapcenter_asneutral.description": "Appaiono al centro della mappa come unità neutrali",
   "data.value.onnewmapspawn.mapcenter_eachactiveteam": "Centro Mappa Ogni Squadra Attiva",
-  "data.value.onnewmapspawn.mapcenter_eachactiveteam.description": "Appaiono al centro della mappa per ogni squadra attiva",
-  "data.value.onnewmapspawn.spawnpoint_eachactiveteam": "Punto Di Apparizione Ogni Squadra Attiva",
-  "data.value.onnewmapspawn.spawnpoint_eachactiveteam.description": "Appaiono ai punti di apparizione designati per ogni squadra attiva"
+  "data.value.onnewmapspawn.spawnpoint_eachactiveteam": "Punto Di Apparizione Ogni Squadra Attiva"
 }

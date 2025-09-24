@@ -1,9 +1,5 @@
 {
-  "data.value.autotriggercheckrate.description": "Defines how often the auto trigger should check its conditions.",
   "data.value.autotriggercheckrate.everyframe": "Every Frame",
-  "data.value.autotriggercheckrate.everyframe.description": "Check every game frame (most frequent)",
   "data.value.autotriggercheckrate.every4frames": "Every 4 Frames",
-  "data.value.autotriggercheckrate.every4frames.description": "Check every 4 game frames",
-  "data.value.autotriggercheckrate.every8frames": "Every 8 Frames",
-  "data.value.autotriggercheckrate.every8frames.description": "Check every 8 game frames (least frequent)"
+  "data.value.autotriggercheckrate.every8frames": "Every 8 Frames"
 }

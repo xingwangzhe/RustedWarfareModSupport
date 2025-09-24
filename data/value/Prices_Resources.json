@@ -1,6 +1,5 @@
 {
   "type": "Prices_Resources",
-  "description": "data.value.Prices_Resources.description",
   "example": "price: credits=100, energy=50",
   "data": [
     {

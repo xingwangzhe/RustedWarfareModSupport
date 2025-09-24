@@ -1,5 +1,4 @@
 {
-  "memory.description": "Acesse variáveis de memória personalizadas definidas com @memory",
   "memory.usage": "Uso: `memory.variableName`",
   "memory.availableVariables": "Variáveis disponíveis:",
   "memory.availableVariablesDescription": "- Variáveis personalizadas definidas na seção core com `@memory name:type`",
@@ -12,7 +11,6 @@
   "memory.variable.definedIn": "Definido em: {0}",
   "memory.variable.line": "Linha: {0}",
   "memory.variable.access": "Acesse esta variável de memória personalizada em expressões",
-  "memory.definition.description": "Defina uma variável de memória personalizada na seção core",
   "memory.definition.format": "Formato: `@memory name:type`",
   "memory.definition.supportedTypes": "Tipos suportados:",
   "memory.definition.example": "Exemplo:",
@@ -23,14 +21,5 @@
   "memory.variableName.detail": "Nome da variável de memória",
   "memory.variableType.detail": "Tipo da variável de memória: {0}",
   "memory.variableType.documentation": "**{0}** - {1}",
-  "memory.variableType.accessNote": "Será acessível como `memory.variableName` em expressões",
-  "type.int.description": "Número inteiro",
-  "type.float.description": "Número de ponto flutuante",
-  "type.string.description": "String de texto",
-  "type.bool.description": "Valor booleano (verdadeiro/falso)",
-  "type.number.description": "Número genérico",
-  "type.text.description": "Conteúdo de texto",
-  "type.boolean.description": "Valor booleano",
-  "type.logic.description": "Expressão lógica",
-  "type.custom.description": "Tipo personalizado"
+  "memory.variableType.accessNote": "Será acessível como `memory.variableName` em expressões"
 }

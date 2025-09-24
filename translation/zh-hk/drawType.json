@@ -1,7 +1,4 @@
 {
-  "data.value.drawtype.description": "定義單位或效果應該如何在螢幕上繪製。",
   "data.value.drawtype.normal": "正常",
-  "data.value.drawtype.normal.description": "標準繪製模式",
-  "data.value.drawtype.displacement": "位移",
-  "data.value.drawtype.displacement.description": "用於特殊視覺效果的位移繪製模式"
+  "data.value.drawtype.displacement": "位移"
 }

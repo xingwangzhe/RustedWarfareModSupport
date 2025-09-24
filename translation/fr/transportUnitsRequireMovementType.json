@@ -1,0 +1,9 @@
+{
+  "data.value.transportunitsrequiremovementtype.none": "Aucun",
+  "data.value.transportunitsrequiremovementtype.building": "Construction",
+  "data.value.transportunitsrequiremovementtype.land": "Terre",
+  "data.value.transportunitsrequiremovementtype.hover": "Survol",
+  "data.value.transportunitsrequiremovementtype.air": "Air",
+  "data.value.transportunitsrequiremovementtype.over_cliff": "Par-dessus Falaise",
+  "data.value.transportunitsrequiremovementtype.over_water_cliff": "Par-dessus Falaise Eau"
+}

@@ -1,0 +1,8 @@
+{
+  "data.value.layer.inactive": "Неактивний",
+  "data.value.layer.shadow": "Тінь",
+  "data.value.layer.afterbody": "Після Тіла",
+  "data.value.layer.beforebody": "Перед Тілом",
+  "data.value.layer.ontop": "Зверху",
+  "data.value.layer.beforeui": "Перед Інтерфейсом"
+}

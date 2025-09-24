@@ -1,0 +1,9 @@
+{
+  "data.value.searchteam.own": "自チーム",
+  "data.value.searchteam.neutral": "中立",
+  "data.value.searchteam.allynotown": "同盟非自チーム",
+  "data.value.searchteam.ally": "同盟",
+  "data.value.searchteam.enemy": "敵",
+  "data.value.searchteam.any": "任意",
+  "data.value.searchteam.notown": "非自チーム"
+}

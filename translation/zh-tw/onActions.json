@@ -1,17 +1,9 @@
 {
-  "data.value.onactions.description": "定義觸發此行為的動作狀態。",
   "data.value.onactions.move": "移動",
-  "data.value.onactions.move.description": "單位移動時觸發",
   "data.value.onactions.attack": "攻擊",
-  "data.value.onactions.attack.description": "單位攻擊時觸發",
   "data.value.onactions.idle": "閒置",
-  "data.value.onactions.idle.description": "單位閒置時觸發",
   "data.value.onactions.underconstruction": "建造中",
-  "data.value.onactions.underconstruction.description": "單位建造中時觸發",
   "data.value.onactions.underconstructionwithlinkedbuilttime": "建造中（連結建造時間）",
-  "data.value.onactions.underconstructionwithlinkedbuilttime.description": "單位建造中且連結建造時間時觸發",
   "data.value.onactions.queuedunits": "佇列單位",
-  "data.value.onactions.queuedunits.description": "單位生產佇列中時觸發",
-  "data.value.onactions.repair": "修理",
-  "data.value.onactions.repair.description": "單位修理時觸發"
+  "data.value.onactions.repair": "修理"
 }

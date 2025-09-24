@@ -1,22 +1,12 @@
 {
   "data.value.Prices_Resources.credits": "Créditos",
-  "data.value.Prices_Resources.credits.description": "Recurso global",
   "data.value.Prices_Resources.energy": "Energía",
-  "data.value.Prices_Resources.energy.description": "Energía usada para escudo láser y munición",
   "data.value.Prices_Resources.hp": "Puntos Golpe",
-  "data.value.Prices_Resources.hp.description": "Puntos golpe unidad",
   "data.value.Prices_Resources.shield": "Escudo",
-  "data.value.Prices_Resources.shield.description": "Blindaje para unidades",
   "data.value.Prices_Resources.ammo": "Munición",
-  "data.value.Prices_Resources.ammo.description": "Valor oculto en cada unidad para uso por mods",
   "data.value.Prices_Resources.setFlag": "Establecer Bandera",
-  "data.value.Prices_Resources.setFlag.description": "usar con addResources, resourceUsage o price. 0-31. Banderas son almacenadas en cada unidad",
   "data.value.Prices_Resources.unsetFlag": "Desestablecer Bandera",
-  "data.value.Prices_Resources.unsetFlag.description": "usar con addResources, resourceUsage o price. 0-31",
   "data.value.Prices_Resources.hasFlag": "Tiene Bandera",
-  "data.value.Prices_Resources.hasFlag.description": "usar con price o resourceUsage",
   "data.value.Prices_Resources.hasMissingFlag": "Tiene Bandera Faltante",
-  "data.value.Prices_Resources.hasMissingFlag.description": "usar con price o resourceUsage",
-  "data.value.Prices_Resources.X": "Recurso Personalizado",
-  "data.value.Prices_Resources.X.description": "Cualquier recurso definido en secciones [global_resource_x] o [resource_x]"
+  "data.value.Prices_Resources.X": "Recurso Personalizado"
 }

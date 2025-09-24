@@ -1,7 +1,4 @@
 {
-  "data.value.drawtype.description": "يحدد كيفية رسم الوحدة أو التأثير على الشاشة.",
   "data.value.drawtype.normal": "عادي",
-  "data.value.drawtype.normal.description": "وضع الرسم القياسي",
-  "data.value.drawtype.displacement": "إزاحة",
-  "data.value.drawtype.displacement.description": "وضع رسم الإزاحة للتأثيرات البصرية الخاصة"
+  "data.value.drawtype.displacement": "إزاحة"
 }

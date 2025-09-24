@@ -1,6 +1,5 @@
 {
   "name": "logicboolean",
-  "description": "data.sections.logicBoolean",
   "example": "autoTrigger: if self.isInWater and self.energy>=1",
   "data": [
     {

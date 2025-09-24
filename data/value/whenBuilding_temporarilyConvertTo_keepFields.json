@@ -1,0 +1,114 @@
+{
+  "name": "whenBuilding_temporarilyConvertTo_keepFields",
+  "example": "whenBuilding_temporarilyConvertTo_keepFields: maxHp",
+  "data": [
+    {
+      "name": "maxHp",
+      "description": "data.value.whenbuilding_temporarilyconvertto_keepfields.maxhp",
+      "version": "1.13.3-1.15p9",
+      "example": "whenBuilding_temporarilyConvertTo_keepFields: maxHp"
+    },
+    {
+      "name": "hp",
+      "description": "data.value.whenbuilding_temporarilyconvertto_keepfields.hp",
+      "version": "1.13.3-1.15p9",
+      "example": "whenBuilding_temporarilyConvertTo_keepFields: hp"
+    },
+    {
+      "name": "maxShield",
+      "description": "data.value.whenbuilding_temporarilyconvertto_keepfields.maxshield",
+      "version": "1.13.3-1.15p9",
+      "example": "whenBuilding_temporarilyConvertTo_keepFields: maxShield"
+    },
+    {
+      "name": "shield",
+      "description": "data.value.whenbuilding_temporarilyconvertto_keepfields.shield",
+      "version": "1.13.3-1.15p9",
+      "example": "whenBuilding_temporarilyConvertTo_keepFields: shield"
+    },
+    {
+      "name": "shieldRegen",
+      "description": "data.value.whenbuilding_temporarilyconvertto_keepfields.shieldregen",
+      "version": "1.13.3-1.15p9",
+      "example": "whenBuilding_temporarilyConvertTo_keepFields: shieldRegen"
+    },
+    {
+      "name": "maxEnergy",
+      "description": "data.value.whenbuilding_temporarilyconvertto_keepfields.maxenergy",
+      "version": "1.13.3-1.15p9",
+      "example": "whenBuilding_temporarilyConvertTo_keepFields: maxEnergy"
+    },
+    {
+      "name": "energy",
+      "description": "data.value.whenbuilding_temporarilyconvertto_keepfields.energy",
+      "version": "1.13.3-1.15p9",
+      "example": "whenBuilding_temporarilyConvertTo_keepFields: energy"
+    },
+    {
+      "name": "armour",
+      "description": "data.value.whenbuilding_temporarilyconvertto_keepfields.armour",
+      "version": "1.13.3-1.15p9",
+      "example": "whenBuilding_temporarilyConvertTo_keepFields: armour"
+    },
+    {
+      "name": "mass",
+      "description": "data.value.whenbuilding_temporarilyconvertto_keepfields.mass",
+      "version": "1.13.3-1.15p9",
+      "example": "whenBuilding_temporarilyConvertTo_keepFields: mass"
+    },
+    {
+      "name": "shootDelayMultiplier",
+      "description": "data.value.whenbuilding_temporarilyconvertto_keepfields.shootdelaymultiplier",
+      "version": "1.13.3-1.15p9",
+      "example": "whenBuilding_temporarilyConvertTo_keepFields: shootDelayMultiplier"
+    },
+    {
+      "name": "shootDamageMultiplier",
+      "description": "data.value.whenbuilding_temporarilyconvertto_keepfields.shootdamagemultiplier",
+      "version": "1.13.3-1.15p9",
+      "example": "whenBuilding_temporarilyConvertTo_keepFields: shootDamageMultiplier"
+    },
+    {
+      "name": "moveSpeed",
+      "description": "data.value.whenbuilding_temporarilyconvertto_keepfields.movespeed",
+      "version": "1.13.3-1.15p9",
+      "example": "whenBuilding_temporarilyConvertTo_keepFields: moveSpeed"
+    },
+    {
+      "name": "maxTurnSpeed",
+      "description": "data.value.whenbuilding_temporarilyconvertto_keepfields.maxturnspeed",
+      "version": "1.13.3-1.15p9",
+      "example": "whenBuilding_temporarilyConvertTo_keepFields: maxTurnSpeed"
+    },
+    {
+      "name": "maxAttackRange",
+      "description": "data.value.whenbuilding_temporarilyconvertto_keepfields.maxattackrange",
+      "version": "1.13.3-1.15p9",
+      "example": "whenBuilding_temporarilyConvertTo_keepFields: maxAttackRange"
+    },
+    {
+      "name": "selfRegenRate",
+      "description": "data.value.whenbuilding_temporarilyconvertto_keepfields.selfregenrate",
+      "version": "1.13.3-1.15p9",
+      "example": "whenBuilding_temporarilyConvertTo_keepFields: selfRegenRate"
+    },
+    {
+      "name": "heightTarget",
+      "description": "data.value.whenbuilding_temporarilyconvertto_keepfields.heighttarget",
+      "version": "1.13.3-1.15p9",
+      "example": "whenBuilding_temporarilyConvertTo_keepFields: heightTarget"
+    },
+    {
+      "name": "nanoFactorySpeed",
+      "description": "data.value.whenbuilding_temporarilyconvertto_keepfields.nanofactoryspeed",
+      "version": "1.13.3-1.15p9",
+      "example": "whenBuilding_temporarilyConvertTo_keepFields: nanoFactorySpeed"
+    },
+    {
+      "name": "fogOfWarSightRange",
+      "description": "data.value.whenbuilding_temporarilyconvertto_keepfields.fogofwarsightrange",
+      "version": "1.13.3-1.15p9",
+      "example": "whenBuilding_temporarilyConvertTo_keepFields: fogOfWarSightRange"
+    }
+  ]
+}

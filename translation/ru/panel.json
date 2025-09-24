@@ -8,7 +8,6 @@
   "panel.exportManager.success": "Экспорт успешен!",
   "panel.exportManager.failed": "Экспорт не удался!",
   "panel.fileExtensions.title": "Управление Расширениями Файлов",
-  "panel.fileExtensions.description": "Управление поддерживаемыми типами расширений файлов",
   "panel.fileExtensions.add.placeholder": "Введите расширение файла (пример: .cfg)",
   "panel.fileExtensions.add.button": "Добавить",
   "panel.fileExtensions.add.emptyInput": "Расширение файла не может быть пустым",

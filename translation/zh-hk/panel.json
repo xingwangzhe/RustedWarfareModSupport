@@ -8,7 +8,6 @@
   "panel.exportManager.success": "導出成功！",
   "panel.exportManager.failed": "導出失敗！",
   "panel.fileExtensions.title": "檔案擴展名管理",
-  "panel.fileExtensions.description": "管理支援的檔案擴展名類型",
   "panel.fileExtensions.add.placeholder": "輸入檔案擴展名 (例如: .cfg)",
   "panel.fileExtensions.add.button": "新增",
   "panel.fileExtensions.add.emptyInput": "檔案擴展名不能為空",

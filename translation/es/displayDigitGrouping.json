@@ -1,9 +1,5 @@
 {
-  "data.value.displaydigitgrouping.description": "Define cómo se deben agrupar los dígitos en las pantallas numéricas.",
   "data.value.displaydigitgrouping.none": "Ninguno",
-  "data.value.displaydigitgrouping.none.description": "Sin agrupación de dígitos (ej. 1000000)",
   "data.value.displaydigitgrouping.comma": "Coma",
-  "data.value.displaydigitgrouping.comma.description": "Usar coma como separador de miles (ej. 1.000.000)",
-  "data.value.displaydigitgrouping.space": "Espacio",
-  "data.value.displaydigitgrouping.space.description": "Usar espacio como separador de miles (ej. 1 000 000)"
+  "data.value.displaydigitgrouping.space": "Espacio"
 }

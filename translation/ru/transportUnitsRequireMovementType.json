@@ -1,0 +1,9 @@
+{
+  "data.value.transportunitsrequiremovementtype.none": "Нет",
+  "data.value.transportunitsrequiremovementtype.building": "Здание",
+  "data.value.transportunitsrequiremovementtype.land": "Наземный",
+  "data.value.transportunitsrequiremovementtype.hover": "Парящий",
+  "data.value.transportunitsrequiremovementtype.air": "Воздушный",
+  "data.value.transportunitsrequiremovementtype.over_cliff": "Над Утесом",
+  "data.value.transportunitsrequiremovementtype.over_water_cliff": "Над Водным Утесом"
+}

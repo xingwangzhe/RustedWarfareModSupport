@@ -1,6 +1,5 @@
 {
   "name": "displayDigitGrouping",
-  "description": "data.value.displaydigitgrouping.description",
   "example": "displayDigitGrouping: none",
   "data": [
     {

@@ -1,0 +1,9 @@
+{
+  "data.value.transportunitsrequiremovementtype.NONE": "Keine",
+  "data.value.transportunitsrequiremovementtype.BUILDING": "Gebäude",
+  "data.value.transportunitsrequiremovementtype.LAND": "Land",
+  "data.value.transportunitsrequiremovementtype.HOVER": "Schwebe",
+  "data.value.transportunitsrequiremovementtype.AIR": "Luft",
+  "data.value.transportunitsrequiremovementtype.OVER_CLIFF": "Über Klippe",
+  "data.value.transportunitsrequiremovementtype.OVER_WATER_CLIFF": "Über Wasserklippe"
+}

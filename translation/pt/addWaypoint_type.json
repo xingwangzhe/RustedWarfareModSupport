@@ -1,27 +1,14 @@
 {
-  "data.value.addwaypoint_type.description": "Define o tipo de ponto de caminho a ser adicionado à fila de movimento da unidade.",
   "data.value.addwaypoint_type.move": "Mover",
-  "data.value.addwaypoint_type.move.description": "Mover para a localização especificada",
   "data.value.addwaypoint_type.attackmove": "Movimento de ataque",
-  "data.value.addwaypoint_type.attackmove.description": "Mover para a localização atacando quaisquer inimigos encontrados",
   "data.value.addwaypoint_type.guard": "Guardar",
-  "data.value.addwaypoint_type.guard.description": "Guardar a localização ou unidade especificada",
   "data.value.addwaypoint_type.loadinto": "Carregar em",
-  "data.value.addwaypoint_type.loadinto.description": "Carregar na unidade de transporte especificada",
   "data.value.addwaypoint_type.loadup": "Carregamento",
-  "data.value.addwaypoint_type.loadup.description": "Carregar unidades neste transporte",
   "data.value.addwaypoint_type.attack": "Atacar",
-  "data.value.addwaypoint_type.attack.description": "Atacar o alvo especificado",
   "data.value.addwaypoint_type.reclaim": "Reivindicar",
-  "data.value.addwaypoint_type.reclaim.description": "Reivindicar o recurso ou unidade especificada",
   "data.value.addwaypoint_type.repair": "Reparar",
-  "data.value.addwaypoint_type.repair.description": "Reparar a unidade especificada",
   "data.value.addwaypoint_type.touchtarget": "Tocar alvo",
-  "data.value.addwaypoint_type.touchtarget.description": "Mover para tocar o alvo especificado",
   "data.value.addwaypoint_type.build": "Construir",
-  "data.value.addwaypoint_type.build.description": "Construir na localização especificada",
   "data.value.addwaypoint_type.follow": "Seguir",
-  "data.value.addwaypoint_type.follow.description": "Seguir a unidade especificada",
-  "data.value.addwaypoint_type.setpassivetarget": "Definir alvo passivo",
-  "data.value.addwaypoint_type.setpassivetarget.description": "Definir a unidade especificada como alvo passivo"
+  "data.value.addwaypoint_type.setpassivetarget": "Definir alvo passivo"
 }

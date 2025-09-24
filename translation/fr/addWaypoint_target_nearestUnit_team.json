@@ -1,17 +1,9 @@
 {
-  "data.value.addwaypoint_target_nearestunit_team.description": "Définit l'affiliation d'équipe à cibler lors de la recherche de l'unité la plus proche.",
   "data.value.addwaypoint_target_nearestunit_team.own": "Propre",
-  "data.value.addwaypoint_target_nearestunit_team.own.description": "Cibler les unités de votre propre équipe",
   "data.value.addwaypoint_target_nearestunit_team.neutral": "Neutre",
-  "data.value.addwaypoint_target_nearestunit_team.neutral.description": "Cibler les unités neutres",
   "data.value.addwaypoint_target_nearestunit_team.allynotown": "Allié Pas Propre",
-  "data.value.addwaypoint_target_nearestunit_team.allynotown.description": "Cibler les unités alliées qui ne sont pas les vôtres",
   "data.value.addwaypoint_target_nearestunit_team.ally": "Allié",
-  "data.value.addwaypoint_target_nearestunit_team.ally.description": "Cibler toutes les unités alliées",
   "data.value.addwaypoint_target_nearestunit_team.enemy": "Ennemi",
-  "data.value.addwaypoint_target_nearestunit_team.enemy.description": "Cibler les unités ennemies",
   "data.value.addwaypoint_target_nearestunit_team.any": "N'importe lequel",
-  "data.value.addwaypoint_target_nearestunit_team.any.description": "Cibler n'importe quelle unité indépendamment de l'équipe",
-  "data.value.addwaypoint_target_nearestunit_team.notown": "Pas Propre",
-  "data.value.addwaypoint_target_nearestunit_team.notown.description": "Cibler n'importe quelle unité qui n'est pas la vôtre"
+  "data.value.addwaypoint_target_nearestunit_team.notown": "Pas Propre"
 }

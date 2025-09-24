@@ -1,17 +1,9 @@
 {
-  "data.value.addwaypoint_target_nearestunit_team.description": "定義尋找最近單位時要針對哪個隊伍隸屬關係。",
   "data.value.addwaypoint_target_nearestunit_team.own": "己方",
-  "data.value.addwaypoint_target_nearestunit_team.own.description": "針對自己隊伍的單位",
   "data.value.addwaypoint_target_nearestunit_team.neutral": "中立",
-  "data.value.addwaypoint_target_nearestunit_team.neutral.description": "針對中立單位",
   "data.value.addwaypoint_target_nearestunit_team.allynotown": "盟友非己方",
-  "data.value.addwaypoint_target_nearestunit_team.allynotown.description": "針對非己方的盟友單位",
   "data.value.addwaypoint_target_nearestunit_team.ally": "盟友",
-  "data.value.addwaypoint_target_nearestunit_team.ally.description": "針對所有盟友單位",
   "data.value.addwaypoint_target_nearestunit_team.enemy": "敵人",
-  "data.value.addwaypoint_target_nearestunit_team.enemy.description": "針對敵人單位",
   "data.value.addwaypoint_target_nearestunit_team.any": "任何",
-  "data.value.addwaypoint_target_nearestunit_team.any.description": "針對任何單位，無論隊伍為何",
-  "data.value.addwaypoint_target_nearestunit_team.notown": "非己方",
-  "data.value.addwaypoint_target_nearestunit_team.notown.description": "針對任何非己方的單位"
+  "data.value.addwaypoint_target_nearestunit_team.notown": "非己方"
 }

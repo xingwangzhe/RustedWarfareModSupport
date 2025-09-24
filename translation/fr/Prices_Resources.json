@@ -1,22 +1,12 @@
 {
   "data.value.Prices_Resources.credits": "Crédits",
-  "data.value.Prices_Resources.credits.description": "Ressource globale",
   "data.value.Prices_Resources.energy": "Énergie",
-  "data.value.Prices_Resources.energy.description": "Énergie utilisée pour le bouclier laser et les munitions",
   "data.value.Prices_Resources.hp": "Points de Vie",
-  "data.value.Prices_Resources.hp.description": "Points de vie de l'unité",
   "data.value.Prices_Resources.shield": "Bouclier",
-  "data.value.Prices_Resources.shield.description": "Blindage pour les unités",
   "data.value.Prices_Resources.ammo": "Munitions",
-  "data.value.Prices_Resources.ammo.description": "Valeur cachée sur chaque unité pour utilisation par les mods",
   "data.value.Prices_Resources.setFlag": "Définir Drapeau",
-  "data.value.Prices_Resources.setFlag.description": "utiliser avec addResources, resourceUsage ou price. 0-31. Les drapeaux sont stockés dans chaque unité",
   "data.value.Prices_Resources.unsetFlag": "Annuler Drapeau",
-  "data.value.Prices_Resources.unsetFlag.description": "utiliser avec addResources, resourceUsage ou price. 0-31",
   "data.value.Prices_Resources.hasFlag": "A Drapeau",
-  "data.value.Prices_Resources.hasFlag.description": "utiliser avec price ou resourceUsage",
   "data.value.Prices_Resources.hasMissingFlag": "A Drapeau Manquant",
-  "data.value.Prices_Resources.hasMissingFlag.description": "utiliser avec price ou resourceUsage",
-  "data.value.Prices_Resources.X": "Ressource Personnalisée",
-  "data.value.Prices_Resources.X.description": "Toute ressource définie dans les sections [global_resource_x] ou [resource_x]"
+  "data.value.Prices_Resources.X": "Ressource Personnalisée"
 }

@@ -1,6 +1,5 @@
 {
   "name": "autoTriggerOnEvent",
-  "description": "data.value.autotriggeronevent.description",
   "example": "autoTriggerOnEvent: created",
   "data": [
     {

@@ -1,6 +1,4 @@
 {
   "data.value.bool.true": "Verdadero",
-  "data.value.bool.true.description": "Representa el valor booleano verdadero",
-  "data.value.bool.false": "Falso", 
-  "data.value.bool.false.description": "Representa el valor booleano falso"
+  "data.value.bool.false": "Falso"
 }

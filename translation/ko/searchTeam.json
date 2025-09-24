@@ -1,0 +1,9 @@
+{
+  "data.value.searchteam.own": "자팀",
+  "data.value.searchteam.neutral": "중립",
+  "data.value.searchteam.allynotown": "아군 비자팀",
+  "data.value.searchteam.ally": "아군",
+  "data.value.searchteam.enemy": "적",
+  "data.value.searchteam.any": "모두",
+  "data.value.searchteam.notown": "비자팀"
+}

@@ -1,0 +1,9 @@
+{
+  "data.value.searchteam.own": "己方",
+  "data.value.searchteam.neutral": "中立",
+  "data.value.searchteam.allynotown": "盟友非己方",
+  "data.value.searchteam.ally": "盟友",
+  "data.value.searchteam.enemy": "敌人",
+  "data.value.searchteam.any": "任意",
+  "data.value.searchteam.notown": "非己方"
+}

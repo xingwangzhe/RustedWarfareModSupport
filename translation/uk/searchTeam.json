@@ -1,0 +1,9 @@
+{
+  "data.value.searchteam.own": "Власна",
+  "data.value.searchteam.neutral": "Нейтральна",
+  "data.value.searchteam.allynotown": "Союзник Не Власний",
+  "data.value.searchteam.ally": "Союзник",
+  "data.value.searchteam.enemy": "Ворог",
+  "data.value.searchteam.any": "Будь-який",
+  "data.value.searchteam.notown": "Не Власний"
+}

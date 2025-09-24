@@ -1,0 +1,48 @@
+{
+  "name": "transportUnitsRequireMovementType",
+  "example": "transportUnitsRequireMovementType: NONE",
+  "data": [
+    {
+      "name": "NONE",
+      "description": "data.value.transportunitsrequiremovementtype.none",
+      "version": "1.13.3-1.15p9",
+      "example": "transportUnitsRequireMovementType: NONE"
+    },
+    {
+      "name": "BUILDING",
+      "description": "data.value.transportunitsrequiremovementtype.building",
+      "version": "1.13.3-1.15p9",
+      "example": "transportUnitsRequireMovementType: BUILDING"
+    },
+    {
+      "name": "LAND",
+      "description": "data.value.transportunitsrequiremovementtype.land",
+      "version": "1.13.3-1.15p9",
+      "example": "transportUnitsRequireMovementType: LAND"
+    },
+    {
+      "name": "HOVER",
+      "description": "data.value.transportunitsrequiremovementtype.hover",
+      "version": "1.13.3-1.15p9",
+      "example": "transportUnitsRequireMovementType: HOVER"
+    },
+    {
+      "name": "AIR",
+      "description": "data.value.transportunitsrequiremovementtype.air",
+      "version": "1.13.3-1.15p9",
+      "example": "transportUnitsRequireMovementType: AIR"
+    },
+    {
+      "name": "OVER_CLIFF",
+      "description": "data.value.transportunitsrequiremovementtype.over_cliff",
+      "version": "1.13.3-1.15p9",
+      "example": "transportUnitsRequireMovementType: OVER_CLIFF"
+    },
+    {
+      "name": "OVER_WATER_CLIFF",
+      "description": "data.value.transportunitsrequiremovementtype.over_water_cliff",
+      "version": "1.13.3-1.15p9",
+      "example": "transportUnitsRequireMovementType: OVER_WATER_CLIFF"
+    }
+  ]
+}

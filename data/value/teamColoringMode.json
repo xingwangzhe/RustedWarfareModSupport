@@ -1,0 +1,30 @@
+{
+  "name": "teamColoringMode",
+  "example": "teamColoringMode: pureGreen",
+  "data": [
+    {
+      "name": "pureGreen",
+      "description": "data.value.teamcoloringmode.puregreen",
+      "version": "1.13.3-1.15p9",
+      "example": "teamColoringMode: pureGreen"
+    },
+    {
+      "name": "hueAdd",
+      "description": "data.value.teamcoloringmode.hueadd",
+      "version": "1.13.3-1.15p9",
+      "example": "teamColoringMode: hueAdd"
+    },
+    {
+      "name": "hueShift",
+      "description": "data.value.teamcoloringmode.hueshift",
+      "version": "1.13.3-1.15p9",
+      "example": "teamColoringMode: hueShift"
+    },
+    {
+      "name": "disabled",
+      "description": "data.value.teamcoloringmode.disabled",
+      "version": "1.13.3-1.15p9",
+      "example": "teamColoringMode: disabled"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "data.value.takeresources_includeunitswithinrange_team.own": "己方",
+  "data.value.takeresources_includeunitswithinrange_team.neutral": "中立",
+  "data.value.takeresources_includeunitswithinrange_team.allynotown": "盟友非己方",
+  "data.value.takeresources_includeunitswithinrange_team.ally": "盟友",
+  "data.value.takeresources_includeunitswithinrange_team.enemy": "敌人",
+  "data.value.takeresources_includeunitswithinrange_team.any": "任意",
+  "data.value.takeresources_includeunitswithinrange_team.notown": "非己方",
+  "data.value.takeResources_includeUnitsWithinRange_team.own": "己方",
+  "data.value.takeResources_includeUnitsWithinRange_team.neutral": "中立",
+  "data.value.takeResources_includeUnitsWithinRange_team.allynotown": "盟友非己方",
+  "data.value.takeResources_includeUnitsWithinRange_team.ally": "盟友",
+  "data.value.takeResources_includeUnitsWithinRange_team.enemy": "敌人",
+  "data.value.takeResources_includeUnitsWithinRange_team.any": "任意",
+  "data.value.takeResources_includeUnitsWithinRange_team.notown": "非己方"
+}

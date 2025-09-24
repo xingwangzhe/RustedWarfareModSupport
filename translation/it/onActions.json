@@ -1,17 +1,9 @@
 {
-  "data.value.onactions.description": "Definisce lo stato dell'azione che attiva questo comportamento.",
   "data.value.onactions.move": "Muovi",
-  "data.value.onactions.move.description": "Attivato quando l'unità si sta muovendo",
   "data.value.onactions.attack": "Attacca",
-  "data.value.onactions.attack.description": "Attivato quando l'unità sta attaccando",
   "data.value.onactions.idle": "Inattivo",
-  "data.value.onactions.idle.description": "Attivato quando l'unità è inattiva",
   "data.value.onactions.underconstruction": "In Costruzione",
-  "data.value.onactions.underconstruction.description": "Attivato quando l'unità è in costruzione",
   "data.value.onactions.underconstructionwithlinkedbuilttime": "In Costruzione Con Tempo Di Costruzione Collegato",
-  "data.value.onactions.underconstructionwithlinkedbuilttime.description": "Attivato quando l'unità è in costruzione con tempo di costruzione collegato",
   "data.value.onactions.queuedunits": "Unità In Coda",
-  "data.value.onactions.queuedunits.description": "Attivato quando le unità sono in coda per la produzione",
-  "data.value.onactions.repair": "Ripara",
-  "data.value.onactions.repair.description": "Attivato quando l'unità sta riparando"
+  "data.value.onactions.repair": "Ripara"
 }

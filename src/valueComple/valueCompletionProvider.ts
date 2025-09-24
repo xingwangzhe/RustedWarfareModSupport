@@ -15,6 +15,16 @@ import { SetUnitStatsValueCompletionProvider } from "./SetUnitStatsValueCompleti
 import { ConvertToKeepCurrentFieldsValueCompletionProvider } from "./ConvertToKeepCurrentFieldsValueCompletionProvider";
 import { OnNewMapSpawnValueCompletionProvider } from "./OnNewMapSpawnValueCompletionProvider";
 import { DisplayDigitGroupingValueCompletionProvider } from "./DisplayDigitGroupingValueCompletionProvider";
+import { TakeResourcesIncludeUnitsWithinRangeTeamValueCompletionProvider } from "./TakeResourcesIncludeUnitsWithinRangeTeamValueCompletionProvider";
+import { SearchTeamValueCompletionProvider } from "./SearchTeamValueCompletionProvider";
+import { OnlyTeamValueCompletionProvider } from "./OnlyTeamValueCompletionProvider";
+import { WhenBuildingTemporarilyConvertToKeepFieldsValueCompletionProvider } from "./WhenBuildingTemporarilyConvertToKeepFieldsValueCompletionProvider";
+import { DisplayTypeValueCompletionProvider } from "./DisplayTypeValueCompletionProvider";
+import { TransportUnitsRequireMovementTypeValueCompletionProvider } from "./TransportUnitsRequireMovementTypeValueCompletionProvider";
+import { TeamColoringModeValueCompletionProvider } from "./TeamColoringModeValueCompletionProvider";
+import { DrawLayerValueCompletionProvider } from "./DrawLayerValueCompletionProvider";
+import { AttackMovementValueCompletionProvider } from "./AttackMovementValueCompletionProvider";
+import { LayerValueCompletionProvider } from "./LayerValueCompletionProvider";
 
 export class ValueCompletionProvider implements vscode.CompletionItemProvider {
   private providers: vscode.CompletionItemProvider[];
@@ -37,6 +47,16 @@ export class ValueCompletionProvider implements vscode.CompletionItemProvider {
       new ConvertToKeepCurrentFieldsValueCompletionProvider(),
       new OnNewMapSpawnValueCompletionProvider(),
       new DisplayDigitGroupingValueCompletionProvider(),
+      new TakeResourcesIncludeUnitsWithinRangeTeamValueCompletionProvider(),
+      new SearchTeamValueCompletionProvider(),
+      new OnlyTeamValueCompletionProvider(),
+      new WhenBuildingTemporarilyConvertToKeepFieldsValueCompletionProvider(),
+      new DisplayTypeValueCompletionProvider(),
+      new TransportUnitsRequireMovementTypeValueCompletionProvider(),
+      new TeamColoringModeValueCompletionProvider(),
+      new DrawLayerValueCompletionProvider(),
+      new AttackMovementValueCompletionProvider(),
+      new LayerValueCompletionProvider(),
     ];
   }
 

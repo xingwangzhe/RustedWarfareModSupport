@@ -1,0 +1,9 @@
+{
+  "data.value.transportunitsrequiremovementtype.none": "Nenhum",
+  "data.value.transportunitsrequiremovementtype.building": "Edifício",
+  "data.value.transportunitsrequiremovementtype.land": "Terra",
+  "data.value.transportunitsrequiremovementtype.hover": "Flutuante",
+  "data.value.transportunitsrequiremovementtype.air": "Ar",
+  "data.value.transportunitsrequiremovementtype.over_cliff": "Sobre Penhasco",
+  "data.value.transportunitsrequiremovementtype.over_water_cliff": "Sobre Penhasco Aquático"
+}

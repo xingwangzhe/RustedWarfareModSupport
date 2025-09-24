@@ -1,0 +1,8 @@
+{
+  "data.value.layer.inactive": "Inattivo",
+  "data.value.layer.shadow": "Ombra",
+  "data.value.layer.afterbody": "Dopo il Corpo",
+  "data.value.layer.beforebody": "Prima del Corpo",
+  "data.value.layer.ontop": "In Cima",
+  "data.value.layer.beforeui": "Prima dell'Interfaccia"
+}

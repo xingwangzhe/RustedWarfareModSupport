@@ -1,0 +1,9 @@
+{
+  "data.value.onlyteam.own": "خاصتي",
+  "data.value.onlyteam.neutral": "محايد",
+  "data.value.onlyteam.allynotown": "حليف غير خاصتي",
+  "data.value.onlyteam.ally": "حليف",
+  "data.value.onlyteam.enemy": "عدو",
+  "data.value.onlyteam.any": "أي",
+  "data.value.onlyteam.notown": "ليس خاصتي"
+}

@@ -10,7 +10,6 @@
   "panel.exportManager.cancelled": "사용자가 내보내기를 취소했습니다",
   "panel.exportManager.completed": "내보내기 완료:\nZIP: {0}\nRWMOD: {1}",
   "panel.fileExtensions.title": "파일 확장자 관리",
-  "panel.fileExtensions.description": "지원되는 파일 확장자 유형 관리",
   "panel.fileExtensions.add.placeholder": "파일 확장자 입력 (예: .cfg)",
   "panel.fileExtensions.add.button": "추가",
   "panel.fileExtensions.add.emptyInput": "파일 확장자를 비워둘 수 없습니다",

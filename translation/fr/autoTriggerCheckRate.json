@@ -1,9 +1,5 @@
 {
-  "data.value.autotriggercheckrate.description": "Définit la fréquence à laquelle le déclencheur automatique doit vérifier ses conditions.",
   "data.value.autotriggercheckrate.everyframe": "Chaque image",
-  "data.value.autotriggercheckrate.everyframe.description": "Vérifier chaque image de jeu (le plus fréquent)",
   "data.value.autotriggercheckrate.every4frames": "Toutes les 4 images",
-  "data.value.autotriggercheckrate.every4frames.description": "Vérifier toutes les 4 images de jeu",
-  "data.value.autotriggercheckrate.every8frames": "Toutes les 8 images",
-  "data.value.autotriggercheckrate.every8frames.description": "Vérifier toutes les 8 images de jeu (le moins fréquent)"
+  "data.value.autotriggercheckrate.every8frames": "Toutes les 8 images"
 }

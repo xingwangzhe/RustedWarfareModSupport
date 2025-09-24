@@ -1,19 +1,10 @@
 {
-"data.value.movementType.description": "通行可能な地形とユニットの移動動作を決定するために使用される移動タイプを定義します。",
-"data.value.movementType.NONE": "なし",
-"data.value.movementType.NONE.description": "移動タイプなし/該当なし。",
-"data.value.movementType.LAND": "陸上",
-"data.value.movementType.LAND.description": "陸上タイルでの標準的な地上移動。",
-"data.value.movementType.AIR": "空中",
-"data.value.movementType.AIR.description": "地形の上を飛行する空中ユニット。",
-"data.value.movementType.WATER": "水中",
-"data.value.movementType.WATER.description": "水上タイルまたは水中で移動するユニット。",
-"data.value.movementType.HOVER": "ホバー",
-"data.value.movementType.HOVER.description": "沈むことなく陸上と一部の水上を横断できるホバー移動ユニット。",
-"data.value.movementType.BUILDING": "建物",
-"data.value.movementType.BUILDING.description": "不動の建物フットプリント。経路探索と配置で異なる扱い。",
-"data.value.movementType.OVER_CLIFF": "崖上",
-"data.value.movementType.OVER_CLIFF.description": "通常の陸上ユニットが横断できない崖や高地タイルを横断可能。",
-"data.value.movementType.OVER_CLIFF_WATER": "崖上水上",
-"data.value.movementType.OVER_CLIFF_WATER.description": "水を含む崖タイルや湿った崖地形を横断可能。"
+  "data.value.movementType.NONE": "なし",
+  "data.value.movementType.LAND": "陸上",
+  "data.value.movementType.AIR": "空中",
+  "data.value.movementType.WATER": "水中",
+  "data.value.movementType.HOVER": "ホバー",
+  "data.value.movementType.BUILDING": "建物",
+  "data.value.movementType.OVER_CLIFF": "崖上",
+  "data.value.movementType.OVER_CLIFF_WATER": "崖上水上"
 }

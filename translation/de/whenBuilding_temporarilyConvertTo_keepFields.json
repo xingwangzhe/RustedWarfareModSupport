@@ -1,0 +1,20 @@
+{
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.maxHp": "Max HP",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.hp": "HP",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.maxShield": "Max Schild",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.shield": "Schild",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.shieldRegen": "Schild-Regeneration",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.maxEnergy": "Max Energie",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.energy": "Energie",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.armour": "Rüstung",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.mass": "Masse",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.shootDelayMultiplier": "Schussverzögerungsmultiplikator",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.shootDamageMultiplier": "Schussschadenmultiplikator",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.moveSpeed": "Bewegungsgeschwindigkeit",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.maxTurnSpeed": "Max Drehgeschwindigkeit",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.maxAttackRange": "Max Angriffsreichweite",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.selfRegenRate": "Selbst-Regenerationsrate",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.heightTarget": "Höhen-Ziel",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.nanoFactorySpeed": "Nano-Fabrikgeschwindigkeit",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.fogOfWarSightRange": "Nebel-des-Krieges-Sichtreichweite"
+}

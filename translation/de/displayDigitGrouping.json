@@ -1,9 +1,5 @@
 {
-  "data.value.displaydigitgrouping.description": "Definiert, wie Ziffern in numerischen Anzeigen gruppiert werden sollen.",
   "data.value.displaydigitgrouping.none": "Keine",
-  "data.value.displaydigitgrouping.none.description": "Keine Zifferngruppierung (z.B., 1000000)",
   "data.value.displaydigitgrouping.comma": "Komma",
-  "data.value.displaydigitgrouping.comma.description": "Komma als Tausender-Trennzeichen verwenden (z.B., 1,000,000)",
-  "data.value.displaydigitgrouping.space": "Leerzeichen",
-  "data.value.displaydigitgrouping.space.description": "Leerzeichen als Tausender-Trennzeichen verwenden (z.B., 1 000 000)"
+  "data.value.displaydigitgrouping.space": "Leerzeichen"
 }

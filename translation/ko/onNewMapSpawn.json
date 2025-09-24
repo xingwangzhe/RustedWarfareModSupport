@@ -1,13 +1,7 @@
 {
-  "data.value.onnewmapspawn.description": "새 맵이 로드될 때 유닛이 스폰될 위치를 정의합니다.",
   "data.value.onnewmapspawn.emptyresourcepools_asneutral": "빈 리소스 풀을 중립으로",
-  "data.value.onnewmapspawn.emptyresourcepools_asneutral.description": "빈 리소스 풀에 중립 유닛으로 스폰합니다",
   "data.value.onnewmapspawn.emptyoroccupiedresourcepools_asneutral": "빈 또는 점유된 리소스 풀을 중립으로",
-  "data.value.onnewmapspawn.emptyoroccupiedresourcepools_asneutral.description": "빈 또는 점유된 리소스 풀에 중립 유닛으로 스폰합니다",
   "data.value.onnewmapspawn.mapcenter_asneutral": "맵 센터를 중립으로",
-  "data.value.onnewmapspawn.mapcenter_asneutral.description": "맵 센터에 중립 유닛으로 스폰합니다",
   "data.value.onnewmapspawn.mapcenter_eachactiveteam": "각 활성 팀의 맵 센터",
-  "data.value.onnewmapspawn.mapcenter_eachactiveteam.description": "각 활성 팀의 맵 센터에 스폰합니다",
-  "data.value.onnewmapspawn.spawnpoint_eachactiveteam": "각 활성 팀의 스폰 포인트",
-  "data.value.onnewmapspawn.spawnpoint_eachactiveteam.description": "각 활성 팀의 지정된 스폰 포인트에 스폰합니다"
+  "data.value.onnewmapspawn.spawnpoint_eachactiveteam": "각 활성 팀의 스폰 포인트"
 }

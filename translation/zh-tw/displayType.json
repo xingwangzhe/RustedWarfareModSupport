@@ -1,0 +1,11 @@
+{
+  "data.value.displaytype.none": "無",
+  "data.value.displaytype.rally": "集合",
+  "data.value.displaytype.upgrade": "升級",
+  "data.value.displaytype.queueUnit": "單位隊列",
+  "data.value.displaytype.building": "建築",
+  "data.value.displaytype.action": "動作",
+  "data.value.displaytype.infoOnly": "僅資訊",
+  "data.value.displaytype.nfoOnlyNoBox": "資訊無框",
+  "data.value.displaytype.infoOnlyStockpile": "資訊庫存"
+}

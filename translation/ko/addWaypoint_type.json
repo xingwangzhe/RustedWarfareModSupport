@@ -1,27 +1,14 @@
 {
-  "data.value.addwaypoint_type.description": "유닛의 이동 큐에 추가할 웨이포인트 유형을 정의합니다.",
   "data.value.addwaypoint_type.move": "이동",
-  "data.value.addwaypoint_type.move.description": "지정된 위치로 이동합니다",
   "data.value.addwaypoint_type.attackmove": "공격 이동",
-  "data.value.addwaypoint_type.attackmove.description": "이동 중에 마주치는 적을 공격하면서 위치로 이동합니다",
   "data.value.addwaypoint_type.guard": "경비",
-  "data.value.addwaypoint_type.guard.description": "지정된 위치 또는 유닛을 경비합니다",
   "data.value.addwaypoint_type.loadinto": "적재 대상",
-  "data.value.addwaypoint_type.loadinto.description": "지정된 수송 유닛에 적재합니다",
   "data.value.addwaypoint_type.loadup": "적재",
-  "data.value.addwaypoint_type.loadup.description": "이 수송 수단에 유닛을 적재합니다",
   "data.value.addwaypoint_type.attack": "공격",
-  "data.value.addwaypoint_type.attack.description": "지정된 대상을 공격합니다",
   "data.value.addwaypoint_type.reclaim": "회수",
-  "data.value.addwaypoint_type.reclaim.description": "지정된 리소스 또는 유닛을 회수합니다",
   "data.value.addwaypoint_type.repair": "수리",
-  "data.value.addwaypoint_type.repair.description": "지정된 유닛을 수리합니다",
   "data.value.addwaypoint_type.touchtarget": "접촉 대상",
-  "data.value.addwaypoint_type.touchtarget.description": "지정된 대상에 접촉하도록 이동합니다",
   "data.value.addwaypoint_type.build": "건설",
-  "data.value.addwaypoint_type.build.description": "지정된 위치에 건설합니다",
   "data.value.addwaypoint_type.follow": "따라가기",
-  "data.value.addwaypoint_type.follow.description": "지정된 유닛을 따라갑니다",
-  "data.value.addwaypoint_type.setpassivetarget": "패시브 대상 설정",
-  "data.value.addwaypoint_type.setpassivetarget.description": "지정된 유닛을 패시브 대상으로 설정합니다"
+  "data.value.addwaypoint_type.setpassivetarget": "패시브 대상 설정"
 }

@@ -1,6 +1,5 @@
 {
   "name": "addWaypoint_type",
-  "description": "data.value.addwaypoint_type.description",
   "example": "addWaypoint_type: move",
   "data": [
     {

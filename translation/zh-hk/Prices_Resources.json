@@ -1,22 +1,12 @@
 {
   "data.value.Prices_Resources.credits": "積分",
-  "data.value.Prices_Resources.credits.description": "全局資源",
   "data.value.Prices_Resources.energy": "能量",
-  "data.value.Prices_Resources.energy.description": "用於激光護盾和彈藥的能量",
   "data.value.Prices_Resources.hp": "生命值",
-  "data.value.Prices_Resources.hp.description": "單位生命值",
   "data.value.Prices_Resources.shield": "護盾",
-  "data.value.Prices_Resources.shield.description": "單位的護盾",
   "data.value.Prices_Resources.ammo": "彈藥",
-  "data.value.Prices_Resources.ammo.description": "每個單位上的隱藏值供模組使用",
   "data.value.Prices_Resources.setFlag": "設置標記",
-  "data.value.Prices_Resources.setFlag.description": "與 addResources、resourceUsage 或 price 一起使用。0-31。標記存儲在每個單位中",
   "data.value.Prices_Resources.unsetFlag": "取消設置標記",
-  "data.value.Prices_Resources.unsetFlag.description": "與 addResources、resourceUsage 或 price 一起使用。0-31",
   "data.value.Prices_Resources.hasFlag": "擁有標記",
-  "data.value.Prices_Resources.hasFlag.description": "與 price 或 resourceUsage 一起使用",
   "data.value.Prices_Resources.hasMissingFlag": "缺少標記",
-  "data.value.Prices_Resources.hasMissingFlag.description": "與 price 或 resourceUsage 一起使用",
-  "data.value.Prices_Resources.X": "自定義資源",
-  "data.value.Prices_Resources.X.description": "在 [global_resource_x] 或 [resource_x] 區段中定義的任何資源"
+  "data.value.Prices_Resources.X": "自定義資源"
 }

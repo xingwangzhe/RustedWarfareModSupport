@@ -1,0 +1,9 @@
+{
+  "data.value.onlyteam.own": "Própria",
+  "data.value.onlyteam.neutral": "Neutro",
+  "data.value.onlyteam.allynotown": "Aliado Não Próprio",
+  "data.value.onlyteam.ally": "Aliado",
+  "data.value.onlyteam.enemy": "Inimigo",
+  "data.value.onlyteam.any": "Qualquer",
+  "data.value.onlyteam.notown": "Não Próprio"
+}

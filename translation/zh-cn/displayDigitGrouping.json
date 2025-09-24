@@ -1,9 +1,5 @@
 {
-  "data.value.displaydigitgrouping.description": "定义数字显示中的数字分组方式。",
   "data.value.displaydigitgrouping.none": "无",
-  "data.value.displaydigitgrouping.none.description": "无数字分组（例如：1000000）",
   "data.value.displaydigitgrouping.comma": "逗号",
-  "data.value.displaydigitgrouping.comma.description": "使用逗号作为千位分隔符（例如：1,000,000）",
-  "data.value.displaydigitgrouping.space": "空格",
-  "data.value.displaydigitgrouping.space.description": "使用空格作为千位分隔符（例如：1 000 000）"
+  "data.value.displaydigitgrouping.space": "空格"
 }

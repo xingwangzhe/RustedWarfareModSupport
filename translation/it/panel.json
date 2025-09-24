@@ -8,7 +8,6 @@
   "panel.exportManager.success": "Esportazione riuscita!",
   "panel.exportManager.failed": "Esportazione fallita!",
   "panel.fileExtensions.title": "Gestione Estensioni File",
-  "panel.fileExtensions.description": "Gestisci i tipi di estensioni file supportate",
   "panel.fileExtensions.add.placeholder": "Inserisci estensione file (esempio: .cfg)",
   "panel.fileExtensions.add.button": "Aggiungi",
   "panel.fileExtensions.add.emptyInput": "L'estensione file non può essere vuota",

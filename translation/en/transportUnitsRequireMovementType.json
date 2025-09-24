@@ -1,0 +1,9 @@
+{
+  "data.value.transportunitsrequiremovementtype.none": "None",
+  "data.value.transportunitsrequiremovementtype.building": "Building",
+  "data.value.transportunitsrequiremovementtype.land": "Land",
+  "data.value.transportunitsrequiremovementtype.hover": "Hover",
+  "data.value.transportunitsrequiremovementtype.air": "Air",
+  "data.value.transportunitsrequiremovementtype.over_cliff": "Over Cliff",
+  "data.value.transportunitsrequiremovementtype.over_water_cliff": "Over Water Cliff"
+}

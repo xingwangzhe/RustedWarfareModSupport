@@ -1,17 +1,9 @@
 {
-  "data.value.fireturretxatground_onlyoverpassabletileof.description": "Define qué tipos de terreno puede disparar la torreta sobre objetivos terrestres.",
   "data.value.fireturretxatground_onlyoverpassabletileof.none": "Ninguno",
-  "data.value.fireturretxatground_onlyoverpassabletileof.none.description": "No puede disparar sobre ningún terreno",
   "data.value.fireturretxatground_onlyoverpassabletileof.building": "Edificio",
-  "data.value.fireturretxatground_onlyoverpassabletileof.building.description": "Puede disparar sobre casillas de edificio",
   "data.value.fireturretxatground_onlyoverpassabletileof.land": "Tierra",
-  "data.value.fireturretxatground_onlyoverpassabletileof.land.description": "Puede disparar sobre casillas terrestres",
   "data.value.fireturretxatground_onlyoverpassabletileof.hover": "Flotar",
-  "data.value.fireturretxatground_onlyoverpassabletileof.hover.description": "Puede disparar sobre terreno flotante",
   "data.value.fireturretxatground_onlyoverpassabletileof.air": "Aire",
-  "data.value.fireturretxatground_onlyoverpassabletileof.air.description": "Puede disparar sobre espacios aéreos",
   "data.value.fireturretxatground_onlyoverpassabletileof.over_cliff": "Sobre acantilado",
-  "data.value.fireturretxatground_onlyoverpassabletileof.over_cliff.description": "Puede disparar sobre terreno de acantilado",
-  "data.value.fireturretxatground_onlyoverpassabletileof.over_water_cliff": "Sobre acantilado de agua",
-  "data.value.fireturretxatground_onlyoverpassabletileof.over_water_cliff.description": "Puede disparar sobre terreno de acantilado de agua"
+  "data.value.fireturretxatground_onlyoverpassabletileof.over_water_cliff": "Sobre acantilado de agua"
 }

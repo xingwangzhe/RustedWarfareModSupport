@@ -1,0 +1,60 @@
+{
+  "name": "displayType",
+  "example": "displayType: none",
+  "data": [
+    {
+      "name": "none",
+      "description": "data.value.displaytype.none",
+      "version": "1.13.3-1.15p9",
+      "example": "displayType: none"
+    },
+    {
+      "name": "rally",
+      "description": "data.value.displaytype.rally",
+      "version": "1.13.3-1.15p9",
+      "example": "displayType: rally"
+    },
+    {
+      "name": "upgrade",
+      "description": "data.value.displaytype.upgrade",
+      "version": "1.13.3-1.15p9",
+      "example": "displayType: upgrade"
+    },
+    {
+      "name": "queueUnit",
+      "description": "data.value.displaytype.queueunit",
+      "version": "1.13.3-1.15p9",
+      "example": "displayType: queueUnit"
+    },
+    {
+      "name": "building",
+      "description": "data.value.displaytype.building",
+      "version": "1.13.3-1.15p9",
+      "example": "displayType: building"
+    },
+    {
+      "name": "action",
+      "description": "data.value.displaytype.action",
+      "version": "1.13.3-1.15p9",
+      "example": "displayType: action"
+    },
+    {
+      "name": "infoOnly",
+      "description": "data.value.displaytype.infoonly",
+      "version": "1.13.3-1.15p9",
+      "example": "displayType: infoOnly"
+    },
+    {
+      "name": "nfoOnlyNoBox",
+      "description": "data.value.displaytype.nfoonlynobox",
+      "version": "1.13.3-1.15p9",
+      "example": "displayType: nfoOnlyNoBox"
+    },
+    {
+      "name": "infoOnlyStockpile",
+      "description": "data.value.displaytype.infoonlystockpile",
+      "version": "1.13.3-1.15p9",
+      "example": "displayType: infoOnlyStockpile"
+    }
+  ]
+}

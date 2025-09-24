@@ -1,0 +1,11 @@
+{
+  "data.value.displaytype.none": "Aucun",
+  "data.value.displaytype.rally": "Ralliement",
+  "data.value.displaytype.upgrade": "Amélioration",
+  "data.value.displaytype.queueUnit": "File d'unité",
+  "data.value.displaytype.building": "Construction",
+  "data.value.displaytype.action": "Action",
+  "data.value.displaytype.infoOnly": "Info Seulement",
+  "data.value.displaytype.nfoOnlyNoBox": "Info Sans Boîte",
+  "data.value.displaytype.infoOnlyStockpile": "Info Stock"
+}

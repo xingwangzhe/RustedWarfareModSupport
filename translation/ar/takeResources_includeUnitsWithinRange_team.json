@@ -1,0 +1,9 @@
+{
+  "data.value.takeResources_includeUnitsWithinRange_team.own": "خاص",
+  "data.value.takeResources_includeUnitsWithinRange_team.neutral": "محايد",
+  "data.value.takeResources_includeUnitsWithinRange_team.allynotown": "حليف غير خاص",
+  "data.value.takeResources_includeUnitsWithinRange_team.ally": "حليف",
+  "data.value.takeResources_includeUnitsWithinRange_team.enemy": "عدو",
+  "data.value.takeResources_includeUnitsWithinRange_team.any": "أي",
+  "data.value.takeResources_includeUnitsWithinRange_team.notown": "غير خاص"
+}

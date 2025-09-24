@@ -1,0 +1,16 @@
+{
+  "data.value.takeresources_includeunitswithinrange_team.own": "Eigenes",
+  "data.value.takeresources_includeunitswithinrange_team.neutral": "Neutral",
+  "data.value.takeresources_includeunitswithinrange_team.allynotown": "Verbündete Nicht Eigen",
+  "data.value.takeresources_includeunitswithinrange_team.ally": "Verbündete",
+  "data.value.takeresources_includeunitswithinrange_team.enemy": "Feind",
+  "data.value.takeresources_includeunitswithinrange_team.any": "Beliebig",
+  "data.value.takeresources_includeunitswithinrange_team.notown": "Nicht Eigen",
+  "data.value.takeResources_includeUnitsWithinRange_team.own": "Eigen",
+  "data.value.takeResources_includeUnitsWithinRange_team.neutral": "Neutral",
+  "data.value.takeResources_includeUnitsWithinRange_team.allynotown": "Verbündet Nicht Eigen",
+  "data.value.takeResources_includeUnitsWithinRange_team.ally": "Verbündet",
+  "data.value.takeResources_includeUnitsWithinRange_team.enemy": "Feind",
+  "data.value.takeResources_includeUnitsWithinRange_team.any": "Beliebig",
+  "data.value.takeResources_includeUnitsWithinRange_team.notown": "Nicht Eigen"
+}

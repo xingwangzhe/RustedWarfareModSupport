@@ -1,22 +1,12 @@
 {
   "data.value.Prices_Resources.credits": "Credits",
-  "data.value.Prices_Resources.credits.description": "Globale Ressource",
   "data.value.Prices_Resources.energy": "Energie",
-  "data.value.Prices_Resources.energy.description": "Energie, die für Laserschild und Munition verwendet wird",
   "data.value.Prices_Resources.hp": "Trefferpunkte",
-  "data.value.Prices_Resources.hp.description": "Einheiten-Trefferpunkte",
   "data.value.Prices_Resources.shield": "Schild",
-  "data.value.Prices_Resources.shield.description": "Abschirmung für Einheiten",
   "data.value.Prices_Resources.ammo": "Munition",
-  "data.value.Prices_Resources.ammo.description": "Versteckter Wert auf jeder Einheit zur Verwendung durch Mods",
   "data.value.Prices_Resources.setFlag": "Flagge setzen",
-  "data.value.Prices_Resources.setFlag.description": "verwenden mit addResources, resourceUsage oder price. 0-31. Flaggen werden in jeder Einheit gespeichert",
   "data.value.Prices_Resources.unsetFlag": "Flagge zurücksetzen",
-  "data.value.Prices_Resources.unsetFlag.description": "verwenden mit addResources, resourceUsage oder price. 0-31",
   "data.value.Prices_Resources.hasFlag": "Hat Flagge",
-  "data.value.Prices_Resources.hasFlag.description": "verwenden mit price oder resourceUsage",
   "data.value.Prices_Resources.hasMissingFlag": "Hat fehlende Flagge",
-  "data.value.Prices_Resources.hasMissingFlag.description": "verwenden mit price oder resourceUsage",
-  "data.value.Prices_Resources.X": "Benutzerdefinierte Ressource",
-  "data.value.Prices_Resources.X.description": "Jede Ressource, die in [global_resource_x] oder [resource_x] Abschnitten definiert ist"
+  "data.value.Prices_Resources.X": "Benutzerdefinierte Ressource"
 }

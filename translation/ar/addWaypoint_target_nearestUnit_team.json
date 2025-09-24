@@ -1,17 +1,9 @@
 {
-  "data.value.addwaypoint_target_nearestunit_team.description": "يحدد انتماء الفريق المستهدف عند العثور على الوحدة الأقرب.",
   "data.value.addwaypoint_target_nearestunit_team.own": "خاص",
-  "data.value.addwaypoint_target_nearestunit_team.own.description": "استهداف الوحدات من فريقك الخاص",
   "data.value.addwaypoint_target_nearestunit_team.neutral": "محايد",
-  "data.value.addwaypoint_target_nearestunit_team.neutral.description": "استهداف الوحدات المحايدة",
   "data.value.addwaypoint_target_nearestunit_team.allynotown": "حليف غير خاص",
-  "data.value.addwaypoint_target_nearestunit_team.allynotown.description": "استهداف الوحدات الحليفة التي ليست خاصة بك",
   "data.value.addwaypoint_target_nearestunit_team.ally": "حليف",
-  "data.value.addwaypoint_target_nearestunit_team.ally.description": "استهداف جميع الوحدات الحليفة",
   "data.value.addwaypoint_target_nearestunit_team.enemy": "عدو",
-  "data.value.addwaypoint_target_nearestunit_team.enemy.description": "استهداف الوحدات الأعداء",
   "data.value.addwaypoint_target_nearestunit_team.any": "أي",
-  "data.value.addwaypoint_target_nearestunit_team.any.description": "استهداف أي وحدة بغض النظر عن الفريق",
-  "data.value.addwaypoint_target_nearestunit_team.notown": "غير خاص",
-  "data.value.addwaypoint_target_nearestunit_team.notown.description": "استهداف أي وحدة ليست خاصة بك"
+  "data.value.addwaypoint_target_nearestunit_team.notown": "غير خاص"
 }

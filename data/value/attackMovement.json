@@ -1,0 +1,18 @@
+{
+  "name": "attackMovement",
+  "example": "attackMovement: normal",
+  "data": [
+    {
+      "name": "normal",
+      "description": "data.value.attackmovement.normal",
+      "version": "1.13.3-1.15p9",
+      "example": "attackMovement: normal"
+    },
+    {
+      "name": "bomber",
+      "description": "data.value.attackmovement.bomber",
+      "version": "1.13.3-1.15p9",
+      "example": "attackMovement: bomber"
+    }
+  ]
+}

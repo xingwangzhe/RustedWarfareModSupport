@@ -1,26 +1,4 @@
 {
-  "data.value.autotriggeronevent.description": "يؤدي إلى تشغيل إجراء عند حدوث حدث معين في الوحدة. الخيارات: created, completeAndActive, destroyed, killedAnyUnit, queuedUnitFinished, queueItemAdded(withActionTag=\"#\"), queueItemCancelled(withActionTag=\"#\"), teleported, touchTargetSuccess, newWaypointGivenByPlayer, teamChanged, transportingNewUnit, transportUnloadedOrRemovedUnit, tookDamage(withTag=\"#\"), newMessage(withTag=\"#\"), enteredTransport, leftTransport, attachmentRemoved. معلمة withTag لـ tookDamage تستخدم علامة المقذوف وهي اختيارية. معلمة withTag لـ newMessage تستخدم علامة الرسالة.",
-  "data.value.autotriggeronevent.created.description": "يتم تشغيله عند إنشاء الوحدة لأول مرة",
-  "data.value.autotriggeronevent.completeandactive.description": "يتم تشغيله عندما تكون الوحدة مبنية بالكامل ومفعلة",
-  "data.value.autotriggeronevent.destroyed.description": "يتم تشغيله عند تدمير الوحدة",
-  "data.value.autotriggeronevent.killedanyunit.description": "يتم تشغيله عندما تقتل هذه الوحدة وحدة أخرى",
-  "data.value.autotriggeronevent.queuedunitfinished.description": "يتم تشغيله عند إكمال وحدة في قائمة الانتظار",
-  "data.value.autotriggeronevent.queueitemadded.description": "يتم تشغيله عند إضافة إجراء بعلامة محددة إلى قائمة الانتظار",
-  "data.value.autotriggeronevent.queueitemcancelled.description": "يتم تشغيله عند إلغاء إجراء بعلامة محددة من قائمة الانتظار",
-  "data.value.autotriggeronevent.teleported.description": "يتم تشغيله عند نقل الوحدة",
-  "data.value.autotriggeronevent.touchtargetsuccess.description": "يتم تشغيله عندما تلمس الوحدة الهدف بنجاح",
-  "data.value.autotriggeronevent.newwaypointgivenbyplayer.description": "يتم تشغيله عندما يعطي اللاعب نقطة طريق جديدة",
-  "data.value.autotriggeronevent.teamchanged.description": "يتم تشغيله عندما تغير الوحدة الفريق",
-  "data.value.autotriggeronevent.transportingnewunit.description": "يتم تشغيله عندما تبدأ الوحدة في نقل وحدة جديدة",
-  "data.value.autotriggeronevent.transportunloadedorremovedunit.description": "يتم تشغيله عند تفريغ وحدة أو إزالتها من النقل",
-  "data.value.autotriggeronevent.tookdamage.description": "يتم تشغيله عندما تتلقى الوحدة ضرراً بعلامة محددة",
-  "data.value.autotriggeronevent.newmessage.description": "يتم تشغيله عندما تتلقى الوحدة رسالة جديدة بعلامة محددة",
-  "data.value.autotriggeronevent.enteredtransport.description": "يتم تشغيله عند دخول الوحدة إلى النقل",
-  "data.value.autotriggeronevent.lefttransport.description": "يتم تشغيله عند خروج الوحدة من النقل",
-  "data.value.autotriggeronevent.attachmentremoved.description": "يتم تشغيله عند إزالة مرفق من الوحدة",
   "data.value.autotriggeronevent.parameter.actiontag": "علامة الإجراء",
-  "data.value.autotriggeronevent.parameter.actiontag.description": "علامة الإجراء الذي تم إضافته أو إلغاؤه",
-  "data.value.autotriggeronevent.parameter.tag": "العلامة",
-  "data.value.autotriggeronevent.parameter.tookdamage.tag.description": "علامة المقذوف الذي سبب الضرر (اختياري)",
-  "data.value.autotriggeronevent.parameter.newmessage.tag.description": "علامة الرسالة المستلمة"
+  "data.value.autotriggeronevent.parameter.tag": "العلامة"
 }

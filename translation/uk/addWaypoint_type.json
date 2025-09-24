@@ -1,27 +1,14 @@
 {
-  "data.value.addwaypoint_type.description": "Визначає тип точки маршруту для додавання до черги пересування юніта.",
   "data.value.addwaypoint_type.move": "Перемістити",
-  "data.value.addwaypoint_type.move.description": "Переміститися до вказаної позиції",
   "data.value.addwaypoint_type.attackmove": "Атакуючий рух",
-  "data.value.addwaypoint_type.attackmove.description": "Переміститися до позиції, атакуючи будь-яких ворогів, яких зустріне",
   "data.value.addwaypoint_type.guard": "Охороняти",
-  "data.value.addwaypoint_type.guard.description": "Охороняти вказану позицію або юніт",
   "data.value.addwaypoint_type.loadinto": "Завантажити в",
-  "data.value.addwaypoint_type.loadinto.description": "Завантажити у вказаний транспортний юніт",
   "data.value.addwaypoint_type.loadup": "Завантаження",
-  "data.value.addwaypoint_type.loadup.description": "Завантажити юнітів у цей транспорт",
   "data.value.addwaypoint_type.attack": "Атакувати",
-  "data.value.addwaypoint_type.attack.description": "Атакувати вказану ціль",
   "data.value.addwaypoint_type.reclaim": "Відновити",
-  "data.value.addwaypoint_type.reclaim.description": "Відновити вказаний ресурс або юніт",
   "data.value.addwaypoint_type.repair": "Ремонтувати",
-  "data.value.addwaypoint_type.repair.description": "Ремонтувати вказаний юніт",
   "data.value.addwaypoint_type.touchtarget": "Доторкнутися до цілі",
-  "data.value.addwaypoint_type.touchtarget.description": "Переміститися, щоб доторкнутися до вказаної цілі",
   "data.value.addwaypoint_type.build": "Будувати",
-  "data.value.addwaypoint_type.build.description": "Будувати у вказаній позиції",
   "data.value.addwaypoint_type.follow": "Слідкувати",
-  "data.value.addwaypoint_type.follow.description": "Слідкувати за вказаним юнітом",
-  "data.value.addwaypoint_type.setpassivetarget": "Встановити пасивну ціль",
-  "data.value.addwaypoint_type.setpassivetarget.description": "Встановити вказаний юніт як пасивну ціль"
+  "data.value.addwaypoint_type.setpassivetarget": "Встановити пасивну ціль"
 }

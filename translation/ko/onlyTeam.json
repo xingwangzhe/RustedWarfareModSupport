@@ -1,0 +1,9 @@
+{
+  "data.value.onlyteam.own": "자팀",
+  "data.value.onlyteam.neutral": "중립",
+  "data.value.onlyteam.allynotown": "아군 비자팀",
+  "data.value.onlyteam.ally": "아군",
+  "data.value.onlyteam.enemy": "적",
+  "data.value.onlyteam.any": "모두",
+  "data.value.onlyteam.notown": "비자팀"
+}

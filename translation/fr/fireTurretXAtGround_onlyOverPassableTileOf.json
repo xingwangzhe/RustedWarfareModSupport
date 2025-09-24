@@ -1,17 +1,9 @@
 {
-  "data.value.fireturretxatground_onlyoverpassabletileof.description": "Définit les types de terrain sur lesquels la tourelle peut tirer sur des cibles au sol.",
   "data.value.fireturretxatground_onlyoverpassabletileof.none": "Aucun",
-  "data.value.fireturretxatground_onlyoverpassabletileof.none.description": "Ne peut pas tirer sur aucun terrain",
   "data.value.fireturretxatground_onlyoverpassabletileof.building": "Bâtiment",
-  "data.value.fireturretxatground_onlyoverpassabletileof.building.description": "Peut tirer sur les tuiles de bâtiment",
   "data.value.fireturretxatground_onlyoverpassabletileof.land": "Terre",
-  "data.value.fireturretxatground_onlyoverpassabletileof.land.description": "Peut tirer sur les tuiles terrestres",
   "data.value.fireturretxatground_onlyoverpassabletileof.hover": "Survol",
-  "data.value.fireturretxatground_onlyoverpassabletileof.hover.description": "Peut tirer sur le terrain de survol",
   "data.value.fireturretxatground_onlyoverpassabletileof.air": "Air",
-  "data.value.fireturretxatground_onlyoverpassabletileof.air.description": "Peut tirer dans les espaces aériens",
   "data.value.fireturretxatground_onlyoverpassabletileof.over_cliff": "Au-dessus de la falaise",
-  "data.value.fireturretxatground_onlyoverpassabletileof.over_cliff.description": "Peut tirer sur le terrain de falaise",
-  "data.value.fireturretxatground_onlyoverpassabletileof.over_water_cliff": "Au-dessus de la falaise d'eau",
-  "data.value.fireturretxatground_onlyoverpassabletileof.over_water_cliff.description": "Peut tirer sur le terrain de falaise d'eau"
+  "data.value.fireturretxatground_onlyoverpassabletileof.over_water_cliff": "Au-dessus de la falaise d'eau"
 }

@@ -1,17 +1,9 @@
 {
-  "data.value.onactions.description": "Definiert den Aktionszustand, der dieses Verhalten auslöst.",
   "data.value.onactions.move": "Bewegen",
-  "data.value.onactions.move.description": "Wird ausgelöst, wenn sich die Einheit bewegt",
   "data.value.onactions.attack": "Angreifen",
-  "data.value.onactions.attack.description": "Wird ausgelöst, wenn die Einheit angreift",
   "data.value.onactions.idle": "Leerlauf",
-  "data.value.onactions.idle.description": "Wird ausgelöst, wenn die Einheit im Leerlauf ist",
   "data.value.onactions.underconstruction": "Im Bau",
-  "data.value.onactions.underconstruction.description": "Wird ausgelöst, wenn die Einheit im Bau ist",
   "data.value.onactions.underconstructionwithlinkedbuilttime": "Im Bau mit verknüpfter Bauzeit",
-  "data.value.onactions.underconstructionwithlinkedbuilttime.description": "Wird ausgelöst, wenn die Einheit mit verknüpfter Bauzeit im Bau ist",
   "data.value.onactions.queuedunits": "Eingereihte Einheiten",
-  "data.value.onactions.queuedunits.description": "Wird ausgelöst, wenn Einheiten für die Produktion eingereiht sind",
-  "data.value.onactions.repair": "Reparieren",
-  "data.value.onactions.repair.description": "Wird ausgelöst, wenn die Einheit repariert"
+  "data.value.onactions.repair": "Reparieren"
 }

@@ -1,9 +1,5 @@
 {
-  "data.value.autotriggercheckrate.description": "Define con qué frecuencia el activador automático debe verificar sus condiciones.",
   "data.value.autotriggercheckrate.everyframe": "Cada Fotograma",
-  "data.value.autotriggercheckrate.everyframe.description": "Verificar cada fotograma del juego (más frecuente)",
   "data.value.autotriggercheckrate.every4frames": "Cada 4 Fotogramas",
-  "data.value.autotriggercheckrate.every4frames.description": "Verificar cada 4 fotogramas del juego",
-  "data.value.autotriggercheckrate.every8frames": "Cada 8 Fotogramas",
-  "data.value.autotriggercheckrate.every8frames.description": "Verificar cada 8 fotogramas del juego (menos frecuente)"
+  "data.value.autotriggercheckrate.every8frames": "Cada 8 Fotogramas"
 }

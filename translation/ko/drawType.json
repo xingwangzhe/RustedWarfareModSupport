@@ -1,7 +1,4 @@
 {
-  "data.value.drawtype.description": "유닛이나 효과가 화면에 어떻게 그려져야 하는지 정의합니다.",
   "data.value.drawtype.normal": "일반",
-  "data.value.drawtype.normal.description": "표준 그리기 모드",
-  "data.value.drawtype.displacement": "변위",
-  "data.value.drawtype.displacement.description": "특별한 시각 효과를 위한 변위 그리기 모드"
+  "data.value.drawtype.displacement": "변위"
 }

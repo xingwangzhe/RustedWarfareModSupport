@@ -1,0 +1,48 @@
+{
+  "name": "onlyTeam",
+  "example": "onlyTeam: own",
+  "data": [
+    {
+      "name": "own",
+      "description": "data.value.onlyteam.own",
+      "version": "1.13.3-1.15p9",
+      "example": "onlyTeam: own"
+    },
+    {
+      "name": "neutral",
+      "description": "data.value.onlyteam.neutral",
+      "version": "1.13.3-1.15p9",
+      "example": "onlyTeam: neutral"
+    },
+    {
+      "name": "allyNotOwn",
+      "description": "data.value.onlyteam.allynotown",
+      "version": "1.13.3-1.15p9",
+      "example": "onlyTeam: allyNotOwn"
+    },
+    {
+      "name": "ally",
+      "description": "data.value.onlyteam.ally",
+      "version": "1.13.3-1.15p9",
+      "example": "onlyTeam: ally"
+    },
+    {
+      "name": "enemy",
+      "description": "data.value.onlyteam.enemy",
+      "version": "1.13.3-1.15p9",
+      "example": "onlyTeam: enemy"
+    },
+    {
+      "name": "any",
+      "description": "data.value.onlyteam.any",
+      "version": "1.13.3-1.15p9",
+      "example": "onlyTeam: any"
+    },
+    {
+      "name": "notOwn",
+      "description": "data.value.onlyteam.notown",
+      "version": "1.13.3-1.15p9",
+      "example": "onlyTeam: notOwn"
+    }
+  ]
+}

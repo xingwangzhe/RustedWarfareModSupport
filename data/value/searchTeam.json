@@ -1,0 +1,48 @@
+{
+  "name": "searchTeam",
+  "example": "searchTeam: own",
+  "data": [
+    {
+      "name": "own",
+      "description": "data.value.searchteam.own",
+      "version": "1.13.3-1.15p9",
+      "example": "searchTeam: own"
+    },
+    {
+      "name": "neutral",
+      "description": "data.value.searchteam.neutral",
+      "version": "1.13.3-1.15p9",
+      "example": "searchTeam: neutral"
+    },
+    {
+      "name": "allyNotOwn",
+      "description": "data.value.searchteam.allynotown",
+      "version": "1.13.3-1.15p9",
+      "example": "searchTeam: allyNotOwn"
+    },
+    {
+      "name": "ally",
+      "description": "data.value.searchteam.ally",
+      "version": "1.13.3-1.15p9",
+      "example": "searchTeam: ally"
+    },
+    {
+      "name": "enemy",
+      "description": "data.value.searchteam.enemy",
+      "version": "1.13.3-1.15p9",
+      "example": "searchTeam: enemy"
+    },
+    {
+      "name": "any",
+      "description": "data.value.searchteam.any",
+      "version": "1.13.3-1.15p9",
+      "example": "searchTeam: any"
+    },
+    {
+      "name": "notOwn",
+      "description": "data.value.searchteam.notown",
+      "version": "1.13.3-1.15p9",
+      "example": "searchTeam: notOwn"
+    }
+  ]
+}

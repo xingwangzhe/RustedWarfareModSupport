@@ -1,27 +1,14 @@
 {
-  "data.value.addwaypoint_type.description": "Definisce il tipo di punto di percorso da aggiungere alla coda di movimento dell'unità.",
   "data.value.addwaypoint_type.move": "Muovi",
-  "data.value.addwaypoint_type.move.description": "Muovi verso la posizione specificata",
   "data.value.addwaypoint_type.attackmove": "Movimento d'attacco",
-  "data.value.addwaypoint_type.attackmove.description": "Muovi verso la posizione attaccando eventuali nemici incontrati",
   "data.value.addwaypoint_type.guard": "Difendi",
-  "data.value.addwaypoint_type.guard.description": "Difendi la posizione o unità specificata",
   "data.value.addwaypoint_type.loadinto": "Carica in",
-  "data.value.addwaypoint_type.loadinto.description": "Carica nell'unità di trasporto specificata",
   "data.value.addwaypoint_type.loadup": "Caricamento",
-  "data.value.addwaypoint_type.loadup.description": "Carica unità in questo trasporto",
   "data.value.addwaypoint_type.attack": "Attacca",
-  "data.value.addwaypoint_type.attack.description": "Attacca il bersaglio specificato",
   "data.value.addwaypoint_type.reclaim": "Richiedi",
-  "data.value.addwaypoint_type.reclaim.description": "Richiedi la risorsa o unità specificata",
   "data.value.addwaypoint_type.repair": "Ripara",
-  "data.value.addwaypoint_type.repair.description": "Ripara l'unità specificata",
   "data.value.addwaypoint_type.touchtarget": "Tocca bersaglio",
-  "data.value.addwaypoint_type.touchtarget.description": "Muovi per toccare il bersaglio specificato",
   "data.value.addwaypoint_type.build": "Costruisci",
-  "data.value.addwaypoint_type.build.description": "Costruisci nella posizione specificata",
   "data.value.addwaypoint_type.follow": "Segui",
-  "data.value.addwaypoint_type.follow.description": "Segui l'unità specificata",
-  "data.value.addwaypoint_type.setpassivetarget": "Imposta bersaglio passivo",
-  "data.value.addwaypoint_type.setpassivetarget.description": "Imposta l'unità specificata come bersaglio passivo"
+  "data.value.addwaypoint_type.setpassivetarget": "Imposta bersaglio passivo"
 }

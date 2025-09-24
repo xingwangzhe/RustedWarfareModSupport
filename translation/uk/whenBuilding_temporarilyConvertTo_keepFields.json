@@ -1,0 +1,20 @@
+{
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.maxhp": "Макс. HP",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.hp": "HP",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.maxshield": "Макс. Щит",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.shield": "Щит",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.shieldregen": "Регенерація Щита",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.maxenergy": "Макс. Енергія",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.energy": "Енергія",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.armour": "Броня",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.mass": "Маса",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.shootdelaymultiplier": "Множник Затримки Пострілу",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.shootdamagemultiplier": "Множник Пошкодження Пострілу",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.movespeed": "Швидкість Руху",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.maxturnspeed": "Макс. Швидкість Повороту",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.maxattackrange": "Макс. Дальність Атаки",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.selfregenrate": "Швидкість Саморегенерації",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.heighttarget": "Ціль Висоти",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.nanofactoryspeed": "Швидкість Нанофабрики",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.fogofwarsightrange": "Дальність Бачення Туману Війни"
+}

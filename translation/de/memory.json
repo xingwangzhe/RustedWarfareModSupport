@@ -1,5 +1,4 @@
 {
-  "memory.description": "Zugriff auf benutzerdefinierte Speichervariablen, die mit @memory definiert wurden",
   "memory.usage": "Verwendung: `memory.variableName`",
   "memory.availableVariables": "Verfügbare Variablen:",
   "memory.availableVariablesDescription": "- Benutzerdefinierte Variablen, die im Kernbereich mit `@memory name:type` definiert wurden",
@@ -12,7 +11,6 @@
   "memory.variable.definedIn": "Definiert in: {0}",
   "memory.variable.line": "Zeile: {0}",
   "memory.variable.access": "Zugriff auf diese benutzerdefinierte Speichervariable in Ausdrücken",
-  "memory.definition.description": "Eine benutzerdefinierte Speichervariable im Kernbereich definieren",
   "memory.definition.format": "Format: `@memory name:type`",
   "memory.definition.supportedTypes": "Unterstützte Typen:",
   "memory.definition.example": "Beispiel:",
@@ -23,14 +21,5 @@
   "memory.variableName.detail": "Speichervariablenname",
   "memory.variableType.detail": "Speichervariablentyp: {0}",
   "memory.variableType.documentation": "**{0}** - {1}",
-  "memory.variableType.accessNote": "Wird als `memory.variableName` in Ausdrücken zugänglich sein",
-  "type.int.description": "Ganzzahl",
-  "type.float.description": "Gleitkommazahl",
-  "type.string.description": "Textzeichenkette",
-  "type.bool.description": "Boolescher Wert (wahr/falsch)",
-  "type.number.description": "Allgemeine Zahl",
-  "type.text.description": "Textinhalt",
-  "type.boolean.description": "Boolescher Wert",
-  "type.logic.description": "Logischer Ausdruck",
-  "type.custom.description": "Benutzerdefinierter Typ"
+  "memory.variableType.accessNote": "Wird als `memory.variableName` in Ausdrücken zugänglich sein"
 }

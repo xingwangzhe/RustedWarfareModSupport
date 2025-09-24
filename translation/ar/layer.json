@@ -1,0 +1,8 @@
+{
+  "data.value.layer.inactive": "غير نشط",
+  "data.value.layer.shadow": "ظل",
+  "data.value.layer.afterbody": "بعد الجسم",
+  "data.value.layer.beforebody": "قبل الجسم",
+  "data.value.layer.ontop": "فوق",
+  "data.value.layer.beforeui": "قبل واجهة المستخدم"
+}

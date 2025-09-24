@@ -1,0 +1,9 @@
+{
+  "data.value.transportunitsrequiremovementtype.NONE": "لا شيء",
+  "data.value.transportunitsrequiremovementtype.BUILDING": "مبنى",
+  "data.value.transportunitsrequiremovementtype.LAND": "أرض",
+  "data.value.transportunitsrequiremovementtype.HOVER": "تحويم",
+  "data.value.transportunitsrequiremovementtype.AIR": "جو",
+  "data.value.transportunitsrequiremovementtype.OVER_CLIFF": "عبر المنحدر",
+  "data.value.transportunitsrequiremovementtype.OVER_WATER_CLIFF": "عبر منحدر الماء"
+}

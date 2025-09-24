@@ -1,9 +1,5 @@
 {
-  "data.value.autotriggercheckrate.description": "Define com que frequência o gatilho automático deve verificar suas condições.",
   "data.value.autotriggercheckrate.everyframe": "Cada Quadro",
-  "data.value.autotriggercheckrate.everyframe.description": "Verificar cada quadro do jogo (mais frequente)",
   "data.value.autotriggercheckrate.every4frames": "Cada 4 Quadros",
-  "data.value.autotriggercheckrate.every4frames.description": "Verificar cada 4 quadros do jogo",
-  "data.value.autotriggercheckrate.every8frames": "Cada 8 Quadros",
-  "data.value.autotriggercheckrate.every8frames.description": "Verificar cada 8 quadros do jogo (menos frequente)"
+  "data.value.autotriggercheckrate.every8frames": "Cada 8 Quadros"
 }

@@ -1,0 +1,20 @@
+{
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.maxhp": "Max HP",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.hp": "HP",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.maxshield": "Max Shield",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.shield": "Shield",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.shieldregen": "Shield Regen",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.maxenergy": "Max Energy",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.energy": "Energy",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.armour": "Armour",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.mass": "Mass",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.shootdelaymultiplier": "Shoot Delay Multiplier",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.shootdamagemultiplier": "Shoot Damage Multiplier",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.movespeed": "Move Speed",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.maxturnspeed": "Max Turn Speed",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.maxattackrange": "Max Attack Range",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.selfregenrate": "Self Regen Rate",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.heighttarget": "Height Target",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.nanofactoryspeed": "Nano Factory Speed",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.fogofwarsightrange": "Fog of War Sight Range"
+}

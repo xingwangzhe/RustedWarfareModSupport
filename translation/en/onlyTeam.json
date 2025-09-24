@@ -1,0 +1,9 @@
+{
+  "data.value.onlyteam.own": "Own",
+  "data.value.onlyteam.neutral": "Neutral",
+  "data.value.onlyteam.allynotown": "Ally Not Own",
+  "data.value.onlyteam.ally": "Ally",
+  "data.value.onlyteam.enemy": "Enemy",
+  "data.value.onlyteam.any": "Any",
+  "data.value.onlyteam.notown": "Not Own"
+}

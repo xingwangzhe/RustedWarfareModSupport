@@ -1,19 +1,10 @@
 {
-"data.value.movementType.description": "定義用於確定可通行地形和單位移動行為的移動類型。",
-"data.value.movementType.NONE": "無",
-"data.value.movementType.NONE.description": "無移動類型 / 不適用。",
-"data.value.movementType.LAND": "陸地",
-"data.value.movementType.LAND.description": "在陸地圖塊上的標準地面移動。",
-"data.value.movementType.AIR": "空中",
-"data.value.movementType.AIR.description": "在地形上方飛行的空中單位。",
-"data.value.movementType.WATER": "水面",
-"data.value.movementType.WATER.description": "在水圖塊上或水中移動的單位。",
-"data.value.movementType.HOVER": "懸浮",
-"data.value.movementType.HOVER.description": "可以穿越陸地和一些水而不沉沒的懸浮單位。",
-"data.value.movementType.BUILDING": "建築",
-"data.value.movementType.BUILDING.description": "不動的建築足跡；對於路徑尋找和放置的處理方式不同。",
-"data.value.movementType.OVER_CLIFF": "跨越懸崖",
-"data.value.movementType.OVER_CLIFF.description": "可以穿越普通陸地單位無法穿越的懸崖或高架圖塊。",
-"data.value.movementType.OVER_CLIFF_WATER": "跨越懸崖水面",
-"data.value.movementType.OVER_CLIFF_WATER.description": "可以穿越包含水或潮濕懸崖地形的懸崖圖塊。"
+  "data.value.movementType.NONE": "無",
+  "data.value.movementType.LAND": "陸地",
+  "data.value.movementType.AIR": "空中",
+  "data.value.movementType.WATER": "水面",
+  "data.value.movementType.HOVER": "懸浮",
+  "data.value.movementType.BUILDING": "建築",
+  "data.value.movementType.OVER_CLIFF": "跨越懸崖",
+  "data.value.movementType.OVER_CLIFF_WATER": "跨越懸崖水面"
 }

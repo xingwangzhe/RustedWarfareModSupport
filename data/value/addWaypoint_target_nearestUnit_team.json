@@ -1,6 +1,5 @@
 {
   "name": "addWaypoint_target_nearestUnit_team",
-  "description": "data.value.addwaypoint_target_nearestunit_team.description",
   "example": "addWaypoint_target_nearestUnit_team: own",
   "data": [
     {

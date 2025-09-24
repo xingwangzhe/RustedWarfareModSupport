@@ -1,17 +1,9 @@
 {
-  "data.value.addwaypoint_target_nearestunit_team.description": "最も近いユニットを見つける際にターゲットとするチーム所属を定義します。",
   "data.value.addwaypoint_target_nearestunit_team.own": "自軍",
-  "data.value.addwaypoint_target_nearestunit_team.own.description": "自分のチームのユニットをターゲットにする",
   "data.value.addwaypoint_target_nearestunit_team.neutral": "中立",
-  "data.value.addwaypoint_target_nearestunit_team.neutral.description": "中立ユニットをターゲットにする",
   "data.value.addwaypoint_target_nearestunit_team.allynotown": "同盟（自軍以外）",
-  "data.value.addwaypoint_target_nearestunit_team.allynotown.description": "自分のものではない同盟ユニットをターゲットにする",
   "data.value.addwaypoint_target_nearestunit_team.ally": "同盟",
-  "data.value.addwaypoint_target_nearestunit_team.ally.description": "すべての同盟ユニットをターゲットにする",
   "data.value.addwaypoint_target_nearestunit_team.enemy": "敵",
-  "data.value.addwaypoint_target_nearestunit_team.enemy.description": "敵ユニットをターゲットにする",
   "data.value.addwaypoint_target_nearestunit_team.any": "任意",
-  "data.value.addwaypoint_target_nearestunit_team.any.description": "チームに関係なく任意のユニットをターゲットにする",
-  "data.value.addwaypoint_target_nearestunit_team.notown": "自軍以外",
-  "data.value.addwaypoint_target_nearestunit_team.notown.description": "自分のものではない任意のユニットをターゲットにする"
+  "data.value.addwaypoint_target_nearestunit_team.notown": "自軍以外"
 }

@@ -1,0 +1,9 @@
+{
+  "data.value.transportunitsrequiremovementtype.none": "Жоден",
+  "data.value.transportunitsrequiremovementtype.building": "Будівля",
+  "data.value.transportunitsrequiremovementtype.land": "Наземний",
+  "data.value.transportunitsrequiremovementtype.hover": "Плаваючий",
+  "data.value.transportunitsrequiremovementtype.air": "Повітряний",
+  "data.value.transportunitsrequiremovementtype.over_cliff": "Над Скелею",
+  "data.value.transportunitsrequiremovementtype.over_water_cliff": "Над Водною Скелею"
+}

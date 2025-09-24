@@ -1,7 +1,4 @@
 {
-  "data.value.drawtype.description": "Определяет, как юнит или эффект должны быть нарисованы на экране.",
   "data.value.drawtype.normal": "Нормальный",
-  "data.value.drawtype.normal.description": "Стандартный режим рисования",
-  "data.value.drawtype.displacement": "Смещение",
-  "data.value.drawtype.displacement.description": "Режим рисования смещения для специальных визуальных эффектов"
+  "data.value.drawtype.displacement": "Смещение"
 }

@@ -1,0 +1,9 @@
+{
+  "data.value.transportunitsrequiremovementtype.none": "なし",
+  "data.value.transportunitsrequiremovementtype.building": "建物",
+  "data.value.transportunitsrequiremovementtype.land": "陸上",
+  "data.value.transportunitsrequiremovementtype.hover": "ホバー",
+  "data.value.transportunitsrequiremovementtype.air": "空中",
+  "data.value.transportunitsrequiremovementtype.over_cliff": "崖越え",
+  "data.value.transportunitsrequiremovementtype.over_water_cliff": "水上崖越え"
+}

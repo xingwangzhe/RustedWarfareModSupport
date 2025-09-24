@@ -1,6 +1,5 @@
 {
   "name": "onNewMapSpawn",
-  "description": "data.value.onnewmapspawn.description",
   "example": "onNewMapSpawn: emptyResourcePools_asNeutral",
   "data": [
     {

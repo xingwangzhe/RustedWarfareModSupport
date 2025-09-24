@@ -1,0 +1,9 @@
+{
+  "data.value.transportunitsrequiremovementtype.none": "Ninguno",
+  "data.value.transportunitsrequiremovementtype.building": "Edificio",
+  "data.value.transportunitsrequiremovementtype.land": "Tierra",
+  "data.value.transportunitsrequiremovementtype.hover": "Flotante",
+  "data.value.transportunitsrequiremovementtype.air": "Aéreo",
+  "data.value.transportunitsrequiremovementtype.over_cliff": "Sobre Acantilado",
+  "data.value.transportunitsrequiremovementtype.over_water_cliff": "Sobre Acantilado Acuático"
+}

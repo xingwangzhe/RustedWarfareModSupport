@@ -1,5 +1,4 @@
 {
-  "memory.description": "Доступ до власних змінних пам'яті визначених з @memory",
   "memory.usage": "Використання: `memory.variableName`",
   "memory.availableVariables": "Доступні змінні:",
   "memory.availableVariablesDescription": "- Власні змінні визначені в секції core з `@memory name:type`",
@@ -12,7 +11,6 @@
   "memory.variable.definedIn": "Визначено в: {0}",
   "memory.variable.line": "Рядок: {0}",
   "memory.variable.access": "Доступ до цієї власної змінної пам'яті в виразах",
-  "memory.definition.description": "Визначити власну змінну пам'яті в секції core",
   "memory.definition.format": "Формат: `@memory name:type`",
   "memory.definition.supportedTypes": "Підтримувані типи:",
   "memory.definition.example": "Приклад:",
@@ -23,14 +21,5 @@
   "memory.variableName.detail": "Назва змінної пам'яті",
   "memory.variableType.detail": "Тип змінної пам'яті: {0}",
   "memory.variableType.documentation": "**{0}** - {1}",
-  "memory.variableType.accessNote": "Буде доступна як `memory.variableName` в виразах",
-  "type.int.description": "Ціле число",
-  "type.float.description": "Число з плаваючою комою",
-  "type.string.description": "Текстовий рядок",
-  "type.bool.description": "Булеве значення (true/false)",
-  "type.number.description": "Загальне число",
-  "type.text.description": "Текстовий вміст",
-  "type.boolean.description": "Булеве значення",
-  "type.logic.description": "Логічний вираз",
-  "type.custom.description": "Власний тип"
+  "memory.variableType.accessNote": "Буде доступна як `memory.variableName` в виразах"
 }

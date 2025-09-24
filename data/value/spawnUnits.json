@@ -1,6 +1,5 @@
 {
   "type": "spawnUnits",
-  "description": "data.value.spawnUnits.description",
   "example": "spawnUnits: crates*10(neutralTeam=true), tank(spawnChance=0.5)",
   "data": [
     {

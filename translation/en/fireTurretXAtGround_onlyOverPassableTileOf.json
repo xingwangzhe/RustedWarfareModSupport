@@ -1,17 +1,9 @@
 {
-  "data.value.fireturretxatground_onlyoverpassabletileof.description": "Defines which terrain types the turret can fire at ground targets over.",
   "data.value.fireturretxatground_onlyoverpassabletileof.none": "None",
-  "data.value.fireturretxatground_onlyoverpassabletileof.none.description": "Cannot fire over any terrain",
   "data.value.fireturretxatground_onlyoverpassabletileof.building": "Building",
-  "data.value.fireturretxatground_onlyoverpassabletileof.building.description": "Can fire over building tiles",
   "data.value.fireturretxatground_onlyoverpassabletileof.land": "Land",
-  "data.value.fireturretxatground_onlyoverpassabletileof.land.description": "Can fire over land tiles",
   "data.value.fireturretxatground_onlyoverpassabletileof.hover": "Hover",
-  "data.value.fireturretxatground_onlyoverpassabletileof.hover.description": "Can fire over hover terrain",
   "data.value.fireturretxatground_onlyoverpassabletileof.air": "Air",
-  "data.value.fireturretxatground_onlyoverpassabletileof.air.description": "Can fire over air spaces",
   "data.value.fireturretxatground_onlyoverpassabletileof.over_cliff": "Over Cliff",
-  "data.value.fireturretxatground_onlyoverpassabletileof.over_cliff.description": "Can fire over cliff terrain",
-  "data.value.fireturretxatground_onlyoverpassabletileof.over_water_cliff": "Over Water Cliff",
-  "data.value.fireturretxatground_onlyoverpassabletileof.over_water_cliff.description": "Can fire over water cliff terrain"
+  "data.value.fireturretxatground_onlyoverpassabletileof.over_water_cliff": "Over Water Cliff"
 }

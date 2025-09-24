@@ -1,0 +1,8 @@
+{
+  "data.value.layer.inactive": "Inactive",
+  "data.value.layer.shadow": "Shadow",
+  "data.value.layer.afterbody": "After Body",
+  "data.value.layer.beforebody": "Before Body",
+  "data.value.layer.ontop": "On Top",
+  "data.value.layer.beforeui": "Before UI"
+}

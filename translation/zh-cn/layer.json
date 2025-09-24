@@ -1,0 +1,8 @@
+{
+  "data.value.layer.inactive": "非活跃",
+  "data.value.layer.shadow": "阴影",
+  "data.value.layer.afterbody": "身体后",
+  "data.value.layer.beforebody": "身体前",
+  "data.value.layer.ontop": "顶部",
+  "data.value.layer.beforeui": "UI前"
+}

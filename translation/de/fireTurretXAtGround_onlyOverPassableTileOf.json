@@ -1,17 +1,9 @@
 {
-  "data.value.fireturretxatground_onlyoverpassabletileof.description": "Definiert, über welche Geländetypen die Turret auf Bodenziele schießen kann.",
   "data.value.fireturretxatground_onlyoverpassabletileof.none": "Keine",
-  "data.value.fireturretxatground_onlyoverpassabletileof.none.description": "Kann über kein Gelände schießen",
   "data.value.fireturretxatground_onlyoverpassabletileof.building": "Gebäude",
-  "data.value.fireturretxatground_onlyoverpassabletileof.building.description": "Kann über Gebäudefelder schießen",
   "data.value.fireturretxatground_onlyoverpassabletileof.land": "Land",
-  "data.value.fireturretxatground_onlyoverpassabletileof.land.description": "Kann über Landfelder schießen",
   "data.value.fireturretxatground_onlyoverpassabletileof.hover": "Schwebe",
-  "data.value.fireturretxatground_onlyoverpassabletileof.hover.description": "Kann über Schwebe-Gelände schießen",
   "data.value.fireturretxatground_onlyoverpassabletileof.air": "Luft",
-  "data.value.fireturretxatground_onlyoverpassabletileof.air.description": "Kann über Lufträume schießen",
   "data.value.fireturretxatground_onlyoverpassabletileof.over_cliff": "Über Klippe",
-  "data.value.fireturretxatground_onlyoverpassabletileof.over_cliff.description": "Kann über Klippen-Gelände schießen",
-  "data.value.fireturretxatground_onlyoverpassabletileof.over_water_cliff": "Über Wasserklippe",
-  "data.value.fireturretxatground_onlyoverpassabletileof.over_water_cliff.description": "Kann über Wasserklippen-Gelände schießen"
+  "data.value.fireturretxatground_onlyoverpassabletileof.over_water_cliff": "Über Wasserklippe"
 }

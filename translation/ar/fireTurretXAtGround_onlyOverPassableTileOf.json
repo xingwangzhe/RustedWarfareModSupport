@@ -1,17 +1,9 @@
 {
-  "data.value.fireturretxatground_onlyoverpassabletileof.description": "يحدد أنواع التضاريس التي يمكن للمدفع إطلاق النار على الأهداف الأرضية فوقها.",
   "data.value.fireturretxatground_onlyoverpassabletileof.none": "لا شيء",
-  "data.value.fireturretxatground_onlyoverpassabletileof.none.description": "لا يمكن إطلاق النار فوق أي تضاريس",
   "data.value.fireturretxatground_onlyoverpassabletileof.building": "مبنى",
-  "data.value.fireturretxatground_onlyoverpassabletileof.building.description": "يمكن إطلاق النار فوق مربعات المباني",
   "data.value.fireturretxatground_onlyoverpassabletileof.land": "أرض",
-  "data.value.fireturretxatground_onlyoverpassabletileof.land.description": "يمكن إطلاق النار فوق مربعات الأرض",
   "data.value.fireturretxatground_onlyoverpassabletileof.hover": "تحويم",
-  "data.value.fireturretxatground_onlyoverpassabletileof.hover.description": "يمكن إطلاق النار فوق تضاريس التحويم",
   "data.value.fireturretxatground_onlyoverpassabletileof.air": "هواء",
-  "data.value.fireturretxatground_onlyoverpassabletileof.air.description": "يمكن إطلاق النار فوق المساحات الهوائية",
   "data.value.fireturretxatground_onlyoverpassabletileof.over_cliff": "فوق الجرف",
-  "data.value.fireturretxatground_onlyoverpassabletileof.over_cliff.description": "يمكن إطلاق النار فوق تضاريس الجرف",
-  "data.value.fireturretxatground_onlyoverpassabletileof.over_water_cliff": "فوق جرف الماء",
-  "data.value.fireturretxatground_onlyoverpassabletileof.over_water_cliff.description": "يمكن إطلاق النار فوق تضاريس جرف الماء"
+  "data.value.fireturretxatground_onlyoverpassabletileof.over_water_cliff": "فوق جرف الماء"
 }

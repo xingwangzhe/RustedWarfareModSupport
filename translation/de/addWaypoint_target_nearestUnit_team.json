@@ -1,17 +1,9 @@
 {
-  "data.value.addwaypoint_target_nearestunit_team.description": "Definiert, welche Teamzugehörigkeit beim Finden der nächsten Einheit anvisiert werden soll.",
   "data.value.addwaypoint_target_nearestunit_team.own": "Eigenes",
-  "data.value.addwaypoint_target_nearestunit_team.own.description": "Einheiten aus dem eigenen Team anvisieren",
   "data.value.addwaypoint_target_nearestunit_team.neutral": "Neutral",
-  "data.value.addwaypoint_target_nearestunit_team.neutral.description": "Neutrale Einheiten anvisieren",
   "data.value.addwaypoint_target_nearestunit_team.allynotown": "Verbündeter Nicht Eigenes",
-  "data.value.addwaypoint_target_nearestunit_team.allynotown.description": "Verbündete Einheiten anvisieren, die nicht die eigenen sind",
   "data.value.addwaypoint_target_nearestunit_team.ally": "Verbündeter",
-  "data.value.addwaypoint_target_nearestunit_team.ally.description": "Alle verbündeten Einheiten anvisieren",
   "data.value.addwaypoint_target_nearestunit_team.enemy": "Feind",
-  "data.value.addwaypoint_target_nearestunit_team.enemy.description": "Feindliche Einheiten anvisieren",
   "data.value.addwaypoint_target_nearestunit_team.any": "Beliebig",
-  "data.value.addwaypoint_target_nearestunit_team.any.description": "Beliebige Einheit unabhängig vom Team anvisieren",
-  "data.value.addwaypoint_target_nearestunit_team.notown": "Nicht Eigenes",
-  "data.value.addwaypoint_target_nearestunit_team.notown.description": "Beliebige Einheit anvisieren, die nicht die eigene ist"
+  "data.value.addwaypoint_target_nearestunit_team.notown": "Nicht Eigenes"
 }

@@ -1,17 +1,9 @@
 {
-  "data.value.onactions.description": "定义触发此行为的动作状态。",
   "data.value.onactions.move": "移动",
-  "data.value.onactions.move.description": "单位移动时触发",
   "data.value.onactions.attack": "攻击",
-  "data.value.onactions.attack.description": "单位攻击时触发",
   "data.value.onactions.idle": "空闲",
-  "data.value.onactions.idle.description": "单位空闲时触发",
   "data.value.onactions.underconstruction": "建造中",
-  "data.value.onactions.underconstruction.description": "单位建造中时触发",
   "data.value.onactions.underconstructionwithlinkedbuilttime": "建造中（链接建造时间）",
-  "data.value.onactions.underconstructionwithlinkedbuilttime.description": "单位建造中且链接建造时间时触发",
   "data.value.onactions.queuedunits": "队列单位",
-  "data.value.onactions.queuedunits.description": "单位生产队列中时触发",
-  "data.value.onactions.repair": "修理",
-  "data.value.onactions.repair.description": "单位修理时触发"
+  "data.value.onactions.repair": "修理"
 }

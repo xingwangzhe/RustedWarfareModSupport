@@ -1,19 +1,10 @@
 {
-  "data.value.movementType.description": "Define tipos de movimento usados para determinar terreno passável e comportamento de movimento da unidade.",
   "data.value.movementType.NONE": "Nenhum",
-  "data.value.movementType.NONE.description": "Nenhum tipo de movimento / não aplicável.",
   "data.value.movementType.LAND": "Terra",
-  "data.value.movementType.LAND.description": "Movimento terrestre padrão em tiles terrestres.",
   "data.value.movementType.AIR": "Ar",
-  "data.value.movementType.AIR.description": "Unidades aéreas que voam acima do terreno.",
   "data.value.movementType.WATER": "Água",
-  "data.value.movementType.WATER.description": "Unidades que se movem em ou na água.",
   "data.value.movementType.HOVER": "Pairar",
-  "data.value.movementType.HOVER.description": "Unidades flutuantes que podem atravessar tanto terra quanto alguma água sem afundar.",
   "data.value.movementType.BUILDING": "Construção",
-  "data.value.movementType.BUILDING.description": "Pegada imóvel de construção; tratada de forma diferente para roteamento e colocação.",
   "data.value.movementType.OVER_CLIFF": "Sobre Penhasco",
-  "data.value.movementType.OVER_CLIFF.description": "Pode atravessar tiles de penhasco ou elevados que unidades terrestres normais não podem.",
-  "data.value.movementType.OVER_CLIFF_WATER": "Sobre Penhasco com Água",
-  "data.value.movementType.OVER_CLIFF_WATER.description": "Pode atravessar tiles de penhasco que incluem água ou terreno de penhasco úmido."
+  "data.value.movementType.OVER_CLIFF_WATER": "Sobre Penhasco com Água"
 }

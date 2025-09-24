@@ -1,0 +1,9 @@
+{
+  "data.value.onlyteam.own": "Своя",
+  "data.value.onlyteam.neutral": "Нейтральная",
+  "data.value.onlyteam.allynotown": "Союзник Не Свой",
+  "data.value.onlyteam.ally": "Союзник",
+  "data.value.onlyteam.enemy": "Враг",
+  "data.value.onlyteam.any": "Любой",
+  "data.value.onlyteam.notown": "Не Свой"
+}

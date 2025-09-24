@@ -1,17 +1,9 @@
 {
-  "data.value.addwaypoint_target_nearestunit_team.description": "Визначає, яку командну приналежність ціліти при пошуку найближчого підрозділу.",
   "data.value.addwaypoint_target_nearestunit_team.own": "Власний",
-  "data.value.addwaypoint_target_nearestunit_team.own.description": "Цілити підрозділи з вашої власної команди",
   "data.value.addwaypoint_target_nearestunit_team.neutral": "Нейтральний",
-  "data.value.addwaypoint_target_nearestunit_team.neutral.description": "Цілити нейтральні підрозділи",
   "data.value.addwaypoint_target_nearestunit_team.allynotown": "Союзник Не Власний",
-  "data.value.addwaypoint_target_nearestunit_team.allynotown.description": "Цілити союзні підрозділи, які не є вашими",
   "data.value.addwaypoint_target_nearestunit_team.ally": "Союзник",
-  "data.value.addwaypoint_target_nearestunit_team.ally.description": "Цілити всі союзні підрозділи",
   "data.value.addwaypoint_target_nearestunit_team.enemy": "Ворог",
-  "data.value.addwaypoint_target_nearestunit_team.enemy.description": "Цілити ворожі підрозділи",
   "data.value.addwaypoint_target_nearestunit_team.any": "Будь-який",
-  "data.value.addwaypoint_target_nearestunit_team.any.description": "Цілити будь-який підрозділ незалежно від команди",
-  "data.value.addwaypoint_target_nearestunit_team.notown": "Не Власний",
-  "data.value.addwaypoint_target_nearestunit_team.notown.description": "Цілити будь-який підрозділ, який не є вашим"
+  "data.value.addwaypoint_target_nearestunit_team.notown": "Не Власний"
 }

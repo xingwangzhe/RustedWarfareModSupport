@@ -1,17 +1,9 @@
 {
-  "data.value.addwaypoint_target_nearestunit_team.description": "Define qual afiliação de equipe visar ao encontrar a unidade mais próxima.",
   "data.value.addwaypoint_target_nearestunit_team.own": "Próprio",
-  "data.value.addwaypoint_target_nearestunit_team.own.description": "Visar unidades da sua própria equipe",
   "data.value.addwaypoint_target_nearestunit_team.neutral": "Neutro",
-  "data.value.addwaypoint_target_nearestunit_team.neutral.description": "Visar unidades neutras",
   "data.value.addwaypoint_target_nearestunit_team.allynotown": "Aliado Não Próprio",
-  "data.value.addwaypoint_target_nearestunit_team.allynotown.description": "Visar unidades aliadas que não são suas",
   "data.value.addwaypoint_target_nearestunit_team.ally": "Aliado",
-  "data.value.addwaypoint_target_nearestunit_team.ally.description": "Visar todas as unidades aliadas",
   "data.value.addwaypoint_target_nearestunit_team.enemy": "Inimigo",
-  "data.value.addwaypoint_target_nearestunit_team.enemy.description": "Visar unidades inimigas",
   "data.value.addwaypoint_target_nearestunit_team.any": "Qualquer",
-  "data.value.addwaypoint_target_nearestunit_team.any.description": "Visar qualquer unidade independentemente da equipe",
-  "data.value.addwaypoint_target_nearestunit_team.notown": "Não Próprio",
-  "data.value.addwaypoint_target_nearestunit_team.notown.description": "Visar qualquer unidade que não seja sua"
+  "data.value.addwaypoint_target_nearestunit_team.notown": "Não Próprio"
 }

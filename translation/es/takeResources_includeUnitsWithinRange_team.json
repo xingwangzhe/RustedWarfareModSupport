@@ -1,0 +1,16 @@
+{
+  "data.value.takeresources_includeunitswithinrange_team.own": "Propio",
+  "data.value.takeresources_includeunitswithinrange_team.neutral": "Neutral",
+  "data.value.takeresources_includeunitswithinrange_team.allynotown": "Aliado No Propio",
+  "data.value.takeresources_includeunitswithinrange_team.ally": "Aliado",
+  "data.value.takeresources_includeunitswithinrange_team.enemy": "Enemigo",
+  "data.value.takeresources_includeunitswithinrange_team.any": "Cualquiera",
+  "data.value.takeresources_includeunitswithinrange_team.notown": "No Propio",
+  "data.value.takeResources_includeUnitsWithinRange_team.own": "Own",
+  "data.value.takeResources_includeUnitsWithinRange_team.neutral": "Neutral",
+  "data.value.takeResources_includeUnitsWithinRange_team.allynotown": "Ally Not Own",
+  "data.value.takeResources_includeUnitsWithinRange_team.ally": "Ally",
+  "data.value.takeResources_includeUnitsWithinRange_team.enemy": "Enemy",
+  "data.value.takeResources_includeUnitsWithinRange_team.any": "Any",
+  "data.value.takeResources_includeUnitsWithinRange_team.notown": "Not Own"
+}

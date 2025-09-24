@@ -1,0 +1,9 @@
+{
+  "data.value.onlyteam.own": "自チーム",
+  "data.value.onlyteam.neutral": "中立",
+  "data.value.onlyteam.allynotown": "同盟非自チーム",
+  "data.value.onlyteam.ally": "同盟",
+  "data.value.onlyteam.enemy": "敵",
+  "data.value.onlyteam.any": "任意",
+  "data.value.onlyteam.notown": "非自チーム"
+}

@@ -426,6 +426,10 @@
           "name": "constant.language.enum.addWaypoint_type.ini"
         },
         {
+          "match": "\\b(normal|bomber)\\b",
+          "name": "constant.language.enum.attackMovement.ini"
+        },
+        {
           "match": "\\b(everyFrame|every4Frames|every8Frames)\\b",
           "name": "constant.language.enum.autoTriggerCheckRate.ini"
         },
@@ -446,12 +450,24 @@
           "name": "constant.language.enum.displayDigitGrouping.ini"
         },
         {
+          "match": "\\b(none|rally|upgrade|queueUnit|building|action|infoOnly|nfoOnlyNoBox|infoOnlyStockpile)\\b",
+          "name": "constant.language.enum.displayType.ini"
+        },
+        {
+          "match": "\\b(wreaks|underwater|bottom|ground|ground2|experimentals|air|top)\\b",
+          "name": "constant.language.enum.drawLayer.ini"
+        },
+        {
           "match": "\\b(normal|displacement)\\b",
           "name": "constant.language.enum.drawType.ini"
         },
         {
           "match": "\\b(NONE|BUILDING|LAND|HOVER|AIR|OVER_CLIFF|OVER_WATER_CLIFF)\\b",
           "name": "constant.language.enum.fireTurretXAtGround_onlyOverPassableTileOf.ini"
+        },
+        {
+          "match": "\\b(inactive|shadow|afterBody|beforeBody|onTop|beforeUI)\\b",
+          "name": "constant.language.enum.layer.ini"
         },
         {
           "match": "\\b(true|false|if|and|or|not|<|>|<=|>=|==|!=|\\+|-|/|\\*|%|self\\.isUnderwater\\(\\)|self\\.isAtGroundHeight\\(\\)|self\\.isFlying\\(\\)|self\\.isMoving\\(\\)|self\\.isReversing\\(\\)|self\\.isAtTopSpeed\\(\\)|self\\.isInWater\\(\\)|self\\.isOverwater\\(\\)|self\\.isOverLiquid\\(\\)|self\\.isOverClift\\(\\)|self\\.isOverPassableTile\\(\\)|self\\.isOverOpenLand\\(\\)|self\\.hasResources\\(\\)|self\\.resource\\(\\)|self\\.resource\\.RESOURCE_TYPE|self\\.isResourceLargerThan|self\\.hp\\(\\)|self\\.maxHp\\(\\)|self\\.height\\(\\)|self\\.ammo\\(\\)|self\\.isAmmoEmpty\\(\\)|self\\.ammoIncludingQueued\\(\\)|self\\.energy\\(\\)|self\\.energyIncludingQueued\\(\\)|self\\.isEnergyFull\\(\\)|self\\.isEnergyEmpty\\(\\)|self\\.maxEnergy\\(\\)|self\\.isEnergyRecharging\\(\\)|self\\.shield\\(\\)|self\\.maxShield\\(\\)|self\\.kills\\(\\)|self\\.queueSize\\(\\)|self\\.id\\(\\)|self\\.teamId\\(\\)|self\\.teamName\\(\\)|self\\.playerName\\(\\)|self\\.x\\(\\)|self\\.y\\(\\)|self\\.z\\(\\)|self\\.dir\\(\\)|self\\.priceCredits\\(\\)|self\\.builtAmount\\(\\)|self\\.completed\\(\\)|self\\.speed\\(\\)|self\\.maxMoveSpeed\\(\\)|self\\.hasFlag\\(\\)|self\\.tags\\(\\)|self\\.globalTeamTags\\(\\)|self\\.transportingCount\\(\\)|self\\.numberOfAttachedUnits\\(\\)|self\\.isAttacking\\(\\)|self\\.hasActiveWaypoint\\(\\)|self\\.numberOfQueuedWaypoints\\(\\)|self\\.transportingUnitWithTags\\(\\)|self\\.hasParent\\(\\)|self\\.hasTakenDamage\\(\\)|self\\.timeAlive\\(\\)|self\\.lastConverted\\(\\)|self\\.customTimer\\(\\)|self\\.isOnNeutralTeam\\(\\)|self\\.numberOfUnitsInTeam\\(\\)|self\\.numberOfUnitsInAllyTeam\\(\\)|self\\.numberOfUnitsInAllyNotOwnTeam\\(\\)|self\\.numberOfUnitsInEnemyTeam\\(\\)|numberOfUnitsInNeutralTeam\\(\\)|numberOfUnitsInAggressiveTeam\\(\\)|numberOfUnitsInAllTeams\\(\\)|self\\.hasUnitInTeam\\(\\)|self\\.noUnitInTeam\\(\\)|self\\.isControlledByAI\\(\\)|self\\.readUnitMemory\\(\\)|thisActionTarget|thisActionIndex|eventSource|attachment|transporting|attacking|lastDamagedBy|parent|activeWaypointTarget|customTarget1|customTarget2|nearestUnit|globalSearchForFirstUnit|nullUnit|getAsMarker|getOffsetAbsolute|getOffsetRelative|eventSource|readUnitMemory|memory\\.NAME|memory\\.NAME\\.size|memory\\.NAME\\.contains\\(query\\)|distance\\(x1, y1, x2, y2\\)|distanceSquared\\(x1, y1, x2, y2\\)|distanceBetween\\(unit1, unit2\\)|distanceBetweenSquared\\(unit1, unit2\\)|game\\.nukesEnabled\\(\\)|int\\(x\\)|select\\(bool, textA, textB\\)|debug\\(logicBoolean\\)|str\\(x\\)|substring\\(text,start,end\\)|length\\(string\\)|squareRoot\\(num\\)|min\\(num1, num2\\)|max\\(num1, num2\\)|createMarker\\(x, y, \\[height\\], \\[teamId\\], \\[dir\\]\\)|eventData\\(name, type, \\[default\\]\\)|sin\\(angle\\)|cos\\(angle\\)|rnd\\(min, max\\)|lowercase\\(string\\)|uppercase\\(string\\)|direction\\(x1, y1, x2, y2\\)|directionBetween\\(unit1, unit2\\)|self\\.isInMap\\(\\)|game\\.mapWidth\\(\\)|game\\.mapHeight\\(\\)|self\\.teamDefeatedTech\\(\\)|self\\.teamWipedOut\\(\\)|self\\.teamVictory\\(\\))\\b",
@@ -470,6 +486,14 @@
           "name": "constant.language.enum.onNewMapSpawn.ini"
         },
         {
+          "match": "\\b(own|neutral|allyNotOwn|ally|enemy|any|notOwn)\\b",
+          "name": "constant.language.enum.onlyTeam.ini"
+        },
+        {
+          "match": "\\b(own|neutral|allyNotOwn|ally|enemy|any|notOwn)\\b",
+          "name": "constant.language.enum.searchTeam.ini"
+        },
+        {
           "match": "\\b(maxHp|hp|maxShield|shield|shieldRegen|maxEnergy|energy|armour|mass|shootDelayMultiplier|shootDamageMultiplier|moveSpeed|maxTurnSpeed|maxAttackRange|selfRegenRate|heightTarget|nanoFactorySpeed|fogOfWarSightRange)\\b",
           "name": "constant.language.enum.setUnitStats.ini"
         },
@@ -480,6 +504,22 @@
         {
           "match": "\\b(neutralTeam|setToTeamOfLastAttacker|spawnChance|spawnSource|maxSpawnLimit|gridAlign|skipIfOverlapping|offsetX|offsetY|offsetDir|offsetHeight|offsetRandomX|offsetRandomY|offsetRandomDir|addResources|transportedUnitsToTransfer|copyWaypointsFrom|alwayStartDirAtZero|damagingBorder|zoneMarker|techLevel)\\b",
           "name": "constant.language.enum.spawnUnits.ini"
+        },
+        {
+          "match": "\\b(own|neutral|allyNotOwn|ally|enemy|any|notOwn)\\b",
+          "name": "constant.language.enum.takeResources_includeUnitsWithinRange_team.ini"
+        },
+        {
+          "match": "\\b(pureGreen|hueAdd|hueShift|disabled)\\b",
+          "name": "constant.language.enum.teamColoringMode.ini"
+        },
+        {
+          "match": "\\b(NONE|BUILDING|LAND|HOVER|AIR|OVER_CLIFF|OVER_WATER_CLIFF)\\b",
+          "name": "constant.language.enum.transportUnitsRequireMovementType.ini"
+        },
+        {
+          "match": "\\b(maxHp|hp|maxShield|shield|shieldRegen|maxEnergy|energy|armour|mass|shootDelayMultiplier|shootDamageMultiplier|moveSpeed|maxTurnSpeed|maxAttackRange|selfRegenRate|heightTarget|nanoFactorySpeed|fogOfWarSightRange)\\b",
+          "name": "constant.language.enum.whenBuilding_temporarilyConvertTo_keepFields.ini"
         },
         {
           "match": "\\b(ROOT:)?[^\\s,]+\\.(ini|txt|template|png|jpg|jpeg|ogg|wav|mp3)\\b",

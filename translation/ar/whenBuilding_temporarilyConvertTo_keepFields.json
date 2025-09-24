@@ -1,0 +1,20 @@
+{
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.maxHp": "الحد الأقصى للصحة",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.hp": "الصحة",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.maxShield": "الحد الأقصى للدرع",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.shield": "الدرع",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.shieldRegen": "تجديد الدرع",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.maxEnergy": "الحد الأقصى للطاقة",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.energy": "الطاقة",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.armour": "الدرع",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.mass": "الكتلة",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.shootDelayMultiplier": "مضاعف تأخير الإطلاق",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.shootDamageMultiplier": "مضاعف ضرر الإطلاق",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.moveSpeed": "سرعة الحركة",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.maxTurnSpeed": "الحد الأقصى لسرعة الدوران",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.maxAttackRange": "الحد الأقصى لمدى الهجوم",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.selfRegenRate": "معدل التجديد الذاتي",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.heightTarget": "هدف الارتفاع",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.nanoFactorySpeed": "سرعة المصنع النانوي",
+  "data.value.whenbuilding_temporarilyconvertto_keepfields.fogOfWarSightRange": "مدى رؤية ضباب الحرب"
+}

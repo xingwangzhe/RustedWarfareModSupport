@@ -1,19 +1,10 @@
 {
-"data.value.movementType.description": "Définit les types de mouvement utilisés pour déterminer le terrain traversable et le comportement de mouvement des unités.",
-"data.value.movementType.NONE": "Aucun",
-"data.value.movementType.NONE.description": "Aucun type de mouvement / non applicable.",
-"data.value.movementType.LAND": "Terre",
-"data.value.movementType.LAND.description": "Mouvement terrestre standard sur les tuiles de terre.",
-"data.value.movementType.AIR": "Air",
-"data.value.movementType.AIR.description": "Unités aériennes qui volent au-dessus du terrain.",
-"data.value.movementType.WATER": "Eau",
-"data.value.movementType.WATER.description": "Unités qui se déplacent sur ou dans les tuiles d'eau.",
-"data.value.movementType.HOVER": "Survol",
-"data.value.movementType.HOVER.description": "Unités survolantes qui peuvent traverser à la fois la terre et une partie de l'eau sans couler.",
-"data.value.movementType.BUILDING": "Bâtiment",
-"data.value.movementType.BUILDING.description": "Empreinte de bâtiment immobile; traité différemment pour le pathfinding et le placement.",
-"data.value.movementType.OVER_CLIFF": "Au-Dessus de Falaise",
-"data.value.movementType.OVER_CLIFF.description": "Peut traverser les falaises ou tuiles élevées que les unités terrestres normales ne peuvent pas.",
-"data.value.movementType.OVER_CLIFF_WATER": "Au-Dessus de Falaise Eau",
-"data.value.movementType.OVER_CLIFF_WATER.description": "Peut traverser les tuiles de falaise qui incluent l'eau ou le terrain de falaise mouillé."
+  "data.value.movementType.NONE": "Aucun",
+  "data.value.movementType.LAND": "Terre",
+  "data.value.movementType.AIR": "Air",
+  "data.value.movementType.WATER": "Eau",
+  "data.value.movementType.HOVER": "Survol",
+  "data.value.movementType.BUILDING": "Bâtiment",
+  "data.value.movementType.OVER_CLIFF": "Au-Dessus de Falaise",
+  "data.value.movementType.OVER_CLIFF_WATER": "Au-Dessus de Falaise Eau"
 }

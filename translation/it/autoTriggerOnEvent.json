@@ -1,26 +1,4 @@
 {
-  "data.value.autotriggeronevent.description": "L'azione verrà attivata quando si verifica un evento su una particolare unità. Opzioni: created, completeAndActive, destroyed, killedAnyUnit, queuedUnitFinished, queueItemAdded(withActionTag=\"#\"), queueItemCancelled(withActionTag=\"#\"), teleported, touchTargetSuccess, newWaypointGivenByPlayer, teamChanged, transportingNewUnit, transportUnloadedOrRemovedUnit, tookDamage(withTag=\"#\"), newMessage(withTag=\"#\"), enteredTransport, leftTransport, attachmentRemoved. Il parametro withTag per tookDamage usa il tag del proiettile ed è opzionale. Il parametro withTag per newMessage usa i tag dei messaggi.",
-  "data.value.autotriggeronevent.created.description": "Si attiva quando l'unità viene creata per la prima volta",
-  "data.value.autotriggeronevent.completeandactive.description": "Si attiva quando l'unità è completamente costruita e diventa attiva",
-  "data.value.autotriggeronevent.destroyed.description": "Si attiva quando l'unità viene distrutta",
-  "data.value.autotriggeronevent.killedanyunit.description": "Si attiva quando questa unità uccide qualsiasi altra unità",
-  "data.value.autotriggeronevent.queuedunitfinished.description": "Si attiva quando un'unità in coda viene completata",
-  "data.value.autotriggeronevent.queueitemadded.description": "Si attiva quando un'azione viene aggiunta alla coda con un tag azione specifico",
-  "data.value.autotriggeronevent.queueitemcancelled.description": "Si attiva quando un'azione viene cancellata dalla coda con un tag azione specifico",
-  "data.value.autotriggeronevent.teleported.description": "Si attiva quando l'unità viene teletrasportata",
-  "data.value.autotriggeronevent.touchtargetsuccess.description": "Si attiva quando l'unità tocca con successo il suo obiettivo",
-  "data.value.autotriggeronevent.newwaypointgivenbyplayer.description": "Si attiva quando viene dato un nuovo punto di percorso dal giocatore",
-  "data.value.autotriggeronevent.teamchanged.description": "Si attiva quando l'unità cambia squadra",
-  "data.value.autotriggeronevent.transportingnewunit.description": "Si attiva quando l'unità inizia a trasportare una nuova unità",
-  "data.value.autotriggeronevent.transportunloadedorremovedunit.description": "Si attiva quando un'unità viene scaricata o rimossa dal trasporto",
-  "data.value.autotriggeronevent.tookdamage.description": "Si attiva quando l'unità riceve danni con un tag specifico",
-  "data.value.autotriggeronevent.newmessage.description": "Si attiva quando l'unità riceve un nuovo messaggio con un tag specifico",
-  "data.value.autotriggeronevent.enteredtransport.description": "Si attiva quando l'unità entra in un trasporto",
-  "data.value.autotriggeronevent.lefttransport.description": "Si attiva quando l'unità esce da un trasporto",
-  "data.value.autotriggeronevent.attachmentremoved.description": "Si attiva quando un accessorio viene rimosso dall'unità",
   "data.value.autotriggeronevent.parameter.actiontag": "Tag Azione",
-  "data.value.autotriggeronevent.parameter.actiontag.description": "Il tag dell'azione che è stata aggiunta o cancellata",
-  "data.value.autotriggeronevent.parameter.tag": "Tag",
-  "data.value.autotriggeronevent.parameter.tookdamage.tag.description": "Il tag del proiettile che ha causato il danno (opzionale)",
-  "data.value.autotriggeronevent.parameter.newmessage.tag.description": "Il tag del messaggio ricevuto"
+  "data.value.autotriggeronevent.parameter.tag": "Tag"
 }

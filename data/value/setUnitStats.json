@@ -1,6 +1,5 @@
 {
   "name": "setUnitStats",
-  "description": "data.value.setunitstats.description",
   "example": "setUnitStats: maxHp",
   "data": [
     {

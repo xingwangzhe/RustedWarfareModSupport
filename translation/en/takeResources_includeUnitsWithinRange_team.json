@@ -1,0 +1,16 @@
+{
+  "data.value.takeresources_includeunitswithinrange_team.own": "Own",
+  "data.value.takeresources_includeunitswithinrange_team.neutral": "Neutral",
+  "data.value.takeresources_includeunitswithinrange_team.allynotown": "Ally Not Own",
+  "data.value.takeresources_includeunitswithinrange_team.ally": "Ally",
+  "data.value.takeresources_includeunitswithinrange_team.enemy": "Enemy",
+  "data.value.takeresources_includeunitswithinrange_team.any": "Any",
+  "data.value.takeresources_includeunitswithinrange_team.notown": "Not Own",
+  "data.value.takeResources_includeUnitsWithinRange_team.own": "Own",
+  "data.value.takeResources_includeUnitsWithinRange_team.neutral": "Neutral",
+  "data.value.takeResources_includeUnitsWithinRange_team.allynotown": "Ally Not Own",
+  "data.value.takeResources_includeUnitsWithinRange_team.ally": "Ally",
+  "data.value.takeResources_includeUnitsWithinRange_team.enemy": "Enemy",
+  "data.value.takeResources_includeUnitsWithinRange_team.any": "Any",
+  "data.value.takeResources_includeUnitsWithinRange_team.notown": "Not Own"
+}

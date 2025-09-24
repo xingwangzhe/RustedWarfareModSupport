@@ -1,6 +1,5 @@
 {
   "name": "fireTurretXAtGround_onlyOverPassableTileOf",
-  "description": "data.value.fireturretxatground_onlyoverpassabletileof.description",
   "example": "fireTurretXAtGround_onlyOverPassableTileOf: NONE",
   "data": [
     {
