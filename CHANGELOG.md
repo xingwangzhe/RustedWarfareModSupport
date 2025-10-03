@@ -1,5 +1,19 @@
 # 更新日志 / Changelog
 
+## [1.7.33] - 2025-10-4
+
+- 更新npm依赖
+- Update npm dependencies
+
+
+```bash
+↑ @types/node 22.18.0 → 22.18.8
+↑ @typescript-eslint/eslint-plugin 8.41.0 → 8.45.0
+↑ @typescript-eslint/parser 8.41.0 → 8.45.0
+↑ eslint 9.34.0 → 9.37.0
+↑ typescript 5.9.2 → 5.9.3
+```
+
 ## [1.7.32] - 2025-9-24
 
 - 修复系统性翻译键缺失问题，为所有值补全提供者添加完整的多语言翻译支持（27个翻译键，13种语言）
@@ -145,5 +159,6 @@ Fixed matching method, using simpler `startsWith()` for section matching while o
 - 之前日志忘记录了，故遗失 / Previous logs were lost due to missing updates
 - i forgot to update the changelog, so it's lost
 
+- 节，键值，预览图片，内存上下文实现 / Section, key-value, preview image, memory context implementation
 - 节，键值，预览图片，内存上下文实现 / Section, key-value, preview image, memory context implementation
 - 节，键值，预览图片，内存上下文实现 / Section, key-value, preview image, memory context implementation
