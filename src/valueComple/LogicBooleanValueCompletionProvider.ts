@@ -51,7 +51,7 @@ export class LogicBooleanValueCompletionProvider extends BaseValueCompletionProv
     // 如果已经输入了"self."，修改补全项以避免重复，并过滤掉不合适的运算符
     if (hasSelfPrefix) {
       // 定义算术运算符列表，这些在self.后不合适
-      const arithmeticOperators = ['+', '-', '*', '/', '<', '>', '<=', '>=', '==', '!='];
+      const arithmeticOperators = ['+', '-', '*', '/', '<', '>', '<=', '>=', '==', '!=','%'];
 
       // 先获取原始数据以便后续使用
       const rawData = this.getRawLogicBooleanData();
