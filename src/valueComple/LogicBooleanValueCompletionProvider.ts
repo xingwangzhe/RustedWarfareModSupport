@@ -52,7 +52,7 @@ export class LogicBooleanValueCompletionProvider extends BaseValueCompletionProv
     if (hasSelfPrefix) {
       // 定义算术运算符列表，这些在self.后不合适
       const arithmeticOperators = ['+', '-', '*', '/', '<', '>', '<=', '>=', '==', '!=','%'];
-
+      const boolitems = ['true', 'false'];
       // 先获取原始数据以便后续使用
       const rawData = this.getRawLogicBooleanData();
 
@@ -62,6 +62,11 @@ export class LogicBooleanValueCompletionProvider extends BaseValueCompletionProv
           
           // 过滤掉算术运算符
           if (arithmeticOperators.includes(labelText)) {
+            return null; // 返回null表示过滤掉
+          }
+
+          // 过滤掉true和false
+          if (boolitems.includes(labelText)) {
             return null; // 返回null表示过滤掉
           }
           
