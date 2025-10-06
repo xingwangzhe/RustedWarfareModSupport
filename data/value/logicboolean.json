@@ -5,973 +5,973 @@
     {
       "name": "true",
       "type": "bool",
-      "description": "data.value.logicboolean.true.description",
+      "description": "data.value.logicboolean.true",
       "version": "default",
       "example": "autoTrigger: true"
     },
     {
       "name": "false",
       "type": "bool",
-      "description": "data.value.logicboolean.false.description",
+      "description": "data.value.logicboolean.false",
       "version": "default",
       "example": "autoTrigger: false"
     },
     {
       "name": "if",
       "type": "LogicBoolean",
-      "description": "data.value.logicboolean.if.description",
+      "description": "data.value.logicboolean.if",
       "version": "default",
       "example": "isActive: if self.hasFlag(id=1)"
     },
     {
       "name": "and",
       "type": "bool",
-      "description": "data.value.logicboolean.and.description",
+      "description": "data.value.logicboolean.and",
       "version": "default",
       "example": "autoTrigger: if self.isInWater and self.energy>=1"
     },
     {
       "name": "or",
       "type": "bool",
-      "description": "data.value.logicboolean.or.description",
+      "description": "data.value.logicboolean.or",
       "version": "default",
       "example": "autoTrigger: if (self.energy>=2 or self.ammo>=1) and self.isFlying"
     },
     {
       "name": "not",
       "type": "bool",
-      "description": "data.value.logicboolean.not.description",
+      "description": "data.value.logicboolean.not",
       "version": "default",
       "example": "if not self.isOverLiquid"
     },
     {
       "name": "<",
       "type": "bool",
-      "description": "data.value.logicboolean.less.description",
+      "description": "data.value.logicboolean.less",
       "version": "1.15",
       "example": "isLocked: if self.ammo < 1"
     },
     {
       "name": ">",
       "type": "bool",
-      "description": "data.value.logicboolean.greater.description",
+      "description": "data.value.logicboolean.greater",
       "version": "1.15",
       "example": "autoTrigger: if self.isInWater and self.energy>=1"
     },
     {
       "name": "<=",
       "type": "bool",
-      "description": "data.value.logicboolean.lessequal.description",
+      "description": "data.value.logicboolean.lessequal",
       "version": "1.15",
       "example": "requireConditional: if numberOfUnitsInTeam(withTag=\"fish\") >= 10"
     },
     {
       "name": ">=",
       "type": "bool",
-      "description": "data.value.logicboolean.greaterequal.description",
+      "description": "data.value.logicboolean.greaterequal",
       "version": "1.15",
       "example": "requireConditional: if numberOfUnitsInTeam(withTag=\"fish\") <= 11"
     },
     {
       "name": "==",
       "type": "bool",
-      "description": "data.value.logicboolean.equal.description",
+      "description": "data.value.logicboolean.equal",
       "version": "1.15",
       "example": "hidden: if memory.tail == 0"
     },
     {
       "name": "!=",
       "type": "bool",
-      "description": "data.value.logicboolean.notequal.description",
+      "description": "data.value.logicboolean.notequal",
       "version": "1.15",
       "example": "isVisible: if memory.message != parent.readUnitMemory(name=\"stateMessage\", type=\"string\")"
     },
     {
       "name": "+",
       "type": "same type",
-      "description": "data.value.logicboolean.add.description",
+      "description": "data.value.logicboolean.add",
       "version": "1.15",
       "example": "setUnitMemory: stockpile = self.ammo + customTarget1.resource.reserve"
     },
     {
       "name": "-",
       "type": "same type",
-      "description": "data.value.logicboolean.subtract.description",
+      "description": "data.value.logicboolean.subtract",
       "version": "1.15",
       "example": "setUnitMemory: stockpile = self.ammo - customTarget2.resource.reserve"
     },
     {
       "name": "/",
       "type": "same type",
-      "description": "data.value.logicboolean.divide.description",
+      "description": "data.value.logicboolean.divide",
       "version": "1.15",
       "example": "setUnitMemory: damageMultiplierBuffer = memory.population / memory.death"
     },
     {
       "name": "*",
       "type": "same type",
-      "description": "data.value.logicboolean.multiply.description",
+      "description": "data.value.logicboolean.multiply",
       "version": "1.15",
       "example": "setUnitMemory: reserveCash = memory.population * self.resource.credits"
     },
     {
       "name": "%",
       "type": "same type",
-      "description": "data.value.logicboolean.modulo.description",
+      "description": "data.value.logicboolean.modulo",
       "version": "1.15",
       "example": "setUnitMemory: isEvenX = select(self.x % 2, true, false)"
     },
     {
       "name": "self.isUnderwater()",
       "type": "bool",
-      "description": "data.value.logicboolean.self.isUnderwater.description",
+      "description": "data.value.logicboolean.self.isUnderwater",
       "version": "default",
       "example": "autoTrigger: if self.isUnderwater()"
     },
     {
       "name": "self.isAtGroundHeight()",
       "type": "bool",
-      "description": "data.value.logicboolean.self.isAtGroundHeight.description",
+      "description": "data.value.logicboolean.self.isAtGroundHeight",
       "version": "default",
       "example": "autoTrigger: if thisActionTarget.isAtGroundHeight()"
     },
     {
       "name": "self.isFlying()",
       "type": "bool",
-      "description": "data.value.logicboolean.self.isFlying.description",
+      "description": "data.value.logicboolean.self.isFlying",
       "version": "default",
       "example": "isActive: if self.isFlying()"
     },
     {
       "name": "self.isMoving()",
       "type": "bool",
-      "description": "data.value.logicboolean.self.isMoving.description",
+      "description": "data.value.logicboolean.self.isMoving",
       "version": "default",
       "example": "isLocked: if self.isMoving()"
     },
     {
       "name": "self.isReversing()",
       "type": "bool",
-      "description": "data.value.logicboolean.self.isReversing.description",
+      "description": "data.value.logicboolean.self.isReversing",
       "version": "1.15",
       "example": "isLockedAlt2: if self.isReversing()"
     },
     {
       "name": "self.isAtTopSpeed()",
       "type": "bool",
-      "description": "data.value.logicboolean.self.isAtTopSpeed.description",
+      "description": "data.value.logicboolean.self.isAtTopSpeed",
       "version": "default",
       "example": "autoTrigger: if self.isAtTopSpeed()"
     },
     {
       "name": "self.isInWater()",
       "type": "bool",
-      "description": "data.value.logicboolean.self.isInWater.description",
+      "description": "data.value.logicboolean.self.isInWater",
       "version": "default",
       "example": "isLocked: if not self.isInWater()"
     },
     {
       "name": "self.isOverwater()",
       "type": "bool",
-      "description": "data.value.logicboolean.self.isOverwater.description",
+      "description": "data.value.logicboolean.self.isOverwater",
       "version": "default",
       "example": "isLocked: if not self.isOverwater()"
     },
     {
       "name": "self.isOverLiquid()",
       "type": "bool",
-      "description": "data.value.logicboolean.self.isOverLiquid.description",
+      "description": "data.value.logicboolean.self.isOverLiquid",
       "version": "default",
       "example": "isLocked: if not self.isOverLiquid()"
     },
     {
       "name": "self.isOverClift()",
       "type": "bool",
-      "description": "data.value.logicboolean.self.isOverClift.description",
+      "description": "data.value.logicboolean.self.isOverClift",
       "version": "default",
       "example": "isLocked: if not self.isOverClift()"
     },
     {
       "name": "self.isOverPassableTile()",
       "type": "bool",
-      "description": "data.value.logicboolean.self.isOverPassableTile.description",
+      "description": "data.value.logicboolean.self.isOverPassableTile",
       "version": "default",
       "example": "isLockedAlt: if self.isOverPassableTile(type=OVER_CLIFF_WATER)"
     },
     {
       "name": "self.isOverOpenLand()",
       "type": "bool",
-      "description": "data.value.logicboolean.self.isOverOpenLand.description",
+      "description": "data.value.logicboolean.self.isOverOpenLand",
       "version": "default",
       "example": "hidden: if not self.isOverOpenLand()"
     },
     {
       "name": "self.hasResources()",
       "type": "bool",
-      "description": "data.value.logicboolean.self.hasResources.description",
+      "description": "data.value.logicboolean.self.hasResources",
       "version": "1.13.3",
       "example": "isActive self.hasResources(credits=1, energy=2)"
     },
     {
       "name": "self.resource()",
       "type": "float / bool",
-      "description": "data.value.logicboolean.self.resource.description",
+      "description": "data.value.logicboolean.self.resource",
       "version": "1.15",
       "example": "isActive: self.resource(type=gold) >= 10"
     },
     {
       "name": "self.resource.RESOURCE_TYPE",
       "type": "float",
-      "description": "data.value.logicboolean.self.resource.RESOURCE_TYPE.description",
+      "description": "data.value.logicboolean.self.resource.RESOURCE_TYPE",
       "version": "1.15",
       "example": "addResourcesWithLogic: hp += self.resource.gold"
     },
     {
       "name": "self.isResourceLargerThan",
       "type": "bool",
-      "description": "data.value.logicboolean.self.isResourceLargerThan.description",
+      "description": "data.value.logicboolean.self.isResourceLargerThan",
       "version": "1.14?",
       "example": "autoTrigger: self.isResourceLargerThan(source=oil, compareTarget=sauce, byMoreThan=100, multiplyTargetBy=0.2)"
     },
     {
       "name": "self.hp()",
       "type": "float / bool",
-      "description": "data.value.logicboolean.self.hp.description",
+      "description": "data.value.logicboolean.self.hp",
       "version": "1.15",
       "example": "addResourcesWithLogic: energy += select(self.hp > self.energy, 10, 3)"
     },
     {
       "name": "self.maxHp()",
       "type": "float / bool",
-      "description": "data.value.logicboolean.self.maxHp.description",
+      "description": "data.value.logicboolean.self.maxHp",
       "version": "1.15",
       "example": "setResourcesWithLogic: sauce = self.maxHp * self.energy"
     },
     {
       "name": "self.height()",
       "type": "float / bool",
-      "description": "data.value.logicboolean.self.height.description",
+      "description": "data.value.logicboolean.self.height",
       "version": "1.15",
       "example": "imageScale: 1 + (self.height * 0.1)"
     },
     {
       "name": "self.ammo()",
       "type": "int / bool",
-      "description": "data.value.logicboolean.self.ammo.description",
+      "description": "data.value.logicboolean.self.ammo",
       "version": "1.15",
       "example": "isLocked: if self.ammo < 1"
     },
     {
       "name": "self.isAmmoEmpty()",
       "type": "bool",
-      "description": "data.value.logicboolean.self.isAmmoEmpty.description",
+      "description": "data.value.logicboolean.self.isAmmoEmpty",
       "version": "1.15",
       "example": "isLockedAlt: self.isAmmoEmpty()"
     },
     {
       "name": "self.ammoIncludingQueued()",
       "type": "int / bool",
-      "description": "data.value.logicboolean.self.ammoIncludingQueued.description",
+      "description": "data.value.logicboolean.self.ammoIncludingQueued",
       "version": "1.15",
       "example": "isLocked: if self.ammoIncludingQueued(lessThan=12)"
     },
     {
       "name": "self.energy()",
       "type": "float / bool",
-      "description": "data.value.logicboolean.self.energy.description",
+      "description": "data.value.logicboolean.self.energy",
       "version": "1.15",
       "example": "isVisible: if self.energy() > 50"
     },
     {
       "name": "self.energyIncludingQueued()",
       "type": "float / bool",
-      "description": "data.value.logicboolean.self.energyIncludingQueued.description",
+      "description": "data.value.logicboolean.self.energyIncludingQueued",
       "version": "1.15",
       "example": "isVisible: if self.energyIncludingQueued()"
     },
     {
       "name": "self.isEnergyFull()",
       "type": "bool",
-      "description": "data.value.logicboolean.self.isEnergyFull.description",
+      "description": "data.value.logicboolean.self.isEnergyFull",
       "version": "1.15",
       "example": "isLocked: if self.isEnergyFull()"
     },
     {
       "name": "self.isEnergyEmpty()",
       "type": "bool",
-      "description": "data.value.logicboolean.self.isEnergyEmpty.description",
+      "description": "data.value.logicboolean.self.isEnergyEmpty",
       "version": "1.15",
       "example": "isActive: if self.isEnergyEmpty()"
     },
     {
       "name": "self.maxEnergy()",
       "type": "float / bool",
-      "description": "data.value.logicboolean.self.maxEnergy.description",
+      "description": "data.value.logicboolean.self.maxEnergy",
       "version": "1.15p10",
       "example": "isLocked: if memory.kills < self.maxEnergy()"
     },
     {
       "name": "self.isEnergyRecharging()",
       "type": "bool",
-      "description": "data.value.logicboolean.self.isEnergyRecharging.description",
+      "description": "data.value.logicboolean.self.isEnergyRecharging",
       "version": "1.15",
       "example": "text: Reload %{select(self.isEnergyRecharging(), \"\", \"[ready\"}"
     },
     {
       "name": "self.shield()",
       "type": "float / bool",
-      "description": "data.value.logicboolean.self.shield.description",
+      "description": "data.value.logicboolean.self.shield",
       "version": "1.15",
       "example": "isActive: if self.shield() == 0"
     },
     {
       "name": "self.maxShield()",
       "type": "float / bool",
-      "description": "data.value.logicboolean.self.maxShield.description",
+      "description": "data.value.logicboolean.self.maxShield",
       "version": "1.15p10",
       "example": "isLockedAlt2: if self.energy <= self.maxShield()/2"
     },
     {
       "name": "self.kills()",
       "type": "int / bool",
-      "description": "data.value.logicboolean.self.kills.description",
+      "description": "data.value.logicboolean.self.kills",
       "version": "1.15",
       "example": "setUnitMemory: score = self.kills()*3"
     },
     {
       "name": "self.queueSize()",
       "type": "int / bool",
-      "description": "data.value.logicboolean.self.queueSize.description",
+      "description": "data.value.logicboolean.self.queueSize",
       "version": "1.13.3",
       "example": "isLocked: if self.queueSize() >= 4"
     },
     {
       "name": "self.id()",
       "type": "int",
-      "description": "data.value.logicboolean.self.id.description",
+      "description": "data.value.logicboolean.self.id",
       "version": "1.15",
       "example": "setUnitMemory: UID = self.id()"
     },
     {
       "name": "self.teamId()",
       "type": "int",
-      "description": "data.value.logicboolean.self.teamId.description",
+      "description": "data.value.logicboolean.self.teamId",
       "version": "1.15",
       "example": "switchToteam: lastDamagedBy.teamId()"
     },
     {
       "name": "self.teamName()",
       "type": "string",
-      "description": "data.value.logicboolean.self.teamName.description",
+      "description": "data.value.logicboolean.self.teamName",
       "version": "1.15",
       "example": "showMessageToAllPlayers: %{attacking.teamName()} dominated %{thisActionTarget.teamName()}"
     },
     {
       "name": "self.playerName()",
       "type": "string",
-      "description": "data.value.logicboolean.self.playerName.description",
+      "description": "data.value.logicboolean.self.playerName",
       "version": "1.15",
       "example": "showQuickWarLogToAllPlayers: %{self.playerName()} destroyed %{thisActionTarget.playerName()}'s %{thisActionTarget}"
     },
     {
       "name": "self.x()",
       "type": "float",
-      "description": "data.value.logicboolean.self.x.description",
+      "description": "data.value.logicboolean.self.x",
       "version": "1.15",
       "example": "description: [Position]\\n[X]: %{self.x}\\n[Y]: %{self.y}\\n[Z]: %{self.z}\\n[D]: %{self.dir}"
     },
     {
       "name": "self.y()",
       "type": "float",
-      "description": "data.value.logicboolean.self.y.description",
+      "description": "data.value.logicboolean.self.y",
       "version": "1.15",
       "example": "description: [Position]\\n[X]: %{self.x}\\n[Y]: %{self.y}\\n[Z]: %{self.z}\\n[D]: %{self.dir}"
     },
     {
       "name": "self.z()",
       "type": "float",
-      "description": "data.value.logicboolean.self.z.description",
+      "description": "data.value.logicboolean.self.z",
       "version": "1.15",
       "example": "description: [Position]\\n[X]: %{self.x}\\n[Y]: %{self.y}\\n[Z]: %{self.z}\\n[D]: %{self.dir}"
     },
     {
       "name": "self.dir()",
       "type": "float",
-      "description": "data.value.logicboolean.self.dir.description",
+      "description": "data.value.logicboolean.self.dir",
       "version": "1.15",
       "example": "description: [Position]\\n[X]: %{self.x}\\n[Y]: %{self.y}\\n[Z]: %{self.z}\\n[D]: %{self.dir}"
     },
     {
       "name": "self.priceCredits()",
       "type": "float",
-      "description": "data.value.logicboolean.self.priceCredits.description",
+      "description": "data.value.logicboolean.self.priceCredits",
       "version": "1.15",
       "example": "addResourcesWithLogic: credits = attacking.priceCredits"
     },
     {
       "name": "self.builtAmount()",
       "type": "float",
-      "description": "data.value.logicboolean.self.builtAmount.description",
+      "description": "data.value.logicboolean.self.builtAmount",
       "version": "1.15p9",
       "example": "stack_indexCount: int(12 * (self.builtAmount * 0.1))"
     },
     {
       "name": "self.completed()",
       "type": "bool",
-      "description": "data.value.logicboolean.self.completed.description",
+      "description": "data.value.logicboolean.self.completed",
       "version": "1.15p9",
       "example": "autoTrigger: if self.completed()"
     },
     {
       "name": "self.speed()",
       "type": "float",
-      "description": "data.value.logicboolean.self.speed.description",
+      "description": "data.value.logicboolean.self.speed",
       "version": "1.15p9",
       "example": "isLockedAlt: if self.speed < 2"
     },
     {
       "name": "self.maxMoveSpeed()",
       "type": "float",
-      "description": "data.value.logicboolean.self.maxMoveSpeed.description",
+      "description": "data.value.logicboolean.self.maxMoveSpeed",
       "version": "1.15p9",
       "example": "autoTrigger: if memory.defaultSpeed < self.maxMoveSpeed"
     },
     {
       "name": "self.hasFlag()",
       "type": "bool",
-      "description": "data.value.logicboolean.self.hasFlag.description",
+      "description": "data.value.logicboolean.self.hasFlag",
       "version": "1.13",
       "example": "autoTrigger: if self.hasFlag(id=1)"
     },
     {
       "name": "self.tags()",
       "type": "bool",
-      "description": "data.value.logicboolean.self.tags.description",
+      "description": "data.value.logicboolean.self.tags",
       "version": "1.13",
       "example": "autoTrigger: if self.tags(includes='fish')"
     },
     {
       "name": "self.globalTeamTags()",
       "type": "bool",
-      "description": "data.value.logicboolean.self.globalTeamTags.description",
+      "description": "data.value.logicboolean.self.globalTeamTags",
       "version": "1.13.3",
       "example": "autoTrigger: if self.globalTeamTags(includes='animal')"
     },
     {
       "name": "self.transportingCount()",
       "type": "int",
-      "description": "data.value.logicboolean.self.transportingCount.description",
+      "description": "data.value.logicboolean.self.transportingCount",
       "version": "1.13",
       "example": "text: Load - %{self.transportingCount()}"
     },
     {
       "name": "self.numberOfAttachedUnits()",
       "type": "int / bool",
-      "description": "data.value.logicboolean.self.numberOfAttachedUnits.description",
+      "description": "data.value.logicboolean.self.numberOfAttachedUnits",
       "version": "1.13",
       "example": "text: Cores - %{self.numberOfAttachedUnits()}"
     },
     {
       "name": "self.isAttacking()",
       "type": "bool",
-      "description": "data.value.logicboolean.self.isAttacking.description",
+      "description": "data.value.logicboolean.self.isAttacking",
       "version": "1.13",
       "example": "setUnitStats: moveSpeed=select(self.isAttacking, 4, 2)"
     },
     {
       "name": "self.hasActiveWaypoint()",
       "type": "bool",
-      "description": "data.value.logicboolean.self.hasActiveWaypoint.description",
+      "description": "data.value.logicboolean.self.hasActiveWaypoint",
       "version": "1.13",
       "example": "text: Waypoint - %{self.hasActiveWaypoint(type='move')}"
     },
     {
       "name": "self.numberOfQueuedWaypoints()",
       "type": "int / bool",
-      "description": "data.value.logicboolean.self.numberOfQueuedWaypoints.description",
+      "description": "data.value.logicboolean.self.numberOfQueuedWaypoints",
       "version": "1.15",
       "example": "text: Waypoint Queue - %{self.numberOfQueuedWaypoints(type='attackMove') >= 2}"
     },
     {
       "name": "self.transportingUnitWithTags()",
       "type": "bool",
-      "description": "data.value.logicboolean.self.transportingUnitWithTags.description",
+      "description": "data.value.logicboolean.self.transportingUnitWithTags",
       "version": "1.13",
       "example": "requireConditional: if self.transportingUnitWithTags(includes='human')"
     },
     {
       "name": "self.hasParent()",
       "type": "bool",
-      "description": "data.value.logicboolean.self.hasParent.description",
+      "description": "data.value.logicboolean.self.hasParent",
       "version": "1.13",
       "example": "isVisible: if self.hasParent"
     },
     {
       "name": "self.hasTakenDamage()",
       "type": "float / bool",
-      "description": "data.value.logicboolean.self.hasTakenDamage.description",
+      "description": "data.value.logicboolean.self.hasTakenDamage",
       "version": "1.13",
       "example": "isActive: if self.hasTakenDamage(withinSeconds=1)"
     },
     {
       "name": "self.timeAlive()",
       "type": "float / bool",
-      "description": "data.value.logicboolean.self.timeAlive.description",
+      "description": "data.value.logicboolean.self.timeAlive",
       "version": "1.13",
       "example": "isLocked: if self.timeAlive() > 100"
     },
     {
       "name": "self.lastConverted()",
       "type": "float / bool",
-      "description": "data.value.logicboolean.self.lastConverted.description",
+      "description": "data.value.logicboolean.self.lastConverted",
       "version": "1.13",
       "example": "isLockedAlt2: if self.lastConverted()"
     },
     {
       "name": "self.customTimer()",
       "type": "float / bool",
-      "description": "data.value.logicboolean.self.customTimer.description",
+      "description": "data.value.logicboolean.self.customTimer",
       "version": "1.13",
       "example": "autoTrigger: if self.customTimer() > 120"
     },
     {
       "name": "self.isOnNeutralTeam()",
       "type": "bool",
-      "description": "data.value.logicboolean.self.isOnNeutralTeam.description",
+      "description": "data.value.logicboolean.self.isOnNeutralTeam",
       "version": "1.13",
       "example": ""
     },
     {
       "name": "self.numberOfUnitsInTeam()",
       "type": "int / bool",
-      "description": "data.value.logicboolean.self.numberOfUnitsInTeam.description",
+      "description": "data.value.logicboolean.self.numberOfUnitsInTeam",
       "version": "1.13",
       "example": "isLocked: if numberOfUnitsInTeam(withTag='techUnlockBuilding', lessThan=5)"
     },
     {
       "name": "self.numberOfUnitsInAllyTeam()",
       "type": "int / bool",
-      "description": "data.value.logicboolean.self.numberOfUnitsInAllyTeam.description",
+      "description": "data.value.logicboolean.self.numberOfUnitsInAllyTeam",
       "version": "1.13",
       "example": "description: TEAM %{self.teamName}\\n\\nTank Population: %{self.numberOfUnitsInAllyTeam()}"
     },
     {
       "name": "self.numberOfUnitsInAllyNotOwnTeam()",
       "type": "int / bool",
-      "description": "data.value.logicboolean.self.numberOfUnitsInAllyNotOwnTeam.description",
+      "description": "data.value.logicboolean.self.numberOfUnitsInAllyNotOwnTeam",
       "version": "1.14",
       "example": "isActive: if self.numberOfUnitsInAllyNotOwnTeam() > 100"
     },
     {
       "name": "self.numberOfUnitsInEnemyTeam()",
       "type": "int / bool",
-      "description": "data.value.logicboolean.self.numberOfUnitsInEnemyTeam.description",
+      "description": "data.value.logicboolean.self.numberOfUnitsInEnemyTeam",
       "version": "1.13.3",
       "example": "autoTrigger: if self.numberOfUnitsInEnemyTeam(withinRange=500) > 0"
     },
     {
       "name": "numberOfUnitsInNeutralTeam()",
       "type": "int / bool",
-      "description": "data.value.logicboolean.numberOfUnitsInNeutralTeam.description",
+      "description": "data.value.logicboolean.numberOfUnitsInNeutralTeam",
       "version": "1.14",
       "example": "isVisible: if memory.deadzone.numberOfUnitsInNeutralTeam() >= 10"
     },
     {
       "name": "numberOfUnitsInAggressiveTeam()",
       "type": "int / bool",
-      "description": "data.value.logicboolean.numberOfUnitsInAggressiveTeam.description",
+      "description": "data.value.logicboolean.numberOfUnitsInAggressiveTeam",
       "version": "1.14",
       "example": "isVisible: if memory.deadzone.numberOfUnitsInAggressiveTeam() >= 30"
     },
     {
       "name": "numberOfUnitsInAllTeams()",
       "type": "int / bool",
-      "description": "data.value.logicboolean.numberOfUnitsInAllTeams.description",
+      "description": "data.value.logicboolean.numberOfUnitsInAllTeams",
       "version": "1.15p9",
       "example": "text: Birds: %{numberOfUnitsInAllTeams(withTag=\"bird\")}"
     },
     {
       "name": "self.hasUnitInTeam()",
       "type": "bool",
-      "description": "data.value.logicboolean.self.hasUnitInTeam.description",
+      "description": "data.value.logicboolean.self.hasUnitInTeam",
       "version": "1.13.3",
       "example": "isLocked: if self.hasUnitInTeam(withTag=\"fish\")"
     },
     {
       "name": "self.noUnitInTeam()",
       "type": "bool",
-      "description": "data.value.logicboolean.self.noUnitInTeam.description",
+      "description": "data.value.logicboolean.self.noUnitInTeam",
       "version": "1.13.3",
       "example": "isLocked: if self.noUnitInTeam(withTag=\"infected\")"
     },
     {
       "name": "self.isControlledByAI()",
       "type": "bool",
-      "description": "data.value.logicboolean.self.isControlledByAI.description",
+      "description": "data.value.logicboolean.self.isControlledByAI",
       "version": "1.15",
       "example": "text: Robot? %{select(self.isControlledByAI(), \"Yes\", \"No\")}"
     },
     {
       "name": "self.readUnitMemory()",
       "type": "any type",
-      "description": "data.value.logicboolean.self.readUnitMemory.description",
+      "description": "data.value.logicboolean.self.readUnitMemory",
       "version": "1.15",
       "example": "isActive: if parent.readUnitMemory('boostTarget', type='unit') == self"
     },
     {
       "name": "thisActionTarget",
       "type": "unit / marker",
-      "description": "data.value.logicboolean.thisActionTarget.description",
+      "description": "data.value.logicboolean.thisActionTarget",
       "version": "1.15",
       "example": ""
     },
     {
       "name": "thisActionIndex",
       "type": "int",
-      "description": "data.value.logicboolean.thisActionIndex.description",
+      "description": "data.value.logicboolean.thisActionIndex",
       "version": "1.15",
       "example": "alsoTriggerActionRepeat: thisActionIndex"
     },
     {
       "name": "eventSource",
       "type": "unit / marker",
-      "description": "data.value.logicboolean.eventSource.description",
+      "description": "data.value.logicboolean.eventSource",
       "version": "1.15",
       "example": ""
     },
     {
       "name": "attachment",
       "type": "unit",
-      "description": "data.value.logicboolean.attachment.description",
+      "description": "data.value.logicboolean.attachment",
       "version": "1.15",
       "example": "setCustomTarget2: self.attachment(withTag='x').lastDamagedBy.getAsMarker()"
     },
     {
       "name": "transporting",
       "type": "unit",
-      "description": "data.value.logicboolean.transporting.description",
+      "description": "data.value.logicboolean.transporting",
       "version": "1.15",
       "example": "autoTrigger: if self.transporting(slot=0).hasResources(gold=100)"
     },
     {
       "name": "attacking",
       "type": "unit",
-      "description": "data.value.logicboolean.attacking.description",
+      "description": "data.value.logicboolean.attacking",
       "version": "1.15",
       "example": "isLocked: if attacking.tags(includes='bug') and attacking.hp < 20"
     },
     {
       "name": "lastDamagedBy",
       "type": "unit",
-      "description": "data.value.logicboolean.lastDamagedBy.description",
+      "description": "data.value.logicboolean.lastDamagedBy",
       "version": "1.15",
       "example": "teleportTo: lastDamagedBy"
     },
     {
       "name": "parent",
       "type": "unit",
-      "description": "data.value.logicboolean.parent.description",
+      "description": "data.value.logicboolean.parent",
       "version": "1.15",
       "example": "autoTrigger: if parent.energy > 100"
     },
     {
       "name": "activeWaypointTarget",
       "type": "unit",
-      "description": "data.value.logicboolean.activeWaypointTarget.description",
+      "description": "data.value.logicboolean.activeWaypointTarget",
       "version": "1.15",
       "example": "isActive: if distanceBetween(self, activeWaypointTarget) < 100"
     },
     {
       "name": "customTarget1",
       "type": "unit",
-      "description": "data.value.logicboolean.customTarget1.description",
+      "description": "data.value.logicboolean.customTarget1",
       "version": "1.15",
       "example": "isLocked: if parent.customTarget1 == self"
     },
     {
       "name": "customTarget2",
       "type": "unit",
-      "description": "data.value.logicboolean.customTarget2.description",
+      "description": "data.value.logicboolean.customTarget2",
       "version": "1.15",
       "example": "fireTurretXAtGround_withPosition: customTarget2"
     },
     {
       "name": "nearestUnit",
       "type": "unit",
-      "description": "data.value.logicboolean.nearestUnit.description",
+      "description": "data.value.logicboolean.nearestUnit",
       "version": "1.15",
       "example": "setCustomTarget1: nearestUnit(withTag=\"derrick\")"
     },
     {
       "name": "globalSearchForFirstUnit",
       "type": "unit",
-      "description": "data.value.logicboolean.globalSearchForFirstUnit.description",
+      "description": "data.value.logicboolean.globalSearchForFirstUnit",
       "version": "1.15",
       "example": "self.globalSearchForFirstUnit(withTag='gameController', relation='neutral')"
     },
     {
       "name": "nullUnit",
       "type": "unit",
-      "description": "data.value.logicboolean.nullUnit.description",
+      "description": "data.value.logicboolean.nullUnit",
       "version": "1.15",
       "example": "isLockedAlt2: if self.parent == nullUnit"
     },
     {
       "name": "getAsMarker",
       "type": "marker",
-      "description": "data.value.logicboolean.getAsMarker.description",
+      "description": "data.value.logicboolean.getAsMarker",
       "version": "1.15",
       "example": "lastDamagedBy.getAsMarker()"
     },
     {
       "name": "getOffsetAbsolute",
       "type": "marker",
-      "description": "data.value.logicboolean.getOffsetAbsolute.description",
+      "description": "data.value.logicboolean.getOffsetAbsolute",
       "version": "1.15",
       "example": "addWaypoint_target_fromReference: unitref getOffsetAbsolute(self.x, self.y+1000, self.z)"
     },
     {
       "name": "getOffsetRelative",
       "type": "marker",
-      "description": "data.value.logicboolean.getOffsetRelative.description",
+      "description": "data.value.logicboolean.getOffsetRelative",
       "version": "1.15",
       "example": "self.getOffsetRelative(y=100).nearestUnit(withinRange=70, withTag='mouse') != null"
     },
     {
       "name": "eventSource",
       "type": "event",
-      "description": "data.value.logicboolean.eventSource.event.description",
+      "description": "data.value.logicboolean.eventSource.event",
       "version": "1.15",
       "example": "text: Event: %{eventSource}"
     },
     {
       "name": "readUnitMemory",
       "type": "all arguments",
-      "description": "data.value.logicboolean.readUnitMemory.global.description",
+      "description": "data.value.logicboolean.readUnitMemory.global",
       "version": "1.15",
       "example": "self.readUnitMemory('ammoType', type='string'), parent.readUnitMemory(''attachmentArray\", type=\"unit[ ]\", index=5), attacking.readUnitMemory(\"wishlist\", type=\"string[ ]\")[12]"
     },
     {
       "name": "memory.NAME",
       "type": "self only",
-      "description": "data.value.logicboolean.memory.NAME.description",
+      "description": "data.value.logicboolean.memory.NAME",
       "version": "1.15",
       "example": "autoTrigger: if memory.experience > 100"
     },
     {
       "name": "memory.NAME.size",
       "type": "int",
-      "description": "data.value.logicboolean.memory.NAME.size.description",
+      "description": "data.value.logicboolean.memory.NAME.size",
       "version": "1.15",
       "example": "setUnitMemory: squadSize = memory.squad.size"
     },
     {
       "name": "memory.NAME.contains(query)",
       "type": "bool",
-      "description": "data.value.logicboolean.memory.NAME.contains.description",
+      "description": "data.value.logicboolean.memory.NAME.contains",
       "version": "1.15",
       "example": "autoTrigger: if memory.savedCoord.contains(lastDamagedBy.customTarget1.customTarget1)"
     },
     {
       "name": "distance(x1, y1, x2, y2)",
       "type": "float",
-      "description": "data.value.logicboolean.distance.description",
+      "description": "data.value.logicboolean.distance",
       "version": "1.15",
       "example": "isLocked: if distance(self.x, self.y, thisActionTarget.x, thisActionTarget.y) > 350"
     },
     {
       "name": "distanceSquared(x1, y1, x2, y2)",
       "type": "float",
-      "description": "data.value.logicboolean.distanceSquared.description",
+      "description": "data.value.logicboolean.distanceSquared",
       "version": "1.15",
       "example": "isLocked: if distanceSquared(self.x, self.y, thisActionTarget.x, thisActionTarget.y) > 19"
     },
     {
       "name": "distanceBetween(unit1, unit2)",
       "type": "float",
-      "description": "data.value.logicboolean.distanceBetween.description",
+      "description": "data.value.logicboolean.distanceBetween",
       "version": "1.15",
       "example": "isLocked: if distanceBetween(self, memory.antenna) > 1000"
     },
     {
       "name": "distanceBetweenSquared(unit1, unit2)",
       "type": "float",
-      "description": "data.value.logicboolean.distanceBetweenSquared.description",
+      "description": "data.value.logicboolean.distanceBetweenSquared",
       "version": "1.15",
       "example": "isLocked: if distanceBetweenSquared(self, memory.antenna) > 100"
     },
     {
       "name": "game.nukesEnabled()",
       "type": "bool",
-      "description": "data.value.logicboolean.game.nukesEnabled.description",
+      "description": "data.value.logicboolean.game.nukesEnabled",
       "version": "1.15",
       "example": "isActive: if not game.nukesEnabled()"
     },
     {
       "name": "int(x)",
       "type": "int",
-      "description": "data.value.logicboolean.int.description",
+      "description": "data.value.logicboolean.int",
       "version": "1.15",
       "example": "stack_indexCount: int(12 * (self.builtAmount * 0.1))"
     },
     {
       "name": "select(bool, textA, textB)",
       "type": "any",
-      "description": "data.value.logicboolean.select.description",
+      "description": "data.value.logicboolean.select",
       "version": "1.15",
       "example": "setUnitMemory: isEvenX = select(self.x % 2, true, false)"
     },
     {
       "name": "debug(logicBoolean)",
       "type": "string",
-      "description": "data.value.logicboolean.debug.description",
+      "description": "data.value.logicboolean.debug",
       "version": "1.15",
       "example": "description: [DEBUG] %{debug(self.x > self.y)}"
     },
     {
       "name": "str(x)",
       "type": "string",
-      "description": "data.value.logicboolean.str.description",
+      "description": "data.value.logicboolean.str",
       "version": "1.15",
       "example": "str(self.energy)+'x' == '100x'"
     },
     {
       "name": "substring(text,start,end)",
       "type": "string",
-      "description": "data.value.logicboolean.substring.description",
+      "description": "data.value.logicboolean.substring",
       "version": "1.15",
       "example": "substring('hello',0,2) == 'he'"
     },
     {
       "name": "length(string)",
       "type": "int",
-      "description": "data.value.logicboolean.length.description",
+      "description": "data.value.logicboolean.length",
       "version": "1.15",
       "example": "length(memory.sms)"
     },
     {
       "name": "squareRoot(num)",
       "type": "float",
-      "description": "data.value.logicboolean.squareRoot.description",
+      "description": "data.value.logicboolean.squareRoot",
       "version": "1.15",
       "example": "squareRoot(self.x + self.y)"
     },
     {
       "name": "min(num1, num2)",
       "type": "float",
-      "description": "data.value.logicboolean.min.description",
+      "description": "data.value.logicboolean.min",
       "version": "1.15",
       "example": "damage = min(self.hp, self.energy)"
     },
     {
       "name": "max(num1, num2)",
       "type": "float",
-      "description": "data.value.logicboolean.max.description",
+      "description": "data.value.logicboolean.max",
       "version": "1.15",
       "example": "max(5, 10) == 10"
     },
     {
       "name": "createMarker(x, y, [height], [teamId], [dir])",
       "type": "marker",
-      "description": "data.value.logicboolean.createMarker.description",
+      "description": "data.value.logicboolean.createMarker",
       "version": "1.15",
       "example": "fireTurretXAtGround_withTarget: createMarker(self.x + 500, self.y + 500)"
     },
     {
       "name": "eventData(name, type, [default])",
       "type": "any type",
-      "description": "data.value.logicboolean.eventData.description",
+      "description": "data.value.logicboolean.eventData",
       "version": "1.15",
       "example": "text: %{eventData(name=\"msg\", type=\"string\")}"
     },
     {
       "name": "sin(angle)",
       "type": "float",
-      "description": "data.value.logicboolean.sin.description",
+      "description": "data.value.logicboolean.sin",
       "version": "1.15",
       "example": "sin(10) = 0.173"
     },
     {
       "name": "cos(angle)",
       "type": "float",
-      "description": "data.value.logicboolean.cos.description",
+      "description": "data.value.logicboolean.cos",
       "version": "1.15",
       "example": "cos(60) = 0.5"
     },
     {
       "name": "rnd(min, max)",
       "type": "float",
-      "description": "data.value.logicboolean.rnd.description",
+      "description": "data.value.logicboolean.rnd",
       "version": "1.15",
       "example": "rnd(666, 888)"
     },
     {
       "name": "lowercase(string)",
       "type": "string",
-      "description": "data.value.logicboolean.lowercase.description",
+      "description": "data.value.logicboolean.lowercase",
       "version": "1.15",
       "example": "lowercase(\"Spaghetti Macaroni Lasagna\") -> \"spaghetti macaroni lasagna\""
     },
     {
       "name": "uppercase(string)",
       "type": "string",
-      "description": "data.value.logicboolean.uppercase.description",
+      "description": "data.value.logicboolean.uppercase",
       "version": "1.15",
       "example": "uppercase(\"fish dish wish\") -> \"FISH DISH WISH\""
     },
     {
       "name": "direction(x1, y1, x2, y2)",
       "type": "float",
-      "description": "data.value.logicboolean.direction.description",
+      "description": "data.value.logicboolean.direction",
       "version": "1.15",
       "example": "direction(self.x, self.y, attacking.x, attacking.y)"
     },
     {
       "name": "directionBetween(unit1, unit2)",
       "type": "float",
-      "description": "data.value.logicboolean.directionBetween.description",
+      "description": "data.value.logicboolean.directionBetween",
       "version": "1.15",
       "example": "directionBetween(self, lastDamagedBy)"
     },
     {
       "name": "self.isInMap()",
       "type": "bool",
-      "description": "data.value.logicboolean.self.isInMap.description",
+      "description": "data.value.logicboolean.self.isInMap",
       "version": "1.15",
       "example": "autoTrigger: if not self.isInMap()"
     },
     {
       "name": "game.mapWidth()",
       "type": "float",
-      "description": "data.value.logicboolean.game.mapWidth.description",
+      "description": "data.value.logicboolean.game.mapWidth",
       "version": "1.15",
       "example": "fireTurretXAtGround_withTarget: createMarker(rnd(0, game.mapWidth), rnd(0, game.mapHeight))"
     },
     {
       "name": "game.mapHeight()",
       "type": "float",
-      "description": "data.value.logicboolean.game.mapHeight.description",
+      "description": "data.value.logicboolean.game.mapHeight",
       "version": "1.15",
       "example": "fireTurretXAtGround_withTarget: createMarker(rnd(0, game.mapWidth), rnd(0, game.mapHeight))"
     },
     {
       "name": "self.teamDefeatedTech()",
       "type": "bool",
-      "description": "data.value.logicboolean.self.teamDefeatedTech.description",
+      "description": "data.value.logicboolean.self.teamDefeatedTech",
       "version": "1.15p9",
       "example": "autoTrigger: if attacking.teamDefeatedTech()"
     },
     {
       "name": "self.teamWipedOut()",
       "type": "bool",
-      "description": "data.value.logicboolean.self.teamWipedOut.description",
+      "description": "data.value.logicboolean.self.teamWipedOut",
       "version": "1.15p9",
       "example": "autoTrigger: if self.teamWipedOut()"
     },
     {
       "name": "self.teamVictory()",
       "type": "bool",
-      "description": "data.value.logicboolean.self.teamVictory.description",
+      "description": "data.value.logicboolean.self.teamVictory",
       "version": "1.15p9",
       "example": "autoTrigger: if self.teamVictory()"
     }

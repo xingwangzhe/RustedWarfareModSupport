@@ -1,5 +1,19 @@
 # 更新日志 / Changelog
 
+## [1.7.34] - 2025-10-6
+
+- 修复翻译键一致性问题，移除logicboolean.json中所有错误的.description后缀
+- 清理翻译文件中多余的翻译键，确保翻译键与原始键完全匹配
+- 更新Copilot指令文档，添加严格的翻译键管理规定，禁止使用.description后缀
+- 建立翻译键验证流程，确保每次翻译添加都经过验证
+- 修正self多余重复补全bug
+
+- Fixed translation key consistency issues, removed all incorrect .description suffixes from logicboolean.json
+- Cleaned up extra translation keys in translation files to ensure perfect matching with original keys
+- Updated Copilot instruction documentation with strict translation key management rules prohibiting .description suffixes
+- Established translation key validation process to ensure all translation additions are verified
+- Fixed self redundant completion bug
+
 ## [1.7.33] - 2025-10-4
 
 - 更新npm依赖

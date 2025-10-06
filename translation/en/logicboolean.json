@@ -87,7 +87,6 @@
   "data.value.logicboolean.self.noUnitInTeam": "No Unit In Team",
   "data.value.logicboolean.self.isControlledByAI": "Is Controlled By AI",
   "data.value.logicboolean.self.readUnitMemory": "Read Unit Memory",
-  "data.value.logicboolean.self": "Self",
   "data.value.logicboolean.thisActionTarget": "This Action Target",
   "data.value.logicboolean.thisActionIndex": "This Action Index",
   "data.value.logicboolean.eventSource": "Event Source",

@@ -261,6 +261,76 @@ protected provideValueCompletionItems(
 - MovementTypeValueCompletionProvider.ts
 - UnitSpawnCompletionProvider.ts
 
+### Fixing LogicBoolean "self." Completion Duplication
+
+**IMPORTANT**: LogicBoolean completion providers must handle "self." prefix duplication to prevent "self.self." issues.
+
+**Problem**: When users type "self." and then trigger completion, selecting items like "self.isUnderwater()" would result in "self.self.isUnderwater()" duplication.
+
+**Solution**: Check if text before cursor ends with "self." and modify completion items accordingly.
+
+**Correct Implementation**:
+
+```typescript
+private getBasicLogicBooleanCompletionItems(
+  document: vscode.TextDocument,
+  position: vscode.Position
+): vscode.CompletionItem[] {
+  // 获取当前行文本和光标前的文本
+  const lineText = document.lineAt(position.line).text;
+  const textBeforeCursor = lineText.substring(0, position.character);
+
+  // 检查光标前是否已经包含"self."
+  const hasSelfPrefix = textBeforeCursor.endsWith("self.");
+
+  const completionItems = createCompletionItemsFromDataFile(
+    "logicboolean",
+    vscode.CompletionItemKind.Value,
+    "valuecompletionprovider.logicboolean.detail",
+    {
+      useNameAsInsertText: true,
+      customDocumentation: (item: any) =>
+        new vscode.MarkdownString(
+          t("valuecompletionprovider.logicboolean.documentation", [
+            t(item.description),
+            item.version,
+            t(item.example),
+          ])
+        ),
+    }
+  );
+
+  // 如果已经输入了"self."，修改补全项以避免重复
+  if (hasSelfPrefix) {
+    return completionItems.map((item) => {
+      const labelText = typeof item.label === 'string' ? item.label : item.label.label;
+      if (labelText.startsWith("self.")) {
+        // 创建新的补全项，只显示self.之后的部分
+        const newLabel = labelText.substring(5); // 移除"self."前缀
+        const newItem = new vscode.CompletionItem(
+          newLabel,
+          item.kind
+        );
+        newItem.detail = item.detail;
+        newItem.documentation = item.documentation;
+        newItem.insertText = new vscode.SnippetString(newLabel);
+        return newItem;
+      }
+      return item;
+    });
+  }
+
+  return completionItems;
+}
+```
+
+**Validation Steps**:
+
+1. **Test Case Creation**: Create INI files with LogicBoolean properties
+2. **Duplication Check**: Type "self." then trigger completion and verify no "self.self." appears
+3. **Normal Completion**: Verify completion still works when "self." is not pre-typed
+4. **Compilation Test**: Run `bun run compile` to ensure no type errors
+
 ### Adding New Value Completion
 
 1. Create new provider extending `BaseValueCompletionProvider`
@@ -295,6 +365,52 @@ const message = t("Hello World from RustedWarfareModSupport!");
 - **Bundle Files**: Merged translation files are generated in `translation/bundle.l10n.{lang}.json`
 - **Merge Process**: Use `node merge.js` to combine individual translation files into bundle files
 - **Never Edit**: Do not manually edit `bundle.l10n*.json` files - they are auto-generated
+
+### Translation Key Management
+
+**CRITICAL RULES FOR TRANSLATION KEYS:**
+
+1. **PROHIBITED: .description Suffixes**
+   - ❌ **NEVER** add `.description` suffix to original keys in data files
+   - ❌ **NEVER** use keys like `"data.value.logicboolean.self.isUnderwater.description"`
+   - ✅ **ALWAYS** use clean keys like `"data.value.logicboolean.self.isUnderwater"`
+
+2. **Translation Key Matching Requirements**
+   - **MANDATORY**: Every translation key must exactly match an existing original key in data files
+   - **MANDATORY**: Before adding any translation, verify the original key exists in the corresponding data file
+   - **MANDATORY**: Use terminal commands to validate key matching:
+     ```bash
+     # Extract keys from data file
+     grep -o '"[^"]*":' data/value/filename.json | sed 's/":$//' | sed 's/^"//'
+     
+     # Extract keys from translation file  
+     grep -o '"[^"]*":' translation/en/filename.json | sed 's/":$//' | sed 's/^"//'
+     
+     # Compare keys (should have identical output)
+     comm -23 <(sort data_keys.txt) <(sort translation_keys.txt)  # Check for missing
+     comm -13 <(sort data_keys.txt) <(sort translation_keys.txt)  # Check for extra
+     ```
+
+3. **Translation Addition Process**
+   - Step 1: Identify the original key in the data file (e.g., `data/value/logicboolean.json`)
+   - Step 2: Verify the key exists and is correctly formatted (no .description suffix)
+   - Step 3: Add the exact same key to translation files in each language directory
+   - Step 4: Run `node merge.js` to update bundle files
+   - Step 5: Run `bun run compile` to ensure no translation errors
+
+4. **Key Validation Checklist**
+   - [ ] Original key exists in data file without .description suffix
+   - [ ] Translation key exactly matches original key
+   - [ ] No extra keys in translation files
+   - [ ] No missing keys in translation files
+   - [ ] Compilation passes after changes
+   - [ ] Bundle files updated via `node merge.js`
+
+**VIOLATION CONSEQUENCES:**
+- Using .description suffixes will break translation loading
+- Mismatched keys will cause runtime translation failures
+- Extra translation keys waste bundle size and create confusion
+- Missing translation keys result in fallback to English or undefined strings
 
 ### Adding New Translations
 

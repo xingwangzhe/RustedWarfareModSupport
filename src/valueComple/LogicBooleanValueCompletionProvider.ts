@@ -1,7 +1,10 @@
 import * as vscode from "vscode";
+import * as fs from "fs";
+import * as path from "path";
 import { BaseValueCompletionProvider } from "./BaseValueCompletionProvider";
 import { createCompletionItemsFromDataFile } from "../common/valueCompletionUtils";
 import { getSectionProperties } from "../dataProcessor";
+import { getExtensionId } from "../extension";
 import { t } from "../translationManager";
 
 /**
@@ -22,28 +25,90 @@ export class LogicBooleanValueCompletionProvider extends BaseValueCompletionProv
     );
 
     if (property && property.type === "LogicBoolean") {
-      return this.getBasicLogicBooleanCompletionItems();
+      return this.getBasicLogicBooleanCompletionItems(document, position);
     }
 
     return [];
   }
 
-  private getBasicLogicBooleanCompletionItems(): vscode.CompletionItem[] {
-    return createCompletionItemsFromDataFile(
+  private getBasicLogicBooleanCompletionItems(
+    document: vscode.TextDocument,
+    position: vscode.Position
+  ): vscode.CompletionItem[] {
+    // 获取当前行文本和光标前的文本
+    const lineText = document.lineAt(position.line).text;
+    const textBeforeCursor = lineText.substring(0, position.character);
+
+    // 检查光标前是否已经包含"self."
+    const hasSelfPrefix = textBeforeCursor.endsWith("self.");
+
+    const completionItems = createCompletionItemsFromDataFile(
       "logicboolean",
       vscode.CompletionItemKind.Value,
-      "valuecompletionprovider.logicboolean.detail",
-      {
-        useNameAsInsertText: true,
-        customDocumentation: (item: any) =>
-          new vscode.MarkdownString(
-            t("valuecompletionprovider.logicboolean.documentation", [
-              t(item.description),
-              item.version,
-              t(item.example),
-            ])
-          ),
-      }
+      "valuecompletionprovider.logicboolean.detail"
     );
+
+    // 如果已经输入了"self."，修改补全项以避免重复
+    if (hasSelfPrefix) {
+      // 先获取原始数据以便后续使用
+      const rawData = this.getRawLogicBooleanData();
+
+      return completionItems.map((item, index) => {
+        const labelText = typeof item.label === 'string' ? item.label : item.label.label;
+        if (labelText.startsWith("self.")) {
+          // 创建新的补全项，只显示self.之后的部分
+          const newLabel = labelText.substring(5); // 移除"self."前缀
+          const newItem = new vscode.CompletionItem(
+            newLabel,
+            item.kind
+          );
+          newItem.detail = item.detail;
+
+          // 为简化补全项生成对应的文档
+          const originalData = rawData[index]; // 获取对应的原始数据
+          // 使用默认的documentation生成逻辑
+          let documentation = new vscode.MarkdownString(t(originalData.description));
+          if (originalData.example) {
+            const exampleText = t(originalData.example);
+            documentation.appendMarkdown(`\n\n**${t('completionprovider.example')}:**\n\`\`\`ini\n${exampleText}\n\`\`\``);
+          }
+          newItem.documentation = documentation;
+
+          newItem.insertText = new vscode.SnippetString(newLabel);
+          return newItem;
+        }
+        return item;
+      });
+    }
+
+    return completionItems;
+  }
+
+  /**
+   * 获取原始的logicboolean数据
+   * @returns 原始数据数组
+   */
+  private getRawLogicBooleanData(): any[] {
+    try {
+      // 获取扩展路径
+      const extension = vscode.extensions.getExtension(getExtensionId());
+      if (!extension) {
+        return [];
+      }
+
+      const extensionPath = extension.extensionPath;
+      const filePath = path.join(extensionPath, 'data', 'value', 'logicboolean.json');
+
+      if (!fs.existsSync(filePath)) {
+        return [];
+      }
+
+      // 读取数据文件
+      const data = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+      return data.data || [];
+    } catch (error) {
+      console.error('Error reading raw logicboolean data:', error);
+      return [];
+    }
   }
 }
