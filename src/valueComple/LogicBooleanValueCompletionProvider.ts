@@ -48,37 +48,48 @@ export class LogicBooleanValueCompletionProvider extends BaseValueCompletionProv
       "valuecompletionprovider.logicboolean.detail"
     );
 
-    // 如果已经输入了"self."，修改补全项以避免重复
+    // 如果已经输入了"self."，修改补全项以避免重复，并过滤掉不合适的运算符
     if (hasSelfPrefix) {
+      // 定义算术运算符列表，这些在self.后不合适
+      const arithmeticOperators = ['+', '-', '*', '/', '<', '>', '<=', '>=', '==', '!='];
+
       // 先获取原始数据以便后续使用
       const rawData = this.getRawLogicBooleanData();
 
-      return completionItems.map((item, index) => {
-        const labelText = typeof item.label === 'string' ? item.label : item.label.label;
-        if (labelText.startsWith("self.")) {
-          // 创建新的补全项，只显示self.之后的部分
-          const newLabel = labelText.substring(5); // 移除"self."前缀
-          const newItem = new vscode.CompletionItem(
-            newLabel,
-            item.kind
-          );
-          newItem.detail = item.detail;
-
-          // 为简化补全项生成对应的文档
-          const originalData = rawData[index]; // 获取对应的原始数据
-          // 使用默认的documentation生成逻辑
-          let documentation = new vscode.MarkdownString(t(originalData.description));
-          if (originalData.example) {
-            const exampleText = t(originalData.example);
-            documentation.appendMarkdown(`\n\n**${t('completionprovider.example')}:**\n\`\`\`ini\n${exampleText}\n\`\`\``);
+      return completionItems
+        .map((item, index) => {
+          const labelText = typeof item.label === 'string' ? item.label : item.label.label;
+          
+          // 过滤掉算术运算符
+          if (arithmeticOperators.includes(labelText)) {
+            return null; // 返回null表示过滤掉
           }
-          newItem.documentation = documentation;
+          
+          if (labelText.startsWith("self.")) {
+            // 创建新的补全项，只显示self.之后的部分
+            const newLabel = labelText.substring(5); // 移除"self."前缀
+            const newItem = new vscode.CompletionItem(
+              newLabel,
+              item.kind
+            );
+            newItem.detail = item.detail;
 
-          newItem.insertText = new vscode.SnippetString(newLabel);
-          return newItem;
-        }
-        return item;
-      });
+            // 为简化补全项生成对应的文档
+            const originalData = rawData[index]; // 获取对应的原始数据
+            // 使用默认的documentation生成逻辑
+            let documentation = new vscode.MarkdownString(t(originalData.description));
+            if (originalData.example) {
+              const exampleText = t(originalData.example);
+              documentation.appendMarkdown(`\n\n**${t('completionprovider.example')}:**\n\`\`\`ini\n${exampleText}\n\`\`\``);
+            }
+            newItem.documentation = documentation;
+
+            newItem.insertText = new vscode.SnippetString(newLabel);
+            return newItem;
+          }
+          return item;
+        })
+        .filter(item => item !== null); // 过滤掉null项
     }
 
     return completionItems;
