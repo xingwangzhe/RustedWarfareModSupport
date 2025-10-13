@@ -18,6 +18,7 @@ import { initializePanelManager, getPanelManager } from "./panel/panelManager";
 // 直接导入面板相关模块，避免动态导入
 import { ModPanelProvider, ModPanelItem } from "./panel/index";
 import { PanelDataManager } from "./panel/provider";
+import { EXTENSION_ID } from "./constants";
 
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
@@ -336,8 +337,7 @@ export function deactivate() {}
  * 获取当前扩展的完整ID (publisher.name)
  */
 export function getExtensionId(): string {
-  const packageJson = require("../package.json");
-  return `${packageJson.publisher}.${packageJson.name}`;
+  return EXTENSION_ID;
 }
 
 /**

@@ -1,5 +1,11 @@
 # 更新日志 / Changelog
 
+## [1.7.35] - 2025-10-13
+
+- 修复字符串高亮
+- fix the highlight for string
+
+
 ## [1.7.34] - 2025-10-6
 
 - 修复翻译键一致性问题，移除logicboolean.json中所有错误的.description后缀

@@ -1,8 +1,8 @@
-import * as fs from 'fs';
-import * as path from 'path';
-import * as vscode from 'vscode';
-import { matchBaseSection } from './common/matchRules';
-import { getExtensionId } from './extension';
+import * as fs from "fs";
+import * as path from "path";
+import * as vscode from "vscode";
+import { matchBaseSection } from "./common/matchRules";
+import { EXTENSION_ID } from "./constants";
 
 /**
  * 从示例字符串中提取值部分
@@ -10,7 +10,7 @@ import { getExtensionId } from './extension';
  * @returns 提取的值
  */
 export function extractExampleValue(example: string): string {
-    return example.split(':')[1]?.trim() || '';
+  return example.split(":")[1]?.trim() || "";
 }
 
 /**
@@ -19,8 +19,8 @@ export function extractExampleValue(example: string): string {
  * @returns 基本节名称
  */
 export function getBaseSectionName(name: string): string {
-    // 使用公共匹配规则模块进行匹配
-    return matchBaseSection(name);
+  // 使用公共匹配规则模块进行匹配
+  return matchBaseSection(name);
 }
 
 /**
@@ -29,85 +29,115 @@ export function getBaseSectionName(name: string): string {
  * @returns 属性数组
  */
 export function getSectionProperties(sectionName: string): any[] {
-    try {
-        // 获取基本节名称
-        const baseSectionName = getBaseSectionName(sectionName);
+  try {
+    // 获取基本节名称
+    const baseSectionName = getBaseSectionName(sectionName);
 
-        // 获取扩展的实际路径
-        const extension = vscode.extensions.getExtension(getExtensionId());
-        if (!extension) {
-            console.error('Cannot find extension');
-            return [];
-        }
-
-        const extensionPath = extension.extensionPath;
-
-        // 构建语言特定的数据文件路径
-        let sectionPath = path.join(extensionPath, 'data', 'sections', `${baseSectionName}.json`);
-
-        // 检查是否存在语言特定的文件
-        const localizedPath = path.join(extensionPath, 'data', 'sections', vscode.env.language, `${baseSectionName}.json`);
-        if (fs.existsSync(localizedPath)) {
-            sectionPath = localizedPath;
-        }
-        
-        // 如果目标文件不存在，尝试更宽松的匹配：在 sections 目录（或语言子目录）中查找最接近的文件名
-    if (!fs.existsSync(sectionPath)) {
-            const localizedDir = path.join(extensionPath, 'data', 'sections', vscode.env.language);
-            const defaultDir = path.join(extensionPath, 'data', 'sections');
-            const dirToSearch = fs.existsSync(localizedDir) ? localizedDir : defaultDir;
-
-            try {
-                const files = fs.readdirSync(dirToSearch).filter(f => f.endsWith('.json'));
-                // 优先查找精确或前缀匹配
-                let matched: string | null = null;
-                for (const f of files) {
-                    const nameWithoutExt = path.basename(f, '.json');
-                    if (nameWithoutExt === sectionName || nameWithoutExt === baseSectionName) {
-                        matched = f;
-                        break;
-                    }
-                }
-
-                if (!matched) {
-                    for (const f of files) {
-                        const nameWithoutExt = path.basename(f, '.json');
-                        // 如果节名以文件名为前缀，或者文件名在节名中出现，则认为匹配
-                        if (sectionName.startsWith(nameWithoutExt + '_') || sectionName.startsWith(nameWithoutExt + ':') || sectionName.includes(nameWithoutExt)) {
-                            matched = f;
-                            break;
-                        }
-                    }
-                }
-
-                if (matched) {
-                    sectionPath = path.join(dirToSearch, matched);
-                }
-            } catch (err) {
-                // 忽略读取目录错误，稍后会抛出不存在文件的捕获分支
-                console.debug('Ignored error while searching sections dir:', err && (err as Error).message);
-            }
-        }
-
-        if (!fs.existsSync(sectionPath)) {
-            // 未找到合适的属性定义文件，作为最后的回退：按文件内部的 metadata(field `name`) 做严格匹配
-            const foundByMetadata = findSectionPathByMetadata(sectionName);
-            if (foundByMetadata) {
-                sectionPath = foundByMetadata;
-            }
-        }
-
-        if (!fs.existsSync(sectionPath)) {
-            // 最终仍未找到合适的属性定义文件
-            return [];
-        }
-
-        const sectionData = JSON.parse(fs.readFileSync(sectionPath, 'utf8'));
-        return sectionData.data || [];
-    } catch (error) {
-        console.error(`Error reading ${sectionName}.json:`, error);
-        return [];
+    // 获取扩展的实际路径
+    const extension = vscode.extensions.getExtension(EXTENSION_ID);
+    if (!extension) {
+      console.error("Cannot find extension");
+      return [];
     }
+
+    const extensionPath = extension.extensionPath;
+
+    // 构建语言特定的数据文件路径
+    let sectionPath = path.join(
+      extensionPath,
+      "data",
+      "sections",
+      `${baseSectionName}.json`
+    );
+
+    // 检查是否存在语言特定的文件
+    const localizedPath = path.join(
+      extensionPath,
+      "data",
+      "sections",
+      vscode.env.language,
+      `${baseSectionName}.json`
+    );
+    if (fs.existsSync(localizedPath)) {
+      sectionPath = localizedPath;
+    }
+
+    // 如果目标文件不存在，尝试更宽松的匹配：在 sections 目录（或语言子目录）中查找最接近的文件名
+    if (!fs.existsSync(sectionPath)) {
+      const localizedDir = path.join(
+        extensionPath,
+        "data",
+        "sections",
+        vscode.env.language
+      );
+      const defaultDir = path.join(extensionPath, "data", "sections");
+      const dirToSearch = fs.existsSync(localizedDir)
+        ? localizedDir
+        : defaultDir;
+
+      try {
+        const files = fs
+          .readdirSync(dirToSearch)
+          .filter((f) => f.endsWith(".json"));
+        // 优先查找精确或前缀匹配
+        let matched: string | null = null;
+        for (const f of files) {
+          const nameWithoutExt = path.basename(f, ".json");
+          if (
+            nameWithoutExt === sectionName ||
+            nameWithoutExt === baseSectionName
+          ) {
+            matched = f;
+            break;
+          }
+        }
+
+        if (!matched) {
+          for (const f of files) {
+            const nameWithoutExt = path.basename(f, ".json");
+            // 如果节名以文件名为前缀，或者文件名在节名中出现，则认为匹配
+            if (
+              sectionName.startsWith(nameWithoutExt + "_") ||
+              sectionName.startsWith(nameWithoutExt + ":") ||
+              sectionName.includes(nameWithoutExt)
+            ) {
+              matched = f;
+              break;
+            }
+          }
+        }
+
+        if (matched) {
+          sectionPath = path.join(dirToSearch, matched);
+        }
+      } catch (err) {
+        // 忽略读取目录错误，稍后会抛出不存在文件的捕获分支
+        console.debug(
+          "Ignored error while searching sections dir:",
+          err && (err as Error).message
+        );
+      }
+    }
+
+    if (!fs.existsSync(sectionPath)) {
+      // 未找到合适的属性定义文件，作为最后的回退：按文件内部的 metadata(field `name`) 做严格匹配
+      const foundByMetadata = findSectionPathByMetadata(sectionName);
+      if (foundByMetadata) {
+        sectionPath = foundByMetadata;
+      }
+    }
+
+    if (!fs.existsSync(sectionPath)) {
+      // 最终仍未找到合适的属性定义文件
+      return [];
+    }
+
+    const sectionData = JSON.parse(fs.readFileSync(sectionPath, "utf8"));
+    return sectionData.data || [];
+  } catch (error) {
+    console.error(`Error reading ${sectionName}.json:`, error);
+    return [];
+  }
 }
 
 // 缓存：从 sectionData.name 到 文件路径 的映射，避免重复昂贵扫描
@@ -118,53 +148,66 @@ const sectionMetadataCache: Map<string, string> = new Map();
  * 仅在其他快速匹配策略失败后调用。
  */
 function findSectionPathByMetadata(sectionName: string): string | null {
-    if (sectionMetadataCache.has(sectionName)) {
-        return sectionMetadataCache.get(sectionName) || null;
-    }
+  if (sectionMetadataCache.has(sectionName)) {
+    return sectionMetadataCache.get(sectionName) || null;
+  }
 
-    // 获取扩展的实际路径
-    const extension = vscode.extensions.getExtension(getExtensionId());
-    if (!extension) {
-        return null;
-    }
-
-    const extensionPath = extension.extensionPath;
-    const localizedDir = path.join(extensionPath, 'data', 'sections', vscode.env.language);
-    const defaultDir = path.join(extensionPath, 'data', 'sections');
-    const dirs = [] as string[];
-    if (fs.existsSync(localizedDir)) {
-        dirs.push(localizedDir);
-    }
-    if (fs.existsSync(defaultDir)) {
-        dirs.push(defaultDir);
-    }
-
-    for (const dir of dirs) {
-        try {
-            const files = fs.readdirSync(dir).filter(f => f.endsWith('.json'));
-            for (const f of files) {
-                const p = path.join(dir, f);
-                try {
-                    const raw = fs.readFileSync(p, 'utf8');
-                    const json = JSON.parse(raw);
-                    // 如果文件内部定义了 name 字段并且严格匹配请求的节名，则认为是对应的定义文件
-                    if (json && typeof json.name === 'string' && json.name === sectionName) {
-                        sectionMetadataCache.set(sectionName, p);
-                        return p;
-                    }
-                } catch (e) {
-                    // 忽略单文件解析错误，继续扫描
-                    console.debug('Ignored parse error for', p, (e as Error).message);
-                }
-            }
-        } catch (e) {
-            console.debug('Ignored error while scanning dir for metadata:', dir, (e as Error).message);
-        }
-    }
-
-    // 未找到，缓存空结果以避免重复扫描
-    sectionMetadataCache.set(sectionName, '');
+  // 获取扩展的实际路径
+  const extension = vscode.extensions.getExtension(EXTENSION_ID);
+  if (!extension) {
     return null;
+  }
+
+  const extensionPath = extension.extensionPath;
+  const localizedDir = path.join(
+    extensionPath,
+    "data",
+    "sections",
+    vscode.env.language
+  );
+  const defaultDir = path.join(extensionPath, "data", "sections");
+  const dirs = [] as string[];
+  if (fs.existsSync(localizedDir)) {
+    dirs.push(localizedDir);
+  }
+  if (fs.existsSync(defaultDir)) {
+    dirs.push(defaultDir);
+  }
+
+  for (const dir of dirs) {
+    try {
+      const files = fs.readdirSync(dir).filter((f) => f.endsWith(".json"));
+      for (const f of files) {
+        const p = path.join(dir, f);
+        try {
+          const raw = fs.readFileSync(p, "utf8");
+          const json = JSON.parse(raw);
+          // 如果文件内部定义了 name 字段并且严格匹配请求的节名，则认为是对应的定义文件
+          if (
+            json &&
+            typeof json.name === "string" &&
+            json.name === sectionName
+          ) {
+            sectionMetadataCache.set(sectionName, p);
+            return p;
+          }
+        } catch (e) {
+          // 忽略单文件解析错误，继续扫描
+          console.debug("Ignored parse error for", p, (e as Error).message);
+        }
+      }
+    } catch (e) {
+      console.debug(
+        "Ignored error while scanning dir for metadata:",
+        dir,
+        (e as Error).message
+      );
+    }
+  }
+
+  // 未找到，缓存空结果以避免重复扫描
+  sectionMetadataCache.set(sectionName, "");
+  return null;
 }
 
 /**
@@ -172,8 +215,10 @@ function findSectionPathByMetadata(sectionName: string): string | null {
  * @param sectionName 节名称
  * @returns 匹配器函数
  */
-export function createSimpleSectionMatcher(sectionName: string): (name: string) => boolean {
-    return (name: string) => name === sectionName;
+export function createSimpleSectionMatcher(
+  sectionName: string
+): (name: string) => boolean {
+  return (name: string) => name === sectionName;
 }
 
 /**
@@ -181,8 +226,10 @@ export function createSimpleSectionMatcher(sectionName: string): (name: string) 
  * @param prefix 前缀
  * @returns 匹配器函数
  */
-export function createPrefixSectionMatcher(prefix: string): (name: string) => boolean {
-    return (name: string) => name.startsWith(prefix);
+export function createPrefixSectionMatcher(
+  prefix: string
+): (name: string) => boolean {
+  return (name: string) => name.startsWith(prefix);
 }
 
 /**
@@ -190,8 +237,10 @@ export function createPrefixSectionMatcher(prefix: string): (name: string) => bo
  * @param pattern 正则表达式模式
  * @returns 匹配器函数
  */
-export function createRegexSectionMatcher(pattern: RegExp): (name: string) => boolean {
-    return (name: string) => pattern.test(name);
+export function createRegexSectionMatcher(
+  pattern: RegExp
+): (name: string) => boolean {
+  return (name: string) => pattern.test(name);
 }
 
 /**
@@ -201,43 +250,47 @@ export function createRegexSectionMatcher(pattern: RegExp): (name: string) => bo
  * @param sectionMatcher 节匹配器函数
  * @returns 是否在节内
  */
-export function isInsideSection(document: vscode.TextDocument, position: vscode.Position, sectionMatcher: (sectionName: string) => boolean): boolean {
-    // 从光标所在行向上遍历，查找最近的节定义
-    let stop = false;
-    for (let i = position.line - 1; i >= 0; i--) {
-        const line = document.lineAt(i).text.trim();
-        //弱匹配，因为只有节存在[]符号
-        if (line.startsWith('[') && line.endsWith(']')) {
-            const sectionName = line.substring(1, line.length - 1);
-            stop = true;
-            return sectionMatcher(sectionName);
-        }
-        if (stop) {
-            break;
-        }
+export function isInsideSection(
+  document: vscode.TextDocument,
+  position: vscode.Position,
+  sectionMatcher: (sectionName: string) => boolean
+): boolean {
+  // 从光标所在行向上遍历，查找最近的节定义
+  let stop = false;
+  for (let i = position.line - 1; i >= 0; i--) {
+    const line = document.lineAt(i).text.trim();
+    //弱匹配，因为只有节存在[]符号
+    if (line.startsWith("[") && line.endsWith("]")) {
+      const sectionName = line.substring(1, line.length - 1);
+      stop = true;
+      return sectionMatcher(sectionName);
     }
-    
-    // // 特殊处理 mod-info.txt 文件
-    // // 如果文件名是 mod-info.txt，则检查是否在文件开头（没有节的情况下）
-    // if (document.fileName.endsWith('mod-info.txt')) {
-    //     // 检查是否在文件的前几行且没有遇到任何节
-    //     let hasSection = false;
-    //     for (let i = 0; i < Math.min(position.line, 10); i++) {
-    //         const line = document.lineAt(i).text.trim();
-    //         if (line.startsWith('[') && line.endsWith(']')) {
-    //             hasSection = true;
-    //             break;
-    //         }
-    //     }
-        
-    //     // 如果没有节且在文件开头附近，则认为是在mod-info节中
-    //     if (!hasSection && position.line < 10) {
-    //         // 直接检查是否匹配mod或music节
-    //         return sectionMatcher('mod') || sectionMatcher('music');
-    //     }
-    // }
-    
-    return false;
+    if (stop) {
+      break;
+    }
+  }
+
+  // // 特殊处理 mod-info.txt 文件
+  // // 如果文件名是 mod-info.txt，则检查是否在文件开头（没有节的情况下）
+  // if (document.fileName.endsWith('mod-info.txt')) {
+  //     // 检查是否在文件的前几行且没有遇到任何节
+  //     let hasSection = false;
+  //     for (let i = 0; i < Math.min(position.line, 10); i++) {
+  //         const line = document.lineAt(i).text.trim();
+  //         if (line.startsWith('[') && line.endsWith(']')) {
+  //             hasSection = true;
+  //             break;
+  //         }
+  //     }
+
+  //     // 如果没有节且在文件开头附近，则认为是在mod-info节中
+  //     if (!hasSection && position.line < 10) {
+  //         // 直接检查是否匹配mod或music节
+  //         return sectionMatcher('mod') || sectionMatcher('music');
+  //     }
+  // }
+
+  return false;
 }
 
 /**
@@ -247,14 +300,17 @@ export function isInsideSection(document: vscode.TextDocument, position: vscode.
  * @param position 位置对象
  * @returns 是否在有效行首位置
  */
-export function isAtValidLineStart(document: vscode.TextDocument, position: vscode.Position): boolean {
-    const line = document.lineAt(position.line).text;
-    const beforeCursor = line.substring(0, position.character);
-    
-    // 允许行首有空格或制表符
-    // 允许有属性名字符（字母、数字、下划线）
-    // 不允许有冒号等其他字符
-    return /^[ \t]*[a-zA-Z0-9_]*$/.test(beforeCursor);
+export function isAtValidLineStart(
+  document: vscode.TextDocument,
+  position: vscode.Position
+): boolean {
+  const line = document.lineAt(position.line).text;
+  const beforeCursor = line.substring(0, position.character);
+
+  // 允许行首有空格或制表符
+  // 允许有属性名字符（字母、数字、下划线）
+  // 不允许有冒号等其他字符
+  return /^[ \t]*[a-zA-Z0-9_]*$/.test(beforeCursor);
 }
 
 /**
@@ -263,8 +319,11 @@ export function isAtValidLineStart(document: vscode.TextDocument, position: vsco
  * @param position 位置对象
  * @returns 行中是否已包含冒号
  */
-export function hasColonInLine(document: vscode.TextDocument, position: vscode.Position): boolean {
-    const line = document.lineAt(position.line).text;
-    const beforeCursor = line.substring(0, position.character);
-    return beforeCursor.includes(':');
+export function hasColonInLine(
+  document: vscode.TextDocument,
+  position: vscode.Position
+): boolean {
+  const line = document.lineAt(position.line).text;
+  const beforeCursor = line.substring(0, position.character);
+  return beforeCursor.includes(":");
 }

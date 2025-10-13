@@ -532,7 +532,12 @@
         {
           "begin": "\"",
           "end": "\"",
-          "name": "string.quoted.double.ini"
+          "name": "string.quoted.double.ini",
+          "patterns": [
+            {
+              "include": "#logicExpression"
+            }
+          ]
         }
       ]
     },
