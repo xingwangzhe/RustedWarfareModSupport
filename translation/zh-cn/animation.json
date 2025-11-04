@@ -3,7 +3,7 @@
   "data.sections.animation.onActionsQueuedUnitPlayAt": "触发动作队列单位播放位置",
   "data.sections.animation.blendIn": "混合进入",
   "data.sections.animation.blendOut": "混合退出",
-  "data.sections.animation.pingPong": "乒乓播放",
+  "data.sections.animation.pingPong": "动画帧重放",
   "data.sections.animation.KeyframeTimeScale": "关键帧时间缩放",
   "data.sections.animation.arm#_[time]": "手臂关键帧",
   "data.sections.animation.leg#_[time]": "腿部关键帧",
