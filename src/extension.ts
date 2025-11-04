@@ -19,6 +19,7 @@ import { initializePanelManager, getPanelManager } from "./panel/panelManager";
 import { ModPanelProvider, ModPanelItem } from "./panel/index";
 import { PanelDataManager } from "./panel/provider";
 import { EXTENSION_ID } from "./constants";
+import { registerExportCommands } from "./panel/exportManager";
 
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
@@ -106,6 +107,9 @@ export function activate(context: vscode.ExtensionContext) {
 
   // 直接注册Mod Panel，避免动态导入
   registerModPanelDirect(context);
+
+  // 注册导出命令
+  registerExportCommands(context);
 
   // The command has been defined in the package.json file
   // Now provide the implementation of the command with registerCommand

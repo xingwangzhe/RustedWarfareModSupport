@@ -9,6 +9,7 @@
   "panel.exportManager.failed": "Export failed!",
   "panel.exportManager.cancelled": "Export cancelled by user",
   "panel.exportManager.completed": "Export completed:\nZIP: {0}\nRWMOD: {1}",
+  "panel.exportManager.directCompleted": "Direct export completed: {0}",
   "panel.fileExtensions.title": "File Extensions Management",
   "panel.fileExtensions.add.placeholder": "Enter file extension (e.g.: .cfg)",
   "panel.fileExtensions.add.button": "Add",

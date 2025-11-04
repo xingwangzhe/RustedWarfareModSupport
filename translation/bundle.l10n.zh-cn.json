@@ -1054,6 +1054,7 @@
   "panel.exportManager.failed": "导出失败！",
   "panel.exportManager.cancelled": "用户取消导出",
   "panel.exportManager.completed": "导出完成:\nZIP: {0}\nRWMOD: {1}",
+  "panel.exportManager.directCompleted": "直接导出完成: {0}",
   "panel.fileExtensions.title": "文件后缀管理",
   "panel.fileExtensions.add.placeholder": "输入文件后缀 (例如: .cfg)",
   "panel.fileExtensions.add.button": "添加",
