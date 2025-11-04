@@ -1,5 +1,18 @@
 # 更新日志 / Changelog
 
+## [1.7.40] - 2025-11-04
+
+- 修正动画帧重放的翻译文本
+- 添加导出命令支持，增强导出功能并更新本地化文本
+- 移除所有require陈旧语法，转换为ES6模块语法
+- 解决循环依赖问题，优化代码结构
+
+- Fixed animation frame replay translation text
+- Added export command support, enhanced export functionality and updated localization text
+- Removed all require legacy syntax, converted to ES6 module syntax
+- Resolved circular dependency issues, optimized code structure
+
+
 ## [1.7.35] - 2025-10-13
 
 - 修复字符串高亮
