@@ -56,7 +56,7 @@
   "data.sections.effect.drawUnderUnits": "在单位下绘制",
   "data.sections.effect.fadeInTime": "淡入时间",
   "data.sections.effect.fadeOut": "淡出",
-  "data.sections.effect.alpha": "Alpha",
+  "data.sections.effect.alpha": "透明度",
   "data.sections.effect.shadow": "阴影",
   "data.sections.effect.pivotOffset": "枢轴偏移",
   "data.sections.effect.pivotOffsetRandom": "枢轴偏移随机",

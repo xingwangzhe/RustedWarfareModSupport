@@ -1,5 +1,5 @@
 {
-  "data.sections.animation.onActions": "在動作上",
+  "data.sections.animation.onActions": "動畫條件",
   "data.sections.animation.onActionsQueuedUnitPlayAt": "在動作排隊單位播放於",
   "data.sections.animation.blendIn": "混合進入",
   "data.sections.animation.blendOut": "混合退出",

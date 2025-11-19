@@ -11,4 +11,4 @@ export const EXTENSION_NAME = "rustedwarfaremodsupport";
 export const EXTENSION_ID = `${EXTENSION_PUBLISHER}.${EXTENSION_NAME}`;
 
 // 扩展版本
-export const EXTENSION_VERSION = "1.7.35";
+export const EXTENSION_VERSION = "1.7.41";

@@ -231,7 +231,7 @@
   "data.sections.ai.whenUsingAsHarvester_recommendedGlobal": "當作為收割者使用時全域推薦",
   "data.sections.ai.whenUsingAsHarvester_includeOtherHarvesterCounts": "當作為收割者使用時包含其他收割者計數",
   "data.sections.ai.onlyUseAsHarvester_ifBaseHasUnitTagged": "僅當基地有帶標籤的單位時作為收割者使用",
-  "data.sections.animation.onActions": "在動作上",
+  "data.sections.animation.onActions": "動畫條件",
   "data.sections.animation.onActionsQueuedUnitPlayAt": "在動作排隊單位播放於",
   "data.sections.animation.blendIn": "混合進入",
   "data.sections.animation.blendOut": "混合退出",

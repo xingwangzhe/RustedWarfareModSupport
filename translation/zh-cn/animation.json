@@ -1,5 +1,5 @@
 {
-  "data.sections.animation.onActions": "触发动作",
+  "data.sections.animation.onActions": "动画条件",
   "data.sections.animation.onActionsQueuedUnitPlayAt": "触发动作队列单位播放位置",
   "data.sections.animation.blendIn": "混合进入",
   "data.sections.animation.blendOut": "混合退出",

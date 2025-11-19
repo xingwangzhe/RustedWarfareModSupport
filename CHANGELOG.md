@@ -1,5 +1,15 @@
 # 更新日志 / Changelog
 
+## [1.7.41] - 2025-11-19
+
+- 修复翻译问题：将 onActions 翻译从"触发动作"改为"动画条件"（Issue #9）
+- 修复翻译问题：将 alpha 翻译从"Alpha"改为"透明度"（Issue #8）
+- 提升用户体验，使中文翻译更加准确易懂
+
+- Fixed translation issue: Changed onActions translation from "trigger action" to "animation condition" (Issue #9)
+- Fixed translation issue: Changed alpha translation from "Alpha" to "transparency" (Issue #8)
+- Improved user experience with more accurate and understandable Chinese translations
+
 ## [1.7.40] - 2025-11-04
 
 - 修正动画帧重放的翻译文本
