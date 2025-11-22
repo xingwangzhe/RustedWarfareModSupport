@@ -1,4 +1,6 @@
 const esbuild = require("esbuild");
+const fs = require("fs");
+const path = require("path");
 
 const production = process.argv.includes('--production');
 const watch = process.argv.includes('--watch');
@@ -24,6 +26,9 @@ const esbuildProblemMatcherPlugin = {
 };
 
 async function main() {
+	const outDir = path.resolve(__dirname, "dist");
+	fs.rmSync(outDir, { recursive: true, force: true });
+
 	const ctx = await esbuild.context({
 		entryPoints: [
 			'src/extension.ts'

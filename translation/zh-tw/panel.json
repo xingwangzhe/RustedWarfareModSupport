@@ -1,5 +1,8 @@
 {
+  "panel.welcome.label": "歡迎",
+  "panel.welcome.tooltip": "快速存取 RustedWarfare Mod 常用功能",
   "panel.export.label": "匯出",
+  "panel.export.tooltip": "展開以使用自動匯出指令",
   "panel.export.auto": "匯出 (ZIP + RWMOD)",
   "panel.export.auto.tooltip": "選擇儲存位置，並同時匯出ZIP和RWMOD格式",
   "panel.exportManager": "匯出管理",
@@ -8,6 +11,7 @@
   "panel.exportManager.success": "匯出成功！",
   "panel.exportManager.failed": "匯出失敗！",
   "panel.fileExtensions.title": "檔案擴展名管理",
+  "panel.fileExtensions.description": "管理擴充功能可識別的預設與自訂副檔名",
   "panel.fileExtensions.add.placeholder": "輸入檔案擴展名 (例如: .cfg)",
   "panel.fileExtensions.add.button": "新增",
   "panel.fileExtensions.add.emptyInput": "檔案擴展名不能為空",

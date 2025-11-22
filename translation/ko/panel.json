@@ -1,5 +1,8 @@
 {
+  "panel.welcome.label": "환영합니다",
+  "panel.welcome.tooltip": "RustedWarfare 모드 자주 사용하는 작업으로 빠르게 이동",
   "panel.export.label": "내보내기",
+  "panel.export.tooltip": "자동 내보내기 명령을 사용하려면 펼치세요",
   "panel.export.auto": "내보내기 (ZIP + RWMOD)",
   "panel.export.auto.tooltip": "저장 위치를 선택하고 ZIP 및 RWMOD 형식 모두 내보내기",
   "panel.exportManager": "내보내기 관리자",
@@ -10,6 +13,7 @@
   "panel.exportManager.cancelled": "사용자가 내보내기를 취소했습니다",
   "panel.exportManager.completed": "내보내기 완료:\nZIP: {0}\nRWMOD: {1}",
   "panel.fileExtensions.title": "파일 확장자 관리",
+  "panel.fileExtensions.description": "확장이 인식하는 기본 및 사용자 정의 파일 확장자를 관리합니다",
   "panel.fileExtensions.add.placeholder": "파일 확장자 입력 (예: .cfg)",
   "panel.fileExtensions.add.button": "추가",
   "panel.fileExtensions.add.emptyInput": "파일 확장자를 비워둘 수 없습니다",

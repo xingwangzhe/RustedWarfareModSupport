@@ -2,6 +2,7 @@
   "completionprovider.name": "이름",
   "completionprovider.type": "유형",
   "completionprovider.version": "버전",
+  "completionprovider.description": "설명",
   "completionprovider.isOutdated": "오래됨",
   "completionprovider.example": "예시",
   "valuecompletionprovider.bool.detail": "불리언 값",

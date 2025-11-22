@@ -1,5 +1,8 @@
 {
+  "panel.welcome.label": "مرحباً",
+  "panel.welcome.tooltip": "وصول سريع إلى مهام تعديل RustedWarfare الشائعة",
   "panel.export.label": "تصدير",
+  "panel.export.tooltip": "قم بالتمديد للوصول إلى أوامر التصدير التلقائي",
   "panel.export.auto": "تصدير (ZIP + RWMOD)",
   "panel.export.auto.tooltip": "اختيار مكان الحفظ وتصدير كلا التنسيقين ZIP و RWMOD",
   "panel.exportManager": "مدير التصدير",
@@ -8,6 +11,7 @@
   "panel.exportManager.success": "تم التصدير بنجاح!",
   "panel.exportManager.failed": "فشل التصدير!",
   "panel.fileExtensions.title": "إدارة امتدادات الملفات",
+  "panel.fileExtensions.description": "إدارة الامتدادات الافتراضية والمخصصة التي يتعرف عليها الامتداد",
   "panel.fileExtensions.add.placeholder": "أدخل امتداد الملف (مثال: .cfg)",
   "panel.fileExtensions.add.button": "إضافة",
   "panel.fileExtensions.add.emptyInput": "لا يمكن أن يكون امتداد الملف فارغاً",

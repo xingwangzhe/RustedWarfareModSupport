@@ -2,6 +2,7 @@
   "completionprovider.name": "Name",
   "completionprovider.type": "Typ",
   "completionprovider.version": "Version",
+  "completionprovider.description": "Beschreibung",
   "completionprovider.isOutdated": "Veraltet",
   "completionprovider.example": "Beispiel",
   "valuecompletionprovider.bool.detail": "Boolescher Wert",

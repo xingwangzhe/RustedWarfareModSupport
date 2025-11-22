@@ -1,5 +1,8 @@
 {
+  "panel.welcome.label": "Welcome",
+  "panel.welcome.tooltip": "Quick links for common RustedWarfare modding tasks",
   "panel.export.label": "Export",
+  "panel.export.tooltip": "Expand to access automated export commands",
   "panel.export.auto": "Export (ZIP + RWMOD)",
   "panel.export.auto.tooltip": "Choose save location and export both ZIP and RWMOD formats",
   "panel.exportManager": "Export Manager",
@@ -11,6 +14,7 @@
   "panel.exportManager.completed": "Export completed:\nZIP: {0}\nRWMOD: {1}",
   "panel.exportManager.directCompleted": "Direct export completed: {0}",
   "panel.fileExtensions.title": "File Extensions Management",
+  "panel.fileExtensions.description": "Manage default and custom file extensions recognized by the extension",
   "panel.fileExtensions.add.placeholder": "Enter file extension (e.g.: .cfg)",
   "panel.fileExtensions.add.button": "Add",
   "panel.fileExtensions.add.emptyInput": "File extension cannot be empty",

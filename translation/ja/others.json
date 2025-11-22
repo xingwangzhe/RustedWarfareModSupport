@@ -2,6 +2,7 @@
   "completionprovider.name": "名前",
   "completionprovider.type": "タイプ",
   "completionprovider.version": "バージョン",
+  "completionprovider.description": "説明",
   "completionprovider.isOutdated": "古い",
   "completionprovider.example": "例",
   "valuecompletionprovider.bool.detail": "ブール値",

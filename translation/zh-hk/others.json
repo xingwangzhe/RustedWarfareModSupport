@@ -2,6 +2,7 @@
   "completionprovider.name": "名稱",
   "completionprovider.type": "類型",
   "completionprovider.version": "版本",
+  "completionprovider.description": "描述",
   "completionprovider.isOutdated": "過時",
   "completionprovider.example": "範例",
   "valuecompletionprovider.bool.detail": "布爾值",

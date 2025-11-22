@@ -2,6 +2,7 @@
   "completionprovider.name": "الاسم",
   "completionprovider.type": "النوع",
   "completionprovider.version": "الإصدار",
+  "completionprovider.description": "الوصف",
   "completionprovider.isOutdated": "قديم",
   "completionprovider.example": "مثال",
   "valuecompletionprovider.bool.detail": "قيمة منطقية",

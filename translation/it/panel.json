@@ -1,5 +1,8 @@
 {
+  "panel.welcome.label": "Benvenuto",
+  "panel.welcome.tooltip": "Scorciatoie rapide per le attività comuni dei mod RustedWarfare",
   "panel.export.label": "Esporta",
+  "panel.export.tooltip": "Espandi per accedere ai comandi di esportazione automatica",
   "panel.export.auto": "Esporta (ZIP + RWMOD)",
   "panel.export.auto.tooltip": "Seleziona la posizione di salvataggio ed esporta entrambi i formati ZIP e RWMOD",
   "panel.exportManager": "Gestore esportazione",
@@ -8,6 +11,7 @@
   "panel.exportManager.success": "Esportazione riuscita!",
   "panel.exportManager.failed": "Esportazione fallita!",
   "panel.fileExtensions.title": "Gestione Estensioni File",
+  "panel.fileExtensions.description": "Gestisci le estensioni predefinite e personalizzate riconosciute dall'estensione",
   "panel.fileExtensions.add.placeholder": "Inserisci estensione file (esempio: .cfg)",
   "panel.fileExtensions.add.button": "Aggiungi",
   "panel.fileExtensions.add.emptyInput": "L'estensione file non può essere vuota",

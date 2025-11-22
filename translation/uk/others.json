@@ -2,6 +2,7 @@
   "completionprovider.name": "Назва",
   "completionprovider.type": "Тип",
   "completionprovider.version": "Версія",
+  "completionprovider.description": "Опис",
   "completionprovider.isOutdated": "Застарілий",
   "completionprovider.example": "Приклад",
   "valuecompletionprovider.bool.detail": "Булеве значення",

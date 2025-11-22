@@ -1,5 +1,8 @@
 {
+  "panel.welcome.label": "欢迎",
+  "panel.welcome.tooltip": "快速访问 RustedWarfare Mod 常用功能",
   "panel.export.label": "导出",
+  "panel.export.tooltip": "展开以使用自动导出命令",
   "panel.export.auto": "导出 (ZIP + RWMOD)",
   "panel.export.auto.tooltip": "选择保存路径，同时导出ZIP和RWMOD格式文件",
   "panel.exportManager": "导出管理器",
@@ -11,6 +14,7 @@
   "panel.exportManager.completed": "导出完成:\nZIP: {0}\nRWMOD: {1}",
   "panel.exportManager.directCompleted": "直接导出完成: {0}",
   "panel.fileExtensions.title": "文件后缀管理",
+  "panel.fileExtensions.description": "管理扩展可识别的默认与自定义文件后缀",
   "panel.fileExtensions.add.placeholder": "输入文件后缀 (例如: .cfg)",
   "panel.fileExtensions.add.button": "添加",
   "panel.fileExtensions.add.emptyInput": "文件后缀不能为空",

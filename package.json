@@ -3,7 +3,7 @@
   "displayName": "RustedWarfareModSupport",
   "icon": "favicon.png",
   "description": "A VS Code extension that provides in-editor completions, documentation hints, and development tools for RustedWarfare mod development. Supports INI file editing with intelligent autocompletion for game configuration properties.",
-  "version": "1.7.41",
+  "version": "1.7.42",
   "author": "xingwangzhe",
   "publisher": "xingwangzhe",
   "license": "AGPL-3.0",
@@ -130,11 +130,11 @@
     "modding"
   ],
   "scripts": {
-    "vscode:prepublish": "npm run generate-syntax && npm run compile",
+    "vscode:prepublish": "npm run compile",
     "precompile": "node merge.js && npm run generate-syntax",
-    "compile": "tsc -b",
+    "compile": "npm run check-types && node esbuild.js",
     "prewatch": "node merge.js && npm run generate-syntax",
-    "watch": "tsc -b -w",
+    "watch": "run-p watch:tsc watch:esbuild",
     "prewatch:esbuild": "node merge.js && npm run generate-syntax",
     "watch:esbuild": "node esbuild.js --watch",
     "prewatch:tsc": "node merge.js && npm run generate-syntax",

@@ -1,5 +1,8 @@
 {
+  "panel.welcome.label": "Willkommen",
+  "panel.welcome.tooltip": "Schnellzugriff auf häufige RustedWarfare-Mod-Aufgaben",
   "panel.export.label": "Export",
+  "panel.export.tooltip": "Zum Anzeigen automatischer Exportbefehle ausklappen",
   "panel.export.auto": "Export (ZIP + RWMOD)",
   "panel.export.auto.tooltip": "Speicherort auswählen und beide ZIP- und RWMOD-Formate exportieren",
   "panel.exportManager": "Export-Manager",
@@ -10,6 +13,7 @@
   "panel.exportManager.cancelled": "Export vom Benutzer abgebrochen",
   "panel.exportManager.completed": "Export abgeschlossen:\nZIP: {0}\nRWMOD: {1}",
   "panel.fileExtensions.title": "Dateierweiterungsverwaltung",
+  "panel.fileExtensions.description": "Verwalten Sie Standard- und benutzerdefinierte Dateierweiterungen, die die Erweiterung erkennt",
   "panel.fileExtensions.add.placeholder": "Dateierweiterung eingeben (z.B.: .cfg)",
   "panel.fileExtensions.add.button": "Hinzufügen",
   "panel.fileExtensions.add.emptyInput": "Dateierweiterung darf nicht leer sein",

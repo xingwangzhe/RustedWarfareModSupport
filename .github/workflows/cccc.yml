@@ -35,19 +35,7 @@ jobs:
       - name: Install dependencies
         run: bun install
 
-      - name: Merge translations
-        run: bun run merge-translations
-
-      - name: Check types
-        run: bun run check-types
-
-      - name: Lint code
-        run: bun run lint
-
-      - name: Compile extension
-        run: bun run compile
-
-      - name: Package extension
+      - name: Build extension (type-check, lint, bundle)
         run: bun run package
 
       - name: Create VSIX package

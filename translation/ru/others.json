@@ -2,6 +2,7 @@
   "completionprovider.name": "Имя",
   "completionprovider.type": "Тип",
   "completionprovider.version": "Версия",
+  "completionprovider.description": "Описание",
   "completionprovider.isOutdated": "Устаревший",
   "completionprovider.example": "Пример",
   "valuecompletionprovider.bool.detail": "Булево Значение",
