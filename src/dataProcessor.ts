@@ -4,6 +4,19 @@ import * as vscode from "vscode";
 import { matchBaseSection } from "./common/matchRules";
 import { EXTENSION_ID } from "./constants";
 
+type SectionCacheEntry = {
+  data: any[];
+  expires: number;
+};
+
+const SECTION_CACHE_TTL = 5 * 60 * 1000;
+const sectionDataCache: Map<string, SectionCacheEntry> = new Map();
+type SectionPropertyMapEntry = {
+  map: Map<string, any>;
+  expires: number;
+};
+const sectionPropertyMapCache: Map<string, SectionPropertyMapEntry> = new Map();
+
 /**
  * 从示例字符串中提取值部分
  * @param example 示例字符串
@@ -30,6 +43,8 @@ export function getBaseSectionName(name: string): string {
  */
 export function getSectionProperties(sectionName: string): any[] {
   try {
+    cleanupExpiredSectionCache();
+
     // 获取基本节名称
     const baseSectionName = getBaseSectionName(sectionName);
 
@@ -132,12 +147,53 @@ export function getSectionProperties(sectionName: string): any[] {
       return [];
     }
 
+    const cacheKey = createSectionCacheKey(sectionPath);
+    const cached = sectionDataCache.get(cacheKey);
+    if (cached && cached.expires > Date.now()) {
+      return cached.data;
+    }
+
     const sectionData = JSON.parse(fs.readFileSync(sectionPath, "utf8"));
-    return sectionData.data || [];
+    const parsedData = sectionData.data || [];
+    sectionDataCache.set(cacheKey, {
+      data: parsedData,
+      expires: Date.now() + SECTION_CACHE_TTL,
+    });
+    return parsedData;
   } catch (error) {
     console.error(`Error reading ${sectionName}.json:`, error);
     return [];
   }
+}
+
+export function getSectionPropertyMap(
+  sectionName: string
+): Map<string, any> | null {
+  cleanupExpiredSectionPropertyCache();
+  const cacheKey = `${vscode.env.language}:${sectionName}`;
+  const cached = sectionPropertyMapCache.get(cacheKey);
+  if (cached && cached.expires > Date.now()) {
+    return cached.map;
+  }
+
+  const properties = getSectionProperties(sectionName);
+  if (!properties || !properties.length) {
+    return null;
+  }
+
+  const propertyMap = new Map<string, any>();
+  for (const prop of properties) {
+    if (prop && typeof prop.name === "string") {
+      propertyMap.set(prop.name, prop);
+    }
+  }
+
+  sectionPropertyMapCache.set(cacheKey, {
+    map: propertyMap,
+    expires: Date.now() + SECTION_CACHE_TTL,
+  });
+
+  return propertyMap;
 }
 
 // 缓存：从 sectionData.name 到 文件路径 的映射，避免重复昂贵扫描
@@ -208,6 +264,34 @@ function findSectionPathByMetadata(sectionName: string): string | null {
   // 未找到，缓存空结果以避免重复扫描
   sectionMetadataCache.set(sectionName, "");
   return null;
+}
+
+function cleanupExpiredSectionCache() {
+  if (!sectionDataCache.size) {
+    return;
+  }
+  const now = Date.now();
+  for (const [key, entry] of sectionDataCache.entries()) {
+    if (entry.expires <= now) {
+      sectionDataCache.delete(key);
+    }
+  }
+}
+
+function cleanupExpiredSectionPropertyCache() {
+  if (!sectionPropertyMapCache.size) {
+    return;
+  }
+  const now = Date.now();
+  for (const [key, entry] of sectionPropertyMapCache.entries()) {
+    if (entry.expires <= now) {
+      sectionPropertyMapCache.delete(key);
+    }
+  }
+}
+
+function createSectionCacheKey(sectionPath: string): string {
+  return `${vscode.env.language}:${sectionPath}`;
 }
 
 /**

@@ -25,6 +25,7 @@ import { TeamColoringModeValueCompletionProvider } from "./TeamColoringModeValue
 import { DrawLayerValueCompletionProvider } from "./DrawLayerValueCompletionProvider";
 import { AttackMovementValueCompletionProvider } from "./AttackMovementValueCompletionProvider";
 import { LayerValueCompletionProvider } from "./LayerValueCompletionProvider";
+import { measurePerf } from "../common/perfLogger";
 
 export class ValueCompletionProvider implements vscode.CompletionItemProvider {
   private providers: vscode.CompletionItemProvider[];
@@ -66,33 +67,35 @@ export class ValueCompletionProvider implements vscode.CompletionItemProvider {
     token: vscode.CancellationToken,
     context: vscode.CompletionContext
   ): vscode.ProviderResult<vscode.CompletionItem[] | vscode.CompletionList> {
-    const completions: vscode.CompletionItem[] = [];
+    return measurePerf("completion.values", () => {
+      const completions: vscode.CompletionItem[] = [];
 
-    for (const provider of this.providers) {
-      try {
-        const providerCompletions = provider.provideCompletionItems(
-          document,
-          position,
-          token,
-          context
-        );
-        if (providerCompletions) {
-          if (Array.isArray(providerCompletions)) {
-            completions.push(...providerCompletions);
-          } else if ("items" in providerCompletions) {
-            completions.push(...providerCompletions.items);
+      for (const provider of this.providers) {
+        try {
+          const providerCompletions = provider.provideCompletionItems(
+            document,
+            position,
+            token,
+            context
+          );
+          if (providerCompletions) {
+            if (Array.isArray(providerCompletions)) {
+              completions.push(...providerCompletions);
+            } else if ("items" in providerCompletions) {
+              completions.push(...providerCompletions.items);
+            }
           }
+        } catch (error) {
+          console.error(
+            "ValueCompletionProvider: Error calling provider=",
+            provider.constructor.name,
+            "error=",
+            error
+          );
         }
-      } catch (error) {
-        console.error(
-          "ValueCompletionProvider: Error calling provider=",
-          provider.constructor.name,
-          "error=",
-          error
-        );
       }
-    }
 
-    return completions;
+      return completions;
+    });
   }
 }

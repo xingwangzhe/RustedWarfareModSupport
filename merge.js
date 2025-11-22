@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const { Worker, isMainThread, parentPort, workerData } = require('worker_threads');
 
 const translationDir = path.resolve(__dirname, 'translation');
 // 支持的国际语言列表（按使用频率和实用性排序）
@@ -126,6 +127,9 @@ const languages = [
 
 // 进度条显示函数
 function showProgressBar(current, total, prefix = '', barLength = 40) {
+  if (!isMainThread) {
+    return;
+  }
   const percentage = total > 0 ? Math.round((current / total) * 100) : 0;
   const filledBarLength = Math.round((barLength * current) / Math.max(total, 1));
   const emptyBarLength = barLength - filledBarLength;
@@ -140,7 +144,7 @@ function mergeLang(lang) {
   const langDir = path.join(translationDir, lang);
   if (!fs.existsSync(langDir)) {
     console.log(`Language directory ${langDir} does not exist, skipping...`);
-    return;
+    return { lang, totalKeys: 0, outputFile: null };
   }
 
   const files = fs.readdirSync(langDir).filter(f => f.endsWith('.json'));
@@ -203,14 +207,23 @@ function mergeLang(lang) {
   process.stdout.write(`Writing output file for ${lang}... `);
   
   // 只有当有内容时才写入文件
-  if (Object.keys(merged).length > 0) {
+  const mergedKeyCount = Object.keys(merged).length;
+  if (mergedKeyCount > 0) {
     fs.writeFileSync(outFile, JSON.stringify(merged, null, 2), 'utf8');
     process.stdout.write('Done\n');
-    console.log(`Merged ${lang} translations to ${outFile} with ${Object.keys(merged).length} keys`);
+    console.log(`Merged ${lang} translations to ${outFile} with ${mergedKeyCount} keys`);
   } else {
     process.stdout.write('Skipped (no content)\n');
     console.log(`No translations found for ${lang}, not writing output file`);
   }
+
+  return {
+    lang,
+    totalKeys,
+    outputFile: mergedKeyCount > 0 ? outFile : null,
+    mergedKeys: mergedKeyCount,
+    filesProcessed: totalFiles,
+  };
 }
 
 // 确保translation目录存在
@@ -219,9 +232,48 @@ if (!fs.existsSync(translationDir)) {
   process.exit(1);
 }
 
-console.log(`Starting merge process for languages: ${languages.join(', ')}`);
-for (const lang of languages) {
-  console.log(`\nMerging language: ${lang}`);
-  mergeLang(lang);
+if (!isMainThread) {
+  try {
+    const result = mergeLang(workerData.lang);
+    parentPort?.postMessage(result);
+  } catch (error) {
+    parentPort?.postMessage({ lang: workerData.lang, error: error?.message });
+    throw error;
+  }
+  return;
 }
-console.log('\nMerge process completed');
+
+console.log(`Starting merge process for languages: ${languages.join(', ')}`);
+
+Promise.all(languages.map((lang) => spawnMergeWorker(lang)))
+  .then((results) => {
+    results.forEach((result) => {
+      if (result.error) {
+        console.error(`Merge failed for ${result.lang}: ${result.error}`);
+        return;
+      }
+      console.log(
+        `[merge] ${result.lang} -> ${result.outputFile || 'skipped'} (${result.totalKeys} keys)`
+      );
+    });
+    console.log('\nMerge process completed');
+  })
+  .catch((error) => {
+    console.error('Merge process failed:', error);
+    process.exit(1);
+  });
+
+function spawnMergeWorker(lang) {
+  return new Promise((resolve, reject) => {
+    const worker = new Worker(__filename, { workerData: { lang } });
+    worker.once('message', (message) => {
+      resolve(message ?? { lang, error: 'Unknown worker response' });
+    });
+    worker.once('error', reject);
+    worker.once('exit', (code) => {
+      if (code !== 0) {
+        reject(new Error(`Worker for ${lang} exited with code ${code}`));
+      }
+    });
+  });
+}

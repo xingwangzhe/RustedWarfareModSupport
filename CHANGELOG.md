@@ -1,4 +1,18 @@
 # 更新日志 / Changelog
+## [1.7.43] - 2025-11-22
+
+- 延迟初始化补全、悬停、面板等耗时模块，加快扩展激活速度
+- 为数据解析与翻译加载新增内存缓存，减少重复 IO
+- 图片装饰与值补全增加节流/索引，并可按需输出性能日志
+- 重写构建脚本：并行生成语法与翻译、启用 esbuild 增量构建
+- 新增配置 `rustedwarfaremodsupport.enablePerfLogs` 便于诊断性能
+
+- Lazily initialize completion, hover, and panel modules to speed up activation
+- Add in-memory caches for data parsing and translations to cut repeated IO
+- Throttle image decorators and value completions, with optional performance logging
+- Rework build scripts to parallelize syntax/translation generation and enable incremental esbuild
+- Introduce `rustedwarfaremodsupport.enablePerfLogs` setting for easier diagnostics
+
 ## [1.7.42] - 2025-11-22
 
 - 修复构建依赖

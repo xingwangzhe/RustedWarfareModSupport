@@ -1,5 +1,5 @@
 import * as vscode from "vscode";
-import { getSectionProperties } from "../dataProcessor";
+import { getSectionPropertyMap } from "../dataProcessor";
 import { getCurrentSection } from "../common/sectionUtils";
 
 /**
@@ -37,14 +37,8 @@ export abstract class BaseValueCompletionProvider
       return [];
     }
 
-    // 检查属性是否属于当前section
-    const sectionProperties = getSectionProperties(currentSection);
-
-    // 检查属性是否存在于section的属性列表中
-    const propertyExists = sectionProperties.some(
-      (prop: any) => prop.name === propertyName
-    );
-    if (!sectionProperties || !propertyExists) {
+    const sectionPropertyMap = getSectionPropertyMap(currentSection);
+    if (!sectionPropertyMap || !sectionPropertyMap.has(propertyName)) {
       return [];
     }
 

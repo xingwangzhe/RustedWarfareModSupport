@@ -1,5 +1,6 @@
 import * as vscode from "vscode";
 import { ImageDecoratorFactory } from "../common/imageDecorator";
+import { measurePerf } from "./perfLogger";
 
 /**
  * 精简的图片装饰器 - 只显示图片图标
@@ -7,86 +8,104 @@ import { ImageDecoratorFactory } from "../common/imageDecorator";
 export class ImagePropertyDecorator implements vscode.Disposable {
   private decorations = new Map<string, vscode.Range[]>();
   private updateTimeout: NodeJS.Timeout | undefined;
+  private disposables: vscode.Disposable[] = [];
 
   constructor() {
-    // 监听活动编辑器变化
-    vscode.window.onDidChangeActiveTextEditor(() => {
-      this.scheduleUpdate();
-    });
+    this.disposables.push(
+      vscode.window.onDidChangeActiveTextEditor((editor) => {
+        this.scheduleUpdate(editor?.document);
+      })
+    );
 
-    // 监听文档内容变化
-    vscode.workspace.onDidChangeTextDocument((event) => {
-      if (vscode.window.activeTextEditor?.document === event.document) {
-        this.scheduleUpdate();
-      }
-    });
+    this.disposables.push(
+      vscode.workspace.onDidChangeTextDocument((event) => {
+        if (vscode.window.activeTextEditor?.document === event.document) {
+          this.scheduleUpdate(event.document);
+        }
+      })
+    );
 
-    // 初始更新
-    this.scheduleUpdate();
+    this.scheduleUpdate(vscode.window.activeTextEditor?.document);
   }
 
-  private scheduleUpdate() {
+  private scheduleUpdate(document?: vscode.TextDocument) {
     if (this.updateTimeout) {
       clearTimeout(this.updateTimeout);
     }
+    const delay = this.getThrottleDelay(document);
     this.updateTimeout = setTimeout(() => {
       this.updateDecorations();
-    }, 100);
+    }, delay);
+  }
+
+  private getThrottleDelay(document?: vscode.TextDocument): number {
+    if (!document) {
+      return 120;
+    }
+    const lineCount = document.lineCount;
+    if (lineCount > 4000) {
+      return 400;
+    }
+    if (lineCount > 2000) {
+      return 250;
+    }
+    if (lineCount > 800) {
+      return 160;
+    }
+    return 120;
   }
 
   private updateDecorations() {
-    const editor = vscode.window.activeTextEditor;
-    if (!editor || editor.document.languageId !== "ini") {
-      return;
-    }
-
-    this.decorations.clear();
-    const text = editor.document.getText();
-    const lines = text.split("\n");
-
-    for (let lineIndex = 0; lineIndex < lines.length; lineIndex++) {
-      const line = lines[lineIndex];
-
-      // 匹配 key: value 格式
-      const keyValueMatch = line.match(
-        /^\s*([a-zA-Z_][a-zA-Z0-9_]*)\s*:\s*(.+)$/
-      );
-      if (!keyValueMatch) {
-        continue;
+    measurePerf("decorator.images", () => {
+      const editor = vscode.window.activeTextEditor;
+      if (!editor || editor.document.languageId !== "ini") {
+        return;
       }
 
-      const [, key, value] = keyValueMatch;
+      this.decorations.clear();
+      for (
+        let lineIndex = 0;
+        lineIndex < editor.document.lineCount;
+        lineIndex++
+      ) {
+        const line = editor.document.lineAt(lineIndex).text;
 
-      // 只处理包含 "image" 的属性
-      if (!key.toLowerCase().includes("image")) {
-        continue;
-      }
+        const keyValueMatch = line.match(
+          /^\s*([a-zA-Z_][a-zA-Z0-9_]*)\s*:\s*(.+)$/
+        );
+        if (!keyValueMatch) {
+          continue;
+        }
 
-      // 检查值是否是图片文件路径
-      if (this.isImageFile(value.trim())) {
-        const valueStart = line.indexOf(value);
-        if (valueStart !== -1) {
-          const range = new vscode.Range(
-            lineIndex,
-            valueStart,
-            lineIndex,
-            valueStart + value.length
-          );
+        const [, key, value] = keyValueMatch;
+        if (!key.toLowerCase().includes("image")) {
+          continue;
+        }
 
-          const decorationType = "image_value";
-          if (!this.decorations.has(decorationType)) {
-            this.decorations.set(decorationType, []);
+        if (this.isImageFile(value.trim())) {
+          const valueStart = line.indexOf(value);
+          if (valueStart !== -1) {
+            const range = new vscode.Range(
+              lineIndex,
+              valueStart,
+              lineIndex,
+              valueStart + value.length
+            );
+
+            const decorationType = "image_value";
+            if (!this.decorations.has(decorationType)) {
+              this.decorations.set(decorationType, []);
+            }
+            this.decorations.get(decorationType)?.push(range);
           }
-          this.decorations.get(decorationType)?.push(range);
         }
       }
-    }
 
-    // 应用装饰
-    this.decorations.forEach((ranges, decorationType) => {
-      const decorator =
-        ImageDecoratorFactory.createImageDecorator(decorationType);
-      editor.setDecorations(decorator, ranges);
+      this.decorations.forEach((ranges, decorationType) => {
+        const decorator =
+          ImageDecoratorFactory.createImageDecorator(decorationType);
+        editor.setDecorations(decorator, ranges);
+      });
     });
   }
 
@@ -100,6 +119,8 @@ export class ImagePropertyDecorator implements vscode.Disposable {
     if (this.updateTimeout) {
       clearTimeout(this.updateTimeout);
     }
+    this.disposables.forEach((d) => d.dispose());
+    this.disposables = [];
     ImageDecoratorFactory.disposeAll();
   }
 }

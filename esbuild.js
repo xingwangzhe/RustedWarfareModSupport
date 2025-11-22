@@ -4,6 +4,7 @@ const path = require("path");
 
 const production = process.argv.includes('--production');
 const watch = process.argv.includes('--watch');
+const incrementalFlag = process.argv.includes('--incremental') || watch;
 
 /**
  * @type {import('esbuild').Plugin}
@@ -29,7 +30,7 @@ async function main() {
 	const outDir = path.resolve(__dirname, "dist");
 	fs.rmSync(outDir, { recursive: true, force: true });
 
-	const ctx = await esbuild.context({
+	const buildOptions = {
 		entryPoints: [
 			'src/extension.ts'
 		],
@@ -43,16 +44,24 @@ async function main() {
 		external: ['vscode'],
 		logLevel: 'silent',
 		plugins: [
-			/* add to the end of plugins array */
 			esbuildProblemMatcherPlugin,
 		],
-	});
-	if (watch) {
-		await ctx.watch();
-	} else {
+	};
+
+	if (incrementalFlag) {
+		const ctx = await esbuild.context(buildOptions);
+		if (watch) {
+			await ctx.watch();
+			return;
+		}
+
 		await ctx.rebuild();
+		console.log('[build] incremental artifacts ready');
 		await ctx.dispose();
+		return;
 	}
+
+	await esbuild.build(buildOptions);
 }
 
 main().catch(e => {

@@ -12,6 +12,7 @@ RustedWarfareModSupport is a VS Code extension that provides intelligent autocom
 - **Provider Pattern**: Used for completion, hover, and folding providers
 - **Factory Pattern**: Used for creating completion providers and decorators
 - **Observer Pattern**: Used for configuration changes and document events
+- **Lazy Activation**: `setupLazyLanguageInitialization` defers heavy provider registration until an INI document is opened. Keep new logic inside `initializeLanguageFeatures` to avoid slowing startup.
 
 ### Key Modules
 
@@ -34,6 +35,8 @@ RustedWarfareModSupport is a VS Code extension that provides intelligent autocom
 4. **Data Processing** (`src/dataProcessor.ts`)
    - JSON-based configuration data loading
    - Localization support for data files
+
+- Provides cache helpers like `getSectionPropertyMap` and TTL-based file caching; always call these instead of manual `fs.readFileSync`
 
 ## Code Style Guidelines
 
@@ -133,11 +136,16 @@ private throttledUpdate = throttle(() => {
 }, 100);
 ```
 
+- `ImagePropertyDecorator` now computes throttle delays based on document size and cleans up its own disposables. Prefer reusing it (or its helpers) over adding new timeouts.
+
 ### Lazy Loading
 
 - Load data files only when needed
 - Cache expensive computations
 - Use incremental updates for decorations
+- Extension activation now wires actual providers only after an INI file is opened. Keep expensive registration inside `initializeLanguageFeatures` to maintain fast startup.
+- Use the cache helpers (`getSectionPropertyMap`, translation cache) instead of re-reading JSON files.
+- `src/common/perfLogger.ts` offers `measurePerf(label, fn)`; wrap long-running logic and enable logs via `rustedwarfaremodsupport.enablePerfLogs` when diagnosing.
 
 ### Memory Management
 
@@ -156,10 +164,6 @@ private throttledUpdate = throttle(() => {
 
 ### Value Completion Provider Architecture
 
-- **Base Class**: `BaseValueCompletionProvider` with consistent parameter signature
-- **Parameter Requirements**: All providers must use `(propertyName: string, sectionName: string)`
-- **Data Access**: Use `getSectionProperties(sectionName)` to retrieve property metadata
-- **Type Checking**: Validate property types before providing completion items
 - **Error Handling**: Implement proper error handling in all catch blocks
 
 ### Common Value Types
@@ -197,7 +201,7 @@ console.log(`[DEBUG] ComponentName - operation: ${details}`);
 - **CRITICAL**: Test value completion providers after parameter fixes
   - Create test INI files with different property types
   - Verify completion triggers for each provider type
-  - Check that `bun run compile` passes without errors
+  - Check that `npm run compile` passes without errors (this also regenerates translations/syntax)
   - Test completion in Extension Development Host
 
 ### Validation Steps for Completion Providers
@@ -261,10 +265,6 @@ protected provideValueCompletionItems(
 - MovementTypeValueCompletionProvider.ts
 - UnitSpawnCompletionProvider.ts
 
-### Fixing LogicBoolean "self." Completion Duplication
-
-**IMPORTANT**: LogicBoolean completion providers must handle "self." prefix duplication to prevent "self.self." issues.
-
 **Problem**: When users type "self." and then trigger completion, selecting items like "self.isUnderwater()" would result in "self.self.isUnderwater()" duplication.
 
 **Solution**: Check if text before cursor ends with "self." and modify completion items accordingly.
@@ -312,10 +312,6 @@ private getBasicLogicBooleanCompletionItems(
           item.kind
         );
         newItem.detail = item.detail;
-        newItem.documentation = item.documentation;
-        newItem.insertText = new vscode.SnippetString(newLabel);
-        return newItem;
-      }
       return item;
     });
   }
@@ -325,11 +321,6 @@ private getBasicLogicBooleanCompletionItems(
 ```
 
 **Validation Steps**:
-
-1. **Test Case Creation**: Create INI files with LogicBoolean properties
-2. **Duplication Check**: Type "self." then trigger completion and verify no "self.self." appears
-3. **Normal Completion**: Verify completion still works when "self." is not pre-typed
-4. **Compilation Test**: Run `bun run compile` to ensure no type errors
 
 ### Adding New Value Completion
 
@@ -346,8 +337,6 @@ private getBasicLogicBooleanCompletionItems(
 
 ### Adding New Section Data
 
-1. Create JSON file in `data/sections/`
-2. Define properties with types and descriptions
 3. Add localized versions if needed
 
 ## Localization
@@ -363,40 +352,41 @@ const message = t("Hello World from RustedWarfareModSupport!");
 
 - **Source Files**: Individual translation files are stored in `translation/{lang}/` directories
 - **Bundle Files**: Merged translation files are generated in `translation/bundle.l10n.{lang}.json`
-- **Merge Process**: Use `node merge.js` to combine individual translation files into bundle files
-- **Never Edit**: Do not manually edit `bundle.l10n*.json` files - they are auto-generated
-
-### Translation Key Management
-
-**CRITICAL RULES FOR TRANSLATION KEYS:**
 
 1. **PROHIBITED: .description Suffixes**
+
    - ❌ **NEVER** add `.description` suffix to original keys in data files
    - ❌ **NEVER** use keys like `"data.value.logicboolean.self.isUnderwater.description"`
-   - ✅ **ALWAYS** use clean keys like `"data.value.logicboolean.self.isUnderwater"`
 
 2. **Translation Key Matching Requirements**
+
    - **MANDATORY**: Every translation key must exactly match an existing original key in data files
-   - **MANDATORY**: Before adding any translation, verify the original key exists in the corresponding data file
-   - **MANDATORY**: Use terminal commands to validate key matching:
-     ```bash
+
      # Extract keys from data file
-     grep -o '"[^"]*":' data/value/filename.json | sed 's/":$//' | sed 's/^"//'
-     
-     # Extract keys from translation file  
-     grep -o '"[^"]*":' translation/en/filename.json | sed 's/":$//' | sed 's/^"//'
-     
+
+     grep -o '"[^"]\*":' data/value/filename.json | sed 's/":$//' | sed 's/^"//'
+
+     # Extract keys from translation file
+
+     grep -o '"[^"]\*":' translation/en/filename.json | sed 's/":$//' | sed 's/^"//'
+
      # Compare keys (should have identical output)
-     comm -23 <(sort data_keys.txt) <(sort translation_keys.txt)  # Check for missing
-     comm -13 <(sort data_keys.txt) <(sort translation_keys.txt)  # Check for extra
+
+     comm -23 <(sort data_keys.txt) <(sort translation_keys.txt) # Check for missing
+     comm -13 <(sort data_keys.txt) <(sort translation_keys.txt) # Check for extra
+
+     ```
+
      ```
 
 3. **Translation Addition Process**
+
    - Step 1: Identify the original key in the data file (e.g., `data/value/logicboolean.json`)
    - Step 2: Verify the key exists and is correctly formatted (no .description suffix)
    - Step 3: Add the exact same key to translation files in each language directory
-   - Step 4: Run `node merge.js` to update bundle files
-   - Step 5: Run `bun run compile` to ensure no translation errors
+
+- Step 4: Run `node merge.js` to update bundle files
+- Step 5: Run `npm run compile` to ensure no translation errors
 
 4. **Key Validation Checklist**
    - [ ] Original key exists in data file without .description suffix
@@ -407,6 +397,7 @@ const message = t("Hello World from RustedWarfareModSupport!");
    - [ ] Bundle files updated via `node merge.js`
 
 **VIOLATION CONSEQUENCES:**
+
 - Using .description suffixes will break translation loading
 - Mismatched keys will cause runtime translation failures
 - Extra translation keys waste bundle size and create confusion

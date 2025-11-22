@@ -19,6 +19,7 @@ import { initializePanelManager, getPanelManager } from "./panel/panelManager";
 import { ModPanelProvider, ModPanelItem } from "./panel/index";
 import { PanelDataManager } from "./panel/provider";
 import { EXTENSION_ID } from "./constants";
+import { initializePerfLogger } from "./common/perfLogger";
 import { registerExportCommands } from "./panel/exportManager";
 
 // This method is called when your extension is activated
@@ -45,7 +46,10 @@ function applyFoldingControls(
     );
 }
 
+let languageFeaturesInitialized = false;
+
 export function activate(context: vscode.ExtensionContext) {
+  initializePerfLogger(context);
   // Use the console to output diagnostic information (console.log) and errors (console.error)
   // This line of code will only be executed once when your extension is activated
   console.log(
@@ -125,213 +129,9 @@ export function activate(context: vscode.ExtensionContext) {
     }
   );
 
-  // image commands removed
+  context.subscriptions.push(disposable);
 
-  // 注册文档解析器，用于识别节
-  const sectionParser = vscode.languages.registerDocumentSymbolProvider(
-    { language: "ini" },
-    new IniSectionSymbolProvider()
-  );
-
-  // 注册折叠范围提供者，用于节和注释块折叠
-  const foldingProvider = vscode.languages.registerFoldingRangeProvider(
-    { language: "ini" },
-    new IniFoldingRangeProvider()
-  );
-
-  // 创建所有补全提供者的数组
-  const completionProviders = createCompletionProviders(
-    completionProviderConfigs
-  );
-
-  // 注册所有补全提供者（设置触发字符，在行首和字母输入时触发）
-  const completionSubscriptions = completionProviders.map((provider) =>
-    vscode.languages.registerCompletionItemProvider(
-      { language: "ini" },
-      provider,
-      "a",
-      "b",
-      "c",
-      "d",
-      "e",
-      "f",
-      "g",
-      "h",
-      "i",
-      "j",
-      "k",
-      "l",
-      "m",
-      "n",
-      "o",
-      "p",
-      "q",
-      "r",
-      "s",
-      "t",
-      "u",
-      "v",
-      "w",
-      "x",
-      "y",
-      "z",
-      "A",
-      "B",
-      "C",
-      "D",
-      "E",
-      "F",
-      "G",
-      "H",
-      "I",
-      "J",
-      "K",
-      "L",
-      "M",
-      "N",
-      "O",
-      "P",
-      "Q",
-      "R",
-      "S",
-      "T",
-      "U",
-      "V",
-      "W",
-      "X",
-      "Y",
-      "Z",
-      "_",
-      "0",
-      "1",
-      "2",
-      "3",
-      "4",
-      "5",
-      "6",
-      "7",
-      "8",
-      "9" // 包含下划线和数字
-    )
-  );
-
-  // 注册值补全提供者
-  const valueCompletionProvider = new ValueCompletionProvider();
-  const valueCompletionSubscription =
-    vscode.languages.registerCompletionItemProvider(
-      { language: "ini" },
-      valueCompletionProvider,
-      ":",
-      " ",
-      ",",
-      ".",
-      "m" // 在冒号、空格、逗号、点号和m后触发值补全
-    );
-
-  // 注册节名称补全提供者，在多种字符输入时都可触发
-  const sectionNameCompletionProvider = new SectionNameCompletionProvider();
-  const sectionNameCompletionSubscription =
-    vscode.languages.registerCompletionItemProvider(
-      { language: "ini" },
-      sectionNameCompletionProvider,
-      "[", // 添加[作为触发字符
-      "a",
-      "b",
-      "c",
-      "d",
-      "e",
-      "f",
-      "g",
-      "h",
-      "i",
-      "j",
-      "k",
-      "l",
-      "m",
-      "n",
-      "o",
-      "p",
-      "q",
-      "r",
-      "s",
-      "t",
-      "u",
-      "v",
-      "w",
-      "x",
-      "y",
-      "z",
-      "A",
-      "B",
-      "C",
-      "D",
-      "E",
-      "F",
-      "G",
-      "H",
-      "I",
-      "J",
-      "K",
-      "L",
-      "M",
-      "N",
-      "O",
-      "P",
-      "Q",
-      "R",
-      "S",
-      "T",
-      "U",
-      "V",
-      "W",
-      "X",
-      "Y",
-      "Z"
-    );
-
-  // 注册@memory定义补全提供者
-  const memoryDefinitionProvider = new MemoryDefinitionCompletionProvider();
-  const memoryDefinitionSubscription =
-    vscode.languages.registerCompletionItemProvider(
-      { language: "ini" },
-      memoryDefinitionProvider,
-      "@",
-      " " // 在@和空格后触发
-    );
-
-  // 注册memory值补全提供者，在任意位置都可以触发
-  const memoryValueProvider = new MemoryValueCompletionProvider();
-  const memoryValueSubscription =
-    vscode.languages.registerCompletionItemProvider(
-      { language: "ini" },
-      memoryValueProvider,
-      "m",
-      "." // 在m和.后触发memory补全
-    );
-
-  // 注册悬停提供者
-  const hoverProvider = vscode.languages.registerHoverProvider(
-    { language: "ini" },
-    new RustedWarfareHoverProvider()
-  );
-
-  // 注册图片装饰器 - 只显示图片图标
-  const imageDecorator = new ImagePropertyDecorator();
-  context.subscriptions.push(imageDecorator);
-
-  // 将所有订阅添加到context.subscriptions中
-  context.subscriptions.push(
-    disposable,
-    sectionParser,
-    foldingProvider,
-    ...completionSubscriptions,
-    valueCompletionSubscription,
-    sectionNameCompletionSubscription,
-    memoryDefinitionSubscription,
-    memoryValueSubscription,
-    hoverProvider,
-    ...getPanelManager().getCustomExtensionsManager().getSubscriptions()
-  );
+  setupLazyLanguageInitialization(context);
 }
 
 // This method is called when your extension is deactivated
@@ -426,5 +226,243 @@ function registerModPanelDirect(context: vscode.ExtensionContext): void {
     addFileExtensionCommand,
     removeFileExtensionCommand,
     refreshPanelCommand
+  );
+}
+
+function setupLazyLanguageInitialization(context: vscode.ExtensionContext) {
+  const lazyDisposables: vscode.Disposable[] = [];
+
+  const ensureInitialized = () => {
+    if (languageFeaturesInitialized) {
+      return;
+    }
+    languageFeaturesInitialized = true;
+    lazyDisposables.forEach((item) => item.dispose());
+    lazyDisposables.length = 0;
+    initializeLanguageFeatures(context);
+  };
+
+  const hasIniDocument = () =>
+    vscode.workspace.textDocuments.some((doc) => doc.languageId === "ini") ||
+    vscode.window.visibleTextEditors.some(
+      (editor) => editor.document.languageId === "ini"
+    );
+
+  if (hasIniDocument()) {
+    ensureInitialized();
+    return;
+  }
+
+  lazyDisposables.push(
+    vscode.workspace.onDidOpenTextDocument((document) => {
+      if (document.languageId === "ini") {
+        ensureInitialized();
+      }
+    })
+  );
+
+  lazyDisposables.push(
+    vscode.window.onDidChangeVisibleTextEditors((editors) => {
+      if (editors.some((editor) => editor.document.languageId === "ini")) {
+        ensureInitialized();
+      }
+    })
+  );
+
+  context.subscriptions.push(...lazyDisposables);
+}
+
+function initializeLanguageFeatures(context: vscode.ExtensionContext) {
+  const sectionParser = vscode.languages.registerDocumentSymbolProvider(
+    { language: "ini" },
+    new IniSectionSymbolProvider()
+  );
+
+  const foldingProvider = vscode.languages.registerFoldingRangeProvider(
+    { language: "ini" },
+    new IniFoldingRangeProvider()
+  );
+
+  const completionProviders = createCompletionProviders(
+    completionProviderConfigs
+  );
+
+  const completionSubscriptions = completionProviders.map((provider) =>
+    vscode.languages.registerCompletionItemProvider(
+      { language: "ini" },
+      provider,
+      "a",
+      "b",
+      "c",
+      "d",
+      "e",
+      "f",
+      "g",
+      "h",
+      "i",
+      "j",
+      "k",
+      "l",
+      "m",
+      "n",
+      "o",
+      "p",
+      "q",
+      "r",
+      "s",
+      "t",
+      "u",
+      "v",
+      "w",
+      "x",
+      "y",
+      "z",
+      "A",
+      "B",
+      "C",
+      "D",
+      "E",
+      "F",
+      "G",
+      "H",
+      "I",
+      "J",
+      "K",
+      "L",
+      "M",
+      "N",
+      "O",
+      "P",
+      "Q",
+      "R",
+      "S",
+      "T",
+      "U",
+      "V",
+      "W",
+      "X",
+      "Y",
+      "Z",
+      "_",
+      "0",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9"
+    )
+  );
+
+  const valueCompletionProvider = new ValueCompletionProvider();
+  const valueCompletionSubscription =
+    vscode.languages.registerCompletionItemProvider(
+      { language: "ini" },
+      valueCompletionProvider,
+      ":",
+      " ",
+      ",",
+      ".",
+      "m"
+    );
+
+  const sectionNameCompletionProvider = new SectionNameCompletionProvider();
+  const sectionNameCompletionSubscription =
+    vscode.languages.registerCompletionItemProvider(
+      { language: "ini" },
+      sectionNameCompletionProvider,
+      "[",
+      "a",
+      "b",
+      "c",
+      "d",
+      "e",
+      "f",
+      "g",
+      "h",
+      "i",
+      "j",
+      "k",
+      "l",
+      "m",
+      "n",
+      "o",
+      "p",
+      "q",
+      "r",
+      "s",
+      "t",
+      "u",
+      "v",
+      "w",
+      "x",
+      "y",
+      "z",
+      "A",
+      "B",
+      "C",
+      "D",
+      "E",
+      "F",
+      "G",
+      "H",
+      "I",
+      "J",
+      "K",
+      "L",
+      "M",
+      "N",
+      "O",
+      "P",
+      "Q",
+      "R",
+      "S",
+      "T",
+      "U",
+      "V",
+      "W",
+      "X",
+      "Y",
+      "Z"
+    );
+
+  const memoryDefinitionProvider = new MemoryDefinitionCompletionProvider();
+  const memoryDefinitionSubscription =
+    vscode.languages.registerCompletionItemProvider(
+      { language: "ini" },
+      memoryDefinitionProvider,
+      "@",
+      " "
+    );
+
+  const memoryValueProvider = new MemoryValueCompletionProvider();
+  const memoryValueSubscription =
+    vscode.languages.registerCompletionItemProvider(
+      { language: "ini" },
+      memoryValueProvider,
+      "m",
+      "."
+    );
+
+  const hoverProvider = vscode.languages.registerHoverProvider(
+    { language: "ini" },
+    new RustedWarfareHoverProvider()
+  );
+
+  const imageDecorator = new ImagePropertyDecorator();
+  context.subscriptions.push(
+    imageDecorator,
+    sectionParser,
+    foldingProvider,
+    ...completionSubscriptions,
+    valueCompletionSubscription,
+    sectionNameCompletionSubscription,
+    memoryDefinitionSubscription,
+    memoryValueSubscription,
+    hoverProvider,
+    ...getPanelManager().getCustomExtensionsManager().getSubscriptions()
   );
 }
