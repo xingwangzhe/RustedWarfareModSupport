@@ -41,29 +41,41 @@ jobs:
       - name: Create VSIX package
         run: bun run package:vsix
 
+      - name: Capture VSIX filename
+        id: vsix
+        run: |
+          VSIX_FILE=$(ls -1 *.vsix | head -n 1)
+          if [ -z "$VSIX_FILE" ]; then
+            echo "VSIX package not found" >&2
+            exit 1
+          fi
+          echo "file=$VSIX_FILE" >> "$GITHUB_OUTPUT"
+          echo "VSIX file: $VSIX_FILE"
+
       - name: Upload VSIX as artifact
         uses: actions/upload-artifact@v4
         with:
           name: rustedwarfare-mod-support
-          path: "*.vsix"
+          path: ${{ steps.vsix.outputs.file }}
 
       - name: Extract version from package.json
-        if: github.event.inputs.create_release == 'true' || github.event_name == 'workflow_dispatch'
+        if: github.event.inputs.create_release == 'true'
         id: extract_version
         run: |
-          VERSION=$(cat package.json | jq -r '.version')
-          echo "version=v$VERSION" >> $GITHUB_OUTPUT
+          VERSION=$(jq -r '.version' package.json)
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "tag=v$VERSION" >> "$GITHUB_OUTPUT"
           echo "Extension version: v$VERSION"
 
       - name: Create Release Draft
-        if: github.event.inputs.create_release == 'true' || github.event_name == 'workflow_dispatch'
+        if: github.event.inputs.create_release == 'true'
         uses: softprops/action-gh-release@v1
         with:
-          tag_name: ${{ steps.extract_version.outputs.version }}
-          name: Release ${{ steps.extract_version.outputs.version }}
+          tag_name: ${{ steps.extract_version.outputs.tag }}
+          name: Release v${{ steps.extract_version.outputs.version }}
           draft: true
           prerelease: false
-          files: "*.vsix"
+          files: ${{ steps.vsix.outputs.file }}
           body: |
             ## What's Changed
 
