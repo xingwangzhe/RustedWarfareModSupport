@@ -12,7 +12,7 @@
   "data.sections.effect.createWhenOverLand": "在陸地上創建",
   "data.sections.effect.spawnChance": "生成機率",
   "data.sections.effect.showInFog": "在霧中顯示",
-  "data.sections.effect.delayedStartTimer": "延遲開始計時器",
+  "data.sections.effect.delayedStartTimer": "延遲時間",
   "data.sections.effect.liveAfterAttachedDies": "附加對象死亡後繼續存活",
   "data.sections.effect.priority": "優先級",
   "data.sections.effect.attachedToUnit": "附加到單位",

@@ -7,7 +7,7 @@
   "data.sections.attack.maxAttackRange": "最大攻擊範圍",
   "data.sections.attack.shootDelay": "射擊延遲",
   "data.sections.attack.canOnlyAttackUnitsWithTags": "只能攻擊帶標籤的單位",
-  "data.sections.attack.canOnlyAttackUnitsWithoutTags": "只能攻擊不帶標籤的單位",
+  "data.sections.attack.canOnlyAttackUnitsWithoutTags": "不攻擊帶特定標籤單位",
   "data.sections.attack.turretMultiTargeting": "砲塔多目標鎖定",
   "data.sections.attack.isMelee": "是近戰",
   "data.sections.attack.meleeEngangementDistance": "近戰交戰距離",

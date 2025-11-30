@@ -23,7 +23,7 @@
   "data.sections.action.unitShownInUIWithProgressBar": "UI中显示单位带进度条",
   "data.sections.action.alwaysSinglePress": "始终单次按下",
   "data.sections.action.price": "价格",
-  "data.sections.action.isActive": "激活",
+  "data.sections.action.isActive": "可用",
   "data.sections.action.isVisible": "可见",
   "data.sections.action.isLocked": "锁定",
   "data.sections.action.isLockedMessage": "锁定消息",

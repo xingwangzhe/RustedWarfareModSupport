@@ -14,7 +14,7 @@
   "data.sections.projectile.convertHitToSourceTeam": "將擊中轉換為來源隊伍",
   "data.sections.projectile.tags": "標籤",
   "data.sections.projectile.flameWeapon": "火焰武器",
-  "data.sections.projectile.delayedStartTimer": "延遲開始計時器",
+  "data.sections.projectile.delayedStartTimer": "延遲時間",
   "data.sections.projectile.directDamage": "直接傷害",
   "data.sections.projectile.areaDamage": "區域傷害",
   "data.sections.projectile.areaRadius": "區域半徑",

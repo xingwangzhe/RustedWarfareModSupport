@@ -23,7 +23,7 @@
   "data.sections.action.unitShownInUIWithProgressBar": "UI 中顯示單位並帶進度條",
   "data.sections.action.alwaysSinglePress": "始終單按",
   "data.sections.action.price": "價格",
-  "data.sections.action.isActive": "是否啟用",
+  "data.sections.action.isActive": "可用",
   "data.sections.action.isVisible": "是否可見",
   "data.sections.action.isLocked": "是否鎖定",
   "data.sections.action.isLockedMessage": "鎖定訊息",

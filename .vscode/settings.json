@@ -22,5 +22,6 @@
     "typescript.preferences.includePackageJsonAutoImports": "off",
     "editor.codeActionsOnSave": {
         "source.fixAll.eslint": "explicit"
-    }
+    },
+    "editor.showFoldingControls": "always"
 }

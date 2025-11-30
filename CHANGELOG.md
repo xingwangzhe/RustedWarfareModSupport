@@ -1,4 +1,24 @@
 # 更新日志 / Changelog
+## [1.7.46] - 2025-11-30
+
+- 将 VS Code 引擎要求提升至 `^1.106.1`，对齐最新稳定版 API
+- 更新类型定义与 Lint 工具链（@types/vscode、@types/node、TS ESLint 系列）保持构建稳定
+- bump 扩展版本并重新打包 VSIX，确保商店提交的元数据最新
+
+- Raised VS Code engine requirement to `^1.106.1` to match the latest stable API
+- Refreshed type definitions and linting toolchain (@types/vscode, @types/node, TS ESLint) for a reliable build
+- Bumped the extension version and rebuilt the VSIX so marketplace metadata stays current
+
+## [1.7.44] - 2025-11-30
+
+- 将 `canOnlyAttackUnitsWithoutTags` 的中文翻译统一为“不要攻击带特定标签单位”，避免歧义
+- 将 `isActive` 翻译调整为“可用”，准确反映动作可用状态
+- 将 `delayedStartTimer` 翻译更新为“延迟时间/延遲時間”，提升可读性
+
+- Align `canOnlyAttackUnitsWithoutTags` Chinese wording to “don’t attack units with specific tags” for clarity
+- Update `isActive` translation to “available” to reflect actual behavior
+- Refresh `delayedStartTimer` wording to “delay duration” across Chinese locales for better readability
+
 ## [1.7.43] - 2025-11-22
 
 - 延迟初始化补全、悬停、面板等耗时模块，加快扩展激活速度
