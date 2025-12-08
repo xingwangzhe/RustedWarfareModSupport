@@ -1,4 +1,15 @@
 # 更新日志 / Changelog
+## [1.7.47] - 2025-12-08
+
+- 添加颜色预览本地化说明，支持 `#AARRGGBB`、`#RRGGBB`、简写 `#ARGB`/`#RGB` 格式
+- 新增翻译键 `data.value.color.formats`（已添加 `en` 与 `zh-cn` 示例）并合并翻译包
+- 若干小修与翻译同步
+
+- Add localized color preview note and support for `#AARRGGBB`, `#RRGGBB`, shorthand `#ARGB`/`#RGB`
+- Added translation key `data.value.color.formats` (examples added for `en` and `zh-cn`) and merged bundles
+- Misc small fixes and translation sync
+
+## [1.7.46] - 2025-11-30
 ## [1.7.46] - 2025-11-30
 
 - 将 VS Code 引擎要求提升至 `^1.106.1`，对齐最新稳定版 API
