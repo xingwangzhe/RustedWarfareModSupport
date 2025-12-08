@@ -1,0 +1,3 @@
+{
+  "data.value.color.formats": "Accepts hex color codes. Supported formats: `#AARRGGBB` (alpha first), `#RRGGBB`, shorthand `#ARGB` or `#RGB`. Example: `#80FF0000` = semi-transparent red."
+}

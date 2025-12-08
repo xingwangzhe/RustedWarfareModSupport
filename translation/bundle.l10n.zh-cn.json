@@ -1400,6 +1400,7 @@
   "data.sections.turret.recoilOutTime": "后坐力出去时间",
   "data.sections.turret.recoilReturnTime": "后坐力返回时间",
   "data.sections.turret.showRangeUIGuide": "显示范围UI指南",
+  "data.value.color.formats": "接受十六进制颜色值，支持格式：`#AARRGGBB`（透明度在前）、`#RRGGBB`，以及简写 `#ARGB` 或 `#RGB`。示例：`#80FF0000` 表示半透明红色。",
   "data.value.whenbuilding_temporarilyconvertto_keepfields.maxhp": "最大生命值",
   "data.value.whenbuilding_temporarilyconvertto_keepfields.hp": "生命值",
   "data.value.whenbuilding_temporarilyconvertto_keepfields.maxshield": "最大护盾",

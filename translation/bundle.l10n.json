@@ -1405,6 +1405,7 @@
   "data.sections.turret.recoilOutTime": "Recoil Out Time",
   "data.sections.turret.recoilReturnTime": "Recoil Return Time",
   "data.sections.turret.showRangeUIGuide": "Show Range UI Guide",
+  "data.value.color.formats": "Accepts hex color codes. Supported formats: `#AARRGGBB` (alpha first), `#RRGGBB`, shorthand `#ARGB` or `#RGB`. Example: `#80FF0000` = semi-transparent red.",
   "data.value.whenbuilding_temporarilyconvertto_keepfields.maxhp": "Max HP",
   "data.value.whenbuilding_temporarilyconvertto_keepfields.hp": "HP",
   "data.value.whenbuilding_temporarilyconvertto_keepfields.maxshield": "Max Shield",

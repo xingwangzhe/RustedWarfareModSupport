@@ -16,8 +16,7 @@ import { MemoryDefinitionCompletionProvider } from "./memory/MemoryDefinitionCom
 import { MemoryValueCompletionProvider } from "./memory/MemoryValueCompletionProvider";
 import { initializePanelManager, getPanelManager } from "./panel/panelManager";
 // 直接导入面板相关模块，避免动态导入
-import { ModPanelProvider, ModPanelItem } from "./panel/index";
-import { PanelDataManager } from "./panel/provider";
+import { ModPanelProvider } from "./panel/index";
 import { EXTENSION_ID } from "./constants";
 import { initializePerfLogger } from "./common/perfLogger";
 import { registerExportCommands } from "./panel/exportManager";
@@ -451,7 +450,6 @@ function initializeLanguageFeatures(context: vscode.ExtensionContext) {
     { language: "ini" },
     new RustedWarfareHoverProvider()
   );
-
   const imageDecorator = new ImagePropertyDecorator();
   context.subscriptions.push(
     imageDecorator,

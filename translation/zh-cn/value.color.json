@@ -1,0 +1,3 @@
+{
+  "data.value.color.formats": "接受十六进制颜色值，支持格式：`#AARRGGBB`（透明度在前）、`#RRGGBB`，以及简写 `#ARGB` 或 `#RGB`。示例：`#80FF0000` 表示半透明红色。"
+}
