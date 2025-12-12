@@ -1,4 +1,10 @@
 # 更新日志 / Changelog
+
+## [1.7.48] - 2025-12-12
+
+- 修复一些翻译错误
+- fix the bug of transltion
+
 ## [1.7.47] - 2025-12-08
 
 - 添加颜色预览本地化说明，支持 `#AARRGGBB`、`#RRGGBB`、简写 `#ARGB`/`#RGB` 格式

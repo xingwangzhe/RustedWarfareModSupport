@@ -24,3 +24,4 @@ CONTRIBUTING*.md
 TECHNICAL_DOCS*.md
 .github/**
 test
+.ini
