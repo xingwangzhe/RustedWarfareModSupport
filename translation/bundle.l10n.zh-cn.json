@@ -1234,7 +1234,7 @@
   "data.sections.arm": "手臂",
   "data.sections.attachment": "附件",
   "data.sections.action": "动作",
-  "data.sections.hiddenAction": "隐藏动作",
+  "data.sections.hiddenAction": "隐藏行动",
   "data.sections.effect": "效果",
   "data.sections.animation": "动画",
   "data.sections.placementRule": "放置规则",
