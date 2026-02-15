@@ -58,12 +58,7 @@ export function getSectionProperties(sectionName: string): any[] {
     const extensionPath = extension.extensionPath;
 
     // 构建语言特定的数据文件路径
-    let sectionPath = path.join(
-      extensionPath,
-      "data",
-      "sections",
-      `${baseSectionName}.json`
-    );
+    let sectionPath = path.join(extensionPath, "data", "sections", `${baseSectionName}.json`);
 
     // 检查是否存在语言特定的文件
     const localizedPath = path.join(
@@ -71,7 +66,7 @@ export function getSectionProperties(sectionName: string): any[] {
       "data",
       "sections",
       vscode.env.language,
-      `${baseSectionName}.json`
+      `${baseSectionName}.json`,
     );
     if (fs.existsSync(localizedPath)) {
       sectionPath = localizedPath;
@@ -79,29 +74,17 @@ export function getSectionProperties(sectionName: string): any[] {
 
     // 如果目标文件不存在，尝试更宽松的匹配：在 sections 目录（或语言子目录）中查找最接近的文件名
     if (!fs.existsSync(sectionPath)) {
-      const localizedDir = path.join(
-        extensionPath,
-        "data",
-        "sections",
-        vscode.env.language
-      );
+      const localizedDir = path.join(extensionPath, "data", "sections", vscode.env.language);
       const defaultDir = path.join(extensionPath, "data", "sections");
-      const dirToSearch = fs.existsSync(localizedDir)
-        ? localizedDir
-        : defaultDir;
+      const dirToSearch = fs.existsSync(localizedDir) ? localizedDir : defaultDir;
 
       try {
-        const files = fs
-          .readdirSync(dirToSearch)
-          .filter((f) => f.endsWith(".json"));
+        const files = fs.readdirSync(dirToSearch).filter((f) => f.endsWith(".json"));
         // 优先查找精确或前缀匹配
         let matched: string | null = null;
         for (const f of files) {
           const nameWithoutExt = path.basename(f, ".json");
-          if (
-            nameWithoutExt === sectionName ||
-            nameWithoutExt === baseSectionName
-          ) {
+          if (nameWithoutExt === sectionName || nameWithoutExt === baseSectionName) {
             matched = f;
             break;
           }
@@ -127,10 +110,7 @@ export function getSectionProperties(sectionName: string): any[] {
         }
       } catch (err) {
         // 忽略读取目录错误，稍后会抛出不存在文件的捕获分支
-        console.debug(
-          "Ignored error while searching sections dir:",
-          err && (err as Error).message
-        );
+        console.debug("Ignored error while searching sections dir:", err && (err as Error).message);
       }
     }
 
@@ -166,9 +146,7 @@ export function getSectionProperties(sectionName: string): any[] {
   }
 }
 
-export function getSectionPropertyMap(
-  sectionName: string
-): Map<string, any> | null {
+export function getSectionPropertyMap(sectionName: string): Map<string, any> | null {
   cleanupExpiredSectionPropertyCache();
   const cacheKey = `${vscode.env.language}:${sectionName}`;
   const cached = sectionPropertyMapCache.get(cacheKey);
@@ -215,12 +193,7 @@ function findSectionPathByMetadata(sectionName: string): string | null {
   }
 
   const extensionPath = extension.extensionPath;
-  const localizedDir = path.join(
-    extensionPath,
-    "data",
-    "sections",
-    vscode.env.language
-  );
+  const localizedDir = path.join(extensionPath, "data", "sections", vscode.env.language);
   const defaultDir = path.join(extensionPath, "data", "sections");
   const dirs = [] as string[];
   if (fs.existsSync(localizedDir)) {
@@ -239,11 +212,7 @@ function findSectionPathByMetadata(sectionName: string): string | null {
           const raw = fs.readFileSync(p, "utf8");
           const json = JSON.parse(raw);
           // 如果文件内部定义了 name 字段并且严格匹配请求的节名，则认为是对应的定义文件
-          if (
-            json &&
-            typeof json.name === "string" &&
-            json.name === sectionName
-          ) {
+          if (json && typeof json.name === "string" && json.name === sectionName) {
             sectionMetadataCache.set(sectionName, p);
             return p;
           }
@@ -253,11 +222,7 @@ function findSectionPathByMetadata(sectionName: string): string | null {
         }
       }
     } catch (e) {
-      console.debug(
-        "Ignored error while scanning dir for metadata:",
-        dir,
-        (e as Error).message
-      );
+      console.debug("Ignored error while scanning dir for metadata:", dir, (e as Error).message);
     }
   }
 
@@ -299,9 +264,7 @@ function createSectionCacheKey(sectionPath: string): string {
  * @param sectionName 节名称
  * @returns 匹配器函数
  */
-export function createSimpleSectionMatcher(
-  sectionName: string
-): (name: string) => boolean {
+export function createSimpleSectionMatcher(sectionName: string): (name: string) => boolean {
   return (name: string) => name === sectionName;
 }
 
@@ -310,9 +273,7 @@ export function createSimpleSectionMatcher(
  * @param prefix 前缀
  * @returns 匹配器函数
  */
-export function createPrefixSectionMatcher(
-  prefix: string
-): (name: string) => boolean {
+export function createPrefixSectionMatcher(prefix: string): (name: string) => boolean {
   return (name: string) => name.startsWith(prefix);
 }
 
@@ -321,9 +282,7 @@ export function createPrefixSectionMatcher(
  * @param pattern 正则表达式模式
  * @returns 匹配器函数
  */
-export function createRegexSectionMatcher(
-  pattern: RegExp
-): (name: string) => boolean {
+export function createRegexSectionMatcher(pattern: RegExp): (name: string) => boolean {
   return (name: string) => pattern.test(name);
 }
 
@@ -337,7 +296,7 @@ export function createRegexSectionMatcher(
 export function isInsideSection(
   document: vscode.TextDocument,
   position: vscode.Position,
-  sectionMatcher: (sectionName: string) => boolean
+  sectionMatcher: (sectionName: string) => boolean,
 ): boolean {
   // 从光标所在行向上遍历，查找最近的节定义
   let stop = false;
@@ -386,7 +345,7 @@ export function isInsideSection(
  */
 export function isAtValidLineStart(
   document: vscode.TextDocument,
-  position: vscode.Position
+  position: vscode.Position,
 ): boolean {
   const line = document.lineAt(position.line).text;
   const beforeCursor = line.substring(0, position.character);
@@ -403,10 +362,7 @@ export function isAtValidLineStart(
  * @param position 位置对象
  * @returns 行中是否已包含冒号
  */
-export function hasColonInLine(
-  document: vscode.TextDocument,
-  position: vscode.Position
-): boolean {
+export function hasColonInLine(document: vscode.TextDocument, position: vscode.Position): boolean {
   const line = document.lineAt(position.line).text;
   const beforeCursor = line.substring(0, position.character);
   return beforeCursor.includes(":");

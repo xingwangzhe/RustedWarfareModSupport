@@ -6,14 +6,12 @@ import { getCurrentSection } from "../common/sectionUtils";
  * @memory定义补全提供者
  * 在core节中提供@memory name:type的补全
  */
-export class MemoryDefinitionCompletionProvider
-  implements vscode.CompletionItemProvider
-{
+export class MemoryDefinitionCompletionProvider implements vscode.CompletionItemProvider {
   provideCompletionItems(
     document: vscode.TextDocument,
     position: vscode.Position,
     _token: vscode.CancellationToken,
-    _context: vscode.CompletionContext
+    _context: vscode.CompletionContext,
   ): vscode.ProviderResult<vscode.CompletionItem[] | vscode.CompletionList> {
     // 检查是否在core节中
     const currentSection = this.getCurrentSection(document, position);
@@ -42,16 +40,13 @@ export class MemoryDefinitionCompletionProvider
    * 提供@memory关键词补全
    */
   private provideMemoryKeywordCompletion(): vscode.CompletionItem[] {
-    const item = new vscode.CompletionItem(
-      "@memory",
-      vscode.CompletionItemKind.Keyword
-    );
+    const item = new vscode.CompletionItem("@memory", vscode.CompletionItemKind.Keyword);
     item.detail = t("memory.definition.description");
     item.documentation = new vscode.MarkdownString(
       `**@memory** - ${t("memory.definition.description")}\n\n` +
         `${t("memory.definition.format")}\n\n` +
         `**${t("memory.definition.supportedTypes")}** ${t(
-          "memory.definition.supportedTypesList"
+          "memory.definition.supportedTypesList",
         )}\n\n` +
         `**${t("memory.definition.example")}**\n` +
         "```\n" +
@@ -59,7 +54,7 @@ export class MemoryDefinitionCompletionProvider
         `${t("memory.definition.exampleName")}\n` +
         `${t("memory.definition.exampleIsAlive")}\n` +
         "```\n\n" +
-        `${t("memory.definition.accessNote")}`
+        `${t("memory.definition.accessNote")}`,
     );
     // 修复重复@的问题：当用户输入@时，只插入memory部分
     item.insertText = new vscode.SnippetString("memory ${1:name}:${2:type}");
@@ -72,7 +67,7 @@ export class MemoryDefinitionCompletionProvider
    */
   private provideMemoryDefinitionCompletion(
     beforeCursor: string,
-    _position: vscode.Position
+    _position: vscode.Position,
   ): vscode.CompletionItem[] {
     const completions: vscode.CompletionItem[] = [];
 
@@ -98,10 +93,7 @@ export class MemoryDefinitionCompletionProvider
       ];
 
       suggestedNames.forEach((name) => {
-        const item = new vscode.CompletionItem(
-          name,
-          vscode.CompletionItemKind.Variable
-        );
+        const item = new vscode.CompletionItem(name, vscode.CompletionItemKind.Variable);
         item.detail = t("memory.variableName.detail");
         item.insertText = name + ":";
         completions.push(item);
@@ -110,19 +102,12 @@ export class MemoryDefinitionCompletionProvider
       // 提供类型补全
       const supportedTypes = memoryManager.getSupportedTypes();
       supportedTypes.forEach((type) => {
-        const item = new vscode.CompletionItem(
-          type,
-          vscode.CompletionItemKind.TypeParameter
-        );
+        const item = new vscode.CompletionItem(type, vscode.CompletionItemKind.TypeParameter);
         item.detail = t("memory.variableType.detail", type);
         item.documentation = new vscode.MarkdownString(
-          t(
-            "memory.variableType.documentation",
-            type,
-            this.getTypeDescription(type)
-          ) +
+          t("memory.variableType.documentation", type, this.getTypeDescription(type)) +
             "\n\n" +
-            t("memory.variableType.accessNote")
+            t("memory.variableType.accessNote"),
         );
         completions.push(item);
       });
@@ -136,7 +121,7 @@ export class MemoryDefinitionCompletionProvider
    */
   private getCurrentSection(
     document: vscode.TextDocument,
-    position: vscode.Position
+    position: vscode.Position,
   ): string | null {
     return getCurrentSection(document, position);
   }

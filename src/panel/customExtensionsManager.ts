@@ -1,14 +1,8 @@
 import * as vscode from "vscode";
 import { IniSectionSymbolProvider } from "../Section";
 import { IniFoldingRangeProvider } from "../IniFoldingProvider";
-import {
-  SectionNameCompletionProvider,
-  GenericCompletionProvider,
-} from "../completionProvider";
-import {
-  createCompletionProviders,
-  completionProviderConfigs,
-} from "../common/completionFactory";
+import { SectionNameCompletionProvider, GenericCompletionProvider } from "../completionProvider";
+import { createCompletionProviders, completionProviderConfigs } from "../common/completionFactory";
 import { ValueCompletionProvider } from "../valueComple/valueCompletionProvider";
 import { RustedWarfareHoverProvider } from "../hoverProvider/hoverProvider";
 import { MemoryDefinitionCompletionProvider } from "../memory/MemoryDefinitionCompletionProvider";
@@ -63,12 +57,10 @@ export class CustomFileExtensionsManager {
 
     this.context.subscriptions.push(
       vscode.workspace.onDidChangeConfiguration((e) => {
-        if (
-          e.affectsConfiguration("rustedwarfaremodsupport.customFileExtensions")
-        ) {
+        if (e.affectsConfiguration("rustedwarfaremodsupport.customFileExtensions")) {
           this.handleCustomExtensionsChange();
         }
-      })
+      }),
     );
   }
 
@@ -80,13 +72,9 @@ export class CustomFileExtensionsManager {
     const newExtensions = config.get<string[]>("customFileExtensions", []);
 
     // 找出新增的扩展名
-    const addedExtensions = newExtensions.filter(
-      (ext) => !this.currentExtensions.includes(ext)
-    );
+    const addedExtensions = newExtensions.filter((ext) => !this.currentExtensions.includes(ext));
     // 找出删除的扩展名
-    const removedExtensions = this.currentExtensions.filter(
-      (ext) => !newExtensions.includes(ext)
-    );
+    const removedExtensions = this.currentExtensions.filter((ext) => !newExtensions.includes(ext));
 
     // 为新增的扩展名注册支持
     if (addedExtensions.length > 0) {
@@ -133,20 +121,14 @@ export class CustomFileExtensionsManager {
 
       // 重置已经打开的该扩展名文件的语言
       vscode.workspace.textDocuments.forEach((document) => {
-        if (
-          document.fileName.endsWith(extension) &&
-          document.languageId === "ini"
-        ) {
+        if (document.fileName.endsWith(extension) && document.languageId === "ini") {
           // 将语言重置为默认的纯文本
           vscode.languages.setTextDocumentLanguage(document, "plaintext");
         }
       });
     });
 
-    console.log(
-      "Cleaned up custom file extensions support for:",
-      removedExtensions
-    );
+    console.log("Cleaned up custom file extensions support for:", removedExtensions);
   }
 
   /**
@@ -156,30 +138,23 @@ export class CustomFileExtensionsManager {
     // 为每个自定义扩展名注册语言支持
     extensions.forEach((extension) => {
       if (!extension.startsWith(".")) {
-        console.warn(
-          `Invalid file extension: ${extension}. Extension must start with a dot.`
-        );
+        console.warn(`Invalid file extension: ${extension}. Extension must start with a dot.`);
         return;
       }
 
       // 注册文档打开事件处理器，为自定义扩展名的文件设置语言类型
-      const documentOpenHandler = vscode.workspace.onDidOpenTextDocument(
-        (document) => {
-          if (document.fileName.endsWith(extension)) {
-            // 如果文档还没有设置语言，或者语言不是ini，则设置为ini
-            if (document.languageId !== "ini") {
-              vscode.languages.setTextDocumentLanguage(document, "ini");
-            }
+      const documentOpenHandler = vscode.workspace.onDidOpenTextDocument((document) => {
+        if (document.fileName.endsWith(extension)) {
+          // 如果文档还没有设置语言，或者语言不是ini，则设置为ini
+          if (document.languageId !== "ini") {
+            vscode.languages.setTextDocumentLanguage(document, "ini");
           }
         }
-      );
+      });
 
       // 处理当前已经打开的文档
       vscode.workspace.textDocuments.forEach((document) => {
-        if (
-          document.fileName.endsWith(extension) &&
-          document.languageId !== "ini"
-        ) {
+        if (document.fileName.endsWith(extension) && document.languageId !== "ini") {
           vscode.languages.setTextDocumentLanguage(document, "ini");
         }
       });
@@ -187,19 +162,17 @@ export class CustomFileExtensionsManager {
       // 注册文档符号提供者
       const symbolProvider = vscode.languages.registerDocumentSymbolProvider(
         { language: "ini" },
-        new IniSectionSymbolProvider()
+        new IniSectionSymbolProvider(),
       );
 
       // 注册折叠范围提供者
       const foldingProvider = vscode.languages.registerFoldingRangeProvider(
         { language: "ini" },
-        new IniFoldingRangeProvider()
+        new IniFoldingRangeProvider(),
       );
 
       // 注册补全提供者
-      const completionProviders = createCompletionProviders(
-        completionProviderConfigs
-      );
+      const completionProviders = createCompletionProviders(completionProviderConfigs);
 
       const completionSubscriptions = completionProviders.map((provider) =>
         vscode.languages.registerCompletionItemProvider(
@@ -267,107 +240,103 @@ export class CustomFileExtensionsManager {
           "6",
           "7",
           "8",
-          "9" // 包含下划线和数字
-        )
+          "9", // 包含下划线和数字
+        ),
       );
 
       // 注册值补全提供者
       const valueCompletionProvider = new ValueCompletionProvider();
-      const valueCompletionSubscription =
-        vscode.languages.registerCompletionItemProvider(
-          { language: "ini" },
-          valueCompletionProvider,
-          ":",
-          " ",
-          ",",
-          ".",
-          "m"
-        );
+      const valueCompletionSubscription = vscode.languages.registerCompletionItemProvider(
+        { language: "ini" },
+        valueCompletionProvider,
+        ":",
+        " ",
+        ",",
+        ".",
+        "m",
+      );
 
       // 注册节名称补全提供者
       const sectionNameCompletionProvider = new SectionNameCompletionProvider();
-      const sectionNameCompletionSubscription =
-        vscode.languages.registerCompletionItemProvider(
-          { language: "ini" },
-          sectionNameCompletionProvider,
-          "a",
-          "b",
-          "c",
-          "d",
-          "e",
-          "f",
-          "g",
-          "h",
-          "i",
-          "j",
-          "k",
-          "l",
-          "m",
-          "n",
-          "o",
-          "p",
-          "q",
-          "r",
-          "s",
-          "t",
-          "u",
-          "v",
-          "w",
-          "x",
-          "y",
-          "z",
-          "A",
-          "B",
-          "C",
-          "D",
-          "E",
-          "F",
-          "G",
-          "H",
-          "I",
-          "J",
-          "K",
-          "L",
-          "M",
-          "N",
-          "O",
-          "P",
-          "Q",
-          "R",
-          "S",
-          "T",
-          "U",
-          "V",
-          "W",
-          "X",
-          "Y",
-          "Z"
-        );
+      const sectionNameCompletionSubscription = vscode.languages.registerCompletionItemProvider(
+        { language: "ini" },
+        sectionNameCompletionProvider,
+        "a",
+        "b",
+        "c",
+        "d",
+        "e",
+        "f",
+        "g",
+        "h",
+        "i",
+        "j",
+        "k",
+        "l",
+        "m",
+        "n",
+        "o",
+        "p",
+        "q",
+        "r",
+        "s",
+        "t",
+        "u",
+        "v",
+        "w",
+        "x",
+        "y",
+        "z",
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "I",
+        "J",
+        "K",
+        "L",
+        "M",
+        "N",
+        "O",
+        "P",
+        "Q",
+        "R",
+        "S",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z",
+      );
 
       // 注册@memory定义补全提供者
       const memoryDefinitionProvider = new MemoryDefinitionCompletionProvider();
-      const memoryDefinitionSubscription =
-        vscode.languages.registerCompletionItemProvider(
-          { language: "ini" },
-          memoryDefinitionProvider,
-          "@",
-          " "
-        );
+      const memoryDefinitionSubscription = vscode.languages.registerCompletionItemProvider(
+        { language: "ini" },
+        memoryDefinitionProvider,
+        "@",
+        " ",
+      );
 
       // 注册memory值补全提供者
       const memoryValueProvider = new MemoryValueCompletionProvider();
-      const memoryValueSubscription =
-        vscode.languages.registerCompletionItemProvider(
-          { language: "ini" },
-          memoryValueProvider,
-          "m",
-          "."
-        );
+      const memoryValueSubscription = vscode.languages.registerCompletionItemProvider(
+        { language: "ini" },
+        memoryValueProvider,
+        "m",
+        ".",
+      );
 
       // 注册悬停提供者
       const hoverProvider = vscode.languages.registerHoverProvider(
         { language: "ini" },
-        new RustedWarfareHoverProvider()
+        new RustedWarfareHoverProvider(),
       );
 
       // 将所有订阅添加到全局订阅列表中
@@ -380,12 +349,10 @@ export class CustomFileExtensionsManager {
         sectionNameCompletionSubscription,
         memoryDefinitionSubscription,
         memoryValueSubscription,
-        hoverProvider
+        hoverProvider,
       );
 
-      console.log(
-        `Registered language support for custom extension: ${extension}`
-      );
+      console.log(`Registered language support for custom extension: ${extension}`);
     });
   }
 
@@ -414,9 +381,7 @@ export function getCustomFileExtensionsManager(): CustomFileExtensionsManager {
 /**
  * 初始化自定义文件扩展名管理器
  */
-export function initializeCustomFileExtensionsManager(
-  context: vscode.ExtensionContext
-): void {
+export function initializeCustomFileExtensionsManager(context: vscode.ExtensionContext): void {
   const manager = CustomFileExtensionsManager.getInstance();
   manager.initialize(context);
 }

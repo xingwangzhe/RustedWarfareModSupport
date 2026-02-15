@@ -14,7 +14,7 @@ export class ImagePropertyDecorator implements vscode.Disposable {
     this.disposables.push(
       vscode.window.onDidChangeActiveTextEditor((editor) => {
         this.scheduleUpdate(editor?.document);
-      })
+      }),
     );
 
     this.disposables.push(
@@ -22,7 +22,7 @@ export class ImagePropertyDecorator implements vscode.Disposable {
         if (vscode.window.activeTextEditor?.document === event.document) {
           this.scheduleUpdate(event.document);
         }
-      })
+      }),
     );
 
     this.scheduleUpdate(vscode.window.activeTextEditor?.document);
@@ -63,16 +63,10 @@ export class ImagePropertyDecorator implements vscode.Disposable {
       }
 
       this.decorations.clear();
-      for (
-        let lineIndex = 0;
-        lineIndex < editor.document.lineCount;
-        lineIndex++
-      ) {
+      for (let lineIndex = 0; lineIndex < editor.document.lineCount; lineIndex++) {
         const line = editor.document.lineAt(lineIndex).text;
 
-        const keyValueMatch = line.match(
-          /^\s*([a-zA-Z_][a-zA-Z0-9_]*)\s*:\s*(.+)$/
-        );
+        const keyValueMatch = line.match(/^\s*([a-zA-Z_][a-zA-Z0-9_]*)\s*:\s*(.+)$/);
         if (!keyValueMatch) {
           continue;
         }
@@ -89,7 +83,7 @@ export class ImagePropertyDecorator implements vscode.Disposable {
               lineIndex,
               valueStart,
               lineIndex,
-              valueStart + value.length
+              valueStart + value.length,
             );
 
             const decorationType = "image_value";
@@ -102,8 +96,7 @@ export class ImagePropertyDecorator implements vscode.Disposable {
       }
 
       this.decorations.forEach((ranges, decorationType) => {
-        const decorator =
-          ImageDecoratorFactory.createImageDecorator(decorationType);
+        const decorator = ImageDecoratorFactory.createImageDecorator(decorationType);
         editor.setDecorations(decorator, ranges);
       });
     });

@@ -2,10 +2,7 @@ import * as vscode from "vscode";
 import { parseHexColor } from "./colorUtils";
 
 export class ColorDecoratorFactory {
-  private static decorators = new Map<
-    string,
-    vscode.TextEditorDecorationType
-  >();
+  private static decorators = new Map<string, vscode.TextEditorDecorationType>();
 
   static create(colorHex: string): vscode.TextEditorDecorationType {
     const key = colorHex.toUpperCase();
@@ -19,9 +16,7 @@ export class ColorDecoratorFactory {
     try {
       const rgba = parseHexColor(cssColor);
       if (rgba) {
-        cssColor = `rgba(${rgba.r}, ${rgba.g}, ${rgba.b}, ${Number(
-          rgba.a.toFixed(3)
-        )})`;
+        cssColor = `rgba(${rgba.r}, ${rgba.g}, ${rgba.b}, ${Number(rgba.a.toFixed(3))})`;
       }
     } catch {
       // fall back to raw hex

@@ -8,7 +8,7 @@ export class TransportUnitsRequireMovementTypeValueCompletionProvider extends Ba
     document: vscode.TextDocument,
     position: vscode.Position,
     propertyName: string,
-    _sectionName: string
+    _sectionName: string,
   ): vscode.ProviderResult<vscode.CompletionItem[] | vscode.CompletionList> {
     if (propertyName !== "transportUnitsRequireMovementType") {
       return [];
@@ -19,9 +19,8 @@ export class TransportUnitsRequireMovementTypeValueCompletionProvider extends Ba
       vscode.CompletionItemKind.Value,
       "valuecompletionprovider.transportunitsrequiremovementtype.detail",
       {
-        customDocumentation: (item: any) =>
-          new vscode.MarkdownString(t(item.description)),
-      }
+        customDocumentation: (item: any) => new vscode.MarkdownString(t(item.description)),
+      },
     );
   }
 }

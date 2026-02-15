@@ -16,20 +16,24 @@
 ## 主要功能
 
 ### ValueHoverCreator 类
+
 - `createPropertyValueHover()` - 创建属性值悬停信息的主入口方法
 - 处理图片类型的值，生成图片预览
 - 根据属性类型分发到不同的处理方法
 
 ### 布尔值处理
+
 - `createBooleanValueHover()` - 创建布尔值悬停信息
 
 ### LogicBoolean 处理
+
 - `createLogicBooleanValueHover()` - LogicBoolean 值悬停的主入口
 - `createLogicBooleanKeywordHover()` - 处理关键字（true, false, if, and, or, not）
 - `createLogicBooleanSelfMethodHover()` - 处理 self. 开头的方法
 - `createLogicBooleanFunctionHover()` - 处理其他 LogicBoolean 函数
 
 ### 值类型处理
+
 - `createValueTypeHover()` - 创建基于值类型的悬停信息
 - `findMatchingValueItem()` - 在值类型数据中查找匹配的项目
 - `findLogicBooleanFunction()` - LogicBoolean 函数的智能匹配
@@ -53,11 +57,16 @@ index.ts (ValueHoverCreator)
 ## 使用方式
 
 ```typescript
-import { ValueHoverCreator } from './valueHover/index';
+import { ValueHoverCreator } from "./valueHover/index";
 
 // 创建属性值悬停
 const hover = ValueHoverCreator.createPropertyValueHover(
-    document, position, sectionName, propertyName, value, originalName
+  document,
+  position,
+  sectionName,
+  propertyName,
+  value,
+  originalName,
 );
 ```
 

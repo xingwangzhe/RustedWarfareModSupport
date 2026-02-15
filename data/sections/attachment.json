@@ -1,244 +1,244 @@
 {
-    "data": [
-        {
-            "name": "x",
-            "type": "float",
-            "description": "data.sections.attachment.x",
-            "version": "1.13.3",
-            "isOutdated": false,
-            "example": "x"
-        },
-        {
-            "name": "y",
-            "type": "float",
-            "description": "data.sections.attachment.y",
-            "version": "1.13.3",
-            "isOutdated": false,
-            "example": "y"
-        },
-        {
-            "name": "height",
-            "type": "float",
-            "description": "data.sections.attachment.height",
-            "version": "1.13.3",
-            "isOutdated": false,
-            "example": "height"
-        },
-        {
-            "name": "idleDir",
-            "type": "int",
-            "description": "data.sections.attachment.idleDir",
-            "version": "1.13.3",
-            "isOutdated": false,
-            "example": "idleDir"
-        },
-        {
-            "name": "idleDirReversing",
-            "type": "int",
-            "description": "data.sections.attachment.idleDirReversing",
-            "version": "1.14",
-            "isOutdated": false,
-            "example": "idleDirReversing"
-        },
-        {
-            "name": "isVisible",
-            "type": "bool",
-            "description": "data.sections.attachment.isVisible",
-            "version": "1.13.3",
-            "isOutdated": false,
-            "example": "isVisible"
-        },
-        {
-            "name": "onCreateSpawnUnitOf",
-            "type": "unit ref",
-            "description": "data.sections.attachment.onCreateSpawnUnitOf",
-            "version": "1.13.3",
-            "isOutdated": false,
-            "example": "onCreateSpawnUnitOf"
-        },
-        {
-            "name": "isUnselectable",
-            "type": "bool",
-            "description": "data.sections.attachment.isUnselectable",
-            "version": "1.13.3",
-            "isOutdated": false,
-            "example": "isUnselectable"
-        },
-        {
-            "name": "canAttack",
-            "type": "bool",
-            "description": "data.sections.attachment.canAttack",
-            "version": "default",
-            "isOutdated": false,
-            "example": "canAttack"
-        },
-        {
-            "name": "canBeAttackedAndDamaged",
-            "type": "bool",
-            "description": "data.sections.attachment.canBeAttackedAndDamaged",
-            "version": "1.13.3",
-            "isOutdated": false,
-            "example": "canBeAttackedAndDamaged"
-        },
-        {
-            "name": "deattachIfWantingToMove",
-            "type": "bool",
-            "description": "data.sections.attachment.deattachIfWantingToMove",
-            "version": "1.13.3",
-            "isOutdated": false,
-            "example": "deattachIfWantingToMove"
-        },
-        {
-            "name": "lockLegMovement",
-            "type": "bool",
-            "description": "data.sections.attachment.lockLegMovement",
-            "version": "1.13.3",
-            "isOutdated": false,
-            "example": "lockLegMovement"
-        },
-        {
-            "name": "keepAliveWhenParentDies",
-            "type": "bool",
-            "description": "data.sections.attachment.keepAliveWhenParentDies",
-            "version": "1.13.3",
-            "isOutdated": false,
-            "example": "keepAliveWhenParentDies: true"
-        },
-        {
-            "name": "setDrawLayerOnTop",
-            "type": "bool",
-            "description": "data.sections.attachment.setDrawLayerOnTop",
-            "version": "1.13.3",
-            "isOutdated": false,
-            "example": "setDrawLayerOnTop"
-        },
-        {
-            "name": "setDrawLayerOnBottom",
-            "type": "bool",
-            "description": "data.sections.attachment.setDrawLayerOnBottom",
-            "version": "1.13.3",
-            "isOutdated": false,
-            "example": "setDrawLayerOnBottom"
-        },
-        {
-            "name": "addTransportedUnits",
-            "type": "bool",
-            "description": "data.sections.attachment.addTransportedUnits",
-            "version": "1.13.3",
-            "isOutdated": false,
-            "example": "addTransportedUnits"
-        },
-        {
-            "name": "lockRotation",
-            "type": "bool",
-            "description": "data.sections.attachment.lockRotation",
-            "version": "1.13.3",
-            "isOutdated": false,
-            "example": "lockRotation"
-        },
-        {
-            "name": "rotateWithParent",
-            "type": "bool",
-            "description": "data.sections.attachment.rotateWithParent",
-            "version": "1.13.3",
-            "isOutdated": false,
-            "example": "rotateWithParent"
-        },
-        {
-            "name": "resetRotationWhenNotAttacking",
-            "type": "bool",
-            "description": "data.sections.attachment.resetRotationWhenNotAttacking",
-            "version": "1.13.3",
-            "isOutdated": false,
-            "example": "resetRotationWhenNotAttacking"
-        },
-        {
-            "name": "prioritizeParentsMainTarget",
-            "type": "bool",
-            "description": "data.sections.attachment.prioritizeParentsMainTarget",
-            "version": "1.13.3",
-            "isOutdated": false,
-            "example": "prioritizeParentsMainTarget"
-        },
-        {
-            "name": "alwaysAllowedToAttackParentsMainTarget",
-            "type": "bool",
-            "description": "data.sections.attachment.alwaysAllowedToAttackParentsMainTarget",
-            "version": "1.13.3",
-            "isOutdated": false,
-            "example": "alwaysAllowedToAttackParentsMainTarget"
-        },
-        {
-            "name": "onParentTeamChangeKeepCurrentTeam",
-            "type": "bool",
-            "description": "data.sections.attachment.onParentTeamChangeKeepCurrentTeam",
-            "version": "1.14",
-            "isOutdated": false,
-            "example": "onParentTeamChangeKeepCurrentTeam"
-        },
-        {
-            "name": "onConvertKeepExistingUnitInSameSlot",
-            "type": "bool",
-            "description": "data.sections.attachment.onConvertKeepExistingUnitInSameSlot",
-            "version": "1.14",
-            "isOutdated": false,
-            "example": "onConvertKeepExistingUnitInSameSlot"
-        },
-        {
-            "name": "unloadInCurrentPosition",
-            "type": "bool",
-            "description": "data.sections.attachment.unloadInCurrentPosition",
-            "version": "1.14",
-            "isOutdated": false,
-            "example": "unloadInCurrentPosition"
-        },
-        {
-            "name": "keepWaypointsNeedingMovement",
-            "type": "bool",
-            "description": "data.sections.attachment.keepWaypointsNeedingMovement",
-            "version": "1.14",
-            "isOutdated": false,
-            "example": "keepWaypointsNeedingMovement"
-        },
-        {
-            "name": "smoothlyBlendPositionWhenExistingUnitAdded",
-            "type": "bool",
-            "description": "data.sections.attachment.smoothlyBlendPositionWhenExistingUnitAdded",
-            "version": "1.14",
-            "isOutdated": false,
-            "example": "smoothlyBlendPositionWhenExistingUnitAdded"
-        },
-        {
-            "name": "showAllActionsFrom",
-            "type": "LogicBoolean",
-            "description": "data.sections.attachment.showAllActionsFrom",
-            "version": "1.14",
-            "isOutdated": false,
-            "example": "showAllActionsFrom"
-        },
-        {
-            "name": "createIncompleteIfParentIs",
-            "type": "bool",
-            "description": "data.sections.attachment.createIncompleteIfParentIs",
-            "version": "1.14",
-            "isOutdated": false,
-            "example": "createIncompleteIfParentIs:"
-        },
-        {
-            "name": "redirectDamageToParent",
-            "type": "bool",
-            "description": "data.sections.attachment.redirectDamageToParent",
-            "version": "1.14",
-            "isOutdated": false,
-            "example": "redirectDamageToParent:"
-        },
-        {
-            "name": "redirectDamageToParent_shieldOnly",
-            "type": "bool",
-            "description": "data.sections.attachment.redirectDamageToParent_shieldOnly",
-            "version": "1.14",
-            "isOutdated": false,
-            "example": "redirectDamageToParent_shieldOnly:"
-        }
-    ]
+  "data": [
+    {
+      "name": "x",
+      "type": "float",
+      "description": "data.sections.attachment.x",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "x"
+    },
+    {
+      "name": "y",
+      "type": "float",
+      "description": "data.sections.attachment.y",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "y"
+    },
+    {
+      "name": "height",
+      "type": "float",
+      "description": "data.sections.attachment.height",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "height"
+    },
+    {
+      "name": "idleDir",
+      "type": "int",
+      "description": "data.sections.attachment.idleDir",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "idleDir"
+    },
+    {
+      "name": "idleDirReversing",
+      "type": "int",
+      "description": "data.sections.attachment.idleDirReversing",
+      "version": "1.14",
+      "isOutdated": false,
+      "example": "idleDirReversing"
+    },
+    {
+      "name": "isVisible",
+      "type": "bool",
+      "description": "data.sections.attachment.isVisible",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "isVisible"
+    },
+    {
+      "name": "onCreateSpawnUnitOf",
+      "type": "unit ref",
+      "description": "data.sections.attachment.onCreateSpawnUnitOf",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "onCreateSpawnUnitOf"
+    },
+    {
+      "name": "isUnselectable",
+      "type": "bool",
+      "description": "data.sections.attachment.isUnselectable",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "isUnselectable"
+    },
+    {
+      "name": "canAttack",
+      "type": "bool",
+      "description": "data.sections.attachment.canAttack",
+      "version": "default",
+      "isOutdated": false,
+      "example": "canAttack"
+    },
+    {
+      "name": "canBeAttackedAndDamaged",
+      "type": "bool",
+      "description": "data.sections.attachment.canBeAttackedAndDamaged",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "canBeAttackedAndDamaged"
+    },
+    {
+      "name": "deattachIfWantingToMove",
+      "type": "bool",
+      "description": "data.sections.attachment.deattachIfWantingToMove",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "deattachIfWantingToMove"
+    },
+    {
+      "name": "lockLegMovement",
+      "type": "bool",
+      "description": "data.sections.attachment.lockLegMovement",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "lockLegMovement"
+    },
+    {
+      "name": "keepAliveWhenParentDies",
+      "type": "bool",
+      "description": "data.sections.attachment.keepAliveWhenParentDies",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "keepAliveWhenParentDies: true"
+    },
+    {
+      "name": "setDrawLayerOnTop",
+      "type": "bool",
+      "description": "data.sections.attachment.setDrawLayerOnTop",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "setDrawLayerOnTop"
+    },
+    {
+      "name": "setDrawLayerOnBottom",
+      "type": "bool",
+      "description": "data.sections.attachment.setDrawLayerOnBottom",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "setDrawLayerOnBottom"
+    },
+    {
+      "name": "addTransportedUnits",
+      "type": "bool",
+      "description": "data.sections.attachment.addTransportedUnits",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "addTransportedUnits"
+    },
+    {
+      "name": "lockRotation",
+      "type": "bool",
+      "description": "data.sections.attachment.lockRotation",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "lockRotation"
+    },
+    {
+      "name": "rotateWithParent",
+      "type": "bool",
+      "description": "data.sections.attachment.rotateWithParent",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "rotateWithParent"
+    },
+    {
+      "name": "resetRotationWhenNotAttacking",
+      "type": "bool",
+      "description": "data.sections.attachment.resetRotationWhenNotAttacking",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "resetRotationWhenNotAttacking"
+    },
+    {
+      "name": "prioritizeParentsMainTarget",
+      "type": "bool",
+      "description": "data.sections.attachment.prioritizeParentsMainTarget",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "prioritizeParentsMainTarget"
+    },
+    {
+      "name": "alwaysAllowedToAttackParentsMainTarget",
+      "type": "bool",
+      "description": "data.sections.attachment.alwaysAllowedToAttackParentsMainTarget",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "alwaysAllowedToAttackParentsMainTarget"
+    },
+    {
+      "name": "onParentTeamChangeKeepCurrentTeam",
+      "type": "bool",
+      "description": "data.sections.attachment.onParentTeamChangeKeepCurrentTeam",
+      "version": "1.14",
+      "isOutdated": false,
+      "example": "onParentTeamChangeKeepCurrentTeam"
+    },
+    {
+      "name": "onConvertKeepExistingUnitInSameSlot",
+      "type": "bool",
+      "description": "data.sections.attachment.onConvertKeepExistingUnitInSameSlot",
+      "version": "1.14",
+      "isOutdated": false,
+      "example": "onConvertKeepExistingUnitInSameSlot"
+    },
+    {
+      "name": "unloadInCurrentPosition",
+      "type": "bool",
+      "description": "data.sections.attachment.unloadInCurrentPosition",
+      "version": "1.14",
+      "isOutdated": false,
+      "example": "unloadInCurrentPosition"
+    },
+    {
+      "name": "keepWaypointsNeedingMovement",
+      "type": "bool",
+      "description": "data.sections.attachment.keepWaypointsNeedingMovement",
+      "version": "1.14",
+      "isOutdated": false,
+      "example": "keepWaypointsNeedingMovement"
+    },
+    {
+      "name": "smoothlyBlendPositionWhenExistingUnitAdded",
+      "type": "bool",
+      "description": "data.sections.attachment.smoothlyBlendPositionWhenExistingUnitAdded",
+      "version": "1.14",
+      "isOutdated": false,
+      "example": "smoothlyBlendPositionWhenExistingUnitAdded"
+    },
+    {
+      "name": "showAllActionsFrom",
+      "type": "LogicBoolean",
+      "description": "data.sections.attachment.showAllActionsFrom",
+      "version": "1.14",
+      "isOutdated": false,
+      "example": "showAllActionsFrom"
+    },
+    {
+      "name": "createIncompleteIfParentIs",
+      "type": "bool",
+      "description": "data.sections.attachment.createIncompleteIfParentIs",
+      "version": "1.14",
+      "isOutdated": false,
+      "example": "createIncompleteIfParentIs:"
+    },
+    {
+      "name": "redirectDamageToParent",
+      "type": "bool",
+      "description": "data.sections.attachment.redirectDamageToParent",
+      "version": "1.14",
+      "isOutdated": false,
+      "example": "redirectDamageToParent:"
+    },
+    {
+      "name": "redirectDamageToParent_shieldOnly",
+      "type": "bool",
+      "description": "data.sections.attachment.redirectDamageToParent_shieldOnly",
+      "version": "1.14",
+      "isOutdated": false,
+      "example": "redirectDamageToParent_shieldOnly:"
+    }
+  ]
 }

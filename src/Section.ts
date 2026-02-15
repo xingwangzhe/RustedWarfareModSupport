@@ -83,24 +83,15 @@ export class IniSectionSymbolProvider implements vscode.DocumentSymbolProvider {
     }
 
     // 特殊配置类型
-    if (
-      key.toLowerCase().includes("price") ||
-      key.toLowerCase().includes("cost")
-    ) {
+    if (key.toLowerCase().includes("price") || key.toLowerCase().includes("cost")) {
       return vscode.SymbolKind.Number;
     }
 
-    if (
-      key.toLowerCase().includes("name") ||
-      key.toLowerCase().includes("title")
-    ) {
+    if (key.toLowerCase().includes("name") || key.toLowerCase().includes("title")) {
       return vscode.SymbolKind.String;
     }
 
-    if (
-      key.toLowerCase().includes("description") ||
-      key.toLowerCase().includes("text")
-    ) {
+    if (key.toLowerCase().includes("description") || key.toLowerCase().includes("text")) {
       return vscode.SymbolKind.String;
     }
 
@@ -126,7 +117,7 @@ export class IniSectionSymbolProvider implements vscode.DocumentSymbolProvider {
 
   public provideDocumentSymbols(
     document: vscode.TextDocument,
-    _token: vscode.CancellationToken
+    _token: vscode.CancellationToken,
   ): Promise<vscode.DocumentSymbol[]> {
     return new Promise((resolve) => {
       const symbols: vscode.DocumentSymbol[] = [];
@@ -142,17 +133,14 @@ export class IniSectionSymbolProvider implements vscode.DocumentSymbolProvider {
         if (lineText.startsWith("[") && lineText.endsWith("]")) {
           // 如果之前已经有一个节，那么结束它
           if (sectionStart !== null && sectionName !== null) {
-            const sectionEnd = new vscode.Position(
-              i - 1,
-              document.lineAt(i - 1).text.length
-            );
+            const sectionEnd = new vscode.Position(i - 1, document.lineAt(i - 1).text.length);
             const sectionRange = new vscode.Range(sectionStart, sectionEnd);
             const sectionSymbol = new vscode.DocumentSymbol(
               sectionName,
               this.generateSectionData(sectionName),
               vscode.SymbolKind.Module,
               sectionRange,
-              new vscode.Range(sectionStart, sectionStart)
+              new vscode.Range(sectionStart, sectionStart),
             );
             // 添加子符号（键值对）
             sectionSymbol.children = sectionChildren;
@@ -181,7 +169,7 @@ export class IniSectionSymbolProvider implements vscode.DocumentSymbolProvider {
               const symbolKind = this.getSymbolKindForKey(key, value);
               const keyRange = new vscode.Range(
                 new vscode.Position(i, line.text.indexOf(key)),
-                new vscode.Position(i, line.text.indexOf(key) + key.length)
+                new vscode.Position(i, line.text.indexOf(key) + key.length),
               );
 
               const keySymbol = new vscode.DocumentSymbol(
@@ -189,7 +177,7 @@ export class IniSectionSymbolProvider implements vscode.DocumentSymbolProvider {
                 value || "",
                 symbolKind,
                 keyRange,
-                keyRange
+                keyRange,
               );
 
               sectionChildren.push(keySymbol);
@@ -201,17 +189,14 @@ export class IniSectionSymbolProvider implements vscode.DocumentSymbolProvider {
       // 处理最后一个节（如果文件以节结尾）
       if (sectionStart !== null && sectionName !== null) {
         const lastLine = document.lineAt(document.lineCount - 1);
-        const sectionEnd = new vscode.Position(
-          lastLine.lineNumber,
-          lastLine.text.length
-        );
+        const sectionEnd = new vscode.Position(lastLine.lineNumber, lastLine.text.length);
         const sectionRange = new vscode.Range(sectionStart, sectionEnd);
         const sectionSymbol = new vscode.DocumentSymbol(
           sectionName,
           this.generateSectionData(sectionName),
           vscode.SymbolKind.Module,
           sectionRange,
-          new vscode.Range(sectionStart, sectionStart)
+          new vscode.Range(sectionStart, sectionStart),
         );
         // 添加子符号（键值对）
         sectionSymbol.children = sectionChildren;

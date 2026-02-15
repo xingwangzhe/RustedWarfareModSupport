@@ -1,108 +1,108 @@
 {
-    "data": [
-        {
-            "name": "core",
-            "description": "data.sections.core"
-        },
-        {
-            "name": "canBuild",
-            "description": "data.sections.canBuild"
-        },
-        {
-            "name": "graphics",
-            "description": "data.sections.graphics"
-        },
-        {
-            "name": "attack",
-            "description": "data.sections.attack"
-        },
-        {
-            "name": "turret",
-            "description": "data.sections.turret"
-        },
-        {
-            "name": "projectile",
-            "description": "data.sections.projectile"
-        },
-        {
-            "name": "movement",
-            "description": "data.sections.movement"
-        },
-        {
-            "name": "ai",
-            "description": "data.sections.ai"
-        },
-        {
-            "name": "leg",
-            "description": "data.sections.leg"
-        },
-        {
-            "name": "arm",
-            "description": "data.sections.arm"
-        },
-        {
-            "name": "attachment",
-            "description": "data.sections.attachment"
-        },
-        {
-            "name": "action",
-            "description": "data.sections.action"
-        },
-        {
-            "name": "hiddenAction",
-            "description": "data.sections.hiddenAction"
-        },
-        {
-            "name": "effect",
-            "description": "data.sections.effect"
-        },
-        {
-            "name": "animation",
-            "description": "data.sections.animation"
-        },
-        {
-            "name": "placementRule",
-            "description": "data.sections.placementRule"
-        },
-        {
-            "name": "global_resource",
-            "description": "data.sections.global_resource"
-        },
-        {
-            "name": "resource",
-            "description": "data.sections.resource"
-        },
-        {
-            "name": "decal",
-            "description": "data.sections.decal"
-        },
-        {
-            "name": "comment",
-            "description": "data.sections.comment"
-        },
-        {
-            "name": "template",
-            "description": "data.sections.template"
-        },
-        {
-            "name": "spawnUnits",
-            "description": "data.sections.spawnUnits"
-        },
-        {
-            "name": "spawnProjectiles",
-            "description": "data.sections.spawnProjectiles"
-        },
-        {
-            "name": "logicBoolean",
-            "description": "data.sections.logicBoolean"
-        },
-        {
-            "name": "prices",
-            "description": "data.sections.prices"
-        },
-        {
-            "name": "mod-info",
-            "description": "data.sections.mod-info"
-        }
-    ]
+  "data": [
+    {
+      "name": "core",
+      "description": "data.sections.core"
+    },
+    {
+      "name": "canBuild",
+      "description": "data.sections.canBuild"
+    },
+    {
+      "name": "graphics",
+      "description": "data.sections.graphics"
+    },
+    {
+      "name": "attack",
+      "description": "data.sections.attack"
+    },
+    {
+      "name": "turret",
+      "description": "data.sections.turret"
+    },
+    {
+      "name": "projectile",
+      "description": "data.sections.projectile"
+    },
+    {
+      "name": "movement",
+      "description": "data.sections.movement"
+    },
+    {
+      "name": "ai",
+      "description": "data.sections.ai"
+    },
+    {
+      "name": "leg",
+      "description": "data.sections.leg"
+    },
+    {
+      "name": "arm",
+      "description": "data.sections.arm"
+    },
+    {
+      "name": "attachment",
+      "description": "data.sections.attachment"
+    },
+    {
+      "name": "action",
+      "description": "data.sections.action"
+    },
+    {
+      "name": "hiddenAction",
+      "description": "data.sections.hiddenAction"
+    },
+    {
+      "name": "effect",
+      "description": "data.sections.effect"
+    },
+    {
+      "name": "animation",
+      "description": "data.sections.animation"
+    },
+    {
+      "name": "placementRule",
+      "description": "data.sections.placementRule"
+    },
+    {
+      "name": "global_resource",
+      "description": "data.sections.global_resource"
+    },
+    {
+      "name": "resource",
+      "description": "data.sections.resource"
+    },
+    {
+      "name": "decal",
+      "description": "data.sections.decal"
+    },
+    {
+      "name": "comment",
+      "description": "data.sections.comment"
+    },
+    {
+      "name": "template",
+      "description": "data.sections.template"
+    },
+    {
+      "name": "spawnUnits",
+      "description": "data.sections.spawnUnits"
+    },
+    {
+      "name": "spawnProjectiles",
+      "description": "data.sections.spawnProjectiles"
+    },
+    {
+      "name": "logicBoolean",
+      "description": "data.sections.logicBoolean"
+    },
+    {
+      "name": "prices",
+      "description": "data.sections.prices"
+    },
+    {
+      "name": "mod-info",
+      "description": "data.sections.mod-info"
+    }
+  ]
 }

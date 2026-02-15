@@ -11,7 +11,7 @@ export class ModPanelItem extends vscode.TreeItem {
     public readonly label: string,
     public readonly tooltip: string,
     public readonly collapsibleState: vscode.TreeItemCollapsibleState,
-    public readonly commandId?: string
+    public readonly commandId?: string,
   ) {
     super(label, collapsibleState);
 
@@ -30,12 +30,10 @@ export class ModPanelItem extends vscode.TreeItem {
  */
 export class ModPanelProvider implements vscode.TreeDataProvider<ModPanelItem> {
   private dataManager: PanelDataManager;
-  private _onDidChangeTreeData: vscode.EventEmitter<
-    ModPanelItem | undefined | null | void
-  > = new vscode.EventEmitter<ModPanelItem | undefined | null | void>();
-  readonly onDidChangeTreeData: vscode.Event<
-    ModPanelItem | undefined | null | void
-  > = this._onDidChangeTreeData.event;
+  private _onDidChangeTreeData: vscode.EventEmitter<ModPanelItem | undefined | null | void> =
+    new vscode.EventEmitter<ModPanelItem | undefined | null | void>();
+  readonly onDidChangeTreeData: vscode.Event<ModPanelItem | undefined | null | void> =
+    this._onDidChangeTreeData.event;
 
   constructor() {
     this.dataManager = new PanelDataManager();
@@ -58,15 +56,10 @@ export class ModPanelProvider implements vscode.TreeDataProvider<ModPanelItem> {
             return new ModPanelItem(
               item.label,
               item.tooltip,
-              vscode.TreeItemCollapsibleState.Expanded
+              vscode.TreeItemCollapsibleState.Expanded,
             );
           }
-          return new ModPanelItem(
-            item.label,
-            item.tooltip,
-            item.collapsibleState,
-            item.command
-          );
+          return new ModPanelItem(item.label, item.tooltip, item.collapsibleState, item.command);
         }),
         ...fileExtensionItems,
       ]);
@@ -79,7 +72,7 @@ export class ModPanelProvider implements vscode.TreeDataProvider<ModPanelItem> {
           t("panel.export.auto"),
           t("panel.export.auto.tooltip"),
           vscode.TreeItemCollapsibleState.None,
-          "rustedwarfaremodsupport.exportAuto"
+          "rustedwarfaremodsupport.exportAuto",
         ),
       ]);
     }
@@ -102,7 +95,7 @@ export class ModPanelProvider implements vscode.TreeDataProvider<ModPanelItem> {
     const titleItem = new ModPanelItem(
       t("panel.fileExtensions.title"),
       t("panel.fileExtensions.description"),
-      vscode.TreeItemCollapsibleState.Expanded
+      vscode.TreeItemCollapsibleState.Expanded,
     );
     // 设置一个标识符来识别这个父项
     (titleItem as any).isFileExtensionParent = true;
@@ -122,13 +115,11 @@ export class ModPanelProvider implements vscode.TreeDataProvider<ModPanelItem> {
     // 添加输入框提示
     items.push(
       new ModPanelItem(
-        `${t("panel.fileExtensions.add.placeholder")} - ${t(
-          "panel.fileExtensions.add.button"
-        )}`,
+        `${t("panel.fileExtensions.add.placeholder")} - ${t("panel.fileExtensions.add.button")}`,
         t("panel.fileExtensions.description"),
         vscode.TreeItemCollapsibleState.None,
-        "rustedwarfaremodsupport.addFileExtension"
-      )
+        "rustedwarfaremodsupport.addFileExtension",
+      ),
     );
 
     // 获取所有文件后缀项
@@ -137,11 +128,7 @@ export class ModPanelProvider implements vscode.TreeDataProvider<ModPanelItem> {
       const tooltip = ext.isDefault
         ? ext.tooltip
         : `${ext.tooltip} - ${t("panel.fileExtensions.remove.tooltip")}`;
-      const item = new ModPanelItem(
-        ext.label,
-        tooltip,
-        vscode.TreeItemCollapsibleState.None
-      );
+      const item = new ModPanelItem(ext.label, tooltip, vscode.TreeItemCollapsibleState.None);
 
       // 如果不是默认后缀，添加删除命令
       if (!ext.isDefault) {
@@ -196,7 +183,7 @@ export function registerModPanel(context: vscode.ExtensionContext): void {
   const modPanelProvider = new ModPanelProvider();
   const treeDataProvider = vscode.window.registerTreeDataProvider(
     "rustedwarfaremodsupport-panel",
-    modPanelProvider
+    modPanelProvider,
   );
 
   // 注册添加文件后缀命令
@@ -218,9 +205,7 @@ export function registerModPanel(context: vscode.ExtensionContext): void {
       });
 
       if (extension) {
-        const result = modPanelProvider
-          .getDataManager()
-          .addCustomFileExtension(extension);
+        const result = modPanelProvider.getDataManager().addCustomFileExtension(extension);
         if (result.success) {
           vscode.window.showInformationMessage(result.message);
           // 刷新面板显示
@@ -229,7 +214,7 @@ export function registerModPanel(context: vscode.ExtensionContext): void {
           vscode.window.showErrorMessage(result.message);
         }
       }
-    }
+    },
   );
 
   // 注册移除文件后缀命令
@@ -239,13 +224,11 @@ export function registerModPanel(context: vscode.ExtensionContext): void {
       const confirm = await vscode.window.showWarningMessage(
         t("panel.fileExtensions.remove.confirm"),
         { modal: true },
-        t("panel.fileExtensions.confirm")
+        t("panel.fileExtensions.confirm"),
       );
 
       if (confirm === t("panel.fileExtensions.confirm")) {
-        const result = modPanelProvider
-          .getDataManager()
-          .removeCustomFileExtension(extension);
+        const result = modPanelProvider.getDataManager().removeCustomFileExtension(extension);
         if (result.success) {
           vscode.window.showInformationMessage(result.message);
           // 刷新面板显示
@@ -254,7 +237,7 @@ export function registerModPanel(context: vscode.ExtensionContext): void {
           vscode.window.showErrorMessage(result.message);
         }
       }
-    }
+    },
   );
 
   // 注册刷新面板命令
@@ -262,13 +245,13 @@ export function registerModPanel(context: vscode.ExtensionContext): void {
     "rustedwarfaremodsupport-panel.refresh",
     () => {
       modPanelProvider.refresh();
-    }
+    },
   );
 
   context.subscriptions.push(
     treeDataProvider,
     addFileExtensionCommand,
     removeFileExtensionCommand,
-    refreshPanelCommand
+    refreshPanelCommand,
   );
 }

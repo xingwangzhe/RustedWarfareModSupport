@@ -1,29 +1,29 @@
-import * as vscode from 'vscode';
+import * as vscode from "vscode";
 
 export function openImagePreview(imageUriString: string) {
-    try {
-        const panel = vscode.window.createWebviewPanel(
-            'rwImagePreview',
-            'Image Preview',
-            vscode.ViewColumn.Beside,
-            {
-                enableScripts: true,
-                localResourceRoots: []
-            }
-        );
+  try {
+    const panel = vscode.window.createWebviewPanel(
+      "rwImagePreview",
+      "Image Preview",
+      vscode.ViewColumn.Beside,
+      {
+        enableScripts: true,
+        localResourceRoots: [],
+      },
+    );
 
-        const imageUri = vscode.Uri.parse(imageUriString);
-        const webviewUri = panel.webview.asWebviewUri(imageUri);
+    const imageUri = vscode.Uri.parse(imageUriString);
+    const webviewUri = panel.webview.asWebviewUri(imageUri);
 
-        panel.webview.html = getHtml(webviewUri.toString());
-    } catch (e) {
-        console.error('openImagePreview error', e);
-    }
+    panel.webview.html = getHtml(webviewUri.toString());
+  } catch (e) {
+    console.error("openImagePreview error", e);
+  }
 }
 
 function getHtml(imageSrc: string): string {
-    // simple HTML with mouse drag to zoom behavior
-    return `<!doctype html>
+  // simple HTML with mouse drag to zoom behavior
+  return `<!doctype html>
 <html>
 <head>
   <meta charset="utf-8" />

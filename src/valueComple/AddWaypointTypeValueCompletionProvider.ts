@@ -8,7 +8,7 @@ export class AddWaypointTypeValueCompletionProvider extends BaseValueCompletionP
     document: vscode.TextDocument,
     position: vscode.Position,
     propertyName: string,
-    _sectionName: string
+    _sectionName: string,
   ): vscode.ProviderResult<vscode.CompletionItem[] | vscode.CompletionList> {
     if (propertyName !== "addWaypoint_type") {
       return [];
@@ -19,9 +19,8 @@ export class AddWaypointTypeValueCompletionProvider extends BaseValueCompletionP
       vscode.CompletionItemKind.Value,
       "valuecompletionprovider.addwaypoint_type.detail",
       {
-        customDocumentation: (item: any) =>
-          new vscode.MarkdownString(t(item.description)),
-      }
+        customDocumentation: (item: any) => new vscode.MarkdownString(t(item.description)),
+      },
     );
   }
 }

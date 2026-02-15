@@ -4,14 +4,9 @@ import * as vscode from "vscode";
  * 图片装饰器工厂 - 只处理图片相关的装饰
  */
 export class ImageDecoratorFactory {
-  private static decorators = new Map<
-    string,
-    vscode.TextEditorDecorationType
-  >();
+  private static decorators = new Map<string, vscode.TextEditorDecorationType>();
 
-  static createImageDecorator(
-    typeName: string
-  ): vscode.TextEditorDecorationType {
+  static createImageDecorator(typeName: string): vscode.TextEditorDecorationType {
     if (ImageDecoratorFactory.decorators.has(typeName)) {
       return ImageDecoratorFactory.decorators.get(typeName)!;
     }

@@ -39,7 +39,7 @@ export class TranslationManager {
 
       // 获取扩展的翻译目录路径
       const extensionPath = vscode.extensions.getExtension(
-        "xingwangzhe.rustedwarfaremodsupport"
+        "xingwangzhe.rustedwarfaremodsupport",
       )?.extensionPath;
       if (!extensionPath) {
         console.warn("无法获取扩展路径，使用默认翻译");
@@ -49,10 +49,7 @@ export class TranslationManager {
       const translationDir = path.join(extensionPath, "translation");
 
       // 尝试加载当前语言的翻译文件
-      let translationFile = path.join(
-        translationDir,
-        `bundle.l10n.${this.currentLocale}.json`
-      );
+      let translationFile = path.join(translationDir, `bundle.l10n.${this.currentLocale}.json`);
 
       // 如果当前语言的翻译文件不存在，尝试加载基础翻译文件
       if (!fs.existsSync(translationFile)) {
@@ -71,7 +68,7 @@ export class TranslationManager {
       if (cached && cached.mtimeMs === fileStats.mtimeMs) {
         this.translations = new Map(cached.entries);
         console.log(
-          `已加载 ${this.translations.size} 个翻译条目 (语言: ${this.currentLocale}, 缓存命中)`
+          `已加载 ${this.translations.size} 个翻译条目 (语言: ${this.currentLocale}, 缓存命中)`,
         );
         return;
       }
@@ -93,9 +90,7 @@ export class TranslationManager {
         entries,
       });
 
-      console.log(
-        `已加载 ${this.translations.size} 个翻译条目 (语言: ${this.currentLocale})`
-      );
+      console.log(`已加载 ${this.translations.size} 个翻译条目 (语言: ${this.currentLocale})`);
     } catch (error) {
       console.error("加载翻译文件时出错:", error);
     }

@@ -17,7 +17,9 @@ function clamp01(v: number) {
 }
 
 export function parseHexColor(input: string): RGBA | null {
-  if (!input) return null;
+  if (!input) {
+    return null;
+  }
   const s = input.trim();
   const hex = s.startsWith("#") ? s.substring(1) : s;
 
@@ -89,12 +91,11 @@ export function createColorPreviewMarkdown(rgba: RGBA, label?: string) {
   return md;
 }
 
-export function tryParseAndPreview(
-  input: string,
-  label?: string
-): string | null {
+export function tryParseAndPreview(input: string, label?: string): string | null {
   const rgba = parseHexColor(input);
-  if (!rgba) return null;
+  if (!rgba) {
+    return null;
+  }
   return createColorPreviewMarkdown(rgba, label);
 }
 

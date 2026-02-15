@@ -12,13 +12,11 @@ export class ImageValueCompletionProvider extends BaseValueCompletionProvider {
     document: vscode.TextDocument,
     position: vscode.Position,
     propertyName: string,
-    sectionName: string
+    sectionName: string,
   ): vscode.ProviderResult<vscode.CompletionItem[] | vscode.CompletionList> {
     // 获取节属性以检查属性类型
     const sectionProperties = getSectionProperties(sectionName);
-    const property = sectionProperties.find(
-      (prop: any) => prop.name === propertyName
-    );
+    const property = sectionProperties.find((prop: any) => prop.name === propertyName);
 
     if (!property) {
       return [];
@@ -26,9 +24,7 @@ export class ImageValueCompletionProvider extends BaseValueCompletionProvider {
 
     // 仅在属性类型为 file (image) 或 name 包含 image 的时候生效
     const type = (property.type || "").toLowerCase();
-    if (
-      !(type.includes("image") || property.name.toLowerCase().includes("image"))
-    ) {
+    if (!(type.includes("image") || property.name.toLowerCase().includes("image"))) {
       return [];
     }
 
@@ -47,43 +43,32 @@ export class ImageValueCompletionProvider extends BaseValueCompletionProvider {
         for (const f of files) {
           const lower = f.toLowerCase();
           if (exts.some((e) => lower.endsWith(e))) {
-            const it = new vscode.CompletionItem(
-              f,
-              vscode.CompletionItemKind.File
-            );
+            const it = new vscode.CompletionItem(f, vscode.CompletionItemKind.File);
             it.detail = "image";
 
             // 解析图片路径并创建预览
             const fullPath = path.join(docDir, f);
             console.log(
               `[DEBUG] ImageCompletion - filename: ${f}, fullPath: ${fullPath}, exists: ${fs.existsSync(
-                fullPath
-              )}`
+                fullPath,
+              )}`,
             );
             if (fs.existsSync(fullPath)) {
               // 使用公共函数创建包含路径和图片预览的MarkdownString
               const imageMarkdown = createImageMarkdownWithPath(fullPath);
 
               if (imageMarkdown) {
-                console.log(
-                  `[DEBUG] ImageCompletion - setting image documentation directly`
-                );
+                console.log(`[DEBUG] ImageCompletion - setting image documentation directly`);
                 it.documentation = imageMarkdown;
               } else {
                 console.log(
-                  `[DEBUG] ImageCompletion - failed to create markdown, fallback to text`
+                  `[DEBUG] ImageCompletion - failed to create markdown, fallback to text`,
                 );
-                it.documentation = new vscode.MarkdownString(
-                  "Image file in current folder"
-                );
+                it.documentation = new vscode.MarkdownString("Image file in current folder");
               }
             } else {
-              console.log(
-                `[DEBUG] ImageCompletion - file not found, fallback to text`
-              );
-              it.documentation = new vscode.MarkdownString(
-                "Image file in current folder"
-              );
+              console.log(`[DEBUG] ImageCompletion - file not found, fallback to text`);
+              it.documentation = new vscode.MarkdownString("Image file in current folder");
             }
 
             items.push(it);
@@ -101,47 +86,38 @@ export class ImageValueCompletionProvider extends BaseValueCompletionProvider {
             const lower = f.toLowerCase();
             if (exts.some((e) => lower.endsWith(e))) {
               // 使用PathCompatibilityUtils生成跨平台路径建议
-              const suggestions = PathCompatibilityUtils.createPathSuggestions(
-                "ROOT:",
-                f
-              );
+              const suggestions = PathCompatibilityUtils.createPathSuggestions("ROOT:", f);
 
               for (const suggestion of suggestions) {
-                const it = new vscode.CompletionItem(
-                  suggestion,
-                  vscode.CompletionItemKind.File
-                );
+                const it = new vscode.CompletionItem(suggestion, vscode.CompletionItemKind.File);
                 it.detail = "image (workspace root)";
 
                 // 解析图片路径并创建预览
                 const resolvedPath = resolveImagePath(suggestion, document);
                 console.log(
-                  `[DEBUG] ImageCompletion - suggestion: ${suggestion}, resolvedPath: ${resolvedPath}`
+                  `[DEBUG] ImageCompletion - suggestion: ${suggestion}, resolvedPath: ${resolvedPath}`,
                 );
                 if (resolvedPath && fs.existsSync(resolvedPath)) {
                   // 使用公共函数创建包含路径和图片预览的MarkdownString
-                  const imageMarkdown =
-                    createImageMarkdownWithPath(resolvedPath);
+                  const imageMarkdown = createImageMarkdownWithPath(resolvedPath);
 
                   if (imageMarkdown) {
-                    console.log(
-                      `[DEBUG] ImageCompletion - setting image documentation directly`
-                    );
+                    console.log(`[DEBUG] ImageCompletion - setting image documentation directly`);
                     it.documentation = imageMarkdown;
                   } else {
                     console.log(
-                      `[DEBUG] ImageCompletion - failed to create markdown, fallback to text`
+                      `[DEBUG] ImageCompletion - failed to create markdown, fallback to text`,
                     );
                     it.documentation = new vscode.MarkdownString(
-                      `Image file in workspace root\nPath: ${suggestion}`
+                      `Image file in workspace root\nPath: ${suggestion}`,
                     );
                   }
                 } else {
                   console.log(
-                    `[DEBUG] ImageCompletion - no resolved path or file not found, fallback to text`
+                    `[DEBUG] ImageCompletion - no resolved path or file not found, fallback to text`,
                   );
                   it.documentation = new vscode.MarkdownString(
-                    `Image file in workspace root\nPath: ${suggestion}`
+                    `Image file in workspace root\nPath: ${suggestion}`,
                   );
                 }
 

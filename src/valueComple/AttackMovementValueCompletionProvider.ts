@@ -8,7 +8,7 @@ export class AttackMovementValueCompletionProvider extends BaseValueCompletionPr
     document: vscode.TextDocument,
     position: vscode.Position,
     propertyName: string,
-    _sectionName: string
+    _sectionName: string,
   ): vscode.ProviderResult<vscode.CompletionItem[] | vscode.CompletionList> {
     if (propertyName !== "attackMovement") {
       return [];
@@ -19,9 +19,8 @@ export class AttackMovementValueCompletionProvider extends BaseValueCompletionPr
       vscode.CompletionItemKind.Value,
       "valuecompletionprovider.attackmovement.detail",
       {
-        customDocumentation: (item: any) =>
-          new vscode.MarkdownString(t(item.description)),
-      }
+        customDocumentation: (item: any) => new vscode.MarkdownString(t(item.description)),
+      },
     );
   }
 }

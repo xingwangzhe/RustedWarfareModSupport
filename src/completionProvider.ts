@@ -58,9 +58,7 @@ function generateCompletionDocumentation(property: any): vscode.MarkdownString {
 
   // 添加示例字段
   if (property.example) {
-    doc.appendMarkdown(
-      `**${exampleLabel}:**\n\`\`\`ini\n${exampleValue}\n\`\`\``
-    );
+    doc.appendMarkdown(`**${exampleLabel}:**\n\`\`\`ini\n${exampleValue}\n\`\`\``);
   }
 
   return doc;
@@ -72,15 +70,9 @@ function generateCompletionDocumentation(property: any): vscode.MarkdownString {
  * @param properties 属性数组
  * @returns 补全项数组
  */
-function createCompletionItems(
-  sectionName: string,
-  properties: any[]
-): vscode.CompletionItem[] {
+function createCompletionItems(sectionName: string, properties: any[]): vscode.CompletionItem[] {
   return properties.map((property) => {
-    const item = new vscode.CompletionItem(
-      property.name,
-      vscode.CompletionItemKind.Property
-    );
+    const item = new vscode.CompletionItem(property.name, vscode.CompletionItemKind.Property);
 
     // 设置补全项的详细信息和文档
     item.detail = property.type
@@ -89,12 +81,8 @@ function createCompletionItems(
     item.documentation = generateCompletionDocumentation(property);
 
     // 设置插入文本格式
-    const exampleValue = property.example
-      ? extractExampleValue(property.example)
-      : "";
-    item.insertText = new vscode.SnippetString(
-      `${property.name}: \${1:${exampleValue}}`
-    );
+    const exampleValue = property.example ? extractExampleValue(property.example) : "";
+    item.insertText = new vscode.SnippetString(`${property.name}: \${1:${exampleValue}}`);
 
     return item;
   });
@@ -111,14 +99,11 @@ function createSectionCompletionItems(): vscode.CompletionItem[] {
 
     // 为每个节创建补全项
     return sectionsData.map((section: any) => {
-      const item = new vscode.CompletionItem(
-        section.name,
-        vscode.CompletionItemKind.Module
-      );
+      const item = new vscode.CompletionItem(section.name, vscode.CompletionItemKind.Module);
 
       // 设置文档信息
       item.documentation = new vscode.MarkdownString(
-        `**${t("completionprovider.description")}:** ${t(section.description)}`
+        `**${t("completionprovider.description")}:** ${t(section.description)}`,
       );
 
       // 设置插入文本，包含中括号
@@ -138,14 +123,12 @@ function createSectionCompletionItems(): vscode.CompletionItem[] {
 /**
  * 节名称补全提供者类
  */
-export class SectionNameCompletionProvider
-  implements vscode.CompletionItemProvider
-{
+export class SectionNameCompletionProvider implements vscode.CompletionItemProvider {
   provideCompletionItems(
     document: vscode.TextDocument,
     position: vscode.Position,
     _token: vscode.CancellationToken,
-    _context: vscode.CompletionContext
+    _context: vscode.CompletionContext,
   ): vscode.ProviderResult<vscode.CompletionItem[] | vscode.CompletionList> {
     // 获取光标所在行的文本
     const lineText = document.lineAt(position.line).text;
@@ -173,26 +156,20 @@ export class SectionNameCompletionProvider
 /**
  * 通用的节补全提供者类
  */
-export class GenericCompletionProvider
-  implements vscode.CompletionItemProvider
-{
+export class GenericCompletionProvider implements vscode.CompletionItemProvider {
   private sectionName: string;
   private sectionMatcher: (sectionName: string) => boolean;
 
-  constructor(
-    sectionName: string,
-    sectionMatcher?: (sectionName: string) => boolean
-  ) {
+  constructor(sectionName: string, sectionMatcher?: (sectionName: string) => boolean) {
     this.sectionName = sectionName;
-    this.sectionMatcher =
-      sectionMatcher || ((name: string) => name === sectionName);
+    this.sectionMatcher = sectionMatcher || ((name: string) => name === sectionName);
   }
 
   provideCompletionItems(
     document: vscode.TextDocument,
     position: vscode.Position,
     _token: vscode.CancellationToken,
-    _context: vscode.CompletionContext
+    _context: vscode.CompletionContext,
   ): vscode.ProviderResult<vscode.CompletionItem[] | vscode.CompletionList> {
     // 如果不在目标节内，返回空数组
     if (!isInsideSection(document, position, this.sectionMatcher)) {

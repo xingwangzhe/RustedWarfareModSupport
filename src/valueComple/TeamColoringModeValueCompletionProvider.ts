@@ -8,7 +8,7 @@ export class TeamColoringModeValueCompletionProvider extends BaseValueCompletion
     document: vscode.TextDocument,
     position: vscode.Position,
     propertyName: string,
-    _sectionName: string
+    _sectionName: string,
   ): vscode.ProviderResult<vscode.CompletionItem[] | vscode.CompletionList> {
     if (propertyName !== "teamColoringMode") {
       return [];
@@ -19,9 +19,8 @@ export class TeamColoringModeValueCompletionProvider extends BaseValueCompletion
       vscode.CompletionItemKind.Value,
       "valuecompletionprovider.teamcoloringmode.detail",
       {
-        customDocumentation: (item: any) =>
-          new vscode.MarkdownString(t(item.description)),
-      }
+        customDocumentation: (item: any) => new vscode.MarkdownString(t(item.description)),
+      },
     );
   }
 }

@@ -20,26 +20,21 @@ export class ColorPropertyDecorator implements vscode.Disposable {
     this.disposables.push(
       vscode.window.onDidChangeActiveTextEditor((editor) => {
         this.scheduleUpdate(editor?.document);
-      })
+      }),
     );
 
     this.disposables.push(
       vscode.workspace.onDidChangeTextDocument((event) => {
         if (vscode.window.activeTextEditor?.document === event.document) {
           // If there are content changes, prefer a faster update for real-time feedback
-          const fast =
-            (event.contentChanges && event.contentChanges.length > 0) || false;
+          const fast = (event.contentChanges && event.contentChanges.length > 0) || false;
           this.scheduleUpdate(event.document, fast);
           // For content changes trigger an immediate synchronous refresh for best realtime UX
           if (fast) {
             // log the snippets that changed for debugging in DevHost
             try {
-              const snippets = event.contentChanges
-                .map((c) => c.text)
-                .join(" | ");
-              this.log(
-                `[ColorDecorator] quick update triggered, changes: ${snippets}`
-              );
+              const snippets = event.contentChanges.map((c) => c.text).join(" | ");
+              this.log(`[ColorDecorator] quick update triggered, changes: ${snippets}`);
             } catch {
               // ignore
             }
@@ -50,7 +45,7 @@ export class ColorPropertyDecorator implements vscode.Disposable {
             }
           }
         }
-      })
+      }),
     );
 
     this.scheduleUpdate(vscode.window.activeTextEditor?.document);
@@ -61,9 +56,7 @@ export class ColorPropertyDecorator implements vscode.Disposable {
       clearTimeout(this.updateTimeout);
     }
     const baseDelay = this.getThrottleDelay(document);
-    const delay = fast
-      ? Math.max(30, Math.min(80, Math.round(baseDelay / 4)))
-      : baseDelay;
+    const delay = fast ? Math.max(30, Math.min(80, Math.round(baseDelay / 4))) : baseDelay;
     this.updateTimeout = setTimeout(() => this.updateDecorations(), delay);
   }
 
@@ -134,17 +127,15 @@ export class ColorPropertyDecorator implements vscode.Disposable {
       try {
         const keys = Array.from(this.decorations.keys());
         if (keys.length > 0) {
-          const counts = keys
-            .map((k) => `${k}:${this.decorations.get(k)?.length ?? 0}`)
-            .join(", ");
+          const counts = keys.map((k) => `${k}:${this.decorations.get(k)?.length ?? 0}`).join(", ");
           this.log(
             `[ColorDecorator] updateDecorations - file=${
               editor.document.fileName
-            } colors=${keys.join(", ")} counts=${counts}`
+            } colors=${keys.join(", ")} counts=${counts}`,
           );
         } else {
           this.log(
-            `[ColorDecorator] updateDecorations - file=${editor.document.fileName} colors=none`
+            `[ColorDecorator] updateDecorations - file=${editor.document.fileName} colors=none`,
           );
         }
       } catch {
@@ -173,9 +164,7 @@ export class ColorPropertyDecorator implements vscode.Disposable {
   private ensureOutput() {
     if (!this.output) {
       try {
-        this.output = vscode.window.createOutputChannel(
-          "RustedWarfareModSupport"
-        );
+        this.output = vscode.window.createOutputChannel("RustedWarfareModSupport");
         this.disposables.push(this.output);
       } catch {
         this.output = undefined;

@@ -65,7 +65,7 @@ export class ValueCompletionProvider implements vscode.CompletionItemProvider {
     document: vscode.TextDocument,
     position: vscode.Position,
     token: vscode.CancellationToken,
-    context: vscode.CompletionContext
+    context: vscode.CompletionContext,
   ): vscode.ProviderResult<vscode.CompletionItem[] | vscode.CompletionList> {
     return measurePerf("completion.values", () => {
       const completions: vscode.CompletionItem[] = [];
@@ -76,7 +76,7 @@ export class ValueCompletionProvider implements vscode.CompletionItemProvider {
             document,
             position,
             token,
-            context
+            context,
           );
           if (providerCompletions) {
             if (Array.isArray(providerCompletions)) {
@@ -90,7 +90,7 @@ export class ValueCompletionProvider implements vscode.CompletionItemProvider {
             "ValueCompletionProvider: Error calling provider=",
             provider.constructor.name,
             "error=",
-            error
+            error,
           );
         }
       }

@@ -23,13 +23,11 @@ export class UnitSpawnCompletionProvider extends BaseValueCompletionProvider {
     document: vscode.TextDocument,
     position: vscode.Position,
     propertyName: string,
-    sectionName: string
+    sectionName: string,
   ): vscode.ProviderResult<vscode.CompletionItem[] | vscode.CompletionList> {
     // 获取节属性以检查属性类型
     const sectionProperties = getSectionProperties(sectionName);
-    const property = sectionProperties.find(
-      (prop: any) => prop.name === propertyName
-    );
+    const property = sectionProperties.find((prop: any) => prop.name === propertyName);
 
     // 检查是否为单位生成类属性
     if (property && this.unitSpawnProperties.includes(property.name)) {
@@ -40,7 +38,7 @@ export class UnitSpawnCompletionProvider extends BaseValueCompletionProvider {
       const insideParentheses = this.isInsideParentheses(
         textBeforeCursor,
         lineText,
-        position.character
+        position.character,
       );
       if (insideParentheses) {
         // 提供参数补全项
@@ -64,7 +62,7 @@ export class UnitSpawnCompletionProvider extends BaseValueCompletionProvider {
   private isInsideParentheses(
     textBeforeCursor: string,
     lineText: string,
-    cursorPosition: number
+    cursorPosition: number,
   ): boolean {
     // 查找属性值开始位置（冒号后）
     const colonIndex = textBeforeCursor.lastIndexOf(":");
@@ -91,9 +89,7 @@ export class UnitSpawnCompletionProvider extends BaseValueCompletionProvider {
    * @param propertyName 属性名称
    * @returns 单位生成基本格式补全项数组
    */
-  private getUnitSpawnCompletionItems(
-    propertyName: string
-  ): vscode.CompletionItem[] {
+  private getUnitSpawnCompletionItems(propertyName: string): vscode.CompletionItem[] {
     try {
       // 获取扩展的实际路径
       const extension = vscode.extensions.getExtension(getExtensionId());
@@ -106,35 +102,24 @@ export class UnitSpawnCompletionProvider extends BaseValueCompletionProvider {
 
       // 读取对应属性的值定义文件
       const valueType =
-        propertyName === "spawnProjectiles" ||
-        propertyName === "spawnProjectile"
+        propertyName === "spawnProjectiles" || propertyName === "spawnProjectile"
           ? "spawnProjectiles"
           : "spawnUnits";
-      const valuePath = path.join(
-        extensionPath,
-        "data",
-        "value",
-        `${valueType}.json`
-      );
+      const valuePath = path.join(extensionPath, "data", "value", `${valueType}.json`);
       const valueData = JSON.parse(fs.readFileSync(valuePath, "utf8"));
 
       // 创建一个示例补全项
       const exampleItem = new vscode.CompletionItem(
         valueData.example.split(":")[1].trim(),
-        vscode.CompletionItemKind.Value
+        vscode.CompletionItemKind.Value,
       );
 
       // 使用单独的键进行国际化
-      const exampleDetail = t(
-        "valuecompletionprovider.spawnunits.example.detail"
-      );
-      const exampleDocKey =
-        "valuecompletionprovider.spawnunits.example.documentation";
+      const exampleDetail = t("valuecompletionprovider.spawnunits.example.detail");
+      const exampleDocKey = "valuecompletionprovider.spawnunits.example.documentation";
 
       exampleItem.detail = exampleDetail;
-      exampleItem.documentation = new vscode.MarkdownString(
-        t(exampleDocKey, propertyName)
-      );
+      exampleItem.documentation = new vscode.MarkdownString(t(exampleDocKey, propertyName));
 
       return [exampleItem];
     } catch (error) {
@@ -148,9 +133,7 @@ export class UnitSpawnCompletionProvider extends BaseValueCompletionProvider {
    * @param propertyName 属性名称
    * @returns 单位生成参数补全项数组
    */
-  private getUnitSpawnParamCompletionItems(
-    propertyName: string
-  ): vscode.CompletionItem[] {
+  private getUnitSpawnParamCompletionItems(propertyName: string): vscode.CompletionItem[] {
     try {
       // 获取扩展的实际路径
       const extension = vscode.extensions.getExtension(getExtensionId());
@@ -163,16 +146,10 @@ export class UnitSpawnCompletionProvider extends BaseValueCompletionProvider {
 
       // 读取对应属性的值定义文件
       const valueType =
-        propertyName === "spawnProjectiles" ||
-        propertyName === "spawnProjectile"
+        propertyName === "spawnProjectiles" || propertyName === "spawnProjectile"
           ? "spawnProjectiles"
           : "spawnUnits";
-      const valuePath = path.join(
-        extensionPath,
-        "data",
-        "value",
-        `${valueType}.json`
-      );
+      const valuePath = path.join(extensionPath, "data", "value", `${valueType}.json`);
       const valueData = JSON.parse(fs.readFileSync(valuePath, "utf8"));
 
       // 为每个参数创建补全项
@@ -182,13 +159,13 @@ export class UnitSpawnCompletionProvider extends BaseValueCompletionProvider {
           // 创建参数补全项，格式为 paramName=
           const paramItem = new vscode.CompletionItem(
             `${param.name}=`,
-            vscode.CompletionItemKind.Property
+            vscode.CompletionItemKind.Property,
           );
           paramItem.detail = param.type;
           paramItem.documentation = new vscode.MarkdownString(
             `${t(param.description)}\n\n*${t(
-              "valuecompletionprovider.spawnunits.version"
-            )}: ${param.version}*\n\n\`\`\`ini\n${t(param.example)}\n\`\`\``
+              "valuecompletionprovider.spawnunits.version",
+            )}: ${param.version}*\n\n\`\`\`ini\n${t(param.example)}\n\`\`\``,
           );
 
           // 根据参数类型设置插入文本
@@ -196,21 +173,19 @@ export class UnitSpawnCompletionProvider extends BaseValueCompletionProvider {
             case "bool":
               // 为布尔类型提供true/false选项
               paramItem.insertText = new vscode.SnippetString(
-                `${param.name}=\${1|${t("true")},${t("false")}|}`
+                `${param.name}=\${1|${t("true")},${t("false")}|}`,
               );
               break;
             case "float":
             case "int":
               // 为数值类型提供数字占位符
               paramItem.insertText = new vscode.SnippetString(
-                `${param.name}=\${1:${t("number")}0}}`
+                `${param.name}=\${1:${t("number")}0}}`,
               );
               break;
             default:
               // 其他类型提供通用占位符
-              paramItem.insertText = new vscode.SnippetString(
-                `${param.name}=\${1:${t("value")}}}`
-              );
+              paramItem.insertText = new vscode.SnippetString(`${param.name}=\${1:${t("value")}}}`);
           }
 
           paramItems.push(paramItem);

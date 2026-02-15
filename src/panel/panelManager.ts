@@ -82,19 +82,17 @@ export class PanelManager {
     // 监听折叠控件配置变化
     this.context.subscriptions.push(
       vscode.workspace.onDidChangeConfiguration((e) => {
-        if (
-          e.affectsConfiguration("rustedwarfaremodsupport.showFoldingControls")
-        ) {
+        if (e.affectsConfiguration("rustedwarfaremodsupport.showFoldingControls")) {
           this.handleFoldingControlsChange();
         }
-      })
+      }),
     );
 
     // 监听编辑器打开事件
     this.context.subscriptions.push(
       vscode.window.onDidChangeVisibleTextEditors((editors) => {
         this.handleVisibleEditorsChange(editors);
-      })
+      }),
     );
   }
 
@@ -103,10 +101,7 @@ export class PanelManager {
    */
   private handleFoldingControlsChange(): void {
     const config = vscode.workspace.getConfiguration("rustedwarfaremodsupport");
-    const showFoldingControls = config.get<string>(
-      "showFoldingControls",
-      "always"
-    );
+    const showFoldingControls = config.get<string>("showFoldingControls", "always");
 
     vscode.window.visibleTextEditors.forEach((editor) => {
       if (editor.document.languageId === "ini") {
@@ -118,14 +113,9 @@ export class PanelManager {
   /**
    * 处理可见编辑器变化
    */
-  private handleVisibleEditorsChange(
-    editors: readonly vscode.TextEditor[]
-  ): void {
+  private handleVisibleEditorsChange(editors: readonly vscode.TextEditor[]): void {
     const config = vscode.workspace.getConfiguration("rustedwarfaremodsupport");
-    const showFoldingControls = config.get<string>(
-      "showFoldingControls",
-      "always"
-    );
+    const showFoldingControls = config.get<string>("showFoldingControls", "always");
 
     editors.forEach((editor) => {
       if (editor.document.languageId === "ini") {
@@ -137,10 +127,7 @@ export class PanelManager {
   /**
    * 应用折叠控件显示设置
    */
-  private applyFoldingControls(
-    editor: vscode.TextEditor,
-    showFoldingControls: string
-  ): void {
+  private applyFoldingControls(editor: vscode.TextEditor, showFoldingControls: string): void {
     const config = vscode.workspace.getConfiguration();
     const editorConfig = config.get<any>("editor", {});
 
@@ -153,7 +140,7 @@ export class PanelManager {
       .update(
         "editor.showFoldingControls",
         showFoldingControls,
-        vscode.ConfigurationTarget.Workspace
+        vscode.ConfigurationTarget.Workspace,
       );
   }
 
@@ -162,16 +149,14 @@ export class PanelManager {
    */
   public refreshPanel(): void {
     // 发送命令来刷新面板
-    vscode.commands
-      .executeCommand("rustedwarfaremodsupport-panel.refresh")
-      .then(
-        () => {
-          // 刷新成功
-        },
-        (error: any) => {
-          console.error("Failed to refresh panel:", error);
-        }
-      );
+    vscode.commands.executeCommand("rustedwarfaremodsupport-panel.refresh").then(
+      () => {
+        // 刷新成功
+      },
+      (error: any) => {
+        console.error("Failed to refresh panel:", error);
+      },
+    );
   }
   /**
    * 获取自定义文件扩展名管理器

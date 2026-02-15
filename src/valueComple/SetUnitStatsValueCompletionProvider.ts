@@ -8,7 +8,7 @@ export class SetUnitStatsValueCompletionProvider extends BaseValueCompletionProv
     document: vscode.TextDocument,
     position: vscode.Position,
     propertyName: string,
-    _sectionName: string
+    _sectionName: string,
   ): vscode.ProviderResult<vscode.CompletionItem[] | vscode.CompletionList> {
     if (propertyName !== "setUnitStats") {
       return [];
@@ -19,9 +19,8 @@ export class SetUnitStatsValueCompletionProvider extends BaseValueCompletionProv
       vscode.CompletionItemKind.Value,
       "valuecompletionprovider.setunitstats.detail",
       {
-        customDocumentation: (item: any) =>
-          new vscode.MarkdownString(t(item.description)),
-      }
+        customDocumentation: (item: any) => new vscode.MarkdownString(t(item.description)),
+      },
     );
   }
 }

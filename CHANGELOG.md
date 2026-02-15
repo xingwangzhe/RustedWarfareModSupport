@@ -16,6 +16,7 @@
 - Misc small fixes and translation sync
 
 ## [1.7.46] - 2025-11-30
+
 ## [1.7.46] - 2025-11-30
 
 - 将 VS Code 引擎要求提升至 `^1.106.1`，对齐最新稳定版 API
@@ -53,7 +54,7 @@
 ## [1.7.42] - 2025-11-22
 
 - 修复构建依赖
-- fix the depec~ 
+- fix the depec~
 
 ## [1.7.41] - 2025-11-19
 
@@ -77,12 +78,10 @@
 - Removed all require legacy syntax, converted to ES6 module syntax
 - Resolved circular dependency issues, optimized code structure
 
-
 ## [1.7.35] - 2025-10-13
 
 - 修复字符串高亮
 - fix the highlight for string
-
 
 ## [1.7.34] - 2025-10-6
 
@@ -102,7 +101,6 @@
 
 - 更新npm依赖
 - Update npm dependencies
-
 
 ```bash
 ↑ @types/node 22.18.0 → 22.18.8
@@ -132,7 +130,6 @@
 
 - 补全一些枚举类
 - 添加缺失的翻译键
-
 
 - Complete some enum classes
 - Add missing translation keys

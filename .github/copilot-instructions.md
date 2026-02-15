@@ -17,18 +17,15 @@ RustedWarfareModSupport is a VS Code extension that provides intelligent autocom
 ### Key Modules
 
 1. **Completion System** (`src/completionProvider.ts`, `src/valueComple/`)
-
    - Generic completion for sections and properties
    - Value-specific completion providers for different data types
    - Memory definition completion
 
 2. **Hover System** (`src/hoverProvider/`)
-
    - Detector/Creator pattern for hover content
    - Support for sections, properties, values, and image previews
 
 3. **Syntax Highlighting** (`src/coralor/`)
-
    - Decoration system with throttled updates
    - TextMate grammar for INI syntax highlighting
 
@@ -100,8 +97,8 @@ context.subscriptions.push(
   vscode.languages.registerCompletionItemProvider(
     { language: "ini" },
     new CompletionProvider(),
-    ...triggerCharacters
-  )
+    ...triggerCharacters,
+  ),
 );
 ```
 
@@ -117,12 +114,7 @@ const setting = config.get<string>("settingName", defaultValue);
 ```typescript
 const extension = vscode.extensions.getExtension(getExtensionId());
 const extensionPath = extension?.extensionPath;
-const dataPath = path.join(
-  extensionPath,
-  "data",
-  "sections",
-  `${sectionName}.json`
-);
+const dataPath = path.join(extensionPath, "data", "sections", `${sectionName}.json`);
 ```
 
 ## Performance Guidelines
@@ -354,12 +346,10 @@ const message = t("Hello World from RustedWarfareModSupport!");
 - **Bundle Files**: Merged translation files are generated in `translation/bundle.l10n.{lang}.json`
 
 1. **PROHIBITED: .description Suffixes**
-
    - ❌ **NEVER** add `.description` suffix to original keys in data files
    - ❌ **NEVER** use keys like `"data.value.logicboolean.self.isUnderwater.description"`
 
 2. **Translation Key Matching Requirements**
-
    - **MANDATORY**: Every translation key must exactly match an existing original key in data files
 
      # Extract keys from data file
@@ -380,7 +370,6 @@ const message = t("Hello World from RustedWarfareModSupport!");
      ```
 
 3. **Translation Addition Process**
-
    - Step 1: Identify the original key in the data file (e.g., `data/value/logicboolean.json`)
    - Step 2: Verify the key exists and is correctly formatted (no .description suffix)
    - Step 3: Add the exact same key to translation files in each language directory

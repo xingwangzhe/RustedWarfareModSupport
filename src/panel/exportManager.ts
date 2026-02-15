@@ -14,16 +14,11 @@ export class ExportManager {
    */
   public async exportMod(folderPath: string) {
     const baseName = path.basename(folderPath);
-    const timestamp = new Date()
-      .toISOString()
-      .replace(/[:.]/g, "-")
-      .slice(0, -5);
+    const timestamp = new Date().toISOString().replace(/[:.]/g, "-").slice(0, -5);
 
     // 让用户选择ZIP文件的保存路径
     const zipUri = await vscode.window.showSaveDialog({
-      defaultUri: vscode.Uri.file(
-        path.join(os.homedir(), `${baseName}_${timestamp}.zip`)
-      ),
+      defaultUri: vscode.Uri.file(path.join(os.homedir(), `${baseName}_${timestamp}.zip`)),
       filters: { "ZIP Archive": ["zip"] },
     });
 
@@ -41,7 +36,7 @@ export class ExportManager {
     await this.exportToPath(folderPath, "rwmod", rwmodPath);
 
     vscode.window.showInformationMessage(
-      t("panel.exportManager.completed", zipUri.fsPath, rwmodPath)
+      t("panel.exportManager.completed", zipUri.fsPath, rwmodPath),
     );
   }
 
@@ -78,11 +73,7 @@ export class ExportManager {
   /**
    * 导出到指定路径
    */
-  private async exportToPath(
-    folderPath: string,
-    exportType: "zip" | "rwmod",
-    outPath: string
-  ) {
+  private async exportToPath(folderPath: string, exportType: "zip" | "rwmod", outPath: string) {
     const zip = new JSZip();
     this.addFolderToZip(zip, folderPath);
     const content = await zip.generateAsync({ type: "nodebuffer" });
@@ -96,50 +87,39 @@ export class ExportManager {
 export function registerExportCommands(context: vscode.ExtensionContext) {
   const manager = new ExportManager();
   context.subscriptions.push(
-    vscode.commands.registerCommand(
-      "rustedwarfaremodsupport.exportAuto",
-      async () => {
-        const folder = await vscode.window.showOpenDialog({
-          canSelectFolders: true,
-          canSelectFiles: false,
-          canSelectMany: false,
+    vscode.commands.registerCommand("rustedwarfaremodsupport.exportAuto", async () => {
+      const folder = await vscode.window.showOpenDialog({
+        canSelectFolders: true,
+        canSelectFiles: false,
+        canSelectMany: false,
+      });
+      if (folder && folder[0]) {
+        await manager.exportMod(folder[0].fsPath);
+      }
+    }),
+    vscode.commands.registerCommand("rustedwarfaremodsupport.exportDirect", async () => {
+      const folder = await vscode.window.showOpenDialog({
+        canSelectFolders: true,
+        canSelectFiles: false,
+        canSelectMany: false,
+      });
+      if (folder && folder[0]) {
+        const baseName = path.basename(folder[0].fsPath);
+        const timestamp = new Date().toISOString().replace(/[:.]/g, "-").slice(0, -5);
+
+        // 让用户选择保存路径
+        const saveUri = await vscode.window.showSaveDialog({
+          defaultUri: vscode.Uri.file(path.join(os.homedir(), `${baseName}_${timestamp}.zip`)),
+          filters: { "ZIP Archive": ["zip"] },
         });
-        if (folder && folder[0]) {
-          await manager.exportMod(folder[0].fsPath);
+
+        if (saveUri) {
+          await manager.exportDirect(folder[0].fsPath, saveUri.fsPath);
+          vscode.window.showInformationMessage(
+            t("panel.exportManager.directCompleted", saveUri.fsPath),
+          );
         }
       }
-    ),
-    vscode.commands.registerCommand(
-      "rustedwarfaremodsupport.exportDirect",
-      async () => {
-        const folder = await vscode.window.showOpenDialog({
-          canSelectFolders: true,
-          canSelectFiles: false,
-          canSelectMany: false,
-        });
-        if (folder && folder[0]) {
-          const baseName = path.basename(folder[0].fsPath);
-          const timestamp = new Date()
-            .toISOString()
-            .replace(/[:.]/g, "-")
-            .slice(0, -5);
-
-          // 让用户选择保存路径
-          const saveUri = await vscode.window.showSaveDialog({
-            defaultUri: vscode.Uri.file(
-              path.join(os.homedir(), `${baseName}_${timestamp}.zip`)
-            ),
-            filters: { "ZIP Archive": ["zip"] },
-          });
-
-          if (saveUri) {
-            await manager.exportDirect(folder[0].fsPath, saveUri.fsPath);
-            vscode.window.showInformationMessage(
-              t("panel.exportManager.directCompleted", saveUri.fsPath)
-            );
-          }
-        }
-      }
-    )
+    }),
   );
 }

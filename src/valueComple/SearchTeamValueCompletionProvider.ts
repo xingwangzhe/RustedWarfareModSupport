@@ -8,7 +8,7 @@ export class SearchTeamValueCompletionProvider extends BaseValueCompletionProvid
     document: vscode.TextDocument,
     position: vscode.Position,
     propertyName: string,
-    _sectionName: string
+    _sectionName: string,
   ): vscode.ProviderResult<vscode.CompletionItem[] | vscode.CompletionList> {
     if (propertyName !== "searchTeam") {
       return [];
@@ -19,9 +19,8 @@ export class SearchTeamValueCompletionProvider extends BaseValueCompletionProvid
       vscode.CompletionItemKind.Value,
       "valuecompletionprovider.searchteam.detail",
       {
-        customDocumentation: (item: any) =>
-          new vscode.MarkdownString(t(item.description)),
-      }
+        customDocumentation: (item: any) => new vscode.MarkdownString(t(item.description)),
+      },
     );
   }
 }

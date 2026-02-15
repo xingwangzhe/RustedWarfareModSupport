@@ -12,7 +12,7 @@ export class AutoTriggerOnEventValueCompletionProvider extends BaseValueCompleti
     document: vscode.TextDocument,
     position: vscode.Position,
     propertyName: string,
-    _sectionName: string
+    _sectionName: string,
   ): vscode.ProviderResult<vscode.CompletionItem[] | vscode.CompletionList> {
     // 检查属性是否为 autoTriggerOnEvent
     if (propertyName === "autoTriggerOnEvent") {
@@ -34,28 +34,21 @@ export class AutoTriggerOnEventValueCompletionProvider extends BaseValueCompleti
       {
         customDocumentation: (item) => this.createEventDocumentation(item),
         useNameAsInsertText: true,
-      }
+      },
     );
 
     // 为带参数的事件创建代码片段
     const enhancedItems = items.map((item) => {
-      const label =
-        typeof item.label === "string" ? item.label : item.label.label;
+      const label = typeof item.label === "string" ? item.label : item.label.label;
       if (label.includes('(withActionTag="#")')) {
-        item.insertText = new vscode.SnippetString(
-          'queueItemAdded(withActionTag="$1")'
-        );
+        item.insertText = new vscode.SnippetString('queueItemAdded(withActionTag="$1")');
         item.label = 'queueItemAdded(withActionTag="#")';
       } else if (label.includes('(withTag="#")')) {
         if (label.includes("tookDamage")) {
-          item.insertText = new vscode.SnippetString(
-            'tookDamage(withTag="$1")'
-          );
+          item.insertText = new vscode.SnippetString('tookDamage(withTag="$1")');
           item.label = 'tookDamage(withTag="#")';
         } else if (label.includes("newMessage")) {
-          item.insertText = new vscode.SnippetString(
-            'newMessage(withTag="$1")'
-          );
+          item.insertText = new vscode.SnippetString('newMessage(withTag="$1")');
           item.label = 'newMessage(withTag="#")';
         }
       }
@@ -81,18 +74,14 @@ export class AutoTriggerOnEventValueCompletionProvider extends BaseValueCompleti
 
     // 添加版本信息
     if (item.version) {
-      documentation.appendMarkdown(
-        `\n\n**${t("completionprovider.version")}:** ${item.version}`
-      );
+      documentation.appendMarkdown(`\n\n**${t("completionprovider.version")}:** ${item.version}`);
     }
 
     // 添加示例
     if (item.example) {
       const exampleText = t(item.example);
       documentation.appendMarkdown(
-        `\n\n**${t(
-          "completionprovider.example"
-        )}:**\n\`\`\`ini\n${exampleText}\n\`\`\``
+        `\n\n**${t("completionprovider.example")}:**\n\`\`\`ini\n${exampleText}\n\`\`\``,
       );
     }
 
@@ -100,26 +89,20 @@ export class AutoTriggerOnEventValueCompletionProvider extends BaseValueCompleti
     if (item.name.includes("withActionTag")) {
       documentation.appendMarkdown(
         `\n\n**${t("data.value.autotriggeronevent.parameter.actiontag")}:** ${t(
-          "data.value.autotriggeronevent.parameter.actiontag.description"
-        )}`
+          "data.value.autotriggeronevent.parameter.actiontag.description",
+        )}`,
       );
-    } else if (
-      item.name.includes("tookDamage") &&
-      item.name.includes("withTag")
-    ) {
+    } else if (item.name.includes("tookDamage") && item.name.includes("withTag")) {
       documentation.appendMarkdown(
         `\n\n**${t("data.value.autotriggeronevent.parameter.tag")}:** ${t(
-          "data.value.autotriggeronevent.parameter.tookdamage.tag.description"
-        )}`
+          "data.value.autotriggeronevent.parameter.tookdamage.tag.description",
+        )}`,
       );
-    } else if (
-      item.name.includes("newMessage") &&
-      item.name.includes("withTag")
-    ) {
+    } else if (item.name.includes("newMessage") && item.name.includes("withTag")) {
       documentation.appendMarkdown(
         `\n\n**${t("data.value.autotriggeronevent.parameter.tag")}:** ${t(
-          "data.value.autotriggeronevent.parameter.newmessage.tag.description"
-        )}`
+          "data.value.autotriggeronevent.parameter.newmessage.tag.description",
+        )}`,
       );
     }
 

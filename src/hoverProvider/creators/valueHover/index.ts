@@ -28,13 +28,13 @@ export class ValueHoverCreator {
     sectionName: string,
     propertyName: string,
     value: string,
-    originalName?: string
+    originalName?: string,
   ): vscode.Hover | null {
     // 先获取属性信息
     const propertyHover = PropertyHoverCreator.createPropertyHover(
       sectionName,
       propertyName,
-      originalName
+      originalName,
     );
     if (!propertyHover) {
       return null;
@@ -44,30 +44,23 @@ export class ValueHoverCreator {
     const propertyType = HoverUtils.extractPropertyType(propertyHover);
 
     console.log(
-      `[DEBUG] PropertyValueHover - propertyName: ${propertyName}, value: ${value}, extracted propertyType: ${propertyType}`
+      `[DEBUG] PropertyValueHover - propertyName: ${propertyName}, value: ${value}, extracted propertyType: ${propertyType}`,
     );
 
     // 如果无法提取到有效的属性类型，返回null
     if (!propertyType || propertyType.trim() === "") {
-      console.log(
-        `[DEBUG] PropertyValueHover - No valid propertyType, returning null`
-      );
+      console.log(`[DEBUG] PropertyValueHover - No valid propertyType, returning null`);
       return null;
     }
 
     // 颜色字段快速预览优先（如 shoot_light, color, displayColor 等）
     try {
       const lowerName = (propertyName || "").toLowerCase();
-      const looksLikeColorType =
-        propertyType && propertyType.toLowerCase().includes("color");
+      const looksLikeColorType = propertyType && propertyType.toLowerCase().includes("color");
       if (
-        [
-          "shoot_light",
-          "color",
-          "displaycolor",
-          "displaycolour",
-          "display_color",
-        ].includes(lowerName) ||
+        ["shoot_light", "color", "displaycolor", "displaycolour", "display_color"].includes(
+          lowerName,
+        ) ||
         looksLikeColorType
       ) {
         // 提取行中完整值以支持注释去除
@@ -96,24 +89,20 @@ export class ValueHoverCreator {
         const lineText = document.lineAt(position.line).text;
         const colonIndex = lineText.indexOf(":");
         const fullValueText =
-          colonIndex >= 0
-            ? lineText.substring(colonIndex + 1).trim()
-            : (value || "").trim();
+          colonIndex >= 0 ? lineText.substring(colonIndex + 1).trim() : (value || "").trim();
 
         // 移除注释部分
         const cleaned = fullValueText.replace(/#.*$/, "").trim();
 
         // 使用PathCompatibilityUtils提取多个图片路径（支持逗号分隔）
-        const extractedPaths =
-          PathCompatibilityUtils.extractImagePaths(cleaned);
+        const extractedPaths = PathCompatibilityUtils.extractImagePaths(cleaned);
 
         if (extractedPaths.length > 0) {
           const hoverContents: vscode.MarkdownString[] = [];
 
           for (const pathCandidate of extractedPaths) {
             // 规范化路径分隔符，支持正斜杠和反斜杠
-            const candidate =
-              PathCompatibilityUtils.normalizePathSeparators(pathCandidate);
+            const candidate = PathCompatibilityUtils.normalizePathSeparators(pathCandidate);
 
             try {
               const resolvedPath = resolveImagePath(candidate, document);
@@ -127,7 +116,7 @@ export class ValueHoverCreator {
                   // 如果是数组，过滤出MarkdownString类型
                   else if (Array.isArray(hover.contents)) {
                     const markdownContents = hover.contents.filter(
-                      (content) => content instanceof vscode.MarkdownString
+                      (content) => content instanceof vscode.MarkdownString,
                     ) as vscode.MarkdownString[];
                     hoverContents.push(...markdownContents);
                   }
@@ -144,8 +133,7 @@ export class ValueHoverCreator {
           }
         } else {
           // 回退到单个路径处理（保持向后兼容）
-          const extractedPath =
-            PathCompatibilityUtils.extractImagePath(cleaned);
+          const extractedPath = PathCompatibilityUtils.extractImagePath(cleaned);
           let candidate = extractedPath || cleaned;
 
           // 规范化路径分隔符，支持正斜杠和反斜杠
@@ -173,32 +161,30 @@ export class ValueHoverCreator {
     // 根据属性类型提供额外的值信息
     switch (propertyType) {
       case "bool":
-        console.log(
-          `[DEBUG] PropertyValueHover - Calling createBooleanValueHover for: ${value}`
-        );
+        console.log(`[DEBUG] PropertyValueHover - Calling createBooleanValueHover for: ${value}`);
         return createBooleanValueHover(value);
       case "LogicBoolean":
         console.log(
-          `[DEBUG] PropertyValueHover - Calling createLogicBooleanValueHover for: ${value}`
+          `[DEBUG] PropertyValueHover - Calling createLogicBooleanValueHover for: ${value}`,
         );
         const logicBooleanResult = createLogicBooleanValueHover(value);
         console.log(
           `[DEBUG] PropertyValueHover - LogicBoolean result: ${
             logicBooleanResult ? "success" : "null"
-          }`
+          }`,
         );
         if (logicBooleanResult) {
           return logicBooleanResult;
         }
         // 如果LogicBoolean处理失败，尝试作为值类型处理
         console.log(
-          `[DEBUG] PropertyValueHover - LogicBoolean failed, falling back to valueTypeHover`
+          `[DEBUG] PropertyValueHover - LogicBoolean failed, falling back to valueTypeHover`,
         );
         return createValueTypeHover(propertyType, value);
       default:
         // 对于其他类型，尝试从值类型文件中查找匹配的信息
         console.log(
-          `[DEBUG] PropertyValueHover - Calling createValueTypeHover for type: ${propertyType}, value: ${value}`
+          `[DEBUG] PropertyValueHover - Calling createValueTypeHover for type: ${propertyType}, value: ${value}`,
         );
         return createValueTypeHover(propertyType, value);
     }

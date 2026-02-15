@@ -4,7 +4,7 @@ export class IniFoldingRangeProvider implements vscode.FoldingRangeProvider {
   public provideFoldingRanges(
     document: vscode.TextDocument,
     _context: vscode.FoldingContext,
-    _token: vscode.CancellationToken
+    _token: vscode.CancellationToken,
   ): vscode.ProviderResult<vscode.FoldingRange[]> {
     const foldingRanges: vscode.FoldingRange[] = [];
     let sectionStart: number = -1;

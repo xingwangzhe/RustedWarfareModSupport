@@ -8,7 +8,7 @@ export class AddWaypointTargetNearestUnitTeamValueCompletionProvider extends Bas
     document: vscode.TextDocument,
     position: vscode.Position,
     propertyName: string,
-    _sectionName: string
+    _sectionName: string,
   ): vscode.ProviderResult<vscode.CompletionItem[] | vscode.CompletionList> {
     if (propertyName !== "addWaypoint_target_nearestUnit_team") {
       return [];
@@ -19,9 +19,8 @@ export class AddWaypointTargetNearestUnitTeamValueCompletionProvider extends Bas
       vscode.CompletionItemKind.Value,
       "valuecompletionprovider.addwaypoint_target_nearestunit_team.detail",
       {
-        customDocumentation: (item: any) =>
-          new vscode.MarkdownString(t(item.description)),
-      }
+        customDocumentation: (item: any) => new vscode.MarkdownString(t(item.description)),
+      },
     );
   }
 }

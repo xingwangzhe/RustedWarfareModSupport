@@ -1,124 +1,124 @@
 {
-    "data": [
-        {
-            "name": "name",
-            "type": "string(s)",
-            "description": "data.sections.canBuild.name",
-            "version": "1.13.3",
-            "isOutdated": false,
-            "example": "name: setRally, tank, hoverTank, heavyTank"
-        },
-        {
-            "name": "pos",
-            "type": "float",
-            "description": "data.sections.canBuild.pos",
-            "version": "1.13.3",
-            "isOutdated": false,
-            "example": "pos: 0.1"
-        },
-        {
-            "name": "tech",
-            "type": "int",
-            "description": "data.sections.canBuild.tech",
-            "version": "1.13.3",
-            "isOutdated": false,
-            "example": "tech: 2"
-        },
-        {
-            "name": "forceNano",
-            "type": "bool",
-            "description": "data.sections.canBuild.forceNano",
-            "version": "1.13.3",
-            "isOutdated": false,
-            "example": "forceNano: true"
-        },
-        {
-            "name": "isVisible",
-            "type": "LogicBoolean",
-            "description": "data.sections.canBuild.isVisible",
-            "version": "1.13.3",
-            "isOutdated": false,
-            "example": "isVisible: if not self.energy(greaterThan=100)"
-        },
-        {
-            "name": "isLocked",
-            "type": "LogicBoolean",
-            "description": "data.sections.canBuild.isLocked",
-            "version": "1.13.3",
-            "isOutdated": false,
-            "example": "isLocked: if self.hp(lessThan=100)"
-        },
-        {
-            "name": "isLockedMessage",
-            "type": "string",
-            "description": "data.sections.canBuild.isLockedMessage",
-            "version": "1.13.3",
-            "isOutdated": false,
-            "example": "isLockedMessage: -Needs 2 Barracks"
-        },
-        {
-            "name": "isLockedMessage_es",
-            "type": "string",
-            "description": "data.sections.canBuild.isLockedMessage_es",
-            "version": "1.13.3",
-            "isOutdated": false,
-            "example": "isLockedMessage_es: -Necesita 2 Cuarteles"
-        },
-        {
-            "name": "isLockedAlt",
-            "type": "LogicBoolean",
-            "description": "data.sections.canBuild.isLockedAlt",
-            "version": "1.13.3",
-            "isOutdated": false,
-            "example": "isLockedAlt: if self.energy(greaterThan=90)"
-        },
-        {
-            "name": "isLockedAltMessage",
-            "type": "string",
-            "description": "data.sections.canBuild.isLockedAltMessage",
-            "version": "1.13.3",
-            "isOutdated": false,
-            "example": "isLockedAltMessage: -Needs less energy"
-        },
-        {
-            "name": "isLockedAlt2",
-            "type": "LogicBoolean",
-            "description": "data.sections.canBuild.isLockedAlt2",
-            "version": "1.13.3",
-            "isOutdated": false,
-            "example": "isLockedAlt2: if self.isMoving()"
-        },
-        {
-            "name": "isLockedAlt2Message",
-            "type": "string",
-            "description": "data.sections.canBuild.isLockedAlt2Message",
-            "version": "1.13.3",
-            "isOutdated": false,
-            "example": "isLockedAlt2Message: -Needs to be quiet"
-        },
-        {
-            "name": "addResources",
-            "type": "price(s)",
-            "description": "data.sections.canBuild.addResources",
-            "version": "1.13.3",
-            "isOutdated": false,
-            "example": "addResources: ammo=5, setFlag=1"
-        },
-        {
-            "name": "price",
-            "type": "price(s)",
-            "description": "data.sections.canBuild.price",
-            "version": "1.13.3",
-            "isOutdated": false,
-            "example": "price: credits=1000, ammo=5"
-        },
-        {
-            "name": "isGuiBlinking",
-            "type": "LogicBoolean",
-            "description": "data.sections.canBuild.isGuiBlinking",
-            "version": "1.13.3",
-            "isOutdated": false,
-            "example": "isGuiBlinking: true"
-        }
-    ]
+  "data": [
+    {
+      "name": "name",
+      "type": "string(s)",
+      "description": "data.sections.canBuild.name",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "name: setRally, tank, hoverTank, heavyTank"
+    },
+    {
+      "name": "pos",
+      "type": "float",
+      "description": "data.sections.canBuild.pos",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "pos: 0.1"
+    },
+    {
+      "name": "tech",
+      "type": "int",
+      "description": "data.sections.canBuild.tech",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "tech: 2"
+    },
+    {
+      "name": "forceNano",
+      "type": "bool",
+      "description": "data.sections.canBuild.forceNano",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "forceNano: true"
+    },
+    {
+      "name": "isVisible",
+      "type": "LogicBoolean",
+      "description": "data.sections.canBuild.isVisible",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "isVisible: if not self.energy(greaterThan=100)"
+    },
+    {
+      "name": "isLocked",
+      "type": "LogicBoolean",
+      "description": "data.sections.canBuild.isLocked",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "isLocked: if self.hp(lessThan=100)"
+    },
+    {
+      "name": "isLockedMessage",
+      "type": "string",
+      "description": "data.sections.canBuild.isLockedMessage",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "isLockedMessage: -Needs 2 Barracks"
+    },
+    {
+      "name": "isLockedMessage_es",
+      "type": "string",
+      "description": "data.sections.canBuild.isLockedMessage_es",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "isLockedMessage_es: -Necesita 2 Cuarteles"
+    },
+    {
+      "name": "isLockedAlt",
+      "type": "LogicBoolean",
+      "description": "data.sections.canBuild.isLockedAlt",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "isLockedAlt: if self.energy(greaterThan=90)"
+    },
+    {
+      "name": "isLockedAltMessage",
+      "type": "string",
+      "description": "data.sections.canBuild.isLockedAltMessage",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "isLockedAltMessage: -Needs less energy"
+    },
+    {
+      "name": "isLockedAlt2",
+      "type": "LogicBoolean",
+      "description": "data.sections.canBuild.isLockedAlt2",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "isLockedAlt2: if self.isMoving()"
+    },
+    {
+      "name": "isLockedAlt2Message",
+      "type": "string",
+      "description": "data.sections.canBuild.isLockedAlt2Message",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "isLockedAlt2Message: -Needs to be quiet"
+    },
+    {
+      "name": "addResources",
+      "type": "price(s)",
+      "description": "data.sections.canBuild.addResources",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "addResources: ammo=5, setFlag=1"
+    },
+    {
+      "name": "price",
+      "type": "price(s)",
+      "description": "data.sections.canBuild.price",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "price: credits=1000, ammo=5"
+    },
+    {
+      "name": "isGuiBlinking",
+      "type": "LogicBoolean",
+      "description": "data.sections.canBuild.isGuiBlinking",
+      "version": "1.13.3",
+      "isOutdated": false,
+      "example": "isGuiBlinking: true"
+    }
+  ]
 }

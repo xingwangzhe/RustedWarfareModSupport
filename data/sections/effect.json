@@ -1,548 +1,548 @@
 {
-    "data": [
-        {
-            "name": "drawType",
-            "type": "normal|displacement",
-            "description": "data.sections.effect.drawType",
-            "version": "1.15p9",
-            "isOutdated": false,
-            "example": "drawType: normal"
-        },
-        {
-            "name": "life",
-            "type": "float",
-            "description": "data.sections.effect.life",
-            "version": "1.13",
-            "isOutdated": false,
-            "example": "life: 70"
-        },
-        {
-            "name": "lifeRandom",
-            "type": "float",
-            "description": "data.sections.effect.lifeRandom",
-            "version": "1.14",
-            "isOutdated": false,
-            "example": "lifeRandom: 12"
-        },
-        {
-            "name": "alsoEmitEffects",
-            "type": "effect ref",
-            "description": "data.sections.effect.alsoEmitEffects",
-            "version": "1.13",
-            "isOutdated": false,
-            "example": "alsoEmitEffects: CUSTOM:extraSparks*2"
-        },
-        {
-            "name": "alsoEmitEffectsOnDeath",
-            "type": "effect ref",
-            "description": "data.sections.effect.alsoEmitEffectsOnDeath",
-            "version": "1.14",
-            "isOutdated": false,
-            "example": "alsoEmitEffectsOnDeath: CUSTOM:finalPuff"
-        },
-        {
-            "name": "ifSpawnFailsEmitEffects",
-            "type": "effect ref",
-            "description": "data.sections.effect.ifSpawnFailsEmitEffects",
-            "version": "default",
-            "isOutdated": false,
-            "example": "ifSpawnFailsEmitEffects: CUSTOM:greenSparks*4"
-        },
-        {
-            "name": "alsoPlaySound",
-            "type": "sound ref",
-            "description": "data.sections.effect.alsoPlaySound",
-            "version": "1.13",
-            "isOutdated": false,
-            "example": "alsoPlaySound: meow.wav:0.5"
-        },
-        {
-            "name": "createWhenOffscreen",
-            "type": "bool",
-            "description": "data.sections.effect.createWhenOffscreen",
-            "version": "1.13",
-            "isOutdated": false,
-            "example": "createWhenOffscreen: true"
-        },
-        {
-            "name": "createWhenZoomedOut",
-            "type": "bool",
-            "description": "data.sections.effect.createWhenZoomedOut",
-            "version": "1.13",
-            "isOutdated": false,
-            "example": "createWhenZoomedOut: false"
-        },
-        {
-            "name": "createWhenOverLiquid",
-            "type": "bool",
-            "description": "data.sections.effect.createWhenOverLiquid",
-            "version": "1.13",
-            "isOutdated": false,
-            "example": "createWhenOverLiquid: false"
-        },
-        {
-            "name": "createWhenOverLand",
-            "type": "bool",
-            "description": "data.sections.effect.createWhenOverLand",
-            "version": "1.13",
-            "isOutdated": false,
-            "example": "createWhenOverLand: false"
-        },
-        {
-            "name": "spawnChance",
-            "type": "float",
-            "description": "data.sections.effect.spawnChance",
-            "version": "1.13",
-            "isOutdated": false,
-            "example": "spawnChance: 1"
-        },
-        {
-            "name": "showInFog",
-            "type": "bool",
-            "description": "data.sections.effect.showInFog",
-            "version": "1.13",
-            "isOutdated": false,
-            "example": "showInFog: true"
-        },
-        {
-            "name": "delayedStartTimer",
-            "type": "float",
-            "description": "data.sections.effect.delayedStartTimer",
-            "version": "1.13",
-            "isOutdated": false,
-            "example": "delayedStartTimer: 2s"
-        },
-        {
-            "name": "liveAfterAttachedDies",
-            "type": "bool",
-            "description": "data.sections.effect.liveAfterAttachedDies",
-            "version": "1.13",
-            "isOutdated": false,
-            "example": "liveAfterAttachedDies: false"
-        },
-        {
-            "name": "priority",
-            "type": "string",
-            "description": "data.sections.effect.priority",
-            "version": "1.13",
-            "isOutdated": false,
-            "example": "priority: critical"
-        },
-        {
-            "name": "attachedToUnit",
-            "type": "bool",
-            "description": "data.sections.effect.attachedToUnit",
-            "version": "1.13",
-            "isOutdated": false,
-            "example": "attachedToUnit: true"
-        },
-        {
-            "name": "alwayStartDirAtZero",
-            "type": "bool",
-            "description": "data.sections.effect.alwayStartDirAtZero",
-            "version": "1.13",
-            "isOutdated": false,
-            "example": "alwayStartDirAtZero: true"
-        },
-        {
-            "name": "atmospheric",
-            "type": "bool",
-            "description": "data.sections.effect.atmospheric",
-            "version": "1.13",
-            "isOutdated": false,
-            "example": "atmospheric: true"
-        },
-        {
-            "name": "physics",
-            "type": "bool",
-            "description": "data.sections.effect.physics",
-            "version": "1.13",
-            "isOutdated": false,
-            "example": "physics: true"
-        },
-        {
-            "name": "physicsGravity",
-            "type": "float",
-            "description": "data.sections.effect.physicsGravity",
-            "version": "1.13",
-            "isOutdated": false,
-            "example": "physicsGravity: 0.5"
-        },
-        {
-            "name": "xOffsetRelative",
-            "type": "float",
-            "description": "data.sections.effect.xOffsetRelative",
-            "version": "1.13",
-            "isOutdated": false,
-            "example": "xOffsetRelative: 2"
-        },
-        {
-            "name": "yOffsetRelative",
-            "type": "float",
-            "description": "data.sections.effect.yOffsetRelative",
-            "version": "1.13",
-            "isOutdated": false,
-            "example": "yOffsetRelative: 2"
-        },
-        {
-            "name": "xOffsetRelativeRandom",
-            "type": "float",
-            "description": "data.sections.effect.xOffsetRelativeRandom",
-            "version": "1.13",
-            "isOutdated": false,
-            "example": "xOffsetRelativeRandom: 4"
-        },
-        {
-            "name": "yOffsetRelativeRandom",
-            "type": "float",
-            "description": "data.sections.effect.yOffsetRelativeRandom",
-            "version": "1.13",
-            "isOutdated": false,
-            "example": "yOffsetRelativeRandom: 4"
-        },
-        {
-            "name": "xOffsetAbsolute",
-            "type": "float",
-            "description": "data.sections.effect.xOffsetAbsolute",
-            "version": "1.13",
-            "isOutdated": false,
-            "example": "xOffsetAbsolute: 2"
-        },
-        {
-            "name": "yOffsetAbsolute",
-            "type": "float",
-            "description": "data.sections.effect.yOffsetAbsolute",
-            "version": "1.13",
-            "isOutdated": false,
-            "example": "yOffsetAbsolute: 2"
-        },
-        {
-            "name": "xOffsetAbsoluteRandom",
-            "type": "float",
-            "description": "data.sections.effect.xOffsetAbsoluteRandom",
-            "version": "1.13",
-            "isOutdated": false,
-            "example": "xOffsetAbsoluteRandom: 5"
-        },
-        {
-            "name": "yOffsetAbsoluteRandom",
-            "type": "float",
-            "description": "data.sections.effect.yOffsetAbsoluteRandom",
-            "version": "1.13",
-            "isOutdated": false,
-            "example": "yOffsetAbsoluteRandom: 5"
-        },
-        {
-            "name": "xSpeedRelative",
-            "type": "float",
-            "description": "data.sections.effect.xSpeedRelative",
-            "version": "1.13",
-            "isOutdated": false,
-            "example": "xSpeedRelative: 2"
-        },
-        {
-            "name": "ySpeedRelative",
-            "type": "float",
-            "description": "data.sections.effect.ySpeedRelative",
-            "version": "1.13",
-            "isOutdated": false,
-            "example": "ySpeedRelative: 3"
-        },
-        {
-            "name": "xSpeedRelativeRandom",
-            "type": "float",
-            "description": "data.sections.effect.xSpeedRelativeRandom",
-            "version": "1.13",
-            "isOutdated": false,
-            "example": "xSpeedRelativeRandom: 2"
-        },
-        {
-            "name": "ySpeedRelativeRandom",
-            "type": "float",
-            "description": "data.sections.effect.ySpeedRelativeRandom",
-            "version": "1.13",
-            "isOutdated": false,
-            "example": "ySpeedRelativeRandom: 2"
-        },
-        {
-            "name": "xSpeedAbsolute",
-            "type": "float",
-            "description": "data.sections.effect.xSpeedAbsolute",
-            "version": "1.13",
-            "isOutdated": false,
-            "example": "xSpeedAbsolute: 5"
-        },
-        {
-            "name": "ySpeedAbsolute",
-            "type": "float",
-            "description": "data.sections.effect.ySpeedAbsolute",
-            "version": "1.13",
-            "isOutdated": false,
-            "example": "ySpeedAbsolute: 5"
-        },
-        {
-            "name": "xSpeedAbsoluteRandom",
-            "type": "float",
-            "description": "data.sections.effect.xSpeedAbsoluteRandom",
-            "version": "1.13",
-            "isOutdated": false,
-            "example": "xSpeedAbsoluteRandom: 2"
-        },
-        {
-            "name": "ySpeedAbsoluteRandom",
-            "type": "float",
-            "description": "data.sections.effect.ySpeedAbsoluteRandom",
-            "version": "1.13",
-            "isOutdated": false,
-            "example": "ySpeedAbsoluteRandom: 2"
-        },
-        {
-            "name": "hOffset",
-            "type": "float",
-            "description": "data.sections.effect.hOffset",
-            "version": "1.13",
-            "isOutdated": false,
-            "example": "hOffset: 4"
-        },
-        {
-            "name": "hOffsetRandom",
-            "type": "float",
-            "description": "data.sections.effect.hOffsetRandom",
-            "version": "1.13",
-            "isOutdated": false,
-            "example": "hOffsetRandom: 5"
-        },
-        {
-            "name": "hSpeed",
-            "type": "float",
-            "description": "data.sections.effect.hSpeed",
-            "version": "1.13",
-            "isOutdated": false,
-            "example": "hSpeed: 1"
-        },
-        {
-            "name": "hSpeedRandom",
-            "type": "float",
-            "description": "data.sections.effect.hSpeedRandom",
-            "version": "1.13",
-            "isOutdated": false,
-            "example": "hSpeedRandom: 1"
-        },
-        {
-            "name": "dirOffset",
-            "type": "float",
-            "description": "data.sections.effect.dirOffset",
-            "version": "1.13",
-            "isOutdated": false,
-            "example": "dirOffset: 43"
-        },
-        {
-            "name": "dirOffsetRandom",
-            "type": "float",
-            "description": "data.sections.effect.dirOffsetRandom",
-            "version": "1.13",
-            "isOutdated": false,
-            "example": "dirOffsetRandom: 50"
-        },
-        {
-            "name": "dirSpeed",
-            "type": "float",
-            "description": "data.sections.effect.dirSpeed",
-            "version": "1.13",
-            "isOutdated": false,
-            "example": "dirSpeed: 2"
-        },
-        {
-            "name": "dirSpeedRandom",
-            "type": "float",
-            "description": "data.sections.effect.dirSpeedRandom",
-            "version": "1.13",
-            "isOutdated": false,
-            "example": "dirSpeedRandom: 3"
-        },
-        {
-            "name": "frameIndex",
-            "type": "int",
-            "description": "data.sections.effect.frameIndex",
-            "version": "1.13",
-            "isOutdated": false,
-            "example": "frameIndex: 0"
-        },
-        {
-            "name": "frameIndexRandom",
-            "type": "bool -?",
-            "description": "data.sections.effect.frameIndexRandom",
-            "version": "default",
-            "isOutdated": false,
-            "example": "frameIndexRandom: true"
-        },
-        {
-            "name": "stripIndex",
-            "type": "int/string",
-            "description": "data.sections.effect.stripIndex",
-            "version": "1.13",
-            "isOutdated": false,
-            "example": "stripIndex: projectiles"
-        },
-        {
-            "name": "image",
-            "type": "image",
-            "description": "data.sections.effect.image",
-            "version": "1.13",
-            "isOutdated": false,
-            "example": "image: whitePuff.png"
-        },
-        {
-            "name": "imageShadow",
-            "type": "image",
-            "description": "data.sections.effect.imageShadow",
-            "version": "default",
-            "isOutdated": false,
-            "example": "imageShadow: AUTO"
-        },
-        {
-            "name": "scaleTo",
-            "type": "float",
-            "description": "data.sections.effect.scaleTo",
-            "version": "1.13",
-            "isOutdated": false,
-            "example": "scaleTo: 2"
-        },
-        {
-            "name": "scaleFrom",
-            "type": "float",
-            "description": "data.sections.effect.scaleFrom",
-            "version": "1.13",
-            "isOutdated": false,
-            "example": "scaleFrom: 4"
-        },
-        {
-            "name": "color",
-            "type": "color",
-            "description": "data.sections.effect.color",
-            "version": "1.13",
-            "isOutdated": false,
-            "example": "color: #ff00ff"
-        },
-        {
-            "name": "teamColorRatio",
-            "type": "",
-            "description": "data.sections.effect.teamColorRatio",
-            "version": "default",
-            "isOutdated": false,
-            "example": "teamColorRatio: 1"
-        },
-        {
-            "name": "drawUnderUnits",
-            "type": "bool",
-            "description": "data.sections.effect.drawUnderUnits",
-            "version": "1.13",
-            "isOutdated": false,
-            "example": "drawUnderUnits: false"
-        },
-        {
-            "name": "fadeInTime",
-            "type": "float",
-            "description": "data.sections.effect.fadeInTime",
-            "version": "1.13",
-            "isOutdated": false,
-            "example": "fadeInTime: 2s"
-        },
-        {
-            "name": "fadeOut",
-            "type": "bool",
-            "description": "data.sections.effect.fadeOut",
-            "version": "1.13",
-            "isOutdated": false,
-            "example": "fadeOut: 4s"
-        },
-        {
-            "name": "alpha",
-            "type": "",
-            "description": "data.sections.effect.alpha",
-            "version": "default",
-            "isOutdated": false,
-            "example": "alpha: 1"
-        },
-        {
-            "name": "shadow",
-            "type": "bool",
-            "description": "data.sections.effect.shadow",
-            "version": "default",
-            "isOutdated": false,
-            "example": "shadow: false"
-        },
-        {
-            "name": "pivotOffset",
-            "type": "float",
-            "description": "data.sections.effect.pivotOffset",
-            "version": "1.15",
-            "isOutdated": false,
-            "example": "pivotOffset: 20"
-        },
-        {
-            "name": "pivotOffsetRandom",
-            "type": "float",
-            "description": "data.sections.effect.pivotOffsetRandom",
-            "version": "1.15",
-            "isOutdated": false,
-            "example": "pivotOffsetRandom: 34"
-        },
-        {
-            "name": "total_frames",
-            "type": "int",
-            "description": "data.sections.effect.total_frames",
-            "version": "1.13",
-            "isOutdated": false,
-            "example": "total_frames: 10"
-        },
-        {
-            "name": "animateFrameStart",
-            "type": "int",
-            "description": "data.sections.effect.animateFrameStart",
-            "version": "1.13",
-            "isOutdated": false,
-            "example": "animateFrameStart: 0"
-        },
-        {
-            "name": "animateFrameEnd",
-            "type": "int",
-            "description": "data.sections.effect.animateFrameEnd",
-            "version": "1.13",
-            "isOutdated": false,
-            "example": "animateFrameEnd: 3"
-        },
-        {
-            "name": "animateFramePingPong",
-            "type": "int",
-            "description": "data.sections.effect.animateFramePingPong",
-            "version": "1.13",
-            "isOutdated": false,
-            "example": "animateFramePingPong: true"
-        },
-        {
-            "name": "animateFrameSpeed",
-            "type": "time",
-            "description": "data.sections.effect.animateFrameSpeed",
-            "version": "1.13",
-            "isOutdated": false,
-            "example": "animateFrameSpeed: 10"
-        },
-        {
-            "name": "animateFrameSpeedRandom",
-            "type": "time",
-            "description": "data.sections.effect.animateFrameSpeedRandom",
-            "version": "1.13",
-            "isOutdated": false,
-            "example": "animateFrameSpeedRandom: 20"
-        },
-        {
-            "name": "animateFrameLooping",
-            "type": "bool",
-            "description": "data.sections.effect.animateFrameLooping",
-            "version": "1.14",
-            "isOutdated": false,
-            "example": "animateFrameLooping: true"
-        }
-    ]
+  "data": [
+    {
+      "name": "drawType",
+      "type": "normal|displacement",
+      "description": "data.sections.effect.drawType",
+      "version": "1.15p9",
+      "isOutdated": false,
+      "example": "drawType: normal"
+    },
+    {
+      "name": "life",
+      "type": "float",
+      "description": "data.sections.effect.life",
+      "version": "1.13",
+      "isOutdated": false,
+      "example": "life: 70"
+    },
+    {
+      "name": "lifeRandom",
+      "type": "float",
+      "description": "data.sections.effect.lifeRandom",
+      "version": "1.14",
+      "isOutdated": false,
+      "example": "lifeRandom: 12"
+    },
+    {
+      "name": "alsoEmitEffects",
+      "type": "effect ref",
+      "description": "data.sections.effect.alsoEmitEffects",
+      "version": "1.13",
+      "isOutdated": false,
+      "example": "alsoEmitEffects: CUSTOM:extraSparks*2"
+    },
+    {
+      "name": "alsoEmitEffectsOnDeath",
+      "type": "effect ref",
+      "description": "data.sections.effect.alsoEmitEffectsOnDeath",
+      "version": "1.14",
+      "isOutdated": false,
+      "example": "alsoEmitEffectsOnDeath: CUSTOM:finalPuff"
+    },
+    {
+      "name": "ifSpawnFailsEmitEffects",
+      "type": "effect ref",
+      "description": "data.sections.effect.ifSpawnFailsEmitEffects",
+      "version": "default",
+      "isOutdated": false,
+      "example": "ifSpawnFailsEmitEffects: CUSTOM:greenSparks*4"
+    },
+    {
+      "name": "alsoPlaySound",
+      "type": "sound ref",
+      "description": "data.sections.effect.alsoPlaySound",
+      "version": "1.13",
+      "isOutdated": false,
+      "example": "alsoPlaySound: meow.wav:0.5"
+    },
+    {
+      "name": "createWhenOffscreen",
+      "type": "bool",
+      "description": "data.sections.effect.createWhenOffscreen",
+      "version": "1.13",
+      "isOutdated": false,
+      "example": "createWhenOffscreen: true"
+    },
+    {
+      "name": "createWhenZoomedOut",
+      "type": "bool",
+      "description": "data.sections.effect.createWhenZoomedOut",
+      "version": "1.13",
+      "isOutdated": false,
+      "example": "createWhenZoomedOut: false"
+    },
+    {
+      "name": "createWhenOverLiquid",
+      "type": "bool",
+      "description": "data.sections.effect.createWhenOverLiquid",
+      "version": "1.13",
+      "isOutdated": false,
+      "example": "createWhenOverLiquid: false"
+    },
+    {
+      "name": "createWhenOverLand",
+      "type": "bool",
+      "description": "data.sections.effect.createWhenOverLand",
+      "version": "1.13",
+      "isOutdated": false,
+      "example": "createWhenOverLand: false"
+    },
+    {
+      "name": "spawnChance",
+      "type": "float",
+      "description": "data.sections.effect.spawnChance",
+      "version": "1.13",
+      "isOutdated": false,
+      "example": "spawnChance: 1"
+    },
+    {
+      "name": "showInFog",
+      "type": "bool",
+      "description": "data.sections.effect.showInFog",
+      "version": "1.13",
+      "isOutdated": false,
+      "example": "showInFog: true"
+    },
+    {
+      "name": "delayedStartTimer",
+      "type": "float",
+      "description": "data.sections.effect.delayedStartTimer",
+      "version": "1.13",
+      "isOutdated": false,
+      "example": "delayedStartTimer: 2s"
+    },
+    {
+      "name": "liveAfterAttachedDies",
+      "type": "bool",
+      "description": "data.sections.effect.liveAfterAttachedDies",
+      "version": "1.13",
+      "isOutdated": false,
+      "example": "liveAfterAttachedDies: false"
+    },
+    {
+      "name": "priority",
+      "type": "string",
+      "description": "data.sections.effect.priority",
+      "version": "1.13",
+      "isOutdated": false,
+      "example": "priority: critical"
+    },
+    {
+      "name": "attachedToUnit",
+      "type": "bool",
+      "description": "data.sections.effect.attachedToUnit",
+      "version": "1.13",
+      "isOutdated": false,
+      "example": "attachedToUnit: true"
+    },
+    {
+      "name": "alwayStartDirAtZero",
+      "type": "bool",
+      "description": "data.sections.effect.alwayStartDirAtZero",
+      "version": "1.13",
+      "isOutdated": false,
+      "example": "alwayStartDirAtZero: true"
+    },
+    {
+      "name": "atmospheric",
+      "type": "bool",
+      "description": "data.sections.effect.atmospheric",
+      "version": "1.13",
+      "isOutdated": false,
+      "example": "atmospheric: true"
+    },
+    {
+      "name": "physics",
+      "type": "bool",
+      "description": "data.sections.effect.physics",
+      "version": "1.13",
+      "isOutdated": false,
+      "example": "physics: true"
+    },
+    {
+      "name": "physicsGravity",
+      "type": "float",
+      "description": "data.sections.effect.physicsGravity",
+      "version": "1.13",
+      "isOutdated": false,
+      "example": "physicsGravity: 0.5"
+    },
+    {
+      "name": "xOffsetRelative",
+      "type": "float",
+      "description": "data.sections.effect.xOffsetRelative",
+      "version": "1.13",
+      "isOutdated": false,
+      "example": "xOffsetRelative: 2"
+    },
+    {
+      "name": "yOffsetRelative",
+      "type": "float",
+      "description": "data.sections.effect.yOffsetRelative",
+      "version": "1.13",
+      "isOutdated": false,
+      "example": "yOffsetRelative: 2"
+    },
+    {
+      "name": "xOffsetRelativeRandom",
+      "type": "float",
+      "description": "data.sections.effect.xOffsetRelativeRandom",
+      "version": "1.13",
+      "isOutdated": false,
+      "example": "xOffsetRelativeRandom: 4"
+    },
+    {
+      "name": "yOffsetRelativeRandom",
+      "type": "float",
+      "description": "data.sections.effect.yOffsetRelativeRandom",
+      "version": "1.13",
+      "isOutdated": false,
+      "example": "yOffsetRelativeRandom: 4"
+    },
+    {
+      "name": "xOffsetAbsolute",
+      "type": "float",
+      "description": "data.sections.effect.xOffsetAbsolute",
+      "version": "1.13",
+      "isOutdated": false,
+      "example": "xOffsetAbsolute: 2"
+    },
+    {
+      "name": "yOffsetAbsolute",
+      "type": "float",
+      "description": "data.sections.effect.yOffsetAbsolute",
+      "version": "1.13",
+      "isOutdated": false,
+      "example": "yOffsetAbsolute: 2"
+    },
+    {
+      "name": "xOffsetAbsoluteRandom",
+      "type": "float",
+      "description": "data.sections.effect.xOffsetAbsoluteRandom",
+      "version": "1.13",
+      "isOutdated": false,
+      "example": "xOffsetAbsoluteRandom: 5"
+    },
+    {
+      "name": "yOffsetAbsoluteRandom",
+      "type": "float",
+      "description": "data.sections.effect.yOffsetAbsoluteRandom",
+      "version": "1.13",
+      "isOutdated": false,
+      "example": "yOffsetAbsoluteRandom: 5"
+    },
+    {
+      "name": "xSpeedRelative",
+      "type": "float",
+      "description": "data.sections.effect.xSpeedRelative",
+      "version": "1.13",
+      "isOutdated": false,
+      "example": "xSpeedRelative: 2"
+    },
+    {
+      "name": "ySpeedRelative",
+      "type": "float",
+      "description": "data.sections.effect.ySpeedRelative",
+      "version": "1.13",
+      "isOutdated": false,
+      "example": "ySpeedRelative: 3"
+    },
+    {
+      "name": "xSpeedRelativeRandom",
+      "type": "float",
+      "description": "data.sections.effect.xSpeedRelativeRandom",
+      "version": "1.13",
+      "isOutdated": false,
+      "example": "xSpeedRelativeRandom: 2"
+    },
+    {
+      "name": "ySpeedRelativeRandom",
+      "type": "float",
+      "description": "data.sections.effect.ySpeedRelativeRandom",
+      "version": "1.13",
+      "isOutdated": false,
+      "example": "ySpeedRelativeRandom: 2"
+    },
+    {
+      "name": "xSpeedAbsolute",
+      "type": "float",
+      "description": "data.sections.effect.xSpeedAbsolute",
+      "version": "1.13",
+      "isOutdated": false,
+      "example": "xSpeedAbsolute: 5"
+    },
+    {
+      "name": "ySpeedAbsolute",
+      "type": "float",
+      "description": "data.sections.effect.ySpeedAbsolute",
+      "version": "1.13",
+      "isOutdated": false,
+      "example": "ySpeedAbsolute: 5"
+    },
+    {
+      "name": "xSpeedAbsoluteRandom",
+      "type": "float",
+      "description": "data.sections.effect.xSpeedAbsoluteRandom",
+      "version": "1.13",
+      "isOutdated": false,
+      "example": "xSpeedAbsoluteRandom: 2"
+    },
+    {
+      "name": "ySpeedAbsoluteRandom",
+      "type": "float",
+      "description": "data.sections.effect.ySpeedAbsoluteRandom",
+      "version": "1.13",
+      "isOutdated": false,
+      "example": "ySpeedAbsoluteRandom: 2"
+    },
+    {
+      "name": "hOffset",
+      "type": "float",
+      "description": "data.sections.effect.hOffset",
+      "version": "1.13",
+      "isOutdated": false,
+      "example": "hOffset: 4"
+    },
+    {
+      "name": "hOffsetRandom",
+      "type": "float",
+      "description": "data.sections.effect.hOffsetRandom",
+      "version": "1.13",
+      "isOutdated": false,
+      "example": "hOffsetRandom: 5"
+    },
+    {
+      "name": "hSpeed",
+      "type": "float",
+      "description": "data.sections.effect.hSpeed",
+      "version": "1.13",
+      "isOutdated": false,
+      "example": "hSpeed: 1"
+    },
+    {
+      "name": "hSpeedRandom",
+      "type": "float",
+      "description": "data.sections.effect.hSpeedRandom",
+      "version": "1.13",
+      "isOutdated": false,
+      "example": "hSpeedRandom: 1"
+    },
+    {
+      "name": "dirOffset",
+      "type": "float",
+      "description": "data.sections.effect.dirOffset",
+      "version": "1.13",
+      "isOutdated": false,
+      "example": "dirOffset: 43"
+    },
+    {
+      "name": "dirOffsetRandom",
+      "type": "float",
+      "description": "data.sections.effect.dirOffsetRandom",
+      "version": "1.13",
+      "isOutdated": false,
+      "example": "dirOffsetRandom: 50"
+    },
+    {
+      "name": "dirSpeed",
+      "type": "float",
+      "description": "data.sections.effect.dirSpeed",
+      "version": "1.13",
+      "isOutdated": false,
+      "example": "dirSpeed: 2"
+    },
+    {
+      "name": "dirSpeedRandom",
+      "type": "float",
+      "description": "data.sections.effect.dirSpeedRandom",
+      "version": "1.13",
+      "isOutdated": false,
+      "example": "dirSpeedRandom: 3"
+    },
+    {
+      "name": "frameIndex",
+      "type": "int",
+      "description": "data.sections.effect.frameIndex",
+      "version": "1.13",
+      "isOutdated": false,
+      "example": "frameIndex: 0"
+    },
+    {
+      "name": "frameIndexRandom",
+      "type": "bool -?",
+      "description": "data.sections.effect.frameIndexRandom",
+      "version": "default",
+      "isOutdated": false,
+      "example": "frameIndexRandom: true"
+    },
+    {
+      "name": "stripIndex",
+      "type": "int/string",
+      "description": "data.sections.effect.stripIndex",
+      "version": "1.13",
+      "isOutdated": false,
+      "example": "stripIndex: projectiles"
+    },
+    {
+      "name": "image",
+      "type": "image",
+      "description": "data.sections.effect.image",
+      "version": "1.13",
+      "isOutdated": false,
+      "example": "image: whitePuff.png"
+    },
+    {
+      "name": "imageShadow",
+      "type": "image",
+      "description": "data.sections.effect.imageShadow",
+      "version": "default",
+      "isOutdated": false,
+      "example": "imageShadow: AUTO"
+    },
+    {
+      "name": "scaleTo",
+      "type": "float",
+      "description": "data.sections.effect.scaleTo",
+      "version": "1.13",
+      "isOutdated": false,
+      "example": "scaleTo: 2"
+    },
+    {
+      "name": "scaleFrom",
+      "type": "float",
+      "description": "data.sections.effect.scaleFrom",
+      "version": "1.13",
+      "isOutdated": false,
+      "example": "scaleFrom: 4"
+    },
+    {
+      "name": "color",
+      "type": "color",
+      "description": "data.sections.effect.color",
+      "version": "1.13",
+      "isOutdated": false,
+      "example": "color: #ff00ff"
+    },
+    {
+      "name": "teamColorRatio",
+      "type": "",
+      "description": "data.sections.effect.teamColorRatio",
+      "version": "default",
+      "isOutdated": false,
+      "example": "teamColorRatio: 1"
+    },
+    {
+      "name": "drawUnderUnits",
+      "type": "bool",
+      "description": "data.sections.effect.drawUnderUnits",
+      "version": "1.13",
+      "isOutdated": false,
+      "example": "drawUnderUnits: false"
+    },
+    {
+      "name": "fadeInTime",
+      "type": "float",
+      "description": "data.sections.effect.fadeInTime",
+      "version": "1.13",
+      "isOutdated": false,
+      "example": "fadeInTime: 2s"
+    },
+    {
+      "name": "fadeOut",
+      "type": "bool",
+      "description": "data.sections.effect.fadeOut",
+      "version": "1.13",
+      "isOutdated": false,
+      "example": "fadeOut: 4s"
+    },
+    {
+      "name": "alpha",
+      "type": "",
+      "description": "data.sections.effect.alpha",
+      "version": "default",
+      "isOutdated": false,
+      "example": "alpha: 1"
+    },
+    {
+      "name": "shadow",
+      "type": "bool",
+      "description": "data.sections.effect.shadow",
+      "version": "default",
+      "isOutdated": false,
+      "example": "shadow: false"
+    },
+    {
+      "name": "pivotOffset",
+      "type": "float",
+      "description": "data.sections.effect.pivotOffset",
+      "version": "1.15",
+      "isOutdated": false,
+      "example": "pivotOffset: 20"
+    },
+    {
+      "name": "pivotOffsetRandom",
+      "type": "float",
+      "description": "data.sections.effect.pivotOffsetRandom",
+      "version": "1.15",
+      "isOutdated": false,
+      "example": "pivotOffsetRandom: 34"
+    },
+    {
+      "name": "total_frames",
+      "type": "int",
+      "description": "data.sections.effect.total_frames",
+      "version": "1.13",
+      "isOutdated": false,
+      "example": "total_frames: 10"
+    },
+    {
+      "name": "animateFrameStart",
+      "type": "int",
+      "description": "data.sections.effect.animateFrameStart",
+      "version": "1.13",
+      "isOutdated": false,
+      "example": "animateFrameStart: 0"
+    },
+    {
+      "name": "animateFrameEnd",
+      "type": "int",
+      "description": "data.sections.effect.animateFrameEnd",
+      "version": "1.13",
+      "isOutdated": false,
+      "example": "animateFrameEnd: 3"
+    },
+    {
+      "name": "animateFramePingPong",
+      "type": "int",
+      "description": "data.sections.effect.animateFramePingPong",
+      "version": "1.13",
+      "isOutdated": false,
+      "example": "animateFramePingPong: true"
+    },
+    {
+      "name": "animateFrameSpeed",
+      "type": "time",
+      "description": "data.sections.effect.animateFrameSpeed",
+      "version": "1.13",
+      "isOutdated": false,
+      "example": "animateFrameSpeed: 10"
+    },
+    {
+      "name": "animateFrameSpeedRandom",
+      "type": "time",
+      "description": "data.sections.effect.animateFrameSpeedRandom",
+      "version": "1.13",
+      "isOutdated": false,
+      "example": "animateFrameSpeedRandom: 20"
+    },
+    {
+      "name": "animateFrameLooping",
+      "type": "bool",
+      "description": "data.sections.effect.animateFrameLooping",
+      "version": "1.14",
+      "isOutdated": false,
+      "example": "animateFrameLooping: true"
+    }
+  ]
 }

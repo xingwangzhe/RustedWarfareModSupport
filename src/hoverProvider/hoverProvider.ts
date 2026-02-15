@@ -18,47 +18,32 @@ export class RustedWarfareHoverProvider implements vscode.HoverProvider {
   public provideHover(
     document: vscode.TextDocument,
     position: vscode.Position,
-    _token: vscode.CancellationToken
+    _token: vscode.CancellationToken,
   ): vscode.ProviderResult<vscode.Hover> {
     return measurePerf("hover.provide", () => {
       const line = document.lineAt(position.line);
       const lineText = line.text;
 
-      const sectionHover = HoverDetectors.checkHoverOnSectionName(
-        lineText,
-        position.character
-      );
+      const sectionHover = HoverDetectors.checkHoverOnSectionName(lineText, position.character);
       if (sectionHover) {
         return HoverCreators.createSectionHover(sectionHover.sectionName);
       }
 
-      const propertyHover = HoverDetectors.checkHoverOnPropertyName(
-        lineText,
-        position.character
-      );
+      const propertyHover = HoverDetectors.checkHoverOnPropertyName(lineText, position.character);
       if (propertyHover) {
-        const currentSection = HoverDetectors.getCurrentSection(
-          document,
-          position
-        );
+        const currentSection = HoverDetectors.getCurrentSection(document, position);
         if (currentSection) {
           return HoverCreators.createPropertyHover(
             currentSection,
             propertyHover.propertyName,
-            propertyHover.originalName
+            propertyHover.originalName,
           );
         }
       }
 
-      const valueHover = HoverDetectors.checkHoverOnPropertyValue(
-        lineText,
-        position.character
-      );
+      const valueHover = HoverDetectors.checkHoverOnPropertyValue(lineText, position.character);
       if (valueHover) {
-        const currentSection = HoverDetectors.getCurrentSection(
-          document,
-          position
-        );
+        const currentSection = HoverDetectors.getCurrentSection(document, position);
         if (currentSection) {
           return HoverCreators.createPropertyValueHover(
             document,
@@ -66,7 +51,7 @@ export class RustedWarfareHoverProvider implements vscode.HoverProvider {
             currentSection,
             valueHover.propertyName,
             valueHover.value,
-            valueHover.originalName
+            valueHover.originalName,
           );
         }
       }

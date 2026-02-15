@@ -1,31 +1,80 @@
 {
   "name": "rustedwarfaremodsupport",
   "displayName": "RustedWarfareModSupport",
-  "icon": "favicon.png",
-  "description": "A VS Code extension that provides in-editor completions, documentation hints, and development tools for RustedWarfare mod development. Supports INI file editing with intelligent autocompletion for game configuration properties.",
   "version": "1.7.48",
-  "author": "xingwangzhe",
-  "publisher": "xingwangzhe",
-  "license": "AGPL-3.0",
-  "homepage": "https://github.com/xingwangzhe/RustedWarfareModSupport",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/xingwangzhe/RustedWarfareModSupport.git"
-  },
-  "bugs": {
-    "url": "https://github.com/xingwangzhe/RustedWarfareModSupport/issues"
-  },
-  "engines": {
-    "vscode": "^1.106.1"
-  },
+  "description": "A VS Code extension that provides in-editor completions, documentation hints, and development tools for RustedWarfare mod development. Supports INI file editing with intelligent autocompletion for game configuration properties.",
   "categories": [
     "Programming Languages",
     "Snippets"
   ],
-  "activationEvents": [
-    "onStartupFinished"
+  "keywords": [
+    "completion",
+    "development",
+    "game-development",
+    "hover",
+    "ini",
+    "mod",
+    "modding",
+    "rustedwarfare",
+    "vscode-extension"
   ],
+  "homepage": "https://github.com/xingwangzhe/RustedWarfareModSupport",
+  "bugs": {
+    "url": "https://github.com/xingwangzhe/RustedWarfareModSupport/issues"
+  },
+  "license": "AGPL-3.0",
+  "author": "xingwangzhe",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xingwangzhe/RustedWarfareModSupport.git"
+  },
+  "publisher": "xingwangzhe",
   "main": "./dist/extension.js",
+  "scripts": {
+    "merge-translations": "node merge.js",
+    "generate-syntax": "node scripts/generateSyntax.js",
+    "assets": "run-p merge-translations generate-syntax",
+    "check-types": "tsc --noEmit",
+    "lint": "oxlint",
+    "lint:fix": "oxlint --fix",
+    "fmt": "oxfmt",
+    "fmt:check": "oxfmt --check",
+    "bundle": "node esbuild.js",
+    "bundle:prod": "node esbuild.js --production",
+    "watch:tsc": "tsc --noEmit --watch --project tsconfig.json",
+    "watch:esbuild": "node esbuild.js --watch --incremental",
+    "watch:parallel": "run-p watch:tsc watch:esbuild",
+    "watch": "run-s assets watch:parallel",
+    "compile": "run-s assets check-types bundle",
+    "dev": "run-s assets bundle",
+    "dev:watch": "npm run watch",
+    "package": "run-s assets check-types lint bundle:prod",
+    "package:vsix": "run-s assets check-types lint bundle:prod vsce:package",
+    "publish:vsix": "run-s assets check-types lint bundle:prod vsce:publish",
+    "vsce:package": "vsce package",
+    "vsce:publish": "vsce publish",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "test": "vscode-test",
+    "sort-translations": "node scripts/sort-translations.mjs",
+    "vscode:prepublish": "npm run compile"
+  },
+  "dependencies": {
+    "@vscode/l10n": "^0.0.18",
+    "jszip": "^3.10.1"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^22.19.1",
+    "@types/vscode": "^1.106.1",
+    "@vscode/test-cli": "^0.0.11",
+    "@vscode/test-electron": "^2.5.2",
+    "esbuild": "^0.25.12",
+    "npm-run-all": "^4.1.5",
+    "oxfmt": "^0.32.0",
+    "oxlint": "^1.47.0",
+    "typescript": "^5.9.3"
+  },
   "l10n": "./translation",
   "contributes": {
     "commands": [
@@ -123,58 +172,11 @@
       }
     }
   },
-  "keywords": [
-    "rustedwarfare",
-    "mod",
-    "development",
-    "ini",
-    "completion",
-    "hover",
-    "vscode-extension",
-    "game-development",
-    "modding"
+  "activationEvents": [
+    "onStartupFinished"
   ],
-  "scripts": {
-    "merge-translations": "node merge.js",
-    "generate-syntax": "node scripts/generateSyntax.js",
-    "assets": "run-p merge-translations generate-syntax",
-    "check-types": "tsc --noEmit",
-    "lint": "eslint src translation",
-    "bundle": "node esbuild.js",
-    "bundle:prod": "node esbuild.js --production",
-    "watch:tsc": "tsc --noEmit --watch --project tsconfig.json",
-    "watch:esbuild": "node esbuild.js --watch --incremental",
-    "watch:parallel": "run-p watch:tsc watch:esbuild",
-    "watch": "run-s assets watch:parallel",
-    "compile": "run-s assets check-types bundle",
-    "dev": "run-s assets bundle",
-    "dev:watch": "npm run watch",
-    "package": "run-s assets check-types lint bundle:prod",
-    "package:vsix": "run-s assets check-types lint bundle:prod vsce:package",
-    "publish:vsix": "run-s assets check-types lint bundle:prod vsce:publish",
-    "vsce:package": "vsce package",
-    "vsce:publish": "vsce publish",
-    "compile-tests": "tsc -p . --outDir out",
-    "watch-tests": "tsc -p . -w --outDir out",
-    "test": "vscode-test",
-    "sort-translations": "node scripts/sort-translations.mjs",
-    "vscode:prepublish": "npm run compile"
-  },
-  "devDependencies": {
-    "@types/vscode": "^1.106.1",
-    "@types/mocha": "^10.0.10",
-    "@types/node": "^22.19.1",
-    "@typescript-eslint/eslint-plugin": "^8.48.0",
-    "@typescript-eslint/parser": "^8.48.0",
-    "eslint": "^9.39.1",
-    "esbuild": "^0.25.12",
-    "npm-run-all": "^4.1.5",
-    "typescript": "^5.9.3",
-    "@vscode/test-cli": "^0.0.11",
-    "@vscode/test-electron": "^2.5.2"
-  },
-  "dependencies": {
-    "@vscode/l10n": "^0.0.18",
-    "jszip": "^3.10.1"
+  "icon": "favicon.png",
+  "engines": {
+    "vscode": "^1.106.1"
   }
 }

@@ -8,7 +8,7 @@ export class OnActionsValueCompletionProvider extends BaseValueCompletionProvide
     document: vscode.TextDocument,
     position: vscode.Position,
     propertyName: string,
-    _sectionName: string
+    _sectionName: string,
   ): vscode.ProviderResult<vscode.CompletionItem[] | vscode.CompletionList> {
     if (propertyName !== "onActions") {
       return [];
@@ -19,9 +19,8 @@ export class OnActionsValueCompletionProvider extends BaseValueCompletionProvide
       vscode.CompletionItemKind.Value,
       "valuecompletionprovider.onactions.detail",
       {
-        customDocumentation: (item: any) =>
-          new vscode.MarkdownString(t(item.description)),
-      }
+        customDocumentation: (item: any) => new vscode.MarkdownString(t(item.description)),
+      },
     );
   }
 }
