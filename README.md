@@ -90,6 +90,14 @@ A RustedWarfare mod development tool that provides in-editor completions and doc
 - 感谢 copilot 的代码与翻译支持
 - Thanks to copilot for code and translation support
 
+### 代码格式化
+
+### Code formatting
+
+- INI 文件格式化支持,右键菜单格式化
+
+- INI file formatting support with right-click menu
+
 ### 侧边栏管理面板
 
 ### Panel Management

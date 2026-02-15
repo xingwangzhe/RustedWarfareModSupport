@@ -2,6 +2,7 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from "vscode";
 import { t } from "./translationManager";
+import { conservativeFormatIni } from "./format/iniFormatter";
 import { IniSectionSymbolProvider } from "./Section";
 import { IniFoldingRangeProvider } from "./IniFoldingProvider";
 import { SectionNameCompletionProvider } from "./completionProvider";
@@ -104,6 +105,46 @@ export function activate(context: vscode.ExtensionContext) {
   });
 
   context.subscriptions.push(disposable);
+
+  // 注册格式化 INI 文件命令（保守模式：只调整对齐，不改变键或值内容）
+  const formatIniCommand = vscode.commands.registerCommand(
+    "rustedwarfaremodsupport.formatIni",
+    async (uri?: vscode.Uri) => {
+      try {
+        const editor = vscode.window.activeTextEditor;
+        let doc: vscode.TextDocument | undefined;
+        if (uri) {
+          doc = await vscode.workspace.openTextDocument(uri);
+        } else if (editor) {
+          doc = editor.document;
+        }
+
+        if (!doc || doc.languageId !== "ini") {
+          vscode.window.showWarningMessage(t("formatIni.noIniFile"));
+          return;
+        }
+
+        const fullText = doc.getText();
+        const formatted = conservativeFormatIni(fullText);
+
+        if (formatted === fullText) {
+          vscode.window.showInformationMessage(t("formatIni.success"));
+          return;
+        }
+
+        const edit = new vscode.WorkspaceEdit();
+        const fullRange = new vscode.Range(doc.positionAt(0), doc.positionAt(fullText.length));
+        edit.replace(doc.uri, fullRange, formatted);
+        await vscode.workspace.applyEdit(edit);
+        await doc.save();
+        vscode.window.showInformationMessage(t("formatIni.success"));
+      } catch (err) {
+        console.error(err);
+        vscode.window.showErrorMessage(t("formatIni.failed"));
+      }
+    },
+  );
+  context.subscriptions.push(formatIniCommand);
 
   setupLazyLanguageInitialization(context);
 }
@@ -427,3 +468,8 @@ function initializeLanguageFeatures(context: vscode.ExtensionContext) {
     ...getPanelManager().getCustomExtensionsManager().getSubscriptions(),
   );
 }
+
+/**
+ * 保守的 INI 格式化：仅对齐键和值，保留注释、空行、节和键顺序，不修改键或值内容。
+ */
+// formatter moved to src/format/iniFormatter.ts

@@ -17,7 +17,6 @@
     // "noUnusedParameters": true,  /* Report errors on unused parameters. */
   },
   "exclude": [
-    "vite.config.ts",
     "dist",
     "node_modules"
   ]

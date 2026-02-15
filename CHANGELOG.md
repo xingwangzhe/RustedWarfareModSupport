@@ -1,5 +1,14 @@
 # 更新日志 / Changelog
 
+## [1.8.48] - 2026-02-15
+
+- 增加 INI 文件右键格式化支持：在编辑器右键菜单新增 `Format INI File` 命令并实现保守格式化（分隔符紧贴键名、分隔符后保留一个空格、节内移除多余空行、节间保留单空行），保留注释与键值顺序。
+- 调整扩展激活策略：采用现代贡献声明按需激活命令和语言，移除不必要的显式 `activationEvents`。
+
+### Notes
+
+- Added context-menu formatting command for INI files and conservative formatter implementation.
+
 ## [1.7.48] - 2025-12-12
 
 - 修复一些翻译错误

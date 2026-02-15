@@ -1,7 +1,7 @@
 {
   "name": "rustedwarfaremodsupport",
   "displayName": "RustedWarfareModSupport",
-  "version": "1.7.48",
+  "version": "1.8.48",
   "description": "A VS Code extension that provides in-editor completions, documentation hints, and development tools for RustedWarfare mod development. Supports INI file editing with intelligent autocompletion for game configuration properties.",
   "categories": [
     "Programming Languages",
@@ -40,10 +40,10 @@
     "lint:fix": "oxlint --fix",
     "fmt": "oxfmt",
     "fmt:check": "oxfmt --check",
-    "build": "vite build",
-    "build:min": "MINIMAL=true vite build --minify",
+    "build": "node esbuild.js --production",
+    "build:min": "node esbuild.js --production",
     "watch:tsc": "tsc --noEmit --watch --project tsconfig.json",
-    "watch:build": "vite build --watch",
+    "watch:build": "node esbuild.js --watch",
     "watch": "run-p watch:tsc watch:build",
     "compile": "run-s assets check:types build",
     "dev": "run-s assets build",
@@ -57,10 +57,7 @@
     "watch-tests": "tsc -p . -w --outDir out",
     "test": "vscode-test",
     "sort-translations": "node scripts/sort-translations.mjs",
-    "vscode:prepublish": "bun run compile",
-    "vite:dev": "vite",
-    "vite:build": "vite build",
-    "vite:preview": "vite preview"
+    "vscode:prepublish": "bun run compile"
   },
   "dependencies": {
     "@vscode/l10n": "^0.0.18",
@@ -72,11 +69,11 @@
     "@types/vscode": "^1.109.0",
     "@vscode/test-cli": "^0.0.11",
     "@vscode/test-electron": "^2.5.2",
+    "esbuild": "^0.27.3",
     "npm-run-all": "^4.1.5",
     "oxfmt": "^0.32.0",
     "oxlint": "^1.47.0",
     "typescript": "^5.9.3",
-    "vite": "^7.3.1",
     "vsce": "^2.15.0"
   },
   "l10n": "./translation",
@@ -85,6 +82,10 @@
       {
         "command": "rustedwarfaremodsupport.helloWorld",
         "title": "Hello World"
+      },
+      {
+        "command": "rustedwarfaremodsupport.formatIni",
+        "title": "%formatIni%"
       },
       {
         "command": "rustedwarfaremodsupport.exportDirect",
@@ -174,6 +175,15 @@
           "description": "Enable verbose performance timings for completion, hover, and decoration diagnostics"
         }
       }
+    },
+    "menus": {
+      "editor/context": [
+        {
+          "when": "editorLangId == ini",
+          "command": "rustedwarfaremodsupport.formatIni",
+          "group": "navigation"
+        }
+      ]
     }
   },
   "activationEvents": [
