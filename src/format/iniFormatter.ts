@@ -19,15 +19,21 @@ export function conservativeFormatIni(text: string): string {
     const keyLens: number[] = [];
     for (let i = start; i < end; i++) {
       const ln = lines[i];
-      if (!ln) continue;
-      if (isComment(ln) || isSection(ln)) continue;
+      if (!ln) {
+        continue;
+      }
+      if (isComment(ln) || isSection(ln)) {
+        continue;
+      }
       const m = ln.match(kvRegex);
       if (m) {
         kvIdx.push(i);
         keyLens.push(m[2].trim().length);
       }
     }
-    if (kvIdx.length === 0) return;
+    if (kvIdx.length === 0) {
+      return;
+    }
     for (const i of kvIdx) {
       const ln = lines[i];
       const m = ln.match(kvRegex)!;
@@ -41,7 +47,7 @@ export function conservativeFormatIni(text: string): string {
       const keyTrim = key.trim();
       const valueTrim = value.trim();
       const afterSep = valueTrim.length > 0 ? ` ${valueTrim}` : "";
-      out[i] = `${leading}${keyTrim}${sepChar}${afterSep}${comment ? ' ' + comment.trim() : ''}`;
+      out[i] = `${leading}${keyTrim}${sepChar}${afterSep}${comment ? " " + comment.trim() : ""}`;
     }
   };
 
@@ -59,7 +65,9 @@ export function conservativeFormatIni(text: string): string {
   const sectionIndices: number[] = [];
   for (let i = 0; i < out.length; i++) {
     const ln = (out[i] ?? "").replace(/\s+$/, "");
-    if (isSection(ln)) sectionIndices.push(i);
+    if (isSection(ln)) {
+      sectionIndices.push(i);
+    }
   }
 
   const pushSegment = (start: number, end: number, isFirstSegment: boolean) => {
@@ -68,10 +76,14 @@ export function conservativeFormatIni(text: string): string {
     const seg: string[] = [];
     for (let j = start; j < end; j++) {
       const ln = (out[j] ?? "").replace(/\s+$/, "");
-      if (ln === "") continue; // drop blank lines inside a block
+      if (ln === "") {
+        continue;
+      } // drop blank lines inside a block
       seg.push(ln);
     }
-    if (seg.length === 0) return;
+    if (seg.length === 0) {
+      return;
+    }
     if (!isFirstSegment && finalLines.length > 0) {
       // ensure single blank line between previous content and this segment
       finalLines.push("");
@@ -90,17 +102,23 @@ export function conservativeFormatIni(text: string): string {
     for (let s = 0; s < sectionIndices.length; s++) {
       const idx = sectionIndices[s];
       // push section header with single blank line separation handled in pushSegment
-      if (finalLines.length > 0) finalLines.push("");
+      if (finalLines.length > 0) {
+        finalLines.push("");
+      }
       finalLines.push(out[idx].replace(/\s+$/, ""));
       const next = s + 1 < sectionIndices.length ? sectionIndices[s + 1] : out.length;
       // push the body of this section (without blank lines)
       const body: string[] = [];
       for (let j = idx + 1; j < next; j++) {
         const ln = (out[j] ?? "").replace(/\s+$/, "");
-        if (ln === "") continue;
+        if (ln === "") {
+          continue;
+        }
         body.push(ln);
       }
-      if (body.length > 0) finalLines.push(...body);
+      if (body.length > 0) {
+        finalLines.push(...body);
+      }
     }
   }
 
