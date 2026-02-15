@@ -29,16 +29,10 @@ jobs:
         with:
           bun-version: latest
 
-      - name: Install vsce globally
-        run: bun add -g @vscode/vsce
-
       - name: Install dependencies
         run: bun install
 
-      - name: Build extension (type-check, lint, bundle)
-        run: bun run package
-
-      - name: Create VSIX package
+      - name: Build & Package extension (type-check, lint, bundle, vsix)
         run: bun run package:vsix
 
       - name: Capture VSIX filename
