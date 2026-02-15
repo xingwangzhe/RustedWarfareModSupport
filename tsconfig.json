@@ -2,7 +2,11 @@
   "compilerOptions": {
     "module": "node20",
     "target": "ES2022",
-    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "lib": [
+      "ES2022",
+      "DOM",
+      "DOM.Iterable"
+    ],
     "sourceMap": true,
     "rootDir": "src",
     "outDir": "dist",
@@ -11,5 +15,10 @@
     // "noImplicitReturns": true, /* Report error when not all code paths in function return a value. */
     // "noFallthroughCasesInSwitch": true, /* Report errors for fallthrough cases in switch statement. */
     // "noUnusedParameters": true,  /* Report errors on unused parameters. */
-  }
+  },
+  "exclude": [
+    "vite.config.ts",
+    "dist",
+    "node_modules"
+  ]
 }
