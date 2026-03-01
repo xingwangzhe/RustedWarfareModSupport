@@ -1,17 +1,13 @@
 import * as vscode from "vscode";
-import * as fs from "fs";
-import * as path from "path";
+import { loadSectionsData } from "./common/dataLoader";
 import {
   extractExampleValue,
   getSectionProperties,
-  isInsideSection,
-  isAtValidLineStart,
   hasColonInLine,
+  isAtValidLineStart,
+  isInsideSection,
 } from "./dataProcessor";
-import { isBaseSection } from "./common/matchRules";
-import { getExtensionId } from "./extension";
 import { t } from "./translationManager";
-import { loadSectionsData } from "./common/dataLoader";
 
 /**
  * 为补全项生成格式化的文档信息

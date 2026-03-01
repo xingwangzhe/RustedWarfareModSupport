@@ -1,12 +1,12 @@
 import * as vscode from "vscode";
-import { IniSectionSymbolProvider } from "../Section";
 import { IniFoldingRangeProvider } from "../IniFoldingProvider";
-import { SectionNameCompletionProvider, GenericCompletionProvider } from "../completionProvider";
-import { createCompletionProviders, completionProviderConfigs } from "../common/completionFactory";
-import { ValueCompletionProvider } from "../valueComple/valueCompletionProvider";
+import { IniSectionSymbolProvider } from "../Section";
+import { completionProviderConfigs, createCompletionProviders } from "../common/completionFactory";
+import { SectionNameCompletionProvider } from "../completionProvider";
 import { RustedWarfareHoverProvider } from "../hoverProvider/hoverProvider";
 import { MemoryDefinitionCompletionProvider } from "../memory/MemoryDefinitionCompletionProvider";
 import { MemoryValueCompletionProvider } from "../memory/MemoryValueCompletionProvider";
+import { ValueCompletionProvider } from "../valueComple/valueCompletionProvider";
 
 /**
  * 自定义文件扩展名管理器
