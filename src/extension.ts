@@ -295,12 +295,7 @@ function initializeLanguageFeatures(context: vscode.ExtensionContext) {
   const completionProviders = createCompletionProviders(completionProviderConfigs);
 
   const completionSubscriptions = completionProviders.map((provider) =>
-    vscode.languages.registerCompletionItemProvider(
-      { language: "ini" },
-      provider,
-      ":",
-      " ",
-    ),
+    vscode.languages.registerCompletionItemProvider({ language: "ini" }, provider, ":", " "),
   );
 
   const valueCompletionProvider = new ValueCompletionProvider();

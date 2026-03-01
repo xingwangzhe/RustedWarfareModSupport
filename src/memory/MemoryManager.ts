@@ -71,11 +71,11 @@ export class MemoryManager {
 
   private scheduleUpdate(document: vscode.TextDocument): void {
     this.pendingUpdates.add(document);
-    
+
     if (this.updateTimeout) {
       clearTimeout(this.updateTimeout);
     }
-    
+
     this.updateTimeout = setTimeout(() => {
       this.processPendingUpdates();
     }, MemoryManager.DEBOUNCE_MS);

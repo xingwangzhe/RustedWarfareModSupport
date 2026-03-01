@@ -7,9 +7,7 @@ export interface SectionCacheEntry {
 
 const documentSectionCache: WeakMap<vscode.TextDocument, SectionCacheEntry> = new WeakMap();
 
-export function getDocumentSectionCache(
-  document: vscode.TextDocument,
-): SectionCacheEntry {
+export function getDocumentSectionCache(document: vscode.TextDocument): SectionCacheEntry {
   const cached = documentSectionCache.get(document);
   if (cached && cached.version === document.version) {
     return cached;

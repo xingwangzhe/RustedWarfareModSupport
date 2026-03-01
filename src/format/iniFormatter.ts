@@ -14,7 +14,7 @@ export function conservativeFormatIni(text: string): string {
   const isSection = (ln: string) => SECTION_REGEX.test(ln);
   const isComment = (ln: string) => COMMENT_REGEX.test(ln);
 
-    const kvRegex = KV_REGEX;
+  const kvRegex = KV_REGEX;
 
   let blockStart = 0;
   const flush = (start: number, end: number) => {
