@@ -1,5 +1,17 @@
 # 更新日志 / Changelog
 
+## [1.8.50] - 2026-03-01
+
+- 重构 LogicBoolean 点链补全逻辑：当 `.` 前为 `self` 时显示 `self.function`，否则显示 `function`，并统一避免重复插入 `self.`。
+- 修复单位/标记引用链式调用中的补全与替换行为（如 `eventSource.`、`eventSource.has`、`eventSource.self` 等场景）。
+- 改进 LogicBoolean 链式悬停：支持带/不带 `()` 的模糊匹配；链式表达式按光标所在片段显示 hover，避免整链信息堆叠。
+
+### Notes
+
+- Reworked LogicBoolean dot-chain completion: show `self.function` when the token before `.` is `self`, otherwise show `function`, while preventing duplicated `self.` insertion.
+- Fixed completion behavior for unit/marker reference chains (such as `eventSource.`, `eventSource.has`, and `eventSource.self`).
+- Improved LogicBoolean chain hover with fuzzy matching (with/without `()`), and show hover for the hovered segment only instead of merging the whole chain.
+
 ## [1.8.48] - 2026-02-15
 
 - 增加 INI 文件右键格式化支持：在编辑器右键菜单新增 `Format INI File` 命令并实现保守格式化（分隔符紧贴键名、分隔符后保留一个空格、节内移除多余空行、节间保留单空行），保留注释与键值顺序。
