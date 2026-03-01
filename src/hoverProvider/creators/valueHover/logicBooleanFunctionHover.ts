@@ -22,11 +22,26 @@ export function createLogicBooleanFunctionHover(func: string): vscode.Hover | nu
     const valuePath = path.join(extensionPath, "data", "value", "logicboolean.json");
     const valueData = JSON.parse(fs.readFileSync(valuePath, "utf8"));
 
-    // 查找匹配的函数
-    const funcBase = func.split("(")[0]; // 获取函数名，忽略参数部分
+    // 查找匹配的函数（模糊匹配：支持有无()与前缀）
+    const funcBase = func
+      .replace(/\([^)]*\)/g, "")
+      .trim()
+      .toLowerCase();
+    const normalize = (value: string) =>
+      value
+        .replace(/\([^)]*\)/g, "")
+        .trim()
+        .toLowerCase();
 
     for (const item of valueData.data) {
-      if (item.name === funcBase) {
+      const itemName = String(item.name || "");
+      const normalizedItemName = normalize(itemName);
+      const isMatched =
+        normalizedItemName === funcBase ||
+        normalizedItemName.startsWith(funcBase) ||
+        funcBase.startsWith(normalizedItemName);
+
+      if (isMatched) {
         const hoverContent = new vscode.MarkdownString();
         hoverContent.appendMarkdown(`**LogicBoolean Function**\n\n`);
         hoverContent.appendMarkdown(`${t(item.description)}\n\n`);

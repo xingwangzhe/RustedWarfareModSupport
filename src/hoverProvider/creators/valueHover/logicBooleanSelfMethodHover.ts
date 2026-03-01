@@ -27,21 +27,31 @@ export function createLogicBooleanSelfMethodHover(method: string): vscode.Hover 
 
     const valueData = JSON.parse(fs.readFileSync(valuePath, "utf8"));
 
-    // 查找匹配的方法
-    const methodPart = method.substring(5); // 移除"self."前缀
-    const methodBase = methodPart.split("(")[0]; // 获取方法名，忽略参数部分
+    // 查找匹配的方法（模糊匹配：支持有无()与前缀）
+    const methodPart = method.startsWith("self.") ? method.substring(5) : method;
+    const methodBase = methodPart
+      .replace(/\([^)]*\)/g, "")
+      .trim()
+      .toLowerCase();
+
+    const normalize = (value: string) =>
+      value
+        .replace(/\([^)]*\)/g, "")
+        .trim()
+        .toLowerCase();
 
     for (const item of valueData.data) {
-      // 改进匹配逻辑：同时匹配带括号和不带括号的形式
-      const itemBase = item.name.replace(/\(\)$/g, ""); // 移除末尾的括号
-      const searchTarget = `self.${methodBase}`;
+      const itemName = String(item.name || "");
+      const normalizedItemName = normalize(itemName);
+      const normalizedSelfTarget = `self.${methodBase}`;
 
-      if (
-        itemBase === searchTarget ||
-        item.name === searchTarget ||
-        item.name.startsWith(searchTarget + ".") ||
-        item.name === searchTarget + "()"
-      ) {
+      // 允许：完整匹配、前缀匹配、以及 itemName 带额外链式后缀
+      const isMatched =
+        normalizedItemName === normalizedSelfTarget ||
+        normalizedItemName.startsWith(normalizedSelfTarget) ||
+        normalizedSelfTarget.startsWith(normalizedItemName);
+
+      if (isMatched) {
         const hoverContent = new vscode.MarkdownString();
         hoverContent.appendMarkdown(`**LogicBoolean Function**\n\n`);
         hoverContent.appendMarkdown(`${t(item.description)}\n\n`);

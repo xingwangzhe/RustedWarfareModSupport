@@ -29,10 +29,44 @@ export function createLogicBooleanValueHover(word: string): vscode.Hover | null 
     return createLogicBooleanKeywordHover(trimmedWord);
   }
 
-  // 检查是否为self.开头的方法
-  if (trimmedWord.startsWith("self.")) {
+  // 检查是否为简单 self.方法 调用（非多链）
+  const simpleSelfMethodPattern = /^self\.[A-Za-z0-9_]+(?:\([^)]*\))?$/;
+  if (simpleSelfMethodPattern.test(trimmedWord)) {
     console.log(`[DEBUG] LogicBooleanValueHover - Recognized as self method: ${trimmedWord}`);
     return createLogicBooleanSelfMethodHover(trimmedWord);
+  }
+
+  // 处理链式调用：只展示当前片段对应的 hover，不展示整条链
+  if (trimmedWord.includes(".")) {
+    const normalized = trimmedWord.replace(/\s+/g, "");
+    const parts = normalized.split(".").filter(Boolean);
+    const lastPart = parts[parts.length - 1] || "";
+
+    // self.xxx.yyy 时，优先按最后片段作为 self 方法匹配
+    if (parts.length >= 2 && parts[parts.length - 2] === "self") {
+      const selfHover = createLogicBooleanSelfMethodHover(`self.${lastPart}`);
+      if (selfHover) {
+        return selfHover;
+      }
+    }
+
+    // 一般链式：优先尝试方法片段作为 self 方法
+    const methodLikeHover = createLogicBooleanSelfMethodHover(`self.${lastPart}`);
+    if (methodLikeHover) {
+      return methodLikeHover;
+    }
+
+    // 兜底：按最后片段普通函数匹配
+    const partHover = createLogicBooleanFunctionHover(lastPart);
+    if (partHover) {
+      return partHover;
+    }
+  }
+
+  // 单片段（不带点）也支持模糊作为 self 方法匹配
+  const methodLikeHover = createLogicBooleanSelfMethodHover(`self.${trimmedWord}`);
+  if (methodLikeHover) {
+    return methodLikeHover;
   }
 
   // 检查是否为其他LogicBoolean函数

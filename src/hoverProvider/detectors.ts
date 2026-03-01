@@ -186,37 +186,58 @@ export class HoverDetectors {
       return "";
     }
 
-    // 以空格等为分隔符查找单词
+    // 以空白/逗号为分隔符查找单词（保留链式调用中的 . 和 ()）
     const leftPart = text.substring(0, position);
     const rightPart = text.substring(position);
 
     // 查找左侧边界
-    const leftMatch = leftPart.match(/[^\s(),]*$/);
+    const leftMatch = leftPart.match(/[^\s,]*$/);
     const leftWord = leftMatch ? leftMatch[0] : "";
 
     // 查找右侧边界
-    const rightMatch = rightPart.match(/^[^\s(),]*/);
+    const rightMatch = rightPart.match(/^[^\s,]*/);
     const rightWord = rightMatch ? rightMatch[0] : "";
 
     const word = leftWord + rightWord;
-
-    // 检查是否是self.xxx格式的方法调用
-    if (leftWord.endsWith(".") && leftWord.length > 1) {
-      const beforeDot = leftWord.substring(0, leftWord.length - 1);
-      if (beforeDot === "self") {
-        const result = beforeDot + "." + rightWord;
-        return result;
-      }
+    if (!word) {
+      return "";
     }
 
-    // 如果当前单词是self，且点号右侧有内容，则组合成self.xxx
-    if (leftWord === "self" && rightPart.startsWith(".")) {
-      const rightPartAfterDot = rightPart.substring(1);
-      const rightWordMatch = rightPartAfterDot.match(/^[^\s(),]*/);
-      const rightWordAfterDot = rightWordMatch ? rightWordMatch[0] : "";
-      if (rightWordAfterDot) {
-        const result = leftWord + "." + rightWordAfterDot;
-        return result;
+    // 对链式表达式，仅返回光标所在片段（而非整条链）
+    // 例如 eventSource.getAsMarker().hasActiveWaypoint()：
+    // - 悬停 eventSource => eventSource
+    // - 悬停 hasActiveWaypoint => hasActiveWaypoint()
+    if (word.includes(".")) {
+      const wordStart = position - leftWord.length;
+      const localPos = Math.max(0, Math.min(word.length, position - wordStart));
+
+      const segments: string[] = [];
+      const ranges: Array<{ start: number; end: number }> = [];
+      let start = 0;
+
+      for (let i = 0; i <= word.length; i++) {
+        if (i === word.length || word[i] === ".") {
+          segments.push(word.substring(start, i));
+          ranges.push({ start, end: i });
+          start = i + 1;
+        }
+      }
+
+      // 优先命中光标所在的片段区间
+      let segIndex = ranges.findIndex((r) => localPos >= r.start && localPos <= r.end);
+
+      // 光标刚好在 '.' 上时，回退到点左侧片段
+      if (segIndex === -1) {
+        segIndex = ranges.findIndex((r) => localPos === r.end + 1);
+      }
+
+      if (segIndex >= 0 && segments[segIndex]) {
+        const seg = segments[segIndex];
+        // self.xxx 场景保留前缀，便于后续命中 self 方法数据
+        if (segIndex > 0 && segments[segIndex - 1] === "self") {
+          return `self.${seg}`;
+        }
+        return seg;
       }
     }
 
