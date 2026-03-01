@@ -5,6 +5,7 @@ import {
   PropertyValueHoverInfo,
   LanguageKeyInfo,
 } from "./types";
+import { findNearestSection } from "../common/sectionCache";
 
 /**
  * 悬停检测器
@@ -165,14 +166,7 @@ export class HoverDetectors {
     document: vscode.TextDocument,
     position: vscode.Position,
   ): string | null {
-    // 从当前位置向上搜索，找到最近的节定义
-    for (let i = position.line; i >= 0; i--) {
-      const line = document.lineAt(i).text.trim();
-      if (line.startsWith("[") && line.endsWith("]")) {
-        return line.substring(1, line.length - 1);
-      }
-    }
-    return null;
+    return findNearestSection(document, position);
   }
 
   /**

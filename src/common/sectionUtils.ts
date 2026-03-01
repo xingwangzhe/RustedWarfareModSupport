@@ -1,4 +1,5 @@
 import * as vscode from "vscode";
+import { findNearestSection } from "./sectionCache";
 
 /**
  * 获取当前位置所在的节名称
@@ -10,11 +11,5 @@ export function getCurrentSection(
   document: vscode.TextDocument,
   position: vscode.Position,
 ): string | null {
-  for (let i = position.line; i >= 0; i--) {
-    const line = document.lineAt(i).text.trim();
-    if (line.startsWith("[") && line.endsWith("]")) {
-      return line.substring(1, line.length - 1);
-    }
-  }
-  return null;
+  return findNearestSection(document, position);
 }

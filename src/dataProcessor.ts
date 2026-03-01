@@ -17,6 +17,60 @@ type SectionPropertyMapEntry = {
 };
 const sectionPropertyMapCache: Map<string, SectionPropertyMapEntry> = new Map();
 
+const sectionMetadataCache: Map<string, string> = new Map();
+let metadataScanComplete = false;
+
+function ensureMetadataScanned(): void {
+  if (metadataScanComplete) {
+    return;
+  }
+  metadataScanComplete = true;
+  scanSectionsDirectory();
+}
+
+function scanSectionsDirectory(): void {
+  try {
+    const extension = vscode.extensions.getExtension(EXTENSION_ID);
+    if (!extension) {
+      return;
+    }
+
+    const extensionPath = extension.extensionPath;
+    const localizedDir = path.join(extensionPath, "data", "sections", vscode.env.language);
+    const defaultDir = path.join(extensionPath, "data", "sections");
+    const dirs = [] as string[];
+
+    if (fs.existsSync(localizedDir)) {
+      dirs.push(localizedDir);
+    }
+    if (fs.existsSync(defaultDir)) {
+      dirs.push(defaultDir);
+    }
+
+    for (const dir of dirs) {
+      try {
+        const files = fs.readdirSync(dir).filter((f) => f.endsWith(".json"));
+        for (const f of files) {
+          const p = path.join(dir, f);
+          try {
+            const raw = fs.readFileSync(p, "utf8");
+            const json = JSON.parse(raw);
+            if (json && typeof json.name === "string") {
+              sectionMetadataCache.set(json.name, p);
+            }
+          } catch (e) {
+            console.debug("Ignored parse error for", p, (e as Error).message);
+          }
+        }
+      } catch (e) {
+        console.debug("Ignored error while scanning dir:", dir, (e as Error).message);
+      }
+    }
+  } catch (error) {
+    console.error("Error scanning sections directory:", error);
+  }
+}
+
 /**
  * 从示例字符串中提取值部分
  * @param example 示例字符串
@@ -174,60 +228,18 @@ export function getSectionPropertyMap(sectionName: string): Map<string, any> | n
   return propertyMap;
 }
 
-// 缓存：从 sectionData.name 到 文件路径 的映射，避免重复昂贵扫描
-const sectionMetadataCache: Map<string, string> = new Map();
-
 /**
  * 按需扫描 data/sections（先语言子目录，再默认目录），查找内部 metadata 的精确匹配（sectionData.name 字段）
  * 仅在其他快速匹配策略失败后调用。
  */
 function findSectionPathByMetadata(sectionName: string): string | null {
-  if (sectionMetadataCache.has(sectionName)) {
-    return sectionMetadataCache.get(sectionName) || null;
+  ensureMetadataScanned();
+
+  const cached = sectionMetadataCache.get(sectionName);
+  if (cached) {
+    return cached;
   }
 
-  // 获取扩展的实际路径
-  const extension = vscode.extensions.getExtension(EXTENSION_ID);
-  if (!extension) {
-    return null;
-  }
-
-  const extensionPath = extension.extensionPath;
-  const localizedDir = path.join(extensionPath, "data", "sections", vscode.env.language);
-  const defaultDir = path.join(extensionPath, "data", "sections");
-  const dirs = [] as string[];
-  if (fs.existsSync(localizedDir)) {
-    dirs.push(localizedDir);
-  }
-  if (fs.existsSync(defaultDir)) {
-    dirs.push(defaultDir);
-  }
-
-  for (const dir of dirs) {
-    try {
-      const files = fs.readdirSync(dir).filter((f) => f.endsWith(".json"));
-      for (const f of files) {
-        const p = path.join(dir, f);
-        try {
-          const raw = fs.readFileSync(p, "utf8");
-          const json = JSON.parse(raw);
-          // 如果文件内部定义了 name 字段并且严格匹配请求的节名，则认为是对应的定义文件
-          if (json && typeof json.name === "string" && json.name === sectionName) {
-            sectionMetadataCache.set(sectionName, p);
-            return p;
-          }
-        } catch (e) {
-          // 忽略单文件解析错误，继续扫描
-          console.debug("Ignored parse error for", p, (e as Error).message);
-        }
-      }
-    } catch (e) {
-      console.debug("Ignored error while scanning dir for metadata:", dir, (e as Error).message);
-    }
-  }
-
-  // 未找到，缓存空结果以避免重复扫描
-  sectionMetadataCache.set(sectionName, "");
   return null;
 }
 

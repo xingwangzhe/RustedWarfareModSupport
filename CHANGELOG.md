@@ -1,5 +1,27 @@
 # 更新日志 / Changelog
 
+## [1.9.50] - 2026-03-01
+
+- 性能优化：添加 getCurrentSection 文档级缓存，避免重复遍历
+- 性能优化：为 findSectionByName 添加 name→index 映射缓存，O(n) → O(1)
+- 性能优化：优化 findSectionPathByMetadata，改为启动时预扫描 sections 目录
+- 性能优化：MemoryManager 添加防抖和版本检查，减少重复解析
+- 性能优化：ValueCompletionProvider 延迟初始化，首次使用时才创建 provider 实例
+- 性能优化：翻译结果添加 LRU 缓存（500条上限）
+- 性能优化：精简补全触发字符，从 50+ 减少到 2-3 个
+- 性能优化：iniFormatter 预编译正则表达式
+
+### Notes
+
+- Performance: Added document-level cache for getCurrentSection to avoid repeated traversal
+- Performance: Added name→index mapping cache for findSectionByName, O(n) → O(1)
+- Performance: Optimized findSectionPathByMetadata with startup pre-scan of sections directory
+- Performance: MemoryManager added debounce and version check to reduce redundant parsing
+- Performance: ValueCompletionProvider lazy initialization
+- Performance: Added LRU cache for translation results (500 entries max)
+- Performance: Simplified completion trigger characters from 50+ to 2-3
+- Performance: Pre-compiled regular expressions in iniFormatter
+
 ## [1.8.50] - 2026-03-01
 
 - 重构 LogicBoolean 点链补全逻辑：当 `.` 前为 `self` 时显示 `self.function`，否则显示 `function`，并统一避免重复插入 `self.`。

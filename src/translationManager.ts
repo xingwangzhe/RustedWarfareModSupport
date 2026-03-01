@@ -8,6 +8,8 @@ type TranslationCacheEntry = {
 };
 
 const translationFileCache: Map<string, TranslationCacheEntry> = new Map();
+const translationResultCache: Map<string, string> = new Map();
+const MAX_RESULT_CACHE_SIZE = 500;
 
 /**
  * 自定义翻译管理器
@@ -103,20 +105,35 @@ export class TranslationManager {
    * @returns 翻译后的文本，如果找不到则返回键值
    */
   public t(key: string, ...args: any[]): string {
-    // 从翻译文件中查找
-    const translation = this.translations.get(key);
-
-    if (translation) {
-      // 如果有格式化参数，进行替换
-      if (args.length > 0) {
-        return this.formatString(translation, args);
-      }
-      return translation;
+    const cacheKey = `${key}:${args.length > 0 ? args.join(",") : ""}`;
+    const cached = translationResultCache.get(cacheKey);
+    if (cached) {
+      return cached;
     }
 
-    // 如果找不到翻译，返回键值（用于调试）
-    console.warn(`翻译键未找到: ${key}`);
-    return key;
+    const translation = this.translations.get(key);
+
+    let result: string;
+    if (translation) {
+      if (args.length > 0) {
+        result = this.formatString(translation, args);
+      } else {
+        result = translation;
+      }
+    } else {
+      console.warn(`翻译键未找到: ${key}`);
+      result = key;
+    }
+
+    if (translationResultCache.size >= MAX_RESULT_CACHE_SIZE) {
+      const firstKey = translationResultCache.keys().next().value;
+      if (firstKey) {
+        translationResultCache.delete(firstKey);
+      }
+    }
+    translationResultCache.set(cacheKey, result);
+
+    return result;
   }
 
   /**

@@ -27,38 +27,45 @@ import { AttackMovementValueCompletionProvider } from "./AttackMovementValueComp
 import { LayerValueCompletionProvider } from "./LayerValueCompletionProvider";
 import { measurePerf } from "../common/perfLogger";
 
-export class ValueCompletionProvider implements vscode.CompletionItemProvider {
-  private providers: vscode.CompletionItemProvider[];
+type LazyProvider = () => vscode.CompletionItemProvider;
 
-  constructor() {
-    this.providers = [
-      new BoolValueCompletionProvider(),
-      new UnitSpawnCompletionProvider(),
-      new LogicBooleanValueCompletionProvider(),
-      new MovementTypeValueCompletionProvider(),
-      new ImageValueCompletionProvider(),
-      new AutoTriggerOnEventValueCompletionProvider(),
-      new AddWaypointTypeValueCompletionProvider(),
-      new AutoTriggerCheckRateValueCompletionProvider(),
-      new OnActionsValueCompletionProvider(),
-      new DrawTypeValueCompletionProvider(),
-      new AddWaypointTargetNearestUnitTeamValueCompletionProvider(),
-      new FireTurretXAtGroundOnlyOverPassableTileOfValueCompletionProvider(),
-      new SetUnitStatsValueCompletionProvider(),
-      new ConvertToKeepCurrentFieldsValueCompletionProvider(),
-      new OnNewMapSpawnValueCompletionProvider(),
-      new DisplayDigitGroupingValueCompletionProvider(),
-      new TakeResourcesIncludeUnitsWithinRangeTeamValueCompletionProvider(),
-      new SearchTeamValueCompletionProvider(),
-      new OnlyTeamValueCompletionProvider(),
-      new WhenBuildingTemporarilyConvertToKeepFieldsValueCompletionProvider(),
-      new DisplayTypeValueCompletionProvider(),
-      new TransportUnitsRequireMovementTypeValueCompletionProvider(),
-      new TeamColoringModeValueCompletionProvider(),
-      new DrawLayerValueCompletionProvider(),
-      new AttackMovementValueCompletionProvider(),
-      new LayerValueCompletionProvider(),
-    ];
+const providerFactories: LazyProvider[] = [
+  () => new BoolValueCompletionProvider(),
+  () => new UnitSpawnCompletionProvider(),
+  () => new LogicBooleanValueCompletionProvider(),
+  () => new MovementTypeValueCompletionProvider(),
+  () => new ImageValueCompletionProvider(),
+  () => new AutoTriggerOnEventValueCompletionProvider(),
+  () => new AddWaypointTypeValueCompletionProvider(),
+  () => new AutoTriggerCheckRateValueCompletionProvider(),
+  () => new OnActionsValueCompletionProvider(),
+  () => new DrawTypeValueCompletionProvider(),
+  () => new AddWaypointTargetNearestUnitTeamValueCompletionProvider(),
+  () => new FireTurretXAtGroundOnlyOverPassableTileOfValueCompletionProvider(),
+  () => new SetUnitStatsValueCompletionProvider(),
+  () => new ConvertToKeepCurrentFieldsValueCompletionProvider(),
+  () => new OnNewMapSpawnValueCompletionProvider(),
+  () => new DisplayDigitGroupingValueCompletionProvider(),
+  () => new TakeResourcesIncludeUnitsWithinRangeTeamValueCompletionProvider(),
+  () => new SearchTeamValueCompletionProvider(),
+  () => new OnlyTeamValueCompletionProvider(),
+  () => new WhenBuildingTemporarilyConvertToKeepFieldsValueCompletionProvider(),
+  () => new DisplayTypeValueCompletionProvider(),
+  () => new TransportUnitsRequireMovementTypeValueCompletionProvider(),
+  () => new TeamColoringModeValueCompletionProvider(),
+  () => new DrawLayerValueCompletionProvider(),
+  () => new AttackMovementValueCompletionProvider(),
+  () => new LayerValueCompletionProvider(),
+];
+
+export class ValueCompletionProvider implements vscode.CompletionItemProvider {
+  private providers: vscode.CompletionItemProvider[] | null = null;
+
+  private ensureProviders(): vscode.CompletionItemProvider[] {
+    if (!this.providers) {
+      this.providers = providerFactories.map((factory) => factory());
+    }
+    return this.providers;
   }
 
   provideCompletionItems(
@@ -69,8 +76,9 @@ export class ValueCompletionProvider implements vscode.CompletionItemProvider {
   ): vscode.ProviderResult<vscode.CompletionItem[] | vscode.CompletionList> {
     return measurePerf("completion.values", () => {
       const completions: vscode.CompletionItem[] = [];
+      const activeProviders = this.ensureProviders();
 
-      for (const provider of this.providers) {
+      for (const provider of activeProviders) {
         try {
           const providerCompletions = provider.provideCompletionItems(
             document,

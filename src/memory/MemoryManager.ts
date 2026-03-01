@@ -1,9 +1,6 @@
 import * as vscode from "vscode";
 
-/**
- * 内存变量定义接口
- */
-export interface MemoryVariable {
+interface MemoryVariable {
   name: string;
   type: string;
   section: string;
@@ -11,14 +8,19 @@ export interface MemoryVariable {
   document: vscode.TextDocument;
 }
 
-/**
- * 内存管理器类
- * 负责管理@memory定义的变量
- */
+interface DocumentState {
+  variables: Map<string, MemoryVariable>;
+  version: number;
+  lastUpdate: number;
+}
+
 export class MemoryManager {
   private static instance: MemoryManager;
-  private memoryVariables: Map<string, MemoryVariable> = new Map();
+  private documentStates: Map<number, DocumentState> = new Map();
   private disposables: vscode.Disposable[] = [];
+  private updateTimeout: NodeJS.Timeout | null = null;
+  private pendingUpdates: Set<vscode.TextDocument> = new Set();
+  private static readonly DEBOUNCE_MS = 150;
 
   private constructor() {
     this.initialize();
@@ -31,17 +33,19 @@ export class MemoryManager {
     return MemoryManager.instance;
   }
 
+  private getDocKey(document: vscode.TextDocument): number {
+    return document.uri.toString().length;
+  }
+
   private initialize() {
-    // 监听文档变化
     this.disposables.push(
       vscode.workspace.onDidChangeTextDocument((event) => {
         if (event.document.languageId === "ini") {
-          this.updateMemoryVariables(event.document);
+          this.scheduleUpdate(event.document);
         }
       }),
     );
 
-    // 监听文档打开
     this.disposables.push(
       vscode.workspace.onDidOpenTextDocument((document) => {
         if (document.languageId === "ini") {
@@ -50,16 +54,14 @@ export class MemoryManager {
       }),
     );
 
-    // 监听文档关闭
     this.disposables.push(
       vscode.workspace.onDidCloseTextDocument((document) => {
         if (document.languageId === "ini") {
-          this.removeDocumentVariables(document);
+          this.documentStates.delete(this.getDocKey(document));
         }
       }),
     );
 
-    // 初始化已打开的文档
     vscode.workspace.textDocuments.forEach((document) => {
       if (document.languageId === "ini") {
         this.updateMemoryVariables(document);
@@ -67,53 +69,72 @@ export class MemoryManager {
     });
   }
 
-  /**
-   * 更新文档中的内存变量
-   */
+  private scheduleUpdate(document: vscode.TextDocument): void {
+    this.pendingUpdates.add(document);
+    
+    if (this.updateTimeout) {
+      clearTimeout(this.updateTimeout);
+    }
+    
+    this.updateTimeout = setTimeout(() => {
+      this.processPendingUpdates();
+    }, MemoryManager.DEBOUNCE_MS);
+  }
+
+  private processPendingUpdates(): void {
+    for (const doc of this.pendingUpdates) {
+      this.updateMemoryVariables(doc);
+    }
+    this.pendingUpdates.clear();
+  }
+
   private updateMemoryVariables(document: vscode.TextDocument) {
-    // 移除该文档之前的所有变量
-    this.removeDocumentVariables(document);
+    const key = this.getDocKey(document);
+    const state = this.documentStates.get(key);
+    if (state && state.version === document.version) {
+      return;
+    }
 
     const text = document.getText();
     const lines = text.split("\n");
 
+    const variables = new Map<string, MemoryVariable>();
     let currentSection = "";
     let inCoreSection = false;
 
     for (let i = 0; i < lines.length; i++) {
       const line = lines[i].trim();
 
-      // 检查节定义
       if (line.startsWith("[") && line.endsWith("]")) {
         currentSection = line.substring(1, line.length - 1);
         inCoreSection = currentSection === "core";
         continue;
       }
 
-      // 只在core节中处理@memory
       if (!inCoreSection) {
         continue;
       }
 
-      // 检查@memory定义
       if (line.startsWith("@memory")) {
         const memoryVar = this.parseMemoryDefinition(line, document, i);
         if (memoryVar) {
-          this.memoryVariables.set(memoryVar.name, memoryVar);
+          variables.set(memoryVar.name, memoryVar);
         }
       }
     }
+
+    this.documentStates.set(key, {
+      variables,
+      version: document.version,
+      lastUpdate: Date.now(),
+    });
   }
 
-  /**
-   * 解析@memory定义
-   */
   private parseMemoryDefinition(
     line: string,
     document: vscode.TextDocument,
     lineNumber: number,
   ): MemoryVariable | null {
-    // 匹配 @memory name:type 格式，允许类型包含更多字符（如 unit[]）
     const match = line.match(/^@memory\s+(\w+):\s*([^\s]+)$/);
     if (!match) {
       return null;
@@ -129,53 +150,45 @@ export class MemoryManager {
     };
   }
 
-  /**
-   * 移除文档的所有变量
-   */
-  private removeDocumentVariables(document: vscode.TextDocument) {
-    for (const [name, variable] of this.memoryVariables.entries()) {
-      if (variable.document === document) {
-        this.memoryVariables.delete(name);
+  public getAllMemoryVariables(): MemoryVariable[] {
+    const result: MemoryVariable[] = [];
+    for (const state of this.documentStates.values()) {
+      result.push(...state.variables.values());
+    }
+    return result;
+  }
+
+  public getMemoryVariable(name: string): MemoryVariable | undefined {
+    for (const state of this.documentStates.values()) {
+      const found = state.variables.get(name);
+      if (found) {
+        return found;
       }
     }
+    return undefined;
   }
 
-  /**
-   * 获取所有内存变量
-   */
-  public getAllMemoryVariables(): MemoryVariable[] {
-    return Array.from(this.memoryVariables.values());
-  }
-
-  /**
-   * 根据名称获取内存变量
-   */
-  public getMemoryVariable(name: string): MemoryVariable | undefined {
-    return this.memoryVariables.get(name);
-  }
-
-  /**
-   * 获取内存变量名称列表（用于补全）
-   */
   public getMemoryVariableNames(): string[] {
-    return Array.from(this.memoryVariables.keys());
+    const names: string[] = [];
+    for (const state of this.documentStates.values()) {
+      for (const name of state.variables.keys()) {
+        names.push(name);
+      }
+    }
+    return names;
   }
 
-  /**
-   * 获取支持的内存变量类型
-   */
   public getSupportedTypes(): string[] {
     return ["int", "float", "string", "bool", "number", "text", "boolean", "logic"];
   }
 
-  /**
-   * 销毁管理器
-   */
   public dispose() {
+    if (this.updateTimeout) {
+      clearTimeout(this.updateTimeout);
+    }
     this.disposables.forEach((disposable) => disposable.dispose());
-    this.memoryVariables.clear();
+    this.documentStates.clear();
   }
 }
 
-// 导出单例实例
 export const memoryManager = MemoryManager.getInstance();

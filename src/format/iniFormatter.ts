@@ -3,15 +3,18 @@
  * - Aligns keys in each section/block
  * - Preserves comments, blank lines, section headers, key order, and values
  */
+const SECTION_REGEX = /^\s*\[.*\]\s*$/;
+const COMMENT_REGEX = /^\s*[;#]/;
+const KV_REGEX = /^(\s*)([^=:#]+?)(\s*[:=])(\s*)(.*?)(\s*)([;#].*)?$/;
+
 export function conservativeFormatIni(text: string): string {
   const lines = text.split(/\r?\n/);
   const out = [...lines];
 
-  const isSection = (ln: string) => /^\s*\[.*\]\s*$/.test(ln);
-  const isComment = (ln: string) => /^\s*[;#]/.test(ln);
+  const isSection = (ln: string) => SECTION_REGEX.test(ln);
+  const isComment = (ln: string) => COMMENT_REGEX.test(ln);
 
-  // regex: capture leading ws, key, sep (with optional spaces), value, optional comment
-  const kvRegex = /^(\s*)([^=:#]+?)(\s*[:=])(\s*)(.*?)(\s*)([;#].*)?$/;
+    const kvRegex = KV_REGEX;
 
   let blockStart = 0;
   const flush = (start: number, end: number) => {
