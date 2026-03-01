@@ -1,27 +1,26 @@
 // Place your settings in this file to overwrite default and user settings.
 {
-  "files.exclude": {
-    "out": false, // set this to true to hide the "out" folder with the compiled JS files
-    "dist": false // set this to true to hide the "dist" folder with the compiled JS files
+  "editor.detectIndentation": false,
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "oxc.oxc-vscode",
+  "[typescript]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode",
+    "editor.formatOnSave": true
   },
-  "search.exclude": {
-    "out": true, // set this to false to include "out" folder in search results
-    "dist": true // set this to false to include "dist" folder in search results
+  "[json]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode",
+    "editor.formatOnSave": true
   },
-  // Turn off tsc task auto detection since we have the necessary tasks as npm scripts
-  "typescript.tsc.autoDetect": "off",
-
-  // Extension development settings
-  "extensions.ignoreRecommendations": true,
-  "extensions.autoUpdate": false,
-
-  // Disable telemetry for cleaner testing environment
-  "telemetry.telemetryLevel": "off",
-
-  // Optimize for extension development
-  "typescript.preferences.includePackageJsonAutoImports": "off",
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit"
+  "[jsonc]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode",
+    "editor.formatOnSave": true
   },
-  "editor.showFoldingControls": "always"
+  "[css]": {
+    "editor.suggest.insertMode": "replace",
+    "editor.formatOnSave": true
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode",
+    "editor.formatOnSave": true
+  }
 }
