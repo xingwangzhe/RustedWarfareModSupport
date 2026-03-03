@@ -53,6 +53,9 @@ export function matchBaseSection(name: string): string {
   if (name.startsWith("decal_")) {
     return "decal";
   }
+  if (name.startsWith("placementRule_")) {
+    return "placementRule";
+  }
 
   // 无下划线的前缀匹配
   if (name.startsWith("global_resource")) {
