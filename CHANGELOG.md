@@ -1,5 +1,10 @@
 # 更新日志 / Changelog
 
+## [1.9.51] - 2026-03-03
+
+- fix the placementRule
+- 修复 placementRule 的问题
+
 ## [1.9.50] - 2026-03-01
 
 - 性能优化：添加 getCurrentSection 文档级缓存，避免重复遍历
