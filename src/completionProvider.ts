@@ -15,7 +15,8 @@ import { t } from "./translationManager";
  * @returns 格式化的Markdown文档字符串
  */
 function generateCompletionDocumentation(property: any): vscode.MarkdownString {
-  const doc = new vscode.MarkdownString();
+  // 使用数组收集内容，一次性拼接，减少中间字符串分配
+  const parts: string[] = [];
 
   // 先翻译各字段
   const nameLabel = t("completionprovider.name");
@@ -32,31 +33,33 @@ function generateCompletionDocumentation(property: any): vscode.MarkdownString {
   const exampleValue = property.example ? t(property.example) : "";
 
   // 添加名称字段
-  doc.appendMarkdown(`**${nameLabel}:** ${nameValue}\n\n`);
+  parts.push(`**${nameLabel}:** ${nameValue}\n\n`);
 
   // 添加类型字段
-  doc.appendMarkdown(`**${typeLabel}:** \`${typeValue}\`\n\n`);
+  parts.push(`**${typeLabel}:** \`${typeValue}\`\n\n`);
 
   // 添加版本字段
   if (property.version) {
-    doc.appendMarkdown(`**${versionLabel}:** ${versionValue}\n\n`);
+    parts.push(`**${versionLabel}:** ${versionValue}\n\n`);
   }
 
   // 添加描述字段
   if (property.description) {
-    doc.appendMarkdown(`**${descriptionLabel}:** ${descriptionValue}\n\n`);
+    parts.push(`**${descriptionLabel}:** ${descriptionValue}\n\n`);
   }
 
   // 添加过时标记
   if (property.isOutdated) {
-    doc.appendMarkdown(`⚠️ **${isOutdatedLabel}:** true\n\n`);
+    parts.push(`⚠️ **${isOutdatedLabel}:** true\n\n`);
   }
 
   // 添加示例字段
   if (property.example) {
-    doc.appendMarkdown(`**${exampleLabel}:**\n\`\`\`ini\n${exampleValue}\n\`\`\``);
+    parts.push(`**${exampleLabel}:**\n\`\`\`ini\n${exampleValue}\n\`\`\``);
   }
 
+  const doc = new vscode.MarkdownString();
+  doc.appendMarkdown(parts.join(""));
   return doc;
 }
 

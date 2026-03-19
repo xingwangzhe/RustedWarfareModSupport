@@ -16,7 +16,7 @@ interface DocumentState {
 
 export class MemoryManager {
   private static instance: MemoryManager;
-  private documentStates: Map<number, DocumentState> = new Map();
+  private documentStates: Map<string, DocumentState> = new Map();
   private disposables: vscode.Disposable[] = [];
   private updateTimeout: NodeJS.Timeout | null = null;
   private pendingUpdates: Set<vscode.TextDocument> = new Set();
@@ -33,8 +33,8 @@ export class MemoryManager {
     return MemoryManager.instance;
   }
 
-  private getDocKey(document: vscode.TextDocument): number {
-    return document.uri.toString().length;
+  private getDocKey(document: vscode.TextDocument): string {
+    return document.uri.toString();
   }
 
   private initialize() {

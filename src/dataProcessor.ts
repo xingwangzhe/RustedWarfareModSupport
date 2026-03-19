@@ -4,17 +4,26 @@ import * as vscode from "vscode";
 import { matchBaseSection } from "./common/matchRules";
 import { EXTENSION_ID } from "./constants";
 
+// 文档节位置缓存，用于快速查找当前位置所在节
+type DocumentSectionCacheEntry = {
+  version: number;
+  sections: Array<{name: string; line: number}>;
+};
+const documentSectionCache = new Map<string, DocumentSectionCacheEntry>();
+
 type SectionCacheEntry = {
   data: any[];
   expires: number;
 };
 
 const SECTION_CACHE_TTL = 5 * 60 * 1000;
+const MAX_SECTION_DATA_CACHE_SIZE = 100;
 const sectionDataCache: Map<string, SectionCacheEntry> = new Map();
 type SectionPropertyMapEntry = {
   map: Map<string, any>;
   expires: number;
 };
+const MAX_PROPERTY_MAP_CACHE_SIZE = 100;
 const sectionPropertyMapCache: Map<string, SectionPropertyMapEntry> = new Map();
 
 const sectionMetadataCache: Map<string, string> = new Map();
@@ -97,7 +106,6 @@ export function getBaseSectionName(name: string): string {
  */
 export function getSectionProperties(sectionName: string): any[] {
   try {
-    cleanupExpiredSectionCache();
 
     // 获取基本节名称
     const baseSectionName = getBaseSectionName(sectionName);
@@ -193,6 +201,8 @@ export function getSectionProperties(sectionName: string): any[] {
       data: parsedData,
       expires: Date.now() + SECTION_CACHE_TTL,
     });
+    // 仅在需要时清理过期缓存
+    cleanupExpiredSectionCacheIfNeeded();
     return parsedData;
   } catch (error) {
     console.error(`Error reading ${sectionName}.json:`, error);
@@ -201,7 +211,6 @@ export function getSectionProperties(sectionName: string): any[] {
 }
 
 export function getSectionPropertyMap(sectionName: string): Map<string, any> | null {
-  cleanupExpiredSectionPropertyCache();
   const cacheKey = `${vscode.env.language}:${sectionName}`;
   const cached = sectionPropertyMapCache.get(cacheKey);
   if (cached && cached.expires > Date.now()) {
@@ -225,6 +234,8 @@ export function getSectionPropertyMap(sectionName: string): Map<string, any> | n
     expires: Date.now() + SECTION_CACHE_TTL,
   });
 
+  // 仅在需要时清理过期缓存
+  cleanupExpiredSectionPropertyCacheIfNeeded();
   return propertyMap;
 }
 
@@ -243,25 +254,53 @@ function findSectionPathByMetadata(sectionName: string): string | null {
   return null;
 }
 
-function cleanupExpiredSectionCache() {
-  if (!sectionDataCache.size) {
+/**
+ * 清理过期缓存，仅在缓存超过大小限制时调用
+ */
+function cleanupExpiredSectionCacheIfNeeded() {
+  if (sectionDataCache.size <= MAX_SECTION_DATA_CACHE_SIZE) {
     return;
   }
   const now = Date.now();
+  let expiredCount = 0;
   for (const [key, entry] of sectionDataCache.entries()) {
     if (entry.expires <= now) {
+      sectionDataCache.delete(key);
+      expiredCount++;
+    }
+  }
+  // 如果删除过期后仍然超过限制，删除最旧的20%条目
+  if (sectionDataCache.size > MAX_SECTION_DATA_CACHE_SIZE) {
+    const toDelete = Math.ceil(MAX_SECTION_DATA_CACHE_SIZE * 0.2);
+    let count = 0;
+    for (const key of sectionDataCache.keys()) {
+      if (count++ >= toDelete) break;
       sectionDataCache.delete(key);
     }
   }
 }
 
-function cleanupExpiredSectionPropertyCache() {
-  if (!sectionPropertyMapCache.size) {
+/**
+ * 清理过期属性缓存，仅在缓存超过大小限制时调用
+ */
+function cleanupExpiredSectionPropertyCacheIfNeeded() {
+  if (sectionPropertyMapCache.size <= MAX_PROPERTY_MAP_CACHE_SIZE) {
     return;
   }
   const now = Date.now();
+  let expiredCount = 0;
   for (const [key, entry] of sectionPropertyMapCache.entries()) {
     if (entry.expires <= now) {
+      sectionPropertyMapCache.delete(key);
+      expiredCount++;
+    }
+  }
+  // 如果删除过期后仍然超过限制，删除最旧的20%条目
+  if (sectionPropertyMapCache.size > MAX_PROPERTY_MAP_CACHE_SIZE) {
+    const toDelete = Math.ceil(MAX_PROPERTY_MAP_CACHE_SIZE * 0.2);
+    let count = 0;
+    for (const key of sectionPropertyMapCache.keys()) {
+      if (count++ >= toDelete) break;
       sectionPropertyMapCache.delete(key);
     }
   }
@@ -299,6 +338,49 @@ export function createRegexSectionMatcher(pattern: RegExp): (name: string) => bo
 }
 
 /**
+ * 获取文档的所有节信息，并使用版本缓存
+ * @param document 文档对象
+ * @returns 节信息数组，按行号排序
+ */
+function getDocumentSections(document: vscode.TextDocument): Array<{name: string; line: number}> {
+  const cacheKey = `${document.uri.toString()}:${document.version}`;
+  const cached = documentSectionCache.get(cacheKey);
+
+  if (cached && cached.version === document.version) {
+    return cached.sections;
+  }
+
+  // 解析所有节位置
+  const sections: Array<{name: string; line: number}> = [];
+  const lineCount = document.lineCount;
+
+  for (let i = 0; i < lineCount; i++) {
+    const lineText = document.lineAt(i).text.trim();
+    if (lineText.startsWith("[") && lineText.endsWith("]")) {
+      const sectionName = lineText.substring(1, lineText.length - 1);
+      sections.push({ name: sectionName, line: i });
+    }
+  }
+
+  // 缓存结果，限制缓存大小
+  if (documentSectionCache.size >= 20) {
+    // 删除最旧的10个条目
+    let count = 0;
+    for (const key of documentSectionCache.keys()) {
+      if (count++ > 10) break;
+      documentSectionCache.delete(key);
+    }
+  }
+
+  documentSectionCache.set(cacheKey, {
+    version: document.version,
+    sections
+  });
+
+  return sections;
+}
+
+/**
  * 检查当前位置是否在指定节内
  * @param document 文档对象
  * @param position 位置对象
@@ -310,40 +392,30 @@ export function isInsideSection(
   position: vscode.Position,
   sectionMatcher: (sectionName: string) => boolean,
 ): boolean {
-  // 从光标所在行向上遍历，查找最近的节定义
-  let stop = false;
-  for (let i = position.line - 1; i >= 0; i--) {
-    const line = document.lineAt(i).text.trim();
-    //弱匹配，因为只有节存在[]符号
-    if (line.startsWith("[") && line.endsWith("]")) {
-      const sectionName = line.substring(1, line.length - 1);
-      stop = true;
-      return sectionMatcher(sectionName);
-    }
-    if (stop) {
-      break;
+  const sections = getDocumentSections(document);
+
+  if (sections.length === 0) {
+    return false;
+  }
+
+  // 使用二分查找找到最后一个起始行小于当前行的节
+  let left = 0;
+  let right = sections.length - 1;
+  let lastMatchIndex = -1;
+
+  while (left <= right) {
+    const mid = Math.floor((left + right) / 2);
+    if (sections[mid].line < position.line) {
+      lastMatchIndex = mid;
+      left = mid + 1;
+    } else {
+      right = mid - 1;
     }
   }
 
-  // // 特殊处理 mod-info.txt 文件
-  // // 如果文件名是 mod-info.txt，则检查是否在文件开头（没有节的情况下）
-  // if (document.fileName.endsWith('mod-info.txt')) {
-  //     // 检查是否在文件的前几行且没有遇到任何节
-  //     let hasSection = false;
-  //     for (let i = 0; i < Math.min(position.line, 10); i++) {
-  //         const line = document.lineAt(i).text.trim();
-  //         if (line.startsWith('[') && line.endsWith(']')) {
-  //             hasSection = true;
-  //             break;
-  //         }
-  //     }
-
-  //     // 如果没有节且在文件开头附近，则认为是在mod-info节中
-  //     if (!hasSection && position.line < 10) {
-  //         // 直接检查是否匹配mod或music节
-  //         return sectionMatcher('mod') || sectionMatcher('music');
-  //     }
-  // }
+  if (lastMatchIndex >= 0) {
+    return sectionMatcher(sections[lastMatchIndex].name);
+  }
 
   return false;
 }

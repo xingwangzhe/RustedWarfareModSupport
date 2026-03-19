@@ -3,6 +3,10 @@ import * as vscode from "vscode";
 import { t } from "./translationManager";
 
 export class IniSectionSymbolProvider implements vscode.DocumentSymbolProvider {
+  // 缓存 getSymbolKindForKey 的计算结果，避免重复正则计算
+  private static symbolKindCache = new Map<string, vscode.SymbolKind>();
+  private static readonly MAX_CACHE_SIZE = 500;
+
   public generateSectionData(name: string): string {
     // 处理不同类型的节
     let baseName = name;
@@ -54,65 +58,89 @@ export class IniSectionSymbolProvider implements vscode.DocumentSymbolProvider {
 
   // 根据键名和值确定符号类型
   private getSymbolKindForKey(key: string, value: string): vscode.SymbolKind {
+    // 使用缓存避免重复计算正则表达式和条件判断
+    const cacheKey = `${key}:${value}`;
+    const cached = IniSectionSymbolProvider.symbolKindCache.get(cacheKey);
+    if (cached !== undefined) {
+      return cached;
+    }
+
+    let result: vscode.SymbolKind;
+
     // 数字类型
     if (!isNaN(Number(value)) || /^\d+\.?\d*$/.test(value)) {
-      return vscode.SymbolKind.Number;
+      result = vscode.SymbolKind.Number;
     }
 
     // 布尔类型
-    if (value.toLowerCase() === "true" || value.toLowerCase() === "false") {
-      return vscode.SymbolKind.Boolean;
+    else if (value.toLowerCase() === "true" || value.toLowerCase() === "false") {
+      result = vscode.SymbolKind.Boolean;
     }
 
     // 颜色类型（RGB或颜色名称）
-    if (
+    else if (
       /^(#|rgb|rgba|hsl|hsla)/.test(value) ||
       /^(red|blue|green|yellow|black|white|gray|grey)/i.test(value)
     ) {
-      return vscode.SymbolKind.Constant;
+      result = vscode.SymbolKind.Constant;
     }
 
     // 文件路径类型
-    if (value.includes("/") || value.includes("\\") || value.includes(".")) {
-      return vscode.SymbolKind.File;
+    else if (value.includes("/") || value.includes("\\") || value.includes(".")) {
+      result = vscode.SymbolKind.File;
     }
 
     // 数组/列表类型
-    if (value.includes(",") || value.startsWith("[") || value.endsWith("]")) {
-      return vscode.SymbolKind.Array;
+    else if (value.includes(",") || value.startsWith("[") || value.endsWith("]")) {
+      result = vscode.SymbolKind.Array;
     }
 
     // 特殊配置类型
-    if (key.toLowerCase().includes("price") || key.toLowerCase().includes("cost")) {
-      return vscode.SymbolKind.Number;
+    else if (key.toLowerCase().includes("price") || key.toLowerCase().includes("cost")) {
+      result = vscode.SymbolKind.Number;
     }
 
-    if (key.toLowerCase().includes("name") || key.toLowerCase().includes("title")) {
-      return vscode.SymbolKind.String;
+    else if (key.toLowerCase().includes("name") || key.toLowerCase().includes("title")) {
+      result = vscode.SymbolKind.String;
     }
 
-    if (key.toLowerCase().includes("description") || key.toLowerCase().includes("text")) {
-      return vscode.SymbolKind.String;
+    else if (key.toLowerCase().includes("description") || key.toLowerCase().includes("text")) {
+      result = vscode.SymbolKind.String;
     }
 
-    if (
+    else if (
       key.toLowerCase().includes("image") ||
       key.toLowerCase().includes("icon") ||
       key.toLowerCase().includes("texture")
     ) {
-      return vscode.SymbolKind.File;
+      result = vscode.SymbolKind.File;
     }
 
-    if (
+    else if (
       key.toLowerCase().includes("sound") ||
       key.toLowerCase().includes("music") ||
       key.toLowerCase().includes("audio")
     ) {
-      return vscode.SymbolKind.File;
+      result = vscode.SymbolKind.File;
     }
 
     // 默认类型
-    return vscode.SymbolKind.Property;
+    else {
+      result = vscode.SymbolKind.Property;
+    }
+
+    // 检查缓存大小限制
+    if (IniSectionSymbolProvider.symbolKindCache.size >= IniSectionSymbolProvider.MAX_CACHE_SIZE) {
+      // LRU: 删除最旧的前100个条目
+      let count = 0;
+      for (const cacheKey of IniSectionSymbolProvider.symbolKindCache.keys()) {
+        if (count++ > 100) break;
+        IniSectionSymbolProvider.symbolKindCache.delete(cacheKey);
+      }
+    }
+
+    IniSectionSymbolProvider.symbolKindCache.set(cacheKey, result);
+    return result;
   }
 
   public provideDocumentSymbols(
