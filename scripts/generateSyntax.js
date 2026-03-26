@@ -234,9 +234,6 @@ class SyntaxGenerator {
           include: "#multistring",
         },
         {
-          include: "#logicExpression",
-        },
-        {
           match: "\\b(true|false|0|1)\\b",
           name: "constant.language.boolean.ini",
         },
@@ -247,6 +244,9 @@ class SyntaxGenerator {
         {
           match: "\\b(?:-)?(?:NaN|Infinity|\\d*\\.\\d+|\\d+)(?:s|ms)?\\b",
           name: "constant.numeric.time.ini",
+        },
+        {
+          include: "#logicExpression",
         },
         {
           match: "#[0-9a-fA-F]{6}\\b",
