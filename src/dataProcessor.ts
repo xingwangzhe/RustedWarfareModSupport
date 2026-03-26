@@ -7,7 +7,7 @@ import { EXTENSION_ID } from "./constants";
 // 文档节位置缓存，用于快速查找当前位置所在节
 type DocumentSectionCacheEntry = {
   version: number;
-  sections: Array<{name: string; line: number}>;
+  sections: Array<{ name: string; line: number }>;
 };
 const documentSectionCache = new Map<string, DocumentSectionCacheEntry>();
 
@@ -106,7 +106,6 @@ export function getBaseSectionName(name: string): string {
  */
 export function getSectionProperties(sectionName: string): any[] {
   try {
-
     // 获取基本节名称
     const baseSectionName = getBaseSectionName(sectionName);
 
@@ -274,7 +273,7 @@ function cleanupExpiredSectionCacheIfNeeded() {
     const toDelete = Math.ceil(MAX_SECTION_DATA_CACHE_SIZE * 0.2);
     let count = 0;
     for (const key of sectionDataCache.keys()) {
-      if (count++ >= toDelete) break;
+      if (count++ >= toDelete) {break;}
       sectionDataCache.delete(key);
     }
   }
@@ -300,7 +299,7 @@ function cleanupExpiredSectionPropertyCacheIfNeeded() {
     const toDelete = Math.ceil(MAX_PROPERTY_MAP_CACHE_SIZE * 0.2);
     let count = 0;
     for (const key of sectionPropertyMapCache.keys()) {
-      if (count++ >= toDelete) break;
+      if (count++ >= toDelete) {break;}
       sectionPropertyMapCache.delete(key);
     }
   }
@@ -342,7 +341,7 @@ export function createRegexSectionMatcher(pattern: RegExp): (name: string) => bo
  * @param document 文档对象
  * @returns 节信息数组，按行号排序
  */
-function getDocumentSections(document: vscode.TextDocument): Array<{name: string; line: number}> {
+function getDocumentSections(document: vscode.TextDocument): Array<{ name: string; line: number }> {
   const cacheKey = `${document.uri.toString()}:${document.version}`;
   const cached = documentSectionCache.get(cacheKey);
 
@@ -351,7 +350,7 @@ function getDocumentSections(document: vscode.TextDocument): Array<{name: string
   }
 
   // 解析所有节位置
-  const sections: Array<{name: string; line: number}> = [];
+  const sections: Array<{ name: string; line: number }> = [];
   const lineCount = document.lineCount;
 
   for (let i = 0; i < lineCount; i++) {
@@ -367,14 +366,14 @@ function getDocumentSections(document: vscode.TextDocument): Array<{name: string
     // 删除最旧的10个条目
     let count = 0;
     for (const key of documentSectionCache.keys()) {
-      if (count++ > 10) break;
+      if (count++ > 10) {break;}
       documentSectionCache.delete(key);
     }
   }
 
   documentSectionCache.set(cacheKey, {
     version: document.version,
-    sections
+    sections,
   });
 
   return sections;

@@ -98,25 +98,17 @@ export class IniSectionSymbolProvider implements vscode.DocumentSymbolProvider {
     // 特殊配置类型
     else if (key.toLowerCase().includes("price") || key.toLowerCase().includes("cost")) {
       result = vscode.SymbolKind.Number;
-    }
-
-    else if (key.toLowerCase().includes("name") || key.toLowerCase().includes("title")) {
+    } else if (key.toLowerCase().includes("name") || key.toLowerCase().includes("title")) {
       result = vscode.SymbolKind.String;
-    }
-
-    else if (key.toLowerCase().includes("description") || key.toLowerCase().includes("text")) {
+    } else if (key.toLowerCase().includes("description") || key.toLowerCase().includes("text")) {
       result = vscode.SymbolKind.String;
-    }
-
-    else if (
+    } else if (
       key.toLowerCase().includes("image") ||
       key.toLowerCase().includes("icon") ||
       key.toLowerCase().includes("texture")
     ) {
       result = vscode.SymbolKind.File;
-    }
-
-    else if (
+    } else if (
       key.toLowerCase().includes("sound") ||
       key.toLowerCase().includes("music") ||
       key.toLowerCase().includes("audio")
@@ -134,7 +126,7 @@ export class IniSectionSymbolProvider implements vscode.DocumentSymbolProvider {
       // LRU: 删除最旧的前100个条目
       let count = 0;
       for (const cacheKey of IniSectionSymbolProvider.symbolKindCache.keys()) {
-        if (count++ > 100) break;
+        if (count++ > 100) {break;}
         IniSectionSymbolProvider.symbolKindCache.delete(cacheKey);
       }
     }
