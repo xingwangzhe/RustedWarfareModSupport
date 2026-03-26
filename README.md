@@ -12,7 +12,7 @@ QQ:GMBOX 的 mod 群: [1006360455](https://qm.qq.com/q/3ivoMQepwA)
 
 ![Rustedwarfare](https://corrodinggames.com/images/rw-title.png)
 
-[![版本 / Version](https://img.shields.io/badge/version-1.9.51-blue)](CHANGELOG.md)
+[![版本 / Version](https://img.shields.io/badge/version-1.9.52-blue)](CHANGELOG.md)
 [![许可证 / License](https://img.shields.io/badge/license-AGPL--3.0-green.svg)](LICENSE.md)
 
 > 📋 [更新日志 / Changelog](CHANGELOG.md) | 🐛 [报告问题 / Report Issues](https://github.com/xingwangzhe/RustedWarfareModSupport/issues)

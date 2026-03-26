@@ -1,5 +1,19 @@
 # 更新日志 / Changelog
 
+## [1.9.52] - 2026-03-26
+
+- 优化缓存机制，减少重复计算并改进文档节处理
+- 更新语法高亮规则，修复逻辑表达式匹配问题
+- 优化代码格式，统一对象属性书写风格
+- 将开发依赖更新到最新版本
+
+### Notes
+
+- Optimized caching mechanism to reduce redundant calculations and improved document section processing
+- Updated syntax highlighting rules, fixed logic expression matching issues
+- Optimized code formatting, unified object property writing style
+- Updated devDependencies to latest versions
+
 ## [1.9.51] - 2026-03-03
 
 - fix the placementRule
