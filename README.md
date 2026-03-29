@@ -15,6 +15,9 @@ QQ:GMBOX 的 mod 群: [1006360455](https://qm.qq.com/q/3ivoMQepwA)
 [![版本 / Version](https://img.shields.io/badge/version-1.9.53-blue)](CHANGELOG.md)
 [![许可证 / License](https://img.shields.io/badge/license-AGPL--3.0-green.svg)](LICENSE.md)
 
+> 安装本插件前，请先更新 VS Code 到最新版本，以避免插件兼容性过期问题。
+> Before installing this extension, please update VS Code to the latest version to avoid compatibility expiration issues.
+
 > 📋 [更新日志 / Changelog](CHANGELOG.md) | 🐛 [报告问题 / Report Issues](https://github.com/xingwangzhe/RustedWarfareModSupport/issues)
 
 - 多语言支持
