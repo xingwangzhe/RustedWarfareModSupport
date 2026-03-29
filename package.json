@@ -45,19 +45,19 @@
     "watch:tsc": "tsc --noEmit --watch --project tsconfig.json",
     "watch:build": "node esbuild.js --watch",
     "watch": "run-p watch:tsc watch:build",
-    "compile": "run-s assets check:types build",
+    "compile": "run-s assets check:types lint build fmt",
     "dev": "run-s assets build",
     "dev:watch": "bun run watch",
     "package": "run-s assets check:types lint build:min fmt",
-    "package:vsix": "run-s assets check:types lint build:min fmt vsce:package",
-    "publish:vsix": "run-s assets check:types lint build:min fmt vsce:publish",
+    "package:vsix": "run-s vsce:package",
+    "publish:vsix": "run-s vsce:publish",
     "vsce:package": "vsce package",
     "vsce:publish": "vsce publish",
     "compile-tests": "tsc -p . --outDir out",
     "watch-tests": "tsc -p . -w --outDir out",
     "test": "vscode-test",
     "sort-translations": "node scripts/sort-translations.mjs",
-    "vscode:prepublish": "bun run compile"
+    "vscode:prepublish": "bun run package"
   },
   "dependencies": {
     "@vscode/l10n": "^0.0.18",
