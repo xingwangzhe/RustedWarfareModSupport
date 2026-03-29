@@ -7,16 +7,9 @@ const SECTION_REGEX = /^\s*\[.*\]\s*$/;
 const COMMENT_REGEX = /^\s*[;#]/;
 const KV_REGEX = /^(\s*)([^=:#]+?)(\s*[:=])(\s*)(.*?)(\s*)([;#].*)?$/;
 
-function normalizeLogicBooleanSpacing(value: string): string {
-  let normalized = value;
-  // Handle missing spaces around operators after a closing parenthesis.
-  normalized = normalized.replace(/\)\s*(and|or|not)(?=\b|self\.|\()/gi, ") $1 ");
-  // Handle missing spaces before `self.` after logical operators.
-  normalized = normalized.replace(/\b(and|or|not)\s*(self\.)/gi, "$1 $2");
-  // Keep spacing stable before sub-expressions.
-  normalized = normalized.replace(/\b(and|or|not)\s*\(/gi, "$1 (");
-  // Collapse duplicate spaces introduced by normalization.
-  return normalized.replace(/\s{2,}/g, " ").trim();
+function normalizeParenthesisOuterSpacing(value: string): string {
+  // Only add missing outer spaces around parentheses.
+  return value.replace(/([^\s(])\(/g, "$1 (").replace(/\)([^\s)])/g, ") $1");
 }
 
 export function conservativeFormatIni(text: string): string {
@@ -60,7 +53,7 @@ export function conservativeFormatIni(text: string): string {
       const comment = m[7] || "";
 
       const keyTrim = key.trim();
-      const valueTrim = normalizeLogicBooleanSpacing(value.trim());
+      const valueTrim = normalizeParenthesisOuterSpacing(value.trim());
       const afterSep = valueTrim.length > 0 ? ` ${valueTrim}` : "";
       out[i] = `${leading}${keyTrim}${sepChar}${afterSep}${comment ? " " + comment.trim() : ""}`;
     }
