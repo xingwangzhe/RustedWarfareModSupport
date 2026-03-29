@@ -126,7 +126,9 @@ export class IniSectionSymbolProvider implements vscode.DocumentSymbolProvider {
       // LRU: 删除最旧的前100个条目
       let count = 0;
       for (const cacheKey of IniSectionSymbolProvider.symbolKindCache.keys()) {
-        if (count++ > 100) {break;}
+        if (count++ > 100) {
+          break;
+        }
         IniSectionSymbolProvider.symbolKindCache.delete(cacheKey);
       }
     }

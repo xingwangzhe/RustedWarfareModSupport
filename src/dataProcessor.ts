@@ -273,7 +273,9 @@ function cleanupExpiredSectionCacheIfNeeded() {
     const toDelete = Math.ceil(MAX_SECTION_DATA_CACHE_SIZE * 0.2);
     let count = 0;
     for (const key of sectionDataCache.keys()) {
-      if (count++ >= toDelete) {break;}
+      if (count++ >= toDelete) {
+        break;
+      }
       sectionDataCache.delete(key);
     }
   }
@@ -299,7 +301,9 @@ function cleanupExpiredSectionPropertyCacheIfNeeded() {
     const toDelete = Math.ceil(MAX_PROPERTY_MAP_CACHE_SIZE * 0.2);
     let count = 0;
     for (const key of sectionPropertyMapCache.keys()) {
-      if (count++ >= toDelete) {break;}
+      if (count++ >= toDelete) {
+        break;
+      }
       sectionPropertyMapCache.delete(key);
     }
   }
@@ -366,7 +370,9 @@ function getDocumentSections(document: vscode.TextDocument): Array<{ name: strin
     // 删除最旧的10个条目
     let count = 0;
     for (const key of documentSectionCache.keys()) {
-      if (count++ > 10) {break;}
+      if (count++ > 10) {
+        break;
+      }
       documentSectionCache.delete(key);
     }
   }
