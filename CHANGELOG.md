@@ -1,5 +1,13 @@
 # 更新日志 / Changelog
 
+## [1.9.53] - 2026-03-29
+
+- 调整 INI 保守格式化中的括号空格策略：仅补齐括号外侧空格，避免对逻辑关键字（如 `and`/`or`/`not`）做额外改写。
+
+### Notes
+
+- Adjusted parenthesis spacing strategy in conservative INI formatting: only fill missing outer spaces around parentheses and avoid extra rewrites for logical keywords (such as `and`/`or`/`not`).
+
 ## [1.9.52] - 2026-03-26
 
 - 优化缓存机制，减少重复计算并改进文档节处理
