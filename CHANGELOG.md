@@ -1,5 +1,15 @@
 # 更新日志 / Changelog
 
+## [1.9.57] - 2026-08-05
+
+- 相对路径导入全部改为 `@/` 别名（tsconfig / vite / vitest 统一配置）
+- 重写 README 介绍页，优化 Marketplace 包信息（description / categories / keywords），赞助二维码置于文末
+
+### Notes
+
+- Migrated all relative imports to the `@/` alias (unified in tsconfig / vite / vitest)
+- Rewrote the README page and improved Marketplace package metadata (description / categories / keywords); sponsor QR codes at the end
+
 ## [1.9.56] - 2026-08-05
 
 - 全库现代化重构：ES2023 目标、async/await、私有字段 `#field`、语法糖（`??`/`?.`/`??=`/`Array.at`）与死代码清理

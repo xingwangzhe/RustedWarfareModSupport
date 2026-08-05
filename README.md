@@ -4,7 +4,7 @@
 > 欢迎给仓库点个 ⭐，您的支持是我们持续开发的动力！
 > Welcome to star this repository ⭐, your support motivates us to keep improving!
 
-# 支持多语言的 RustedWarfare Mod Support
+# RustedWarfare Mod Support
 
 欢迎在群聊交流 RustedWarfare 模组开发
 
@@ -12,7 +12,7 @@ QQ:GMBOX 的 mod 群: [1006360455](https://qm.qq.com/q/3ivoMQepwA)
 
 ![Rustedwarfare](https://corrodinggames.com/images/rw-title.png)
 
-[![版本 / Version](https://img.shields.io/badge/version-1.9.56-blue)](CHANGELOG.md)
+[![版本 / Version](https://img.shields.io/badge/version-1.9.57-blue)](CHANGELOG.md)
 [![许可证 / License](https://img.shields.io/badge/license-AGPL--3.0-green.svg)](LICENSE.md)
 
 > 安装本插件前，请先更新 VS Code 到最新版本，以避免插件兼容性过期问题。
@@ -20,130 +20,115 @@ QQ:GMBOX 的 mod 群: [1006360455](https://qm.qq.com/q/3ivoMQepwA)
 
 > 📋 [更新日志 / Changelog](CHANGELOG.md) | 🐛 [报告问题 / Report Issues](https://github.com/xingwangzhe/RustedWarfareModSupport/issues)
 
-- 多语言支持
+一款 RustedWarfare 模组开发工具，在编辑器内提供智能补全、文档提示、代码格式化、颜色/图片预览与 Mod 导出，支持多语言界面。
 
-- Multi-language support
+A RustedWarfare mod development toolkit for VS Code, providing in-editor intelligent completions, documentation hints, code formatting, color/image previews and mod export with multi-language UI.
 
-正在开发的一个 RustedWarfare 模组开发工具，提供编辑器内的补全与文档提示功能。
+## 功能特性 / Features
 
-A RustedWarfare mod development tool that provides in-editor completions and documentation hints.
+### 智能补全 / Intelligent Completion
 
-## 已实现的功能
+- **节属性自动补全**：绝大部分节的属性键自动补全，附悬停信息（说明、示例、版本、弃用提示）
 
-## Implemented features
-
-### 节属性自动补全
-
-### Section property completion
-
-- 绝大部分节的属性键悬停信息提示（说明、示例、版本、弃用提示）
-
-- Hover information for most section property keys (description, example, version, deprecation notes)
+- **Section property completion**: property-key autocompletion for most sections, with hover info (description, example, version, deprecation notes)
 
 ![complete_section](for_readmeuse/complete_section.webp)
 
-- 节折叠
+- **节折叠**：代码大纲折叠，快速定位
 
-- Section folding
+- **Section folding**: outline folding for quick navigation
 
 ![sections_folding](for_readmeuse/sections_folding.webp)
 
-### 属性值自动补全
+- **属性值自动补全**：布尔值、逻辑布尔表达式、单位生成、列表/枚举/类型特定值的补全
 
-### Property value completion
-
-- 布尔值属性补全（true/false）
-
-- Boolean property completion (true/false)
-
-- 逻辑布尔表达式补全
-
-- Logic boolean expression completion
-
-- 单位生成属性补全（单位名建议）
-
-- Unit spawn property completion (unit name suggestions)
-
-- 图片预览
-
-- Image preview
+- **Property value completion**: boolean, logic-boolean expressions, unit spawn, list/enum/type-specific values
 
 ![showpng1](for_readmeuse/showpng1.webp)
 
 ![showpng2](for_readmeuse/showpng2.webp)
 
-- 简单内存值补全上下文
+- **内存值补全**：`@memory` 变量定义与使用上下文感知补全
 
-- Simple memory value completion context
+- **Memory value completion**: context-aware completion for `@memory` variables
 
 ![memory1](for_readmeuse/easymemory1.webp)
 
-- 列表/枚举/特定类型的值补全（只完成了一些）
+- **`mod-info.txt` 识别与补全**：自动识别并补全 mod 信息文件
 
-- List/enum/other type-specific value completion (only partially implemented)
+- **`mod-info.txt` support**: automatic recognition and completion for mod-info files
 
-### 其他功能
+### 文档提示 / Documentation Hints
 
-### Other features
+- 属性键悬停提示：说明、示例、版本、弃用标记
 
-- `mod-info.txt` 文件识别与补全
+- Hover hints for property keys: description, example, version, deprecation
 
-- File recognition and completion for `mod-info.txt`
+- 逻辑布尔函数/方法悬停文档
 
-- 感谢 copilot 的代码与翻译支持
-- Thanks to copilot for code and translation support
+- Hover docs for logic-boolean functions and self-methods
 
-### 代码格式化
+### 颜色与图片预览 / Color & Image Previews
 
-### Code formatting
+- **颜色值实时预览**：十六进制颜色（`#AARRGGBB` / `#RRGGBB`）在编辑器中着色并悬停预览
 
-- INI 文件格式化支持,右键菜单格式化
+- **Live color previews**: hex colors tinted in the editor with hover swatches
 
-- INI file formatting support with right-click menu
+- **图片预览**：`image` 属性路径的图片悬停预览（支持相对路径与 `ROOT:` 前缀）
 
-### 侧边栏管理面板
+- **Image previews**: hover previews for image paths (relative and `ROOT:`-prefixed)
 
-### Panel Management
+### 代码格式化 / Code Formatting
 
-- 通过左侧边栏的面板来实现配置后缀，用户可以方便地添加、删除和管理自定义文件后缀。
+- INI 文件格式化：对齐键值、规范化分隔符与括号空格，保留注释/空行/节结构与键顺序
 
-- The panel now supports managing custom file extensions through the sidebar.
+- Conservative INI formatting: aligns keys/values, normalizes separators and parenthesis spacing while preserving comments, blank lines, section structure and key order
 
-## 参考资料
+- 右键菜单一键格式化
 
-## References
+- Right-click "Format INI File" command
 
-- NDT 代码表
+### 侧边栏管理面板 / Sidebar Panel
 
-- NDT code table
+- 左侧边栏管理自定义文件后缀：添加、删除、管理自定义文件扩展名
 
-- Google 代码表
+- Manage custom file extensions (add / remove / configure) via the sidebar panel
 
-- Google code table
+### Mod 导出 / Mod Export
 
-- [RWini_Plugin](https://github.com/Blackburn507/RWini_Plugin) 部分语法高亮
+- 一键导出 Mod 包（ZIP / RWMOD），支持直接选择导出目录或自动导出
 
-- [RWini_Plugin](https://github.com/Blackburn507/RWini_Plugin) partial syntax highlighting
+- One-click mod export (ZIP / RWMOD) with direct-folder or automatic export
+
+## 多语言 / Multi-language
+
+内置多语言翻译（中文、English、Deutsch、Français、Español、日本語、한국어 等 14 种），跟随 VS Code 显示语言自动切换。
+
+Built-in l10n for 14 languages, automatically matching the VS Code display language.
+
+## 参考资料 / References
+
+- NDT 代码表 / NDT code table
+
+- Google 代码表 / Google code table
+
+- [RWini_Plugin](https://github.com/Blackburn507/RWini_Plugin) 部分语法高亮 / partial syntax highlighting
+
+- INI 代码高亮 v0.99 — 娱乐部部长
+
+- 部分枚举属性 — GMBOX
 
 您可以通过在 [GitHub](https://github.com/xingwangzhe/RustedWarfareModSupport) 上提交问题来改进本插件。
 
-you can improve this plugin by submitting issues on [GitHub](https://github.com/xingwangzhe/RustedWarfareModSupport).
+You can improve this extension by submitting issues on [GitHub](https://github.com/xingwangzhe/RustedWarfareModSupport).
 
-- INI代码高亮v0.99 娱乐部部长
-
-- 部分枚举属性 GMBOX
-
-## 许可证
-
-## License
+## 许可证 / License
 
 本插件遵循 AGPL-3.0 协议（详见仓库 LICENSE.md）。
 
 This extension is licensed under AGPL-3.0 (see LICENSE.md in the repository).
 
-## 赞助
-
-## Sponsor
+## 赞助 / Sponsor
 
 如果这个扩展对你有帮助，欢迎扫码赞助，感谢支持！
 
