@@ -1,6 +1,7 @@
 import * as vscode from "vscode";
 import ColorDecoratorFactory from "./colorDecorator";
 import { measurePerf } from "./perfLogger";
+import { PROPERTY_LINE_REGEX } from "./kvLine";
 
 /**
  * 装饰文档中的十六进制颜色文本（例如 #RRGGBB, #AARRGGBB, #RGB, #ARGB）
@@ -93,7 +94,7 @@ export class ColorPropertyDecorator implements vscode.Disposable {
         const line = editor.document.lineAt(i).text;
 
         // 简单的键值对检测，避免在非属性行中误匹配
-        const kv = line.match(/^\s*([a-zA-Z_][a-zA-Z0-9_]*)\s*:\s*(.+)$/);
+        const kv = line.match(PROPERTY_LINE_REGEX);
         if (!kv) {
           continue;
         }

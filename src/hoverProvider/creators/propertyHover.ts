@@ -4,6 +4,10 @@ import * as path from "path";
 import { HoverUtils } from "../utils";
 import { getExtensionId } from "../../extension";
 import { t } from "../../translationManager";
+
+/** 语言键正则：匹配 key_zh / key_en 等格式 */
+const LANGUAGE_KEY_REGEX = /^(.+)_([a-z]{2})$/;
+
 /**
  * 属性悬停创建器
  * 负责创建属性的悬停信息
@@ -135,9 +139,7 @@ export class PropertyHoverCreator {
   private static parseLanguageKey(
     keyName: string,
   ): { baseName: string; languageCode: string } | null {
-    // 匹配 key_zh, key_en 等格式（直接以语言代码结尾）
-    const languageKeyPattern = /^(.+)_([a-z]{2})$/;
-    const match = keyName.match(languageKeyPattern);
+    const match = keyName.match(LANGUAGE_KEY_REGEX);
 
     if (match) {
       const [, baseName, languageCode] = match;

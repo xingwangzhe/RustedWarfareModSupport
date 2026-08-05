@@ -1,9 +1,15 @@
 import * as path from "path";
+import { IMAGE_EXTENSIONS } from "./constants";
 
 /**
  * 路径兼容性工具类
  * 提供跨平台路径处理功能，支持正斜杠和反斜杠
  */
+
+/** 匹配图片文件路径的正则（支持反斜杠和 unicode 字符，遇到空格或 # 停止） */
+const IMAGE_PATH_REGEX = /[^\s#]+?\.(png|jpe?g|gif|webp|bmp)/i;
+const LEADING_QUOTES_REGEX = /^["']|["']$/g;
+
 export class PathCompatibilityUtils {
   /**
    * 规范化路径分隔符，将Windows反斜杠转换为当前平台的路径分隔符
@@ -42,7 +48,7 @@ export class PathCompatibilityUtils {
     }
 
     // 移除引号
-    let normalized = imagePath.trim().replace(/^["']|["']$/g, "");
+    let normalized = imagePath.trim().replace(LEADING_QUOTES_REGEX, "");
 
     // 规范化路径分隔符
     normalized = this.normalizePathSeparators(normalized);
@@ -60,10 +66,9 @@ export class PathCompatibilityUtils {
       return false;
     }
 
-    const imageExtensions = [".png", ".jpg", ".jpeg", ".gif", ".webp", ".bmp"];
     const lowerPath = filePath.toLowerCase();
 
-    return imageExtensions.some((ext) => lowerPath.endsWith(ext));
+    return [...IMAGE_EXTENSIONS].some((ext) => lowerPath.endsWith(ext));
   }
 
   /**
@@ -79,10 +84,7 @@ export class PathCompatibilityUtils {
     // 移除注释
     const cleaned = text.replace(/#.*$/gm, "").trim();
 
-    // 匹配图片文件路径的正则表达式
-    // 支持包含反斜杠和unicode字符的路径，遇到空格或#停止
-    const imagePathPattern = /[^\s#]+?\.(png|jpe?g|gif|webp|bmp)/i;
-    const match = cleaned.match(imagePathPattern);
+    const match = cleaned.match(IMAGE_PATH_REGEX);
 
     return match ? match[0] : null;
   }
@@ -106,10 +108,7 @@ export class PathCompatibilityUtils {
     const imagePaths: string[] = [];
 
     for (const part of parts) {
-      // 匹配图片文件路径的正则表达式
-      // 支持包含反斜杠和unicode字符的路径
-      const imagePathPattern = /[^\s#]+?\.(png|jpe?g|gif|webp|bmp)/i;
-      const match = part.match(imagePathPattern);
+      const match = part.match(IMAGE_PATH_REGEX);
 
       if (match) {
         imagePaths.push(match[0]);

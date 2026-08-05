@@ -12,9 +12,12 @@ export interface RGBA {
   a: number; // 0..1
 }
 
-function clamp01(v: number) {
-  return Math.max(0, Math.min(1, v));
-}
+const HEX8_REGEX = /^[0-9a-fA-F]{8}$/;
+const HEX6_REGEX = /^[0-9a-fA-F]{6}$/;
+const HEX4_REGEX = /^[0-9a-fA-F]{4}$/;
+const HEX3_REGEX = /^[0-9a-fA-F]{3}$/;
+
+const clamp01 = (v: number) => Math.max(0, Math.min(1, v));
 
 export function parseHexColor(input: string): RGBA | null {
   if (!input) {
@@ -24,7 +27,7 @@ export function parseHexColor(input: string): RGBA | null {
   const hex = s.startsWith("#") ? s.substring(1) : s;
 
   // AARRGGBB
-  if (/^[0-9a-fA-F]{8}$/.test(hex)) {
+  if (HEX8_REGEX.test(hex)) {
     const a = parseInt(hex.substring(0, 2), 16) / 255;
     const r = parseInt(hex.substring(2, 4), 16);
     const g = parseInt(hex.substring(4, 6), 16);
@@ -33,7 +36,7 @@ export function parseHexColor(input: string): RGBA | null {
   }
 
   // RRGGBB
-  if (/^[0-9a-fA-F]{6}$/.test(hex)) {
+  if (HEX6_REGEX.test(hex)) {
     const r = parseInt(hex.substring(0, 2), 16);
     const g = parseInt(hex.substring(2, 4), 16);
     const b = parseInt(hex.substring(4, 6), 16);
@@ -41,7 +44,7 @@ export function parseHexColor(input: string): RGBA | null {
   }
 
   // ARGB (4 chars) or RGBA (4 chars)
-  if (/^[0-9a-fA-F]{4}$/.test(hex)) {
+  if (HEX4_REGEX.test(hex)) {
     const a = parseInt(hex.substring(0, 1).repeat(2), 16) / 255;
     const r = parseInt(hex.substring(1, 2).repeat(2), 16);
     const g = parseInt(hex.substring(2, 3).repeat(2), 16);
@@ -50,7 +53,7 @@ export function parseHexColor(input: string): RGBA | null {
   }
 
   // R G B (3 chars)
-  if (/^[0-9a-fA-F]{3}$/.test(hex)) {
+  if (HEX3_REGEX.test(hex)) {
     const r = parseInt(hex.substring(0, 1).repeat(2), 16);
     const g = parseInt(hex.substring(1, 2).repeat(2), 16);
     const b = parseInt(hex.substring(2, 3).repeat(2), 16);
@@ -60,15 +63,14 @@ export function parseHexColor(input: string): RGBA | null {
   return null;
 }
 
-export function toHexAARRGGBB(rgba: RGBA): string {
+export const toHexAARRGGBB = (rgba: RGBA): string => {
   const a = Math.round(clamp01(rgba.a) * 255);
   const to2 = (n: number) => n.toString(16).padStart(2, "0").toUpperCase();
   return `#${to2(a)}${to2(rgba.r)}${to2(rgba.g)}${to2(rgba.b)}`;
-}
+};
 
-export function toRGBAString(rgba: RGBA): string {
-  return `rgba(${rgba.r}, ${rgba.g}, ${rgba.b}, ${Number(rgba.a.toFixed(3))})`;
-}
+export const toRGBAString = (rgba: RGBA): string =>
+  `rgba(${rgba.r}, ${rgba.g}, ${rgba.b}, ${Number(rgba.a.toFixed(3))})`;
 
 export function createColorPreviewMarkdown(rgba: RGBA, label?: string) {
   const hex = toHexAARRGGBB(rgba);

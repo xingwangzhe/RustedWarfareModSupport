@@ -10,6 +10,7 @@ type TranslationCacheEntry = {
 const translationFileCache: Map<string, TranslationCacheEntry> = new Map();
 const translationResultCache: Map<string, string> = new Map();
 const MAX_RESULT_CACHE_SIZE = 500;
+const PLACEHOLDER_REGEX = /\{(\d+)\}/g;
 
 /**
  * 自定义翻译管理器
@@ -140,7 +141,7 @@ export class TranslationManager {
    * 格式化字符串，支持 {0}, {1} 等占位符
    */
   private formatString(template: string, args: any[]): string {
-    return template.replace(/\{(\d+)\}/g, (match, index) => {
+    return template.replace(PLACEHOLDER_REGEX, (match, index) => {
       const argIndex = parseInt(index, 10);
       return argIndex < args.length ? String(args[argIndex]) : match;
     });

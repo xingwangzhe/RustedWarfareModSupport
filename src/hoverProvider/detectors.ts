@@ -7,6 +7,11 @@ import {
 } from "./types";
 import { findNearestSection } from "../common/sectionCache";
 
+/** 语言键正则：匹配 key_zh / key_en 等格式 */
+const LANGUAGE_KEY_REGEX = /^(.+)_([a-z]{2})$/;
+const LEFT_WORD_REGEX = /[^\s,]*$/;
+const RIGHT_WORD_REGEX = /^[^\s,]*/;
+
 /**
  * 悬停检测器
  * 负责检测用户鼠标悬停的位置类型
@@ -140,9 +145,7 @@ export class HoverDetectors {
    * @returns 语言键信息或null
    */
   public static parseLanguageKey(keyName: string): LanguageKeyInfo | null {
-    // 匹配 key_zh, key_en 等格式（直接以语言代码结尾）
-    const languageKeyPattern = /^(.+)_([a-z]{2})$/;
-    const match = keyName.match(languageKeyPattern);
+    const match = keyName.match(LANGUAGE_KEY_REGEX);
 
     if (match) {
       const [, baseName, languageCode] = match;
@@ -185,11 +188,11 @@ export class HoverDetectors {
     const rightPart = text.substring(position);
 
     // 查找左侧边界
-    const leftMatch = leftPart.match(/[^\s,]*$/);
+    const leftMatch = leftPart.match(LEFT_WORD_REGEX);
     const leftWord = leftMatch ? leftMatch[0] : "";
 
     // 查找右侧边界
-    const rightMatch = rightPart.match(/^[^\s,]*/);
+    const rightMatch = rightPart.match(RIGHT_WORD_REGEX);
     const rightWord = rightMatch ? rightMatch[0] : "";
 
     const word = leftWord + rightWord;

@@ -2,6 +2,27 @@
 import * as vscode from "vscode";
 import { t } from "./translationManager";
 
+/** 已知节类型（下划线前缀匹配） */
+const KNOWN_SECTION_TYPES: ReadonlySet<string> = new Set([
+  "turret",
+  "projectile",
+  "leg",
+  "arm",
+  "action",
+  "hiddenAction",
+  "effect",
+  "animation",
+  "attachment",
+  "placementRule",
+  "resource",
+  "decal",
+  "logicBoolean",
+]);
+
+const NUMERIC_REGEX = /^\d+\.?\d*$/;
+const COLOR_PREFIX_REGEX = /^(#|rgb|rgba|hsl|hsla)/;
+const COLOR_NAME_REGEX = /^(red|blue|green|yellow|black|white|gray|grey)/i;
+
 export class IniSectionSymbolProvider implements vscode.DocumentSymbolProvider {
   // 缓存 getSymbolKindForKey 的计算结果，避免重复正则计算
   private static symbolKindCache = new Map<string, vscode.SymbolKind>();
@@ -26,25 +47,8 @@ export class IniSectionSymbolProvider implements vscode.DocumentSymbolProvider {
       // 获取第一个下划线之前的部分作为基础节名
       baseName = name.split("_")[0];
 
-      // 特殊处理一些可能的节类型
-      const knownSectionTypes = [
-        "turret",
-        "projectile",
-        "leg",
-        "arm",
-        "action",
-        "hiddenAction",
-        "effect",
-        "animation",
-        "attachment",
-        "placementRule",
-        "resource",
-        "decal",
-        "logicBoolean",
-      ];
-
       // 如果第一部分不是已知的节类型，可能是复合节名，尝试匹配
-      if (!knownSectionTypes.includes(baseName)) {
+      if (!KNOWN_SECTION_TYPES.has(baseName)) {
         // 对于一些特殊情况，比如 global_resource
         if (name.startsWith("global_resource")) {
           baseName = "global_resource";
@@ -68,7 +72,7 @@ export class IniSectionSymbolProvider implements vscode.DocumentSymbolProvider {
     let result: vscode.SymbolKind;
 
     // 数字类型
-    if (!isNaN(Number(value)) || /^\d+\.?\d*$/.test(value)) {
+    if (!isNaN(Number(value)) || NUMERIC_REGEX.test(value)) {
       result = vscode.SymbolKind.Number;
     }
 
@@ -78,10 +82,7 @@ export class IniSectionSymbolProvider implements vscode.DocumentSymbolProvider {
     }
 
     // 颜色类型（RGB或颜色名称）
-    else if (
-      /^(#|rgb|rgba|hsl|hsla)/.test(value) ||
-      /^(red|blue|green|yellow|black|white|gray|grey)/i.test(value)
-    ) {
+    else if (COLOR_PREFIX_REGEX.test(value) || COLOR_NAME_REGEX.test(value)) {
       result = vscode.SymbolKind.Constant;
     }
 

@@ -1,5 +1,8 @@
 import * as vscode from "vscode";
 import { t } from "../../../translationManager";
+
+const PURE_NUMBER_REGEX = /^\d+$/;
+const TRAILING_PARENS_REGEX = /\s*\([^)]*\)\s*$/;
 /**
  * 在值类型数据中查找匹配的项目
  * @param valueData 值类型数据
@@ -14,7 +17,7 @@ export function findMatchingValueItem(valueData: any, value: string): any | null
   // 对于Prices_Resources类型，如果值是纯数字，直接返回null让它显示一般信息
   if (valueData.type === "Prices_Resources") {
     // 检查是否是纯数字（简单价格格式）
-    if (/^\d+$/.test(value.trim())) {
+    if (PURE_NUMBER_REGEX.test(value.trim())) {
       return null; // 返回null，让createValueTypeGeneralHover处理
     }
 
@@ -68,7 +71,7 @@ export function findMatchingValueItem(valueData: any, value: string): any | null
  */
 export function findLogicBooleanFunction(inputValue: string, data: any[]): any | null {
   // 移除括号和参数
-  const cleanInput = inputValue.replace(/\s*\([^)]*\)\s*$/, "");
+  const cleanInput = inputValue.replace(TRAILING_PARENS_REGEX, "");
 
   // 精确匹配
   for (const item of data) {

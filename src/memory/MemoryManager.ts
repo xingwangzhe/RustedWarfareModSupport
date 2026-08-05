@@ -1,5 +1,8 @@
 import * as vscode from "vscode";
 
+/** @memory 定义行正则：@memory 变量名: 类型 */
+const MEMORY_DEF_REGEX = /^@memory\s+(\w+):\s*([^\s]+)$/;
+
 interface MemoryVariable {
   name: string;
   type: string;
@@ -135,7 +138,7 @@ export class MemoryManager {
     document: vscode.TextDocument,
     lineNumber: number,
   ): MemoryVariable | null {
-    const match = line.match(/^@memory\s+(\w+):\s*([^\s]+)$/);
+    const match = line.match(MEMORY_DEF_REGEX);
     if (!match) {
       return null;
     }

@@ -1,6 +1,8 @@
 import * as vscode from "vscode";
 import { ImageDecoratorFactory } from "../common/imageDecorator";
 import { measurePerf } from "./perfLogger";
+import { IMAGE_EXTENSIONS } from "./constants";
+import { PROPERTY_LINE_REGEX } from "./kvLine";
 
 /**
  * 精简的图片装饰器 - 只显示图片图标
@@ -66,7 +68,7 @@ export class ImagePropertyDecorator implements vscode.Disposable {
       for (let lineIndex = 0; lineIndex < editor.document.lineCount; lineIndex++) {
         const line = editor.document.lineAt(lineIndex).text;
 
-        const keyValueMatch = line.match(/^\s*([a-zA-Z_][a-zA-Z0-9_]*)\s*:\s*(.+)$/);
+        const keyValueMatch = line.match(PROPERTY_LINE_REGEX);
         if (!keyValueMatch) {
           continue;
         }
@@ -103,9 +105,8 @@ export class ImagePropertyDecorator implements vscode.Disposable {
   }
 
   private isImageFile(value: string): boolean {
-    const imageExtensions = [".png", ".jpg", ".jpeg", ".gif", ".bmp", ".webp"];
     const lowercaseValue = value.toLowerCase();
-    return imageExtensions.some((ext) => lowercaseValue.endsWith(ext));
+    return [...IMAGE_EXTENSIONS].some((ext) => lowercaseValue.endsWith(ext));
   }
 
   dispose() {
