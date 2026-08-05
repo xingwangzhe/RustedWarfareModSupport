@@ -9,11 +9,18 @@ src/**
 vite.config.mts
 vsc-extension-quickstart.md
 **/tsconfig.json
+**/tsconfig.tsbuildinfo
 **/eslint.config.mjs
 **/*.map
 **/*.ts
 **/.vscode-test.*
 merge.js
+create_translations.js
+scripts/**
+AGENTS.md
+.oxfmtrc.json
+.oxlintrc.json
+.zcode/**
 // 只打包构建好的翻译文件
 translation/*/
 !translation/bundle*.l10n.json
