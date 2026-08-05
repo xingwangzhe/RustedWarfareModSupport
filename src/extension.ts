@@ -3,21 +3,14 @@
 import * as vscode from "vscode";
 import { t } from "./translationManager";
 import { conservativeFormatIni } from "./format/iniFormatter";
-import { IniSectionSymbolProvider } from "./Section";
-import { IniFoldingRangeProvider } from "./IniFoldingProvider";
-import { SectionNameCompletionProvider } from "./completionProvider";
-import { createCompletionProviders, completionProviderConfigs } from "./common/completionFactory";
-import { ValueCompletionProvider } from "./valueComple/valueCompletionProvider";
 import { ImagePropertyDecorator } from "./common/imagePropertyDecorator";
-import { RustedWarfareHoverProvider } from "./hoverProvider/hoverProvider";
-import { MemoryDefinitionCompletionProvider } from "./memory/MemoryDefinitionCompletionProvider";
-import { MemoryValueCompletionProvider } from "./memory/MemoryValueCompletionProvider";
 import { initializePanelManager, getPanelManager } from "./panel/panelManager";
 // 直接导入面板相关模块，避免动态导入
-import { ModPanelProvider } from "./panel/index";
+import { registerModPanel } from "./panel/index";
 import { EXTENSION_ID } from "./constants";
 import { initializePerfLogger } from "./common/perfLogger";
 import { registerExportCommands } from "./panel/exportManager";
+import { registerIniLanguageFeatures } from "./common/languageFeatureRegistrar";
 
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
@@ -86,8 +79,8 @@ export function activate(context: vscode.ExtensionContext) {
   // 初始化面板管理器
   initializePanelManager(context);
 
-  // 直接注册Mod Panel，避免动态导入
-  registerModPanelDirect(context);
+  // 注册 Mod Panel 及面板命令
+  registerModPanel(context);
 
   // 注册导出命令
   registerExportCommands(context);
@@ -156,87 +149,6 @@ export function getExtensionId(): string {
   return EXTENSION_ID;
 }
 
-/**
- * 直接注册Mod Panel，避免动态导入
- * @param context VS Code扩展上下文
- */
-function registerModPanelDirect(context: vscode.ExtensionContext): void {
-  const modPanelProvider = new ModPanelProvider();
-  const treeDataProvider = vscode.window.registerTreeDataProvider(
-    "rustedwarfaremodsupport-panel",
-    modPanelProvider,
-  );
-
-  // 注册添加文件后缀命令
-  const addFileExtensionCommand = vscode.commands.registerCommand(
-    "rustedwarfaremodsupport.addFileExtension",
-    async () => {
-      const extension = await vscode.window.showInputBox({
-        prompt: t("panel.fileExtensions.add.placeholder"),
-        placeHolder: ".cfg",
-        validateInput: (value) => {
-          if (!value) {
-            return t("panel.fileExtensions.add.emptyInput");
-          }
-          if (!value.startsWith(".")) {
-            return t("panel.fileExtensions.invalidFormat");
-          }
-          return null;
-        },
-      });
-
-      if (extension) {
-        const result = modPanelProvider.getDataManager().addCustomFileExtension(extension);
-        if (result.success) {
-          vscode.window.showInformationMessage(result.message);
-          // 刷新面板显示
-          modPanelProvider.refresh();
-        } else {
-          vscode.window.showErrorMessage(result.message);
-        }
-      }
-    },
-  );
-
-  // 注册移除文件后缀命令
-  const removeFileExtensionCommand = vscode.commands.registerCommand(
-    "rustedwarfaremodsupport.removeFileExtension",
-    async (extension: string) => {
-      const confirm = await vscode.window.showWarningMessage(
-        t("panel.fileExtensions.remove.confirm"),
-        { modal: true },
-        t("panel.fileExtensions.confirm"),
-      );
-
-      if (confirm === t("panel.fileExtensions.confirm")) {
-        const result = modPanelProvider.getDataManager().removeCustomFileExtension(extension);
-        if (result.success) {
-          vscode.window.showInformationMessage(result.message);
-          // 刷新面板显示
-          modPanelProvider.refresh();
-        } else {
-          vscode.window.showErrorMessage(result.message);
-        }
-      }
-    },
-  );
-
-  // 注册刷新面板命令
-  const refreshPanelCommand = vscode.commands.registerCommand(
-    "rustedwarfaremodsupport-panel.refresh",
-    () => {
-      modPanelProvider.refresh();
-    },
-  );
-
-  context.subscriptions.push(
-    treeDataProvider,
-    addFileExtensionCommand,
-    removeFileExtensionCommand,
-    refreshPanelCommand,
-  );
-}
-
 function setupLazyLanguageInitialization(context: vscode.ExtensionContext) {
   const lazyDisposables: vscode.Disposable[] = [];
 
@@ -279,71 +191,10 @@ function setupLazyLanguageInitialization(context: vscode.ExtensionContext) {
 }
 
 function initializeLanguageFeatures(context: vscode.ExtensionContext) {
-  const sectionParser = vscode.languages.registerDocumentSymbolProvider(
-    { language: "ini" },
-    new IniSectionSymbolProvider(),
-  );
-
-  const foldingProvider = vscode.languages.registerFoldingRangeProvider(
-    { language: "ini" },
-    new IniFoldingRangeProvider(),
-  );
-
-  const completionProviders = createCompletionProviders(completionProviderConfigs);
-
-  const completionSubscriptions = completionProviders.map((provider) =>
-    vscode.languages.registerCompletionItemProvider({ language: "ini" }, provider, ":", " "),
-  );
-
-  const valueCompletionProvider = new ValueCompletionProvider();
-  const valueCompletionSubscription = vscode.languages.registerCompletionItemProvider(
-    { language: "ini" },
-    valueCompletionProvider,
-    ":",
-    " ",
-    ",",
-    ".",
-    "m",
-  );
-
-  const sectionNameCompletionProvider = new SectionNameCompletionProvider();
-  const sectionNameCompletionSubscription = vscode.languages.registerCompletionItemProvider(
-    { language: "ini" },
-    sectionNameCompletionProvider,
-    "[",
-  );
-
-  const memoryDefinitionProvider = new MemoryDefinitionCompletionProvider();
-  const memoryDefinitionSubscription = vscode.languages.registerCompletionItemProvider(
-    { language: "ini" },
-    memoryDefinitionProvider,
-    "@",
-    " ",
-  );
-
-  const memoryValueProvider = new MemoryValueCompletionProvider();
-  const memoryValueSubscription = vscode.languages.registerCompletionItemProvider(
-    { language: "ini" },
-    memoryValueProvider,
-    "m",
-    ".",
-  );
-
-  const hoverProvider = vscode.languages.registerHoverProvider(
-    { language: "ini" },
-    new RustedWarfareHoverProvider(),
-  );
   const imageDecorator = new ImagePropertyDecorator();
   context.subscriptions.push(
     imageDecorator,
-    sectionParser,
-    foldingProvider,
-    ...completionSubscriptions,
-    valueCompletionSubscription,
-    sectionNameCompletionSubscription,
-    memoryDefinitionSubscription,
-    memoryValueSubscription,
-    hoverProvider,
+    ...registerIniLanguageFeatures(),
     ...getPanelManager().getCustomExtensionsManager().getSubscriptions(),
   );
 }

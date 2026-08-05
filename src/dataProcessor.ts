@@ -3,6 +3,7 @@ import * as path from "path";
 import * as vscode from "vscode";
 import { matchBaseSection } from "./common/matchRules";
 import { getExtensionPath } from "./common/extensionPaths";
+import { SectionProperty } from "./common/types";
 
 // 文档节位置缓存，用于快速查找当前位置所在节
 type DocumentSectionCacheEntry = {
@@ -12,7 +13,7 @@ type DocumentSectionCacheEntry = {
 const documentSectionCache = new Map<string, DocumentSectionCacheEntry>();
 
 type SectionCacheEntry = {
-  data: any[];
+  data: SectionProperty[];
   expires: number;
 };
 
@@ -20,7 +21,7 @@ const SECTION_CACHE_TTL = 5 * 60 * 1000;
 const MAX_SECTION_DATA_CACHE_SIZE = 100;
 const sectionDataCache: Map<string, SectionCacheEntry> = new Map();
 type SectionPropertyMapEntry = {
-  map: Map<string, any>;
+  map: Map<string, SectionProperty>;
   expires: number;
 };
 const MAX_PROPERTY_MAP_CACHE_SIZE = 100;
@@ -103,7 +104,7 @@ export function getBaseSectionName(name: string): string {
  * @param sectionName 节名称
  * @returns 属性数组
  */
-export function getSectionProperties(sectionName: string): any[] {
+export function getSectionProperties(sectionName: string): SectionProperty[] {
   try {
     // 获取基本节名称
     const baseSectionName = getBaseSectionName(sectionName);
@@ -206,7 +207,7 @@ export function getSectionProperties(sectionName: string): any[] {
   }
 }
 
-export function getSectionPropertyMap(sectionName: string): Map<string, any> | null {
+export function getSectionPropertyMap(sectionName: string): Map<string, SectionProperty> | null {
   const cacheKey = `${vscode.env.language}:${sectionName}`;
   const cached = sectionPropertyMapCache.get(cacheKey);
   if (cached && cached.expires > Date.now()) {
@@ -218,7 +219,7 @@ export function getSectionPropertyMap(sectionName: string): Map<string, any> | n
     return null;
   }
 
-  const propertyMap = new Map<string, any>();
+  const propertyMap = new Map<string, SectionProperty>();
   for (const prop of properties) {
     if (prop && typeof prop.name === "string") {
       propertyMap.set(prop.name, prop);

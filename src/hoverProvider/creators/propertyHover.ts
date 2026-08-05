@@ -1,9 +1,10 @@
 import * as vscode from "vscode";
 import * as fs from "fs";
 import * as path from "path";
-import { HoverUtils } from "../utils";
 import { getExtensionPath } from "../../common/extensionPaths";
 import { loadJsonCached } from "../../common/dataCache";
+import { getBaseSectionName } from "../../dataProcessor";
+import { SectionProperty } from "../../common/types";
 import { t } from "../../translationManager";
 
 /** 语言键正则：匹配 key_zh / key_en 等格式 */
@@ -30,8 +31,8 @@ export class PropertyHoverCreator {
     const lookupName = originalName || propertyName;
 
     try {
-      // 获取节的基本名称
-      const baseSectionName = HoverUtils.getBaseSectionName(sectionName);
+      // 获取节的基本名称（统一走 matchBaseSection：leg_/arm_ → leg_arm 等）
+      const baseSectionName = getBaseSectionName(sectionName);
 
       // 获取扩展的实际路径（带缓存）
       const extensionPath = getExtensionPath();
@@ -57,8 +58,8 @@ export class PropertyHoverCreator {
         return null;
       }
 
-      const sectionData = loadJsonCached(finalPath);
-      const property = sectionData.data.find((p: any) => p.name === lookupName);
+      const sectionData = loadJsonCached<{ data: SectionProperty[] }>(finalPath);
+      const property = sectionData.data.find((p: SectionProperty) => p.name === lookupName);
 
       if (!property) {
         return null;

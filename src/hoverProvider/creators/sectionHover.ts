@@ -22,7 +22,7 @@ export class SectionHoverCreator {
       const hoverContent = new vscode.MarkdownString();
       hoverContent.appendMarkdown(`**${t("completionprovider.name")}:** ${t(section.name)}\n\n`);
       hoverContent.appendMarkdown(
-        `**${t("completionprovider.description")}:** ${t(section.description)}`,
+        `**${t("completionprovider.description")}:** ${t(section.description ?? "")}`,
       );
 
       return new vscode.Hover(hoverContent);

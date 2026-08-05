@@ -1,4 +1,5 @@
 import * as vscode from "vscode";
+import { SectionProperty } from "../common/types";
 import { BaseValueCompletionProvider } from "./BaseValueCompletionProvider";
 import {
   createCompletionItemsFromDataFile,
@@ -19,7 +20,7 @@ export class BoolValueCompletionProvider extends BaseValueCompletionProvider {
   ): vscode.ProviderResult<vscode.CompletionItem[] | vscode.CompletionList> {
     // 获取节属性以检查属性类型
     const sectionProperties = getSectionProperties(sectionName);
-    const property = sectionProperties.find((prop: any) => prop.name === propertyName);
+    const property = sectionProperties.find((prop: SectionProperty) => prop.name === propertyName);
 
     // 根据属性类型提供相应的补全项
     if (property && property.type === "bool") {

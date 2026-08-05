@@ -1,4 +1,5 @@
 import * as vscode from "vscode";
+import { SectionProperty } from "../common/types";
 import * as fs from "fs";
 import * as path from "path";
 import { PathCompatibilityUtils } from "../common/pathCompatibility";
@@ -16,7 +17,7 @@ export class ImageValueCompletionProvider extends BaseValueCompletionProvider {
   ): vscode.ProviderResult<vscode.CompletionItem[] | vscode.CompletionList> {
     // 获取节属性以检查属性类型
     const sectionProperties = getSectionProperties(sectionName);
-    const property = sectionProperties.find((prop: any) => prop.name === propertyName);
+    const property = sectionProperties.find((prop: SectionProperty) => prop.name === propertyName);
 
     if (!property) {
       return [];

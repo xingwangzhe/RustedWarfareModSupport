@@ -1,12 +1,5 @@
 import * as vscode from "vscode";
-import { IniFoldingRangeProvider } from "../IniFoldingProvider";
-import { IniSectionSymbolProvider } from "../Section";
-import { completionProviderConfigs, createCompletionProviders } from "../common/completionFactory";
-import { SectionNameCompletionProvider } from "../completionProvider";
-import { RustedWarfareHoverProvider } from "../hoverProvider/hoverProvider";
-import { MemoryDefinitionCompletionProvider } from "../memory/MemoryDefinitionCompletionProvider";
-import { MemoryValueCompletionProvider } from "../memory/MemoryValueCompletionProvider";
-import { ValueCompletionProvider } from "../valueComple/valueCompletionProvider";
+import { registerIniLanguageFeatures } from "../common/languageFeatureRegistrar";
 import { ALPHANUMERIC_TRIGGERS } from "../common/constants";
 
 /**
@@ -159,83 +152,16 @@ export class CustomFileExtensionsManager {
       });
 
       // 注册文档符号提供者
-      const symbolProvider = vscode.languages.registerDocumentSymbolProvider(
-        { language: "ini" },
-        new IniSectionSymbolProvider(),
-      );
-
-      // 注册折叠范围提供者
-      const foldingProvider = vscode.languages.registerFoldingRangeProvider(
-        { language: "ini" },
-        new IniFoldingRangeProvider(),
-      );
-
-      // 注册补全提供者
-      const completionProviders = createCompletionProviders(completionProviderConfigs);
-
-      const completionSubscriptions = completionProviders.map((provider) =>
-        vscode.languages.registerCompletionItemProvider(
-          { language: "ini" },
-          provider,
-          ...ALPHANUMERIC_TRIGGERS,
-        ),
-      );
-
-      // 注册值补全提供者
-      const valueCompletionProvider = new ValueCompletionProvider();
-      const valueCompletionSubscription = vscode.languages.registerCompletionItemProvider(
-        { language: "ini" },
-        valueCompletionProvider,
-        ":",
-        " ",
-        ",",
-        ".",
-        "m",
-      );
-
-      // 注册节名称补全提供者
-      const sectionNameCompletionProvider = new SectionNameCompletionProvider();
-      const sectionNameCompletionSubscription = vscode.languages.registerCompletionItemProvider(
-        { language: "ini" },
-        sectionNameCompletionProvider,
-        ...ALPHANUMERIC_TRIGGERS,
-      );
-
-      // 注册@memory定义补全提供者
-      const memoryDefinitionProvider = new MemoryDefinitionCompletionProvider();
-      const memoryDefinitionSubscription = vscode.languages.registerCompletionItemProvider(
-        { language: "ini" },
-        memoryDefinitionProvider,
-        "@",
-        " ",
-      );
-
-      // 注册memory值补全提供者
-      const memoryValueProvider = new MemoryValueCompletionProvider();
-      const memoryValueSubscription = vscode.languages.registerCompletionItemProvider(
-        { language: "ini" },
-        memoryValueProvider,
-        "m",
-        ".",
-      );
-
-      // 注册悬停提供者
-      const hoverProvider = vscode.languages.registerHoverProvider(
-        { language: "ini" },
-        new RustedWarfareHoverProvider(),
-      );
+      // 注册 INI 语言功能（补全/折叠/符号/悬停），使用全字符触发
+      const languageFeatureSubscriptions = registerIniLanguageFeatures({
+        completionTriggers: ALPHANUMERIC_TRIGGERS,
+        sectionNameTriggers: ALPHANUMERIC_TRIGGERS,
+      });
 
       // 将所有订阅添加到全局订阅列表中
       this.#customExtensionSubscriptions.push(
         documentOpenHandler,
-        symbolProvider,
-        foldingProvider,
-        ...completionSubscriptions,
-        valueCompletionSubscription,
-        sectionNameCompletionSubscription,
-        memoryDefinitionSubscription,
-        memoryValueSubscription,
-        hoverProvider,
+        ...languageFeatureSubscriptions,
       );
 
       console.log(`Registered language support for custom extension: ${extension}`);

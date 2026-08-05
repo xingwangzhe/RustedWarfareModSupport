@@ -1,4 +1,5 @@
 import * as vscode from "vscode";
+import { ValueItem } from "../common/types";
 import { BaseValueCompletionProvider } from "./BaseValueCompletionProvider";
 import { createCompletionItemsFromDataFile } from "../common/valueCompletionUtils";
 import { t } from "../translationManager";
@@ -63,7 +64,7 @@ export class AutoTriggerOnEventValueCompletionProvider extends BaseValueCompleti
    * @param item 事件数据项
    * @returns 文档对象
    */
-  private createEventDocumentation(item: any): vscode.MarkdownString {
+  private createEventDocumentation(item: ValueItem): vscode.MarkdownString {
     const documentation = new vscode.MarkdownString();
 
     // 添加描述

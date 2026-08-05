@@ -1,4 +1,5 @@
 import * as vscode from "vscode";
+import { SectionProperty } from "../common/types";
 import * as path from "path";
 import { BaseValueCompletionProvider } from "./BaseValueCompletionProvider";
 import { getExtensionPath } from "../common/extensionPaths";
@@ -27,7 +28,7 @@ export class UnitSpawnCompletionProvider extends BaseValueCompletionProvider {
   ): vscode.ProviderResult<vscode.CompletionItem[] | vscode.CompletionList> {
     // 获取节属性以检查属性类型
     const sectionProperties = getSectionProperties(sectionName);
-    const property = sectionProperties.find((prop: any) => prop.name === propertyName);
+    const property = sectionProperties.find((prop: SectionProperty) => prop.name === propertyName);
 
     // 检查是否为单位生成类属性
     if (property && this.unitSpawnProperties.includes(property.name)) {

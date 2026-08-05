@@ -1,14 +1,15 @@
 import * as path from "path";
 import { getExtensionPath } from "./extensionPaths";
 import { loadJsonCached } from "./dataCache";
+import { SectionProperty } from "./types";
 
-let _cachedSections: any[] | null = null;
+let _cachedSections: SectionProperty[] | null = null;
 let _sectionsCacheExpires = 0;
-let _sectionNameIndex: Map<string, any> | null = null;
+let _sectionNameIndex: Map<string, SectionProperty> | null = null;
 const SECTIONS_CACHE_TTL_MS = 60 * 1000;
 
-function buildSectionNameIndex(sections: any[]): Map<string, any> {
-  const index = new Map<string, any>();
+function buildSectionNameIndex(sections: SectionProperty[]): Map<string, SectionProperty> {
+  const index = new Map<string, SectionProperty>();
   for (const section of sections) {
     if (section.name) {
       index.set(section.name, section);
@@ -21,7 +22,7 @@ function buildSectionNameIndex(sections: any[]): Map<string, any> {
  * 加载节数据
  * @returns 节数据数组
  */
-export function loadSectionsData(): any[] {
+export function loadSectionsData(): SectionProperty[] {
   const now = Date.now();
   if (_cachedSections && _sectionsCacheExpires > now) {
     return _cachedSections;
@@ -57,9 +58,9 @@ export function loadSectionsData(): any[] {
  * @param sectionName 节名称
  * @returns 节对象或null
  */
-export function findSectionByName(sectionName: string): any | null {
+export function findSectionByName(sectionName: string): SectionProperty | null {
   if (!_sectionNameIndex) {
     loadSectionsData();
   }
-  return _sectionNameIndex?.get(sectionName) || null;
+  return _sectionNameIndex?.get(sectionName) ?? null;
 }

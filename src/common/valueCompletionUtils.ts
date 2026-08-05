@@ -2,6 +2,7 @@ import * as vscode from "vscode";
 import * as path from "path";
 import { getExtensionPath } from "./extensionPaths";
 import { loadJsonCached } from "./dataCache";
+import { ValueDataFile, ValueItem } from "./types";
 import { t } from "../translationManager";
 
 /**
@@ -18,7 +19,7 @@ export function createCompletionItemsFromDataFile(
   detailKey: string,
   options?: {
     useNameAsInsertText?: boolean;
-    customDocumentation?: (item: any) => vscode.MarkdownString;
+    customDocumentation?: (item: ValueItem) => vscode.MarkdownString;
   },
 ): vscode.CompletionItem[] {
   try {
@@ -32,7 +33,7 @@ export function createCompletionItemsFromDataFile(
     const filePath = path.join(extensionPath, "data", "value", `${fileName}.json`);
 
     // 读取数据文件（mtime 缓存）
-    const data = loadJsonCached(filePath);
+    const data = loadJsonCached<ValueDataFile>(filePath);
 
     if (!data.data || !Array.isArray(data.data)) {
       console.error(`Invalid data format in ${filePath}`);

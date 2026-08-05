@@ -1,4 +1,5 @@
 import * as vscode from "vscode";
+import { SectionProperty, ValueItem } from "../common/types";
 import * as path from "path";
 import { BaseValueCompletionProvider } from "./BaseValueCompletionProvider";
 import { createCompletionItemsFromDataFile } from "../common/valueCompletionUtils";
@@ -20,7 +21,7 @@ export class LogicBooleanValueCompletionProvider extends BaseValueCompletionProv
   ): vscode.ProviderResult<vscode.CompletionItem[] | vscode.CompletionList> {
     // 获取节属性以检查属性类型
     const sectionProperties = getSectionProperties(sectionName);
-    const property = sectionProperties.find((prop: any) => prop.name === propertyName);
+    const property = sectionProperties.find((prop: SectionProperty) => prop.name === propertyName);
 
     if (property && property.type === "LogicBoolean") {
       return this.getBasicLogicBooleanCompletionItems(
@@ -127,7 +128,7 @@ export class LogicBooleanValueCompletionProvider extends BaseValueCompletionProv
    * 获取原始的logicboolean数据
    * @returns 原始数据数组
    */
-  private getRawLogicBooleanData(): any[] {
+  private getRawLogicBooleanData(): ValueItem[] {
     try {
       // 获取扩展路径（带缓存）
       const extensionPath = getExtensionPath();

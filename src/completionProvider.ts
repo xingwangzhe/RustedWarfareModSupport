@@ -7,6 +7,7 @@ import {
   isAtValidLineStart,
   isInsideSection,
 } from "./dataProcessor";
+import { SectionProperty } from "./common/types";
 import { t } from "./translationManager";
 
 /**
@@ -14,7 +15,7 @@ import { t } from "./translationManager";
  * @param property 属性对象
  * @returns 格式化的Markdown文档字符串
  */
-function generateCompletionDocumentation(property: any): vscode.MarkdownString {
+function generateCompletionDocumentation(property: SectionProperty): vscode.MarkdownString {
   // 使用数组收集内容，一次性拼接，减少中间字符串分配
   const parts: string[] = [];
 
@@ -69,7 +70,10 @@ function generateCompletionDocumentation(property: any): vscode.MarkdownString {
  * @param properties 属性数组
  * @returns 补全项数组
  */
-function createCompletionItems(sectionName: string, properties: any[]): vscode.CompletionItem[] {
+function createCompletionItems(
+  sectionName: string,
+  properties: SectionProperty[],
+): vscode.CompletionItem[] {
   return properties.map((property) => {
     const item = new vscode.CompletionItem(property.name, vscode.CompletionItemKind.Property);
 
@@ -97,12 +101,12 @@ function createSectionCompletionItems(): vscode.CompletionItem[] {
     const sectionsData = loadSectionsData();
 
     // 为每个节创建补全项
-    return sectionsData.map((section: any) => {
+    return sectionsData.map((section: SectionProperty) => {
       const item = new vscode.CompletionItem(section.name, vscode.CompletionItemKind.Module);
 
       // 设置文档信息
       item.documentation = new vscode.MarkdownString(
-        `**${t("completionprovider.description")}:** ${t(section.description)}`,
+        `**${t("completionprovider.description")}:** ${t(section.description ?? "")}`,
       );
 
       // 设置插入文本，包含中括号

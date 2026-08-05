@@ -1,5 +1,6 @@
 import * as vscode from "vscode";
 import { t } from "../../../translationManager";
+import { ValueDataFile, ValueItem } from "../../../common/types";
 
 const PURE_NUMBER_REGEX = /^\d+$/;
 const TRAILING_PARENS_REGEX = /\s*\([^)]*\)\s*$/;
@@ -9,7 +10,10 @@ const TRAILING_PARENS_REGEX = /\s*\([^)]*\)\s*$/;
  * @param value 值
  * @returns 匹配的项目
  */
-export function findMatchingValueItem(valueData: any, value: string): any | null {
+export function findMatchingValueItem(
+  valueData: ValueDataFile,
+  value: string,
+): ValueItem | null {
   if (!valueData || !valueData.data || !Array.isArray(valueData.data)) {
     return null;
   }
@@ -69,7 +73,10 @@ export function findMatchingValueItem(valueData: any, value: string): any | null
  * @param data 数据数组
  * @returns 匹配的项目
  */
-export function findLogicBooleanFunction(inputValue: string, data: any[]): any | null {
+export function findLogicBooleanFunction(
+  inputValue: string,
+  data: ValueItem[],
+): ValueItem | null {
   // 移除括号和参数
   const cleanInput = inputValue.replace(TRAILING_PARENS_REGEX, "");
 
@@ -136,7 +143,7 @@ export function findLogicBooleanFunction(inputValue: string, data: any[]): any |
  * @param valueData 值类型数据
  * @returns 悬停信息
  */
-export function createValueItemHover(item: any, valueData: any): vscode.Hover | null {
+export function createValueItemHover(item: ValueItem, valueData: ValueDataFile): vscode.Hover | null {
   const hoverContent = new vscode.MarkdownString();
 
   // 添加标题
@@ -177,7 +184,7 @@ export function createValueItemHover(item: any, valueData: any): vscode.Hover | 
  * @param valueData 值类型数据
  * @returns 悬停信息
  */
-export function createValueTypeGeneralHover(valueData: any): vscode.Hover | null {
+export function createValueTypeGeneralHover(valueData: ValueDataFile): vscode.Hover | null {
   const hoverContent = new vscode.MarkdownString();
 
   // 添加标题

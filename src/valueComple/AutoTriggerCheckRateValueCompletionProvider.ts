@@ -1,4 +1,5 @@
 import * as vscode from "vscode";
+import { ValueItem } from "../common/types";
 import { BaseValueCompletionProvider } from "./BaseValueCompletionProvider";
 import { createCompletionItemsFromDataFile } from "../common/valueCompletionUtils";
 import { t } from "../translationManager";
@@ -19,7 +20,7 @@ export class AutoTriggerCheckRateValueCompletionProvider extends BaseValueComple
       vscode.CompletionItemKind.Value,
       "valuecompletionprovider.autotriggercheckrate.detail",
       {
-        customDocumentation: (item: any) => new vscode.MarkdownString(t(item.description)),
+        customDocumentation: (item: ValueItem) => new vscode.MarkdownString(t(item.description ?? "")),
       },
     );
   }

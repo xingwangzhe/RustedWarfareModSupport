@@ -6,8 +6,9 @@ import { t } from "../translationManager";
  * 面板数据管理器
  */
 export class PanelDataManager {
-  private items: PanelItemData[] = [];
-  private fileExtensions!: FileExtensionConfig;
+  #items: PanelItemData[] = [];
+  #fileExtensions!: FileExtensionConfig;
+  #disposables: vscode.Disposable[] = [];
 
   constructor() {
     this.initializeDefaultItems();
@@ -19,7 +20,7 @@ export class PanelDataManager {
    * 初始化默认面板项
    */
   private initializeDefaultItems(): void {
-    this.items = [
+    this.#items = [
       {
         label: t("panel.welcome.label"),
         tooltip: t("panel.welcome.tooltip"),
@@ -43,7 +44,7 @@ export class PanelDataManager {
     const config = vscode.workspace.getConfiguration("rustedwarfaremodsupport");
     const customExtensions = config.get<string[]>("customFileExtensions", []);
 
-    this.fileExtensions = {
+    this.#fileExtensions = {
       defaultExtensions: [".ini", ".template", "mod-info.txt"],
       customExtensions: customExtensions,
     };
@@ -53,11 +54,13 @@ export class PanelDataManager {
    * 注册配置监听器
    */
   private registerConfigurationListeners(): void {
-    vscode.workspace.onDidChangeConfiguration((e) => {
-      if (e.affectsConfiguration("rustedwarfaremodsupport.customFileExtensions")) {
-        this.handleCustomExtensionsChange();
-      }
-    });
+    this.#disposables.push(
+      vscode.workspace.onDidChangeConfiguration((e) => {
+        if (e.affectsConfiguration("rustedwarfaremodsupport.customFileExtensions")) {
+          this.handleCustomExtensionsChange();
+        }
+      }),
+    );
   }
 
   /**
@@ -73,35 +76,35 @@ export class PanelDataManager {
    * 获取所有面板项
    */
   getItems(): PanelItemData[] {
-    return this.items;
+    return this.#items;
   }
 
   /**
    * 添加新的面板项
    */
   addItem(item: PanelItemData): void {
-    this.items.push(item);
+    this.#items.push(item);
   }
 
   /**
    * 移除面板项
    */
   removeItem(label: string): void {
-    this.items = this.items.filter((item) => item.label !== label);
+    this.#items = this.#items.filter((item) => item.label !== label);
   }
 
   /**
    * 清空所有面板项
    */
   clearItems(): void {
-    this.items = [];
+    this.#items = [];
   }
 
   /**
    * 获取文件后缀配置
    */
   getFileExtensions(): FileExtensionConfig {
-    return this.fileExtensions;
+    return this.#fileExtensions;
   }
 
   /**
@@ -111,7 +114,7 @@ export class PanelDataManager {
     const items: FileExtensionItem[] = [];
 
     // 添加默认后缀
-    this.fileExtensions.defaultExtensions.forEach((ext) => {
+    this.#fileExtensions.defaultExtensions.forEach((ext) => {
       items.push({
         extension: ext,
         isDefault: true,
@@ -121,7 +124,7 @@ export class PanelDataManager {
     });
 
     // 添加自定义后缀
-    this.fileExtensions.customExtensions.forEach((ext) => {
+    this.#fileExtensions.customExtensions.forEach((ext) => {
       items.push({
         extension: ext,
         isDefault: false,
@@ -147,8 +150,8 @@ export class PanelDataManager {
 
     // 检查是否重复
     const allExtensions = [
-      ...this.fileExtensions.defaultExtensions,
-      ...this.fileExtensions.customExtensions,
+      ...this.#fileExtensions.defaultExtensions,
+      ...this.#fileExtensions.customExtensions,
     ];
     if (allExtensions.includes(extension)) {
       return {
@@ -158,7 +161,7 @@ export class PanelDataManager {
     }
 
     // 添加到自定义后缀列表
-    const updatedExtensions = [...this.fileExtensions.customExtensions, extension];
+    const updatedExtensions = [...this.#fileExtensions.customExtensions, extension];
 
     // 保存到配置（这会触发配置变化监听器，自动更新内部状态）
     const config = vscode.workspace.getConfiguration("rustedwarfaremodsupport");
@@ -175,7 +178,7 @@ export class PanelDataManager {
    */
   removeCustomFileExtension(extension: string): { success: boolean; message: string } {
     // 检查是否为默认后缀
-    if (this.fileExtensions.defaultExtensions.includes(extension)) {
+    if (this.#fileExtensions.defaultExtensions.includes(extension)) {
       return {
         success: false,
         message: t("panel.fileExtensions.remove.cannotDeleteDefault"),
@@ -183,7 +186,7 @@ export class PanelDataManager {
     }
 
     // 检查是否存在于自定义后缀列表中
-    if (!this.fileExtensions.customExtensions.includes(extension)) {
+    if (!this.#fileExtensions.customExtensions.includes(extension)) {
       return {
         success: false,
         message: t("panel.fileExtensions.remove.notFound"),
@@ -191,7 +194,7 @@ export class PanelDataManager {
     }
 
     // 从自定义后缀列表中移除
-    const updatedExtensions = this.fileExtensions.customExtensions.filter(
+    const updatedExtensions = this.#fileExtensions.customExtensions.filter(
       (ext) => ext !== extension,
     );
 
@@ -209,6 +212,6 @@ export class PanelDataManager {
    * 获取所有支持的文件后缀（包括默认和自定义）
    */
   getAllSupportedExtensions(): string[] {
-    return [...this.fileExtensions.defaultExtensions, ...this.fileExtensions.customExtensions];
+    return [...this.#fileExtensions.defaultExtensions, ...this.#fileExtensions.customExtensions];
   }
 }
