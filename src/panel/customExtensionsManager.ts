@@ -1,6 +1,6 @@
 import * as vscode from "vscode";
-import { registerIniLanguageFeatures } from "../common/languageFeatureRegistrar";
-import { ALPHANUMERIC_TRIGGERS } from "../common/constants";
+import { registerIniLanguageFeatures } from "@/common/languageFeatureRegistrar";
+import { ALPHANUMERIC_TRIGGERS } from "@/common/constants";
 
 /**
  * 自定义文件扩展名管理器
@@ -93,7 +93,7 @@ export class CustomFileExtensionsManager {
   private async notifyPanelRefresh(): Promise<void> {
     try {
       // 动态导入 PanelManager 并刷新面板
-      const { getPanelManager } = await import("./panelManager.js");
+      const { getPanelManager } = await import("@/panel/panelManager.js");
       getPanelManager().refreshPanel();
     } catch (error) {
       console.error("Failed to refresh panel:", error);

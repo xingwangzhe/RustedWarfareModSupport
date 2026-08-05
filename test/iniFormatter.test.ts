@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { conservativeFormatIni } from "../src/format/iniFormatter";
+import { conservativeFormatIni } from "@/format/iniFormatter";
 
 describe("conservativeFormatIni", () => {
   it("对齐键值并用冒号分隔", () => {

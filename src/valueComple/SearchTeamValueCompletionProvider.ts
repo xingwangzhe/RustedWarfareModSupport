@@ -1,8 +1,8 @@
 import * as vscode from "vscode";
-import { ValueItem } from "../common/types";
-import { BaseValueCompletionProvider } from "./BaseValueCompletionProvider";
-import { createCompletionItemsFromDataFile } from "../common/valueCompletionUtils";
-import { t } from "../translationManager";
+import { ValueItem } from "@/common/types";
+import { BaseValueCompletionProvider } from "@/valueComple/BaseValueCompletionProvider";
+import { createCompletionItemsFromDataFile } from "@/common/valueCompletionUtils";
+import { t } from "@/translationManager";
 
 export class SearchTeamValueCompletionProvider extends BaseValueCompletionProvider {
   protected provideValueCompletionItems(

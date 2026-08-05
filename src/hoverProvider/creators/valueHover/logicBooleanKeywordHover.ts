@@ -1,6 +1,6 @@
 import * as vscode from "vscode";
-import { t } from "../../../translationManager";
-import { debugLog } from "../../../common/perfLogger";
+import { t } from "@/translationManager";
+import { debugLog } from "@/common/perfLogger";
 /**
  * 创建LogicBoolean关键字悬停信息
  * @param keyword 关键字

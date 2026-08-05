@@ -1,6 +1,6 @@
 import * as vscode from "vscode";
-import { findSectionByName } from "../../common/dataLoader";
-import { t } from "../../translationManager";
+import { findSectionByName } from "@/common/dataLoader";
+import { t } from "@/translationManager";
 /**
  * 节悬停创建器
  * 负责创建节的悬停信息

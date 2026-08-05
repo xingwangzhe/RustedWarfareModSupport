@@ -1,8 +1,12 @@
 import * as vscode from "vscode";
 import * as path from "path";
-import { getExtensionPath } from "../../../common/extensionPaths";
-import { loadJsonCached } from "../../../common/dataCache";
-import { findMatchingValueItem, createValueItemHover, createValueTypeGeneralHover } from "./utils";
+import { getExtensionPath } from "@/common/extensionPaths";
+import { loadJsonCached } from "@/common/dataCache";
+import {
+  findMatchingValueItem,
+  createValueItemHover,
+  createValueTypeGeneralHover,
+} from "@/hoverProvider/creators/valueHover/utils";
 
 /**
  * 创建基于值类型的悬停信息

@@ -1,10 +1,19 @@
 import { builtinModules } from "node:module";
+import * as path from "node:path";
+import { fileURLToPath } from "node:url";
 import { defineConfig } from "vite";
+
+const srcDir = path.dirname(fileURLToPath(import.meta.url)) + "/src";
 
 // VS Code 扩展打包配置：基于 rolldown（vite 8 内核）+ oxc 压缩
 // - CJS 单文件输出（VS Code 扩展主机加载要求）
 // - 极致 tree-shaking + oxc 最激烈压缩
 export default defineConfig({
+  resolve: {
+    alias: {
+      "@": srcDir,
+    },
+  },
   build: {
     outDir: "dist",
     emptyOutDir: true,

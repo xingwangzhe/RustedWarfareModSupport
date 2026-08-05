@@ -1,11 +1,11 @@
 import * as vscode from "vscode";
-import { SectionProperty } from "../common/types";
-import { BaseValueCompletionProvider } from "./BaseValueCompletionProvider";
+import { SectionProperty } from "@/common/types";
+import { BaseValueCompletionProvider } from "@/valueComple/BaseValueCompletionProvider";
 import {
   createCompletionItemsFromDataFile,
   getFallbackBoolItems,
-} from "../common/valueCompletionUtils";
-import { getSectionProperties } from "../dataProcessor";
+} from "@/common/valueCompletionUtils";
+import { getSectionProperties } from "@/dataProcessor";
 
 /**
  * 布尔值补全提供者类

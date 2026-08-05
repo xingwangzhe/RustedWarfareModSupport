@@ -1,7 +1,7 @@
 import * as path from "path";
-import { getExtensionPath } from "./extensionPaths";
-import { loadJsonCached } from "./dataCache";
-import { SectionProperty } from "./types";
+import { getExtensionPath } from "@/common/extensionPaths";
+import { loadJsonCached } from "@/common/dataCache";
+import { SectionProperty } from "@/common/types";
 
 let _cachedSections: SectionProperty[] | null = null;
 let _sectionsCacheExpires = 0;

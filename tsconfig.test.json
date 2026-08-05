@@ -6,7 +6,10 @@
     "strict": true,
     "types": ["vitest/globals", "node"],
     "noEmit": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   },
   "include": ["test/**/*.test.ts", "src/**/*.ts"]
 }

@@ -1,5 +1,5 @@
 import * as path from "path";
-import { IMAGE_EXTENSIONS } from "./constants";
+import { IMAGE_EXTENSIONS } from "@/common/constants";
 
 /**
  * 路径兼容性工具类

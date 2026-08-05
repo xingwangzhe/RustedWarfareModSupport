@@ -4,7 +4,7 @@
  * 提供 RGBA 输出、标准化 AARRGGBB 输出，并生成用于 Markdown 的颜色预览 HTML
  * 会尝试使用翻译键 `data.value.color.formats` 添加本地化的格式说明
  */
-import { t } from "../translationManager";
+import { t } from "@/translationManager";
 export interface RGBA {
   r: number;
   g: number;

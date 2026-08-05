@@ -3,7 +3,7 @@ import * as fs from "fs";
 import * as path from "path";
 import * as os from "os";
 import JSZip from "jszip";
-import { t } from "../translationManager";
+import { t } from "@/translationManager";
 
 /** 生成文件时间戳（ISO 格式去掉冒号/点，用于文件名） */
 const formatTimestamp = (): string => new Date().toISOString().replace(/[:.]/g, "-").slice(0, -5);

@@ -1,9 +1,9 @@
 import * as fs from "fs";
 import * as path from "path";
 import * as vscode from "vscode";
-import { matchBaseSection } from "./common/matchRules";
-import { getExtensionPath } from "./common/extensionPaths";
-import { SectionProperty } from "./common/types";
+import { matchBaseSection } from "@/common/matchRules";
+import { getExtensionPath } from "@/common/extensionPaths";
+import { SectionProperty } from "@/common/types";
 
 // 文档节位置缓存，用于快速查找当前位置所在节
 type DocumentSectionCacheEntry = {

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { matchBaseSection, isBaseSection } from "../src/common/matchRules";
+import { matchBaseSection, isBaseSection } from "@/common/matchRules";
 
 describe("matchBaseSection", () => {
   it("普通节名原样返回", () => {

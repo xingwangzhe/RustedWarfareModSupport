@@ -1,8 +1,8 @@
 import * as vscode from "vscode";
-import { createLogicBooleanKeywordHover } from "./logicBooleanKeywordHover";
-import { createLogicBooleanSelfMethodHover } from "./logicBooleanSelfMethodHover";
-import { createLogicBooleanFunctionHover } from "./logicBooleanFunctionHover";
-import { debugLog } from "../../../common/perfLogger";
+import { createLogicBooleanKeywordHover } from "@/hoverProvider/creators/valueHover/logicBooleanKeywordHover";
+import { createLogicBooleanSelfMethodHover } from "@/hoverProvider/creators/valueHover/logicBooleanSelfMethodHover";
+import { createLogicBooleanFunctionHover } from "@/hoverProvider/creators/valueHover/logicBooleanFunctionHover";
+import { debugLog } from "@/common/perfLogger";
 
 /**
  * 创建LogicBoolean值悬停信息

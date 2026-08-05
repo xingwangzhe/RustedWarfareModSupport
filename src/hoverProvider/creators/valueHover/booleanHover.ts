@@ -1,5 +1,5 @@
 import * as vscode from "vscode";
-import { t } from "../../../translationManager";
+import { t } from "@/translationManager";
 /**
  * 创建布尔值悬停信息
  * @param word 单词

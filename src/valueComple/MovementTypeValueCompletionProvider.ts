@@ -1,9 +1,9 @@
 import * as vscode from "vscode";
-import { SectionProperty, ValueItem } from "../common/types";
-import { BaseValueCompletionProvider } from "./BaseValueCompletionProvider";
-import { createCompletionItemsFromDataFile } from "../common/valueCompletionUtils";
-import { getSectionProperties } from "../dataProcessor";
-import { t } from "../translationManager";
+import { SectionProperty, ValueItem } from "@/common/types";
+import { BaseValueCompletionProvider } from "@/valueComple/BaseValueCompletionProvider";
+import { createCompletionItemsFromDataFile } from "@/common/valueCompletionUtils";
+import { getSectionProperties } from "@/dataProcessor";
+import { t } from "@/translationManager";
 
 export class MovementTypeValueCompletionProvider extends BaseValueCompletionProvider {
   protected provideValueCompletionItems(

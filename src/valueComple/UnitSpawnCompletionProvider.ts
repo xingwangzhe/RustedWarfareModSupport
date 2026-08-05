@@ -1,11 +1,11 @@
 import * as vscode from "vscode";
-import { SectionProperty } from "../common/types";
+import { SectionProperty } from "@/common/types";
 import * as path from "path";
-import { BaseValueCompletionProvider } from "./BaseValueCompletionProvider";
-import { getExtensionPath } from "../common/extensionPaths";
-import { loadJsonCached } from "../common/dataCache";
-import { getSectionProperties } from "../dataProcessor";
-import { t } from "../translationManager";
+import { BaseValueCompletionProvider } from "@/valueComple/BaseValueCompletionProvider";
+import { getExtensionPath } from "@/common/extensionPaths";
+import { loadJsonCached } from "@/common/dataCache";
+import { getSectionProperties } from "@/dataProcessor";
+import { t } from "@/translationManager";
 /**
  * 单位生成类属性补全提供者类
  * 用于提供spawnUnits、produceUnits等属性的补全建议

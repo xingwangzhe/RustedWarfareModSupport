@@ -1,7 +1,7 @@
 import * as vscode from "vscode";
-import { PanelDataManager } from "./provider";
-import { PanelItemData } from "./types";
-import { t } from "../translationManager";
+import { PanelDataManager } from "@/panel/provider";
+import { PanelItemData } from "@/panel/types";
+import { t } from "@/translationManager";
 
 /**
  * Mod Panel Item - 面板中的树节点项

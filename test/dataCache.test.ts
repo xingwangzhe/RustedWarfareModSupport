@@ -2,7 +2,7 @@ import { describe, expect, it, beforeEach, afterEach } from "vitest";
 import * as fs from "fs";
 import * as os from "os";
 import * as path from "path";
-import { loadJsonCached, clearDataCache } from "../src/common/dataCache";
+import { loadJsonCached, clearDataCache } from "@/common/dataCache";
 
 let tmpFile: string;
 

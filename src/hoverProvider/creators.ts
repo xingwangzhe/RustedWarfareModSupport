@@ -1,11 +1,11 @@
-import { SectionHoverCreator } from "./creators/sectionHover";
-import { PropertyHoverCreator } from "./creators/propertyHover";
-import { ValueHoverCreator } from "./creators/valueHover";
-import { createBooleanValueHover } from "./creators/valueHover/booleanHover";
-import { createLogicBooleanValueHover } from "./creators/valueHover/logicBooleanHover";
-import { createLogicBooleanKeywordHover } from "./creators/valueHover/logicBooleanKeywordHover";
-import { createLogicBooleanSelfMethodHover } from "./creators/valueHover/logicBooleanSelfMethodHover";
-import { createLogicBooleanFunctionHover } from "./creators/valueHover/logicBooleanFunctionHover";
+import { SectionHoverCreator } from "@/hoverProvider/creators/sectionHover";
+import { PropertyHoverCreator } from "@/hoverProvider/creators/propertyHover";
+import { ValueHoverCreator } from "@/hoverProvider/creators/valueHover";
+import { createBooleanValueHover } from "@/hoverProvider/creators/valueHover/booleanHover";
+import { createLogicBooleanValueHover } from "@/hoverProvider/creators/valueHover/logicBooleanHover";
+import { createLogicBooleanKeywordHover } from "@/hoverProvider/creators/valueHover/logicBooleanKeywordHover";
+import { createLogicBooleanSelfMethodHover } from "@/hoverProvider/creators/valueHover/logicBooleanSelfMethodHover";
+import { createLogicBooleanFunctionHover } from "@/hoverProvider/creators/valueHover/logicBooleanFunctionHover";
 
 /**
  * 悬停内容创建器

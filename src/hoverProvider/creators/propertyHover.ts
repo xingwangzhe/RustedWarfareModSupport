@@ -1,11 +1,11 @@
 import * as vscode from "vscode";
 import * as fs from "fs";
 import * as path from "path";
-import { getExtensionPath } from "../../common/extensionPaths";
-import { loadJsonCached } from "../../common/dataCache";
-import { getBaseSectionName } from "../../dataProcessor";
-import { SectionProperty } from "../../common/types";
-import { t } from "../../translationManager";
+import { getExtensionPath } from "@/common/extensionPaths";
+import { loadJsonCached } from "@/common/dataCache";
+import { getBaseSectionName } from "@/dataProcessor";
+import { SectionProperty } from "@/common/types";
+import { t } from "@/translationManager";
 
 /** 语言键正则：匹配 key_zh / key_en 等格式 */
 const LANGUAGE_KEY_REGEX = /^(.+)_([a-z]{2})$/;

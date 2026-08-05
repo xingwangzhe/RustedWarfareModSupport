@@ -1,5 +1,5 @@
 import * as vscode from "vscode";
-import { findNearestSection } from "./sectionCache";
+import { findNearestSection } from "@/common/sectionCache";
 
 /**
  * 获取当前位置所在的节名称

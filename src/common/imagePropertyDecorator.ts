@@ -1,8 +1,8 @@
 import * as vscode from "vscode";
-import { ImageDecoratorFactory } from "../common/imageDecorator";
-import { measurePerf } from "./perfLogger";
-import { IMAGE_EXTENSIONS } from "./constants";
-import { PROPERTY_LINE_REGEX } from "./kvLine";
+import { ImageDecoratorFactory } from "@/common/imageDecorator";
+import { measurePerf } from "@/common/perfLogger";
+import { IMAGE_EXTENSIONS } from "@/common/constants";
+import { PROPERTY_LINE_REGEX } from "@/common/kvLine";
 
 /**
  * 精简的图片装饰器 - 只显示图片图标

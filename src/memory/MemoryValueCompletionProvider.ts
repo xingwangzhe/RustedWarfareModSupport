@@ -1,6 +1,6 @@
 import * as vscode from "vscode";
-import { memoryManager } from "./MemoryManager";
-import { t } from "../translationManager";
+import { memoryManager } from "@/memory/MemoryManager";
+import { t } from "@/translationManager";
 
 /**
  * 内存变量值补全提供者

@@ -1,6 +1,6 @@
 import * as vscode from "vscode";
-import { t } from "../../../translationManager";
-import { ValueDataFile, ValueItem } from "../../../common/types";
+import { t } from "@/translationManager";
+import { ValueDataFile, ValueItem } from "@/common/types";
 
 const PURE_NUMBER_REGEX = /^\d+$/;
 const TRAILING_PARENS_REGEX = /\s*\([^)]*\)\s*$/;

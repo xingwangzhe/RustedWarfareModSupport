@@ -1,14 +1,14 @@
 import * as vscode from "vscode";
-import { HoverUtils } from "../../utils";
-import { resolveImagePath } from "../../../common/imagePathResolver";
-import { createImageHoverFromPath } from "../../../common/imageHover";
-import { PathCompatibilityUtils } from "../../../common/pathCompatibility";
-import { tryParseAndPreview as tryColorPreview } from "../../../common/colorUtils";
-import { PropertyHoverCreator } from "../propertyHover";
-import { createBooleanValueHover } from "./booleanHover";
-import { createLogicBooleanValueHover } from "./logicBooleanHover";
-import { createValueTypeHover } from "./valueTypeHover";
-import { debugLog } from "../../../common/perfLogger";
+import { HoverUtils } from "@/hoverProvider/utils";
+import { resolveImagePath } from "@/common/imagePathResolver";
+import { createImageHoverFromPath } from "@/common/imageHover";
+import { PathCompatibilityUtils } from "@/common/pathCompatibility";
+import { tryParseAndPreview as tryColorPreview } from "@/common/colorUtils";
+import { PropertyHoverCreator } from "@/hoverProvider/creators/propertyHover";
+import { createBooleanValueHover } from "@/hoverProvider/creators/valueHover/booleanHover";
+import { createLogicBooleanValueHover } from "@/hoverProvider/creators/valueHover/logicBooleanHover";
+import { createValueTypeHover } from "@/hoverProvider/creators/valueHover/valueTypeHover";
+import { debugLog } from "@/common/perfLogger";
 
 /**
  * 值悬停创建器

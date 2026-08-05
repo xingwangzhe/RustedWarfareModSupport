@@ -1,15 +1,15 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from "vscode";
-import { t } from "./translationManager";
-import { conservativeFormatIni } from "./format/iniFormatter";
-import { ImagePropertyDecorator } from "./common/imagePropertyDecorator";
-import { initializePanelManager, getPanelManager } from "./panel/panelManager";
+import { t } from "@/translationManager";
+import { conservativeFormatIni } from "@/format/iniFormatter";
+import { ImagePropertyDecorator } from "@/common/imagePropertyDecorator";
+import { initializePanelManager, getPanelManager } from "@/panel/panelManager";
 // 直接导入面板相关模块，避免动态导入
-import { registerModPanel } from "./panel/index";
-import { initializePerfLogger } from "./common/perfLogger";
-import { registerExportCommands } from "./panel/exportManager";
-import { registerIniLanguageFeatures } from "./common/languageFeatureRegistrar";
+import { registerModPanel } from "@/panel/index";
+import { initializePerfLogger } from "@/common/perfLogger";
+import { registerExportCommands } from "@/panel/exportManager";
+import { registerIniLanguageFeatures } from "@/common/languageFeatureRegistrar";
 
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed

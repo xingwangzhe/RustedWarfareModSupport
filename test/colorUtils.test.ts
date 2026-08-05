@@ -6,7 +6,7 @@ vi.mock("vscode", () => ({
   extensions: { getExtension: () => ({ extensionPath: "/tmp" }) },
 }));
 
-import { parseHexColor, toHexAARRGGBB, toRGBAString } from "../src/common/colorUtils";
+import { parseHexColor, toHexAARRGGBB, toRGBAString } from "@/common/colorUtils";
 
 describe("parseHexColor", () => {
   it("解析 AARRGGBB", () => {

@@ -1,7 +1,7 @@
 import * as vscode from "vscode";
-import ColorDecoratorFactory from "./colorDecorator";
-import { measurePerf } from "./perfLogger";
-import { PROPERTY_LINE_REGEX } from "./kvLine";
+import ColorDecoratorFactory from "@/common/colorDecorator";
+import { measurePerf } from "@/common/perfLogger";
+import { PROPERTY_LINE_REGEX } from "@/common/kvLine";
 
 /**
  * 装饰文档中的十六进制颜色文本（例如 #RRGGBB, #AARRGGBB, #RGB, #ARGB）

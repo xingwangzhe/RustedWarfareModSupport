@@ -1,14 +1,14 @@
 import * as vscode from "vscode";
-import { loadSectionsData } from "./common/dataLoader";
+import { loadSectionsData } from "@/common/dataLoader";
 import {
   extractExampleValue,
   getSectionProperties,
   hasColonInLine,
   isAtValidLineStart,
   isInsideSection,
-} from "./dataProcessor";
-import { SectionProperty } from "./common/types";
-import { t } from "./translationManager";
+} from "@/dataProcessor";
+import { SectionProperty } from "@/common/types";
+import { t } from "@/translationManager";
 
 /**
  * 为补全项生成格式化的文档信息

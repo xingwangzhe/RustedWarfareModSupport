@@ -1,14 +1,14 @@
 import * as vscode from "vscode";
-import { SectionProperty } from "../common/types";
+import { SectionProperty } from "@/common/types";
 import * as fs from "fs";
 import * as path from "path";
-import { PathCompatibilityUtils } from "../common/pathCompatibility";
-import { BaseValueCompletionProvider } from "./BaseValueCompletionProvider";
-import { resolveImagePath } from "../common/imagePathResolver";
-import { createImageMarkdownWithPath } from "../common/imageHover";
-import { getSectionProperties } from "../dataProcessor";
-import { debugLog } from "../common/perfLogger";
-import { IMAGE_EXTENSIONS } from "../common/constants";
+import { PathCompatibilityUtils } from "@/common/pathCompatibility";
+import { BaseValueCompletionProvider } from "@/valueComple/BaseValueCompletionProvider";
+import { resolveImagePath } from "@/common/imagePathResolver";
+import { createImageMarkdownWithPath } from "@/common/imageHover";
+import { getSectionProperties } from "@/dataProcessor";
+import { debugLog } from "@/common/perfLogger";
+import { IMAGE_EXTENSIONS } from "@/common/constants";
 
 export class ImageValueCompletionProvider extends BaseValueCompletionProvider {
   protected provideValueCompletionItems(

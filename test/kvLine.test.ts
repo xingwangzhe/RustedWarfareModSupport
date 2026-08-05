@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { parseKvLine, KV_LINE_REGEX, PROPERTY_LINE_REGEX } from "../src/common/kvLine";
+import { parseKvLine, KV_LINE_REGEX, PROPERTY_LINE_REGEX } from "@/common/kvLine";
 
 describe("parseKvLine", () => {
   it("解析带冒号的键值行", () => {

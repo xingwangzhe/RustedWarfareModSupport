@@ -1,12 +1,12 @@
 import * as vscode from "vscode";
-import { SectionProperty, ValueItem } from "../common/types";
+import { SectionProperty, ValueItem } from "@/common/types";
 import * as path from "path";
-import { BaseValueCompletionProvider } from "./BaseValueCompletionProvider";
-import { createCompletionItemsFromDataFile } from "../common/valueCompletionUtils";
-import { getSectionProperties } from "../dataProcessor";
-import { getExtensionPath } from "../common/extensionPaths";
-import { loadJsonCached } from "../common/dataCache";
-import { t } from "../translationManager";
+import { BaseValueCompletionProvider } from "@/valueComple/BaseValueCompletionProvider";
+import { createCompletionItemsFromDataFile } from "@/common/valueCompletionUtils";
+import { getSectionProperties } from "@/dataProcessor";
+import { getExtensionPath } from "@/common/extensionPaths";
+import { loadJsonCached } from "@/common/dataCache";
+import { t } from "@/translationManager";
 
 /**
  * LogicBoolean值补全提供者类

@@ -1,6 +1,6 @@
 import * as vscode from "vscode";
-import { getSectionPropertyMap } from "../dataProcessor";
-import { getCurrentSection } from "../common/sectionUtils";
+import { getSectionPropertyMap } from "@/dataProcessor";
+import { getCurrentSection } from "@/common/sectionUtils";
 
 /**
  * 基础值补全提供者抽象类

@@ -1,6 +1,6 @@
 import * as vscode from "vscode";
-import { PanelItemData, FileExtensionConfig, FileExtensionItem } from "./types";
-import { t } from "../translationManager";
+import { PanelItemData, FileExtensionConfig, FileExtensionItem } from "@/panel/types";
+import { t } from "@/translationManager";
 
 /**
  * 面板数据管理器

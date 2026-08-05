@@ -1,8 +1,8 @@
 import * as vscode from "vscode";
 import * as path from "path";
-import { getExtensionPath } from "../../../common/extensionPaths";
-import { loadJsonCached } from "../../../common/dataCache";
-import { t } from "../../../translationManager";
+import { getExtensionPath } from "@/common/extensionPaths";
+import { loadJsonCached } from "@/common/dataCache";
+import { t } from "@/translationManager";
 
 interface LogicBooleanItem {
   name?: string;

@@ -1,7 +1,7 @@
 import * as vscode from "vscode";
-import { HoverDetectors } from "./detectors";
-import { HoverCreators } from "./creators";
-import { measurePerf } from "../common/perfLogger";
+import { HoverDetectors } from "@/hoverProvider/detectors";
+import { HoverCreators } from "@/hoverProvider/creators";
+import { measurePerf } from "@/common/perfLogger";
 
 /**
  * RustedWarfare配置文件的悬停提供者

@@ -1,6 +1,6 @@
 // 节解析器类
 import * as vscode from "vscode";
-import { t } from "./translationManager";
+import { t } from "@/translationManager";
 
 /** 已知节类型（下划线前缀匹配） */
 const KNOWN_SECTION_TYPES: ReadonlySet<string> = new Set([

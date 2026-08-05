@@ -1,5 +1,5 @@
 import * as vscode from "vscode";
-import { parseHexColor } from "./colorUtils";
+import { parseHexColor } from "@/common/colorUtils";
 
 export class ColorDecoratorFactory {
   private static decorators = new Map<string, vscode.TextEditorDecorationType>();

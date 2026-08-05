@@ -1,9 +1,9 @@
 import * as vscode from "vscode";
 import * as path from "path";
-import { getExtensionPath } from "./extensionPaths";
-import { loadJsonCached } from "./dataCache";
-import { ValueDataFile, ValueItem } from "./types";
-import { t } from "../translationManager";
+import { getExtensionPath } from "@/common/extensionPaths";
+import { loadJsonCached } from "@/common/dataCache";
+import { ValueDataFile, ValueItem } from "@/common/types";
+import { t } from "@/translationManager";
 
 /**
  * 从数据文件创建补全项的通用函数

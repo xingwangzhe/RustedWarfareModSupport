@@ -2,7 +2,7 @@ import * as vscode from "vscode";
 import {
   initializeCustomFileExtensionsManager,
   getCustomFileExtensionsManager,
-} from "./customExtensionsManager";
+} from "@/panel/customExtensionsManager";
 
 /**
  * 面板管理器 - 管理所有与面板相关的功能

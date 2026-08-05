@@ -1,5 +1,5 @@
 import * as vscode from "vscode";
-import { EXTENSION_ID } from "../constants";
+import { EXTENSION_ID } from "@/constants";
 
 let _cachedExtensionPath: string | null | undefined;
 

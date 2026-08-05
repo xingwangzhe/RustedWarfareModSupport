@@ -4,8 +4,8 @@ import {
   PropertyHoverInfo,
   PropertyValueHoverInfo,
   LanguageKeyInfo,
-} from "./types";
-import { findNearestSection } from "../common/sectionCache";
+} from "@/hoverProvider/types";
+import { findNearestSection } from "@/common/sectionCache";
 
 /** 语言键正则：匹配 key_zh / key_en 等格式 */
 const LANGUAGE_KEY_REGEX = /^(.+)_([a-z]{2})$/;

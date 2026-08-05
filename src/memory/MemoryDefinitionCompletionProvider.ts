@@ -1,7 +1,7 @@
 import * as vscode from "vscode";
-import { memoryManager } from "./MemoryManager";
-import { t } from "../translationManager";
-import { getCurrentSection } from "../common/sectionUtils";
+import { memoryManager } from "@/memory/MemoryManager";
+import { t } from "@/translationManager";
+import { getCurrentSection } from "@/common/sectionUtils";
 /**
  * @memory定义补全提供者
  * 在core节中提供@memory name:type的补全

@@ -1,5 +1,5 @@
 import * as vscode from "vscode";
-import { GenericCompletionProvider } from "../completionProvider";
+import { GenericCompletionProvider } from "@/completionProvider";
 
 /**
  * 补全提供者配置接口
@@ -47,4 +47,4 @@ export const completionProviderConfigs: CompletionProviderConfig[] = [
 ];
 
 // 导入isBaseSection函数
-import { isBaseSection } from "./matchRules";
+import { isBaseSection } from "@/common/matchRules";
