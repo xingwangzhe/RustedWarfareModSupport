@@ -8,6 +8,7 @@ import { PropertyHoverCreator } from "../propertyHover";
 import { createBooleanValueHover } from "./booleanHover";
 import { createLogicBooleanValueHover } from "./logicBooleanHover";
 import { createValueTypeHover } from "./valueTypeHover";
+import { debugLog } from "../../../common/perfLogger";
 
 /**
  * 值悬停创建器
@@ -43,13 +44,13 @@ export class ValueHoverCreator {
     // 提取属性类型
     const propertyType = HoverUtils.extractPropertyType(propertyHover);
 
-    console.log(
+    debugLog(
       `[DEBUG] PropertyValueHover - propertyName: ${propertyName}, value: ${value}, extracted propertyType: ${propertyType}`,
     );
 
     // 如果无法提取到有效的属性类型，返回null
     if (!propertyType || propertyType.trim() === "") {
-      console.log(`[DEBUG] PropertyValueHover - No valid propertyType, returning null`);
+      debugLog(`[DEBUG] PropertyValueHover - No valid propertyType, returning null`);
       return null;
     }
 
@@ -161,14 +162,14 @@ export class ValueHoverCreator {
     // 根据属性类型提供额外的值信息
     switch (propertyType) {
       case "bool":
-        console.log(`[DEBUG] PropertyValueHover - Calling createBooleanValueHover for: ${value}`);
+        debugLog(`[DEBUG] PropertyValueHover - Calling createBooleanValueHover for: ${value}`);
         return createBooleanValueHover(value);
       case "LogicBoolean":
-        console.log(
+        debugLog(
           `[DEBUG] PropertyValueHover - Calling createLogicBooleanValueHover for: ${value}`,
         );
         const logicBooleanResult = createLogicBooleanValueHover(value);
-        console.log(
+        debugLog(
           `[DEBUG] PropertyValueHover - LogicBoolean result: ${
             logicBooleanResult ? "success" : "null"
           }`,
@@ -177,13 +178,13 @@ export class ValueHoverCreator {
           return logicBooleanResult;
         }
         // 如果LogicBoolean处理失败，尝试作为值类型处理
-        console.log(
+        debugLog(
           `[DEBUG] PropertyValueHover - LogicBoolean failed, falling back to valueTypeHover`,
         );
         return createValueTypeHover(propertyType, value);
       default:
         // 对于其他类型，尝试从值类型文件中查找匹配的信息
-        console.log(
+        debugLog(
           `[DEBUG] PropertyValueHover - Calling createValueTypeHover for type: ${propertyType}, value: ${value}`,
         );
         return createValueTypeHover(propertyType, value);

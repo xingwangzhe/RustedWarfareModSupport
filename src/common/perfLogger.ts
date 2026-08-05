@@ -13,6 +13,16 @@ export function initializePerfLogger(context: vscode.ExtensionContext): void {
   context.subscriptions.push(disposable);
 }
 
+/**
+ * 调试日志开关：仅在启用 perf 日志时输出。
+ * 热路径（hover/补全）上的 [DEBUG] 日志统一收敛到此处，避免生产环境刷屏。
+ */
+export function debugLog(message: string): void {
+  if (perfLoggingEnabled) {
+    console.log(message);
+  }
+}
+
 export async function measurePerf<T>(
   label: string,
   evaluator: () => T | Promise<T>,

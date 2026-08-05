@@ -14,8 +14,7 @@ export class ColorPropertyDecorator implements vscode.Disposable {
   // the current hex values immediately.
   private updateTimeout?: NodeJS.Timeout;
   private disposables: vscode.Disposable[] = [];
-  private output?: vscode.OutputChannel;
-  private outputShown = false;
+  private output?: vscode.LogOutputChannel;
 
   constructor() {
     this.disposables.push(
@@ -165,7 +164,9 @@ export class ColorPropertyDecorator implements vscode.Disposable {
   private ensureOutput() {
     if (!this.output) {
       try {
-        this.output = vscode.window.createOutputChannel("RustedWarfareModSupport");
+        this.output = vscode.window.createOutputChannel("RustedWarfareModSupport", {
+          log: true,
+        });
         this.disposables.push(this.output);
       } catch {
         this.output = undefined;
@@ -178,18 +179,6 @@ export class ColorPropertyDecorator implements vscode.Disposable {
       this.ensureOutput();
       if (this.output) {
         this.output.appendLine(message);
-        if (!this.outputShown) {
-          try {
-            this.output.show(true);
-          } catch {
-            // ignore show failures
-          }
-          this.outputShown = true;
-        }
-      } else {
-        // fallback
-
-        console.log(message);
       }
     } catch {
       // ignore logging failures

@@ -1,5 +1,6 @@
 import * as vscode from "vscode";
 import { t } from "../../../translationManager";
+import { debugLog } from "../../../common/perfLogger";
 /**
  * 创建LogicBoolean关键字悬停信息
  * @param keyword 关键字
@@ -8,7 +9,7 @@ import { t } from "../../../translationManager";
 export function createLogicBooleanKeywordHover(keyword: string): vscode.Hover | null {
   const hoverContent = new vscode.MarkdownString();
 
-  console.log(`[DEBUG] LogicBooleanKeywordHover - Creating hover for keyword: ${keyword}`);
+  debugLog(`[DEBUG] LogicBooleanKeywordHover - Creating hover for keyword: ${keyword}`);
 
   switch (keyword) {
     case "true":
@@ -36,10 +37,10 @@ export function createLogicBooleanKeywordHover(keyword: string): vscode.Hover | 
       hoverContent.appendMarkdown(t("valuecompletionprovider.logicboolean.not.description"));
       break;
     default:
-      console.log(`[DEBUG] LogicBooleanKeywordHover - Unknown keyword: ${keyword}, returning null`);
+      debugLog(`[DEBUG] LogicBooleanKeywordHover - Unknown keyword: ${keyword}, returning null`);
       return null;
   }
 
-  console.log(`[DEBUG] LogicBooleanKeywordHover - Successfully created hover for: ${keyword}`);
+  debugLog(`[DEBUG] LogicBooleanKeywordHover - Successfully created hover for: ${keyword}`);
   return new vscode.Hover(hoverContent);
 }

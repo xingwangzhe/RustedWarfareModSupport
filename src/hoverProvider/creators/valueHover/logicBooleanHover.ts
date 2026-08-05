@@ -2,6 +2,7 @@ import * as vscode from "vscode";
 import { createLogicBooleanKeywordHover } from "./logicBooleanKeywordHover";
 import { createLogicBooleanSelfMethodHover } from "./logicBooleanSelfMethodHover";
 import { createLogicBooleanFunctionHover } from "./logicBooleanFunctionHover";
+import { debugLog } from "../../../common/perfLogger";
 
 /**
  * 创建LogicBoolean值悬停信息
@@ -14,7 +15,7 @@ export function createLogicBooleanValueHover(word: string): vscode.Hover | null 
     return null;
   }
 
-  console.log(`[DEBUG] LogicBooleanValueHover - Processing word: ${trimmedWord}`);
+  debugLog(`[DEBUG] LogicBooleanValueHover - Processing word: ${trimmedWord}`);
 
   // 检查是否为LogicBoolean关键字
   if (
@@ -25,14 +26,14 @@ export function createLogicBooleanValueHover(word: string): vscode.Hover | null 
     trimmedWord === "or" ||
     trimmedWord === "not"
   ) {
-    console.log(`[DEBUG] LogicBooleanValueHover - Recognized as keyword: ${trimmedWord}`);
+    debugLog(`[DEBUG] LogicBooleanValueHover - Recognized as keyword: ${trimmedWord}`);
     return createLogicBooleanKeywordHover(trimmedWord);
   }
 
   // 检查是否为简单 self.方法 调用（非多链）
   const simpleSelfMethodPattern = /^self\.[A-Za-z0-9_]+(?:\([^)]*\))?$/;
   if (simpleSelfMethodPattern.test(trimmedWord)) {
-    console.log(`[DEBUG] LogicBooleanValueHover - Recognized as self method: ${trimmedWord}`);
+    debugLog(`[DEBUG] LogicBooleanValueHover - Recognized as self method: ${trimmedWord}`);
     return createLogicBooleanSelfMethodHover(trimmedWord);
   }
 
@@ -40,7 +41,7 @@ export function createLogicBooleanValueHover(word: string): vscode.Hover | null 
   if (trimmedWord.includes(".")) {
     const normalized = trimmedWord.replace(/\s+/g, "");
     const parts = normalized.split(".").filter(Boolean);
-    const lastPart = parts[parts.length - 1] || "";
+    const lastPart = parts.at(-1) || "";
 
     // self.xxx.yyy 时，优先按最后片段作为 self 方法匹配
     if (parts.length >= 2 && parts[parts.length - 2] === "self") {
@@ -70,6 +71,6 @@ export function createLogicBooleanValueHover(word: string): vscode.Hover | null 
   }
 
   // 检查是否为其他LogicBoolean函数
-  console.log(`[DEBUG] LogicBooleanValueHover - Treating as function: ${trimmedWord}`);
+  debugLog(`[DEBUG] LogicBooleanValueHover - Treating as function: ${trimmedWord}`);
   return createLogicBooleanFunctionHover(trimmedWord);
 }

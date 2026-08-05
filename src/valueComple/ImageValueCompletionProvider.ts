@@ -7,6 +7,8 @@ import { BaseValueCompletionProvider } from "./BaseValueCompletionProvider";
 import { resolveImagePath } from "../common/imagePathResolver";
 import { createImageMarkdownWithPath } from "../common/imageHover";
 import { getSectionProperties } from "../dataProcessor";
+import { debugLog } from "../common/perfLogger";
+import { IMAGE_EXTENSIONS } from "../common/constants";
 
 export class ImageValueCompletionProvider extends BaseValueCompletionProvider {
   protected provideValueCompletionItems(
@@ -33,7 +35,7 @@ export class ImageValueCompletionProvider extends BaseValueCompletionProvider {
     const docDir = path.dirname(document.fileName);
 
     // 支持的图片扩展
-    const exts = [".png", ".jpg", ".jpeg", ".gif", ".webp", ".bmp"];
+    const exts = IMAGE_EXTENSIONS;
 
     const items: vscode.CompletionItem[] = [];
 
@@ -43,13 +45,13 @@ export class ImageValueCompletionProvider extends BaseValueCompletionProvider {
         const files = fs.readdirSync(docDir);
         for (const f of files) {
           const lower = f.toLowerCase();
-          if (exts.some((e) => lower.endsWith(e))) {
+          if ([...exts].some((e) => lower.endsWith(e))) {
             const it = new vscode.CompletionItem(f, vscode.CompletionItemKind.File);
             it.detail = "image";
 
             // 解析图片路径并创建预览
             const fullPath = path.join(docDir, f);
-            console.log(
+            debugLog(
               `[DEBUG] ImageCompletion - filename: ${f}, fullPath: ${fullPath}, exists: ${fs.existsSync(
                 fullPath,
               )}`,
@@ -59,16 +61,16 @@ export class ImageValueCompletionProvider extends BaseValueCompletionProvider {
               const imageMarkdown = createImageMarkdownWithPath(fullPath);
 
               if (imageMarkdown) {
-                console.log(`[DEBUG] ImageCompletion - setting image documentation directly`);
+                debugLog(`[DEBUG] ImageCompletion - setting image documentation directly`);
                 it.documentation = imageMarkdown;
               } else {
-                console.log(
+                debugLog(
                   `[DEBUG] ImageCompletion - failed to create markdown, fallback to text`,
                 );
                 it.documentation = new vscode.MarkdownString("Image file in current folder");
               }
             } else {
-              console.log(`[DEBUG] ImageCompletion - file not found, fallback to text`);
+              debugLog(`[DEBUG] ImageCompletion - file not found, fallback to text`);
               it.documentation = new vscode.MarkdownString("Image file in current folder");
             }
 
@@ -85,7 +87,7 @@ export class ImageValueCompletionProvider extends BaseValueCompletionProvider {
           const files = fs.readdirSync(wf);
           for (const f of files) {
             const lower = f.toLowerCase();
-            if (exts.some((e) => lower.endsWith(e))) {
+            if ([...exts].some((e) => lower.endsWith(e))) {
               // 使用PathCompatibilityUtils生成跨平台路径建议
               const suggestions = PathCompatibilityUtils.createPathSuggestions("ROOT:", f);
 
@@ -95,7 +97,7 @@ export class ImageValueCompletionProvider extends BaseValueCompletionProvider {
 
                 // 解析图片路径并创建预览
                 const resolvedPath = resolveImagePath(suggestion, document);
-                console.log(
+                debugLog(
                   `[DEBUG] ImageCompletion - suggestion: ${suggestion}, resolvedPath: ${resolvedPath}`,
                 );
                 if (resolvedPath && fs.existsSync(resolvedPath)) {
@@ -103,10 +105,10 @@ export class ImageValueCompletionProvider extends BaseValueCompletionProvider {
                   const imageMarkdown = createImageMarkdownWithPath(resolvedPath);
 
                   if (imageMarkdown) {
-                    console.log(`[DEBUG] ImageCompletion - setting image documentation directly`);
+                    debugLog(`[DEBUG] ImageCompletion - setting image documentation directly`);
                     it.documentation = imageMarkdown;
                   } else {
-                    console.log(
+                    debugLog(
                       `[DEBUG] ImageCompletion - failed to create markdown, fallback to text`,
                     );
                     it.documentation = new vscode.MarkdownString(
@@ -114,7 +116,7 @@ export class ImageValueCompletionProvider extends BaseValueCompletionProvider {
                     );
                   }
                 } else {
-                  console.log(
+                  debugLog(
                     `[DEBUG] ImageCompletion - no resolved path or file not found, fallback to text`,
                   );
                   it.documentation = new vscode.MarkdownString(

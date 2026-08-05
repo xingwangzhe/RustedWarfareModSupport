@@ -7,7 +7,6 @@ import { ImagePropertyDecorator } from "./common/imagePropertyDecorator";
 import { initializePanelManager, getPanelManager } from "./panel/panelManager";
 // 直接导入面板相关模块，避免动态导入
 import { registerModPanel } from "./panel/index";
-import { EXTENSION_ID } from "./constants";
 import { initializePerfLogger } from "./common/perfLogger";
 import { registerExportCommands } from "./panel/exportManager";
 import { registerIniLanguageFeatures } from "./common/languageFeatureRegistrar";
@@ -141,13 +140,6 @@ export function activate(context: vscode.ExtensionContext) {
 
 // This method is called when your extension is deactivated
 export function deactivate() {}
-
-/**
- * 获取当前扩展的完整ID (publisher.name)
- */
-export function getExtensionId(): string {
-  return EXTENSION_ID;
-}
 
 function setupLazyLanguageInitialization(context: vscode.ExtensionContext) {
   const lazyDisposables: vscode.Disposable[] = [];
