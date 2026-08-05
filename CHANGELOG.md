@@ -1,5 +1,33 @@
 # 更新日志 / Changelog
 
+## [1.9.55] - 2026-08-05
+
+- 用 vite 8（rolldown 内核）+ oxc 压缩器重写打包流程，替换 esbuild
+- 开启最激烈的 tree-shaking 与代码压缩，构建产物减小约 14%
+- 移除未使用的 `@vscode/l10n` 依赖与遗留的 `tsdown.config.mjs`
+- 修复 F5 调试任务配置（esbuild watch → vite watch）
+- README 末尾新增赞助二维码（支付宝 / 微信赞赏码）
+
+### Notes
+
+- Rebuilt the bundling pipeline with Vite 8 (Rolldown core) and the Oxc minifier, replacing esbuild
+- Enabled the most aggressive tree-shaking and minification, cutting the bundle by ~14%
+- Removed the unused `@vscode/l10n` dependency and the leftover `tsdown.config.mjs`
+- Fixed the F5 debug task configuration (esbuild watch → vite watch)
+- Added sponsor QR codes (Alipay / WeChat Pay) at the end of the README
+
+## [1.9.54] - 2026-08-05
+
+- 更新全部依赖至最新版本，并将构建脚本统一迁移到 Bun
+- 移除已弃用的 `npm-run-all`，使用 Bun 原生的并行/顺序任务执行
+- 将 `engines.vscode` 提升至 `^1.125.0`，与升级后的 `@types/vscode` 保持一致
+
+### Notes
+
+- Updated all dependencies to latest versions and migrated build scripts to Bun
+- Removed the deprecated `npm-run-all` in favor of Bun's native parallel/sequential task execution
+- Raised `engines.vscode` to `^1.125.0` to stay aligned with the upgraded `@types/vscode`
+
 ## [1.9.53] - 2026-03-29
 
 - 调整 INI 保守格式化中的括号空格策略：仅补齐括号外侧空格，避免对逻辑关键字（如 `and`/`or`/`not`）做额外改写。

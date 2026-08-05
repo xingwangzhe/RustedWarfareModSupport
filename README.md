@@ -12,7 +12,7 @@ QQ:GMBOX 的 mod 群: [1006360455](https://qm.qq.com/q/3ivoMQepwA)
 
 ![Rustedwarfare](https://corrodinggames.com/images/rw-title.png)
 
-[![版本 / Version](https://img.shields.io/badge/version-1.9.53-blue)](CHANGELOG.md)
+[![版本 / Version](https://img.shields.io/badge/version-1.9.55-blue)](CHANGELOG.md)
 [![许可证 / License](https://img.shields.io/badge/license-AGPL--3.0-green.svg)](LICENSE.md)
 
 > 安装本插件前，请先更新 VS Code 到最新版本，以避免插件兼容性过期问题。
@@ -140,3 +140,16 @@ you can improve this plugin by submitting issues on [GitHub](https://github.com/
 本插件遵循 AGPL-3.0 协议（详见仓库 LICENSE.md）。
 
 This extension is licensed under AGPL-3.0 (see LICENSE.md in the repository).
+
+## 赞助
+
+## Sponsor
+
+如果这个扩展对你有帮助，欢迎扫码赞助，感谢支持！
+
+If this extension helps you, feel free to scan the QR code to sponsor us. Thanks for your support!
+
+<p align="center">
+  <img src="https://xingwangzhe.fun/ali_pay.webp" alt="支付宝赞赏码 / Alipay" width="220" />
+  <img src="https://xingwangzhe.fun/wechat_pay.webp" alt="微信赞赏码 / WeChat Pay" width="220" />
+</p>

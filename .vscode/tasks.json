@@ -5,7 +5,7 @@
   "tasks": [
     {
       "label": "watch",
-      "dependsOn": ["npm: watch:tsc", "npm: watch:esbuild"],
+      "dependsOn": ["npm: watch:tsc", "npm: watch:build"],
       "presentation": {
         "reveal": "never"
       },
@@ -16,11 +16,23 @@
     },
     {
       "type": "npm",
-      "script": "watch:esbuild",
+      "script": "watch:build",
       "group": "build",
-      "problemMatcher": "$esbuild-watch",
+      "problemMatcher": {
+        "owner": "vite",
+        "pattern": [
+          {
+            "regexp": "."
+          }
+        ],
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "watching for file changes\\.\\.\\.",
+          "endsPattern": "built in|error"
+        }
+      },
       "isBackground": true,
-      "label": "npm: watch:esbuild",
+      "label": "npm: watch:build",
       "presentation": {
         "group": "watch",
         "reveal": "never"

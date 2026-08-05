@@ -19,12 +19,10 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@v7
 
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
@@ -49,7 +47,7 @@ jobs:
           echo "VSIX file: $VSIX_FILE"
 
       - name: Upload VSIX as artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: rustedwarfare-mod-support
           path: ${{ steps.vsix.outputs.file }}
@@ -65,7 +63,7 @@ jobs:
 
       - name: Create Release Draft
         if: github.event.inputs.create_release == 'true'
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v3
         with:
           tag_name: ${{ steps.extract_version.outputs.tag }}
           name: Release v${{ steps.extract_version.outputs.version }}

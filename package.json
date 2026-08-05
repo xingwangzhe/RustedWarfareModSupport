@@ -1,7 +1,7 @@
 {
   "name": "rustedwarfaremodsupport",
   "displayName": "RustedWarfareModSupport",
-  "version": "1.9.53",
+  "version": "1.9.55",
   "description": "A VS Code extension that provides in-editor completions, documentation hints, and development tools for RustedWarfare mod development. Supports INI file editing with intelligent autocompletion for game configuration properties.",
   "categories": [
     "Programming Languages",
@@ -33,47 +33,45 @@
   "scripts": {
     "merge-translations": "bun merge.js",
     "generate-syntax": "bun scripts/generateSyntax.js",
-    "assets": "run-p merge-translations generate-syntax",
+    "assets": "bun run --parallel merge-translations generate-syntax",
     "check:types": "tsc --noEmit",
     "check": "bun run check:types",
     "lint": "oxlint",
     "lint:fix": "oxlint --fix",
     "fmt": "oxfmt",
     "fmt:check": "oxfmt --check",
-    "build": "node esbuild.js --production",
-    "build:min": "node esbuild.js --production",
+    "build": "vite build",
+    "build:min": "vite build",
     "watch:tsc": "tsc --noEmit --watch --project tsconfig.json",
-    "watch:build": "node esbuild.js --watch",
-    "watch": "run-p watch:tsc watch:build",
-    "compile": "run-s assets check:types lint build fmt",
-    "dev": "run-s assets build",
+    "watch:build": "vite build --watch",
+    "watch": "bun run --parallel watch:tsc watch:build",
+    "compile": "bun run --sequential assets check:types lint build fmt",
+    "dev": "bun run --sequential assets build",
     "dev:watch": "bun run watch",
-    "package": "run-s assets check:types lint build:min fmt",
-    "package:vsix": "run-s vsce:package",
-    "publish:vsix": "run-s vsce:publish",
+    "package": "bun run --sequential assets check:types lint build:min fmt",
+    "package:vsix": "bun run --sequential vsce:package",
+    "publish:vsix": "bun run --sequential vsce:publish",
     "vsce:package": "vsce package",
     "vsce:publish": "vsce publish",
     "compile-tests": "tsc -p . --outDir out",
     "watch-tests": "tsc -p . -w --outDir out",
     "test": "vscode-test",
-    "sort-translations": "node scripts/sort-translations.mjs",
+    "sort-translations": "bun scripts/sort-translations.mjs",
     "vscode:prepublish": "bun run package"
   },
   "dependencies": {
-    "@vscode/l10n": "^0.0.18",
     "jszip": "^3.10.1"
   },
   "devDependencies": {
     "@types/mocha": "^10.0.10",
-    "@types/node": "^22.19.15",
-    "@types/vscode": "^1.110.0",
-    "@vscode/test-cli": "^0.0.11",
-    "@vscode/test-electron": "^2.5.2",
-    "esbuild": "^0.27.4",
-    "npm-run-all": "^4.1.5",
-    "oxfmt": "^0.32.0",
-    "oxlint": "^1.57.0",
-    "typescript": "^5.9.3",
+    "@types/node": "^26.1.2",
+    "@types/vscode": "^1.125.0",
+    "@vscode/test-cli": "^0.0.15",
+    "@vscode/test-electron": "^3.1.0",
+    "oxfmt": "^0.62.0",
+    "oxlint": "^1.77.0",
+    "typescript": "^7.0.2",
+    "vite": "^8.2.0",
     "vsce": "^2.15.0"
   },
   "l10n": "./translation",
@@ -191,6 +189,6 @@
   ],
   "icon": "favicon.png",
   "engines": {
-    "vscode": "^1.110.0"
+    "vscode": "^1.125.0"
   }
 }
