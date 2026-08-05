@@ -26,5 +26,6 @@
   "[javascript]": {
     "editor.defaultFormatter": "oxc.oxc-vscode",
     "editor.formatOnSave": true
-  }
+  },
+  "editor.showFoldingControls": "always"
 }
