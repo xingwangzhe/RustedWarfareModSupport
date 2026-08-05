@@ -43,18 +43,21 @@ export class MemoryDefinitionCompletionProvider implements vscode.CompletionItem
     const item = new vscode.CompletionItem("@memory", vscode.CompletionItemKind.Keyword);
     item.detail = t("memory.definition.description");
     item.documentation = new vscode.MarkdownString(
-      `**@memory** - ${t("memory.definition.description")}\n\n` +
-        `${t("memory.definition.format")}\n\n` +
+      [
+        `**@memory** - ${t("memory.definition.description")}`,
+        t("memory.definition.format"),
         `**${t("memory.definition.supportedTypes")}** ${t(
           "memory.definition.supportedTypesList",
-        )}\n\n` +
-        `**${t("memory.definition.example")}**\n` +
-        "```\n" +
-        `${t("memory.definition.exampleHp")}\n` +
-        `${t("memory.definition.exampleName")}\n` +
-        `${t("memory.definition.exampleIsAlive")}\n` +
-        "```\n\n" +
-        `${t("memory.definition.accessNote")}`,
+        )}`,
+        `**${t("memory.definition.example")}**`,
+        "```",
+        t("memory.definition.exampleHp"),
+        t("memory.definition.exampleName"),
+        t("memory.definition.exampleIsAlive"),
+        "```",
+        "",
+        t("memory.definition.accessNote"),
+      ].join("\n"),
     );
     // 修复重复@的问题：当用户输入@时，只插入memory部分
     item.insertText = new vscode.SnippetString("memory ${1:name}:${2:type}");

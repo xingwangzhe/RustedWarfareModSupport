@@ -138,98 +138,93 @@ export class IniSectionSymbolProvider implements vscode.DocumentSymbolProvider {
     return result;
   }
 
-  public provideDocumentSymbols(
+  public async provideDocumentSymbols(
     document: vscode.TextDocument,
     _token: vscode.CancellationToken,
   ): Promise<vscode.DocumentSymbol[]> {
-    return new Promise((resolve) => {
-      const symbols: vscode.DocumentSymbol[] = [];
-      let sectionStart: vscode.Position | null = null;
-      let sectionName: string | null = null;
-      let sectionChildren: vscode.DocumentSymbol[] = [];
+    const symbols: vscode.DocumentSymbol[] = [];
+    let sectionStart: vscode.Position | null = null;
+    let sectionName: string | null = null;
+    let sectionChildren: vscode.DocumentSymbol[] = [];
 
-      for (let i = 0; i < document.lineCount; i++) {
-        const line = document.lineAt(i);
-        const lineText = line.text.trim();
+    for (let i = 0; i < document.lineCount; i++) {
+      const line = document.lineAt(i);
+      const lineText = line.text.trim();
 
-        // 判断是否为节的开始 - 以 [ 开头，以 ] 结尾
-        if (lineText.startsWith("[") && lineText.endsWith("]")) {
-          // 如果之前已经有一个节，那么结束它
-          if (sectionStart !== null && sectionName !== null) {
-            const sectionEnd = new vscode.Position(i - 1, document.lineAt(i - 1).text.length);
-            const sectionRange = new vscode.Range(sectionStart, sectionEnd);
-            const sectionSymbol = new vscode.DocumentSymbol(
-              sectionName,
-              this.generateSectionData(sectionName),
-              vscode.SymbolKind.Module,
-              sectionRange,
-              new vscode.Range(sectionStart, sectionStart),
+      // 判断是否为节的开始 - 以 [ 开头，以 ] 结尾
+      if (lineText.startsWith("[") && lineText.endsWith("]")) {
+        // 如果之前已经有一个节，那么结束它
+        if (sectionStart !== null && sectionName !== null) {
+          const sectionEnd = new vscode.Position(i - 1, document.lineAt(i - 1).text.length);
+          const sectionRange = new vscode.Range(sectionStart, sectionEnd);
+          const sectionSymbol = new vscode.DocumentSymbol(
+            sectionName,
+            this.generateSectionData(sectionName),
+            vscode.SymbolKind.Module,
+            sectionRange,
+            new vscode.Range(sectionStart, sectionStart),
+          );
+          // 添加子符号（键值对）
+          sectionSymbol.children = sectionChildren;
+          symbols.push(sectionSymbol);
+        }
+
+        // 开始新的节
+        sectionStart = line.range.start;
+        sectionName = lineText.substring(1, lineText.length - 1);
+        sectionChildren = []; // 重置子符号数组
+      }
+      // 处理键值对（在节内部）
+      else if (
+        sectionStart !== null &&
+        lineText.includes(":") &&
+        !lineText.startsWith("#") &&
+        !lineText.startsWith(";")
+      ) {
+        const colonIndex = lineText.indexOf(":");
+        if (colonIndex > 0) {
+          const key = lineText.substring(0, colonIndex).trim();
+          const value = lineText.substring(colonIndex + 1).trim();
+
+          if (key) {
+            // 根据键的类型确定符号类型
+            const symbolKind = this.getSymbolKindForKey(key, value);
+            const keyRange = new vscode.Range(
+              new vscode.Position(i, line.text.indexOf(key)),
+              new vscode.Position(i, line.text.indexOf(key) + key.length),
             );
-            // 添加子符号（键值对）
-            sectionSymbol.children = sectionChildren;
-            symbols.push(sectionSymbol);
-          }
 
-          // 开始新的节
-          sectionStart = line.range.start;
-          sectionName = lineText.substring(1, lineText.length - 1);
-          sectionChildren = []; // 重置子符号数组
-        }
-        // 处理键值对（在节内部）
-        else if (
-          sectionStart !== null &&
-          lineText.includes(":") &&
-          !lineText.startsWith("#") &&
-          !lineText.startsWith(";")
-        ) {
-          const colonIndex = lineText.indexOf(":");
-          if (colonIndex > 0) {
-            const key = lineText.substring(0, colonIndex).trim();
-            const value = lineText.substring(colonIndex + 1).trim();
+            const keySymbol = new vscode.DocumentSymbol(
+              key,
+              value || "",
+              symbolKind,
+              keyRange,
+              keyRange,
+            );
 
-            if (key) {
-              // 根据键的类型确定符号类型
-              const symbolKind = this.getSymbolKindForKey(key, value);
-              const keyRange = new vscode.Range(
-                new vscode.Position(i, line.text.indexOf(key)),
-                new vscode.Position(i, line.text.indexOf(key) + key.length),
-              );
-
-              const keySymbol = new vscode.DocumentSymbol(
-                key,
-                value || "",
-                symbolKind,
-                keyRange,
-                keyRange,
-              );
-
-              sectionChildren.push(keySymbol);
-            }
+            sectionChildren.push(keySymbol);
           }
         }
       }
+    }
 
-      // 处理最后一个节（如果文件以节结尾）
-      if (sectionStart !== null && sectionName !== null) {
-        const lastLine = document.lineAt(document.lineCount - 1);
-        const sectionEnd = new vscode.Position(lastLine.lineNumber, lastLine.text.length);
-        const sectionRange = new vscode.Range(sectionStart, sectionEnd);
-        const sectionSymbol = new vscode.DocumentSymbol(
-          sectionName,
-          this.generateSectionData(sectionName),
-          vscode.SymbolKind.Module,
-          sectionRange,
-          new vscode.Range(sectionStart, sectionStart),
-        );
-        // 添加子符号（键值对）
-        sectionSymbol.children = sectionChildren;
-        symbols.push(sectionSymbol);
-      }
+    // 处理最后一个节（如果文件以节结尾）
+    if (sectionStart !== null && sectionName !== null) {
+      const lastLine = document.lineAt(document.lineCount - 1);
+      const sectionEnd = new vscode.Position(lastLine.lineNumber, lastLine.text.length);
+      const sectionRange = new vscode.Range(sectionStart, sectionEnd);
+      const sectionSymbol = new vscode.DocumentSymbol(
+        sectionName,
+        this.generateSectionData(sectionName),
+        vscode.SymbolKind.Module,
+        sectionRange,
+        new vscode.Range(sectionStart, sectionStart),
+      );
+      // 添加子符号（键值对）
+      sectionSymbol.children = sectionChildren;
+      symbols.push(sectionSymbol);
+    }
 
-      resolve(symbols);
-    });
+    return symbols;
   }
 }
-
-// This method is called when your extension is deactivated
-export function deactivate() {}

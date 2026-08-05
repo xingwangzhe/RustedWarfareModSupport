@@ -8,8 +8,8 @@ import {
  * 面板管理器 - 管理所有与面板相关的功能
  */
 export class PanelManager {
-  private static instance: PanelManager;
-  private context: vscode.ExtensionContext | null = null;
+  static #instance: PanelManager;
+  #context: vscode.ExtensionContext | null = null;
 
   private constructor() {}
 
@@ -17,18 +17,14 @@ export class PanelManager {
    * 获取PanelManager单例实例
    */
   public static getInstance(): PanelManager {
-    if (!PanelManager.instance) {
-      PanelManager.instance = new PanelManager();
-    }
-    return PanelManager.instance;
+    return (PanelManager.#instance ??= new PanelManager());
   }
 
   /**
    * 初始化面板管理器
    */
   public initialize(context: vscode.ExtensionContext): void {
-    this.context = context;
-    this.registerPanelFeatures();
+    this.#context = context;
     this.registerConfigurationListeners();
     this.initializeCustomExtensionsManager();
   }
@@ -37,50 +33,22 @@ export class PanelManager {
    * 初始化自定义文件扩展名管理器
    */
   private initializeCustomExtensionsManager(): void {
-    if (!this.context) {
+    if (!this.#context) {
       return;
     }
-    initializeCustomFileExtensionsManager(this.context);
-  }
-
-  /**
-   * 注册面板相关功能
-   */
-  private registerPanelFeatures(): void {
-    if (!this.context) {
-      return;
-    }
-
-    // 注册面板相关命令
-    this.registerPanelCommands();
-  }
-
-  /**
-   * 注册面板相关命令
-   */
-  private registerPanelCommands(): void {
-    if (!this.context) {
-      return;
-    }
-
-    // 刷新面板命令已在 panel/index.ts 中注册，这里不再重复注册
-    // const refreshPanelCommand = vscode.commands.registerCommand('rustedwarfaremodsupport-panel.refresh', () => {
-    //     this.refreshPanel();
-    // });
-
-    // this.context.subscriptions.push(refreshPanelCommand);
+    initializeCustomFileExtensionsManager(this.#context);
   }
 
   /**
    * 注册配置监听器
    */
   private registerConfigurationListeners(): void {
-    if (!this.context) {
+    if (!this.#context) {
       return;
     }
 
     // 监听折叠控件配置变化
-    this.context.subscriptions.push(
+    this.#context.subscriptions.push(
       vscode.workspace.onDidChangeConfiguration((e) => {
         if (e.affectsConfiguration("rustedwarfaremodsupport.showFoldingControls")) {
           this.handleFoldingControlsChange();
@@ -89,7 +57,7 @@ export class PanelManager {
     );
 
     // 监听编辑器打开事件
-    this.context.subscriptions.push(
+    this.#context.subscriptions.push(
       vscode.window.onDidChangeVisibleTextEditors((editors) => {
         this.handleVisibleEditorsChange(editors);
       }),
@@ -128,12 +96,6 @@ export class PanelManager {
    * 应用折叠控件显示设置
    */
   private applyFoldingControls(editor: vscode.TextEditor, showFoldingControls: string): void {
-    const config = vscode.workspace.getConfiguration();
-    const editorConfig = config.get<any>("editor", {});
-
-    // 更新编辑器的折叠控件显示设置
-    editorConfig.showFoldingControls = showFoldingControls;
-
     // 应用配置到工作区
     vscode.workspace
       .getConfiguration()
@@ -147,16 +109,12 @@ export class PanelManager {
   /**
    * 刷新面板
    */
-  public refreshPanel(): void {
-    // 发送命令来刷新面板
-    vscode.commands.executeCommand("rustedwarfaremodsupport-panel.refresh").then(
-      () => {
-        // 刷新成功
-      },
-      (error: any) => {
-        console.error("Failed to refresh panel:", error);
-      },
-    );
+  public async refreshPanel(): Promise<void> {
+    try {
+      await vscode.commands.executeCommand("rustedwarfaremodsupport-panel.refresh");
+    } catch (error) {
+      console.error("Failed to refresh panel:", error);
+    }
   }
   /**
    * 获取自定义文件扩展名管理器

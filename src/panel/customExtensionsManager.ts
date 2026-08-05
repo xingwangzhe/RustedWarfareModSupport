@@ -7,15 +7,16 @@ import { RustedWarfareHoverProvider } from "../hoverProvider/hoverProvider";
 import { MemoryDefinitionCompletionProvider } from "../memory/MemoryDefinitionCompletionProvider";
 import { MemoryValueCompletionProvider } from "../memory/MemoryValueCompletionProvider";
 import { ValueCompletionProvider } from "../valueComple/valueCompletionProvider";
+import { ALPHANUMERIC_TRIGGERS } from "../common/constants";
 
 /**
  * 自定义文件扩展名管理器
  */
 export class CustomFileExtensionsManager {
-  private static instance: CustomFileExtensionsManager;
-  private context: vscode.ExtensionContext | null = null;
-  private customExtensionSubscriptions: vscode.Disposable[] = [];
-  private currentExtensions: string[] = [];
+  static #instance: CustomFileExtensionsManager;
+  #context: vscode.ExtensionContext | null = null;
+  #customExtensionSubscriptions: vscode.Disposable[] = [];
+  #currentExtensions: string[] = [];
 
   private constructor() {}
 
@@ -23,17 +24,14 @@ export class CustomFileExtensionsManager {
    * 获取单例实例
    */
   public static getInstance(): CustomFileExtensionsManager {
-    if (!CustomFileExtensionsManager.instance) {
-      CustomFileExtensionsManager.instance = new CustomFileExtensionsManager();
-    }
-    return CustomFileExtensionsManager.instance;
+    return (CustomFileExtensionsManager.#instance ??= new CustomFileExtensionsManager());
   }
 
   /**
    * 初始化管理器
    */
   public initialize(context: vscode.ExtensionContext): void {
-    this.context = context;
+    this.#context = context;
     this.registerConfigurationListeners();
     this.initializeCustomExtensions();
   }
@@ -43,19 +41,19 @@ export class CustomFileExtensionsManager {
    */
   private initializeCustomExtensions(): void {
     const config = vscode.workspace.getConfiguration("rustedwarfaremodsupport");
-    this.currentExtensions = config.get<string[]>("customFileExtensions", []);
-    this.setupCustomFileExtensions(this.currentExtensions);
+    this.#currentExtensions = config.get<string[]>("customFileExtensions", []);
+    this.setupCustomFileExtensions(this.#currentExtensions);
   }
 
   /**
    * 注册配置监听器
    */
   private registerConfigurationListeners(): void {
-    if (!this.context) {
+    if (!this.#context) {
       return;
     }
 
-    this.context.subscriptions.push(
+    this.#context.subscriptions.push(
       vscode.workspace.onDidChangeConfiguration((e) => {
         if (e.affectsConfiguration("rustedwarfaremodsupport.customFileExtensions")) {
           this.handleCustomExtensionsChange();
@@ -72,9 +70,11 @@ export class CustomFileExtensionsManager {
     const newExtensions = config.get<string[]>("customFileExtensions", []);
 
     // 找出新增的扩展名
-    const addedExtensions = newExtensions.filter((ext) => !this.currentExtensions.includes(ext));
+    const addedExtensions = newExtensions.filter((ext) => !this.#currentExtensions.includes(ext));
     // 找出删除的扩展名
-    const removedExtensions = this.currentExtensions.filter((ext) => !newExtensions.includes(ext));
+    const removedExtensions = this.#currentExtensions.filter(
+      (ext) => !newExtensions.includes(ext),
+    );
 
     // 为新增的扩展名注册支持
     if (addedExtensions.length > 0) {
@@ -85,12 +85,12 @@ export class CustomFileExtensionsManager {
     if (removedExtensions.length > 0) {
       this.cleanupCustomFileExtensions(removedExtensions);
       // 释放相关订阅
-      this.customExtensionSubscriptions.forEach((sub) => sub.dispose());
-      this.customExtensionSubscriptions = [];
+      this.#customExtensionSubscriptions.forEach((sub) => sub.dispose());
+      this.#customExtensionSubscriptions = [];
     }
 
     // 更新当前扩展名列表
-    this.currentExtensions = newExtensions;
+    this.#currentExtensions = newExtensions;
 
     // 通知面板刷新
     this.notifyPanelRefresh();
@@ -99,15 +99,14 @@ export class CustomFileExtensionsManager {
   /**
    * 通知面板刷新
    */
-  private notifyPanelRefresh(): void {
-    // 动态导入PanelManager并刷新面板
-    import("./panelManager.js")
-      .then(({ getPanelManager }) => {
-        getPanelManager().refreshPanel();
-      })
-      .catch((error) => {
-        console.error("Failed to refresh panel:", error);
-      });
+  private async notifyPanelRefresh(): Promise<void> {
+    try {
+      // 动态导入 PanelManager 并刷新面板
+      const { getPanelManager } = await import("./panelManager.js");
+      getPanelManager().refreshPanel();
+    } catch (error) {
+      console.error("Failed to refresh panel:", error);
+    }
   }
 
   /**
@@ -178,69 +177,7 @@ export class CustomFileExtensionsManager {
         vscode.languages.registerCompletionItemProvider(
           { language: "ini" },
           provider,
-          "a",
-          "b",
-          "c",
-          "d",
-          "e",
-          "f",
-          "g",
-          "h",
-          "i",
-          "j",
-          "k",
-          "l",
-          "m",
-          "n",
-          "o",
-          "p",
-          "q",
-          "r",
-          "s",
-          "t",
-          "u",
-          "v",
-          "w",
-          "x",
-          "y",
-          "z",
-          "A",
-          "B",
-          "C",
-          "D",
-          "E",
-          "F",
-          "G",
-          "H",
-          "I",
-          "J",
-          "K",
-          "L",
-          "M",
-          "N",
-          "O",
-          "P",
-          "Q",
-          "R",
-          "S",
-          "T",
-          "U",
-          "V",
-          "W",
-          "X",
-          "Y",
-          "Z",
-          "_",
-          "0",
-          "1",
-          "2",
-          "3",
-          "4",
-          "5",
-          "6",
-          "7",
-          "8",
-          "9", // 包含下划线和数字
+          ...ALPHANUMERIC_TRIGGERS,
         ),
       );
 
@@ -261,58 +198,7 @@ export class CustomFileExtensionsManager {
       const sectionNameCompletionSubscription = vscode.languages.registerCompletionItemProvider(
         { language: "ini" },
         sectionNameCompletionProvider,
-        "a",
-        "b",
-        "c",
-        "d",
-        "e",
-        "f",
-        "g",
-        "h",
-        "i",
-        "j",
-        "k",
-        "l",
-        "m",
-        "n",
-        "o",
-        "p",
-        "q",
-        "r",
-        "s",
-        "t",
-        "u",
-        "v",
-        "w",
-        "x",
-        "y",
-        "z",
-        "A",
-        "B",
-        "C",
-        "D",
-        "E",
-        "F",
-        "G",
-        "H",
-        "I",
-        "J",
-        "K",
-        "L",
-        "M",
-        "N",
-        "O",
-        "P",
-        "Q",
-        "R",
-        "S",
-        "T",
-        "U",
-        "V",
-        "W",
-        "X",
-        "Y",
-        "Z",
+        ...ALPHANUMERIC_TRIGGERS,
       );
 
       // 注册@memory定义补全提供者
@@ -340,7 +226,7 @@ export class CustomFileExtensionsManager {
       );
 
       // 将所有订阅添加到全局订阅列表中
-      this.customExtensionSubscriptions.push(
+      this.#customExtensionSubscriptions.push(
         documentOpenHandler,
         symbolProvider,
         foldingProvider,
@@ -360,14 +246,14 @@ export class CustomFileExtensionsManager {
    * 获取当前自定义扩展名列表
    */
   public getCurrentExtensions(): string[] {
-    return [...this.currentExtensions];
+    return [...this.#currentExtensions];
   }
 
   /**
    * 获取自定义扩展名的订阅列表
    */
   public getSubscriptions(): vscode.Disposable[] {
-    return [...this.customExtensionSubscriptions];
+    return [...this.#customExtensionSubscriptions];
   }
 }
 

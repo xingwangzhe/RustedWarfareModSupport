@@ -79,7 +79,7 @@ export class ColorPropertyDecorator implements vscode.Disposable {
   }
 
   private updateDecorations() {
-    measurePerf("decorator.colors", () => {
+    void measurePerf("decorator.colors", () => {
       const editor = vscode.window.activeTextEditor;
       if (!editor || editor.document.languageId !== "ini") {
         return;

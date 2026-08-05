@@ -18,22 +18,19 @@ interface DocumentState {
 }
 
 export class MemoryManager {
-  private static instance: MemoryManager;
-  private documentStates: Map<string, DocumentState> = new Map();
-  private disposables: vscode.Disposable[] = [];
-  private updateTimeout: NodeJS.Timeout | null = null;
-  private pendingUpdates: Set<vscode.TextDocument> = new Set();
-  private static readonly DEBOUNCE_MS = 150;
+  static #instance: MemoryManager;
+  #documentStates: Map<string, DocumentState> = new Map();
+  #disposables: vscode.Disposable[] = [];
+  #updateTimeout: NodeJS.Timeout | null = null;
+  #pendingUpdates: Set<vscode.TextDocument> = new Set();
+  static readonly DEBOUNCE_MS = 150;
 
   private constructor() {
     this.initialize();
   }
 
   public static getInstance(): MemoryManager {
-    if (!MemoryManager.instance) {
-      MemoryManager.instance = new MemoryManager();
-    }
-    return MemoryManager.instance;
+    return (MemoryManager.#instance ??= new MemoryManager());
   }
 
   private getDocKey(document: vscode.TextDocument): string {
@@ -41,7 +38,7 @@ export class MemoryManager {
   }
 
   private initialize() {
-    this.disposables.push(
+    this.#disposables.push(
       vscode.workspace.onDidChangeTextDocument((event) => {
         if (event.document.languageId === "ini") {
           this.scheduleUpdate(event.document);
@@ -49,7 +46,7 @@ export class MemoryManager {
       }),
     );
 
-    this.disposables.push(
+    this.#disposables.push(
       vscode.workspace.onDidOpenTextDocument((document) => {
         if (document.languageId === "ini") {
           this.updateMemoryVariables(document);
@@ -57,10 +54,10 @@ export class MemoryManager {
       }),
     );
 
-    this.disposables.push(
+    this.#disposables.push(
       vscode.workspace.onDidCloseTextDocument((document) => {
         if (document.languageId === "ini") {
-          this.documentStates.delete(this.getDocKey(document));
+          this.#documentStates.delete(this.getDocKey(document));
         }
       }),
     );
@@ -73,27 +70,27 @@ export class MemoryManager {
   }
 
   private scheduleUpdate(document: vscode.TextDocument): void {
-    this.pendingUpdates.add(document);
+    this.#pendingUpdates.add(document);
 
-    if (this.updateTimeout) {
-      clearTimeout(this.updateTimeout);
+    if (this.#updateTimeout) {
+      clearTimeout(this.#updateTimeout);
     }
 
-    this.updateTimeout = setTimeout(() => {
+    this.#updateTimeout = setTimeout(() => {
       this.processPendingUpdates();
     }, MemoryManager.DEBOUNCE_MS);
   }
 
   private processPendingUpdates(): void {
-    for (const doc of this.pendingUpdates) {
+    for (const doc of this.#pendingUpdates) {
       this.updateMemoryVariables(doc);
     }
-    this.pendingUpdates.clear();
+    this.#pendingUpdates.clear();
   }
 
   private updateMemoryVariables(document: vscode.TextDocument) {
     const key = this.getDocKey(document);
-    const state = this.documentStates.get(key);
+    const state = this.#documentStates.get(key);
     if (state && state.version === document.version) {
       return;
     }
@@ -126,7 +123,7 @@ export class MemoryManager {
       }
     }
 
-    this.documentStates.set(key, {
+    this.#documentStates.set(key, {
       variables,
       version: document.version,
       lastUpdate: Date.now(),
@@ -155,14 +152,14 @@ export class MemoryManager {
 
   public getAllMemoryVariables(): MemoryVariable[] {
     const result: MemoryVariable[] = [];
-    for (const state of this.documentStates.values()) {
+    for (const state of this.#documentStates.values()) {
       result.push(...state.variables.values());
     }
     return result;
   }
 
   public getMemoryVariable(name: string): MemoryVariable | undefined {
-    for (const state of this.documentStates.values()) {
+    for (const state of this.#documentStates.values()) {
       const found = state.variables.get(name);
       if (found) {
         return found;
@@ -173,7 +170,7 @@ export class MemoryManager {
 
   public getMemoryVariableNames(): string[] {
     const names: string[] = [];
-    for (const state of this.documentStates.values()) {
+    for (const state of this.#documentStates.values()) {
       for (const name of state.variables.keys()) {
         names.push(name);
       }
@@ -186,11 +183,11 @@ export class MemoryManager {
   }
 
   public dispose() {
-    if (this.updateTimeout) {
-      clearTimeout(this.updateTimeout);
+    if (this.#updateTimeout) {
+      clearTimeout(this.#updateTimeout);
     }
-    this.disposables.forEach((disposable) => disposable.dispose());
-    this.documentStates.clear();
+    this.#disposables.forEach((disposable) => disposable.dispose());
+    this.#documentStates.clear();
   }
 }
 

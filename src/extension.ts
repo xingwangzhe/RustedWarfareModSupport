@@ -23,13 +23,10 @@ import { registerExportCommands } from "./panel/exportManager";
 // Your extension is activated the very first time the command is executed
 
 // 应用折叠控件显示设置的函数
-function applyFoldingControls(editor: vscode.TextEditor, showFoldingControls: string) {
-  const config = vscode.workspace.getConfiguration();
-  const editorConfig = config.get<any>("editor", {});
-
-  // 更新编辑器的折叠控件显示设置
-  editorConfig.showFoldingControls = showFoldingControls;
-
+const applyFoldingControls = (
+  _editor: vscode.TextEditor,
+  showFoldingControls: string,
+): void => {
   // 应用配置到工作区
   vscode.workspace
     .getConfiguration()
@@ -38,7 +35,7 @@ function applyFoldingControls(editor: vscode.TextEditor, showFoldingControls: st
       showFoldingControls,
       vscode.ConfigurationTarget.Workspace,
     );
-}
+};
 
 let languageFeaturesInitialized = false;
 

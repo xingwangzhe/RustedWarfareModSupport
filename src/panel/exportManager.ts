@@ -5,6 +5,10 @@ import * as os from "os";
 import JSZip from "jszip";
 import { t } from "../translationManager";
 
+/** 生成文件时间戳（ISO 格式去掉冒号/点，用于文件名） */
+const formatTimestamp = (): string =>
+  new Date().toISOString().replace(/[:.]/g, "-").slice(0, -5);
+
 /**
  * 导出管理器：负责导出 zip/rwmod 文件
  */
@@ -14,7 +18,7 @@ export class ExportManager {
    */
   public async exportMod(folderPath: string) {
     const baseName = path.basename(folderPath);
-    const timestamp = new Date().toISOString().replace(/[:.]/g, "-").slice(0, -5);
+    const timestamp = formatTimestamp();
 
     // 让用户选择ZIP文件的保存路径
     const zipUri = await vscode.window.showSaveDialog({
@@ -105,7 +109,7 @@ export function registerExportCommands(context: vscode.ExtensionContext) {
       });
       if (folder && folder[0]) {
         const baseName = path.basename(folder[0].fsPath);
-        const timestamp = new Date().toISOString().replace(/[:.]/g, "-").slice(0, -5);
+        const timestamp = formatTimestamp();
 
         // 让用户选择保存路径
         const saveUri = await vscode.window.showSaveDialog({

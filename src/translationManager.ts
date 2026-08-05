@@ -17,19 +17,16 @@ const PLACEHOLDER_REGEX = /\{(\d+)\}/g;
  * 解决VS Code l10n在英文环境下直接返回键值的问题
  */
 export class TranslationManager {
-  private static instance: TranslationManager;
-  private translations: Map<string, string> = new Map();
-  private currentLocale: string = "en";
+  static #instance: TranslationManager;
+  #translations: Map<string, string> = new Map();
+  #currentLocale: string = "en";
 
   private constructor() {
     this.loadTranslations();
   }
 
   public static getInstance(): TranslationManager {
-    if (!TranslationManager.instance) {
-      TranslationManager.instance = new TranslationManager();
-    }
-    return TranslationManager.instance;
+    return (TranslationManager.#instance ??= new TranslationManager());
   }
 
   /**
@@ -38,7 +35,7 @@ export class TranslationManager {
   private loadTranslations(): void {
     try {
       // 获取当前语言环境
-      this.currentLocale = vscode.env.language || "en";
+      this.#currentLocale = vscode.env.language || "en";
 
       // 获取扩展的翻译目录路径
       const extensionPath = vscode.extensions.getExtension(
@@ -52,7 +49,7 @@ export class TranslationManager {
       const translationDir = path.join(extensionPath, "translation");
 
       // 尝试加载当前语言的翻译文件
-      let translationFile = path.join(translationDir, `bundle.l10n.${this.currentLocale}.json`);
+      let translationFile = path.join(translationDir, `bundle.l10n.${this.#currentLocale}.json`);
 
       // 如果当前语言的翻译文件不存在，尝试加载基础翻译文件
       if (!fs.existsSync(translationFile)) {
@@ -65,13 +62,13 @@ export class TranslationManager {
         return;
       }
 
-      const cacheKey = `${this.currentLocale}:${translationFile}`;
+      const cacheKey = `${this.#currentLocale}:${translationFile}`;
       const fileStats = fs.statSync(translationFile);
       const cached = translationFileCache.get(cacheKey);
       if (cached && cached.mtimeMs === fileStats.mtimeMs) {
-        this.translations = new Map(cached.entries);
+        this.#translations = new Map(cached.entries);
         console.log(
-          `已加载 ${this.translations.size} 个翻译条目 (语言: ${this.currentLocale}, 缓存命中)`,
+          `已加载 ${this.#translations.size} 个翻译条目 (语言: ${this.#currentLocale}, 缓存命中)`,
         );
         return;
       }
@@ -81,10 +78,10 @@ export class TranslationManager {
       const translations = JSON.parse(translationContent);
 
       const entries: [string, string][] = [];
-      this.translations.clear();
+      this.#translations.clear();
       for (const [key, value] of Object.entries(translations)) {
         const stringValue = String(value);
-        this.translations.set(key, stringValue);
+        this.#translations.set(key, stringValue);
         entries.push([key, stringValue]);
       }
 
@@ -93,7 +90,7 @@ export class TranslationManager {
         entries,
       });
 
-      console.log(`已加载 ${this.translations.size} 个翻译条目 (语言: ${this.currentLocale})`);
+      console.log(`已加载 ${this.#translations.size} 个翻译条目 (语言: ${this.#currentLocale})`);
     } catch (error) {
       console.error("加载翻译文件时出错:", error);
     }
@@ -112,7 +109,7 @@ export class TranslationManager {
       return cached;
     }
 
-    const translation = this.translations.get(key);
+    const translation = this.#translations.get(key);
 
     let result: string;
     if (translation) {
@@ -158,14 +155,14 @@ export class TranslationManager {
    * 获取当前语言环境
    */
   public getCurrentLocale(): string {
-    return this.currentLocale;
+    return this.#currentLocale;
   }
 
   /**
    * 获取所有翻译键（用于调试）
    */
   public getAllKeys(): string[] {
-    return Array.from(this.translations.keys());
+    return Array.from(this.#translations.keys());
   }
 }
 

@@ -38,17 +38,20 @@ export class MemoryValueCompletionProvider implements vscode.CompletionItemProvi
     const item = new vscode.CompletionItem("memory", vscode.CompletionItemKind.Module);
     item.detail = t("memory.description");
     item.documentation = new vscode.MarkdownString(
-      `**memory** - ${t("memory.description")}\n\n` +
-        `${t("memory.usage")}\n\n` +
-        `**${t("memory.availableVariables")}**\n` +
-        `${t("memory.availableVariablesDescription")}\n\n` +
-        `**${t("memory.example")}**\n` +
-        "```\n" +
-        `${t("memory.exampleHp")}\n` +
-        `${t("memory.exampleName")}\n` +
-        `${t("memory.exampleIsAlive")}\n` +
-        "```\n\n" +
-        `${t("memory.note")}`,
+      [
+        `**memory** - ${t("memory.description")}`,
+        t("memory.usage"),
+        `**${t("memory.availableVariables")}**`,
+        t("memory.availableVariablesDescription"),
+        `**${t("memory.example")}**`,
+        "```",
+        t("memory.exampleHp"),
+        t("memory.exampleName"),
+        t("memory.exampleIsAlive"),
+        "```",
+        "",
+        t("memory.note"),
+      ].join("\n"),
     );
     item.insertText = "memory.";
     item.sortText = "01"; // 优先级高

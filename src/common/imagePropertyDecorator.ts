@@ -58,7 +58,7 @@ export class ImagePropertyDecorator implements vscode.Disposable {
   }
 
   private updateDecorations() {
-    measurePerf("decorator.images", () => {
+    void measurePerf("decorator.images", () => {
       const editor = vscode.window.activeTextEditor;
       if (!editor || editor.document.languageId !== "ini") {
         return;
