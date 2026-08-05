@@ -1,10 +1,10 @@
 import * as vscode from "vscode";
-import * as fs from "fs";
 import * as path from "path";
 import { BaseValueCompletionProvider } from "./BaseValueCompletionProvider";
 import { createCompletionItemsFromDataFile } from "../common/valueCompletionUtils";
 import { getSectionProperties } from "../dataProcessor";
-import { getExtensionId } from "../extension";
+import { getExtensionPath } from "../common/extensionPaths";
+import { loadJsonCached } from "../common/dataCache";
 import { t } from "../translationManager";
 
 /**
@@ -129,21 +129,16 @@ export class LogicBooleanValueCompletionProvider extends BaseValueCompletionProv
    */
   private getRawLogicBooleanData(): any[] {
     try {
-      // 获取扩展路径
-      const extension = vscode.extensions.getExtension(getExtensionId());
-      if (!extension) {
+      // 获取扩展路径（带缓存）
+      const extensionPath = getExtensionPath();
+      if (!extensionPath) {
         return [];
       }
 
-      const extensionPath = extension.extensionPath;
       const filePath = path.join(extensionPath, "data", "value", "logicboolean.json");
 
-      if (!fs.existsSync(filePath)) {
-        return [];
-      }
-
-      // 读取数据文件
-      const data = JSON.parse(fs.readFileSync(filePath, "utf8"));
+      // 读取数据文件（mtime 缓存）
+      const data = loadJsonCached(filePath);
       return data.data || [];
     } catch (error) {
       console.error("Error reading raw logicboolean data:", error);

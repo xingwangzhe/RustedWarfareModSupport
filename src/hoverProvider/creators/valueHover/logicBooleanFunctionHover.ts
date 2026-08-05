@@ -1,8 +1,22 @@
 import * as vscode from "vscode";
-import * as fs from "fs";
 import * as path from "path";
-import { getExtensionId } from "../../../extension";
+import { getExtensionPath } from "../../../common/extensionPaths";
+import { loadJsonCached } from "../../../common/dataCache";
 import { t } from "../../../translationManager";
+
+interface LogicBooleanItem {
+  name?: string;
+  description?: string;
+  version?: string;
+  example?: string;
+}
+interface LogicBooleanData {
+  data: LogicBooleanItem[];
+}
+
+const normalize = (value: string): string =>
+  value.replace(/\([^)]*\)/g, "").trim().toLowerCase();
+
 /**
  * 创建LogicBoolean函数悬停信息
  * @param func 函数名
@@ -11,27 +25,18 @@ import { t } from "../../../translationManager";
 export function createLogicBooleanFunctionHover(func: string): vscode.Hover | null {
   // 从logicboolean.json加载数据
   try {
-    // 获取扩展的实际路径
-    const extension = vscode.extensions.getExtension(getExtensionId());
-    if (!extension) {
+    // 获取扩展的实际路径（带缓存）
+    const extensionPath = getExtensionPath();
+    if (!extensionPath) {
       console.error("Cannot find extension");
       return null;
     }
 
-    const extensionPath = extension.extensionPath;
     const valuePath = path.join(extensionPath, "data", "value", "logicboolean.json");
-    const valueData = JSON.parse(fs.readFileSync(valuePath, "utf8"));
+    const valueData = loadJsonCached<LogicBooleanData>(valuePath);
 
     // 查找匹配的函数（模糊匹配：支持有无()与前缀）
-    const funcBase = func
-      .replace(/\([^)]*\)/g, "")
-      .trim()
-      .toLowerCase();
-    const normalize = (value: string) =>
-      value
-        .replace(/\([^)]*\)/g, "")
-        .trim()
-        .toLowerCase();
+    const funcBase = normalize(func);
 
     for (const item of valueData.data) {
       const itemName = String(item.name || "");
@@ -44,7 +49,7 @@ export function createLogicBooleanFunctionHover(func: string): vscode.Hover | nu
       if (isMatched) {
         const hoverContent = new vscode.MarkdownString();
         hoverContent.appendMarkdown(`**LogicBoolean Function**\n\n`);
-        hoverContent.appendMarkdown(`${t(item.description)}\n\n`);
+        hoverContent.appendMarkdown(`${t(item.description ?? "")}\n\n`);
 
         if (item.version) {
           hoverContent.appendMarkdown(`*Version: ${item.version}*\n\n`);

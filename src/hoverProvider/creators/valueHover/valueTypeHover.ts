@@ -1,7 +1,7 @@
 import * as vscode from "vscode";
-import * as fs from "fs";
 import * as path from "path";
-import { getExtensionId } from "../../../extension";
+import { getExtensionPath } from "../../../common/extensionPaths";
+import { loadJsonCached } from "../../../common/dataCache";
 import { findMatchingValueItem, createValueItemHover, createValueTypeGeneralHover } from "./utils";
 
 /**
@@ -30,14 +30,13 @@ export function createValueTypeHover(propertyType: string, value: string): vscod
   }
 
   try {
-    // 获取扩展的实际路径
-    const extension = vscode.extensions.getExtension(getExtensionId());
-    if (!extension) {
+    // 获取扩展的实际路径（带缓存）
+    const extensionPath = getExtensionPath();
+    if (!extensionPath) {
       console.error("Cannot find extension");
       return null;
     }
 
-    const extensionPath = extension.extensionPath;
     const valueDir = path.join(extensionPath, "data", "value");
 
     // 根据属性类型映射到值类型文件
@@ -47,11 +46,7 @@ export function createValueTypeHover(propertyType: string, value: string): vscod
     }
 
     const valuePath = path.join(valueDir, `${valueTypeFile}.json`);
-    if (!fs.existsSync(valuePath)) {
-      return null;
-    }
-
-    const valueData = JSON.parse(fs.readFileSync(valuePath, "utf8"));
+    const valueData = loadJsonCached(valuePath);
 
     // 在值类型文件中查找匹配的参数
     const matchedItem = findMatchingValueItem(valueData, trimmedValue);

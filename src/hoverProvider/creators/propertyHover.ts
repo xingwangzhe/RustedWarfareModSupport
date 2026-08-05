@@ -2,7 +2,8 @@ import * as vscode from "vscode";
 import * as fs from "fs";
 import * as path from "path";
 import { HoverUtils } from "../utils";
-import { getExtensionId } from "../../extension";
+import { getExtensionPath } from "../../common/extensionPaths";
+import { loadJsonCached } from "../../common/dataCache";
 import { t } from "../../translationManager";
 
 /** 语言键正则：匹配 key_zh / key_en 等格式 */
@@ -32,14 +33,13 @@ export class PropertyHoverCreator {
       // 获取节的基本名称
       const baseSectionName = HoverUtils.getBaseSectionName(sectionName);
 
-      // 获取扩展的实际路径 - 这是VS Code扩展的标准做法
-      const extension = vscode.extensions.getExtension(getExtensionId());
-      if (!extension) {
+      // 获取扩展的实际路径（带缓存）
+      const extensionPath = getExtensionPath();
+      if (!extensionPath) {
         console.error("Cannot find extension");
         return null;
       }
 
-      const extensionPath = extension.extensionPath;
       const sectionPath = path.join(extensionPath, "data", "sections", `${baseSectionName}.json`);
 
       // 检查是否存在语言特定的文件
@@ -57,7 +57,7 @@ export class PropertyHoverCreator {
         return null;
       }
 
-      const sectionData = JSON.parse(fs.readFileSync(finalPath, "utf8"));
+      const sectionData = loadJsonCached(finalPath);
       const property = sectionData.data.find((p: any) => p.name === lookupName);
 
       if (!property) {

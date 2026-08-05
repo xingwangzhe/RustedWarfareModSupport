@@ -2,7 +2,7 @@ import * as fs from "fs";
 import * as path from "path";
 import * as vscode from "vscode";
 import { matchBaseSection } from "./common/matchRules";
-import { EXTENSION_ID } from "./constants";
+import { getExtensionPath } from "./common/extensionPaths";
 
 // 文档节位置缓存，用于快速查找当前位置所在节
 type DocumentSectionCacheEntry = {
@@ -39,15 +39,14 @@ function ensureMetadataScanned(): void {
 
 function scanSectionsDirectory(): void {
   try {
-    const extension = vscode.extensions.getExtension(EXTENSION_ID);
-    if (!extension) {
+    const extensionPath = getExtensionPath();
+    if (!extensionPath) {
       return;
     }
 
-    const extensionPath = extension.extensionPath;
     const localizedDir = path.join(extensionPath, "data", "sections", vscode.env.language);
     const defaultDir = path.join(extensionPath, "data", "sections");
-    const dirs = [] as string[];
+    const dirs: string[] = [];
 
     if (fs.existsSync(localizedDir)) {
       dirs.push(localizedDir);
@@ -109,14 +108,12 @@ export function getSectionProperties(sectionName: string): any[] {
     // 获取基本节名称
     const baseSectionName = getBaseSectionName(sectionName);
 
-    // 获取扩展的实际路径
-    const extension = vscode.extensions.getExtension(EXTENSION_ID);
-    if (!extension) {
+    // 获取扩展的实际路径（带缓存）
+    const extensionPath = getExtensionPath();
+    if (!extensionPath) {
       console.error("Cannot find extension");
       return [];
     }
-
-    const extensionPath = extension.extensionPath;
 
     // 构建语言特定的数据文件路径
     let sectionPath = path.join(extensionPath, "data", "sections", `${baseSectionName}.json`);

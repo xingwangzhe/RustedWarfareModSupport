@@ -9,7 +9,7 @@ const cache = new Map<string, { mtimeMs: number; data: unknown }>();
 const MAX_CACHE_ENTRIES = 200;
 
 /** 缓存读取并解析 JSON 文件 */
-export function loadJsonCached<T>(filePath: string): T {
+export function loadJsonCached<T = any>(filePath: string): T {
   const stat = fs.statSync(filePath);
   const cached = cache.get(filePath);
   if (cached && cached.mtimeMs === stat.mtimeMs) {

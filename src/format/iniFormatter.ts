@@ -23,8 +23,8 @@ export function conservativeFormatIni(text: string): string {
 
   let blockStart = 0;
   const flush = (start: number, end: number) => {
-    const kvIdx: number[] = [];
-    const keyLens: number[] = [];
+    // 单次匹配并缓存结果，避免每行重复 match
+    const kvMatches = new Map<number, RegExpMatchArray>();
     for (let i = start; i < end; i++) {
       const ln = lines[i];
       if (!ln) {
@@ -35,16 +35,13 @@ export function conservativeFormatIni(text: string): string {
       }
       const m = ln.match(kvRegex);
       if (m) {
-        kvIdx.push(i);
-        keyLens.push(m[2].trim().length);
+        kvMatches.set(i, m);
       }
     }
-    if (kvIdx.length === 0) {
+    if (kvMatches.size === 0) {
       return;
     }
-    for (const i of kvIdx) {
-      const ln = lines[i];
-      const m = ln.match(kvRegex)!;
+    for (const [i, m] of kvMatches) {
       const leading = m[1] || "";
       const key = m[2] || "";
       const sepCharMatch = (m[3] || "=").match(/[:=]/);

@@ -1,8 +1,8 @@
 import * as vscode from "vscode";
-import * as fs from "fs";
 import * as path from "path";
 import { BaseValueCompletionProvider } from "./BaseValueCompletionProvider";
-import { getExtensionId } from "../extension";
+import { getExtensionPath } from "../common/extensionPaths";
+import { loadJsonCached } from "../common/dataCache";
 import { getSectionProperties } from "../dataProcessor";
 import { t } from "../translationManager";
 /**
@@ -91,14 +91,12 @@ export class UnitSpawnCompletionProvider extends BaseValueCompletionProvider {
    */
   private getUnitSpawnCompletionItems(propertyName: string): vscode.CompletionItem[] {
     try {
-      // 获取扩展的实际路径
-      const extension = vscode.extensions.getExtension(getExtensionId());
-      if (!extension) {
+      // 获取扩展的实际路径（带缓存）
+      const extensionPath = getExtensionPath();
+      if (!extensionPath) {
         console.error("Cannot find extension");
         return [];
       }
-
-      const extensionPath = extension.extensionPath;
 
       // 读取对应属性的值定义文件
       const valueType =
@@ -106,7 +104,7 @@ export class UnitSpawnCompletionProvider extends BaseValueCompletionProvider {
           ? "spawnProjectiles"
           : "spawnUnits";
       const valuePath = path.join(extensionPath, "data", "value", `${valueType}.json`);
-      const valueData = JSON.parse(fs.readFileSync(valuePath, "utf8"));
+      const valueData = loadJsonCached(valuePath);
 
       // 创建一个示例补全项
       const exampleItem = new vscode.CompletionItem(
@@ -135,14 +133,12 @@ export class UnitSpawnCompletionProvider extends BaseValueCompletionProvider {
    */
   private getUnitSpawnParamCompletionItems(propertyName: string): vscode.CompletionItem[] {
     try {
-      // 获取扩展的实际路径
-      const extension = vscode.extensions.getExtension(getExtensionId());
-      if (!extension) {
+      // 获取扩展的实际路径（带缓存）
+      const extensionPath = getExtensionPath();
+      if (!extensionPath) {
         console.error("Cannot find extension");
         return [];
       }
-
-      const extensionPath = extension.extensionPath;
 
       // 读取对应属性的值定义文件
       const valueType =
@@ -150,7 +146,7 @@ export class UnitSpawnCompletionProvider extends BaseValueCompletionProvider {
           ? "spawnProjectiles"
           : "spawnUnits";
       const valuePath = path.join(extensionPath, "data", "value", `${valueType}.json`);
-      const valueData = JSON.parse(fs.readFileSync(valuePath, "utf8"));
+      const valueData = loadJsonCached(valuePath);
 
       // 为每个参数创建补全项
       const paramItems: vscode.CompletionItem[] = [];

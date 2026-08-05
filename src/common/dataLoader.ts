@@ -1,7 +1,6 @@
-import * as vscode from "vscode";
-import * as fs from "fs";
 import * as path from "path";
-import { getExtensionId } from "../extension";
+import { getExtensionPath } from "./extensionPaths";
+import { loadJsonCached } from "./dataCache";
 
 let _cachedSections: any[] | null = null;
 let _sectionsCacheExpires = 0;
@@ -28,8 +27,8 @@ export function loadSectionsData(): any[] {
     return _cachedSections;
   }
   try {
-    const extension = vscode.extensions.getExtension(getExtensionId());
-    if (!extension) {
+    const extensionPath = getExtensionPath();
+    if (!extensionPath) {
       console.error("Cannot find extension");
       _cachedSections = [];
       _sectionsCacheExpires = now + SECTIONS_CACHE_TTL_MS;
@@ -37,9 +36,8 @@ export function loadSectionsData(): any[] {
       return [];
     }
 
-    const extensionPath = extension.extensionPath;
     const sectionsPath = path.join(extensionPath, "data", "sections.json");
-    const sectionsData = JSON.parse(fs.readFileSync(sectionsPath, "utf8"));
+    const sectionsData = loadJsonCached(sectionsPath);
     const sectionsArray = sectionsData.data || [];
     _cachedSections = sectionsArray;
     _sectionsCacheExpires = now + SECTIONS_CACHE_TTL_MS;

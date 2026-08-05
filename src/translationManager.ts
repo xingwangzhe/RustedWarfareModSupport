@@ -1,6 +1,7 @@
 import * as vscode from "vscode";
 import * as path from "path";
 import * as fs from "fs";
+import { getExtensionPath } from "./common/extensionPaths";
 
 type TranslationCacheEntry = {
   mtimeMs: number;
@@ -37,10 +38,8 @@ export class TranslationManager {
       // 获取当前语言环境
       this.#currentLocale = vscode.env.language || "en";
 
-      // 获取扩展的翻译目录路径
-      const extensionPath = vscode.extensions.getExtension(
-        "xingwangzhe.rustedwarfaremodsupport",
-      )?.extensionPath;
+      // 获取扩展的翻译目录路径（带缓存）
+      const extensionPath = getExtensionPath();
       if (!extensionPath) {
         console.warn("无法获取扩展路径，使用默认翻译");
         return;

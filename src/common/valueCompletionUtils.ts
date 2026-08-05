@@ -1,7 +1,7 @@
 import * as vscode from "vscode";
-import * as fs from "fs";
 import * as path from "path";
-import { getExtensionId } from "../extension";
+import { getExtensionPath } from "./extensionPaths";
+import { loadJsonCached } from "./dataCache";
 import { t } from "../translationManager";
 
 /**
@@ -22,23 +22,17 @@ export function createCompletionItemsFromDataFile(
   },
 ): vscode.CompletionItem[] {
   try {
-    // 获取扩展路径
-    const extension = vscode.extensions.getExtension(getExtensionId());
-    if (!extension) {
+    // 获取扩展路径（带缓存）
+    const extensionPath = getExtensionPath();
+    if (!extensionPath) {
       console.error(`Cannot find extension for ${fileName}`);
       return [];
     }
 
-    const extensionPath = extension.extensionPath;
     const filePath = path.join(extensionPath, "data", "value", `${fileName}.json`);
 
-    if (!fs.existsSync(filePath)) {
-      console.error(`Data file not found: ${filePath}`);
-      return [];
-    }
-
-    // 读取数据文件
-    const data = JSON.parse(fs.readFileSync(filePath, "utf8"));
+    // 读取数据文件（mtime 缓存）
+    const data = loadJsonCached(filePath);
 
     if (!data.data || !Array.isArray(data.data)) {
       console.error(`Invalid data format in ${filePath}`);
@@ -47,10 +41,12 @@ export function createCompletionItemsFromDataFile(
 
     // 从数据文件中生成补全项
     const completionItems: vscode.CompletionItem[] = [];
+    const detailText = t(detailKey);
+    const exampleLabel = t("completionprovider.example");
 
     for (const item of data.data) {
       const completionItem = new vscode.CompletionItem(item.name, kind);
-      completionItem.detail = t(detailKey);
+      completionItem.detail = detailText;
 
       // 使用自定义文档生成器或默认
       if (options?.customDocumentation) {
@@ -67,11 +63,11 @@ export function createCompletionItemsFromDataFile(
           const exampleText = t(item.example);
           if (completionItem.documentation instanceof vscode.MarkdownString) {
             completionItem.documentation.appendMarkdown(
-              `\n\n**${t("completionprovider.example")}:**\n\`\`\`ini\n${exampleText}\n\`\`\``,
+              `\n\n**${exampleLabel}:**\n\`\`\`ini\n${exampleText}\n\`\`\``,
             );
           } else {
             completionItem.documentation = new vscode.MarkdownString(
-              `${completionItem.documentation}\n\n**${t("completionprovider.example")}:**\n\`\`\`ini\n${exampleText}\n\`\`\``,
+              `${completionItem.documentation}\n\n**${exampleLabel}:**\n\`\`\`ini\n${exampleText}\n\`\`\``,
             );
           }
         }
