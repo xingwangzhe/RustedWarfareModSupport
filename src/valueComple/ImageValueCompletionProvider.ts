@@ -64,9 +64,7 @@ export class ImageValueCompletionProvider extends BaseValueCompletionProvider {
                 debugLog(`[DEBUG] ImageCompletion - setting image documentation directly`);
                 it.documentation = imageMarkdown;
               } else {
-                debugLog(
-                  `[DEBUG] ImageCompletion - failed to create markdown, fallback to text`,
-                );
+                debugLog(`[DEBUG] ImageCompletion - failed to create markdown, fallback to text`);
                 it.documentation = new vscode.MarkdownString("Image file in current folder");
               }
             } else {

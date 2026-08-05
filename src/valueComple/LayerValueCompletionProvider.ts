@@ -20,7 +20,8 @@ export class LayerValueCompletionProvider extends BaseValueCompletionProvider {
       vscode.CompletionItemKind.Value,
       "valuecompletionprovider.layer.detail",
       {
-        customDocumentation: (item: ValueItem) => new vscode.MarkdownString(t(item.description ?? "")),
+        customDocumentation: (item: ValueItem) =>
+          new vscode.MarkdownString(t(item.description ?? "")),
       },
     );
   }

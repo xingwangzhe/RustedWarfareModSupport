@@ -46,9 +46,7 @@ export class MemoryDefinitionCompletionProvider implements vscode.CompletionItem
       [
         `**@memory** - ${t("memory.definition.description")}`,
         t("memory.definition.format"),
-        `**${t("memory.definition.supportedTypes")}** ${t(
-          "memory.definition.supportedTypesList",
-        )}`,
+        `**${t("memory.definition.supportedTypes")}** ${t("memory.definition.supportedTypesList")}`,
         `**${t("memory.definition.example")}**`,
         "```",
         t("memory.definition.exampleHp"),

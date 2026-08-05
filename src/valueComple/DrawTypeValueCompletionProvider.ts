@@ -20,7 +20,8 @@ export class DrawTypeValueCompletionProvider extends BaseValueCompletionProvider
       vscode.CompletionItemKind.Value,
       "valuecompletionprovider.drawtype.detail",
       {
-        customDocumentation: (item: ValueItem) => new vscode.MarkdownString(t(item.description ?? "")),
+        customDocumentation: (item: ValueItem) =>
+          new vscode.MarkdownString(t(item.description ?? "")),
       },
     );
   }

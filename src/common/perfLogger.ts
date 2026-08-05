@@ -23,10 +23,7 @@ export function debugLog(message: string): void {
   }
 }
 
-export async function measurePerf<T>(
-  label: string,
-  evaluator: () => T | Promise<T>,
-): Promise<T> {
+export async function measurePerf<T>(label: string, evaluator: () => T | Promise<T>): Promise<T> {
   if (!perfLoggingEnabled) {
     return evaluator();
   }

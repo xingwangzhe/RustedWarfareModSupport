@@ -20,7 +20,8 @@ export class AutoTriggerCheckRateValueCompletionProvider extends BaseValueComple
       vscode.CompletionItemKind.Value,
       "valuecompletionprovider.autotriggercheckrate.detail",
       {
-        customDocumentation: (item: ValueItem) => new vscode.MarkdownString(t(item.description ?? "")),
+        customDocumentation: (item: ValueItem) =>
+          new vscode.MarkdownString(t(item.description ?? "")),
       },
     );
   }

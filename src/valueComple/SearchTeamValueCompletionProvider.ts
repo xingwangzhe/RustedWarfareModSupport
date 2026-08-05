@@ -20,7 +20,8 @@ export class SearchTeamValueCompletionProvider extends BaseValueCompletionProvid
       vscode.CompletionItemKind.Value,
       "valuecompletionprovider.searchteam.detail",
       {
-        customDocumentation: (item: ValueItem) => new vscode.MarkdownString(t(item.description ?? "")),
+        customDocumentation: (item: ValueItem) =>
+          new vscode.MarkdownString(t(item.description ?? "")),
       },
     );
   }

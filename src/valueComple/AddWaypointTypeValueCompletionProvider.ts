@@ -20,7 +20,8 @@ export class AddWaypointTypeValueCompletionProvider extends BaseValueCompletionP
       vscode.CompletionItemKind.Value,
       "valuecompletionprovider.addwaypoint_type.detail",
       {
-        customDocumentation: (item: ValueItem) => new vscode.MarkdownString(t(item.description ?? "")),
+        customDocumentation: (item: ValueItem) =>
+          new vscode.MarkdownString(t(item.description ?? "")),
       },
     );
   }

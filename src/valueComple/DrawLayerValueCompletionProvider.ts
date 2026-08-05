@@ -20,7 +20,8 @@ export class DrawLayerValueCompletionProvider extends BaseValueCompletionProvide
       vscode.CompletionItemKind.Value,
       "valuecompletionprovider.drawlayer.detail",
       {
-        customDocumentation: (item: ValueItem) => new vscode.MarkdownString(t(item.description ?? "")),
+        customDocumentation: (item: ValueItem) =>
+          new vscode.MarkdownString(t(item.description ?? "")),
       },
     );
   }

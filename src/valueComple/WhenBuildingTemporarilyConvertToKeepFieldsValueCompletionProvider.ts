@@ -20,7 +20,8 @@ export class WhenBuildingTemporarilyConvertToKeepFieldsValueCompletionProvider e
       vscode.CompletionItemKind.Value,
       "valuecompletionprovider.whenbuilding_temporarilyconvertto_keepfields.detail",
       {
-        customDocumentation: (item: ValueItem) => new vscode.MarkdownString(t(item.description ?? "")),
+        customDocumentation: (item: ValueItem) =>
+          new vscode.MarkdownString(t(item.description ?? "")),
       },
     );
   }

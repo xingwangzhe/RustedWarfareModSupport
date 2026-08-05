@@ -26,7 +26,8 @@ export class MovementTypeValueCompletionProvider extends BaseValueCompletionProv
       vscode.CompletionItemKind.Value,
       "valuecompletionprovider.movementtype.detail",
       {
-        customDocumentation: (item: ValueItem) => new vscode.MarkdownString(t(item.description ?? "")),
+        customDocumentation: (item: ValueItem) =>
+          new vscode.MarkdownString(t(item.description ?? "")),
       },
     );
   }

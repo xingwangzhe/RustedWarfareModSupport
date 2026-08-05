@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "module": "node20",
+    "target": "ES2023",
+    "lib": ["ES2023"],
+    "strict": true,
+    "types": ["vitest/globals", "node"],
+    "noEmit": true,
+    "skipLibCheck": true
+  },
+  "include": ["test/**/*.test.ts", "src/**/*.ts"]
+}

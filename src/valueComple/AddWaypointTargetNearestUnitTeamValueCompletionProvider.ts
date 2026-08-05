@@ -20,7 +20,8 @@ export class AddWaypointTargetNearestUnitTeamValueCompletionProvider extends Bas
       vscode.CompletionItemKind.Value,
       "valuecompletionprovider.addwaypoint_target_nearestunit_team.detail",
       {
-        customDocumentation: (item: ValueItem) => new vscode.MarkdownString(t(item.description ?? "")),
+        customDocumentation: (item: ValueItem) =>
+          new vscode.MarkdownString(t(item.description ?? "")),
       },
     );
   }

@@ -38,7 +38,10 @@ export function registerIniLanguageFeatures(
   );
 
   subs.push(
-    vscode.languages.registerFoldingRangeProvider({ language: "ini" }, new IniFoldingRangeProvider()),
+    vscode.languages.registerFoldingRangeProvider(
+      { language: "ini" },
+      new IniFoldingRangeProvider(),
+    ),
   );
 
   // 属性补全

@@ -20,7 +20,8 @@ export class SetUnitStatsValueCompletionProvider extends BaseValueCompletionProv
       vscode.CompletionItemKind.Value,
       "valuecompletionprovider.setunitstats.detail",
       {
-        customDocumentation: (item: ValueItem) => new vscode.MarkdownString(t(item.description ?? "")),
+        customDocumentation: (item: ValueItem) =>
+          new vscode.MarkdownString(t(item.description ?? "")),
       },
     );
   }

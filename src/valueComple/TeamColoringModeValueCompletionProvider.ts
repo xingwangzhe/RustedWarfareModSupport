@@ -20,7 +20,8 @@ export class TeamColoringModeValueCompletionProvider extends BaseValueCompletion
       vscode.CompletionItemKind.Value,
       "valuecompletionprovider.teamcoloringmode.detail",
       {
-        customDocumentation: (item: ValueItem) => new vscode.MarkdownString(t(item.description ?? "")),
+        customDocumentation: (item: ValueItem) =>
+          new vscode.MarkdownString(t(item.description ?? "")),
       },
     );
   }

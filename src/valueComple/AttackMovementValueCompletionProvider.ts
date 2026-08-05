@@ -20,7 +20,8 @@ export class AttackMovementValueCompletionProvider extends BaseValueCompletionPr
       vscode.CompletionItemKind.Value,
       "valuecompletionprovider.attackmovement.detail",
       {
-        customDocumentation: (item: ValueItem) => new vscode.MarkdownString(t(item.description ?? "")),
+        customDocumentation: (item: ValueItem) =>
+          new vscode.MarkdownString(t(item.description ?? "")),
       },
     );
   }

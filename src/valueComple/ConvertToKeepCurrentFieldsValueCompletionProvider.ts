@@ -20,7 +20,8 @@ export class ConvertToKeepCurrentFieldsValueCompletionProvider extends BaseValue
       vscode.CompletionItemKind.Value,
       "valuecompletionprovider.convertto_keepcurrentfields.detail",
       {
-        customDocumentation: (item: ValueItem) => new vscode.MarkdownString(t(item.description ?? "")),
+        customDocumentation: (item: ValueItem) =>
+          new vscode.MarkdownString(t(item.description ?? "")),
       },
     );
   }

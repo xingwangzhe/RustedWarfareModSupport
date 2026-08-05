@@ -20,7 +20,8 @@ export class FireTurretXAtGroundOnlyOverPassableTileOfValueCompletionProvider ex
       vscode.CompletionItemKind.Value,
       "valuecompletionprovider.fireturretxatground_onlyoverpassabletileof.detail",
       {
-        customDocumentation: (item: ValueItem) => new vscode.MarkdownString(t(item.description ?? "")),
+        customDocumentation: (item: ValueItem) =>
+          new vscode.MarkdownString(t(item.description ?? "")),
       },
     );
   }

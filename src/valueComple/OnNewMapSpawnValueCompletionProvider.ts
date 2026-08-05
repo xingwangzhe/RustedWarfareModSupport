@@ -20,7 +20,8 @@ export class OnNewMapSpawnValueCompletionProvider extends BaseValueCompletionPro
       vscode.CompletionItemKind.Value,
       "valuecompletionprovider.onnewmapspawn.detail",
       {
-        customDocumentation: (item: ValueItem) => new vscode.MarkdownString(t(item.description ?? "")),
+        customDocumentation: (item: ValueItem) =>
+          new vscode.MarkdownString(t(item.description ?? "")),
       },
     );
   }

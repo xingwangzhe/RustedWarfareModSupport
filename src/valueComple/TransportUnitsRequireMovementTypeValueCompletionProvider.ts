@@ -20,7 +20,8 @@ export class TransportUnitsRequireMovementTypeValueCompletionProvider extends Ba
       vscode.CompletionItemKind.Value,
       "valuecompletionprovider.transportunitsrequiremovementtype.detail",
       {
-        customDocumentation: (item: ValueItem) => new vscode.MarkdownString(t(item.description ?? "")),
+        customDocumentation: (item: ValueItem) =>
+          new vscode.MarkdownString(t(item.description ?? "")),
       },
     );
   }

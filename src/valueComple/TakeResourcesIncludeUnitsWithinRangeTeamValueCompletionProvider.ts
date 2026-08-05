@@ -20,7 +20,8 @@ export class TakeResourcesIncludeUnitsWithinRangeTeamValueCompletionProvider ext
       vscode.CompletionItemKind.Value,
       "valuecompletionprovider.takeresources_includeunitswithinrange_team.detail",
       {
-        customDocumentation: (item: ValueItem) => new vscode.MarkdownString(t(item.description ?? "")),
+        customDocumentation: (item: ValueItem) =>
+          new vscode.MarkdownString(t(item.description ?? "")),
       },
     );
   }

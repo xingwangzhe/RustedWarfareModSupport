@@ -20,7 +20,8 @@ export class DisplayDigitGroupingValueCompletionProvider extends BaseValueComple
       vscode.CompletionItemKind.Value,
       "valuecompletionprovider.displaydigitgrouping.detail",
       {
-        customDocumentation: (item: ValueItem) => new vscode.MarkdownString(t(item.description ?? "")),
+        customDocumentation: (item: ValueItem) =>
+          new vscode.MarkdownString(t(item.description ?? "")),
       },
     );
   }

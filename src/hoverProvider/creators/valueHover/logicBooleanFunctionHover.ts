@@ -15,7 +15,10 @@ interface LogicBooleanData {
 }
 
 const normalize = (value: string): string =>
-  value.replace(/\([^)]*\)/g, "").trim().toLowerCase();
+  value
+    .replace(/\([^)]*\)/g, "")
+    .trim()
+    .toLowerCase();
 
 /**
  * 创建LogicBoolean函数悬停信息

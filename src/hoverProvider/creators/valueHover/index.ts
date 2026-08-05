@@ -165,9 +165,7 @@ export class ValueHoverCreator {
         debugLog(`[DEBUG] PropertyValueHover - Calling createBooleanValueHover for: ${value}`);
         return createBooleanValueHover(value);
       case "LogicBoolean":
-        debugLog(
-          `[DEBUG] PropertyValueHover - Calling createLogicBooleanValueHover for: ${value}`,
-        );
+        debugLog(`[DEBUG] PropertyValueHover - Calling createLogicBooleanValueHover for: ${value}`);
         const logicBooleanResult = createLogicBooleanValueHover(value);
         debugLog(
           `[DEBUG] PropertyValueHover - LogicBoolean result: ${

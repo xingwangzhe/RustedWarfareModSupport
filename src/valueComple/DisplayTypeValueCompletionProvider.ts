@@ -20,7 +20,8 @@ export class DisplayTypeValueCompletionProvider extends BaseValueCompletionProvi
       vscode.CompletionItemKind.Value,
       "valuecompletionprovider.displaytype.detail",
       {
-        customDocumentation: (item: ValueItem) => new vscode.MarkdownString(t(item.description ?? "")),
+        customDocumentation: (item: ValueItem) =>
+          new vscode.MarkdownString(t(item.description ?? "")),
       },
     );
   }

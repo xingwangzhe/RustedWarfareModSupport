@@ -15,10 +15,7 @@ import { registerIniLanguageFeatures } from "./common/languageFeatureRegistrar";
 // Your extension is activated the very first time the command is executed
 
 // 应用折叠控件显示设置的函数
-const applyFoldingControls = (
-  _editor: vscode.TextEditor,
-  showFoldingControls: string,
-): void => {
+const applyFoldingControls = (_editor: vscode.TextEditor, showFoldingControls: string): void => {
   // 应用配置到工作区
   vscode.workspace
     .getConfiguration()

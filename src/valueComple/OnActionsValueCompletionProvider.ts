@@ -20,7 +20,8 @@ export class OnActionsValueCompletionProvider extends BaseValueCompletionProvide
       vscode.CompletionItemKind.Value,
       "valuecompletionprovider.onactions.detail",
       {
-        customDocumentation: (item: ValueItem) => new vscode.MarkdownString(t(item.description ?? "")),
+        customDocumentation: (item: ValueItem) =>
+          new vscode.MarkdownString(t(item.description ?? "")),
       },
     );
   }

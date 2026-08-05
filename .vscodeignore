@@ -7,8 +7,10 @@ src/**
 .gitignore
 .yarnrc
 vite.config.mts
+vitest.config.mts
 vsc-extension-quickstart.md
 **/tsconfig.json
+**/tsconfig.test.json
 **/tsconfig.tsbuildinfo
 **/eslint.config.mjs
 **/*.map

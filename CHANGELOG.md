@@ -1,5 +1,25 @@
 # 更新日志 / Changelog
 
+## [1.9.56] - 2026-08-05
+
+- 全库现代化重构：ES2023 目标、async/await、私有字段 `#field`、语法糖（`??`/`?.`/`??=`/`Array.at`）与死代码清理
+- 性能优化：新增数据缓存（mtime 检测）消除热路径重复读文件，扩展路径模块级缓存，正则提升为模块常量
+- 收敛约 50 处 `any` 为强类型（SectionProperty/ValueItem），统一 `matchBaseSection` 修复 `leg_`/`arm_` 悬停 bug
+- 语言功能与面板命令注册去重（消除约 200 行重复），修复面板监听器泄漏
+- 22 处 `[DEBUG]` 日志收敛到性能开关，颜色装饰器升级为 LogOutputChannel
+- 消除 `getExtensionId` 循环依赖
+- 引入 Vitest 单元测试（33 个用例：INI 格式化、颜色解析、键值行解析、节匹配规则、数据缓存）
+
+### Notes
+
+- Full modernization refactor: ES2023 target, async/await, private `#field`, sugar syntax (`??`/`?.`/`??=`/`Array.at`) and dead-code cleanup
+- Performance: added mtime-aware data caching to eliminate repeated file reads on hot paths, module-level extension path cache, hoisted regexes to constants
+- Replaced ~50 `any` with strong types (SectionProperty/ValueItem), unified `matchBaseSection` fixing the `leg_`/`arm_` hover bug
+- Deduplicated language-feature and panel-command registration (~200 lines), fixed panel listener leak
+- Consolidated 22 `[DEBUG]` logs behind the perf switch; color decorator upgraded to LogOutputChannel
+- Removed the `getExtensionId` circular dependency
+- Added Vitest unit tests (33 cases: INI formatting, color parsing, KV line parsing, section match rules, data caching)
+
 ## [1.9.55] - 2026-08-05
 
 - 用 vite 8（rolldown 内核）+ oxc 压缩器重写打包流程，替换 esbuild

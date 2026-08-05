@@ -20,7 +20,8 @@ export class OnlyTeamValueCompletionProvider extends BaseValueCompletionProvider
       vscode.CompletionItemKind.Value,
       "valuecompletionprovider.onlyteam.detail",
       {
-        customDocumentation: (item: ValueItem) => new vscode.MarkdownString(t(item.description ?? "")),
+        customDocumentation: (item: ValueItem) =>
+          new vscode.MarkdownString(t(item.description ?? "")),
       },
     );
   }

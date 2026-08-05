@@ -65,9 +65,7 @@ export class CustomFileExtensionsManager {
     // 找出新增的扩展名
     const addedExtensions = newExtensions.filter((ext) => !this.#currentExtensions.includes(ext));
     // 找出删除的扩展名
-    const removedExtensions = this.#currentExtensions.filter(
-      (ext) => !newExtensions.includes(ext),
-    );
+    const removedExtensions = this.#currentExtensions.filter((ext) => !newExtensions.includes(ext));
 
     // 为新增的扩展名注册支持
     if (addedExtensions.length > 0) {
@@ -159,10 +157,7 @@ export class CustomFileExtensionsManager {
       });
 
       // 将所有订阅添加到全局订阅列表中
-      this.#customExtensionSubscriptions.push(
-        documentOpenHandler,
-        ...languageFeatureSubscriptions,
-      );
+      this.#customExtensionSubscriptions.push(documentOpenHandler, ...languageFeatureSubscriptions);
 
       console.log(`Registered language support for custom extension: ${extension}`);
     });
