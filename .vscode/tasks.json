@@ -18,21 +18,7 @@
       "type": "npm",
       "script": "watch:build",
       "group": "build",
-      "problemMatcher": [
-        {
-          "owner": "vite",
-          "pattern": [
-            {
-              "regexp": "."
-            }
-          ],
-          "background": {
-            "activeOnStart": true,
-            "beginsPattern": "watching for file changes\\.\\.\\.",
-            "endsPattern": "built in|error"
-          }
-        }
-      ],
+      "problemMatcher": [],
       "isBackground": true,
       "label": "npm: watch:build",
       "presentation": {
