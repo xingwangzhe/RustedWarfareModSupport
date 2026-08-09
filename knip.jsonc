@@ -1,0 +1,29 @@
+{
+  "$schema": "https://unpkg.com/knip@6/schema-jsonc.json",
+  "entry": ["test/**/*.test.ts"],
+  "project": [
+    "src/**/*.ts",
+    "test/**/*.ts",
+    "scripts/**/*.{js,mjs,mts,cjs,ts}",
+    "*.{js,mjs,mts,cjs,ts}",
+  ],
+  "paths": {
+    "@/*": ["src/*"],
+  },
+  "ignoreIssues": {
+    "src/hoverProvider/index.ts": ["files"],
+    "src/common/sectionCache.ts": ["exports", "types"],
+    "src/common/extensionPaths.ts": ["exports"],
+    "src/common/imagePathResolver.ts": ["exports"],
+    "src/common/matchRules.ts": ["types"],
+    "src/panel/types.ts": ["types"],
+    "src/hoverProvider/types.ts": ["types"],
+    "src/common/colorDecorator.ts": ["exports"],
+    "src/common/colorPropertyDecorator.ts": ["exports"],
+    "src/common/constants.ts": ["exports"],
+    "src/common/colorUtils.ts": ["exports"],
+    "src/memory/MemoryManager.ts": ["exports"],
+    "src/panel/exportManager.ts": ["exports"],
+    "src/panel/index.ts": ["exports"],
+  },
+}

@@ -1,0 +1,4 @@
+.github/copilot-instructions.md
+.github/instructions/mermaid.instructions.md
+syntaxes/ini.tmLanguage.json
+translation/bundle.l10n*.json

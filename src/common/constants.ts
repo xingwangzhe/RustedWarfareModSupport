@@ -11,11 +11,3 @@ export const IMAGE_EXTENSIONS: ReadonlySet<string> = new Set([
   ".webp",
   ".bmp",
 ]);
-
-/** 补全触发器字符：a-z、A-Z、0-9、_ */
-export const ALPHANUMERIC_TRIGGERS: readonly string[] = [
-  ...Array.from({ length: 26 }, (_, i) => String.fromCharCode(97 + i)), // a-z
-  ...Array.from({ length: 26 }, (_, i) => String.fromCharCode(65 + i)), // A-Z
-  ...Array.from({ length: 10 }, (_, i) => String(i)), // 0-9
-  "_",
-];

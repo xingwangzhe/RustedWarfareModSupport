@@ -4,73 +4,26 @@ import * as vscode from "vscode";
 import { t } from "@/translationManager";
 import { conservativeFormatIni } from "@/format/iniFormatter";
 import { ImagePropertyDecorator } from "@/common/imagePropertyDecorator";
+import ColorPropertyDecorator from "@/common/colorPropertyDecorator";
 import { initializePanelManager, getPanelManager } from "@/panel/panelManager";
 // 直接导入面板相关模块，避免动态导入
 import { registerModPanel } from "@/panel/index";
 import { initializePerfLogger } from "@/common/perfLogger";
 import { registerExportCommands } from "@/panel/exportManager";
 import { registerIniLanguageFeatures } from "@/common/languageFeatureRegistrar";
+import { memoryManager } from "@/memory/MemoryManager";
 
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
-
-// 应用折叠控件显示设置的函数
-const applyFoldingControls = (_editor: vscode.TextEditor, showFoldingControls: string): void => {
-  // 应用配置到工作区
-  vscode.workspace
-    .getConfiguration()
-    .update(
-      "editor.showFoldingControls",
-      showFoldingControls,
-      vscode.ConfigurationTarget.Workspace,
-    );
-};
 
 let languageFeaturesInitialized = false;
 
 export function activate(context: vscode.ExtensionContext) {
   initializePerfLogger(context);
+  context.subscriptions.push(memoryManager);
   // Use the console to output diagnostic information (console.log) and errors (console.error)
   // This line of code will only be executed once when your extension is activated
   console.log(t('Congratulations, your extension "rustedwarfaremodsupport" is now active!'));
-
-  // 读取配置并应用折叠控件显示设置
-  const config = vscode.workspace.getConfiguration("rustedwarfaremodsupport");
-  const showFoldingControls = config.get<string>("showFoldingControls", "always");
-
-  // 为所有打开的文本编辑器应用设置
-  vscode.window.visibleTextEditors.forEach((editor) => {
-    if (editor.document.languageId === "ini") {
-      applyFoldingControls(editor, showFoldingControls);
-    }
-  });
-
-  // 监听配置变化
-  context.subscriptions.push(
-    vscode.workspace.onDidChangeConfiguration((e) => {
-      if (e.affectsConfiguration("rustedwarfaremodsupport.showFoldingControls")) {
-        const newConfig = vscode.workspace.getConfiguration("rustedwarfaremodsupport");
-        const newShowFoldingControls = newConfig.get<string>("showFoldingControls", "always");
-
-        vscode.window.visibleTextEditors.forEach((editor) => {
-          if (editor.document.languageId === "ini") {
-            applyFoldingControls(editor, newShowFoldingControls);
-          }
-        });
-      }
-    }),
-  );
-
-  // 监听编辑器打开事件
-  context.subscriptions.push(
-    vscode.window.onDidChangeVisibleTextEditors((editors) => {
-      editors.forEach((editor) => {
-        if (editor.document.languageId === "ini") {
-          applyFoldingControls(editor, showFoldingControls);
-        }
-      });
-    }),
-  );
 
   // 初始化面板管理器
   initializePanelManager(context);
@@ -136,7 +89,9 @@ export function activate(context: vscode.ExtensionContext) {
 }
 
 // This method is called when your extension is deactivated
-export function deactivate() {}
+export function deactivate() {
+  getPanelManager().getCustomExtensionsManager().dispose();
+}
 
 function setupLazyLanguageInitialization(context: vscode.ExtensionContext) {
   const lazyDisposables: vscode.Disposable[] = [];
@@ -181,11 +136,8 @@ function setupLazyLanguageInitialization(context: vscode.ExtensionContext) {
 
 function initializeLanguageFeatures(context: vscode.ExtensionContext) {
   const imageDecorator = new ImagePropertyDecorator();
-  context.subscriptions.push(
-    imageDecorator,
-    ...registerIniLanguageFeatures(),
-    ...getPanelManager().getCustomExtensionsManager().getSubscriptions(),
-  );
+  const colorDecorator = new ColorPropertyDecorator();
+  context.subscriptions.push(imageDecorator, colorDecorator, ...registerIniLanguageFeatures());
 }
 
 /**

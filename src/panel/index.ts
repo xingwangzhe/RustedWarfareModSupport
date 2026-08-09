@@ -6,7 +6,7 @@ import { t } from "@/translationManager";
 /**
  * Mod Panel Item - 面板中的树节点项
  */
-export class ModPanelItem extends vscode.TreeItem {
+class ModPanelItem extends vscode.TreeItem {
   constructor(
     public readonly label: string,
     public readonly tooltip: string,
@@ -28,7 +28,7 @@ export class ModPanelItem extends vscode.TreeItem {
 /**
  * Mod Panel Provider - 提供面板数据的Tree Data Provider
  */
-export class ModPanelProvider implements vscode.TreeDataProvider<ModPanelItem> {
+class ModPanelProvider implements vscode.TreeDataProvider<ModPanelItem> {
   private dataManager: PanelDataManager;
   private _onDidChangeTreeData: vscode.EventEmitter<ModPanelItem | undefined | null | void> =
     new vscode.EventEmitter<ModPanelItem | undefined | null | void>();

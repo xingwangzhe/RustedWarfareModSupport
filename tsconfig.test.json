@@ -4,6 +4,8 @@
     "target": "ES2023",
     "lib": ["ES2023"],
     "strict": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
     "types": ["vitest/globals", "node"],
     "noEmit": true,
     "skipLibCheck": true,

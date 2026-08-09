@@ -27,5 +27,6 @@
     "editor.defaultFormatter": "oxc.oxc-vscode",
     "editor.formatOnSave": true
   },
-  "editor.showFoldingControls": "always"
+  "editor.showFoldingControls": "always",
+  "i18n-ally.localesPaths": ["translation"]
 }

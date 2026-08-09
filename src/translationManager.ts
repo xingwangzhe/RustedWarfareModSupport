@@ -17,7 +17,7 @@ const PLACEHOLDER_REGEX = /\{(\d+)\}/g;
  * 自定义翻译管理器
  * 解决VS Code l10n在英文环境下直接返回键值的问题
  */
-export class TranslationManager {
+class TranslationManager {
   static #instance: TranslationManager;
   #translations: Map<string, string> = new Map();
   #currentLocale: string = "en";
@@ -146,7 +146,7 @@ export class TranslationManager {
   /**
    * 重新加载翻译（用于语言切换）
    */
-  public reloadTranslations(): void {
+  private reloadTranslations(): void {
     this.loadTranslations();
   }
 
@@ -170,11 +170,4 @@ export class TranslationManager {
  */
 export function t(key: string, ...args: any[]): string {
   return TranslationManager.getInstance().t(key, ...args);
-}
-
-/**
- * 重新加载翻译的函数
- */
-export function reloadTranslations(): void {
-  TranslationManager.getInstance().reloadTranslations();
 }

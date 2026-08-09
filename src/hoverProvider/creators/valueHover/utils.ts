@@ -70,7 +70,7 @@ export function findMatchingValueItem(valueData: ValueDataFile, value: string): 
  * @param data 数据数组
  * @returns 匹配的项目
  */
-export function findLogicBooleanFunction(inputValue: string, data: ValueItem[]): ValueItem | null {
+function findLogicBooleanFunction(inputValue: string, data: ValueItem[]): ValueItem | null {
   // 移除括号和参数
   const cleanInput = inputValue.replace(TRAILING_PARENS_REGEX, "");
 

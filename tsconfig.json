@@ -8,10 +8,8 @@
     "outDir": "dist",
     "strict": true /* enable all strict type-checking options */,
     "incremental": true /* enable incremental compilation for faster rebuilds */,
-    /* Additional Checks */
-    // "noImplicitReturns": true, /* Report error when not all code paths in function return a value. */
-    // "noFallthroughCasesInSwitch": true, /* Report errors for fallthrough cases in switch statement. */
-    // "noUnusedParameters": true,  /* Report errors on unused parameters. */
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
     /* 路径别名（TS7 已移除 baseUrl，paths 用相对路径） */
     "paths": {
       "@/*": ["./src/*"]

@@ -11,7 +11,7 @@ const formatTimestamp = (): string => new Date().toISOString().replace(/[:.]/g, 
 /**
  * 导出管理器：负责导出 zip/rwmod 文件
  */
-export class ExportManager {
+class ExportManager {
   /**
    * 导出功能 - 让用户选择路径，同时导出ZIP和RWMOD
    */

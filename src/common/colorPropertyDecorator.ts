@@ -7,7 +7,7 @@ import { PROPERTY_LINE_REGEX } from "@/common/kvLine";
  * 装饰文档中的十六进制颜色文本（例如 #RRGGBB, #AARRGGBB, #RGB, #ARGB）
  * 使颜色文本的前景色与表示的颜色一致，覆盖注释灰色样式
  */
-export class ColorPropertyDecorator implements vscode.Disposable {
+class ColorPropertyDecorator implements vscode.Disposable {
   private decorations = new Map<string, vscode.Range[]>();
   // We do not retain decoration instances between updates — always dispose
   // previous decorators and recreate them to ensure the editor reflects

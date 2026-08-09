@@ -17,7 +17,7 @@ interface DocumentState {
   lastUpdate: number;
 }
 
-export class MemoryManager {
+class MemoryManager {
   static #instance: MemoryManager;
   #documentStates: Map<string, DocumentState> = new Map();
   #disposables: vscode.Disposable[] = [];

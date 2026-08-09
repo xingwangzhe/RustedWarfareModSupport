@@ -72,7 +72,7 @@ export const toHexAARRGGBB = (rgba: RGBA): string => {
 export const toRGBAString = (rgba: RGBA): string =>
   `rgba(${rgba.r}, ${rgba.g}, ${rgba.b}, ${Number(rgba.a.toFixed(3))})`;
 
-export function createColorPreviewMarkdown(rgba: RGBA, label?: string) {
+function createColorPreviewMarkdown(rgba: RGBA, label?: string): string {
   const hex = toHexAARRGGBB(rgba);
   const rgbaStr = toRGBAString(rgba);
   // small inline preview using HTML (VSCode markdown supports simple HTML)
@@ -100,11 +100,3 @@ export function tryParseAndPreview(input: string, label?: string): string | null
   }
   return createColorPreviewMarkdown(rgba, label);
 }
-
-export default {
-  parseHexColor,
-  toHexAARRGGBB,
-  toRGBAString,
-  createColorPreviewMarkdown,
-  tryParseAndPreview,
-};

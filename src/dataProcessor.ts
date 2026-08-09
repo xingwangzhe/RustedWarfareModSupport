@@ -312,33 +312,6 @@ function createSectionCacheKey(sectionPath: string): string {
 }
 
 /**
- * 创建一个简单的节匹配器函数
- * @param sectionName 节名称
- * @returns 匹配器函数
- */
-export function createSimpleSectionMatcher(sectionName: string): (name: string) => boolean {
-  return (name: string) => name === sectionName;
-}
-
-/**
- * 创建一个前缀匹配器函数
- * @param prefix 前缀
- * @returns 匹配器函数
- */
-export function createPrefixSectionMatcher(prefix: string): (name: string) => boolean {
-  return (name: string) => name.startsWith(prefix);
-}
-
-/**
- * 创建一个正则表达式匹配器函数
- * @param pattern 正则表达式模式
- * @returns 匹配器函数
- */
-export function createRegexSectionMatcher(pattern: RegExp): (name: string) => boolean {
-  return (name: string) => pattern.test(name);
-}
-
-/**
  * 获取文档的所有节信息，并使用版本缓存
  * @param document 文档对象
  * @returns 节信息数组，按行号排序
