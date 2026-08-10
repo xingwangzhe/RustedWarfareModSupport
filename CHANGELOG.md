@@ -1,5 +1,17 @@
 # 更新日志 / Changelog
 
+## [1.9.58] - 2026-08-10
+
+- 新增 Rusted Warfare INI-like 语法兼容说明与语法高亮测试。
+- 优化 Knip 项目分析配置，并更新 VS Code 调试与任务配置。
+- 持续精简扩展代码与构建配置，保持 TypeScript、Vite、Bun 工具链一致。
+
+### Notes
+
+- Added Rusted Warfare INI-like syntax compatibility documentation and syntax highlighting tests.
+- Improved Knip project analysis configuration and updated VS Code launch/task settings.
+- Continued streamlining extension code and build configuration while keeping the TypeScript, Vite, and Bun toolchain aligned.
+
 ## [1.9.57] - 2026-08-05
 
 - 相对路径导入全部改为 `@/` 别名（tsconfig / vite / vitest 统一配置）
