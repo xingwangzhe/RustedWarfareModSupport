@@ -225,62 +225,6 @@
       "example": "borrowResourcesWhileBuilt: supplyCap = -10"
     },
     {
-      "name": "weaponSlots",
-      "type": "int",
-      "description": "data.sections.core.weaponSlots",
-      "version": "1.13",
-      "isOutdated": false,
-      "example": "weaponSlots: 4"
-    },
-    {
-      "name": "weaponSlot_{NUM}_name",
-      "type": "string",
-      "description": "data.sections.core.weaponSlot_{NUM}_name",
-      "version": "1.13",
-      "isOutdated": false,
-      "example": "weaponSlot_1_name: mainGun"
-    },
-    {
-      "name": "weaponSlot_{NUM}_pos",
-      "type": "float",
-      "description": "data.sections.core.weaponSlot_{NUM}_pos",
-      "version": "1.13",
-      "isOutdated": false,
-      "example": "weaponSlot_1_pos: 0.5"
-    },
-    {
-      "name": "weaponSlotsForAI",
-      "type": "int",
-      "description": "data.sections.core.weaponSlotsForAI",
-      "version": "1.13",
-      "isOutdated": false,
-      "example": "weaponSlotsForAI: 2"
-    },
-    {
-      "name": "weaponSlotsForAI_{NUM}_name",
-      "type": "string",
-      "description": "data.sections.core.weaponSlotsForAI_{NUM}_name",
-      "version": "1.13",
-      "isOutdated": false,
-      "example": "weaponSlotsForAI_1_name: antiTank"
-    },
-    {
-      "name": "weaponSlotsForBuild",
-      "type": "int",
-      "description": "data.sections.core.weaponSlotsForBuild",
-      "version": "1.13",
-      "isOutdated": false,
-      "example": "weaponSlotsForBuild: 3"
-    },
-    {
-      "name": "weaponSlotsForBuild_{NUM}_name",
-      "type": "string",
-      "description": "data.sections.core.weaponSlotsForBuild_{NUM}_name",
-      "version": "1.13",
-      "isOutdated": false,
-      "example": "weaponSlotsForBuild_1_name: buildTool"
-    },
-    {
       "name": "generation_resources",
       "type": "price",
       "description": "data.sections.core.generation_resources",

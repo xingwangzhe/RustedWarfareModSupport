@@ -1,5 +1,13 @@
 # 更新日志 / Changelog
 
+## [1.9.59] - 2026-08-11
+
+- 删除 core 节中已不再提供的 weaponSlots 相关属性补全项。
+
+### Notes
+
+- Removed the obsolete weaponSlots-related property completions from the core section.
+
 ## [1.9.58] - 2026-08-10
 
 - 新增 Rusted Warfare INI-like 语法兼容说明与语法高亮测试。

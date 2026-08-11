@@ -1,7 +1,7 @@
 {
   "name": "rustedwarfaremodsupport",
   "displayName": "RustedWarfare Mod Support",
-  "version": "1.9.58",
+  "version": "1.9.59",
   "description": "RustedWarfare 模组开发工具，提供编辑器内的智能补全、文档提示、代码格式化、颜色/图片预览与 Mod 导出。支持 INI 文件的属性自动补全、逻辑布尔表达式补全、单位生成补全，多语言翻译支持，助力 RustedWarfare mod 开发。A RustedWarfare mod development toolkit with intelligent completions, documentation hints, INI formatting, color/image previews and mod export for VS Code.",
   "categories": [
     "Formatters",
